@@ -9,13 +9,12 @@
 #ifdef _WIN32
 #include <windows.h>
 #include <tchar.h>
-#include <wchar.h>
 #include <shellapi.h>
 #endif
 
 int main(int argc, char *argv[])
 {
-#if(QT_VERSION>=QT_VERSION_CHECK(5,6,0))
+#if(QT_VERSION <= QT_VERSION_CHECK(5,6,0))
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);// 启用高分辨率 pixmap
 #endif
@@ -87,20 +86,20 @@ int main(int argc, char *argv[])
                  gridline-color: transparent;
                  background-color: rgb(230, 240, 255);
                  gridline-color: gray;
-                 font-size: 10px ;
-                 font-weight: 400;
+                 font-size: 12px ;
+                 font-weight: 500;
             }
         QTableView::item{padding-left:2px;  border-top: 0px solid gray; border-bottom: 1px solid transparent;border-right: 0px solid gray;}
         QTableView::item::selected{ background-color: #a0bb9e; color:white; }
         QTableView QTableCornerButton::section { background-color: skyblue ; min-width: 32px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-left: 0px solid gray; border-right: 1px solid gray; }
 
-        QTableView QHeaderView::section{background-color:skyblue;font-size: 10px; font-weight: 400 ;}
-        QTableView QHeaderView{background-color:skyblue; font-size: 10px; font-weight: 400 ;}
+        QTableView QHeaderView::section{background-color:skyblue;  font-size: 12px; font-weight: 500;}
+        QTableView QHeaderView{background-color:skyblue; }
         QTableView::indicator { width: 18px; height: 18px; }
         QTableView::indicator:checked { image: url(:/images/BoxChecked.png); }
         QTableView::indicator:unchecked { image: url(:/images/BoxUncheck.png); }
 
-        QHeaderView::section:horizontal{ font-size: 10px; font-weight: 400; padding-left: 2px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-right: 1px solid gray;}
+        QHeaderView::section:horizontal{ padding-left: 2px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-right: 1px solid gray;}
         QHeaderView::section:vertical{ padding-left: 2px; min-width: 36px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-left: 0px solid gray; border-right: 1px solid gray;}
         QHeaderView::section:vertical{ text-align: right;}
 

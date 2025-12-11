@@ -110,6 +110,8 @@ public:
     void setLEDColor(const QColor&color, int option);
     void reset() ;
 
+    void changeKey(quint8 hid, quint8 data0, quint8 data1, quint8 data2, quint8 data3, quint8 subLayer=0);
+
 signals:
     void onConnect();
     void onDisconnect();
@@ -126,6 +128,7 @@ private:
 
     hid_device *m_pDev0 = nullptr;
     hid_device *m_pDev1 = nullptr;
+    hid_device *m_pDev2 = nullptr;
 
     QTimer *pTMClear  = nullptr;
     QTimer *m_pRdInput = nullptr;
@@ -141,6 +144,7 @@ private:
     void setRowValue(int row, int col,int value);
 
     void addLog(const QByteArray&log);
+    QByteArray m_lastCmd ;
 };
 
 #endif // DIALOGDEVICECONNECT_H

@@ -2,13 +2,15 @@
 #include "qforeach.h"
 #include "ui_DialogDeviceConnect.h"
 
+#include "ModuleGenKeymapping.h"
+
 #include <QTimer>
 #include <QDebug>
 #include <QMessageBox>
 #include <QWindow>
 
-
-typedef struct{
+typedef struct
+{
     QString name ;
     quint8 cmd ;
     quint8 nLen;
@@ -43,9 +45,9 @@ static QList<HidCmd> CmdTable =
     {"CMD_SET_DEBOUNCE",CMD_SET_DEBOUNCE,8,0,0,0,0,0,0,0},
     {"CMD_GET_DEBOUNCE",CMD_GET_DEBOUNCE,8,0,0,0,0,0,0,0},
     {"CMD_SET_LEDPARAM",CMD_SET_LEDPARAM,9,1,3,3,7,255,255,255},
-    {"CMD_GET_LEDPARAM",CMD_GET_LEDPARAM,9,0,0,0,0,0,0,0},
+    {"CMD_GET_LEDPARAM",CMD_GET_LEDPARAM,8,0,0,0,0,0,0,0},
     {"CMD_SET_SLEDPARAM",CMD_SET_SLEDPARAM,9,1,3,3,7,255,255,255},
-    {"CMD_GET_SLEDPARAM",CMD_GET_SLEDPARAM,9,0,0,0,0,0,0,0},
+    {"CMD_GET_SLEDPARAM",CMD_GET_SLEDPARAM,8,0,0,0,0,0,0,0},
     {"CMD_SET_KBOPTION",CMD_SET_KBOPTION,8,0,0,0,0,0,0,0},
     {"CMD_GET_KBOPTION",CMD_GET_KBOPTION,8,0,0,0,0,0,0,0},
     {"CMD_SET_KEYMATRIX",CMD_SET_KEYMATRIX,8,0,0,0,0,0,0,0},
@@ -89,13 +91,17 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     {
         m_pTable = ui->tableView ;
         m_pModel = new QStandardItemModel() ;
-        m_pModel->setHorizontalHeaderLabels(QString("命令,数据长度,Byte0\n命令号,Byte1\nEffect,Byte2\nSpeed,Byte3\nBrightness,Byte4\nOption,Byte5\nR,Byte6\nG,Byte7\nB").split(',')) ;
+        m_pModel->setHorizontalHeaderLabels(QString("命令,数据长度,Byte0\n命令号(Hex),Byte1\nEffect,Byte2\nSpeed,Byte3\nBrightness,Byte4\nOption,Byte5\nR,Byte6\nG,Byte7\nB").split(',')) ;
         m_pTable->setModel(m_pModel) ;
 
         QHeaderView *pHDV = m_pTable->horizontalHeader() ;
         pHDV->setSectionResizeMode(QHeaderView::Stretch);
         pHDV->setSectionResizeMode(0,QHeaderView::Fixed);
-        pHDV->resizeSection(0,150) ;
+        pHDV->resizeSection(0,165) ;
+        pHDV->setSectionResizeMode(2,QHeaderView::Fixed);
+        pHDV->resizeSection(2,90) ;
+        pHDV->setSectionResizeMode(5,QHeaderView::Fixed);
+        pHDV->resizeSection(5,90) ;
 
         foreach(const HidCmd & cmd,CmdTable)
         {
@@ -124,7 +130,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             {
                 item1->setFont(font) ;
                 item1->setForeground(QBrush(Qt::red)) ;
-                item2->setForeground(QBrush(Qt::green)) ;
+                item2->setForeground(QBrush(Qt::red)) ;
                 font.setItalic(true);
                 item0->setFont(font) ;
                 item0->setBackground(QBrush(Qt::white));
@@ -183,7 +189,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     static USBNotifier *pUsb = new USBNotifier(this);
     QCoreApplication::instance()->installNativeEventFilter(pUsb) ;
     connect(pUsb, &USBNotifier::devicePluggined,this,[=](bool in) {
-        qDebug() << "USB device plugged in";
+        qDebug() << "USB device plugged in" << in;
         pTMUsb->stop();
         pTMUsb->start(800) ;
     });
@@ -198,53 +204,57 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
         quint32 VID = ui->lineEditVID->text().trimmed().toUInt(nullptr,16) ;
         hid_device_info *pRoot = hid_enumerate(VID,0);
-        while(pRoot)
+        hid_device_info *pTemp = pRoot;
+        while(pTemp)
         {
-            if(pRoot->usage_page == 0xFFFF)
+            if(strstr(pTemp->path, "MI_02"))
             {
-                if(pRoot->usage == 1)
+                m_pDev2 = hid_open_path(pTemp->path) ;
+                hid_set_nonblocking(m_pDev2,1) ;
+            }
+
+            if(pTemp->usage_page == 0xFFFF)
+            {
+                unsigned char szInfo[128]={0};
+                if(pTemp->usage == 1)
                 {
-                    m_pDev0 = hid_open_path(pRoot->path) ;
-                    qDebug() << "Open m_pDev0: " << pRoot->path << pRoot->usage << pRoot->usage_page;
+                    m_pDev0 = hid_open_path(pTemp->path) ;
+                    hid_get_report_descriptor(m_pDev0,szInfo,64);
+                    qDebug() << "Open m_pDev0: " << pTemp->path << pTemp->usage << pTemp->usage_page ;
                     hid_set_nonblocking(m_pDev0,1) ;
                     ui->labelFlag0->setPixmap(QString(":/images/General_OK4.png"));
                 }
 
-                if(pRoot->usage == 2)
+                if(pTemp->usage == 2)
                 {
-                    m_pDev1 = hid_open_path(pRoot->path) ;
-                    qDebug() << "Open m_pDev1: " << pRoot->path << pRoot->usage << pRoot->usage_page;
+                    m_pDev1 = hid_open_path(pTemp->path) ;
+                    hid_get_report_descriptor(m_pDev1,szInfo,64);
+                    qDebug() << "Open m_pDev1: " << pTemp->path << pTemp->usage << pTemp->usage_page ;
                     ui->labelFlag1->setPixmap(QString(":/images/General_OK4.png"));
                 }
             }
-            if(m_pDev1 && m_pDev0)
+
+            if(m_pDev1 && m_pDev0 && m_pDev2)
             {
                 emit onConnect();
                 break;
             }
 
-            pRoot = pRoot->next ;
+            pTemp = pTemp->next ;
         }
 
         if(!m_pDev0 || !m_pDev1)
         {
             emit onDisconnect();
         }
+
+        hid_free_enumeration(pRoot) ;
     });
 
     connect(ui->pushButtonWrite,&QPushButton::clicked,this,[=]{
         if(!m_pDev1) return ;
         QString strCmd = ui->lineEditCmd->text().trimmed(); //"8F 00 00 00 00 00 00 70" ;
         QByteArray data(QByteArray::fromHex(strCmd.toLatin1())) ;
-        if(data.size()<8)
-        {
-            while(data.size()<8) data.append((char)0) ;
-            quint8 sum = 0 ;
-            for(int i=0; i<7; i++)
-                sum += data[i];
-            sum = 0xFF - (sum & 0xFF) ;
-            data[7] = sum ;
-        }
         addReadCmd(data);
         readSetting();
     });
@@ -256,26 +266,19 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         if( nlen>0 )
         {
             QByteArray data(buf+1,nlen-1) ;
-            emit onReadBack(data);
-            qDebug() << "hid_get__feature_report:" << data.toHex(' ').toUpper();
             quint8 cmd = (quint8)data[0] ;
             int row = getRow(cmd);
 
-            for(int i=1; i<9; i++)
+            if(cmd & 0x80)
             {
-                setRowValue(row,2+i,(quint8)data[i]) ;
+                for(int i=1; i<8; i++)
+                {
+                    setRowValue(row,2+i,(quint8)data[i]) ;
+                }
             }
+            qDebug() << "hid_get__feature_report:" << data.toHex(' ').toUpper();
 
-            switch (cmd)
-            {
-            case CMD_GET_LEDPARAM:
-            case CMD_GET_SLEDPARAM:
-            {
-            }
-            break;
-            default:
-                break;
-            }
+            emit onReadBack(data);
 
             addLog(data);
             readSetting();
@@ -305,6 +308,18 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 addLog(data) ;
             }
         }
+        if(m_pDev2)
+        {
+            char buf[1024] = {0};
+            int nlen = hid_read(m_pDev2,(quint8 *)buf,64) ;
+
+            if( nlen>0 )
+            {
+                QByteArray data(buf,nlen) ;
+                qDebug() << "hid_read:" << data.toHex(' ').toUpper();
+                addLog(data) ;
+            }
+        }
 
         m_pRdInput->start(20) ;
     });
@@ -321,17 +336,28 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     addReadCmd(CMD_GET_PROFILE);
     addReadCmd(CMD_GET_LEDPARAM);
     addReadCmd(CMD_GET_SLEDPARAM);
+    addReadCmd(CMD_GET_DEBOUNCE);
 
-    quint8 nProfile=0 ;
-    for(quint8 i=0; i<4; i++) // sonProfile;
+    quint8 layer=0 ;
+    for(quint8 i=0; i<4; i++) // subLayer;
     {
         for(quint8 j=0; j<8; j++) // page
         {
-            quint8 tmp[8] = {0x8A,nProfile,0xFF,j,i,0,0,0} ;
+            quint8 tmp[8] = {0x8A,layer,0xFF,j,i,0,0,0} ;
             QByteArray cmd((char *)tmp,8);
             addReadCmd(cmd);
         }
     }
+}
+
+void DialogDeviceConnect::changeKey(quint8 hid, quint8 data0, quint8 data1, quint8 data2, quint8 data3, quint8 subLayer)
+{
+    quint8 layer=0;
+    quint8 tmp[12] = {0x0A, layer, getIndex(hid), 0, subLayer, 1, 0, 0, data0, data1, data2, data3} ;
+    QByteArray snd((char*)tmp,13);
+    addReadCmd(snd) ;
+
+    readSetting();
 }
 
 DialogDeviceConnect::~DialogDeviceConnect()
@@ -361,13 +387,6 @@ void DialogDeviceConnect::addReadCmd(quint8 cmd, int len)
 
 void DialogDeviceConnect::addReadCmd(QByteArray&cmd)
 {
-    int len=cmd.size();
-
-    quint8 sum = 0 ;
-    for(int i=0; i<len-1; i++)
-        sum += cmd[i];
-    sum = 0xFF - (sum & 0xFF) ;
-    cmd[len-1] = sum ;
     m_readList.push_back(cmd);
 }
 
@@ -378,14 +397,27 @@ void DialogDeviceConnect::readSetting()
 
     QByteArray cmd = m_readList[0];
     m_readList.pop_front() ;
+    cmd.append(128,0);
 
-    qDebug() << "hid_send_feature_report:" << cmd.toHex(' ').toUpper();
+    int nLen = 8;
+    if( (quint8)cmd[0] == CMD_SET_LEDPARAM ||
+        (quint8)cmd[0] == CMD_SET_SLEDPARAM)
+        nLen = 9;
+
+    quint8 sum = 0 ;
+    for(int i=0; i<nLen-1; i++)
+        sum += cmd[i];
+    sum = 0xFF - (sum & 0xFF) ;
+    cmd[nLen-1] = sum ;
+
+    m_lastCmd = cmd ;
+
+    qDebug() << "hid_send_feature_report:" << cmd.left(64).toHex(' ').toUpper();
+
     cmd.insert(0,(char)0) ; // report id
-    char padding[128]={0} ;
-    cmd.append(padding,64);
-    hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65) ;
+    hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
 
-    QTimer::singleShot(30,this,[=]{
+    QTimer::singleShot(20,this,[=]{
         ui->pushButtonRead->click() ;
     });
 }
@@ -397,27 +429,16 @@ void DialogDeviceConnect::startConnect()
 
 void DialogDeviceConnect::makeCmd(int row, bool autoSend)
 {
-    quint8 buf[32] = {0} ;
-    int len = m_pModel->item(row,1)->text().toInt() ;
-    buf[0] = m_pModel->item(row,2)->text().toInt(nullptr,16) ;
-    if(buf[0]&0x80)
-        len = 8 ;
-    for(int i=0; i<len-2; i++)
+    QByteArray data;
+    data.append((char)m_pModel->item(row,2)->text().toInt(nullptr,16));
+    for(int i=3; i<10; i++)
     {
-        buf[i+1] = m_pModel->item(row,i + 3)->text().toInt() ;
+        data.append((char)m_pModel->item(row,i)->text().toInt());
     }
 
-    quint8 sum = 0 ;
-    for(int i=0; i<len-1; i++)
-    {
-        sum += buf[i] ;
-    }
-    buf[len-1] = 0xFF - (sum&0xFF) ;
-
-    QByteArray data((char*)buf,len);
     ui->lineEditCmd->setText(data.toHex(' ').toUpper()) ;
-    if(autoSend)
-        ui->pushButtonWrite->click() ;
+
+    if(autoSend) ui->pushButtonWrite->click() ;
 }
 
 void DialogDeviceConnect::reset()

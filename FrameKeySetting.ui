@@ -29,7 +29,7 @@ QPushButton {
 
 QPushButton:hover { background-color: #EAEAEA; border: 1px solid #EAEAEA;}
 QPushButton:pressed { background-color: #3F3F3F; }
-QPushButton:checked { border-color: #6329B6; }
+QPushButton:checked { border-color: #6329B6; background-color: #6329B6; color:white; font-weight:600; }
 QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
   </property>
   <property name="lineWidth">
@@ -258,1586 +258,12 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               </font>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="tab11">
               <attribute name="title">
                <string>组合键</string>
               </attribute>
-              <widget class="QPushButton" name="pushButton_45">
-               <property name="geometry">
-                <rect>
-                 <x>668</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>/?</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_44">
-               <property name="geometry">
-                <rect>
-                 <x>614</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>.&gt;</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_43">
-               <property name="geometry">
-                <rect>
-                 <x>560</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>,&lt;</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_06">
-               <property name="geometry">
-                <rect>
-                 <x>290</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>F</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_01">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>A</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_11">
-               <property name="geometry">
-                <rect>
-                 <x>560</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>K</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_02">
-               <property name="geometry">
-                <rect>
-                 <x>74</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>B</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_07">
-               <property name="geometry">
-                <rect>
-                 <x>344</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>G</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_05">
-               <property name="geometry">
-                <rect>
-                 <x>236</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>E</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_13">
-               <property name="geometry">
-                <rect>
-                 <x>668</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>M</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_03">
-               <property name="geometry">
-                <rect>
-                 <x>128</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>C</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_12">
-               <property name="geometry">
-                <rect>
-                 <x>614</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>L</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_14">
-               <property name="geometry">
-                <rect>
-                 <x>722</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>N</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_09">
-               <property name="geometry">
-                <rect>
-                 <x>452</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>I</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_08">
-               <property name="geometry">
-                <rect>
-                 <x>398</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>H</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_10">
-               <property name="geometry">
-                <rect>
-                 <x>506</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>J</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_04">
-               <property name="geometry">
-                <rect>
-                 <x>182</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>D</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_19">
-               <property name="geometry">
-                <rect>
-                 <x>128</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>S</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_21">
-               <property name="geometry">
-                <rect>
-                 <x>236</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>U</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_25">
-               <property name="geometry">
-                <rect>
-                 <x>452</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Y</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_20">
-               <property name="geometry">
-                <rect>
-                 <x>182</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>T</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_18">
-               <property name="geometry">
-                <rect>
-                 <x>74</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>R</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_17">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Q</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_23">
-               <property name="geometry">
-                <rect>
-                 <x>344</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>W</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_28">
-               <property name="geometry">
-                <rect>
-                 <x>614</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>2@</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_16">
-               <property name="geometry">
-                <rect>
-                 <x>830</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>P</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_24">
-               <property name="geometry">
-                <rect>
-                 <x>398</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>X</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_22">
-               <property name="geometry">
-                <rect>
-                 <x>290</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>V</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_27">
-               <property name="geometry">
-                <rect>
-                 <x>560</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>1!</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_15">
-               <property name="geometry">
-                <rect>
-                 <x>776</x>
-                 <y>30</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>O</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_26">
-               <property name="geometry">
-                <rect>
-                 <x>506</x>
-                 <y>86</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Z</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_38">
-               <property name="geometry">
-                <rect>
-                 <x>290</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>=+</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_33">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>7&amp;</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_32">
-               <property name="geometry">
-                <rect>
-                 <x>830</x>
-                 <y>90</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>6^</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_39">
-               <property name="geometry">
-                <rect>
-                 <x>344</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>{[</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_37">
-               <property name="geometry">
-                <rect>
-                 <x>236</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>-_</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_31">
-               <property name="geometry">
-                <rect>
-                 <x>776</x>
-                 <y>90</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>5%</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_30">
-               <property name="geometry">
-                <rect>
-                 <x>722</x>
-                 <y>90</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>4$</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_42">
-               <property name="geometry">
-                <rect>
-                 <x>506</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>'&quot;</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_35">
-               <property name="geometry">
-                <rect>
-                 <x>128</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>9(</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_34">
-               <property name="geometry">
-                <rect>
-                 <x>74</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>8*</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_36">
-               <property name="geometry">
-                <rect>
-                 <x>182</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>0)</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_29">
-               <property name="geometry">
-                <rect>
-                 <x>668</x>
-                 <y>90</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>3#</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_40">
-               <property name="geometry">
-                <rect>
-                 <x>398</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>]}</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_41">
-               <property name="geometry">
-                <rect>
-                 <x>452</x>
-                 <y>143</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>:;</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroup</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_46">
-               <property name="geometry">
-                <rect>
-                 <x>722</x>
-                 <y>144</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>|</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_47">
-               <property name="geometry">
-                <rect>
-                 <x>776</x>
-                 <y>146</y>
-                 <width>48</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>`~</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_000F">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>206</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">TAB</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_001C">
-               <property name="geometry">
-                <rect>
-                 <x>182</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">Enter</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_003A">
-               <property name="geometry">
-                <rect>
-                 <x>74</x>
-                 <y>206</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">CAPS</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_0038">
-               <property name="geometry">
-                <rect>
-                 <x>507</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">L-
-ALT</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_E01D">
-               <property name="geometry">
-                <rect>
-                 <x>344</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">R-
-CTRL</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_E038">
-               <property name="geometry">
-                <rect>
-                 <x>562</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">R-
-ALT</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_E05D">
-               <property name="geometry">
-                <rect>
-                 <x>672</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">Menu</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_001D">
-               <property name="geometry">
-                <rect>
-                 <x>290</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">L-
-CTRL</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_E05B">
-               <property name="geometry">
-                <rect>
-                 <x>617</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">WIN</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_002A">
-               <property name="geometry">
-                <rect>
-                 <x>398</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">L-
-SHIFT</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_0039">
-               <property name="geometry">
-                <rect>
-                 <x>236</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">SPACE</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_000E">
-               <property name="geometry">
-                <rect>
-                 <x>128</x>
-                 <y>206</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">Back
-space</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_0036">
-               <property name="geometry">
-                <rect>
-                 <x>452</x>
-                 <y>204</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">R-
-SHIFT</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_007B">
-               <property name="geometry">
-                <rect>
-                 <x>842</x>
-                 <y>260</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true">Print
-Screen</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_E04D">
-               <property name="geometry">
-                <rect>
-                 <x>787</x>
-                 <y>260</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true"/>
-               </property>
-               <property name="icon">
-                <iconset resource="res.qrc">
-                 <normaloff>:/images/k/key-right.png</normaloff>:/images/k/key-right.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>14</width>
-                 <height>14</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_E04B">
-               <property name="geometry">
-                <rect>
-                 <x>677</x>
-                 <y>260</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true"/>
-               </property>
-               <property name="icon">
-                <iconset resource="res.qrc">
-                 <normaloff>:/images/k/key-left.png</normaloff>:/images/k/key-left.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>14</width>
-                 <height>14</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_E048">
-               <property name="geometry">
-                <rect>
-                 <x>622</x>
-                 <y>260</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true"/>
-               </property>
-               <property name="icon">
-                <iconset resource="res.qrc">
-                 <normaloff>:/images/k/key-up.png</normaloff>:/images/k/key-up.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>14</width>
-                 <height>14</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_E050">
-               <property name="geometry">
-                <rect>
-                 <x>732</x>
-                 <y>260</y>
-                 <width>49</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>46</width>
-                 <height>46</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>546</width>
-                 <height>48</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MiSans</family>
-                 <fontweight>DemiBold</fontweight>
-                </font>
-               </property>
-               <property name="text">
-                <string notr="true"/>
-               </property>
-               <property name="icon">
-                <iconset resource="res.qrc">
-                 <normaloff>:/images/k/key-dpwn.png</normaloff>:/images/k/key-dpwn.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>14</width>
-                 <height>14</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
              </widget>
              <widget class="QWidget" name="tab12">
               <attribute name="title">
@@ -1847,7 +273,7 @@ Screen</string>
                <property name="geometry">
                 <rect>
                  <x>20</x>
-                 <y>30</y>
+                 <y>66</y>
                  <width>48</width>
                  <height>48</height>
                 </rect>
@@ -1860,7 +286,7 @@ Screen</string>
                <property name="geometry">
                 <rect>
                  <x>90</x>
-                 <y>30</y>
+                 <y>66</y>
                  <width>48</width>
                  <height>48</height>
                 </rect>
@@ -1873,7 +299,7 @@ Screen</string>
                <property name="geometry">
                 <rect>
                  <x>160</x>
-                 <y>30</y>
+                 <y>66</y>
                  <width>48</width>
                  <height>48</height>
                 </rect>
@@ -1886,7 +312,7 @@ Screen</string>
                <property name="geometry">
                 <rect>
                  <x>220</x>
-                 <y>30</y>
+                 <y>66</y>
                  <width>48</width>
                  <height>48</height>
                 </rect>
@@ -1899,7 +325,7 @@ Screen</string>
                <property name="geometry">
                 <rect>
                  <x>290</x>
-                 <y>30</y>
+                 <y>66</y>
                  <width>48</width>
                  <height>48</height>
                 </rect>
@@ -1912,7 +338,7 @@ Screen</string>
                <property name="geometry">
                 <rect>
                  <x>360</x>
-                 <y>30</y>
+                 <y>66</y>
                  <width>48</width>
                  <height>48</height>
                 </rect>
@@ -1925,7 +351,7 @@ Screen</string>
                <property name="geometry">
                 <rect>
                  <x>430</x>
-                 <y>30</y>
+                 <y>66</y>
                  <width>48</width>
                  <height>48</height>
                 </rect>
@@ -1938,7 +364,7 @@ Screen</string>
                <property name="geometry">
                 <rect>
                  <x>500</x>
-                 <y>30</y>
+                 <y>66</y>
                  <width>48</width>
                  <height>48</height>
                 </rect>
@@ -1968,6 +394,9 @@ Screen</string>
                 <iconset resource="res.qrc">
                  <normaloff>:/images/macro/fn0/fn.png</normaloff>:/images/macro/fn0/fn.png</iconset>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -1983,6 +412,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2000,6 +432,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2015,6 +450,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2032,6 +470,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2047,6 +488,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2064,6 +508,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2079,6 +526,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2096,6 +546,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2111,6 +564,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2128,6 +584,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2143,6 +602,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2160,6 +622,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2175,6 +640,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2192,6 +660,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2207,6 +678,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2224,6 +698,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2239,6 +716,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2256,6 +736,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2271,6 +754,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>F1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2288,6 +774,9 @@ Screen</string>
                <property name="text">
                 <string>F1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2303,6 +792,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>m7</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2320,6 +812,9 @@ Screen</string>
                <property name="text">
                 <string>m6</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2335,6 +830,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>m2</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2352,6 +850,9 @@ Screen</string>
                <property name="text">
                 <string>m1</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2367,6 +868,9 @@ Screen</string>
                </property>
                <property name="text">
                 <string>m3</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
@@ -2384,6 +888,9 @@ Screen</string>
                <property name="text">
                 <string>m4</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2400,6 +907,9 @@ Screen</string>
                <property name="text">
                 <string>m5</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupFN</string>
                </attribute>
@@ -2409,8 +919,8 @@ Screen</string>
                 <rect>
                  <x>24</x>
                  <y>20</y>
-                 <width>53</width>
-                 <height>15</height>
+                 <width>111</width>
+                 <height>21</height>
                 </rect>
                </property>
                <property name="text">
@@ -2422,8 +932,8 @@ Screen</string>
                 <rect>
                  <x>26</x>
                  <y>194</y>
-                 <width>53</width>
-                 <height>15</height>
+                 <width>137</width>
+                 <height>21</height>
                 </rect>
                </property>
                <property name="text">
@@ -3394,10 +1904,9 @@ Screen</string>
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroupFN"/>
+  <buttongroup name="buttonGroupSnap"/>
   <buttongroup name="buttonGroupMT"/>
   <buttongroup name="buttonGroupTGL"/>
-  <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroupSnap"/>
-  <buttongroup name="buttonGroupFN"/>
  </buttongroups>
 </ui>

@@ -18,7 +18,6 @@ class MainWindow;
 QT_END_NAMESPACE
 
 #include "DialogDeviceConnect.h"
-#include "DialogMainwork.h"
 
 class MainWindow : public QMainWindow
 {
@@ -46,10 +45,6 @@ private:
     bool m_dragging = false;
 
     DialogDeviceConnect *m_pDevice = nullptr;
-
-
-    // DialogMainwork *m_pMainkwork = nullptr;
-
 
     int m_nStatus = 0;
     void setConnect(int nFlag);

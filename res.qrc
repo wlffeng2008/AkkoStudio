@@ -182,6 +182,7 @@
         <file>font/MiSans-Semibold.ttf</file>
         <file>font/MiSans-Thin.ttf</file>
         <file>images/inworking.gif</file>
-
+        <file>images/mt0.png</file>
+        <file>images/mt1.png</file>
     </qresource>
 </RCC>

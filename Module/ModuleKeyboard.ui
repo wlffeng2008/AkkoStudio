@@ -158,7 +158,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton_0044">
+  <widget class="KeyboardButton" name="pushButton_Hid067">
    <property name="geometry">
     <rect>
      <x>636</x>
@@ -186,7 +186,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E000">
+  <widget class="KeyboardButton" name="pushButton_E000">
    <property name="geometry">
     <rect>
      <x>871</x>
@@ -217,7 +217,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0040">
+  <widget class="KeyboardButton" name="pushButton_Hid063">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -245,7 +245,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0057">
+  <widget class="KeyboardButton" name="pushButton_Hid068">
    <property name="geometry">
     <rect>
      <x>690</x>
@@ -273,7 +273,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0043">
+  <widget class="KeyboardButton" name="pushButton_Hid066">
    <property name="geometry">
     <rect>
      <x>582</x>
@@ -301,7 +301,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_003D">
+  <widget class="KeyboardButton" name="pushButton_Hid060">
    <property name="geometry">
     <rect>
      <x>222</x>
@@ -329,7 +329,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0058">
+  <widget class="KeyboardButton" name="pushButton_Hid069">
    <property name="geometry">
     <rect>
      <x>744</x>
@@ -357,7 +357,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_003C">
+  <widget class="KeyboardButton" name="pushButton_Hid059">
    <property name="geometry">
     <rect>
      <x>168</x>
@@ -385,7 +385,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0041">
+  <widget class="KeyboardButton" name="pushButton_Hid064">
    <property name="geometry">
     <rect>
      <x>454</x>
@@ -413,7 +413,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_003F">
+  <widget class="KeyboardButton" name="pushButton_Hid062">
    <property name="geometry">
     <rect>
      <x>346</x>
@@ -441,7 +441,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_003B">
+  <widget class="KeyboardButton" name="pushButton_Hid058">
    <property name="geometry">
     <rect>
      <x>114</x>
@@ -469,7 +469,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_003E">
+  <widget class="KeyboardButton" name="pushButton_Hid061">
    <property name="geometry">
     <rect>
      <x>276</x>
@@ -497,7 +497,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0001">
+  <widget class="KeyboardButton" name="pushButton_Hid041">
    <property name="geometry">
     <rect>
      <x>41</x>
@@ -525,7 +525,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E053">
+  <widget class="KeyboardButton" name="pushButton_Hid076">
    <property name="geometry">
     <rect>
      <x>815</x>
@@ -559,7 +559,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0042">
+  <widget class="KeyboardButton" name="pushButton_Hid065">
    <property name="geometry">
     <rect>
      <x>508</x>
@@ -587,7 +587,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0004">
+  <widget class="KeyboardButton" name="pushButton_Hid032">
    <property name="geometry">
     <rect>
      <x>203</x>
@@ -615,7 +615,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0005">
+  <widget class="KeyboardButton" name="pushButton_Hid033">
    <property name="geometry">
     <rect>
      <x>257</x>
@@ -643,7 +643,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0007">
+  <widget class="KeyboardButton" name="pushButton_Hid035">
    <property name="geometry">
     <rect>
      <x>365</x>
@@ -671,7 +671,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0008">
+  <widget class="KeyboardButton" name="pushButton_Hid036">
    <property name="geometry">
     <rect>
      <x>419</x>
@@ -699,7 +699,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0009">
+  <widget class="KeyboardButton" name="pushButton_Hid037">
    <property name="geometry">
     <rect>
      <x>473</x>
@@ -727,7 +727,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_000D">
+  <widget class="KeyboardButton" name="pushButton_Hid046">
    <property name="geometry">
     <rect>
      <x>690</x>
@@ -755,7 +755,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_000E">
+  <widget class="KeyboardButton" name="pushButton_Hid042">
    <property name="geometry">
     <rect>
      <x>744</x>
@@ -783,7 +783,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_000A">
+  <widget class="KeyboardButton" name="pushButton_Hid038">
    <property name="geometry">
     <rect>
      <x>528</x>
@@ -811,7 +811,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0029">
+  <widget class="KeyboardButton" name="pushButton_Hid053">
    <property name="geometry">
     <rect>
      <x>41</x>
@@ -839,7 +839,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0002">
+  <widget class="KeyboardButton" name="pushButton_Hid030">
    <property name="geometry">
     <rect>
      <x>95</x>
@@ -867,7 +867,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0006">
+  <widget class="KeyboardButton" name="pushButton_Hid034">
    <property name="geometry">
     <rect>
      <x>311</x>
@@ -895,7 +895,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_000C">
+  <widget class="KeyboardButton" name="pushButton_Hid045">
    <property name="geometry">
     <rect>
      <x>636</x>
@@ -923,7 +923,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E047">
+  <widget class="KeyboardButton" name="pushButton_Hid074">
    <property name="geometry">
     <rect>
      <x>871</x>
@@ -951,7 +951,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_000B">
+  <widget class="KeyboardButton" name="pushButton_Hid039">
    <property name="geometry">
     <rect>
      <x>582</x>
@@ -979,7 +979,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0003">
+  <widget class="KeyboardButton" name="pushButton_Hid031">
    <property name="geometry">
     <rect>
      <x>149</x>
@@ -1007,7 +1007,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0013">
+  <widget class="KeyboardButton" name="pushButton_Hid021">
    <property name="geometry">
     <rect>
      <x>281</x>
@@ -1035,7 +1035,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0011">
+  <widget class="KeyboardButton" name="pushButton_Hid026">
    <property name="geometry">
     <rect>
      <x>173</x>
@@ -1063,7 +1063,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0014">
+  <widget class="KeyboardButton" name="pushButton_Hid023">
    <property name="geometry">
     <rect>
      <x>335</x>
@@ -1091,7 +1091,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_002B">
+  <widget class="KeyboardButton" name="pushButton_Hid049">
    <property name="geometry">
     <rect>
      <x>768</x>
@@ -1119,7 +1119,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E049">
+  <widget class="KeyboardButton" name="pushButton_Hid075">
    <property name="geometry">
     <rect>
      <x>871</x>
@@ -1147,7 +1147,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0010">
+  <widget class="KeyboardButton" name="pushButton_Hid020">
    <property name="geometry">
     <rect>
      <x>119</x>
@@ -1175,7 +1175,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0015">
+  <widget class="KeyboardButton" name="pushButton_Hid028">
    <property name="geometry">
     <rect>
      <x>389</x>
@@ -1203,7 +1203,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_001B">
+  <widget class="KeyboardButton" name="pushButton_Hid048">
    <property name="geometry">
     <rect>
      <x>714</x>
@@ -1231,7 +1231,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0016">
+  <widget class="KeyboardButton" name="pushButton_Hid024">
    <property name="geometry">
     <rect>
      <x>443</x>
@@ -1259,7 +1259,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0019">
+  <widget class="KeyboardButton" name="pushButton_Hid019">
    <property name="geometry">
     <rect>
      <x>606</x>
@@ -1287,7 +1287,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_001A">
+  <widget class="KeyboardButton" name="pushButton_Hid047">
    <property name="geometry">
     <rect>
      <x>660</x>
@@ -1309,13 +1309,13 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">{[</string>
+    <string notr="true">[{</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0018">
+  <widget class="KeyboardButton" name="pushButton_Hid018">
    <property name="geometry">
     <rect>
      <x>552</x>
@@ -1343,7 +1343,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0017">
+  <widget class="KeyboardButton" name="pushButton_Hid012">
    <property name="geometry">
     <rect>
      <x>498</x>
@@ -1371,7 +1371,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0012">
+  <widget class="KeyboardButton" name="pushButton_Hid008">
    <property name="geometry">
     <rect>
      <x>227</x>
@@ -1399,7 +1399,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_000F">
+  <widget class="KeyboardButton" name="pushButton_Hid043">
    <property name="geometry">
     <rect>
      <x>41</x>
@@ -1421,13 +1421,13 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">TAB</string>
+    <string notr="true">Tab</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0026">
+  <widget class="KeyboardButton" name="pushButton_Hid015">
    <property name="geometry">
     <rect>
      <x>570</x>
@@ -1455,7 +1455,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0024">
+  <widget class="KeyboardButton" name="pushButton_Hid013">
    <property name="geometry">
     <rect>
      <x>461</x>
@@ -1483,7 +1483,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_001E">
+  <widget class="KeyboardButton" name="pushButton_Hid004">
    <property name="geometry">
     <rect>
      <x>137</x>
@@ -1511,7 +1511,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0022">
+  <widget class="KeyboardButton" name="pushButton_Hid010">
    <property name="geometry">
     <rect>
      <x>353</x>
@@ -1539,7 +1539,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0027">
+  <widget class="KeyboardButton" name="pushButton_Hid051">
    <property name="geometry">
     <rect>
      <x>624</x>
@@ -1561,13 +1561,13 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">: ;</string>
+    <string notr="true">; :</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0020">
+  <widget class="KeyboardButton" name="pushButton_Hid007">
    <property name="geometry">
     <rect>
      <x>245</x>
@@ -1595,7 +1595,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_001C">
+  <widget class="KeyboardButton" name="pushButton_Hid040">
    <property name="geometry">
     <rect>
      <x>732</x>
@@ -1623,7 +1623,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0028">
+  <widget class="KeyboardButton" name="pushButton_Hid052">
    <property name="geometry">
     <rect>
      <x>678</x>
@@ -1651,7 +1651,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_003A">
+  <widget class="KeyboardButton" name="pushButton_Hid057">
    <property name="geometry">
     <rect>
      <x>41</x>
@@ -1679,7 +1679,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0021">
+  <widget class="KeyboardButton" name="pushButton_Hid009">
    <property name="geometry">
     <rect>
      <x>299</x>
@@ -1707,7 +1707,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0023">
+  <widget class="KeyboardButton" name="pushButton_Hid011">
    <property name="geometry">
     <rect>
      <x>407</x>
@@ -1735,7 +1735,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_001F">
+  <widget class="KeyboardButton" name="pushButton_Hid022">
    <property name="geometry">
     <rect>
      <x>191</x>
@@ -1763,7 +1763,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0025">
+  <widget class="KeyboardButton" name="pushButton_Hid014">
    <property name="geometry">
     <rect>
      <x>516</x>
@@ -1791,7 +1791,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E051">
+  <widget class="KeyboardButton" name="pushButton_Hid078">
    <property name="geometry">
     <rect>
      <x>871</x>
@@ -1819,7 +1819,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_002E">
+  <widget class="KeyboardButton" name="pushButton_Hid006">
    <property name="geometry">
     <rect>
      <x>271</x>
@@ -1847,7 +1847,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0030">
+  <widget class="KeyboardButton" name="pushButton_Hid005">
    <property name="geometry">
     <rect>
      <x>379</x>
@@ -1875,7 +1875,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0034">
+  <widget class="KeyboardButton" name="pushButton_Hid055">
    <property name="geometry">
     <rect>
      <x>595</x>
@@ -1903,7 +1903,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_002C">
+  <widget class="KeyboardButton" name="pushButton_Hid029">
    <property name="geometry">
     <rect>
      <x>163</x>
@@ -1931,7 +1931,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E048">
+  <widget class="KeyboardButton" name="pushButton_Hid082">
    <property name="geometry">
     <rect>
      <x>816</x>
@@ -1969,7 +1969,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0036">
+  <widget class="KeyboardButton" name="pushButton_Hid229">
    <property name="geometry">
     <rect>
      <x>703</x>
@@ -2003,7 +2003,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E04F">
+  <widget class="KeyboardButton" name="pushButton_Hid077">
    <property name="geometry">
     <rect>
      <x>871</x>
@@ -2031,7 +2031,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0033">
+  <widget class="KeyboardButton" name="pushButton_Hid054">
    <property name="geometry">
     <rect>
      <x>541</x>
@@ -2059,7 +2059,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0031">
+  <widget class="KeyboardButton" name="pushButton_Hid017">
    <property name="geometry">
     <rect>
      <x>433</x>
@@ -2087,7 +2087,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0035">
+  <widget class="KeyboardButton" name="pushButton_Hid056">
    <property name="geometry">
     <rect>
      <x>649</x>
@@ -2115,7 +2115,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_002D">
+  <widget class="KeyboardButton" name="pushButton_Hid027">
    <property name="geometry">
     <rect>
      <x>217</x>
@@ -2143,7 +2143,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0032">
+  <widget class="KeyboardButton" name="pushButton_Hid016">
    <property name="geometry">
     <rect>
      <x>487</x>
@@ -2171,7 +2171,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_002F">
+  <widget class="KeyboardButton" name="pushButton_Hid025">
    <property name="geometry">
     <rect>
      <x>325</x>
@@ -2199,7 +2199,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_002A">
+  <widget class="KeyboardButton" name="pushButton_Hid255">
    <property name="geometry">
     <rect>
      <x>41</x>
@@ -2227,7 +2227,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E04D">
+  <widget class="KeyboardButton" name="pushButton_Hid079">
    <property name="geometry">
     <rect>
      <x>871</x>
@@ -2265,7 +2265,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0081">
+  <widget class="KeyboardButton" name="pushButton_0081">
    <property name="geometry">
     <rect>
      <x>639</x>
@@ -2293,7 +2293,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0038">
+  <widget class="KeyboardButton" name="pushButton_Hid226">
    <property name="geometry">
     <rect>
      <x>165</x>
@@ -2321,7 +2321,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E01D">
+  <widget class="KeyboardButton" name="pushButton_Hid228">
    <property name="geometry">
     <rect>
      <x>701</x>
@@ -2349,7 +2349,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_001D">
+  <widget class="KeyboardButton" name="pushButton_Hid224">
    <property name="geometry">
     <rect>
      <x>41</x>
@@ -2377,7 +2377,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E05B">
+  <widget class="KeyboardButton" name="pushButton_Hid227">
    <property name="geometry">
     <rect>
      <x>103</x>
@@ -2405,7 +2405,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E038">
+  <widget class="KeyboardButton" name="pushButton_Hid230">
    <property name="geometry">
     <rect>
      <x>577</x>
@@ -2433,7 +2433,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_0039">
+  <widget class="KeyboardButton" name="pushButton_Hid044">
    <property name="geometry">
     <rect>
      <x>226</x>
@@ -2461,7 +2461,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E04B">
+  <widget class="KeyboardButton" name="pushButton_Hid080">
    <property name="geometry">
     <rect>
      <x>762</x>
@@ -2499,7 +2499,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="QPushButton" name="pushButton_E050">
+  <widget class="KeyboardButton" name="pushButton_Hid081">
    <property name="geometry">
     <rect>
      <x>816</x>
@@ -2538,57 +2538,64 @@
    </attribute>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KeyboardButton</class>
+   <extends>QPushButton</extends>
+   <header>keyboardbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
-  <tabstop>pushButton_0001</tabstop>
-  <tabstop>pushButton_003E</tabstop>
-  <tabstop>pushButton_003F</tabstop>
-  <tabstop>pushButton_0041</tabstop>
-  <tabstop>pushButton_0043</tabstop>
-  <tabstop>pushButton_0057</tabstop>
+  <tabstop>pushButton_Hid041</tabstop>
+  <tabstop>pushButton_Hid061</tabstop>
+  <tabstop>pushButton_Hid062</tabstop>
+  <tabstop>pushButton_Hid064</tabstop>
+  <tabstop>pushButton_Hid066</tabstop>
+  <tabstop>pushButton_Hid068</tabstop>
   <tabstop>pushButton_E000</tabstop>
-  <tabstop>pushButton_0003</tabstop>
-  <tabstop>pushButton_000B</tabstop>
-  <tabstop>pushButton_000C</tabstop>
-  <tabstop>pushButton_000D</tabstop>
-  <tabstop>pushButton_E047</tabstop>
-  <tabstop>pushButton_000F</tabstop>
-  <tabstop>pushButton_0012</tabstop>
-  <tabstop>pushButton_0018</tabstop>
-  <tabstop>pushButton_001A</tabstop>
-  <tabstop>pushButton_001B</tabstop>
-  <tabstop>pushButton_002B</tabstop>
-  <tabstop>pushButton_E049</tabstop>
-  <tabstop>pushButton_003A</tabstop>
-  <tabstop>pushButton_001E</tabstop>
-  <tabstop>pushButton_001F</tabstop>
-  <tabstop>pushButton_0020</tabstop>
-  <tabstop>pushButton_0021</tabstop>
-  <tabstop>pushButton_0022</tabstop>
-  <tabstop>pushButton_0023</tabstop>
-  <tabstop>pushButton_0024</tabstop>
-  <tabstop>pushButton_0025</tabstop>
-  <tabstop>pushButton_0026</tabstop>
-  <tabstop>pushButton_0027</tabstop>
-  <tabstop>pushButton_0028</tabstop>
-  <tabstop>pushButton_001C</tabstop>
-  <tabstop>pushButton_E051</tabstop>
-  <tabstop>pushButton_002A</tabstop>
-  <tabstop>pushButton_002D</tabstop>
-  <tabstop>pushButton_0032</tabstop>
-  <tabstop>pushButton_0034</tabstop>
-  <tabstop>pushButton_0036</tabstop>
-  <tabstop>pushButton_E04F</tabstop>
-  <tabstop>pushButton_E048</tabstop>
-  <tabstop>pushButton_E05B</tabstop>
-  <tabstop>pushButton_001D</tabstop>
-  <tabstop>pushButton_0038</tabstop>
-  <tabstop>pushButton_0039</tabstop>
-  <tabstop>pushButton_E038</tabstop>
+  <tabstop>pushButton_Hid031</tabstop>
+  <tabstop>pushButton_Hid039</tabstop>
+  <tabstop>pushButton_Hid045</tabstop>
+  <tabstop>pushButton_Hid046</tabstop>
+  <tabstop>pushButton_Hid074</tabstop>
+  <tabstop>pushButton_Hid043</tabstop>
+  <tabstop>pushButton_Hid008</tabstop>
+  <tabstop>pushButton_Hid018</tabstop>
+  <tabstop>pushButton_Hid047</tabstop>
+  <tabstop>pushButton_Hid048</tabstop>
+  <tabstop>pushButton_Hid049</tabstop>
+  <tabstop>pushButton_Hid075</tabstop>
+  <tabstop>pushButton_Hid057</tabstop>
+  <tabstop>pushButton_Hid004</tabstop>
+  <tabstop>pushButton_Hid022</tabstop>
+  <tabstop>pushButton_Hid007</tabstop>
+  <tabstop>pushButton_Hid009</tabstop>
+  <tabstop>pushButton_Hid010</tabstop>
+  <tabstop>pushButton_Hid011</tabstop>
+  <tabstop>pushButton_Hid013</tabstop>
+  <tabstop>pushButton_Hid014</tabstop>
+  <tabstop>pushButton_Hid015</tabstop>
+  <tabstop>pushButton_Hid051</tabstop>
+  <tabstop>pushButton_Hid052</tabstop>
+  <tabstop>pushButton_Hid040</tabstop>
+  <tabstop>pushButton_Hid078</tabstop>
+  <tabstop>pushButton_Hid255</tabstop>
+  <tabstop>pushButton_Hid027</tabstop>
+  <tabstop>pushButton_Hid016</tabstop>
+  <tabstop>pushButton_Hid055</tabstop>
+  <tabstop>pushButton_Hid229</tabstop>
+  <tabstop>pushButton_Hid077</tabstop>
+  <tabstop>pushButton_Hid082</tabstop>
+  <tabstop>pushButton_Hid227</tabstop>
+  <tabstop>pushButton_Hid224</tabstop>
+  <tabstop>pushButton_Hid226</tabstop>
+  <tabstop>pushButton_Hid044</tabstop>
+  <tabstop>pushButton_Hid230</tabstop>
   <tabstop>pushButton_0081</tabstop>
-  <tabstop>pushButton_E01D</tabstop>
-  <tabstop>pushButton_E04B</tabstop>
-  <tabstop>pushButton_E050</tabstop>
-  <tabstop>pushButton_E04D</tabstop>
+  <tabstop>pushButton_Hid228</tabstop>
+  <tabstop>pushButton_Hid080</tabstop>
+  <tabstop>pushButton_Hid081</tabstop>
+  <tabstop>pushButton_Hid079</tabstop>
  </tabstops>
  <resources>
   <include location="../res.qrc"/>

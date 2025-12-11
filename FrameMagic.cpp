@@ -19,7 +19,6 @@ FrameMagic::FrameMagic(QWidget *parent)
                 min-height: 32px;
                 border-radius: 16px ;
                 font-size:18px;
-                font-weight:600;
 
                 padding-left: 25px;
                 text-align: left;
@@ -30,13 +29,14 @@ FrameMagic::FrameMagic(QWidget *parent)
 
             QPushButton:checked {
                 color: white;
+                font-weight:600;
                 border: 1px solid #6329B6;
                 background: #6329B6; }
 
             QPushButton:hover {border: 1px solid #6329B6; }
             )") ;
 
-        QLayout *pLayout = ui->frameBL->layout() ;
+        QLayout *pLayout = ui->frameBLeft->layout() ;
         pLayout->setSpacing(12) ;
         pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter) ;
 

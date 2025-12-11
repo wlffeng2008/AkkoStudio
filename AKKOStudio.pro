@@ -44,6 +44,7 @@ SOURCES += \
     LinearFixing2.cpp \
     MacroSquare.cpp \
     Module/ColorSlider.cpp \
+    Module/DialogVKPicker.cpp \
     Module/MacroItem.cpp \
     Module/ModuleDKSAdjust.cpp \
     Module/ModuleDKSItem.cpp \
@@ -51,6 +52,7 @@ SOURCES += \
     Module/ModuleEfLumi.cpp \
     Module/ModuleEfMode.cpp \
     Module/ModuleEfSpeed.cpp \
+    Module/ModuleGenKeymapping.cpp \
     Module/ModuleGeneralMasker.cpp \
     Module/ModuleLangMenu.cpp \
     Module/ModuleLinear.cpp \
@@ -58,6 +60,7 @@ SOURCES += \
     Module/ModuleKeyboard.cpp \
     Module/ModuleVideoItem.cpp \
     Module/VirtualKeyboard.cpp \
+    Module/keyboardbutton.cpp \
     ModuleScrollValue.cpp \
     NewTabWidget.cpp \
     SuperLabel.cpp \
@@ -82,6 +85,7 @@ HEADERS += \
     MacroSquare.h \
     MainWindow.h \
     Module/ColorSlider.h \
+    Module/DialogVKPicker.h \
     Module/MacroItem.h \
     Module/ModuleDKSAdjust.h \
     Module/ModuleDKSItem.h \
@@ -89,6 +93,7 @@ HEADERS += \
     Module/ModuleEfLumi.h \
     Module/ModuleEfMode.h \
     Module/ModuleEfSpeed.h \
+    Module/ModuleGenKeymapping.h \
     Module/ModuleGeneralMasker.h \
     Module/ModuleLangMenu.h \
     Module/ModuleLinear.h \
@@ -96,6 +101,7 @@ HEADERS += \
     Module/ModuleKeyboard.h \
     Module/ModuleVideoItem.h \
     Module/VirtualKeyboard.h \
+    Module/keyboardbutton.h \
     ModuleScrollValue.h \
     NewTabWidget.h \
     SuperLabel.h \
@@ -111,6 +117,7 @@ FORMS += \
     FrameMagic.ui \
     FrameMain.ui \
     MainWindow.ui \
+    Module/DialogVKPicker.ui \
     Module/MacroItem.ui \
     Module/ModuleDKSAdjust.ui \
     Module/ModuleDKSItem.ui \

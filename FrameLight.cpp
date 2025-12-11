@@ -38,9 +38,12 @@ FrameLight::FrameLight(QWidget *parent)
         quint8 cmd = pPack[0] ;
         if(cmd == CMD_GET_LEDPARAM)
         {
-            ui->frameLEDMode->setEfMode(pPack[1]);
-            ui->frameLEDSpeed->setSpeed(pPack[2]);
-            ui->frameLEDBright->setBright(pPack[3]);
+            if(ui->frameLEDMode)
+                ui->frameLEDMode->setEfMode(pPack[1]);
+            if(ui->frameLEDSpeed)
+                ui->frameLEDSpeed->setSpeed(pPack[2]);
+            if(ui->frameLEDSpeed)
+                ui->frameLEDBright->setBright(pPack[3]);
         }
     });
 }

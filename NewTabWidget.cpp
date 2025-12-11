@@ -71,7 +71,7 @@ void CustomTabBar::paintEvent(QPaintEvent *event)
         QFont font = static_cast<QWidget*>(this->parent())->font();
         //font.setBold(true) ;
         //font.setBold(isSelected);
-        font.setWeight(isSelected?QFont::ExtraBold : QFont::DemiBold) ;
+        font.setWeight(isSelected?QFont::ExtraBold : QFont::Normal) ;
         painter.setFont(font);
 
         QString text = tabText(i);

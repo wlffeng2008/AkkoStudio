@@ -10,9 +10,6 @@ namespace Ui {
 class ModuleKeyboard;
 }
 
-
-
-
 class ModuleKeyboard : public QFrame
 {
     Q_OBJECT
@@ -28,8 +25,10 @@ public:
     void setSingleMode(bool set=true) ;
     void setSelectCount(int count=3) ;
 
+    static void Update();
+
 signals:
-    void onKeyClicked(const QString&text);
+    void onKeyClicked(const QString&text,quint8 hid);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
@@ -54,6 +53,8 @@ private:
     bool m_draging =false ;
     QPoint m_clkPt={0,0} ;
     QPoint m_nowPt={0,0} ;
+
+    QByteArray m_data0;
 };
 
 #endif // MODULEKEYBOARD_H

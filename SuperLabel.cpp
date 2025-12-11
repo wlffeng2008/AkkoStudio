@@ -94,6 +94,9 @@ void CustomTooltip::setTextStyle(const QString& stryle)
     content->setStyleSheet(stryle);
 }
 
+
+//-------------------------------------
+
 SuperLabel::SuperLabel(QWidget *parent)
     : QLabel{parent}
 {

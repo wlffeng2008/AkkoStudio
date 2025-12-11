@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>329</width>
-    <height>368</height>
+    <width>325</width>
+    <height>366</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,27 +29,27 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-812</y>
+        <y>-328</y>
         <width>310</width>
-        <height>1160</height>
+        <height>1180</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">#scrollAreaWidgetContents{background-color: transparent;}
 </string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>6</y>
-         <width>271</width>
-         <height>1135</height>
+         <x>2</x>
+         <y>-4</y>
+         <width>283</width>
+         <height>1184</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pushButton_A">
+        <item row="13" column="4">
+         <widget class="QPushButton" name="pushButton_Hid070">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -62,158 +62,15 @@
             <height>48</height>
            </size>
           </property>
-          <property name="text">
-           <string>A</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pushButton_B">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
           </property>
           <property name="text">
-           <string>B</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QPushButton" name="pushButton_C">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>C</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QPushButton" name="pushButton_D">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>D</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QPushButton" name="pushButton_E">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>E</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_F">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>F</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="pushButton_G">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>G</string>
+           <string notr="true">Print
+Screen</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -224,7 +81,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QPushButton" name="pushButton_H">
+         <widget class="QPushButton" name="pushButton_Hid011">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -248,8 +105,39 @@
           </attribute>
          </widget>
         </item>
+        <item row="17" column="3">
+         <widget class="QPushButton" name="pushButton_Hid063">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F6</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
         <item row="1" column="3">
-         <widget class="QPushButton" name="pushButton_I">
+         <widget class="QPushButton" name="pushButton_Hid012">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -273,8 +161,151 @@
           </attribute>
          </widget>
         </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="pushButton_Hid006">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>C</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QPushButton" name="pushButton_Hid008">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>E</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="14" column="1">
+         <widget class="QPushButton" name="pushButton_Hid072">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Pause</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="10" column="2">
+         <widget class="QPushButton" name="pushButton_Hid043">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Tab</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <widget class="QPushButton" name="pushButton_Hid049">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">|\</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
         <item row="1" column="4">
-         <widget class="QPushButton" name="pushButton_J">
+         <widget class="QPushButton" name="pushButton_Hid013">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -298,687 +329,8 @@
           </attribute>
          </widget>
         </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="pushButton_K">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>K</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QPushButton" name="pushButton_L">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>L</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QPushButton" name="pushButton_M">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>M</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QPushButton" name="pushButton_N">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>N</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="2" column="4">
-         <widget class="QPushButton" name="pushButton_O">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>O</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QPushButton" name="pushButton_P">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QPushButton" name="pushButton_Q">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Q</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="pushButton_R">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>R</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="3" column="3">
-         <widget class="QPushButton" name="pushButton_S">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>S</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="3" column="4">
-         <widget class="QPushButton" name="pushButton_T">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>T</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="pushButton_U">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>U</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="pushButton_V">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>V</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QPushButton" name="pushButton_W">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>W</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="4" column="3">
-         <widget class="QPushButton" name="pushButton_X">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>X</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="4" column="4">
-         <widget class="QPushButton" name="pushButton_Y">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Y</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QPushButton" name="pushButton_Z">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Z</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QPushButton" name="pushButton_0002">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">1!</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QPushButton" name="pushButton_0003">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">2@</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="5" column="3">
-         <widget class="QPushButton" name="pushButton_0004">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">3#</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="5" column="4">
-         <widget class="QPushButton" name="pushButton_0005">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">4$</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QPushButton" name="pushButton_0006">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">5%</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="6" column="1">
-         <widget class="QPushButton" name="pushButton_0007">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">6^</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="6" column="2">
-         <widget class="QPushButton" name="pushButton_0008">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">7&amp;&amp;</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="6" column="3">
-         <widget class="QPushButton" name="pushButton_0009">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">8*</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="6" column="4">
-         <widget class="QPushButton" name="pushButton_000A">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">9(</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
         <item row="7" column="0">
-         <widget class="QPushButton" name="pushButton_000B">
+         <widget class="QPushButton" name="pushButton_Hid039">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1009,7 +361,7 @@
          </widget>
         </item>
         <item row="7" column="1">
-         <widget class="QPushButton" name="pushButton_000C">
+         <widget class="QPushButton" name="pushButton_Hid045">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1039,70 +391,8 @@
           </attribute>
          </widget>
         </item>
-        <item row="7" column="2">
-         <widget class="QPushButton" name="pushButton_000D">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">=+</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="7" column="3">
-         <widget class="QPushButton" name="pushButton_001A">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">{[</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
         <item row="7" column="4">
-         <widget class="QPushButton" name="pushButton_001B">
+         <widget class="QPushButton" name="pushButton_Hid048">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1132,8 +422,33 @@
           </attribute>
          </widget>
         </item>
-        <item row="8" column="0">
-         <widget class="QPushButton" name="pushButton_0027">
+        <item row="4" column="4">
+         <widget class="QPushButton" name="pushButton_Hid028">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Y</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="13" column="2">
+         <widget class="QPushButton" name="pushButton_Hid081">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1153,7 +468,17 @@
            </font>
           </property>
           <property name="text">
-           <string notr="true">: ;</string>
+           <string notr="true"/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/k/key-dpwn.png</normaloff>:/images/k/key-dpwn.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>14</width>
+            <height>14</height>
+           </size>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1163,8 +488,8 @@
           </attribute>
          </widget>
         </item>
-        <item row="8" column="1">
-         <widget class="QPushButton" name="pushButton_0028">
+        <item row="21" column="4">
+         <widget class="QPushButton" name="pushButton_Hid086">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1184,7 +509,8 @@
            </font>
           </property>
           <property name="text">
-           <string notr="true">' &quot;</string>
+           <string notr="true">Num
+-</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1194,8 +520,8 @@
           </attribute>
          </widget>
         </item>
-        <item row="8" column="2">
-         <widget class="QPushButton" name="pushButton_0033">
+        <item row="12" column="3">
+         <widget class="QPushButton" name="pushButton_Hid227">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1215,7 +541,7 @@
            </font>
           </property>
           <property name="text">
-           <string notr="true">&lt;,</string>
+           <string notr="true">WIN</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1225,8 +551,8 @@
           </attribute>
          </widget>
         </item>
-        <item row="8" column="3">
-         <widget class="QPushButton" name="pushButton_0034">
+        <item row="19" column="3">
+         <widget class="QPushButton" name="pushButton_Hid091">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1246,7 +572,8 @@
            </font>
           </property>
           <property name="text">
-           <string notr="true">. &gt;</string>
+           <string notr="true">Num
+3</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1256,195 +583,8 @@
           </attribute>
          </widget>
         </item>
-        <item row="8" column="4">
-         <widget class="QPushButton" name="pushButton_0035">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">/ ?</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="9" column="0">
-         <widget class="QPushButton" name="pushButton_002B">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">|\</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="9" column="1">
-         <widget class="QPushButton" name="pushButton_0029">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">`~</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="9" column="2">
-         <widget class="QPushButton" name="pushButton_000F">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">TAB</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="9" column="3">
-         <widget class="QPushButton" name="pushButton_003A">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">CAPS</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="9" column="4">
-         <widget class="QPushButton" name="pushButton_000E">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Back
-space</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="10" column="0">
-         <widget class="QPushButton" name="pushButton_001C">
+        <item row="11" column="0">
+         <widget class="QPushButton" name="pushButton_Hid040">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1474,8 +614,8 @@ space</string>
           </attribute>
          </widget>
         </item>
-        <item row="10" column="1">
-         <widget class="QPushButton" name="pushButton_0039">
+        <item row="20" column="3">
+         <widget class="QPushButton" name="pushButton_Hid096">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1495,7 +635,8 @@ space</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true">SPACE</string>
+           <string notr="true">Num
+8</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1505,8 +646,279 @@ space</string>
           </attribute>
          </widget>
         </item>
-        <item row="10" column="2">
-         <widget class="QPushButton" name="pushButton_001D">
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pushButton_Hid014">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>K</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QPushButton" name="pushButton_Hid031">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">2@</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="18" column="4">
+         <widget class="QPushButton" name="pushButton_Hid069">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F12</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="20" column="4">
+         <widget class="QPushButton" name="pushButton_Hid097">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Num
+9</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="12" column="2">
+         <widget class="QPushButton" name="pushButton_Hid230">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">R-
+ALT</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="18" column="2">
+         <widget class="QPushButton" name="pushButton_Hid067">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F10</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="20" column="0">
+         <widget class="QPushButton" name="pushButton_Hid093">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Num
+5</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="11" column="4">
+         <widget class="QPushButton" name="pushButton_Hid225">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">L-
+SHIFT</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QPushButton" name="pushButton_Hid007">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>D</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="11" column="2">
+         <widget class="QPushButton" name="pushButton_Hid224">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1538,7 +950,7 @@ CTRL</string>
          </widget>
         </item>
         <item row="10" column="3">
-         <widget class="QPushButton" name="pushButton_E01D">
+         <widget class="QPushButton" name="pushButton_Hid042">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1558,8 +970,8 @@ CTRL</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true">R-
-CTRL</string>
+           <string notr="true">Back
+space</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1569,8 +981,8 @@ CTRL</string>
           </attribute>
          </widget>
         </item>
-        <item row="10" column="4">
-         <widget class="QPushButton" name="pushButton_002A">
+        <item row="16" column="2">
+         <widget class="QPushButton" name="pushButton_Hid078">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1590,8 +1002,7 @@ CTRL</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true">L-
-SHIFT</string>
+           <string notr="true">PgDn</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1601,8 +1012,8 @@ SHIFT</string>
           </attribute>
          </widget>
         </item>
-        <item row="11" column="0">
-         <widget class="QPushButton" name="pushButton_0036">
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pushButton_Hid010">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1615,141 +1026,8 @@ SHIFT</string>
             <height>48</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
           <property name="text">
-           <string notr="true">R-
-SHIFT</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="11" column="1">
-         <widget class="QPushButton" name="pushButton_0038">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">L-
-ALT</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="11" column="2">
-         <widget class="QPushButton" name="pushButton_E038">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">R-
-ALT</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="11" column="3">
-         <widget class="QPushButton" name="pushButton_E05B">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">WIN</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="11" column="4">
-         <widget class="QPushButton" name="pushButton_E05D">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Menu</string>
+           <string>G</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1760,7 +1038,7 @@ ALT</string>
          </widget>
         </item>
         <item row="12" column="0">
-         <widget class="QPushButton" name="pushButton_E048">
+         <widget class="QPushButton" name="pushButton_Hid229">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1780,17 +1058,8 @@ ALT</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true"/>
-          </property>
-          <property name="icon">
-           <iconset resource="../res.qrc">
-            <normaloff>:/images/k/key-up.png</normaloff>:/images/k/key-up.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>14</width>
-            <height>14</height>
-           </size>
+           <string notr="true">R-
+SHIFT</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1800,8 +1069,8 @@ ALT</string>
           </attribute>
          </widget>
         </item>
-        <item row="12" column="1">
-         <widget class="QPushButton" name="pushButton_E04B">
+        <item row="6" column="1">
+         <widget class="QPushButton" name="pushButton_Hid035">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1821,17 +1090,7 @@ ALT</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true"/>
-          </property>
-          <property name="icon">
-           <iconset resource="../res.qrc">
-            <normaloff>:/images/k/key-left.png</normaloff>:/images/k/key-left.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>14</width>
-            <height>14</height>
-           </size>
+           <string notr="true">6^</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1841,8 +1100,8 @@ ALT</string>
           </attribute>
          </widget>
         </item>
-        <item row="12" column="2">
-         <widget class="QPushButton" name="pushButton_E050">
+        <item row="6" column="0">
+         <widget class="QPushButton" name="pushButton_Hid034">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1862,17 +1121,7 @@ ALT</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true"/>
-          </property>
-          <property name="icon">
-           <iconset resource="../res.qrc">
-            <normaloff>:/images/k/key-dpwn.png</normaloff>:/images/k/key-dpwn.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>14</width>
-            <height>14</height>
-           </size>
+           <string notr="true">5%</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1882,8 +1131,8 @@ ALT</string>
           </attribute>
          </widget>
         </item>
-        <item row="12" column="3">
-         <widget class="QPushButton" name="pushButton_E04D">
+        <item row="4" column="0">
+         <widget class="QPushButton" name="pushButton_Hid024">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -1896,24 +1145,8 @@ ALT</string>
             <height>48</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
           <property name="text">
-           <string notr="true"/>
-          </property>
-          <property name="icon">
-           <iconset resource="../res.qrc">
-            <normaloff>:/images/k/key-right.png</normaloff>:/images/k/key-right.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>14</width>
-            <height>14</height>
-           </size>
+           <string>U</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1923,512 +1156,8 @@ ALT</string>
           </attribute>
          </widget>
         </item>
-        <item row="12" column="4">
-         <widget class="QPushButton" name="pushButton_007B">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Print
-Screen</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="13" column="0">
-         <widget class="QPushButton" name="pushButton_0046">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Scroll
-Lock</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="13" column="1">
-         <widget class="QPushButton" name="pushButton_0045">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Pause</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="13" column="2">
-         <widget class="QPushButton" name="pushButton_E047">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">HOME</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="13" column="3">
-         <widget class="QPushButton" name="pushButton_E052">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Insert</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="13" column="4">
-         <widget class="QPushButton" name="pushButton_E04F">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">END</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="14" column="0">
-         <widget class="QPushButton" name="pushButton_E053">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string notr="true">DEL</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="14" column="1">
-         <widget class="QPushButton" name="pushButton_E049">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">PGUP</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="14" column="2">
-         <widget class="QPushButton" name="pushButton_E051">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">PGDN</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="14" column="3">
-         <widget class="QPushButton" name="pushButton_003B">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F1</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="14" column="4">
-         <widget class="QPushButton" name="pushButton_003C">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F2</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="15" column="0">
-         <widget class="QPushButton" name="pushButton_003D">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F3</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="15" column="1">
-         <widget class="QPushButton" name="pushButton_003E">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F4</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="15" column="2">
-         <widget class="QPushButton" name="pushButton_003F">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F5</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="15" column="3">
-         <widget class="QPushButton" name="pushButton_0040">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F6</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="15" column="4">
-         <widget class="QPushButton" name="pushButton_0041">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F7</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="16" column="0">
-         <widget class="QPushButton" name="pushButton_0042">
+        <item row="18" column="0">
+         <widget class="QPushButton" name="pushButton_Hid065">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -2458,8 +1187,8 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="16" column="1">
-         <widget class="QPushButton" name="pushButton_0043">
+        <item row="12" column="4">
+         <widget class="QPushButton" name="pushButton_Hid101">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -2479,7 +1208,7 @@ Lock</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true">F9</string>
+           <string notr="true">Menu</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2489,8 +1218,8 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="16" column="2">
-         <widget class="QPushButton" name="pushButton_0044">
+        <item row="13" column="3">
+         <widget class="QPushButton" name="pushButton_Hid079">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -2510,69 +1239,17 @@ Lock</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true">F10</string>
+           <string notr="true"/>
           </property>
-          <property name="checkable">
-           <bool>true</bool>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/k/key-right.png</normaloff>:/images/k/key-right.png</iconset>
           </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="16" column="3">
-         <widget class="QPushButton" name="pushButton_0057">
-          <property name="minimumSize">
+          <property name="iconSize">
            <size>
-            <width>48</width>
-            <height>48</height>
+            <width>14</width>
+            <height>14</height>
            </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F11</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="16" column="4">
-         <widget class="QPushButton" name="pushButton_0058">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">F12</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2583,7 +1260,7 @@ Lock</string>
          </widget>
         </item>
         <item row="17" column="0">
-         <widget class="QPushButton" name="pushButton_59">
+         <widget class="QPushButton" name="pushButton_Hid060">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -2603,8 +1280,7 @@ Lock</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true">Num
-0</string>
+           <string notr="true">F3</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2614,8 +1290,8 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="17" column="1">
-         <widget class="QPushButton" name="pushButton_60">
+        <item row="19" column="1">
+         <widget class="QPushButton" name="pushButton_Hid089">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -2646,8 +1322,8 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="17" column="2">
-         <widget class="QPushButton" name="pushButton_61">
+        <item row="5" column="1">
+         <widget class="QPushButton" name="pushButton_Hid030">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -2667,8 +1343,7 @@ Lock</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true">Num
-2</string>
+           <string notr="true">1!</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2678,8 +1353,33 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="17" column="3">
-         <widget class="QPushButton" name="pushButton_62">
+        <item row="5" column="0">
+         <widget class="QPushButton" name="pushButton_Hid029">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Z</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="14" column="2">
+         <widget class="QPushButton" name="pushButton_Hid074">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -2699,8 +1399,7 @@ Lock</string>
            </font>
           </property>
           <property name="text">
-           <string notr="true">Num
-3</string>
+           <string notr="true">HOME</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2710,264 +1409,8 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="17" column="4">
-         <widget class="QPushButton" name="pushButton_63">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Num
-4</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="18" column="0">
-         <widget class="QPushButton" name="pushButton_64">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Num
-5</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="18" column="1">
-         <widget class="QPushButton" name="pushButton_65">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Num
-6</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="18" column="2">
-         <widget class="QPushButton" name="pushButton_66">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Num
-7</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="18" column="3">
-         <widget class="QPushButton" name="pushButton_67">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Num
-8</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="18" column="4">
-         <widget class="QPushButton" name="pushButton_68">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Num
-9</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="19" column="0">
-         <widget class="QPushButton" name="pushButton_69">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Num
-/</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="19" column="1">
-         <widget class="QPushButton" name="pushButton_71">
-          <property name="minimumSize">
-           <size>
-            <width>48</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>546</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>MiSans</family>
-            <fontweight>DemiBold</fontweight>
-           </font>
-          </property>
-          <property name="text">
-           <string notr="true">Num
-.</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
-         </widget>
-        </item>
-        <item row="19" column="2">
-         <widget class="QPushButton" name="pushButton_70">
+        <item row="21" column="2">
+         <widget class="QPushButton" name="pushButton_Hid085">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -2998,8 +1441,1128 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="19" column="3">
-         <widget class="QPushButton" name="pushButton_73">
+        <item row="11" column="1">
+         <widget class="QPushButton" name="pushButton_Hid044">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">SPACE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QPushButton" name="pushButton_Hid022">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>S</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="13" column="1">
+         <widget class="QPushButton" name="pushButton_Hid080">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true"/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/k/key-left.png</normaloff>:/images/k/key-left.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>14</width>
+            <height>14</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QPushButton" name="pushButton_Hid016">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>M</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="16" column="3">
+         <widget class="QPushButton" name="pushButton_Hid058">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F1</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QPushButton" name="pushButton_Hid027">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>X</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="10" column="1">
+         <widget class="QPushButton" name="pushButton_Hid057">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Caps
+Lock</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushButton_Hid004">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>A</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="20" column="1">
+         <widget class="QPushButton" name="pushButton_Hid094">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Num
+6</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton_Hid009">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>F</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="7" column="3">
+         <widget class="QPushButton" name="pushButton_Hid047">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">[{</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="6" column="4">
+         <widget class="QPushButton" name="pushButton_Hid038">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">9(</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="19" column="2">
+         <widget class="QPushButton" name="pushButton_Hid090">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Num
+2</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="2" column="4">
+         <widget class="QPushButton" name="pushButton_Hid018">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>O</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="11" column="3">
+         <widget class="QPushButton" name="pushButton_Hid228">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">R-
+CTRL</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="7" column="2">
+         <widget class="QPushButton" name="pushButton_Hid046">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">=+</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="16" column="0">
+         <widget class="QPushButton" name="pushButton_Hid076">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string notr="true">Del</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="13" column="0">
+         <widget class="QPushButton" name="pushButton_Hid082">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true"/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/k/key-up.png</normaloff>:/images/k/key-up.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>14</width>
+            <height>14</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QPushButton" name="pushButton_Hid052">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">' &quot;</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QPushButton" name="pushButton_Hid019">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>P</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="17" column="2">
+         <widget class="QPushButton" name="pushButton_Hid062">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F5</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QPushButton" name="pushButton_Hid051">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">;:</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="17" column="4">
+         <widget class="QPushButton" name="pushButton_Hid064">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F7</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="21" column="1">
+         <widget class="QPushButton" name="pushButton_Hid099">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Num
+.</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="17" column="1">
+         <widget class="QPushButton" name="pushButton_Hid061">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F4</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="6" column="2">
+         <widget class="QPushButton" name="pushButton_Hid036">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">7&amp;&amp;</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="18" column="3">
+         <widget class="QPushButton" name="pushButton_Hid068">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F11</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="16" column="4">
+         <widget class="QPushButton" name="pushButton_Hid059">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F2</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="21" column="0">
+         <widget class="QPushButton" name="pushButton_Hid084">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Num
+/</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="19" column="4">
+         <widget class="QPushButton" name="pushButton_Hid092">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Num
+4</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QPushButton" name="pushButton_Hid021">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>R</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="pushButton_Hid015">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>L</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="6" column="3">
+         <widget class="QPushButton" name="pushButton_Hid037">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">8*</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="18" column="1">
+         <widget class="QPushButton" name="pushButton_Hid066">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">F9</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="8" column="3">
+         <widget class="QPushButton" name="pushButton_Hid055">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">. &gt;</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="14" column="3">
+         <widget class="QPushButton" name="pushButton_Hid073">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Insert</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="pushButton_Hid025">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>V</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="21" column="3">
+         <widget class="QPushButton" name="pushButton_Hid087">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -3030,8 +2593,127 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="19" column="4">
-         <widget class="QPushButton" name="pushButton_72">
+        <item row="5" column="4">
+         <widget class="QPushButton" name="pushButton_Hid033">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">4$</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="8" column="4">
+         <widget class="QPushButton" name="pushButton_Hid056">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">/ ?</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="12" column="1">
+         <widget class="QPushButton" name="pushButton_Hid226">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">L-
+ALT</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QPushButton" name="pushButton_Hid017">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>N</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="20" column="2">
+         <widget class="QPushButton" name="pushButton_Hid095">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -3052,7 +2734,7 @@ Lock</string>
           </property>
           <property name="text">
            <string notr="true">Num
--</string>
+7</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -3062,8 +2744,327 @@ Lock</string>
           </attribute>
          </widget>
         </item>
-        <item row="20" column="0">
-         <widget class="QPushButton" name="pushButton_74">
+        <item row="3" column="4">
+         <widget class="QPushButton" name="pushButton_Hid023">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>T</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushButton_Hid005">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>B</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="16" column="1">
+         <widget class="QPushButton" name="pushButton_Hid075">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">PgUp</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="pushButton_Hid020">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Q</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QPushButton" name="pushButton_Hid026">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>W</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="14" column="0">
+         <widget class="QPushButton" name="pushButton_Hid071">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Scroll
+Lock</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="14" column="4">
+         <widget class="QPushButton" name="pushButton_Hid077">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">END</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="8" column="2">
+         <widget class="QPushButton" name="pushButton_Hid054">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">,&lt;</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="5" column="3">
+         <widget class="QPushButton" name="pushButton_Hid032">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">3#</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="19" column="0">
+         <widget class="QPushButton" name="pushButton_Hid098">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Num
+0</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="9" column="1">
+         <widget class="QPushButton" name="pushButton_Hid053">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">`~</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="10" column="4">
+         <widget class="QPushButton" name="pushButton_Hid083">
           <property name="minimumSize">
            <size>
             <width>48</width>
@@ -3094,6 +3095,37 @@ Lock</string>
           </attribute>
          </widget>
         </item>
+        <item row="10" column="0">
+         <widget class="QPushButton" name="pushButton_Hid041">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>546</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="text">
+           <string notr="true">Esc</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -3101,9 +3133,7 @@ Lock</string>
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>

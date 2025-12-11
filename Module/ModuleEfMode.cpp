@@ -102,6 +102,7 @@ ModuleEfMode::~ModuleEfMode()
 
 void ModuleEfMode::setEfMode(int mode)
 {
-    m_bOutSet =true;
+    m_bOutSet=true;
+    if(pBtnGrp->button(mode))
     pBtnGrp->button(mode)->click();
 }

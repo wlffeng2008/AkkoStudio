@@ -23,7 +23,7 @@ ModuleLinear::ModuleLinear(QWidget *parent)
                 max-width:20px;
                 max-height:20px;
 
-                icon-size: 20px;
+                icon-size: 16px;
             }
 
         QPushButton:hover { background-color: #F0F0F0;}

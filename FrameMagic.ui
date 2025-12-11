@@ -14,7 +14,9 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QFrame#frameTop{background-color: #FBFBFB;border-radius:32px;}
+QFrame#frameBLeft{background-color: #F6F6F6;border-radius:32px;}
+QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</string>
   </property>
   <property name="lineWidth">
    <number>0</number>
@@ -38,7 +40,7 @@
    <item>
     <widget class="QFrame" name="frameTop">
      <property name="styleSheet">
-      <string notr="true">QFrame{background-color: #FBFBFB;border-radius:32px;}</string>
+      <string notr="true"/>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::NoFrame</enum>
@@ -109,7 +111,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QFrame" name="frameBL">
+       <widget class="QFrame" name="frameBLeft">
         <property name="minimumSize">
          <size>
           <width>180</width>
@@ -123,7 +125,7 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+         <string notr="true"/>
         </property>
         <property name="frameShape">
          <enum>QFrame::Shape::NoFrame</enum>
@@ -218,7 +220,7 @@
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>1</number>
+            <number>3</number>
            </property>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
@@ -340,7 +342,7 @@
                </rect>
               </property>
               <property name="currentIndex">
-               <number>3</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="tab1">
                <attribute name="title">
@@ -1724,7 +1726,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
               <rect>
                <x>350</x>
                <y>50</y>
-               <width>113</width>
+               <width>139</width>
                <height>21</height>
               </rect>
              </property>
@@ -1735,10 +1737,10 @@ QPushButton:checked { border-color: #6329B6; }</string>
             <widget class="QPushButton" name="pushButton_2">
              <property name="geometry">
               <rect>
-               <x>510</x>
-               <y>80</y>
+               <x>350</x>
+               <y>90</y>
                <width>141</width>
-               <height>48</height>
+               <height>33</height>
               </rect>
              </property>
              <property name="text">
@@ -1786,8 +1788,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup_3"/>
   <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup_3"/>
  </buttongroups>
 </ui>

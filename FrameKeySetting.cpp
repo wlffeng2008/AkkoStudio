@@ -7,6 +7,8 @@
 
 #include "ModuleDKSAdjust.h"
 #include "ModuleGeneralMasker.h"
+#include "DialogVKPicker.h"
+#include "DialogDeviceConnect.h"
 
 FrameKeySetting::FrameKeySetting(QWidget *parent)
     : QFrame(parent)
@@ -23,7 +25,6 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 min-height: 32px;
                 border-radius: 16px ;
                 font-size:18px;
-                font-weight:600;
 
                 padding-left: 25px;
                 text-align: left;
@@ -34,6 +35,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
 
             QPushButton:checked {
                 color: white;
+                font-weight:600;
                 border: 1px solid #6329B6;
                 background: #6329B6; }
             QPushButton:hover {border: 1px solid #6329B6; }
@@ -81,7 +83,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
             "fangda.png",
             "suoxiao.png",
             "yuyin.png" };
-        QButtonGroup *pBtnGrp = new QButtonGroup(this) ;
+        //QButtonGroup *pBtnGrp = new QButtonGroup(this) ;
         for(int i=0; i<19; i++)
         {
             QString strName = QString::asprintf("pushButton_F%02d",i+1) ;
@@ -112,7 +114,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
             btn->setStyleSheet(strStyle);
             btn->setFocusPolicy(Qt::NoFocus) ;
             btn->setCursor(Qt::PointingHandCursor) ;
-            pBtnGrp->addButton(btn,i);
+            //pBtnGrp->addButton(btn,i);
         }
     }
     {
@@ -192,11 +194,20 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         }
     }) ;
 
-    connect(ui->frameKeyboard,&ModuleKeyboard::onKeyClicked,this,[=](const QString&text){
+    connect(ui->frameKeyboard,&ModuleKeyboard::onKeyClicked,this,[=](const QString&text,quint8 hid){
         ui->pushButton_Snap1->setText(text) ;
+        qDebug() << "onKeyClicked" << text << hid;
+
+        DialogVKPicker VK(this);
+        if(VK.exec() == QDialog::Accepted)
+        {
+            DialogDeviceConnect::instance()->changeKey(hid,0,VK.m_selIds[0],VK.m_selIds[1],VK.m_selIds[2]);
+        }
+
         if(m_pMask) m_pMask->hide() ;
     });
 
+    ui->frameKeyboard->setSelectCount(1);
 }
 
 

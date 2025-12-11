@@ -9,7 +9,7 @@
 #include <QTimer>
 
 
-QPoint getGlobalPos(QWidget *widget) {
+static QPoint getGlobalPos(QWidget *widget) {
     QPoint pos = widget->pos();
     QWidget *w = widget->parentWidget();
     if(w && !(w->windowFlags() & Qt::Popup))

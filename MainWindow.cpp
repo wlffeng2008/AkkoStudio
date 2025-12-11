@@ -23,6 +23,7 @@
 #include "ModuleLangMenu.h"
 #include "LinearFixing1.h"
 #include "ModuleGeneralMasker.h"
+#include "ModuleGenKeymapping.h"
 #include "ModuleLinear.h"
 #include <QMenu>
 #include <QAction>
@@ -36,6 +37,9 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowFlags(windowFlags() | Qt::FramelessWindowHint|Qt::MSWindowsFixedSizeDialogHint);
     setAttribute(Qt::WA_TranslucentBackground);
     setStyleSheet("QMainWindow{background-color: rgba(255, 255, 255, 1); border: 1px solid skyblue; border-radius: 12px; }");
+
+    ModuleGenKeymapping *km = new ModuleGenKeymapping(this);
+    km->hide() ;
 
     // QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect(this);
     // shadowEffect->setBlurRadius(15);    // 阴影模糊半径，值越大越模糊
@@ -157,7 +161,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     QTimer *pTMConnect = new QTimer(this) ;
 
-    //m_pMainkwork = new DialogMainwork(this) ;
     connect(ui->pushButtonDevice,&QPushButton::clicked,this,[=]{
         m_pDevice->show() ;
     });
@@ -166,8 +169,6 @@ MainWindow::MainWindow(QWidget *parent)
         if(m_nStatus==1)
         {
             ui->stackedWidget->setCurrentIndex(1);
-            //m_pMainkwork->setGeometry(frameGeometry()) ;
-            //m_pMainkwork->show() ;
         }
         else
         {
@@ -178,7 +179,6 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     connect(pTMConnect,&QTimer::timeout,this,[=]{
-        //m_pMainkwork->close() ;
         ui->stackedWidget->setCurrentIndex(0);
         setConnect(2);
     });
@@ -204,7 +204,6 @@ MainWindow::MainWindow(QWidget *parent)
         setConnect(1);
     });
     connect(m_pDevice,&DialogDeviceConnect::onDisconnect,this,[=]{
-        //m_pMainkwork->close() ;
         ui->stackedWidget->setCurrentIndex(0);
         pTMConnect->stop();
         setConnect(2);
@@ -215,7 +214,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     {
         QSystemTrayIcon *trayIcon = new QSystemTrayIcon(this);
-        trayIcon->setIcon(QIcon("://images/AkkoFlag.png"));  // 替换为你的图标路径
+        trayIcon->setIcon(QIcon("://images/AkkoFlag.png"));
         trayIcon->setToolTip("AKKO Cloud Driver");
         trayIcon->show();
 
@@ -231,9 +230,9 @@ MainWindow::MainWindow(QWidget *parent)
 
         QMenu *trayMenu = new QMenu(this);
 
-        QAction *showAction = new QAction("显示窗口", this);
-        QAction *hideAction = new QAction("隐藏窗口", this);
-        QAction *exitAction = new QAction("退出程序", this);
+        QAction *showAction = new QAction(tr("显示窗口"), this);
+        QAction *hideAction = new QAction(tr("隐藏窗口"), this);
+        QAction *exitAction = new QAction(tr("退出程序"), this);
 
         trayMenu->addAction(showAction);
         trayMenu->addAction(hideAction);
@@ -303,23 +302,29 @@ void MainWindow::setConnect(int nFlag)
     ui->pushButtonEnter->setHidden(true);
     ui->labelGif->setHidden(true) ;
     ui->labelKeyboard->setHidden(true) ;
+
+    QString strText0(tr("欢迎使用AKKO产品，"));
+    QString strText1(tr("连接成功"));
+    QString strText2(tr("暂未搜索到有效设备，请检查设备是否已正常连接"));
+    QString strText3(tr("正在搜索设备......"));
+
     switch(nFlag)
     {
     case 1:
-        ui->labelStatus->setText(R"(<html><head/><body><p><span style=" font-size:16pt;">欢迎使用AKKO产品，</span><span style=" font-size:16pt; color:#35ac4f;">连接成功</span></p></body></html>)") ;
-        ui->pushButtonEnter->setText("立即进入") ;
+        ui->labelStatus->setText(QString(R"(<html><head/><body><p><span style=" font-size:16pt;">%1</span><span style=" font-size:16pt; color:#35ac4f;">%2</span></p></body></html>)").arg(strText0,strText1)) ;
+        ui->pushButtonEnter->setText(tr("立即进入")) ;
         ui->pushButtonEnter->setHidden(false);
         ui->labelKeyboard->setHidden(false) ;
         break;
 
     case 2:
-        ui->labelStatus->setText(R"(<html><head/><body><p><span style=" font-size:16pt;">暂未搜索到有效设备，请检查设备是否已正常连接</span></p></body></html>)");
-        ui->pushButtonEnter->setText("重新搜索") ;
+        ui->labelStatus->setText(QString(R"(<html><head/><body><p><span style=" font-size:16pt;">%1</span></p></body></html>)").arg(strText2));
+        ui->pushButtonEnter->setText(tr("重新搜索")) ;
         ui->pushButtonEnter->setHidden(false);
         break;
 
     default:
-        ui->labelStatus->setText(R"(<html><head/><body><p><span style=" font-size:16pt;">正在搜索设备......</span></p></body></html>)");
+        ui->labelStatus->setText(QString(R"(<html><head/><body><p><span style=" font-size:16pt;">%1</span></p></body></html>)").arg(strText3));
         ui->labelGif->setHidden(false) ;
         break;
     }
@@ -365,7 +370,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
-        if(event->pos().y() < 50)
+        if(event->pos().y() < 100)
         {
             m_dragPosition = event->globalPos() - frameGeometry().topLeft();
             event->accept();

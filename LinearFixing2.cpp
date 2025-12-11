@@ -19,8 +19,9 @@ LinearFixing2::LinearFixing2(const QString& title,const QString& content, QWidge
     setStyleSheet("QDialog{background-color: rgba(0, 0, 0, 0);  border: 1px solid transparent;border-radius:12px;}"); // 黑色半透明
 
     QWidget* pContentWidget = new QWidget(this);
+    pContentWidget->setObjectName("MyContentWidget");
     pContentWidget->setStyleSheet(R"(
-        QWidget {
+        QWidget#MyContentWidget {
             background-color: white;
             border-radius: 32px;
             padding: 10px; }
