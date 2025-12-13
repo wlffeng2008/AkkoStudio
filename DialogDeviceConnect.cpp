@@ -210,6 +210,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             if(strstr(pTemp->path, "MI_02"))
             {
                 m_pDev2 = hid_open_path(pTemp->path) ;
+                qDebug() << "Open m_pDev0: " << pTemp->path << pTemp->usage << pTemp->usage_page ;
                 hid_set_nonblocking(m_pDev2,1) ;
             }
 
@@ -296,9 +297,9 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
     connect(m_pRdInput,&QTimer::timeout,this,[=]{
         m_pRdInput->stop() ;
+        char buf[1024] = {0};
         if(m_pDev0)
         {
-            char buf[1024] = {0};
             int nlen = hid_read(m_pDev0,(quint8 *)buf,64) ;
 
             if( nlen>0 )
@@ -310,7 +311,6 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         }
         if(m_pDev2)
         {
-            char buf[1024] = {0};
             int nlen = hid_read(m_pDev2,(quint8 *)buf,64) ;
 
             if( nlen>0 )
