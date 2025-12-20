@@ -44,6 +44,7 @@ SOURCES += \
     LinearFixing2.cpp \
     MacroSquare.cpp \
     Module/ColorSlider.cpp \
+    Module/DialogFNPicker.cpp \
     Module/DialogVKPicker.cpp \
     Module/MacroItem.cpp \
     Module/ModuleDKSAdjust.cpp \
@@ -85,6 +86,7 @@ HEADERS += \
     MacroSquare.h \
     MainWindow.h \
     Module/ColorSlider.h \
+    Module/DialogFNPicker.h \
     Module/DialogVKPicker.h \
     Module/MacroItem.h \
     Module/ModuleDKSAdjust.h \
@@ -117,6 +119,7 @@ FORMS += \
     FrameMagic.ui \
     FrameMain.ui \
     MainWindow.ui \
+    Module/DialogFNPicker.ui \
     Module/DialogVKPicker.ui \
     Module/MacroItem.ui \
     Module/ModuleDKSAdjust.ui \

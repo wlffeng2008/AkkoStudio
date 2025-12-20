@@ -2,6 +2,7 @@
 #define DIALOGVKPICKER_H
 
 #include <QDialog>
+#include "ModuleGenKeymapping.h"
 
 namespace Ui {
 class DialogVKPicker;
@@ -14,7 +15,7 @@ class DialogVKPicker : public QDialog
 public:
     explicit DialogVKPicker(QWidget *parent = nullptr);
     ~DialogVKPicker();
-    quint8 m_selIds[3]={0};
+    keyData m_kd={0};
 
 protected:
     void paintEvent(QPaintEvent *event) override;

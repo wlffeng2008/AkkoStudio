@@ -61,7 +61,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="res.qrc">:/images/Akko-Kb0.png</pixmap>
+           <pixmap resource="res.qrc">:/images/Akko-Kb3.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>

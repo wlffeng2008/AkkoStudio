@@ -14,6 +14,7 @@
 #include <QTableView>
 #include <QStandardItemModel>
 
+#include "ModuleGenKeymapping.h"
 #include "hidapi.h"
 
 
@@ -110,7 +111,9 @@ public:
     void setLEDColor(const QColor&color, int option);
     void reset() ;
 
-    void changeKey(quint8 hid, quint8 data0, quint8 data1, quint8 data2, quint8 data3, quint8 subLayer=0);
+    void changeKey(quint8 hid, keyData *pDk, quint8 subLayer=0);
+    void enableKey(quint8 hid, bool enable=true, quint8 subLayer=0);
+    QByteArray getMatix(int sub=0);
 
 signals:
     void onConnect();
@@ -145,6 +148,7 @@ private:
 
     void addLog(const QByteArray&log);
     QByteArray m_lastCmd ;
+    QByteArray m_Read[8] ;
 };
 
 #endif // DIALOGDEVICECONNECT_H

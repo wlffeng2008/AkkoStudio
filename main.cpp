@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <QLibraryInfo>
 #include <QFontDatabase>
 #include <locale.h>
 
@@ -29,13 +30,28 @@ int main(int argc, char *argv[])
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
+    qDebug() << uiLanguages;
     for (const QString &locale : uiLanguages) {
         const QString baseName = "AKKOStudio_" + QLocale(locale).name();
+        qDebug() << baseName;
         if (translator.load(":/i18n/" + baseName)) {
             a.installTranslator(&translator);
             break;
         }
     }
+
+    QTranslator translatorB;
+    QTranslator translatorW;
+    {
+        QString baseName = QLocale::system().name(); // 如 "zh_CN"
+        bool getB = translatorB.load("qtbase_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+        bool getW = translatorW.load("qt_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+
+        a.installTranslator(&translatorB);
+        a.installTranslator(&translatorW);
+    }
+
+
     SetConsoleOutputCP(CP_UTF8);
 
     QFontDatabase::addApplicationFont(":/font/MiSans-Bold.ttf");

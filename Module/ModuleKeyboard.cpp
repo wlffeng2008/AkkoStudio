@@ -6,10 +6,9 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QTimer>
-
+#include "keyboardbutton.h"
 
 static QList<ModuleKeyboard*>s_kbInstance ;
-
 
 static QString strStyle(R"(
         QPushButton {
@@ -54,7 +53,7 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
         KeyboardButton *btn = findChild<KeyboardButton*>(strName) ;
         if(!btn) continue;
         btn->setStyleSheet(strStyle);
-        btn->setCheckable(true) ;
+        btn->setCheckable(false) ;
         btn->setFocusPolicy(Qt::NoFocus);
         btn->setCursor(Qt::PointingHandCursor) ;
         ui->buttonGroup->removeButton(btn);
@@ -123,6 +122,19 @@ ModuleKeyboard::~ModuleKeyboard()
     delete ui;
 }
 
+void ModuleKeyboard::setLightMode()
+{
+    m_bSetLightMode=true;
+
+    const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
+    for(QAbstractButton*btn:btns)
+    {
+        btn->setCheckable(true);
+        KeyboardButton *pKb = (KeyboardButton *)btn;
+        pKb->setTipText("", "");
+    }
+}
+
 void ModuleKeyboard::setSelectCount(int count)
 {
     m_nSelectCount = count;
@@ -145,9 +157,40 @@ void ModuleKeyboard::showFlag(bool show)
     ui->frameFlag->setVisible(show);
 }
 
+void ModuleKeyboard::showMtFlag(bool show)
+{
+    const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
+    for(QAbstractButton*btn:btns)
+    {
+        (static_cast<KeyboardButton *>(btn))->showMtFlag(true) ;
+    }
+}
+
+void ModuleKeyboard::setKeyTip(quint8 hid, const QString&strTip1, const QString&strTip2, bool bSetToAll)
+{
+    QString strName = QString::asprintf("pushButton_Hid%03d",hid);
+    setKeyTip(strName,strTip1,strTip2,bSetToAll);
+}
+
+void ModuleKeyboard::setKeyTip(const QString&objname,const QString&strTip1,const QString&strTip2,bool bSetToAll)
+{
+    if(m_bSetLightMode) return ;
+    QPushButton *btn = findChild<QPushButton*>(objname);
+    if(btn)
+    {
+        static_cast<KeyboardButton *>(btn)->setTipText(strTip1, strTip2);
+    }
+
+    if(!bSetToAll) return;
+
+    for(ModuleKeyboard*pkb:s_kbInstance)
+        pkb->setKeyTip(objname, strTip1, strTip2, false);
+}
+
 void ModuleKeyboard::setKeyEnable(const QString&objname,bool bEnable,bool bSetToAll)
 {
     if(m_bFixMode) return;
+    if(m_bSetLightMode) return ;
 
     QPushButton *btn = findChild<QPushButton*>(objname);
     if(btn) btn->setEnabled(bEnable);

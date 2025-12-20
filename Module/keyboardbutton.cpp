@@ -8,8 +8,10 @@ keySetTooltip::keySetTooltip(QWidget *parent):QWidget(parent)
 {
     setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
+
     label1 = new QLabel(this);
     label2 = new QLabel(this);
+
     label1->setAlignment(Qt::AlignCenter);
     label2->setAlignment(Qt::AlignCenter);
     label1->setStyleSheet("QLabel{color:white;background-color:transparent;}");
@@ -24,14 +26,20 @@ keySetTooltip::keySetTooltip(QWidget *parent):QWidget(parent)
 
 void keySetTooltip::setText1(const QString&text)
 {
-    label1->setText(text);
-    label2->setText(text);
+    if(label1)
+    {
+        label1->setText(text);
+        label1->adjustSize();
+    }
 }
 
 void keySetTooltip::setText2(const QString&text)
 {
-    label2->setText(text);
-    label2->adjustSize();
+    if(label2)
+    {
+        label2->setText(text);
+        label2->adjustSize();
+    }
 }
 
 void keySetTooltip::paintEvent(QPaintEvent *event)
@@ -70,24 +78,58 @@ KeyboardButton::KeyboardButton(QWidget *parent):QPushButton(parent)
     });
 }
 
+static QString strStyle1(R"(
+        QPushButton {
+                border: 1px solid #EAEAEA;
+                color: black;
+                background-color: #FBFBFB;
+                border-radius: 14px;
+                padding: 2px 2px;
+                outline: none;
+                min-width:42px;
+                max-width:542px;
+                min-height:42px;
+            }
+
+        QPushButton:hover { background-color: #EAEAEA; border: 1px solid #EAEAEA;}
+        QPushButton:pressed { background-color: #3F3F3F; }
+        QPushButton:checked { background-color: #3F3F3F; color: white; }
+        QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }
+    )");
+
+static QString strStyle2(R"(
+        QPushButton {
+                border: 1px solid #EAEAEA;
+                color: white;
+                background-color: #6329B6;
+                border-radius: 14px;
+                padding: 2px 2px;
+                outline: none;
+                min-width:42px;
+                max-width:542px;
+                min-height:42px;
+            }
+
+        QPushButton:hover { background-color: #6329B6; border: 1px solid #EAEAEA;}
+        QPushButton:pressed { background-color: #6329B6; }
+        QPushButton:checked { background-color: #6329B6; color: white; }
+        QPushButton:disabled { background-color: #6329B6; color:white; }
+    )");
+
 void KeyboardButton::setTipText(const QString&strText1,const QString&strText2)
 {
-    m_tip = new keySetTooltip(this);
+    if(strText1.isEmpty() || strText2.isEmpty())
+    {
+        setStyleSheet(strStyle1);
+        if(m_tip) delete m_tip ; m_tip = nullptr ;
+        return ;
+    }
+
+    if(!m_tip) m_tip = new keySetTooltip(this);
+
     m_tip->setText1(strText1);
     m_tip->setText2(strText2);
-
-    timer = new QTimer(this) ;
-    timer->setSingleShot(true);
-    timer->setInterval(50);
-
-    connect(timer, &QTimer::timeout, this, [=]() {
-        if(m_tip)
-        {
-            m_tip->show();
-            m_tip->updateGeometry();
-        }
-        timer->stop();
-    });
+    setStyleSheet(strStyle2);
 }
 
 bool KeyboardButton::event(QEvent *event)
@@ -98,7 +140,6 @@ bool KeyboardButton::event(QEvent *event)
     {
         if(m_tip)
         {
-            timer->stop();
             if(m_firstShow)
             {
                 m_tip->show();
@@ -111,7 +152,7 @@ bool KeyboardButton::event(QEvent *event)
             m_tip->updateGeometry();
             m_tip->update() ;
             m_tip->repaint() ;
-            timer->start();
+            m_tip->show();
         }
     }
         break;
@@ -119,7 +160,6 @@ bool KeyboardButton::event(QEvent *event)
     case QEvent::Leave:
         if(m_tip)
         {
-            timer->stop();
             m_tip->hide();
         }
         break;
@@ -143,19 +183,11 @@ void KeyboardButton::showMtFlag(bool show)
 
 void KeyboardButton::paintEvent(QPaintEvent *event)
 {
-    QPushButton::paintEvent(event) ;
+    QPushButton::paintEvent(event);
 
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    if(m_tip)
-    {
-        QRect rect = this->rect() ;
-
-        painter.setPen(0x6329B6);
-        painter.setBrush(0x6329B6);
-        painter.drawRoundedRect(rect.adjusted(0,0,0,-10),8,8);
-    }
     if(m_showMtFlag)
         painter.drawImage(0,0,QImage(m_mtFlag));
 }

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>899</width>
-    <height>614</height>
+    <height>659</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -3278,18 +3278,18 @@ Lock</string>
         <widget class="QPushButton" name="pushButtonOK">
          <property name="minimumSize">
           <size>
-           <width>120</width>
-           <height>36</height>
+           <width>126</width>
+           <height>48</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
+           <width>126</width>
            <height>16777215</height>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background: #6329B6;color:white;</string>
+          <string notr="true">background: #6329B6;color:white;width:120px;</string>
          </property>
          <property name="text">
           <string>确认</string>
@@ -3300,18 +3300,18 @@ Lock</string>
         <widget class="QPushButton" name="pushButtonCancel">
          <property name="minimumSize">
           <size>
-           <width>120</width>
-           <height>36</height>
+           <width>126</width>
+           <height>48</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
+           <width>126</width>
            <height>16777215</height>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(128, 128, 128);color:white;</string>
+          <string notr="true">background-color: rgb(128, 128, 128);color:white;width:120px;</string>
          </property>
          <property name="text">
           <string>取消</string>

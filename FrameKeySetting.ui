@@ -241,7 +241,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             <property name="styleSheet">
              <string notr="true">#page1{background-color:#F6F6F6;border-radius:32px;}</string>
             </property>
-            <widget class="NewTabWidget" name="tabWidget1">
+            <widget class="NewTabWidget" name="tabWidgetKey">
              <property name="geometry">
               <rect>
                <x>20</x>
@@ -258,7 +258,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               </font>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="tab11">
               <attribute name="title">
@@ -1904,9 +1904,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupFN"/>
   <buttongroup name="buttonGroupSnap"/>
   <buttongroup name="buttonGroupMT"/>
+  <buttongroup name="buttonGroupFN"/>
   <buttongroup name="buttonGroupTGL"/>
  </buttongroups>
 </ui>

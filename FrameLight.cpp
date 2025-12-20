@@ -46,6 +46,8 @@ FrameLight::FrameLight(QWidget *parent)
                 ui->frameLEDBright->setBright(pPack[3]);
         }
     });
+
+    ui->frameKeyboard->setLightMode();
 }
 
 FrameLight::~FrameLight()

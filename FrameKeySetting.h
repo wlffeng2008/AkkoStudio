@@ -2,9 +2,8 @@
 #define FRAMEKEYSETTING_H
 
 #include <QFrame>
-#include "ModuleDKSAdjust.h"
-#include "ModuleDKSAdjust.h"
 #include <QLabel>
+#include "ModuleDKSAdjust.h"
 
 namespace Ui {
 class FrameKeySetting;
@@ -17,8 +16,11 @@ class FrameKeySetting : public QFrame
 public:
     explicit FrameKeySetting(QWidget *parent = nullptr);
     ~FrameKeySetting();
+
 protected:
     bool eventFilter(QObject*watched,QEvent*event) override;
+    void showEvent(QShowEvent *event) override;
+
 private:
     Ui::FrameKeySetting *ui;
     ModuleDKSAdjust *m_adjust = nullptr;

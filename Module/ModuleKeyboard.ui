@@ -56,8 +56,8 @@
   <widget class="QFrame" name="frameFlag">
    <property name="geometry">
     <rect>
-     <x>306</x>
-     <y>362</y>
+     <x>294</x>
+     <y>364</y>
      <width>251</width>
      <height>27</height>
     </rect>
@@ -609,7 +609,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">3#</string>
+    <string notr="true">3 #</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -637,7 +637,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">4$</string>
+    <string notr="true">4 $</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -665,7 +665,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">6^</string>
+    <string notr="true">6 ^</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -693,7 +693,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">7&amp;&amp;</string>
+    <string notr="true">7 &amp;&amp;</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -721,7 +721,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">8*</string>
+    <string notr="true">8 *</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -749,7 +749,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">=+</string>
+    <string notr="true">= +</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -805,7 +805,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">9(</string>
+    <string notr="true">9 (</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -833,7 +833,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">`~</string>
+    <string notr="true">` ~</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -861,7 +861,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">1!</string>
+    <string notr="true">1 !</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -889,7 +889,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">5%</string>
+    <string notr="true">5 %</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -917,7 +917,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">-_</string>
+    <string notr="true">- _</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -973,7 +973,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">0)</string>
+    <string notr="true">0 )</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -1001,7 +1001,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">2@</string>
+    <string notr="true">2 @</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -1113,7 +1113,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">|\</string>
+    <string notr="true">| \</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -1225,7 +1225,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">]}</string>
+    <string notr="true"> ] }</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -1309,7 +1309,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">[{</string>
+    <string notr="true">[ {</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -2053,7 +2053,7 @@
     </font>
    </property>
    <property name="text">
-    <string notr="true">&lt;,</string>
+    <string notr="true">&lt; ,</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>

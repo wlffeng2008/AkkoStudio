@@ -28,6 +28,7 @@ private:
 class KeyboardButton : public QPushButton
 {
     Q_OBJECT
+
 public:
     KeyboardButton(QWidget *parent);
     void setMtFlag(const QString&flag);
@@ -41,11 +42,10 @@ protected:
 
 private:
     QString m_mtFlag;
-    bool m_showMtFlag=true;
+    bool m_showMtFlag=false;
     bool m_firstShow=true;
 
     keySetTooltip *m_tip = nullptr;
-    QTimer *timer;
 };
 
 #endif // KEYBOARDBUTTON_H

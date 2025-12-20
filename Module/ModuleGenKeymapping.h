@@ -4,14 +4,14 @@
 #include <QObject>
 #include <QWidget>
 
-typedef struct
+struct keyData
 {
     quint8 b0;
     quint8 b1;
     quint8 b2;
     quint8 b3;
 
-}keyData;
+};
 
 struct keyItem
 {
@@ -20,12 +20,15 @@ struct keyItem
     QString text="";
 };
 
-
 quint8 getIndex(quint8 hid);
 quint8 getHid(quint8 index);
 
-keyData* getKeyData(quint8 index);
+keyData* getMuData(quint8 index);
 keyData* getFnData(quint8 index);
+keyData* getMatData(quint8 index);
+
+bool isKeyChanged(quint8 index,const keyData*kd);
+bool isKeyEqual(const keyData*kdA, const keyData*kdB);
 
 QString getKeyString(keyData *data);
 
@@ -41,8 +44,14 @@ public:
     explicit ModuleGenKeymapping(QWidget *parent=nullptr);
     ~ModuleGenKeymapping();
 
-    QList<keyItem *>m_fnList ;
-    QList<keyItem *>m_muList ;
+    QString getKeyString(const keyData *data);
+
+    keyData* getMuData(quint8 index);
+    keyData* getFnData(quint8 index);
+
+private:
+    QList<keyItem *>m_fnList;
+    QList<keyItem *>m_muList;
 };
 
 

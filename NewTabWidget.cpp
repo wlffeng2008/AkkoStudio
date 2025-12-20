@@ -63,14 +63,12 @@ void CustomTabBar::paintEvent(QPaintEvent *event)
         QRect tRect = tabRect(i);
         //if(isHover)
         //painter.drawRect(tRect);
-        QColor setColor= !isSelected ? Qt::black : 0x6329B6 ;
+        QColor setColor= !isSelected ? Qt::black : 0x6329B6;
         if(isHover && !isSelected)
             setColor = Qt::blue ;
 
         painter.setPen(setColor);
         QFont font = static_cast<QWidget*>(this->parent())->font();
-        //font.setBold(true) ;
-        //font.setBold(isSelected);
         font.setWeight(isSelected?QFont::ExtraBold : QFont::Normal) ;
         painter.setFont(font);
 

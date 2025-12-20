@@ -21,7 +21,12 @@ public:
     void setKeyFixMode() ;
     void setkeyHited(int id) ;
     void showFlag(bool show=true);
+    void showMtFlag(bool show=true);
     void setKeyEnable(const QString&objname,bool bEnable,bool bSetToAll=false) ;
+    void setLightMode();
+
+    void setKeyTip(const QString&objname,const QString&strTip1,const QString&strTip2,bool bSetToAll=true);
+    void setKeyTip(quint8 hid,const QString&strTip1,const QString&strTip2,bool bSetToAll=true);
     void setSingleMode(bool set=true) ;
     void setSelectCount(int count=3) ;
 
@@ -49,6 +54,8 @@ private:
 
     bool m_bFixMode = false ;
     int m_nSelectCount = 300 ;
+
+    bool m_bSetLightMode=false;
 
     bool m_draging =false ;
     QPoint m_clkPt={0,0} ;

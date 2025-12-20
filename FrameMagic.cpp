@@ -4,6 +4,8 @@
 #include <QTimer>
 #include <QButtonGroup>
 
+#include "keyboardbutton.h"
+
 FrameMagic::FrameMagic(QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::FrameMagic)
@@ -190,6 +192,8 @@ FrameMagic::FrameMagic(QWidget *parent)
 
         ui->checkBox3->click() ;
     }
+
+    ui->frameKeyboard->showMtFlag();
 }
 
 bool FrameMagic::eventFilter(QObject*watched,QEvent*event)

@@ -278,6 +278,15 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 }
             }
             qDebug() << "hid_get__feature_report:" << data.toHex(' ').toUpper();
+            quint8 *pCmd=(quint8 *)m_lastCmd.data();
+            if(pCmd[0] == CMD_GET_KEYMATRIX)
+            {
+                m_Read[pCmd[4]].append(data) ;
+                if(pCmd[3] == 7)
+                {
+
+                }
+            }
 
             emit onReadBack(data);
 
@@ -350,19 +359,31 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     }
 }
 
-void DialogDeviceConnect::changeKey(quint8 hid, quint8 data0, quint8 data1, quint8 data2, quint8 data3, quint8 subLayer)
+DialogDeviceConnect::~DialogDeviceConnect()
+{
+    delete ui;
+}
+
+void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer)
 {
     quint8 layer=0;
-    quint8 tmp[12] = {0x0A, layer, getIndex(hid), 0, subLayer, 1, 0, 0, data0, data1, data2, data3} ;
+    quint8 tmp[12] = {0x0A, layer, getIndex(hid), 0, subLayer, 1, 0, 0, pDk->b0, pDk->b1, pDk->b2, pDk->b3} ;
     QByteArray snd((char*)tmp,13);
     addReadCmd(snd) ;
 
     readSetting();
 }
 
-DialogDeviceConnect::~DialogDeviceConnect()
+void DialogDeviceConnect::enableKey(quint8 hid, bool enable, quint8 subLayer)
 {
-    delete ui;
+    keyData set={0} ;
+    if(enable) set.b2 = hid;
+    changeKey(hid,&set,subLayer);
+}
+
+QByteArray DialogDeviceConnect::getMatix(int sub)
+{
+    return m_Read[sub] ;
 }
 
 void DialogDeviceConnect::addLog(const QByteArray&log)

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>651</height>
+    <height>756</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -48,7 +48,7 @@
      <x>10</x>
      <y>130</y>
      <width>424</width>
-     <height>511</height>
+     <height>615</height>
     </rect>
    </property>
   </widget>
@@ -224,8 +224,8 @@
     <rect>
      <x>446</x>
      <y>10</y>
-     <width>826</width>
-     <height>631</height>
+     <width>825</width>
+     <height>735</height>
     </rect>
    </property>
    <property name="focusPolicy">

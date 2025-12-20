@@ -7,8 +7,11 @@
 
 #include "ModuleDKSAdjust.h"
 #include "ModuleGeneralMasker.h"
-#include "DialogVKPicker.h"
 #include "DialogDeviceConnect.h"
+#include "ModuleGenKeymapping.h"
+
+#include "DialogVKPicker.h"
+#include "DialogFNPicker.h"
 
 FrameKeySetting::FrameKeySetting(QWidget *parent)
     : QFrame(parent)
@@ -196,13 +199,29 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
 
     connect(ui->frameKeyboard,&ModuleKeyboard::onKeyClicked,this,[=](const QString&text,quint8 hid){
         ui->pushButton_Snap1->setText(text) ;
-        qDebug() << "onKeyClicked" << text << hid;
-
-        DialogVKPicker VK(this);
-        if(VK.exec() == QDialog::Accepted)
+        keyData setTo={0};
+        if(ui->tabWidgetKey->currentIndex() == 0)
         {
-            DialogDeviceConnect::instance()->changeKey(hid,0,VK.m_selIds[0],VK.m_selIds[1],VK.m_selIds[2]);
+            DialogVKPicker VKDlg(this);
+            if(VKDlg.exec() != QDialog::Accepted)
+                return ;
+            setTo = VKDlg.m_kd;
         }
+        else
+        {
+            DialogFNPicker FNDlg(this);
+            if(FNDlg.exec() != QDialog::Accepted)
+                return;
+            setTo = FNDlg.m_kd;
+        }
+
+        DialogDeviceConnect *pCnn = DialogDeviceConnect::instance() ;
+        pCnn->changeKey(hid,&setTo);
+
+        QString strT1 = getKeyValue(hid);
+        QString strT2 = getKeyString(&setTo);
+        ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
+
 
         if(m_pMask) m_pMask->hide() ;
     });
@@ -224,7 +243,7 @@ bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
         if(labCilck)
         {
             m_toAdjust = labCilck;
-            QString strValue =labCilck->text().replace("mm","").trimmed();
+            QString strValue = labCilck->text().replace("mm","").trimmed();
             m_adjust->setOriginValue(strValue) ;
             ModuleGeneralMasker M(m_adjust,ui->frameTab2);
             M.setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.8);  border: none; border-radius: 32px;}");
@@ -241,4 +260,26 @@ bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
 FrameKeySetting::~FrameKeySetting()
 {
     delete ui;
+}
+
+void FrameKeySetting::showEvent(QShowEvent *event)
+{
+    DialogDeviceConnect *pCnn = DialogDeviceConnect::instance() ;
+    QByteArray data = pCnn->getMatix(0);
+    for(int i=0; i<128; i++)
+    {
+        quint8 hid = ::getHid(i);
+        keyData kd;
+        kd.b0 = data[i*4 +0] ;
+        kd.b1 = data[i*4 +1] ;
+        kd.b2 = data[i*4 +2] ;
+        kd.b3 = data[i*4 +3] ;
+
+        if(isKeyChanged(i,&kd))
+        {
+            QString strT1 = getKeyValue(hid);
+            QString strT2 = getKeyString(&kd);
+            ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
+        }
+    }
 }
