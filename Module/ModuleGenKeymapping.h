@@ -28,6 +28,7 @@ keyData* getFnData(quint8 index);
 keyData* getMatData(quint8 index);
 
 bool isKeyChanged(quint8 index,const keyData*kd);
+bool isKeyDisabled(quint8 index);
 bool isKeyEqual(const keyData*kdA, const keyData*kdB);
 
 QString getKeyString(keyData *data);
@@ -50,6 +51,7 @@ public:
     keyData* getFnData(quint8 index);
 
 private:
+    void initList() ;
     QList<keyItem *>m_fnList;
     QList<keyItem *>m_muList;
 };

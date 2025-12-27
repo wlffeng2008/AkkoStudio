@@ -74,7 +74,6 @@ int main(int argc, char *argv[])
 
         QLabel:disabled { color: #B3B3B3;}
 
-
         QLineEdit {
             border: 1px solid #EDEDED;
             background-color: #EDEDED;
@@ -126,7 +125,7 @@ int main(int argc, char *argv[])
                 color: white;
                 border: 1px solid #6C9F50;
                 padding: 1px;
-                min-width: 32px;
+                min-width: 16px;
                 min-height: 8px;
                 max-width: 800px;
                 max-height: 200px;
@@ -203,7 +202,7 @@ int main(int argc, char *argv[])
         #horiCyanSlider::handle:hover { background: #F0F0F0;}
         #horiCyanSlider::handle:pressed { background: #E0E0E0; border-color: #2D7FDD;}
 
-        QRadioButton { spacing: 5px; color: #333333; font-size: 12px; font-weight: 400 ;}
+        QRadioButton { spacing: 5px; color: #333333; font-size: 14px; font-weight: 500 ;}
         QRadioButton::indicator {
             background: transparent;
             border-color: transparent;

@@ -18,12 +18,12 @@
     <rect>
      <x>5</x>
      <y>7</y>
-     <width>100</width>
+     <width>112</width>
      <height>26</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{min-height:24px;max-height:24px;};</string>
+    <string notr="true">QPushButton{min-height:24px;max-height:24px;min-width:110px;}</string>
    </property>
    <property name="text">
     <string>未设置功能</string>

@@ -63,6 +63,8 @@ static QList<HidCmd> CmdTable =
     {"CMD_SET_SLEEPTIME",CMD_SET_SLEEPTIME,8,0,0,0,0,0,0,0},
     {"CMD_GET_SLEEPTIME",CMD_GET_SLEEPTIME,8,0,0,0,0,0,0,0},
     {"CMD_SET_USERGIF",CMD_SET_USERGIF,8,0,0,0,0,0,0,0},
+    {"CMD_SET_AUTOOSEN",CMD_SET_AUTOOSEN,8,0,0,0,0,0,0,0},
+    {"CMD_GET_AUTOOSEN",CMD_GET_AUTOOSEN,8,0,0,0,0,0,0,0},
     {"",0,8,0,0,0,0,0,0,0}
 };
 
@@ -203,14 +205,33 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         disconnect();
 
         quint32 VID = ui->lineEditVID->text().trimmed().toUInt(nullptr,16) ;
-        hid_device_info *pRoot = hid_enumerate(VID,0);
+        hid_device_info *pRoot = hid_enumerate(VID,0x502F);
         hid_device_info *pTemp = pRoot;
+        {
+            hid_device_info *pTemp = pRoot;
+            while(pTemp)
+            {
+                QString strTmp(pTemp->path) ;
+                qDebug() << strTmp << pTemp->usage << pTemp->usage_page << pTemp->interface_number;
+                pTemp = pTemp->next ;
+            }
+        }
+
+        //     "\\\\?\\HID#VID_3151&PID_502F&MI_01&Col02#7&3780955&0&0001#{4d1e55b2-f16f-11cf-88cb-001111000030}"    128     1  1
+        //     "\\\\?\\HID#VID_3151&PID_502F&MI_00#7&274f4717&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}\\KBD"      6     1  0
+        //     "\\\\?\\HID#VID_3151&PID_502F&MI_01&Col03#7&3780955&0&0002#{4d1e55b2-f16f-11cf-88cb-001111000030}\\KBD" 6     1  1
+        //m_pDev2 = hid_open(0x3151,0x502F,nullptr) ;
+        //hid_set_nonblocking(m_pDev2,1) ;
+
         while(pTemp)
         {
-            if(strstr(pTemp->path, "MI_02"))
+            QString strTmp(pTemp->path) ;
+            //if(strTmp.toUpper().contains("KBD") && !m_pDev2)
+            //Hardware ID: USB\VID_3151&PID_502F&REV_0506&MI_00
+            if(pTemp->usage == 6 && pTemp->usage_page == 1 && pTemp->interface_number == 0 && !m_pDev2)
             {
                 m_pDev2 = hid_open_path(pTemp->path) ;
-                qDebug() << "Open m_pDev0: " << pTemp->path << pTemp->usage << pTemp->usage_page ;
+                qDebug() << "Open m_pDev2: " << pTemp->path << pTemp->usage << pTemp->usage_page ;
                 hid_set_nonblocking(m_pDev2,1) ;
             }
 
@@ -277,7 +298,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                     setRowValue(row,2+i,(quint8)data[i]) ;
                 }
             }
-            qDebug() << "hid_get__feature_report:" << data.toHex(' ').toUpper();
+            qDebug() << "get_:" << data.toHex(' ').toUpper();
             quint8 *pCmd=(quint8 *)m_lastCmd.data();
             if(pCmd[0] == CMD_GET_KEYMATRIX)
             {
@@ -288,7 +309,13 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 }
             }
 
+            if(pCmd[0] == 0xE5 && pCmd[1] == 0x07)
+            {
+                m_E507.append(data);
+            }
+
             emit onReadBack(data);
+
 
             addLog(data);
             readSetting();
@@ -314,18 +341,18 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             if( nlen>0 )
             {
                 QByteArray data(buf,nlen) ;
-                qDebug() << "hid_read:" << data.toHex(' ').toUpper();
+                qDebug() << "read:" << data.toHex(' ').toUpper();
                 addLog(data) ;
             }
         }
         if(m_pDev2)
         {
-            int nlen = hid_read(m_pDev2,(quint8 *)buf,64) ;
+            int nlen = hid_read(m_pDev2,(quint8 *)buf,8) ;
 
             if( nlen>0 )
             {
                 QByteArray data(buf,nlen) ;
-                qDebug() << "hid_read:" << data.toHex(' ').toUpper();
+                qDebug() << "read:" << data.toHex(' ').toUpper();
                 addLog(data) ;
             }
         }
@@ -346,6 +373,8 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     addReadCmd(CMD_GET_LEDPARAM);
     addReadCmd(CMD_GET_SLEDPARAM);
     addReadCmd(CMD_GET_DEBOUNCE);
+    addReadCmd("e5 07 01 00");
+    addReadCmd("e5 07 01 01");
 
     quint8 layer=0 ;
     for(quint8 i=0; i<4; i++) // subLayer;
@@ -357,6 +386,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             addReadCmd(cmd);
         }
     }
+
 }
 
 DialogDeviceConnect::~DialogDeviceConnect()
@@ -406,6 +436,12 @@ void DialogDeviceConnect::addReadCmd(quint8 cmd, int len)
     addReadCmd(data);
 }
 
+void DialogDeviceConnect::addReadCmd(const QString&strCmd)
+{
+    QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1()) ;
+    addReadCmd(cmd);
+}
+
 void DialogDeviceConnect::addReadCmd(QByteArray&cmd)
 {
     m_readList.push_back(cmd);
@@ -438,7 +474,7 @@ void DialogDeviceConnect::readSetting()
     cmd.insert(0,(char)0) ; // report id
     hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
 
-    QTimer::singleShot(20,this,[=]{
+    QTimer::singleShot(10,this,[=]{
         ui->pushButtonRead->click() ;
     });
 }

@@ -41,7 +41,9 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 font-weight:600;
                 border: 1px solid #6329B6;
                 background: #6329B6; }
+
             QPushButton:hover {border: 1px solid #6329B6; }
+
             )") ;
 
         QLayout *pLayout = ui->frameMode->layout() ;
@@ -279,7 +281,12 @@ void FrameKeySetting::showEvent(QShowEvent *event)
         {
             QString strT1 = getKeyValue(hid);
             QString strT2 = getKeyString(&kd);
+            //if(isKeyDisabled(i))
+            if(kd.b0 == 0 && kd.b1 == 0 && kd.b2 == 0 && kd.b3 == 0)
+                strT1="DISABLED";
             ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
         }
     }
+
+    //ui->frameKeyboard->keepSpeacial();
 }

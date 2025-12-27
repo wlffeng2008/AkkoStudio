@@ -10,8 +10,8 @@ static QString s_strDefTipStyle(R"(
     border-radius: 16px;
     padding-left: 16px;
     padding-right: 16px;
-    min-height:42px;
-    max-height:42px;
+    min-height:46px;
+    max-height:46px;
     font-size: 16px;
     font-weight:400;
 )");
@@ -23,12 +23,12 @@ void CustomTooltip::setDefTipStyle(const QString &stryle)
 
 void CustomTooltip::setGroupTipStyle(QObject *parent, QString&style)
 {
-    s_tipStyle[parent] = style ;
+    s_tipStyle[parent] = style;
 }
 
 void SuperLabel::setGroupTipStyle(QObject *parent, QString&style)
 {
-    s_tipStyle[parent] = style ;
+    s_tipStyle[parent] = style;
 }
 
 CustomTooltip::CustomTooltip(QWidget *parent) : QWidget(parent)
@@ -44,27 +44,34 @@ CustomTooltip::CustomTooltip(QWidget *parent) : QWidget(parent)
     content->setAlignment(Qt::AlignCenter);
 
     m_timer = new QTimer(this) ;
-    connect(m_timer,&QTimer::timeout,this,[=]{ if(m_bAutohide) {m_timer->stop(); hide();} });
+    connect(m_timer,&QTimer::timeout,this,[=]{
+        if(m_bAutohide)
+        {
+            m_timer->stop();
+            hide();
+        }
+    });
 }
 
 void CustomTooltip::enterEvent(QEnterEvent *event)
 {
-    m_timer->stop() ;
-    QWidget::enterEvent(event) ;
+    m_timer->stop();
+    QWidget::enterEvent(event);
 }
 
 void CustomTooltip::leaveEvent(QEvent *event)
 {
-    m_timer->stop() ;
-    m_timer->start(1000) ;
-    QWidget::leaveEvent(event) ;
+    m_timer->stop();
+    m_timer->start(1000);
+    QWidget::leaveEvent(event);
 }
 
 void CustomTooltip::mousePressEvent(QMouseEvent *event)
 {
-    emit onClicked() ;
+    emit onClicked();
+
     hide() ;
-    m_timer->stop() ;
+    m_timer->stop();
     QWidget::mousePressEvent(event) ;
 }
 

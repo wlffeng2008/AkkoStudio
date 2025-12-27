@@ -88,6 +88,9 @@
     </item>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>

@@ -35,15 +35,12 @@
   </property>
   <property name="styleSheet">
    <string notr="true">        QPushButton {
-                    border: 1px solid #EAEAEA;
-                    border-radius: 14px;
-                    padding: 2px 2px;
+                    border: 1px solid #EAEAEA; border-radius:14px;
                     color: black;
                     outline: none;
                     background-color: #FBFBFB ;
-                        min-width:42px;
-                        max-width:542px;
-                        min-height:42px;}
+                    max-width:542px;
+}
 
         QPushButton:hover { background-color: #EAEAEA; border: 1px solid #EAEAEA;}
         QPushButton:pressed { background-color: #3F3F3F; }
@@ -56,9 +53,9 @@
   <widget class="QFrame" name="frameFlag">
    <property name="geometry">
     <rect>
-     <x>294</x>
+     <x>224</x>
      <y>364</y>
-     <width>251</width>
+     <width>349</width>
      <height>27</height>
     </rect>
    </property>
@@ -121,7 +118,69 @@
      </widget>
     </item>
     <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <widget class="QLabel" name="labelFlag4">
+      <property name="minimumSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {width: 16px;height:16px;background-color:#FBFBFB; border:1px solid #D8BDFF;border-radius:8px;}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="labelFlag3">
+      <property name="font">
+       <font>
+        <family>MiSans</family>
+        <pointsize>10</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>已修改按键</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="labelFlag5">
       <property name="minimumSize">
        <size>
         <width>16</width>
@@ -143,7 +202,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="labelFlag3">
+     <widget class="QLabel" name="labelFlag6">
       <property name="font">
        <font>
         <family>MiSans</family>
@@ -169,7 +228,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -186,19 +245,25 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="KeyboardButton" name="pushButton_E000">
+  <widget class="KeyboardButton" name="pushButton_Hid234">
    <property name="geometry">
     <rect>
-     <x>871</x>
+     <x>870</x>
      <y>22</y>
-     <width>48</width>
+     <width>22</width>
      <height>48</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>20</width>
+     <height>48</height>
+    </size>
+   </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
-     <height>16777215</height>
+     <width>20</width>
+     <height>48</height>
     </size>
    </property>
    <property name="font">
@@ -208,10 +273,16 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{border-radius:24px !important; background-color:white;}</string>
+    <string notr="true">QPushButton{ border:none;border-radius:11px;   border-top-left-radius: 20px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 0px !important;
+	max-width:20px !important;
+	min-width:20px !important;
+ background-color:white;}</string>
    </property>
    <property name="text">
-    <string notr="true"/>
+    <string notr="true">-</string>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">buttonGroup</string>
@@ -228,7 +299,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -256,7 +327,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -284,7 +355,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -312,7 +383,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -340,7 +411,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -368,7 +439,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -396,7 +467,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -424,7 +495,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -452,7 +523,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -480,7 +551,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -508,7 +579,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -536,7 +607,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -570,7 +641,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -598,7 +669,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -626,7 +697,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -654,7 +725,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -682,7 +753,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -710,7 +781,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -738,7 +809,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -766,7 +837,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -794,7 +865,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -822,7 +893,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -850,7 +921,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -878,7 +949,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -906,7 +977,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -934,7 +1005,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -962,7 +1033,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -990,7 +1061,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1018,7 +1089,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1046,7 +1117,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1074,7 +1145,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1102,7 +1173,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1130,7 +1201,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1158,7 +1229,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1186,7 +1257,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1214,7 +1285,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1242,7 +1313,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1270,7 +1341,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1298,7 +1369,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1326,7 +1397,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1354,7 +1425,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1382,7 +1453,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1410,7 +1481,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1438,7 +1509,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1466,7 +1537,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1494,7 +1565,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1522,7 +1593,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1550,7 +1621,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1578,7 +1649,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1606,7 +1677,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1634,7 +1705,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1662,7 +1733,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1690,7 +1761,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1718,7 +1789,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1746,7 +1817,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1774,7 +1845,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1802,7 +1873,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1830,7 +1901,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1858,7 +1929,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1886,7 +1957,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1914,7 +1985,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1942,7 +2013,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -1980,13 +2051,13 @@
    </property>
    <property name="minimumSize">
     <size>
-     <width>48</width>
-     <height>48</height>
+     <width>0</width>
+     <height>0</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2014,7 +2085,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2042,7 +2113,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2070,7 +2141,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2098,7 +2169,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2126,7 +2197,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2154,7 +2225,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2182,7 +2253,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2199,7 +2270,7 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
-  <widget class="KeyboardButton" name="pushButton_Hid255">
+  <widget class="KeyboardButton" name="pushButton_Hid225">
    <property name="geometry">
     <rect>
      <x>41</x>
@@ -2210,7 +2281,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2238,7 +2309,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2266,6 +2337,9 @@
    </attribute>
   </widget>
   <widget class="KeyboardButton" name="pushButton_0081">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>639</x>
@@ -2276,7 +2350,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2304,7 +2378,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2332,7 +2406,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2360,7 +2434,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2388,7 +2462,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2416,7 +2490,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2444,7 +2518,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2472,7 +2546,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2510,7 +2584,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>548</width>
+     <width>544</width>
      <height>16777215</height>
     </size>
    </property>
@@ -2537,6 +2611,46 @@
     <string notr="true">buttonGroup</string>
    </attribute>
   </widget>
+  <widget class="KeyboardButton" name="pushButton_Hid233">
+   <property name="geometry">
+    <rect>
+     <x>897</x>
+     <y>22</y>
+     <width>20</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>20</width>
+     <height>48</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>20</width>
+     <height>48</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>MiSans</family>
+     <fontweight>DemiBold</fontweight>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{ border:none;  border-top-left-radius: 0px !important;
+    border-top-right-radius: 20px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 20px !important;
+	max-width:20px !important;
+	min-width:20px !important;
+ background-color:white;}</string>
+   </property>
+   <property name="text">
+    <string notr="true">+</string>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -2552,7 +2666,7 @@
   <tabstop>pushButton_Hid064</tabstop>
   <tabstop>pushButton_Hid066</tabstop>
   <tabstop>pushButton_Hid068</tabstop>
-  <tabstop>pushButton_E000</tabstop>
+  <tabstop>pushButton_Hid234</tabstop>
   <tabstop>pushButton_Hid031</tabstop>
   <tabstop>pushButton_Hid039</tabstop>
   <tabstop>pushButton_Hid045</tabstop>
@@ -2579,7 +2693,7 @@
   <tabstop>pushButton_Hid052</tabstop>
   <tabstop>pushButton_Hid040</tabstop>
   <tabstop>pushButton_Hid078</tabstop>
-  <tabstop>pushButton_Hid255</tabstop>
+  <tabstop>pushButton_Hid225</tabstop>
   <tabstop>pushButton_Hid027</tabstop>
   <tabstop>pushButton_Hid016</tabstop>
   <tabstop>pushButton_Hid055</tabstop>

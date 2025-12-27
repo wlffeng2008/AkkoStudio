@@ -17,14 +17,13 @@
    <string notr="true">#FrameKeySetting{background-color: white;}
 QPushButton {
             border: 1px solid #EAEAEA;
-            border-radius: 14px;
-            padding: 1px 1px;
+border-radius:14px;
             color: black;
             outline: none;
             background-color: #FBFBFB;
-                min-width:42px;
-                max-width:542px;
-                min-height:42px;
+                        max-width:442px;
+                        min-height:42px;
+                        min-width:42px;
  }
 
 QPushButton:hover { background-color: #EAEAEA; border: 1px solid #EAEAEA;}
@@ -235,7 +234,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             <string notr="true"/>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
@@ -258,7 +257,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               </font>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="tab11">
               <attribute name="title">
@@ -274,7 +273,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>20</x>
                  <y>66</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -287,7 +286,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>90</x>
                  <y>66</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -300,7 +299,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>160</x>
                  <y>66</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -313,7 +312,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>220</x>
                  <y>66</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -326,7 +325,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>290</x>
                  <y>66</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -339,7 +338,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>360</x>
                  <y>66</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -352,7 +351,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>430</x>
                  <y>66</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -365,7 +364,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>500</x>
                  <y>66</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -383,7 +382,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>20</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -406,7 +405,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>80</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -425,7 +424,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>140</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -444,7 +443,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>200</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -463,7 +462,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>260</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -482,7 +481,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>320</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -501,7 +500,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>380</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -520,7 +519,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>440</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -539,7 +538,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>500</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -558,7 +557,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>560</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -577,7 +576,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>620</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -596,7 +595,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>680</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -615,7 +614,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>740</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -634,7 +633,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>800</x>
                  <y>52</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -653,7 +652,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>20</x>
                  <y>122</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -672,7 +671,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>80</x>
                  <y>122</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -691,7 +690,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>140</x>
                  <y>122</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -710,7 +709,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>200</x>
                  <y>122</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -729,7 +728,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>260</x>
                  <y>122</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -748,7 +747,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>382</x>
                  <y>122</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -767,7 +766,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>322</x>
                  <y>122</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -786,7 +785,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>382</x>
                  <y>222</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -805,7 +804,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>322</x>
                  <y>222</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -824,7 +823,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>80</x>
                  <y>222</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -843,7 +842,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>20</x>
                  <y>222</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -862,7 +861,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>140</x>
                  <y>222</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -881,7 +880,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>200</x>
                  <y>222</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -900,7 +899,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <rect>
                  <x>260</x>
                  <y>222</y>
-                 <width>48</width>
+                 <width>44</width>
                  <height>48</height>
                 </rect>
                </property>
@@ -914,7 +913,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <string notr="true">buttonGroupFN</string>
                </attribute>
               </widget>
-              <widget class="QLabel" name="label">
+              <widget class="QLabel" name="labelFlag4">
                <property name="geometry">
                 <rect>
                  <x>24</x>
@@ -927,7 +926,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <string>键盘功能</string>
                </property>
               </widget>
-              <widget class="QLabel" name="label_2">
+              <widget class="QLabel" name="labelFlag5">
                <property name="geometry">
                 <rect>
                  <x>26</x>
@@ -1008,7 +1007,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                </rect>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="tab21">
                <attribute name="title">
@@ -1017,10 +1016,10 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                <widget class="QPushButton" name="pushButton_DKS">
                 <property name="geometry">
                  <rect>
-                  <x>70</x>
-                  <y>40</y>
-                  <width>51</width>
-                  <height>51</height>
+                  <x>52</x>
+                  <y>16</y>
+                  <width>74</width>
+                  <height>74</height>
                  </rect>
                 </property>
                 <property name="text">
@@ -1301,9 +1300,15 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <rect>
                   <x>162</x>
                   <y>110</y>
-                  <width>76</width>
-                  <height>78</height>
+                  <width>74</width>
+                  <height>74</height>
                  </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>74</width>
+                  <height>74</height>
+                 </size>
                 </property>
                 <property name="autoFillBackground">
                  <bool>false</bool>
@@ -1326,9 +1331,15 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <rect>
                   <x>272</x>
                   <y>110</y>
-                  <width>76</width>
-                  <height>78</height>
+                  <width>74</width>
+                  <height>74</height>
                  </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>74</width>
+                  <height>74</height>
+                 </size>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">width:72px; height:72px;</string>
@@ -1491,14 +1502,14 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <rect>
                   <x>90</x>
                   <y>210</y>
-                  <width>332</width>
+                  <width>300</width>
                   <height>48</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>46</width>
-                  <height>46</height>
+                  <width>44</width>
+                  <height>44</height>
                  </size>
                 </property>
                 <property name="font">
@@ -1524,9 +1535,15 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <rect>
                   <x>162</x>
                   <y>110</y>
-                  <width>76</width>
-                  <height>78</height>
+                  <width>74</width>
+                  <height>74</height>
                  </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>74</width>
+                  <height>74</height>
+                 </size>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">width:72px; height:72px;</string>
@@ -1546,9 +1563,15 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <rect>
                   <x>272</x>
                   <y>110</y>
-                  <width>76</width>
-                  <height>78</height>
+                  <width>74</width>
+                  <height>74</height>
                  </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>74</width>
+                  <height>74</height>
+                 </size>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">width:72px; height:72px;</string>
@@ -1592,14 +1615,20 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <rect>
                   <x>90</x>
                   <y>210</y>
-                  <width>332</width>
+                  <width>300</width>
                   <height>48</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>46</width>
-                  <height>46</height>
+                  <width>44</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>444</width>
+                  <height>16777215</height>
                  </size>
                 </property>
                 <property name="font">
@@ -1625,8 +1654,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <rect>
                   <x>162</x>
                   <y>110</y>
-                  <width>76</width>
-                  <height>78</height>
+                  <width>74</width>
+                  <height>74</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -1647,8 +1676,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <rect>
                   <x>272</x>
                   <y>110</y>
-                  <width>76</width>
-                  <height>78</height>
+                  <width>74</width>
+                  <height>74</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -1904,9 +1933,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupSnap"/>
-  <buttongroup name="buttonGroupMT"/>
   <buttongroup name="buttonGroupFN"/>
+  <buttongroup name="buttonGroupSnap"/>
   <buttongroup name="buttonGroupTGL"/>
+  <buttongroup name="buttonGroupMT"/>
  </buttongroups>
 </ui>

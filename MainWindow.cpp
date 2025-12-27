@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
     setStyleSheet("QMainWindow{background-color: rgba(255, 255, 255, 1); border: 1px solid skyblue; border-radius: 12px; }");
 
     ModuleGenKeymapping *km = new ModuleGenKeymapping(this);
-    km->hide() ;
+    km->hide();
 
     // QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect(this);
     // shadowEffect->setBlurRadius(15);    // 阴影模糊半径，值越大越模糊
@@ -58,23 +58,24 @@ MainWindow::MainWindow(QWidget *parent)
 
         m_pDevice = new DialogDeviceConnect(this);
 
-        FrameKeySetting *pKS = new FrameKeySetting(this) ;
-        FrameMain *pFM = new FrameMain(this) ;
-        pKS->hide() ;
+        FrameKeySetting *pKSet = new FrameKeySetting(this);
+
+        FrameMain  *pFMain = new FrameMain (this);
         FrameMagic *pMagic = new FrameMagic(this);
         FrameMacro *pMacro = new FrameMacro(this);
         FrameLight *pLight = new FrameLight(this);
         FrameAbout *pAbout = new FrameAbout(this);
+        pKSet->hide() ;
 
-        m_pFrames.push_back(pFM) ;
-        m_pFrames.push_back(pKS) ;
-        m_pFrames.push_back(pMagic) ;
-        m_pFrames.push_back(pMacro) ;
-        m_pFrames.push_back(pLight) ;
-        m_pFrames.push_back(pAbout) ;
+        m_pFrames.push_back(pFMain);
+        m_pFrames.push_back(pKSet );
+        m_pFrames.push_back(pMagic);
+        m_pFrames.push_back(pMacro);
+        m_pFrames.push_back(pLight);
+        m_pFrames.push_back(pAbout);
 
-        ui->horizontalLayoutBR->addWidget(pFM);
-        ui->horizontalLayoutBR->addWidget(pKS);
+        ui->horizontalLayoutBR->addWidget(pFMain);
+        ui->horizontalLayoutBR->addWidget(pKSet );
         ui->horizontalLayoutBR->addWidget(pMagic);
         ui->horizontalLayoutBR->addWidget(pMacro);
         ui->horizontalLayoutBR->addWidget(pLight);
@@ -90,6 +91,8 @@ MainWindow::MainWindow(QWidget *parent)
         m_pLBtns.push_back(ui->label5);
         m_pLBtns.push_back(ui->label6);
         m_pLBtns.push_back(ui->label7);
+
+        ui->label7->hide();
 
         int index = 0 ;
         static QStringList images={"shouye","jianweishezhi","cizhoushezhi","hongshezhi","dengxiaoshezhi","guanyu","",""};
@@ -214,7 +217,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     {
         QSystemTrayIcon *trayIcon = new QSystemTrayIcon(this);
-        trayIcon->setIcon(QIcon("://images/AkkoFlag.png"));
+        trayIcon->setIcon(QIcon(":/images/logo.png"));
         trayIcon->setToolTip("AKKO Cloud Driver");
         trayIcon->show();
 

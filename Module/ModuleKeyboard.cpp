@@ -6,28 +6,11 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QTimer>
+
 #include "keyboardbutton.h"
+#include "DialogDeviceConnect.h"
 
 static QList<ModuleKeyboard*>s_kbInstance ;
-
-static QString strStyle(R"(
-        QPushButton {
-                border: 1px solid #EAEAEA;
-                color: black;
-                background-color: #FBFBFB;
-                border-radius: 14px;
-                padding: 2px 2px;
-                outline: none;
-                min-width:42px;
-                max-width:542px;
-                min-height:42px;
-            }
-
-        QPushButton:hover { background-color: #EAEAEA; border: 1px solid #EAEAEA;}
-        QPushButton:pressed { background-color: #3F3F3F; }
-        QPushButton:checked { background-color: #3F3F3F; color: white; }
-        QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }
-        )");
 
 ModuleKeyboard::ModuleKeyboard(QWidget *parent)
     : QFrame(parent)
@@ -50,25 +33,21 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
     for(int i=0; i<255; i++)
     {
         QString strName = QString::asprintf("pushButton_Hid%03d",i) ;
-        KeyboardButton *btn = findChild<KeyboardButton*>(strName) ;
+        KeyboardButton *btn = findChild<KeyboardButton*>(strName);
         if(!btn) continue;
-        btn->setStyleSheet(strStyle);
-        btn->setCheckable(false) ;
+        btn->setCheckable(false);
         btn->setFocusPolicy(Qt::NoFocus);
-        btn->setCursor(Qt::PointingHandCursor) ;
+        btn->setCursor(Qt::PointingHandCursor);
         ui->buttonGroup->removeButton(btn);
-        ui->buttonGroup->addButton(btn,i) ;
-        if(i == 0xE000)
+        ui->buttonGroup->addButton(btn,i);
+        if(i == 234 ||i == 233)
         {
-            m_spcBtn = btn ;
-            btn->showMtFlag(false);
+            continue;
         }
-        btn->setMtFlag(rand()%2 ? ":/images/mt0.png" : ":/images/mt1.png") ;
+        btn->setMtFlag(rand()%2 ? ":/images/mt0.png" : ":/images/mt1.png");
     }
 
-    QTimer::singleShot(100,this,[=]{if(m_spcBtn) m_spcBtn->setStyleSheet(strStyle + "QPushButton{ border-radius:24px;}");}) ;
-
-    ui->buttonGroup->setExclusive(false) ;
+    ui->buttonGroup->setExclusive(false);
 
     connect(ui->buttonGroup,&QButtonGroup::idClicked,this,[=](int id){
 
@@ -81,11 +60,11 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
                 if(nChecked >= m_nSelectCount)
                 {
                     btn->setChecked(false);
-                    continue ;
+                    continue;
                 }
 
                 if(btn->isChecked())
-                    nChecked++ ;
+                    nChecked++;
             }
         }
 
@@ -98,28 +77,65 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
     m_Menu->setTextStyle("QLabel { color: red; }") ;
 
     connect(m_Menu,&CustomTooltip::onClicked,this,[=]{
-        if(m_curBtn->isEnabled())
-        {
-            m_curBtn->setEnabled(false);
-            m_curBtn->installEventFilter(this);
-            m_disables.push_back(m_curBtn);
-        }
-        else
-        {
-            m_curBtn->removeEventFilter(this);
-            m_disables.removeAll(m_curBtn);
-            m_curBtn->setEnabled(true);
-        }
-        setKeyEnable(m_curBtn->objectName(),m_curBtn->isEnabled(),true);
+        setButtonEnable(m_curBtn,!m_curBtn->isEnabled(),true) ;
     }) ;
 
     s_kbInstance.push_back(this);
+}
+
+void ModuleKeyboard::setButtonEnable(QAbstractButton*btn, bool bEnable, bool bToDevice)
+{
+    KeyboardButton * tkb = static_cast<KeyboardButton *>(btn) ;
+    if(bEnable)
+    {
+        btn->removeEventFilter(this);
+        m_disables.removeAll(btn);
+        btn->setEnabled(true);
+    }
+    else
+    {
+        if(!tkb->hasTip())
+        {
+            btn->setEnabled(false);
+            btn->installEventFilter(this);
+            m_disables.push_back(btn);
+        }
+
+        btn->setChecked(false) ;
+        tkb->setTipText();
+    }
+
+    setKeyEnable(btn->objectName(),btn->isEnabled(),bToDevice,true);
 }
 
 ModuleKeyboard::~ModuleKeyboard()
 {
     s_kbInstance.removeAll(this);
     delete ui;
+}
+
+void ModuleKeyboard::keepSpeacial()
+{
+    return;
+    KeyboardButton *btn1 = findChild<KeyboardButton*>("pushButton_Hid234");
+    KeyboardButton *btn2 = findChild<KeyboardButton*>("pushButton_Hid233");
+    if(m_bSetLightMode || m_bSetMtMode || m_bFixMode)
+    {
+        btn1->hide();
+        btn2->hide();
+    }
+    else
+    {
+        btn1->show();
+        btn2->show();
+    }
+}
+
+void ModuleKeyboard::showEvent(QShowEvent *event)
+{
+    QTimer::singleShot(20,this,[=]{
+        keepSpeacial();
+    });
 }
 
 void ModuleKeyboard::setLightMode()
@@ -131,8 +147,9 @@ void ModuleKeyboard::setLightMode()
     {
         btn->setCheckable(true);
         KeyboardButton *pKb = (KeyboardButton *)btn;
-        pKb->setTipText("", "");
+        pKb->setTipText();
     }
+    keepSpeacial();
 }
 
 void ModuleKeyboard::setSelectCount(int count)
@@ -159,11 +176,15 @@ void ModuleKeyboard::showFlag(bool show)
 
 void ModuleKeyboard::showMtFlag(bool show)
 {
+    m_bSetMtMode=true;
     const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
     for(QAbstractButton*btn:btns)
     {
+        btn->setCheckable(true);
         (static_cast<KeyboardButton *>(btn))->showMtFlag(true) ;
+        (static_cast<KeyboardButton *>(btn))->setTipText() ;
     }
+    keepSpeacial();
 }
 
 void ModuleKeyboard::setKeyTip(quint8 hid, const QString&strTip1, const QString&strTip2, bool bSetToAll)
@@ -174,11 +195,22 @@ void ModuleKeyboard::setKeyTip(quint8 hid, const QString&strTip1, const QString&
 
 void ModuleKeyboard::setKeyTip(const QString&objname,const QString&strTip1,const QString&strTip2,bool bSetToAll)
 {
-    if(m_bSetLightMode) return ;
+    if(m_bFixMode     ) return;
+    if(m_bSetLightMode) return;
+    if(m_bSetMtMode   ) return;
+
     QPushButton *btn = findChild<QPushButton*>(objname);
     if(btn)
     {
-        static_cast<KeyboardButton *>(btn)->setTipText(strTip1, strTip2);
+        if(strTip1 == "DISABLED")
+        {
+            btn->setDisabled(true);
+            setButtonEnable(btn,false,false);
+        }
+        else
+        {
+            static_cast<KeyboardButton *>(btn)->setTipText(strTip1, strTip2);
+        }
     }
 
     if(!bSetToAll) return;
@@ -187,18 +219,22 @@ void ModuleKeyboard::setKeyTip(const QString&objname,const QString&strTip1,const
         pkb->setKeyTip(objname, strTip1, strTip2, false);
 }
 
-void ModuleKeyboard::setKeyEnable(const QString&objname,bool bEnable,bool bSetToAll)
+void ModuleKeyboard::setKeyEnable(const QString&objname, bool bEnable, bool bToDevice, bool bSetToAll)
 {
-    if(m_bFixMode) return;
-    if(m_bSetLightMode) return ;
+    if(m_bFixMode     ) return;
+    if(m_bSetLightMode) return;
+    if(m_bSetMtMode   ) return;
 
     QPushButton *btn = findChild<QPushButton*>(objname);
     if(btn) btn->setEnabled(bEnable);
 
     if(!bSetToAll) return;
 
+    if(bToDevice)
+        DialogDeviceConnect::instance()->enableKey(objname.right(3).toInt(),bEnable);
+
     for(ModuleKeyboard*pkb:s_kbInstance)
-        pkb->setKeyEnable(objname,bEnable,false);
+        pkb->setKeyEnable(objname,bEnable,false,false);
 }
 
 void ModuleKeyboard::setkeyHited(int id)
@@ -210,7 +246,7 @@ void ModuleKeyboard::setkeyHited(int id)
     QPushButton *btn = findChild<QPushButton*>(strName);
     if(btn)
     {
-        btn->setStyleSheet(strStyle + R"(
+        btn->setStyleSheet(R"(
             QPushButton:disabled { background-color: #FF9052; color: white; }
         )") ;
     }
@@ -226,8 +262,7 @@ void ModuleKeyboard::setKeyFixMode()
         for(QAbstractButton*btn:btns)
         {
             btn->setEnabled(false);
-            btn->setStyleSheet(strStyle + "QPushButton:disabled { background-color: white; color: black; }" +
-                               (m_spcBtn == btn ? "QPushButton{ border-radius:24px;}":""));
+            //btn->setStyleSheet("QPushButton:disabled { background-color: white; color: black; }" );
         }
         update();
     });
@@ -263,7 +298,7 @@ bool ModuleKeyboard::event(QEvent *event)
                 if(btn->geometry().contains(clkPt))
                 {
                     m_curBtn = btn;
-                    m_Menu->setText(tr("禁用该按键")) ;
+                    m_Menu->setText(static_cast<KeyboardButton *>(btn)->hasTip()?tr("清除设置"):tr("禁用按键")) ;
                     QPoint pos = btn->mapToGlobal(QPoint(btn->width()+5,(btn->height() - m_Menu->height())/2));
                     m_Menu->move(pos);
                     m_Menu->show();

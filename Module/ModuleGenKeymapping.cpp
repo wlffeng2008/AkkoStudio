@@ -8,6 +8,14 @@ static ModuleGenKeymapping *s_map = nullptr ;
 ModuleGenKeymapping::ModuleGenKeymapping(QWidget *parent):QWidget(parent)
 {
     s_map = this;
+    initList();
+    hide() ;
+}
+
+void ModuleGenKeymapping::initList()
+{
+    m_fnList.clear();
+    m_muList.clear();
 
     m_fnList.push_back(new keyItem({0x0a, 0x01, 0x00, 0x00}, tr("L-Fn键"    ))) ;
     m_fnList.push_back(new keyItem({0x03, 0x00, 0xb6, 0x00}, tr("上一曲"    ))) ;
@@ -17,8 +25,8 @@ ModuleGenKeymapping::ModuleGenKeymapping(QWidget *parent):QWidget(parent)
     m_fnList.push_back(new keyItem({0x03, 0x00, 0xe9, 0x00}, tr("音量+"     ))) ;
     m_fnList.push_back(new keyItem({0x03, 0x00, 0xea, 0x00}, tr("音量-"     ))) ;
     m_fnList.push_back(new keyItem({0x03, 0x00, 0x83, 0x01}, tr("播放器"    ))) ;
-    m_fnList.push_back(new keyItem({0x03, 0x00, 0x92, 0x01}, tr("计算器"    ))) ; //09
-    m_fnList.push_back(new keyItem({0x03, 0x00, 0x8a, 0x01}, tr("邮件"      ))) ;
+    m_fnList.push_back(new keyItem({0x03, 0x00, 0x92, 0x01}, tr("计算器"    ))) ;
+    m_fnList.push_back(new keyItem({0x03, 0x00, 0x8a, 0x01}, tr("邮件"      ))) ; //09
 
     m_fnList.push_back(new keyItem({0x03, 0x00, 0x94, 0x01}, tr("我的电脑"  ))) ;
     m_fnList.push_back(new keyItem({0x03, 0x00, 0x21, 0x02}, tr("搜索"      ))) ;
@@ -27,9 +35,9 @@ ModuleGenKeymapping::ModuleGenKeymapping(QWidget *parent):QWidget(parent)
     m_fnList.push_back(new keyItem({0x03, 0x00, 0x6f, 0x00}, tr("亮度+"     ))) ;
     m_fnList.push_back(new keyItem({0x03, 0x00, 0x70, 0x00}, tr("亮度-"     ))) ;
     m_fnList.push_back(new keyItem({0x00, 0x00, 0xe3, 0x2e}, tr("放大"      ))) ;  
-    m_fnList.push_back(new keyItem({0x00, 0x00, 0xe3, 0x2d}, tr("缩小"      ))) ;//19
+    m_fnList.push_back(new keyItem({0x00, 0x00, 0xe3, 0x2d}, tr("缩小"      ))) ;
     m_fnList.push_back(new keyItem({0x12, 0x00, 0xe3, 0x2c}, tr("呼出Siri"  ))) ;
-    m_fnList.push_back(new keyItem({0x03, 0x00, 0xb7, 0x00}, tr("停止"      ))) ;
+    m_fnList.push_back(new keyItem({0x03, 0x00, 0xb7, 0x00}, tr("停止"      ))) ; //19
 
     m_fnList.push_back(new keyItem({0x00, 0xe0, 0x2c, 0x00}, tr("切换输入法"))) ;
     m_fnList.push_back(new keyItem({0x03, 0x00, 0x24, 0x02}, tr("返回"      ))) ;
@@ -322,7 +330,7 @@ static QList<keyMapItem> s_keMapTable=
     { "_]",           50,  0x00 },
     { "Enter",        40,    28 },
 
-    { "L-Shift",    0xe1,    42 },
+    { "L-Shift",     225,    42 },
     { "L-\\",        100,    53 },
     { "Z",            29,    44 },
     { "X",            27,    45 },
@@ -397,7 +405,9 @@ static QList<keyMapItem> s_keMapTable=
     { "F12",          69,    88 },
     { "Print-Screen", 70, 57436 },
     { "Scroll-Lock" , 71,    70 },
-    { "Pause-Break" , 72,    69 }
+    { "Pause-Break" , 72,    69 },
+    { "VOL +" ,      234,     0 },
+    { "VOL -" ,      233,     0 }
 };
 
 QString getKeyValue(quint16 hid)
@@ -477,7 +487,7 @@ QString ModuleGenKeymapping::getKeyString(const keyData *data)
 bool isKeyEqual(const keyData*kdA, const keyData*kdB)
 {
     return (
-            kdA->b0 == kdB->b0 &&
+            // kdA->b0 == kdB->b0 &&
             kdA->b1 == kdB->b1 &&
             kdA->b2 == kdB->b2 &&
             kdA->b3 == kdB->b3
@@ -487,6 +497,13 @@ bool isKeyEqual(const keyData*kdA, const keyData*kdB)
 bool isKeyChanged(quint8 index,const keyData*kd)
 {
     return !isKeyEqual(getMatData(index),kd);
+}
+
+bool isKeyDisabled(quint8 index)
+{
+    keyData*tk0 = getFnData(index);
+    keyData tk1 = {0,0,0,0};
+    return isKeyEqual(tk0,&tk1) ;
 }
 
 keyData* getMuData(quint8 index)
@@ -503,10 +520,10 @@ keyData* getMatData(quint8 index)
 {
     static keyData kd ;
 
-    kd.b0 = defaultMatrix_id2807[index*4 + 0];
-    kd.b1 = defaultMatrix_id2807[index*4 + 1];
-    kd.b2 = defaultMatrix_id2807[index*4 + 2];
-    kd.b3 = defaultMatrix_id2807[index*4 + 3];
+    kd.b0 = defaultMatrix_id2807[index * 4 + 0];
+    kd.b1 = defaultMatrix_id2807[index * 4 + 1];
+    kd.b2 = defaultMatrix_id2807[index * 4 + 2];
+    kd.b3 = defaultMatrix_id2807[index * 4 + 3];
 
     return &kd;
 }

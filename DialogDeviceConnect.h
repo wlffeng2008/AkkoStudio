@@ -22,6 +22,15 @@ namespace Ui {
 class DialogDeviceConnect;
 }
 
+typedef struct
+{
+    quint16 timeBt ;
+    quint16 time24 ;
+    quint16 timeDBt ;
+    quint16 timeD24 ;
+
+}sleepTime;
+
 typedef enum
 {
     CMD_SET_INFOR       = 0x00,  //(disable)
@@ -56,7 +65,9 @@ typedef enum
     CMD_GET_FN          =0x90,
     CMD_SET_SLEEPTIME  =0x11,
     CMD_GET_SLEEPTIME	 =0x91,
-    CMD_SET_USERGIF	 =0x12
+    CMD_SET_USERGIF	 =0x12,
+    CMD_SET_AUTOOSEN   =0x17,
+    CMD_GET_AUTOOSEN   =0x97
 }KB_CMD;
 
 class USBNotifier : public QObject, public QAbstractNativeEventFilter
@@ -128,6 +139,7 @@ private:
     QList<QByteArray>m_readList ;
     void addReadCmd(quint8 cmd,int len=8);
     void addReadCmd(QByteArray &cmd);
+    void addReadCmd(const QString&strCmd);
 
     hid_device *m_pDev0 = nullptr;
     hid_device *m_pDev1 = nullptr;
@@ -148,6 +160,7 @@ private:
 
     void addLog(const QByteArray&log);
     QByteArray m_lastCmd ;
+    QByteArray m_E507 ;
     QByteArray m_Read[8] ;
 };
 

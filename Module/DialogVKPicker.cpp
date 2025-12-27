@@ -69,7 +69,7 @@ DialogVKPicker::DialogVKPicker(QWidget *parent)
 
         if(m_kd.b3 == 0)
         {
-            m_kd.b2=hid;
+            m_kd.b3=hid;
             ui->labelSelect3->setText(text);
             return ;
         }

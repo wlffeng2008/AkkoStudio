@@ -22,15 +22,17 @@ public:
     void setkeyHited(int id) ;
     void showFlag(bool show=true);
     void showMtFlag(bool show=true);
-    void setKeyEnable(const QString&objname,bool bEnable,bool bSetToAll=false) ;
+    void setKeyEnable(const QString&objname, bool bEnable, bool bToDevice, bool bSetToAll=false) ;
     void setLightMode();
 
     void setKeyTip(const QString&objname,const QString&strTip1,const QString&strTip2,bool bSetToAll=true);
     void setKeyTip(quint8 hid,const QString&strTip1,const QString&strTip2,bool bSetToAll=true);
-    void setSingleMode(bool set=true) ;
-    void setSelectCount(int count=3) ;
+    void setSingleMode(bool set=true);
+    void setSelectCount(int count=3);
 
     static void Update();
+
+    void keepSpeacial();
 
 signals:
     void onKeyClicked(const QString&text,quint8 hid);
@@ -43,19 +45,22 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void showEvent(QShowEvent *event) override;
 
 private:
     Ui::ModuleKeyboard *ui;
 
+    void setButtonEnable(QAbstractButton*btn,bool bEnable=true, bool bToDevice=true) ;
     QList<QAbstractButton*>m_disables ;
     QAbstractButton*m_curBtn = nullptr;
-    QAbstractButton*m_spcBtn = nullptr;
+
     CustomTooltip *m_Menu = nullptr;
 
     bool m_bFixMode = false ;
     int m_nSelectCount = 300 ;
 
     bool m_bSetLightMode=false;
+    bool m_bSetMtMode=false;
 
     bool m_draging =false ;
     QPoint m_clkPt={0,0} ;

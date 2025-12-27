@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QTimer>
+#include <QFrame>
 
 
 class keySetTooltip : public QWidget
@@ -21,6 +22,7 @@ protected:
 private:
     QLabel *label1 = nullptr;
     QLabel *label2 = nullptr;
+    QFrame *midLine = nullptr;
     bool m_bAutohide= true;
 };
 
@@ -34,7 +36,8 @@ public:
     void setMtFlag(const QString&flag);
     void showMtFlag(bool show=true);
 
-    void setTipText(const QString&strText1,const QString&strText2);
+    void setTipText(const QString&strText1="",const QString&strText2="");
+    bool hasTip();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
