@@ -106,7 +106,7 @@ class DialogDeviceConnect : public QDialog
 public:
     explicit DialogDeviceConnect(QWidget *parent = nullptr);
     ~DialogDeviceConnect();
-    void readSetting();
+    void executeCmd();
 
     static DialogDeviceConnect *instance() ;
 

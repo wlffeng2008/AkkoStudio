@@ -278,7 +278,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         QString strCmd = ui->lineEditCmd->text().trimmed(); //"8F 00 00 00 00 00 00 70" ;
         QByteArray data(QByteArray::fromHex(strCmd.toLatin1())) ;
         addReadCmd(data);
-        readSetting();
+        executeCmd();
     });
 
     connect(ui->pushButtonRead,&QPushButton::clicked,this,[=]{
@@ -287,38 +287,43 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         int nlen = hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
         if( nlen>0 )
         {
-            QByteArray data(buf+1,nlen-1) ;
-            quint8 cmd = (quint8)data[0] ;
+            QByteArray data(buf+1,nlen-1);
+            quint8 cmd = (quint8)data[0];
             int row = getRow(cmd);
 
             if(cmd & 0x80)
             {
                 for(int i=1; i<8; i++)
                 {
-                    setRowValue(row,2+i,(quint8)data[i]) ;
+                    setRowValue(row,2+i,(quint8)data[i]);
                 }
             }
-            qDebug() << "get_:" << data.toHex(' ').toUpper();
+            //qDebug() << "get_:" << data.toHex(' ').toUpper();
             quint8 *pCmd=(quint8 *)m_lastCmd.data();
             if(pCmd[0] == CMD_GET_KEYMATRIX)
             {
-                m_Read[pCmd[4]].append(data) ;
-                if(pCmd[3] == 7)
+                m_Read[pCmd[4]].append(data);
+                if(pCmd[3] == 7 && pCmd[4] == 3)
                 {
-
+                    qDebug() << "get_:" << m_Read[0].left(64).toHex(' ').toUpper();
+                    qDebug() << "get_:" << m_Read[1].left(64).toHex(' ').toUpper();
+                    qDebug() << "get_:" << m_Read[2].left(64).toHex(' ').toUpper();
+                    qDebug() << "get_:" << m_Read[3].left(64).toHex(' ').toUpper();
+                    qDebug() << "E507:" <<    m_E507.left(64).toHex(' ').toUpper();
                 }
             }
 
-            if(pCmd[0] == 0xE5 && pCmd[1] == 0x07)
+            if(pCmd[0] == 0xE5)
             {
-                m_E507.append(data);
+                if(pCmd[1] == 0x07)
+                    m_E507.append(data);
             }
 
             emit onReadBack(data);
 
-
             addLog(data);
-            readSetting();
+
+            executeCmd();
         }
     });
 
@@ -360,9 +365,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         m_pRdInput->start(20) ;
     });
 
-    ui->lineEditCmd->setStyleSheet(" ");
-    ui->lineEditPID->setStyleSheet(" ");
-    ui->lineEditVID->setStyleSheet(" ");
+
     ui->lineEditCmd->setStyleSheet("font-family: Fixedsys;");
     ui->lineEditPID->setStyleSheet("font-family: Fixedsys;");
     ui->lineEditVID->setStyleSheet("font-family: Fixedsys;");
@@ -377,11 +380,11 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     addReadCmd("e5 07 01 01");
 
     quint8 layer=0 ;
-    for(quint8 i=0; i<4; i++) // subLayer;
+    for(quint8 subLayer=0; subLayer<4; subLayer++) // subLayer;
     {
-        for(quint8 j=0; j<8; j++) // page
+        for(quint8 page=0; page<8; page++) // page
         {
-            quint8 tmp[8] = {0x8A,layer,0xFF,j,i,0,0,0} ;
+            quint8 tmp[8] = {0x8A,layer,0xFF,page,subLayer,0,0,0} ;
             QByteArray cmd((char *)tmp,8);
             addReadCmd(cmd);
         }
@@ -401,7 +404,7 @@ void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer)
     QByteArray snd((char*)tmp,13);
     addReadCmd(snd) ;
 
-    readSetting();
+    executeCmd();
 }
 
 void DialogDeviceConnect::enableKey(quint8 hid, bool enable, quint8 subLayer)
@@ -447,7 +450,7 @@ void DialogDeviceConnect::addReadCmd(QByteArray&cmd)
     m_readList.push_back(cmd);
 }
 
-void DialogDeviceConnect::readSetting()
+void DialogDeviceConnect::executeCmd()
 {
     if(m_readList.count() <= 0)
         return;
@@ -469,7 +472,7 @@ void DialogDeviceConnect::readSetting()
 
     m_lastCmd = cmd ;
 
-    qDebug() << "hid_send_feature_report:" << cmd.left(64).toHex(' ').toUpper();
+    qDebug() << "send:" << cmd.left(16).toHex(' ').toUpper();
 
     cmd.insert(0,(char)0) ; // report id
     hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);

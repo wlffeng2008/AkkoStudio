@@ -248,7 +248,7 @@ MainWindow::MainWindow(QWidget *parent)
         trayIcon->setContextMenu(trayMenu);
     }
 
-    m_pDevice->readSetting();
+    m_pDevice->executeCmd();
 }
 
 MainWindow::~MainWindow()
