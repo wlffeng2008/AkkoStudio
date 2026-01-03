@@ -6,6 +6,7 @@
 #include <QTimer>
 
 #include "ModuleDKSAdjust.h"
+#include "ModuleDKSItem.h"
 #include "ModuleGeneralMasker.h"
 #include "DialogDeviceConnect.h"
 #include "ModuleGenKeymapping.h"
@@ -64,6 +65,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         }
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
             ui->stackedWidget->setCurrentIndex(id) ;
+            m_setType = id ;
         });
         ui->pushButtonSet1->click() ;
     }
@@ -199,36 +201,85 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         }
     }) ;
 
+    connect(ui->frameDKS1,&ModuleDKSItem::onButtonClicked,this,[=]{
+        DialogVKPicker VKDlg(this);
+        if(VKDlg.exec() != QDialog::Accepted)
+            return ;
+        ui->frameDKS1->setText(getKeyString(&VKDlg.m_kd,false));
+        //setTo = VKDlg.m_kd;
+    });
+
+    connect(ui->frameDKS2,&ModuleDKSItem::onButtonClicked,this,[=]{
+        DialogVKPicker VKDlg(this);
+        if(VKDlg.exec() != QDialog::Accepted)
+            return ;
+        ui->frameDKS2->setText(getKeyString(&VKDlg.m_kd,false));
+        //setTo = VKDlg.m_kd;
+    });
+
+    connect(ui->frameDKS3,&ModuleDKSItem::onButtonClicked,this,[=]{
+        DialogVKPicker VKDlg(this);
+        if(VKDlg.exec() != QDialog::Accepted)
+            return ;
+        ui->frameDKS3->setText(getKeyString(&VKDlg.m_kd,false));
+        //setTo = VKDlg.m_kd;
+    });
+
+    connect(ui->frameDKS4,&ModuleDKSItem::onButtonClicked,this,[=]{
+        DialogVKPicker VKDlg(this);
+        if(VKDlg.exec() != QDialog::Accepted)
+            return ;
+        ui->frameDKS4->setText(getKeyString(&VKDlg.m_kd,false));
+        //setTo = VKDlg.m_kd;
+    });
+
     connect(ui->frameKeyboard,&ModuleKeyboard::onKeyClicked,this,[=](const QString&text,quint8 hid){
-        ui->pushButton_Snap1->setText(text) ;
-        keyData setTo={0};
-        if(ui->tabWidgetKey->currentIndex() == 0)
+        ui->pushButton_Snap1->setText(text);
+        if(m_setType == 0)
         {
-            DialogVKPicker VKDlg(this);
-            if(VKDlg.exec() != QDialog::Accepted)
-                return ;
-            setTo = VKDlg.m_kd;
+            keyData setTo={0};
+            if(ui->tabWidgetKey->currentIndex() == 0)
+            {
+                DialogVKPicker VKDlg(this);
+                if(VKDlg.exec() != QDialog::Accepted)
+                    return ;
+                setTo = VKDlg.m_kd;
+            }
+            else
+            {
+                DialogFNPicker FNDlg(this);
+                if(FNDlg.exec() != QDialog::Accepted)
+                    return;
+                setTo = FNDlg.m_kd;
+            }
+
+            DialogDeviceConnect *pCnn = DialogDeviceConnect::instance() ;
+            pCnn->changeKey(hid,&setTo);
+
+            QString strT1 = getKeyValue(hid);
+            QString strT2 = getKeyString(&setTo);
+            ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
+
+            if(m_pMask) m_pMask->hide() ;
         }
-        else
+
+        if(m_setType == 1)
         {
-            DialogFNPicker FNDlg(this);
-            if(FNDlg.exec() != QDialog::Accepted)
-                return;
-            setTo = FNDlg.m_kd;
+            int nTab = ui->tabWidget2->currentIndex();
+            switch(nTab)
+            {
+            case 0:
+                ui->pushButton_DKS->setText(text);
+                break;
+            }
+
         }
-
-        DialogDeviceConnect *pCnn = DialogDeviceConnect::instance() ;
-        pCnn->changeKey(hid,&setTo);
-
-        QString strT1 = getKeyValue(hid);
-        QString strT2 = getKeyString(&setTo);
-        ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
-
-
-        if(m_pMask) m_pMask->hide() ;
     });
 
     ui->frameKeyboard->setSelectCount(1);
+
+
+
 }
 
 

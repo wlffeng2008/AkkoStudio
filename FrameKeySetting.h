@@ -27,6 +27,7 @@ private:
     QLabel *m_toAdjust = nullptr;
     QWidget *m_pMask = nullptr;
 
+    int m_setType=0;
 };
 
 #endif // FRAMEKEYSETTING_H

@@ -31,7 +31,7 @@ bool isKeyChanged(quint8 index,const keyData*kd);
 bool isKeyDisabled(quint8 index);
 bool isKeyEqual(const keyData*kdA, const keyData*kdB);
 
-QString getKeyString(keyData *data);
+QString getKeyString(keyData *data,bool addPreffix=true);
 
 QString getKeyValue(quint16 nCode);
 quint16 getKeyHid(quint16 nCode);
@@ -45,7 +45,7 @@ public:
     explicit ModuleGenKeymapping(QWidget *parent=nullptr);
     ~ModuleGenKeymapping();
 
-    QString getKeyString(const keyData *data);
+    QString getKeyString(const keyData *data,bool addPreffix=true);
 
     keyData* getMuData(quint8 index);
     keyData* getFnData(quint8 index);

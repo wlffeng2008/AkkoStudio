@@ -23,12 +23,26 @@ ModuleDKSItem::ModuleDKSItem(QWidget *parent)
             m_dragX1 = 0;
         }
     });
+
+    connect(ui->pushButton_FuncKey,&QPushButton::clicked,this,[=]{
+        emit onButtonClicked();
+    });
 }
 
 ModuleDKSItem::~ModuleDKSItem()
 {
     delete ui;
 }
+
+void ModuleDKSItem::setText(const QString&text)
+{
+    ui->pushButton_FuncKey->setText(text);
+    if(text.isEmpty())
+        ui->pushButton_FuncKey->setText(tr("未设置功能"));
+}
+
+void ModuleDKSItem::setData(quint8 data){}
+quint8 ModuleDKSItem::getData(){ return 4;}
 
 bool ModuleDKSItem::eventFilter(QObject*watched,QEvent*event)
 {

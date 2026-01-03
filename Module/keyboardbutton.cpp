@@ -85,8 +85,9 @@ void keySetTooltip::paintEvent(QPaintEvent *event)
 
 KeyboardButton::KeyboardButton(QWidget *parent):QPushButton(parent)
 {
-    m_mtFlag = ":/images/mt0.png" ;
-    setTipText();
+    m_mtFlag = ":/images/mt0.png";
+    QTimer::singleShot(100,this,[=]{setTipText();});
+
 }
 
 static QString strBasic(R"(
@@ -94,38 +95,34 @@ static QString strBasic(R"(
             color: black;
             border: 1px solid #EAEAEA;
             background-color: #FBFBFB;
-            padding: 2px 2px;
+            padding: 0px 0px;
             outline: none;
             font-weight: 600;
-
             [==set==]
         }
 
     QPushButton:hover    { background-color: #D8D8D8; border: 1px solid #EAEAEA;}
-    QPushButton:pressed  { background-color: #3F3F3F; color: white; }
+    QPushButton:pressed  { background-color: #D8D8D8; color: white; }
     QPushButton:checked  { background-color: #3F3F3F; color: white; }
     QPushButton:disabled { background-color: #EAEAEA; color: gray; }
 )");
-
 
 static QString strSetTip(R"(
     QPushButton {
             color: black;
             border: 1px solid #D8BDFF;
             background-color: #FAF7FF;
-            padding: 2px 2px;
+            padding: 0px 0px;
             outline: none;
             font-weight:600;
-
             [==set==]
         }
 
     QPushButton:hover    { background-color: #D8D8D8; border: 1px solid #EAEAEA;}
-    QPushButton:pressed  { background-color: #D8BDFF; color: white; }
+    QPushButton:pressed  { background-color: #D8D8D8; color: white; }
     QPushButton:checked  { background-color: #D8BDFF; color: white; }
     QPushButton:disabled { background-color: #EAEAEA; color: gray; }
 )");
-
 
 static QString strVolP(R"(
 
@@ -155,22 +152,21 @@ bool KeyboardButton::hasTip()
 
 void KeyboardButton::setTipText(const QString&strText1,const QString&strText2)
 {
+    QString strStyle = strBasic;
     QString strName=objectName();
     QString strSet("");
     if(strName.contains("_Hid234"))
-        strSet = strVolP ;
+        strSet = strVolP;
     if(strName.contains("_Hid233"))
-        strSet = strVolM ;
+        strSet = strVolM;
 
     if(strText1.isEmpty() || strText2.isEmpty())
     {
-        QString strStyle = strBasic ;
         strStyle.replace("[==set==]",strSet);
         setStyleSheet(strStyle);
-        if(m_tip)
-            delete m_tip ;
-        m_tip = nullptr ;
-        return ;
+        if(m_tip) delete m_tip;
+        m_tip = nullptr;
+        return;
     }
 
     if(!m_tip) m_tip = new keySetTooltip(this);
@@ -178,7 +174,7 @@ void KeyboardButton::setTipText(const QString&strText1,const QString&strText2)
     m_tip->setText1(strText1);
     m_tip->setText2(strText2);
 
-    QString strStyle = strSetTip ;
+    strStyle = strSetTip;
     strStyle.replace("[==set==]",strSet);
     setStyleSheet(strStyle);
 }

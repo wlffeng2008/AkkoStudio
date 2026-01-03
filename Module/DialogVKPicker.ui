@@ -3281,7 +3281,7 @@ Lock</string>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>200</width>
+           <width>280</width>
            <height>0</height>
           </size>
          </property>

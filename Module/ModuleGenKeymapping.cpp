@@ -452,7 +452,7 @@ quint16 getKeyNCode(quint16 hid)
     return nCode;
 }
 
-QString ModuleGenKeymapping::getKeyString(const keyData *data)
+QString ModuleGenKeymapping::getKeyString(const keyData *data,bool addPreffix)
 {
     for(const keyItem *k:std::as_const(m_fnList))
     {
@@ -476,7 +476,8 @@ QString ModuleGenKeymapping::getKeyString(const keyData *data)
 
     if(strV1.isEmpty()) return QString("");
 
-    QString strTxt(tr("组合键: ")) ;
+    QString strTxt(tr("组合键: "));
+    if(!addPreffix) strTxt="";
     if(!strV1.isEmpty()) strTxt += strV1;
     if(!strV2.isEmpty()) strTxt += QString(" + ") + strV2;
     if(!strV3.isEmpty()) strTxt += QString(" + ") + strV3;
@@ -528,7 +529,9 @@ keyData* getMatData(quint8 index)
     return &kd;
 }
 
-QString getKeyString(keyData *data)
+QString getKeyString(keyData *data, bool addPreffix)
 {
-    return s_map->getKeyString(data);
+    if( data->b0 == 0 && data->b1 == 0 &&  data->b2 ==0 && data->b3 == 0)
+        return "";
+    return s_map->getKeyString(data,addPreffix);
 }

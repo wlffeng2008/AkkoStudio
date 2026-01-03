@@ -16,6 +16,13 @@ public:
     explicit ModuleDKSItem(QWidget *parent = nullptr);
     ~ModuleDKSItem();
 
+    void setText(const QString&text);
+    void setData(quint8 data);
+    quint8 getData();
+
+signals:
+    void onButtonClicked();
+
 protected:
     bool eventFilter(QObject*watched, QEvent*event) override;
     bool event(QEvent*event) override;
@@ -24,8 +31,8 @@ protected:
 private:
     Ui::ModuleDKSItem *ui;
 
-    bool m_dragging = false ;
-    bool m_switchs[4]={false} ;
+    bool m_dragging = false;
+    bool m_switchs[4]={false};
     int m_dragX1 = 0 ;
     int m_dragX2 = 0 ;
     QTimer m_TMReset ;
