@@ -220,7 +220,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>3</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
@@ -1760,6 +1760,18 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ModuleKeyboard</class>
+   <extends>QFrame</extends>
+   <header>modulekeyboard.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>NewTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header>newtabwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>ToggleButton</class>
    <extends>QCheckBox</extends>
    <header>togglebutton.h</header>
@@ -1770,26 +1782,14 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <header>modulelinear.h</header>
    <container>1</container>
   </customwidget>
-  <customwidget>
-   <class>NewTabWidget</class>
-   <extends>QTabWidget</extends>
-   <header>newtabwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ModuleKeyboard</class>
-   <extends>QFrame</extends>
-   <header>modulekeyboard.h</header>
-   <container>1</container>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="res.qrc"/>
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_3"/>
   <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

@@ -229,9 +229,23 @@ void ModuleKeyboard::setKeyEnable(const QString&objname, bool bEnable, bool bToD
     if(btn) btn->setEnabled(bEnable);
 
     if(!bSetToAll) return;
-
+    quint8 hid = objname.right(3).toInt();
+    DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
+    quint8 type = pCnn->getKeyType(hid);
     if(bToDevice)
-        DialogDeviceConnect::instance()->enableKey(objname.right(3).toInt(),bEnable);
+    {
+        pCnn->restKey(hid);
+        if(type == 7)
+        {
+            quint8 index=::getIndex(hid);
+            quint8 snapKid=pCnn->getSnapkey(index);
+            pCnn->send65Cmd(0x07,snapKid,0,true);
+            QString strName = QString::asprintf("pushButton_Hid%03d",snapKid);
+            KeyboardButton *btn = findChild<KeyboardButton*>(strName);
+            btn->setTipText();
+        }
+        pCnn->enableKey(hid,bEnable);
+    }
 
     for(ModuleKeyboard*pkb:s_kbInstance)
         pkb->setKeyEnable(objname,bEnable,false,false);

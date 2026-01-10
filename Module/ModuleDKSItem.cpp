@@ -16,6 +16,11 @@ ModuleDKSItem::ModuleDKSItem(QWidget *parent)
     ui->labelSwitch4->installEventFilter(this);
     setMouseTracking(true) ;
 
+    setSwitch(0);
+    setSwitch(1);
+    setSwitch(2);
+    setSwitch(3);
+
     connect(&m_TMReset,&QTimer::timeout,this,[=]{
         if(!m_dragging)
         {
@@ -34,6 +39,13 @@ ModuleDKSItem::~ModuleDKSItem()
     delete ui;
 }
 
+void ModuleDKSItem::setSwitch(int index,bool on)
+{
+    QList<QLabel*> labels={ui->labelSwitch1,ui->labelSwitch2,ui->labelSwitch3,ui->labelSwitch4};
+    m_switchs[index] = on;
+    labels[index]->setPixmap(QPixmap(on?":/images/k/ic_selected.png":":/images/k/ic_add.png"));
+}
+
 void ModuleDKSItem::setText(const QString&text)
 {
     ui->pushButton_FuncKey->setText(text);
@@ -41,8 +53,15 @@ void ModuleDKSItem::setText(const QString&text)
         ui->pushButton_FuncKey->setText(tr("未设置功能"));
 }
 
-void ModuleDKSItem::setData(quint8 data){}
-quint8 ModuleDKSItem::getData(){ return 4;}
+void ModuleDKSItem::setData(quint8 data)
+{
+
+}
+
+quint8 ModuleDKSItem::getData()
+{
+    return 4;
+}
 
 bool ModuleDKSItem::eventFilter(QObject*watched,QEvent*event)
 {
@@ -54,8 +73,7 @@ bool ModuleDKSItem::eventFilter(QObject*watched,QEvent*event)
         {
             if(watched == labels[i])
             {
-                m_switchs[i] = !m_switchs[i];
-                labels[i]->setPixmap(QPixmap(m_switchs[i]?":/images/k/ic_selected.png":":/images/k/ic_add.png"));
+                setSwitch(i,!m_switchs[i]);
                 return true ;
             }
         }
@@ -125,10 +143,10 @@ void ModuleDKSItem::paintEvent(QPaintEvent*event)
     QList<QLabel*> labels={ui->labelSwitch1,ui->labelSwitch2,ui->labelSwitch3,ui->labelSwitch4};
     for(int i=0; i<4; i++)
     {
-        QPoint pos = labels[i]->pos()  ;
+        QPoint pos = labels[i]->pos();
         if(x1<pos.x())
         {
-            x1 = pos.x() - 15 ;
+            x1 = pos.x() - 15;
             break;
         }
     }

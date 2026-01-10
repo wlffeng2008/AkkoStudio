@@ -248,7 +248,7 @@ MainWindow::MainWindow(QWidget *parent)
         trayIcon->setContextMenu(trayMenu);
     }
 
-    m_pDevice->executeCmd();
+    m_pDevice->readAllData();
 }
 
 MainWindow::~MainWindow()
@@ -350,7 +350,7 @@ void MainWindow::focusOutEvent(QFocusEvent *event)
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    qDebug() <<"MainWindow::keyPressEvent: " << event->nativeScanCode() << event->nativeVirtualKey() ;
+    //qDebug() <<"MainWindow::keyPressEvent:" << event->nativeScanCode() << event->nativeVirtualKey() ;
     if(event->key() == Qt::Key_Escape)
     {
         //close() ;
@@ -358,8 +358,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
     QMainWindow::keyPressEvent(event);
 }
+
 void MainWindow::keyReleaseEvent(QKeyEvent *event)
 {
+    //qDebug() <<"MainWindow::keyReleaseEvent:" << event->nativeScanCode() << event->nativeVirtualKey() ;
     if(event->key() == Qt::Key_Escape)
     {
         //close() ;

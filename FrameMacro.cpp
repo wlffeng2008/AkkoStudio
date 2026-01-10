@@ -1,4 +1,6 @@
 #include "FrameMacro.h"
+#include "ModuleGenKeymapping.h"
+#include "modulemacromanager.h"
 #include "ui_FrameMacro.h"
 
 #include "MacroItem.h"
@@ -6,6 +8,8 @@
 
 #include <QLayout>
 #include <QKeyEvent>
+#include <QMouseEvent>
+#include <QScrollBar>
 
 static QList<MacroSquare*>s_MSquares;
 
@@ -14,49 +18,76 @@ FrameMacro::FrameMacro(QWidget *parent)
     , ui(new Ui::FrameMacro)
 {
     ui->setupUi(this);
+    srand(time(nullptr));
 
+    m_pMM = new ModuleMacroManager(this);
+
+    ui->frameT->hide();
     {
         QLayout *pLayout = ui->scrollAreaWidgetContents1->layout() ;
         pLayout->setSpacing(10) ;
         pLayout->setContentsMargins(5,5,5,5);
         pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
 
-        for(int i=0; i<5; i++)
+        m_loading=true;
+        for(int i=0; i<50; i++)
         {
-            MacroItem *MItem = new MacroItem(this) ;
-            MItem->setFixedSize(220,32);
-            pLayout->addWidget(MItem);
+            addMacroBar((QObject*)m_pMM->getMarcoProject(i));
         }
+        m_loading=false;
     }
 
-    {
-        srand(time(nullptr));
-        for(int i=0; i<26; i++)
-        {
-            MacroSquare *btn = new MacroSquare(QString((char)('A'+ i)),rand()%3,this) ;
-            btn->setFixedSize(50,50);
-            btn->setFocusPolicy(Qt::NoFocus) ;
-            s_MSquares.push_back(btn);
-        }
-        updateView() ;
+    connect(ui->pushButtonAddMacro,&QPushButton::clicked,this,[=](){
+        addMacroBar((QObject*)m_pMM->addMacroProject());
+    });
 
+    {
         connect(ui->pushButtonDelete,&QPushButton::clicked,this,[=]{
-            removeView() ;
+            removeView();
+            saveEvents();
+        });
+
+        connect(ui->pushButtonClear,&QPushButton::clicked,this,[=]{
+            int nCount = s_MSquares.count();
+            for(int i=nCount-1; i>=0; i--)
+            {
+                MacroSquare *btn = s_MSquares[i];
+                btn->hide();
+                delete btn;
+            }
+            s_MSquares.clear();
+            m_delay=nullptr;
+            //saveEvents();
         });
 
         connect(ui->pushButtonInsert,&QPushButton::clicked,this,[=]{
             for(int i=0; i<10; i++)
             {
-                MacroSquare *btn = new MacroSquare(QString((char)('A'+ i)),rand()%3,this) ;
-                btn->setFixedSize(50,50);
-                btn->setFocusPolicy(Qt::NoFocus) ;
-                s_MSquares.insert(rand()%s_MSquares.count(),btn);
+                //addMacroSquare(QString((char)('A'+ i)),rand()%3,rand(),rand()%2);
             }
-            updateView() ;
+            updateView();
+        });
+
+        connect(ui->pushButtonRecord,&QPushButton::clicked,this,[=]{
+            m_delay=nullptr;
+            m_recording = ui->pushButtonRecord->isChecked();
+            ui->pushButtonRecord->setText(m_recording?tr("停止录制"):tr("开始录制"));
+            if(!m_recording) saveEvents();
+            setFocus();
+        });
+
+        connect(ui->pushButtonSetDelay,&QPushButton::clicked,this,[=]{
+            quint16 delay=ui->lineEditDelay->text().trimmed().toUInt();
+            for(MacroSquare *item:std::as_const(s_MSquares))
+            {
+                item->setDelay(delay);
+            }
+
+            saveEvents();
         });
     }
 
-    setFocusPolicy(Qt::StrongFocus) ;
+    setFocusPolicy(Qt::StrongFocus);
 }
 
 FrameMacro::~FrameMacro()
@@ -64,8 +95,101 @@ FrameMacro::~FrameMacro()
     delete ui;
 }
 
+void FrameMacro::addMacroSquare(const QString&text,quint8 type,quint8 value,bool down)
+{
+    if(!m_loading)
+    {
+        if(!m_recording) return;
+        if(!m_canAdd) return;
+    }
+
+    {
+        QString strText=text;
+        if(value == 240) strText=tr("左键");
+        if(value == 241) strText=tr("右键");
+        if(value == 242) strText=tr("中键");
+        MacroSquare *macro = new MacroSquare(strText,type,value,down,this);
+        macro->setFixedSize(56,56);
+        macro->setFocusPolicy(Qt::NoFocus);
+        s_MSquares.push_back(macro);
+    }
+
+    //if(!m_loading)
+    {
+        MacroSquare *macro = new MacroSquare(tr("延迟"),3,50,down,this);
+        macro->setFixedSize(56,56);
+        macro->setFocusPolicy(Qt::NoFocus);
+        s_MSquares.push_back(macro);
+        m_delay=macro;
+    }
+
+    updateView();
+}
+
+void FrameMacro::addMacroBar(QObject *item)
+{
+    MacroProject *prj=(MacroProject *)item;
+    if(!prj) return;
+    QLayout *pLayout = ui->scrollAreaWidgetContents1->layout() ;
+    MacroItem *MItem = new MacroItem(this);
+    MItem->setFixedSize(220,44);
+    MItem->setMacroName(prj->name);
+    MItem->setRelData(item);
+    pLayout->addWidget(MItem);
+    connect(MItem,&MacroItem::onOperation,this,[=](int action,QWidget *widget){
+        MacroItem *item=(MacroItem *)widget;
+        m_prj = (MacroProject *)item->getRelData();
+        if(action == 1)
+        {
+            deleteMacro(item);
+        }
+
+        if(action == 2)
+        {
+            m_prj->name = item->getMarcoName();
+            m_pMM->saveLoadHeader();
+        }
+
+        if(action == 0)
+        {
+            ui->labelTitle1->setText(item->getMarcoName());
+            loadEvents();
+        }
+    });
+
+    if(!m_prj)
+    {
+        m_prj = prj;
+        ui->labelTitle1->setText(prj->name);
+        MItem->setActive();
+        loadEvents();
+    }
+
+    if(m_loading) return;
+
+    QTimer::singleShot(10,this,[=]{
+        MItem->setActive();
+        ui->scrollAreaWidgetContents1->adjustSize();
+        ui->scrollAreaWidgetContents1->update();
+        QScrollBar *vScrollBar = ui->scrollArea1->verticalScrollBar();
+        vScrollBar->setValue(vScrollBar->maximum());
+    });
+}
+
+void FrameMacro::deleteMacro(QWidget *item)
+{
+    ui->scrollAreaWidgetContents1->layout()->removeWidget(item);
+
+    MacroProject *prj=(MacroProject *)item;
+    if(!prj) return ;
+    m_pMM->delMacroProject(prj);
+    item->deleteLater() ;
+}
+
 void FrameMacro::updateView()
 {
+    MacroSquare::LostFocus();
+
     QGridLayout *pLayout = ui->gridLayout;
     pLayout->setSpacing(8) ;
     pLayout->setContentsMargins(10,10,0,0);
@@ -77,15 +201,22 @@ void FrameMacro::updateView()
         pLayout->removeWidget(item);
     }
 
-    int nCount = s_MSquares.count() ;
+    int nCount = s_MSquares.count();
     for(int i=0; i<nCount; i++)
     {
         MacroSquare *btn = s_MSquares[i];
-        pLayout->addWidget(btn,i/13,i%13);
+        pLayout->addWidget(btn,i/12,i%12);
         btn->setSelected(false) ;
     }
     pLayout->invalidate();
-    update() ;
+    update();
+
+    QTimer::singleShot(10,this,[=]{
+        ui->scrollAreaWidgetContents2->adjustSize();
+        ui->scrollAreaWidgetContents2->update();
+        QScrollBar *vScrollBar = ui->scrollArea2->verticalScrollBar();
+        vScrollBar->setValue(vScrollBar->maximum());
+    });
 }
 
 void FrameMacro::removeView()
@@ -98,29 +229,137 @@ void FrameMacro::removeView()
         {
             btn->setSelected(false) ;
             btn->hide() ;
+            delete btn ;
             s_MSquares.removeAt(i) ;
         }
     }
-    updateView() ;
+    updateView();
+    m_delay=nullptr;
 }
 
-void FrameMacro::focusOutEvent(QFocusEvent *event)
+bool FrameMacro::event(QEvent *event)
 {
-    MacroSquare::LostFocus();
-}
+    if(event->type()==QEvent::MouseButtonDblClick)
+    {
+        m_lastDelay = m_tcount.elapsed();
+        if(m_delay) m_delay->setDelay(m_lastDelay);
+        m_tcount.restart();
 
-void FrameMacro::mousePressEvent(QMouseEvent *event)
-{
-    MacroSquare::LostFocus();
+        QMouseEvent *pME = static_cast<QMouseEvent *>(event);
+        quint8 btn = 240;
+        if(pME->button() == Qt::RightButton ) btn = 241;
+        if(pME->button() == Qt::MiddleButton) btn = 242;
+        addMacroSquare("",1,btn,true);
+        addMacroSquare("",1,btn,false);
+        addMacroSquare("",1,btn,true);
+        addMacroSquare("",1,btn,false);
+        updateView();
+        m_canAdd=false;
+        QTimer::singleShot(200,this,[=]{m_canAdd=true;});
+        return true;
+    }
+
+    if(event->type()==QEvent::MouseButtonPress)
+    {
+        m_lastDelay = m_tcount.elapsed();
+        if(m_delay) m_delay->setDelay(m_lastDelay);
+        m_tcount.restart();
+
+        QMouseEvent *pME = static_cast<QMouseEvent *>(event);
+        quint8 btn = 240;
+        if(pME->button() == Qt::RightButton ) btn = 241;
+        if(pME->button() == Qt::MiddleButton) btn = 242;
+        addMacroSquare("",1,btn,true);
+    }
+
+    if(event->type() == QEvent::MouseButtonRelease)
+    {
+        m_lastDelay = m_tcount.elapsed();
+        if(m_delay) m_delay->setDelay(m_lastDelay);
+        m_tcount.restart();
+
+        QMouseEvent *pME = static_cast<QMouseEvent *>(event);
+        quint8 btn = 240;
+        if(pME->button() == Qt::RightButton ) btn = 241;
+        if(pME->button() == Qt::MiddleButton) btn = 242;
+        addMacroSquare("",1,btn,false);
+    }
+
+    return QFrame::event(event);
 }
 
 void FrameMacro::keyPressEvent(QKeyEvent *event)
 {
-    qDebug() << "FrameMacro::QKeyEvent" << event->key() << event->nativeScanCode() ;
+    if (!event->isAutoRepeat() && event->spontaneous())
+    {
+        m_lastDelay = m_tcount.elapsed();
+        if(m_delay) m_delay->setDelay(m_lastDelay);
+        m_tcount.restart();
+
+        quint8 hid = getKeyHid(event->nativeScanCode());
+        addMacroSquare(::getKeyValue(hid),0,hid,true);
+    }
     QFrame::keyPressEvent(event);
 }
 
 void FrameMacro::keyReleaseEvent(QKeyEvent *event)
 {
+    if (!event->isAutoRepeat() && event->spontaneous())
+    {
+        m_lastDelay = m_tcount.elapsed();
+        if(m_delay) m_delay->setDelay(m_lastDelay);
+        m_tcount.restart();
+
+        quint8 hid = getKeyHid(event->nativeScanCode());
+        addMacroSquare(::getKeyValue(hid),0,hid,false);
+
+    }
     QFrame::keyReleaseEvent(event);
+}
+
+void FrameMacro::loadEvents()
+{
+    m_loading=true;
+    if(m_prj)
+    {
+        int count = s_MSquares.count();
+        for(int i=count-1; i>=0; i--)
+        {
+            MacroSquare *btn = s_MSquares[i];
+            btn->hide();
+            //delete btn ;
+        }
+
+        s_MSquares.clear();
+        m_prj->events.clear();
+        m_pMM->saveLoadEvent(m_prj,false);
+
+        count = m_prj->events.count();
+        for(int i=0; i<count; i+=2)
+        {
+            MacroEvent *evt0 = m_prj->events[i+0];
+            MacroEvent *evt1 = m_prj->events[i+1];
+            addMacroSquare(evt0->text,evt0->type,evt0->value,evt0->down);
+            m_delay->setDelay(evt1->value);
+        }
+    }
+    m_loading=false;
+    m_delay=nullptr;
+}
+
+void FrameMacro::saveEvents()
+{
+    if(m_prj)
+    {
+        int count = s_MSquares.count();
+        m_prj->events.clear();
+
+        for(int i=0; i<count;i++)
+        {
+            MacroSquare *pSQ = s_MSquares[i];
+            m_pMM->addMacroEvent(m_prj,pSQ->m_type,pSQ->m_value,pSQ->m_down,pSQ->m_text);
+        }
+        m_pMM->saveLoadEvent(m_prj);
+    }
+    m_delay=nullptr;
 }

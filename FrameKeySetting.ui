@@ -246,7 +246,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                <x>20</x>
                <y>20</y>
                <width>901</width>
-               <height>321</height>
+               <height>45</height>
               </rect>
              </property>
              <property name="font">
@@ -257,7 +257,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               </font>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="tab11">
               <attribute name="title">
@@ -946,44 +946,12 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             <property name="styleSheet">
              <string notr="true"/>
             </property>
-            <widget class="QFrame" name="frame">
-             <property name="geometry">
-              <rect>
-               <x>572</x>
-               <y>4</y>
-               <width>349</width>
-               <height>333</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}
-</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
-               <widget class="VirtualKeyboard" name="frameVK">
-                <property name="frameShape">
-                 <enum>QFrame::Shape::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
             <widget class="QFrame" name="frameTab2">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>551</width>
+               <width>920</width>
                <height>341</height>
               </rect>
              </property>
@@ -1002,28 +970,31 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                <rect>
                 <x>20</x>
                 <y>20</y>
-                <width>521</width>
-                <height>311</height>
+                <width>895</width>
+                <height>310</height>
                </rect>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="tab21">
                <attribute name="title">
                 <string>动态键程(DKS)</string>
                </attribute>
                <widget class="QPushButton" name="pushButton_DKS">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="geometry">
                  <rect>
                   <x>52</x>
                   <y>16</y>
-                  <width>74</width>
-                  <height>74</height>
+                  <width>80</width>
+                  <height>80</height>
                  </rect>
                 </property>
                 <property name="text">
-                 <string>A</string>
+                 <string>未选择按键</string>
                 </property>
                </widget>
                <widget class="QLabel" name="labelPress1">
@@ -1230,7 +1201,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <property name="geometry">
                  <rect>
                   <x>40</x>
-                  <y>100</y>
+                  <y>108</y>
                   <width>420</width>
                   <height>40</height>
                  </rect>
@@ -1246,7 +1217,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <property name="geometry">
                  <rect>
                   <x>40</x>
-                  <y>140</y>
+                  <y>148</y>
                   <width>420</width>
                   <height>40</height>
                  </rect>
@@ -1262,7 +1233,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <property name="geometry">
                  <rect>
                   <x>40</x>
-                  <y>180</y>
+                  <y>188</y>
                   <width>420</width>
                   <height>40</height>
                  </rect>
@@ -1278,7 +1249,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <property name="geometry">
                  <rect>
                   <x>40</x>
-                  <y>220</y>
+                  <y>228</y>
                   <width>420</width>
                   <height>40</height>
                  </rect>
@@ -1290,333 +1261,13 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
                </widget>
-              </widget>
-              <widget class="QWidget" name="tab22">
-               <attribute name="title">
-                <string>按住/单击(MT)</string>
-               </attribute>
-               <widget class="QPushButton" name="pushButton_MT1">
+               <widget class="QPushButton" name="pushButton_OKDKS">
                 <property name="geometry">
                  <rect>
-                  <x>162</x>
-                  <y>110</y>
-                  <width>74</width>
-                  <height>74</height>
-                 </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>74</width>
-                  <height>74</height>
-                 </size>
-                </property>
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">width:72px; height:72px;</string>
-                </property>
-                <property name="text">
-                 <string>单击</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">buttonGroupMT</string>
-                </attribute>
-               </widget>
-               <widget class="QPushButton" name="pushButton_MT2">
-                <property name="geometry">
-                 <rect>
-                  <x>272</x>
-                  <y>110</y>
-                  <width>74</width>
-                  <height>74</height>
-                 </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>74</width>
-                  <height>74</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">width:72px; height:72px;</string>
-                </property>
-                <property name="text">
-                 <string>Ctrl+C</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">buttonGroupMT</string>
-                </attribute>
-               </widget>
-               <widget class="QLabel" name="labelTip">
-                <property name="geometry">
-                 <rect>
-                  <x>60</x>
+                  <x>720</x>
                   <y>40</y>
-                  <width>391</width>
-                  <height>41</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>选定上方键位，可通过选择单击及长按两种触发模式，设置两个功能（支持组合键）</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-               <widget class="QLabel" name="labelTimeFlag">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="geometry">
-                 <rect>
-                  <x>50</x>
-                  <y>205</y>
-                  <width>391</width>
-                  <height>21</height>
-                 </rect>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <italic>false</italic>
-                  <fontweight>Medium</fontweight>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>调整触发“按住&quot;键所需的时间</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-               <widget class="QLabel" name="labelFlag1">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="geometry">
-                 <rect>
-                  <x>50</x>
-                  <y>235</y>
-                  <width>53</width>
-                  <height>24</height>
-                 </rect>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <italic>false</italic>
-                  <fontweight>Medium</fontweight>
-                 </font>
-                </property>
-                <property name="text">
-                 <string notr="true">0ms</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-               <widget class="QLabel" name="labelFlag2">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="geometry">
-                 <rect>
-                  <x>330</x>
-                  <y>235</y>
-                  <width>53</width>
-                  <height>24</height>
-                 </rect>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <italic>false</italic>
-                  <fontweight>Medium</fontweight>
-                 </font>
-                </property>
-                <property name="text">
-                 <string notr="true">200ms</string>
-                </property>
-               </widget>
-               <widget class="QSlider" name="horizontalSlider">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="geometry">
-                 <rect>
-                  <x>110</x>
-                  <y>230</y>
-                  <width>211</width>
-                  <height>30</height>
-                 </rect>
-                </property>
-                <property name="maximum">
-                 <number>200</number>
-                </property>
-                <property name="value">
-                 <number>20</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-               </widget>
-               <widget class="QLineEdit" name="lineEditValue">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="geometry">
-                 <rect>
-                  <x>380</x>
-                  <y>235</y>
-                  <width>72</width>
-                  <height>24</height>
-                 </rect>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLineEdit{border:none;background-color:#E4E4E4;border-radius:12px;width:72px;height:30px;padding-left:10px;}</string>
-                </property>
-                <property name="text">
-                 <string>20 ms</string>
-                </property>
-               </widget>
-              </widget>
-              <widget class="QWidget" name="tab23">
-               <attribute name="title">
-                <string>切换开关(TGL)</string>
-               </attribute>
-               <widget class="QPushButton" name="pushButton_OKTGL">
-                <property name="geometry">
-                 <rect>
-                  <x>90</x>
-                  <y>210</y>
-                  <width>300</width>
-                  <height>48</height>
-                 </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>44</width>
+                  <width>150</width>
                   <height>44</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>-1</pointsize>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{background-color:#6329B6;border:1px solid #6329B6;border-radius:13px;color:white;font-size:16px;}</string>
-                </property>
-                <property name="text">
-                 <string>确定</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="pushButton_Clicks">
-                <property name="geometry">
-                 <rect>
-                  <x>162</x>
-                  <y>110</y>
-                  <width>74</width>
-                  <height>74</height>
-                 </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>74</width>
-                  <height>74</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">width:72px; height:72px;</string>
-                </property>
-                <property name="text">
-                 <string>连点</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">buttonGroupTGL</string>
-                </attribute>
-               </widget>
-               <widget class="QPushButton" name="pushButton_Press">
-                <property name="geometry">
-                 <rect>
-                  <x>272</x>
-                  <y>110</y>
-                  <width>74</width>
-                  <height>74</height>
-                 </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>74</width>
-                  <height>74</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">width:72px; height:72px;</string>
-                </property>
-                <property name="text">
-                 <string>长按</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">buttonGroupTGL</string>
-                </attribute>
-               </widget>
-               <widget class="QLabel" name="label_6">
-                <property name="geometry">
-                 <rect>
-                  <x>82</x>
-                  <y>40</y>
-                  <width>343</width>
-                  <height>41</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </widget>
-              <widget class="QWidget" name="tab24">
-               <attribute name="title">
-                <string>SnapKey</string>
-               </attribute>
-               <widget class="QPushButton" name="pushButton_OKSnap">
-                <property name="geometry">
-                 <rect>
-                  <x>90</x>
-                  <y>210</y>
-                  <width>300</width>
-                  <height>48</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
@@ -1649,7 +1300,456 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <string>确定</string>
                 </property>
                </widget>
+              </widget>
+              <widget class="QWidget" name="tab22">
+               <attribute name="title">
+                <string>按住/单击(MT)</string>
+               </attribute>
+               <widget class="QPushButton" name="pushButton_MT1">
+                <property name="geometry">
+                 <rect>
+                  <x>160</x>
+                  <y>106</y>
+                  <width>122</width>
+                  <height>44</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>122</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">width:120px; height:40px;</string>
+                </property>
+                <property name="text">
+                 <string>单击</string>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">buttonGroupMT</string>
+                </attribute>
+               </widget>
+               <widget class="QPushButton" name="pushButton_MT2">
+                <property name="geometry">
+                 <rect>
+                  <x>310</x>
+                  <y>106</y>
+                  <width>122</width>
+                  <height>44</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>122</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>122</width>
+                  <height>35</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">width:120px; height:40px;</string>
+                </property>
+                <property name="text">
+                 <string>按住</string>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">buttonGroupMT</string>
+                </attribute>
+               </widget>
+               <widget class="QLabel" name="labelTip">
+                <property name="geometry">
+                 <rect>
+                  <x>60</x>
+                  <y>40</y>
+                  <width>600</width>
+                  <height>40</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>选定上方键位，可通过选择单击及长按两种触发模式，设置两个功能（支持组合键）</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QLabel" name="labelTimeFlag">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="geometry">
+                 <rect>
+                  <x>50</x>
+                  <y>196</y>
+                  <width>391</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>MiSans</family>
+                  <italic>false</italic>
+                  <fontweight>Medium</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>调整触发“按住&quot;键所需的时间</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QLabel" name="labelFlag1">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="geometry">
+                 <rect>
+                  <x>50</x>
+                  <y>235</y>
+                  <width>53</width>
+                  <height>24</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>MiSans</family>
+                  <italic>false</italic>
+                  <fontweight>Medium</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string notr="true">0ms</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+               <widget class="QLabel" name="labelFlag2">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="geometry">
+                 <rect>
+                  <x>330</x>
+                  <y>235</y>
+                  <width>53</width>
+                  <height>24</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>MiSans</family>
+                  <italic>false</italic>
+                  <fontweight>Medium</fontweight>
+                 </font>
+                </property>
+                <property name="text">
+                 <string notr="true">200ms</string>
+                </property>
+               </widget>
+               <widget class="QSlider" name="horizontalSlider">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="geometry">
+                 <rect>
+                  <x>110</x>
+                  <y>230</y>
+                  <width>211</width>
+                  <height>30</height>
+                 </rect>
+                </property>
+                <property name="maximum">
+                 <number>200</number>
+                </property>
+                <property name="value">
+                 <number>20</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+               </widget>
+               <widget class="QLineEdit" name="lineEditValue">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="geometry">
+                 <rect>
+                  <x>380</x>
+                  <y>235</y>
+                  <width>72</width>
+                  <height>24</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit{border:none;background-color:#E4E4E4;border-radius:12px;width:72px;height:30px;padding-left:10px;}</string>
+                </property>
+                <property name="text">
+                 <string>20 ms</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_OKMT">
+                <property name="geometry">
+                 <rect>
+                  <x>720</x>
+                  <y>40</y>
+                  <width>150</width>
+                  <height>44</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>44</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>444</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>MiSans</family>
+                  <pointsize>-1</pointsize>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{background-color:#6329B6;border:1px solid #6329B6;border-radius:13px;color:white;font-size:16px;}</string>
+                </property>
+                <property name="text">
+                 <string>确定</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_MT">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="geometry">
+                 <rect>
+                  <x>58</x>
+                  <y>90</y>
+                  <width>82</width>
+                  <height>82</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">width:80px; height:80px;</string>
+                </property>
+                <property name="text">
+                 <string>未选择按键</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="tab23">
+               <attribute name="title">
+                <string>切换开关(TGL)</string>
+               </attribute>
+               <widget class="QPushButton" name="pushButton_OKTGL">
+                <property name="geometry">
+                 <rect>
+                  <x>720</x>
+                  <y>40</y>
+                  <width>150</width>
+                  <height>44</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>44</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>MiSans</family>
+                  <pointsize>-1</pointsize>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{background-color:#6329B6;border:1px solid #6329B6;border-radius:13px;color:white;font-size:16px;}</string>
+                </property>
+                <property name="text">
+                 <string>确定</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_TGL1">
+                <property name="geometry">
+                 <rect>
+                  <x>160</x>
+                  <y>106</y>
+                  <width>122</width>
+                  <height>44</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>122</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>122</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">width:120px; height:40px;</string>
+                </property>
+                <property name="text">
+                 <string>未设置功能</string>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">buttonGroupTGL</string>
+                </attribute>
+               </widget>
+               <widget class="QLabel" name="label_6">
+                <property name="geometry">
+                 <rect>
+                  <x>60</x>
+                  <y>40</y>
+                  <width>505</width>
+                  <height>41</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_TGL">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="geometry">
+                 <rect>
+                  <x>58</x>
+                  <y>90</y>
+                  <width>82</width>
+                  <height>82</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>82</width>
+                  <height>82</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">width:80px; height:80px;</string>
+                </property>
+                <property name="text">
+                 <string>未选择按键</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QRadioButton" name="radioButton_TGL1">
+                <property name="geometry">
+                 <rect>
+                  <x>310</x>
+                  <y>114</y>
+                  <width>95</width>
+                  <height>25</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>连点</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QRadioButton" name="radioButton_TGL2">
+                <property name="geometry">
+                 <rect>
+                  <x>422</x>
+                  <y>116</y>
+                  <width>95</width>
+                  <height>23</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>长按</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="tab24">
+               <attribute name="title">
+                <string>SnapKey</string>
+               </attribute>
+               <widget class="QPushButton" name="pushButton_OKSnap">
+                <property name="geometry">
+                 <rect>
+                  <x>720</x>
+                  <y>40</y>
+                  <width>150</width>
+                  <height>44</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>MiSans</family>
+                  <pointsize>-1</pointsize>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{background-color:#6329B6;border:1px solid #6329B6;border-radius:13px;color:white;font-size:16px;}</string>
+                </property>
+                <property name="text">
+                 <string>确定</string>
+                </property>
+               </widget>
                <widget class="QPushButton" name="pushButton_Snap1">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="geometry">
                  <rect>
                   <x>162</x>
@@ -1662,19 +1762,22 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <string notr="true">width:72px; height:72px;</string>
                 </property>
                 <property name="text">
-                 <string>A</string>
+                 <string>未选择按键</string>
                 </property>
                 <property name="checkable">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <attribute name="buttonGroup">
                  <string notr="true">buttonGroupSnap</string>
                 </attribute>
                </widget>
                <widget class="QPushButton" name="pushButton_Snap2">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="geometry">
                  <rect>
-                  <x>272</x>
+                  <x>306</x>
                   <y>110</y>
                   <width>74</width>
                   <height>74</height>
@@ -1684,10 +1787,10 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <string notr="true">width:72px; height:72px;</string>
                 </property>
                 <property name="text">
-                 <string>B</string>
+                 <string>未选择按键</string>
                 </property>
                 <property name="checkable">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <attribute name="buttonGroup">
                  <string notr="true">buttonGroupSnap</string>
@@ -1696,20 +1799,49 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                <widget class="QLabel" name="label_4">
                 <property name="geometry">
                  <rect>
-                  <x>90</x>
+                  <x>80</x>
                   <y>40</y>
-                  <width>333</width>
+                  <width>593</width>
                   <height>41</height>
                  </rect>
                 </property>
                 <property name="text">
-                 <string>绑定2个选定按键，当两个按键被同时按下时，以最后按下的按键为准</string>
+                 <string>绑定2个选定按键(分别从上面选择)，当两个按键被同时按下时，以最后按下的按键为准</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QRadioButton" name="radioButton_Snap1">
+                <property name="geometry">
+                 <rect>
+                  <x>170</x>
+                  <y>194</y>
+                  <width>89</width>
+                  <height>25</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>选择A键</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QRadioButton" name="radioButton_Snap2">
+                <property name="geometry">
+                 <rect>
+                  <x>316</x>
+                  <y>194</y>
+                  <width>83</width>
+                  <height>25</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>选择B键</string>
                 </property>
                </widget>
               </widget>
@@ -1722,7 +1854,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>292</width>
+               <width>180</width>
                <height>341</height>
               </rect>
              </property>
@@ -1739,9 +1871,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
              <widget class="QLabel" name="labelTitle1">
               <property name="geometry">
                <rect>
-                <x>30</x>
+                <x>20</x>
                 <y>20</y>
-                <width>221</width>
+                <width>131</width>
                 <height>21</height>
                </rect>
               </property>
@@ -1759,9 +1891,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
              <widget class="ModuleScrollValue" name="frameSV1">
               <property name="geometry">
                <rect>
-                <x>30</x>
+                <x>25</x>
                 <y>66</y>
-                <width>231</width>
+                <width>130</width>
                 <height>251</height>
                </rect>
               </property>
@@ -1776,9 +1908,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             <widget class="QFrame" name="frame_5">
              <property name="geometry">
               <rect>
-               <x>315</x>
+               <x>208</x>
                <y>0</y>
-               <width>292</width>
+               <width>180</width>
                <height>341</height>
               </rect>
              </property>
@@ -1795,9 +1927,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
              <widget class="QLabel" name="labelTitle2">
               <property name="geometry">
                <rect>
-                <x>30</x>
+                <x>20</x>
                 <y>20</y>
-                <width>221</width>
+                <width>145</width>
                 <height>21</height>
                </rect>
               </property>
@@ -1815,9 +1947,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
              <widget class="ModuleScrollValue" name="frameSV2">
               <property name="geometry">
                <rect>
-                <x>30</x>
+                <x>25</x>
                 <y>66</y>
-                <width>231</width>
+                <width>130</width>
                 <height>251</height>
                </rect>
               </property>
@@ -1832,9 +1964,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             <widget class="QFrame" name="frame_7">
              <property name="geometry">
               <rect>
-               <x>630</x>
+               <x>414</x>
                <y>0</y>
-               <width>292</width>
+               <width>180</width>
                <height>341</height>
               </rect>
              </property>
@@ -1851,9 +1983,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
              <widget class="QLabel" name="labelTitle3">
               <property name="geometry">
                <rect>
-                <x>30</x>
+                <x>20</x>
                 <y>20</y>
-                <width>221</width>
+                <width>137</width>
                 <height>21</height>
                </rect>
               </property>
@@ -1871,9 +2003,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
              <widget class="ModuleScrollValue" name="frameSV3">
               <property name="geometry">
                <rect>
-                <x>30</x>
+                <x>25</x>
                 <y>66</y>
-                <width>231</width>
+                <width>130</width>
                 <height>251</height>
                </rect>
               </property>
@@ -1882,6 +2014,219 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               </property>
               <property name="frameShadow">
                <enum>QFrame::Shadow::Raised</enum>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QFrame" name="frameRT">
+             <property name="geometry">
+              <rect>
+               <x>622</x>
+               <y>0</y>
+               <width>300</width>
+               <height>95</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <widget class="QLabel" name="labelTitle4">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>145</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>MiSans</family>
+                <italic>false</italic>
+                <fontweight>Medium</fontweight>
+               </font>
+              </property>
+              <property name="text">
+               <string>2.4G深度睡眠时间</string>
+              </property>
+             </widget>
+             <widget class="QSlider" name="horizontalSlider24Deep">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>55</y>
+                <width>220</width>
+                <height>27</height>
+               </rect>
+              </property>
+              <property name="maximum">
+               <number>1800</number>
+              </property>
+              <property name="singleStep">
+               <number>10</number>
+              </property>
+              <property name="pageStep">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEditV1">
+              <property name="geometry">
+               <rect>
+                <x>204</x>
+                <y>22</y>
+                <width>55</width>
+                <height>21</height>
+               </rect>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QFrame" name="frameRM">
+             <property name="geometry">
+              <rect>
+               <x>622</x>
+               <y>122</y>
+               <width>300</width>
+               <height>95</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <widget class="QLabel" name="labelTitle5">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>137</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>MiSans</family>
+                <italic>false</italic>
+                <fontweight>Medium</fontweight>
+               </font>
+              </property>
+              <property name="text">
+               <string>蓝牙深度睡眠时间</string>
+              </property>
+             </widget>
+             <widget class="QSlider" name="horizontalSliderBTDeep">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>55</y>
+                <width>220</width>
+                <height>27</height>
+               </rect>
+              </property>
+              <property name="maximum">
+               <number>1800</number>
+              </property>
+              <property name="singleStep">
+               <number>10</number>
+              </property>
+              <property name="pageStep">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEditV2">
+              <property name="geometry">
+               <rect>
+                <x>208</x>
+                <y>24</y>
+                <width>55</width>
+                <height>21</height>
+               </rect>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QFrame" name="frameRB">
+             <property name="geometry">
+              <rect>
+               <x>622</x>
+               <y>242</y>
+               <width>300</width>
+               <height>95</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <widget class="QLabel" name="labelTitle6">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>137</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>MiSans</family>
+                <italic>false</italic>
+                <fontweight>Medium</fontweight>
+               </font>
+              </property>
+              <property name="text">
+               <string>按键防抖等级设置</string>
+              </property>
+             </widget>
+             <widget class="QSlider" name="horizontalSliderDebounce">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>55</y>
+                <width>220</width>
+                <height>27</height>
+               </rect>
+              </property>
+              <property name="maximum">
+               <number>255</number>
+              </property>
+              <property name="singleStep">
+               <number>1</number>
+              </property>
+              <property name="pageStep">
+               <number>20</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEditV3">
+              <property name="geometry">
+               <rect>
+                <x>208</x>
+                <y>22</y>
+                <width>55</width>
+                <height>21</height>
+               </rect>
               </property>
              </widget>
             </widget>
@@ -1921,21 +2266,15 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
    <header>moduledksitem.h</header>
    <container>1</container>
   </customwidget>
-  <customwidget>
-   <class>VirtualKeyboard</class>
-   <extends>QFrame</extends>
-   <header>virtualkeyboard.h</header>
-   <container>1</container>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="res.qrc"/>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupTGL"/>
   <buttongroup name="buttonGroupFN"/>
-  <buttongroup name="buttonGroupSnap"/>
   <buttongroup name="buttonGroupMT"/>
+  <buttongroup name="buttonGroupSnap"/>
+  <buttongroup name="buttonGroupTGL"/>
  </buttongroups>
 </ui>

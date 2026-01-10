@@ -31,6 +31,7 @@ protected:
 private:
     Ui::ModuleDKSItem *ui;
 
+    void setSwitch(int index,bool on=true);
     bool m_dragging = false;
     bool m_switchs[4]={false};
     int m_dragX1 = 0 ;

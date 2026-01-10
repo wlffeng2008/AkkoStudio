@@ -20,6 +20,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
 {
     ui->setupUi(this);
 
+    DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
     {
         QString strStyle(R"(
 
@@ -66,6 +67,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
             ui->stackedWidget->setCurrentIndex(id) ;
             m_setType = id ;
+            ui->frameKeyboard->setEnabled(id != 2);
         });
         ui->pushButtonSet1->click() ;
     }
@@ -128,7 +130,9 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         QStringList Values1 ={"8000 hz","4000 hz","2000 hz","1000 hz","500 hz","250 hz","125 hz"} ;
         ui->frameSV1->setValueList(Values1) ;
 
-        QStringList Values2 ={"5 min","15 min","30 min","45 min","60 min"} ;
+        QStringList Values2 ; //={"5 min","15 min","30 min","45 min","60 min"} ;
+        for(int i=0; i<=1800; i++)
+            Values2.push_back(QString("%1 min").arg(i)) ;
         ui->frameSV2->setValueList(Values2) ;
         ui->frameSV3->setValueList(Values2) ;
 
@@ -181,32 +185,35 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     m_adjust->update();
     m_adjust->hide();
     connect(m_adjust,&ModuleDKSAdjust::onValueSave,this,[=](const QString&text){
-        ui->labelPress1->setText(QString::asprintf("%.2f",text.toFloat()) + " mm") ;
-        ui->labelRelease2->setText(QString::asprintf("%.2f",text.toFloat()) + " mm") ;
+        m_DKSLen = text.toFloat();
+        ui->labelPress1->setText(QString::asprintf("%.2f",m_DKSLen) + " mm") ;
+        ui->labelRelease2->setText(QString::asprintf("%.2f",m_DKSLen) + " mm") ;
 
-        ui->labelPress2->setText(QString::asprintf("%.2f",3.9 - text.toFloat()) + " mm") ;
-        ui->labelRelease1->setText(QString::asprintf("%.2f",3.9 - text.toFloat()) + " mm") ;
+        //ui->labelPress2->setText(QString::asprintf("%.2f",3.9 - text.toFloat()) + " mm") ;
+        //ui->labelRelease1->setText(QString::asprintf("%.2f",3.9 - text.toFloat()) + " mm") ;
     });
 
     connect(ui->pushButton_Snap1,&QPushButton::clicked,this,[=]{
-        static ModuleGeneralMasker *mask = new ModuleGeneralMasker(nullptr,ui->frameTab2) ;
-        mask->setStyleSheet("QDialog { background-color: rgba(255, 255, 255, 0.8); border: none; border-radius: 32px; }");
-        mask->show() ;
-        m_pMask = mask ;
+
+        // static ModuleGeneralMasker *mask = new ModuleGeneralMasker(nullptr,ui->frameTab2) ;
+        // mask->setStyleSheet("QDialog { background-color: rgba(255, 255, 255, 0.8); border: none; border-radius: 32px; }");
+        // mask->show() ;
+        // m_pMask = mask ;
+
     });
 
     connect(ui->tabWidget2,&QTabWidget::currentChanged,this,[=](int index){
-        if(index == 3)
-        {
-        }
+
+
     }) ;
 
+    // DKS
     connect(ui->frameDKS1,&ModuleDKSItem::onButtonClicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
             return ;
         ui->frameDKS1->setText(getKeyString(&VKDlg.m_kd,false));
-        //setTo = VKDlg.m_kd;
+        m_DKS1 = VKDlg.m_kd;
     });
 
     connect(ui->frameDKS2,&ModuleDKSItem::onButtonClicked,this,[=]{
@@ -214,7 +221,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         if(VKDlg.exec() != QDialog::Accepted)
             return ;
         ui->frameDKS2->setText(getKeyString(&VKDlg.m_kd,false));
-        //setTo = VKDlg.m_kd;
+        m_DKS2 = VKDlg.m_kd;
     });
 
     connect(ui->frameDKS3,&ModuleDKSItem::onButtonClicked,this,[=]{
@@ -222,7 +229,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         if(VKDlg.exec() != QDialog::Accepted)
             return ;
         ui->frameDKS3->setText(getKeyString(&VKDlg.m_kd,false));
-        //setTo = VKDlg.m_kd;
+        m_DKS3 = VKDlg.m_kd;
     });
 
     connect(ui->frameDKS4,&ModuleDKSItem::onButtonClicked,this,[=]{
@@ -230,11 +237,84 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         if(VKDlg.exec() != QDialog::Accepted)
             return ;
         ui->frameDKS4->setText(getKeyString(&VKDlg.m_kd,false));
-        //setTo = VKDlg.m_kd;
+        m_DKS4 = VKDlg.m_kd;
+    });
+
+    connect(ui->pushButton_OKDKS,&QPushButton::clicked,this,[=]{
+        if(m_DKSHid == 0)
+            return;
+        pCnn->changeKey(m_DKSHid,&m_DKS1,0,false);
+        pCnn->changeKey(m_DKSHid,&m_DKS2,1,false);
+        pCnn->changeKey(m_DKSHid,&m_DKS3,2,false);
+        pCnn->changeKey(m_DKSHid,&m_DKS4,3,true);
+
+        pCnn->send65Cmd(0x07,m_DKSHid,0x02,false);
+        pCnn->send65Cmd(0x04,m_DKSHid,m_DKSLen*200,false);
+        pCnn->send65Cmd(0x08,m_DKSHid,0x55565B6F,true);
+        refresh();
+    });
+
+    // MT
+    connect(ui->pushButton_MT1,&QPushButton::clicked,this,[=]{
+        DialogVKPicker VKDlg(this);
+        if(VKDlg.exec() != QDialog::Accepted)
+            return ;
+        ui->pushButton_MT1->setText(getKeyString(&VKDlg.m_kd,false));
+        m_MT1 = VKDlg.m_kd;
+    });
+
+    connect(ui->pushButton_MT2,&QPushButton::clicked,this,[=]{
+        DialogVKPicker VKDlg(this);
+        if(VKDlg.exec() != QDialog::Accepted)
+            return ;
+        ui->pushButton_MT2->setText(getKeyString(&VKDlg.m_kd,false));
+        m_MT2 = VKDlg.m_kd;
+    });
+
+    connect(ui->pushButton_OKMT,&QPushButton::clicked,this,[=]{
+        if(m_MTHid == 0)
+            return;
+        pCnn->changeKey(m_MTHid,&m_MT1,0,false);
+        pCnn->changeKey(m_MTHid,&m_MT2,1,true);
+
+        pCnn->send65Cmd(0x07,m_MTHid,0x03,false);
+        pCnn->send65Cmd(0x05,m_MTHid,ui->horizontalSlider->value() / 100,true);
+        refresh();
+    });
+
+    // TGL
+    connect(ui->pushButton_TGL1,&QPushButton::clicked,this,[=]{
+        DialogVKPicker VKDlg(this);
+        if(VKDlg.exec() != QDialog::Accepted)
+            return ;
+        ui->pushButton_TGL1->setText(getKeyString(&VKDlg.m_kd,false));
+        m_TGL1 = VKDlg.m_kd;
+    });
+    connect(ui->radioButton_TGL1,&QRadioButton::clicked,this,[=]{ui->pushButton_OKTGL->click();});
+    connect(ui->radioButton_TGL2,&QRadioButton::clicked,this,[=]{ui->pushButton_OKTGL->click();});
+    connect(ui->pushButton_OKTGL,&QPushButton::clicked,this,[=]{
+        if(m_TGLHid == 0)
+            return;
+        pCnn->changeKey(m_TGLHid,&m_TGL1,0,true);
+        pCnn->send65Cmd(0x07,m_TGLHid,ui->radioButton_TGL1->isChecked()?0x04:0x05,true);
+        refresh();
+    });
+
+    // Snap
+    connect(ui->pushButton_OKSnap,&QPushButton::clicked,this,[=]{
+        if(m_SnapHid1 == 0 || m_SnapHid2 == 0)
+            return;
+        pCnn->send65Cmd(0x07,m_SnapHid1,0x07,false);
+        pCnn->send65Cmd(0x07,m_SnapHid2,0x07,false);
+        pCnn->send65Cmd(0x09,m_SnapHid1,getIndex(m_SnapHid2),false);
+        pCnn->send65Cmd(0x09,m_SnapHid2,getIndex(m_SnapHid1),true);
+        refresh();
     });
 
     connect(ui->frameKeyboard,&ModuleKeyboard::onKeyClicked,this,[=](const QString&text,quint8 hid){
-        ui->pushButton_Snap1->setText(text);
+
+        int index = getIndex(hid);
+
         if(m_setType == 0)
         {
             keyData setTo={0};
@@ -242,7 +322,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
             {
                 DialogVKPicker VKDlg(this);
                 if(VKDlg.exec() != QDialog::Accepted)
-                    return ;
+                    return;
                 setTo = VKDlg.m_kd;
             }
             else
@@ -253,7 +333,6 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 setTo = FNDlg.m_kd;
             }
 
-            DialogDeviceConnect *pCnn = DialogDeviceConnect::instance() ;
             pCnn->changeKey(hid,&setTo);
 
             QString strT1 = getKeyValue(hid);
@@ -266,20 +345,110 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         if(m_setType == 1)
         {
             int nTab = ui->tabWidget2->currentIndex();
-            switch(nTab)
+            quint8 type = pCnn->getKeyType(hid);
+            QStringList res = pCnn->getKeyString(hid);
+
+            if(type == 2)
             {
-            case 0:
+                ui->frameDKS1->setText(res[0]);
+                ui->frameDKS2->setText(res[1]);
+                ui->frameDKS3->setText(res[2]);
+                ui->frameDKS4->setText(res[3]);
                 ui->pushButton_DKS->setText(text);
-                break;
+
+                pCnn->getKeydata(&m_DKS1,index,0);
+                pCnn->getKeydata(&m_DKS2,index,1);
+                pCnn->getKeydata(&m_DKS3,index,2);
+                pCnn->getKeydata(&m_DKS4,index,3);
+                m_DKSLen = pCnn->get65Value(0x04,index)/200.0;
+                ui->labelPress1->setText(QString::asprintf("%.2f",m_DKSLen) + " mm") ;
+                ui->labelRelease2->setText(QString::asprintf("%.2f",m_DKSLen) + " mm") ;
             }
 
+            if(type == 3)
+            {
+                ui->pushButton_MT1->setText(res[0]);
+                ui->pushButton_MT2->setText(res[1]);
+                ui->pushButton_MT->setText(text);
+
+                pCnn->getKeydata(&m_MT1,index,0);
+                pCnn->getKeydata(&m_MT2,index,1);
+            }
+
+            if(type == 4 || type == 5)
+            {
+                ui->pushButton_TGL1->setText(res[0]);
+                ui->pushButton_TGL->setText(text);
+                ui->radioButton_TGL1->setChecked(type == 4);
+                ui->radioButton_TGL2->setChecked(type == 5);
+
+                pCnn->getKeydata(&m_TGL1,index,0);
+            }
+
+            if(type == 7)
+            {
+                m_SnapHid1 = hid;
+                m_SnapHid2 = pCnn->getSnapkey(index);
+                ui->pushButton_Snap2->setText(::getKeyValue(m_SnapHid2));
+            }
+
+            switch(nTab)
+            {
+            case 0: // DKS
+                m_DKSHid = hid;
+                ui->pushButton_DKS->setText(text);
+                break;
+
+            case 1: // MT
+                m_MTHid = hid;
+                ui->pushButton_MT->setText(text);
+                break;
+
+            case 2: // MT
+                m_TGLHid = hid;
+                ui->pushButton_TGL->setText(text);
+                break;
+
+            case 3: // Snap
+                if(ui->radioButton_Snap1->isChecked())
+                {
+                    m_SnapHid1 = hid;
+                    ui->pushButton_Snap1->setText(text);
+                }
+                else
+                {
+                    m_SnapHid2 = hid;
+                    ui->pushButton_Snap2->setText(text);
+                }
+                break;
+            }
         }
     });
 
+    connect(ui->frameSV1,&ModuleScrollValue::onIndexChanged,this,[=](int index){pCnn->setReport(index);});
+    connect(ui->frameSV2,&ModuleScrollValue::onIndexChanged,this,[=](int index){pCnn->setSleepTime(index,1);});
+    connect(ui->frameSV3,&ModuleScrollValue::onIndexChanged,this,[=](int index){pCnn->setSleepTime(index,0);});
+
+    connect(ui->horizontalSlider24Deep,&QSlider::valueChanged,this,[=](int value){ ui->lineEditV1->setText(QString("%1").arg(value)); });
+    connect(ui->horizontalSliderBTDeep,&QSlider::valueChanged,this,[=](int value){ ui->lineEditV2->setText(QString("%1").arg(value)); });
+    connect(ui->horizontalSliderDebounce,&QSlider::valueChanged,this,[=](int value){ ui->lineEditV3->setText(QString("%1").arg(value)); });
+
+    connect(ui->lineEditV1,&QLineEdit::textChanged,this,[=](const QString&text){
+        ui->horizontalSlider24Deep->setValue(text.toInt());
+        if(!m_bUpdating) pCnn->setSleepTime(text.toInt(),3);
+    });
+    connect(ui->lineEditV2,&QLineEdit::textChanged,this,[=](const QString&text){
+        ui->horizontalSliderBTDeep->setValue(text.toInt());
+        if(!m_bUpdating) pCnn->setSleepTime(text.toInt(),2);
+    });
+    connect(ui->lineEditV3,&QLineEdit::textChanged,this,[=](const QString&text){
+        ui->horizontalSliderDebounce->setValue(text.toInt());
+        if(!m_bUpdating) pCnn->setDebounce(text.toInt());
+    });
+
+    ui->tabWidgetKey->setCurrentIndex(0);
+    ui->tabWidget2->setCurrentIndex(0);
     ui->frameKeyboard->setSelectCount(1);
-
-
-
 }
 
 
@@ -317,27 +486,67 @@ FrameKeySetting::~FrameKeySetting()
 
 void FrameKeySetting::showEvent(QShowEvent *event)
 {
+    refresh();
+}
+
+void FrameKeySetting::refresh()
+{
     DialogDeviceConnect *pCnn = DialogDeviceConnect::instance() ;
     QByteArray data = pCnn->getMatix(0);
     for(int i=0; i<128; i++)
     {
         quint8 hid = ::getHid(i);
         keyData kd;
-        kd.b0 = data[i*4 +0] ;
-        kd.b1 = data[i*4 +1] ;
-        kd.b2 = data[i*4 +2] ;
-        kd.b3 = data[i*4 +3] ;
+        pCnn->getKeydata(&kd,i,0);
 
-        if(isKeyChanged(i,&kd))
+        quint8 type = pCnn->getKeyType(hid);
+
+        if(isKeyChanged(i,&kd) || type != 0)
         {
             QString strT1 = getKeyValue(hid);
             QString strT2 = getKeyString(&kd);
-            //if(isKeyDisabled(i))
+            QStringList res = pCnn->getKeyString(hid);
+
+            if(type == 2)
+            {
+                strT2 = tr("动态键程(DKS):\n");
+                strT2 += res[0] + "\n";
+                strT2 += res[1] + "\n";
+                strT2 += res[2] + "\n";
+                strT2 += res[3];
+            }
+
+            if(type == 3)
+            {
+                strT2 = tr("按住单击(MT):\n");
+                strT2 += res[0] + "\n";
+                strT2 += res[1];
+            }
+
+            if(type == 4 || type == 5)
+            {
+                strT2 = tr("切换开关(TGL):\n");
+                strT2 += res[0];
+            }
+
+            if(type == 7)
+            {
+                strT2 = tr("SnapKey:\n");
+                strT2 += res[0];
+            }
+
             if(kd.b0 == 0 && kd.b1 == 0 && kd.b2 == 0 && kd.b3 == 0)
-                strT1="DISABLED";
+                strT1 = "DISABLED";
             ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
         }
     }
+    m_bUpdating=true;
+    QTimer::singleShot(500,this,[=]{m_bUpdating=false;});
+    ui->frameSV1->setIndex(pCnn->getReport());
+    ui->frameSV2->setIndex(pCnn->getSleepTime()->time24/60);
+    ui->frameSV3->setIndex(pCnn->getSleepTime()->timeBt/60);
 
-    //ui->frameKeyboard->keepSpeacial();
+    ui->lineEditV1->setText(QString("%1").arg(pCnn->getSleepTime()->timeD24/60));
+    ui->lineEditV2->setText(QString("%1").arg(pCnn->getSleepTime()->timeDBt/60));
+    ui->lineEditV3->setText(QString("%1").arg(pCnn->getDebounce()));
 }

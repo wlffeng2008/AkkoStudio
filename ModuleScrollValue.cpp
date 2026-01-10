@@ -24,6 +24,17 @@ ModuleScrollValue::~ModuleScrollValue()
     delete ui;
 }
 
+void ModuleScrollValue::setIndex(quint32 index)
+{
+    m_nIndex = m_Values.count() * 1000000000 + index - 2;
+    rollValues(false);
+}
+
+quint32 ModuleScrollValue::getIndex()
+{
+    return m_nPick;
+}
+
 void ModuleScrollValue::setValueList(QStringList&valus)
 {
     m_Values = valus;
@@ -31,7 +42,7 @@ void ModuleScrollValue::setValueList(QStringList&valus)
     rollValues() ;
 }
 
-void ModuleScrollValue::rollValues()
+void ModuleScrollValue::rollValues(bool notify)
 {
     int count = m_Values.count();
     if(count<=0)
@@ -49,45 +60,49 @@ void ModuleScrollValue::rollValues()
     for(int i=0; i<5; i++)
     {
         int nX = (i + m_nIndex) % count;
+        if(i == 2) m_nPick = nX;
         labels[i]->setText(m_Values[nX]);
     }
+
+    if(notify) emit onIndexChanged(getIndex());
 }
 
 bool ModuleScrollValue::eventFilter(QObject*watched,QEvent*event)
 {
     if(event->type() == QEvent::MouseButtonRelease)
     {
-        int old = m_nIndex ;
-        if(watched==ui->labelValue1) m_nIndex -= 2 ;
-        if(watched==ui->labelTitleL2) m_nIndex -= 1 ;
-        if(watched==ui->labelTitleL1) m_nIndex += 2 ;
-        if(watched==ui->labelValue5) m_nIndex += 1 ;
+        int old = m_nIndex;
+        if(watched==ui->labelValue1)  m_nIndex -= 2;
+        if(watched==ui->labelTitleL2) m_nIndex -= 1;
+        if(watched==ui->labelTitleL1) m_nIndex += 1;
+        if(watched==ui->labelValue5)  m_nIndex += 2;
         if(m_nIndex != old)  rollValues();
     }
 
-    return QFrame::eventFilter(watched,event) ;
+    return QFrame::eventFilter(watched,event);
 }
 
 bool ModuleScrollValue::event(QEvent*event)
 {
     if(QEvent::Wheel == event->type())
     {
-        QWheelEvent  *pME = static_cast<QWheelEvent *>(event) ;
+        QWheelEvent  *pME = static_cast<QWheelEvent *>(event);
 
         QPoint angleDelta = pME->angleDelta();
 
         if (angleDelta.y() > 0)
         {
-            m_nIndex -- ;
+            m_nIndex --;
         }
         else
         {
-            m_nIndex ++ ;
+            m_nIndex ++;
         }
 
         rollValues();
 
-        return true ;
+        return true;
     }
+
     return QFrame::event(event) ;
 }

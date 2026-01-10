@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
         QLineEdit:focus{ border: 1px solid #50b7c1; border-radius: 4px;  background-color: rgb(230, 240, 255);}
         QLineEdit:disabled { background-color: transparent; color: #B7B7B7;border: 1px solid transparent;}
 
-        QLabel#labelTitle1,#labelTitle2,#labelTitle3,#labelTitle4,#labelTitle5,#labelTitle,#labelName{ font-size: 18px; font-weight: 600 ;}
+        QLabel#labelTitle1,#labelTitle2,#labelTitle3,#labelTitle4,#labelTitle5,#labelTitle6,#labelTitle,#labelName{ font-size: 16px; font-weight: 600; }
         QLabel#labelTitleL1,#labelTitleL2,#labelTitleL3,#labelTitleL4,#labelTitleL5 { font-size: 14px; font-weight: 500 ;}
         QLabel#labelTitleS1,#labelTitleS2,#labelTitleS3,#labelTitleS4,#labelTitleS5 { font-size: 16px; font-weight: 500 ;}
         QLabel#labelValue1,#labelValue5{ font-size: 10px; font-weight: 500;}

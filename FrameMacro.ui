@@ -78,12 +78,6 @@ QScrollArea{background-color:#FFFFFF;border:none;}
        <height>340</height>
       </size>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>340</height>
-      </size>
-     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
             border: 1px solid transparent;
@@ -91,15 +85,15 @@ QScrollArea{background-color:#FFFFFF;border:none;}
             padding: 2px 2px;
             color: black;
             outline: none;
+font-size:14px;
             background-color: transparent;
                 min-width:24px;
-                max-width:100px;
+                max-width:150px;
                 min-height:24px;
                 max-height:24px;
 }
-QPushButton::hover{background-color: #E0E0E0;}
+QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
 </string>
-
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::NoFrame</enum>
@@ -168,7 +162,7 @@ QPushButton::hover{background-color: #E0E0E0;}
               </font>
              </property>
              <property name="text">
-              <string>宏目录</string>
+              <string>宏列表</string>
              </property>
             </widget>
            </item>
@@ -186,7 +180,7 @@ QPushButton::hover{background-color: #E0E0E0;}
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="pushButtonAddMacro">
              <property name="text">
               <string/>
              </property>
@@ -206,7 +200,7 @@ QPushButton::hover{background-color: #E0E0E0;}
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="pushButtonMoveDown">
              <property name="text">
               <string/>
              </property>
@@ -226,7 +220,7 @@ QPushButton::hover{background-color: #E0E0E0;}
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="pushButtonMoveUp">
              <property name="text">
               <string/>
              </property>
@@ -306,7 +300,13 @@ QPushButton::hover{background-color: #E0E0E0;}
            <property name="minimumSize">
             <size>
              <width>100</width>
-             <height>80</height>
+             <height>64</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>60</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -329,7 +329,7 @@ QPushButton::hover{background-color: #E0E0E0;}
              <number>0</number>
             </property>
             <item alignment="Qt::AlignmentFlag::AlignVCenter">
-             <widget class="QPushButton" name="pushButtonStart">
+             <widget class="QPushButton" name="pushButtonRecord">
               <property name="styleSheet">
                <string notr="true">QPushButton{width: 130px;
 height: 36px;
@@ -339,8 +339,9 @@ border:1px solid #6329B6;
 border-radius: 16px 16px 16px 16px;
 font-weight: 600;
 font-size: 14px;
-};
-</string>
+}
+
+QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string>
               </property>
               <property name="text">
                <string>开始录制</string>
@@ -348,6 +349,9 @@ font-size: 14px;
               <property name="icon">
                <iconset resource="res.qrc">
                 <normaloff>:/images/play-white.png</normaloff>:/images/play-white.png</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -377,12 +381,12 @@ font-size: 14px;
               </property>
               <property name="maximumSize">
                <size>
-                <width>106</width>
+                <width>156</width>
                 <height>30</height>
                </size>
               </property>
               <property name="text">
-               <string>插入按键</string>
+               <string>插入</string>
               </property>
               <property name="icon">
                <iconset resource="res.qrc">
@@ -416,15 +420,13 @@ font-size: 14px;
              </spacer>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButtonDelay">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>16777215</height>
-               </size>
-              </property>
+             <widget class="QPushButton" name="pushButtonSetDelay">
               <property name="text">
-               <string>延时</string>
+               <string>设置固定延迟(ms):</string>
+              </property>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/images/m/m-reset.png</normaloff>:/images/m/m-reset.png</iconset>
               </property>
              </widget>
             </item>
@@ -445,24 +447,8 @@ font-size: 14px;
               <property name="styleSheet">
                <string notr="true">QLineEdit{background-color: #F6F6F6;border:1px solid #A4A4A4;border-radius:5px;}</string>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>58</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>20</width>
-                <height>16777215</height>
-               </size>
-              </property>
               <property name="text">
-               <string notr="true">ms</string>
+               <string>50</string>
               </property>
              </widget>
             </item>
@@ -471,9 +457,6 @@ font-size: 14px;
               <property name="orientation">
                <enum>Qt::Orientation::Horizontal</enum>
               </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Policy::Fixed</enum>
-              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>13</width>
@@ -483,49 +466,24 @@ font-size: 14px;
              </spacer>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButtonLoop">
-              <property name="text">
-               <string>循环次数</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="lineEditDelayLoop">
+             <widget class="QPushButton" name="pushButtonDelete">
               <property name="minimumSize">
                <size>
-                <width>50</width>
-                <height>0</height>
+                <width>30</width>
+                <height>30</height>
                </size>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>16777215</height>
-               </size>
+              <property name="text">
+               <string>删除</string>
               </property>
-              <property name="styleSheet">
-               <string notr="true">QLineEdit{background-color: #F6F6F6;border:1px solid #A4A4A4;border-radius:5px;}</string>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/images/macro/shanchu 1@2x.png</normaloff>:/images/macro/shanchu 1@2x.png</iconset>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Policy::Fixed</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>13</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButtonSave">
+             <widget class="QPushButton" name="pushButtonClear">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -534,16 +492,16 @@ font-size: 14px;
               </property>
               <property name="maximumSize">
                <size>
-                <width>106</width>
+                <width>156</width>
                 <height>30</height>
                </size>
               </property>
               <property name="text">
-               <string>保存</string>
+               <string>清空</string>
               </property>
               <property name="icon">
                <iconset resource="res.qrc">
-                <normaloff>:/images/macro/macro-save.png</normaloff>:/images/macro/macro-save.png</iconset>
+                <normaloff>:/images/macro/macro-clear.png</normaloff>:/images/macro/macro-clear.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -566,14 +524,14 @@ font-size: 14px;
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>13</width>
+                <width>20</width>
                 <height>20</height>
                </size>
               </property>
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButtonClear">
+             <widget class="QPushButton" name="pushButtonSave">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -582,16 +540,16 @@ font-size: 14px;
               </property>
               <property name="maximumSize">
                <size>
-                <width>106</width>
+                <width>156</width>
                 <height>30</height>
                </size>
               </property>
               <property name="text">
-               <string>清空</string>
+               <string>保存</string>
               </property>
               <property name="icon">
                <iconset resource="res.qrc">
-                <normaloff>:/images/macro/macro-clear.png</normaloff>:/images/macro/macro-clear.png</iconset>
+                <normaloff>:/images/macro/macro-save.png</normaloff>:/images/macro/macro-save.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -629,13 +587,13 @@ font-size: 14px;
              <number>5</number>
             </property>
             <property name="leftMargin">
-             <number>18</number>
+             <number>10</number>
             </property>
             <property name="topMargin">
-             <number>15</number>
+             <number>10</number>
             </property>
             <property name="rightMargin">
-             <number>20</number>
+             <number>10</number>
             </property>
             <property name="bottomMargin">
              <number>20</number>
@@ -653,13 +611,13 @@ font-size: 14px;
                 <number>5</number>
                </property>
                <property name="leftMargin">
-                <number>0</number>
+                <number>5</number>
                </property>
                <property name="topMargin">
                 <number>0</number>
                </property>
                <property name="rightMargin">
-                <number>0</number>
+                <number>10</number>
                </property>
                <property name="bottomMargin">
                 <number>0</number>
@@ -675,19 +633,6 @@ font-size: 14px;
                  </property>
                  <property name="text">
                   <string>宏内容</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButtonDelete">
-                 <property name="minimumSize">
-                  <size>
-                   <width>30</width>
-                   <height>30</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>删除</string>
                  </property>
                 </widget>
                </item>
@@ -850,7 +795,7 @@ font-size: 14px;
                <enum>Qt::FocusPolicy::NoFocus</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: transparent;</string>
+               <string notr="true">background-color: #f6f6f6;</string>
               </property>
               <property name="widgetResizable">
                <bool>true</bool>
@@ -860,8 +805,8 @@ font-size: 14px;
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>762</width>
-                 <height>164</height>
+                 <width>780</width>
+                 <height>187</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_5">

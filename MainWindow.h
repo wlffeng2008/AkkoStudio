@@ -10,6 +10,7 @@
 #include "SuperLabel.h"
 #include "ModuleLangMenu.h"
 
+class FrameMacro;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

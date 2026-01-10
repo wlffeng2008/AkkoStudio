@@ -18,7 +18,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
-    <number>0</number>
+    <number>5</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -33,9 +33,16 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="labelMacroName">
      <property name="text">
       <string>M1</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="lineEditMacroName">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{background-color: #F6F6F6;border:0px solid #A4A4A4;border-radius:6px;}</string>
      </property>
     </widget>
    </item>

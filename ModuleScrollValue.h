@@ -17,6 +17,12 @@ public:
     ~ModuleScrollValue();
     void setValueList(QStringList&valus);
 
+    void setIndex(quint32 index);
+    quint32 getIndex();
+
+signals:
+    void onIndexChanged(int index);
+
 protected:
     bool event(QEvent*event) override;
     bool eventFilter(QObject*watched, QEvent*event) override;
@@ -25,7 +31,8 @@ private:
     Ui::ModuleScrollValue *ui;
     QStringList m_Values ;
     qint64 m_nIndex = 0;
-    void rollValues();
+    qint64 m_nPick = 0;
+    void rollValues(bool notify=true);
 };
 
 #endif // MODULESCROLLVALUE_H

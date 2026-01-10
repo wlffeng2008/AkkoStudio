@@ -355,14 +355,14 @@ static QList<keyMapItem> s_keMapTable=
 
     { "Insert",       73, 57426 },
     { "Delete",       76, 57427 },
-    { "←"    ,       80,    75 },
+    { "←"    ,       80, 57419 },
     { "Home",         74, 57415 },
     { "End",          77, 57423 },
-    { "↑",           82,    72 },
-    { "↓",           81,    80 },
+    { "↑",           82, 57416 },
+    { "↓",           81, 57424 },
     { "Pgup",         75, 57417 },
     { "Pgdn",         78, 57425 },
-    { "→",           79,    77 },
+    { "→",           79, 57421 },
 
     { "Num-Lock",     83, 57413 },
     { "Num-7",        95,    71 },
@@ -454,6 +454,11 @@ quint16 getKeyNCode(quint16 hid)
 
 QString ModuleGenKeymapping::getKeyString(const keyData *data,bool addPreffix)
 {
+    if(data->b0 == 0x09)
+    {
+        return QString(tr("宏设置"));
+    }
+
     for(const keyItem *k:std::as_const(m_fnList))
     {
         if(isKeyEqual(&k->data,data))
@@ -482,13 +487,13 @@ QString ModuleGenKeymapping::getKeyString(const keyData *data,bool addPreffix)
     if(!strV2.isEmpty()) strTxt += QString(" + ") + strV2;
     if(!strV3.isEmpty()) strTxt += QString(" + ") + strV3;
 
-    return strTxt ;
+    return strTxt;
 }
 
 bool isKeyEqual(const keyData*kdA, const keyData*kdB)
 {
     return (
-            // kdA->b0 == kdB->b0 &&
+            kdA->b0 == kdB->b0 &&
             kdA->b1 == kdB->b1 &&
             kdA->b2 == kdB->b2 &&
             kdA->b3 == kdB->b3

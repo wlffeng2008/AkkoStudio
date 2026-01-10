@@ -62,6 +62,7 @@ SOURCES += \
     Module/ModuleVideoItem.cpp \
     Module/VirtualKeyboard.cpp \
     Module/keyboardbutton.cpp \
+    Module/modulemacromanager.cpp \
     ModuleScrollValue.cpp \
     NewTabWidget.cpp \
     SuperLabel.cpp \
@@ -104,6 +105,7 @@ HEADERS += \
     Module/ModuleVideoItem.h \
     Module/VirtualKeyboard.h \
     Module/keyboardbutton.h \
+    Module/modulemacromanager.h \
     ModuleScrollValue.h \
     NewTabWidget.h \
     SuperLabel.h \
