@@ -25,7 +25,7 @@ DialogVKPicker::DialogVKPicker(QWidget *parent)
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
     setAttribute(Qt::WA_TranslucentBackground);
 
-    setStyleSheet("QDialog { background-color: rgba(180, 180, 180, 0.9);  border: none; border-radius: 24px;}");
+    setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.85); border: none; border-radius: 24px; font-weight: 600;}");
 
     QRect geoMetry = QApplication::primaryScreen()->geometry();
     if(parent)

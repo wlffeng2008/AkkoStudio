@@ -17,7 +17,7 @@
    <string notr="true">#FrameMacro{background-color:#FFFFFF;border:none;}
 #frameT{background-color: #FBFBFB;border-radius:32px;}
 #frameMList,#frameContent,#frameBar{background-color:#F0F0F0;border-radius:32px;}
-QScrollArea{background-color:#FFFFFF;border:none;}
+QScrollArea{background-color:#FFFFFF;border:none;border-radius:12px;}
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
@@ -247,7 +247,7 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
             <enum>Qt::FocusPolicy::NoFocus</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">background-color: #f6f6f6;border-radius:12px;</string>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -431,24 +431,18 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEditDelay">
+             <widget class="QSpinBox" name="spinBoxDelay">
               <property name="minimumSize">
                <size>
-                <width>50</width>
-                <height>0</height>
+                <width>0</width>
+                <height>20</height>
                </size>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>16777215</height>
-               </size>
+              <property name="minimum">
+               <number>1</number>
               </property>
-              <property name="styleSheet">
-               <string notr="true">QLineEdit{background-color: #F6F6F6;border:1px solid #A4A4A4;border-radius:5px;}</string>
-              </property>
-              <property name="text">
-               <string>50</string>
+              <property name="maximum">
+               <number>10000</number>
               </property>
              </widget>
             </item>
@@ -479,6 +473,12 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
               <property name="icon">
                <iconset resource="res.qrc">
                 <normaloff>:/images/macro/shanchu 1@2x.png</normaloff>:/images/macro/shanchu 1@2x.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
               </property>
              </widget>
             </item>
@@ -596,7 +596,7 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
              <number>10</number>
             </property>
             <property name="bottomMargin">
-             <number>20</number>
+             <number>12</number>
             </property>
             <item>
              <widget class="QFrame" name="frameFlag">
@@ -633,6 +633,36 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                  </property>
                  <property name="text">
                   <string>宏内容</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_10">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>15</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelTitle4">
+                 <property name="font">
+                  <font>
+                   <family>MiSans</family>
+                   <pointsize>16</pointsize>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>占用: 0 / 256</string>
                  </property>
                 </widget>
                </item>
@@ -795,7 +825,7 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                <enum>Qt::FocusPolicy::NoFocus</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: #f6f6f6;</string>
+               <string notr="true">background-color: #f6f6f6;border-radius:12px;</string>
               </property>
               <property name="widgetResizable">
                <bool>true</bool>
@@ -806,7 +836,7 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                  <x>0</x>
                  <y>0</y>
                  <width>780</width>
-                 <height>187</height>
+                 <height>195</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_5">

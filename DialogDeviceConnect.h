@@ -4,6 +4,7 @@
 #include <QTimer>
 #include <QDialog>
 #include <QDebug>
+#include <QSettings>
 
 #include <windows.h>
 #include <dbt.h>
@@ -89,7 +90,7 @@ protected:
         MSG* msg = reinterpret_cast<MSG*>(message);
         if (msg->message == WM_DEVICECHANGE)
         {
-            qDebug() << "nativeEventFilter: " << msg->wParam << msg->wParam;
+            qDebug() << "USBNotifier::nativeEventFilter: " << msg->wParam << msg->lParam;
             //if(msg->wParam == DBT_DEVICEARRIVAL       )  emit devicePluggined(true);
             //if(msg->wParam == DBT_DEVICEREMOVECOMPLETE)  emit devicePluggined(false);
             emit devicePluggined(true);
@@ -123,6 +124,9 @@ public:
     void setLEDBright(int bright);
     void setLEDColor(const QColor&color, int option);
 
+    void setKBOption(quint8 option, quint8 value);
+    quint8 getKBOption(quint8 option);
+
     void setMacro(quint8 hid,quint16 repeat,quint8 mode,quint8 macroId,const QByteArray&data);
 
     void setSleepTime(quint16 value=0,int type=0);
@@ -149,13 +153,15 @@ public:
     quint8 getKeyType(quint8 hid);
     QStringList getKeyString(quint8 hid);
 
-
+    void StartCalibration();
+    void StopCalibration();
 
 signals:
     void onConnect();
     void onDisconnect();
     void onReadBack(const QByteArray&data);
     void onReadDone();
+    void onCalibration(const QByteArray&data);
 
 protected:
     bool nativeEvent(const QByteArray &eventType, void *message, qintptr *result) override;
@@ -168,6 +174,7 @@ private:
     void addReadCmd(const QString&strCmd,bool execute=false);
 
     void executeCmd();
+    QSettings *m_pCntSet = nullptr;
 
     hid_device *m_pDev0 = nullptr;
     hid_device *m_pDev1 = nullptr;
@@ -177,6 +184,8 @@ private:
     QTimer *m_pExecute = nullptr;
 
     bool m_bClear = true;
+    QTimer *m_TMCali = nullptr;
+    bool m_bCalibration = false;
 
     QStandardItemModel *m_pModel = nullptr;
     QTableView *m_pTable = nullptr;
@@ -209,7 +218,9 @@ private:
     QByteArray m_E5FE ; /** 读4次 按键按压行程数值 = 0xFE,*/
     QByteArray m_E5FC ; /** 读2次 轴体类型 = 0xFC,*/
     QByteArray m_E5FB ; /** 读2次 顶部死区 = 0xFB,*/
-
+    QByteArray m_Cali ;
+    QByteArray m_Optn ;
+    QByteArray m_Info ;
     QByteArray m_KeyMatrix[8] ;
 };
 

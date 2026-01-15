@@ -1,5 +1,6 @@
 #include "LinearFixing2.h"
 #include "ModuleKeyboard.h"
+#include "DialogDeviceConnect.h"
 
 #include <QScreen>
 #include <QPainter>
@@ -33,8 +34,22 @@ LinearFixing2::LinearFixing2(const QString& title,const QString& content, QWidge
     pLabTitle->setWordWrap(true);
     pLabTitle->setAlignment(Qt::AlignCenter);
 
-    pKeyBoard = new ModuleKeyboard(pContentWidget) ;
-    pKeyBoard->setKeyFixMode() ;
+    pKeyBoard = new ModuleKeyboard(pContentWidget);
+    pKeyBoard->setKeyFixMode();
+
+    DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
+    connect(pCnn,&DialogDeviceConnect::onCalibration,this,[=](const QByteArray&data){
+        QByteArray copyData = data;
+        quint16 *values = (quint16 *)copyData.data();
+        for(int i=0; i<128; i++)
+        {
+            quint16 value = values[i];
+            if(value >= 700 || (i == 92 && value >= 64))
+            {
+                pKeyBoard->setkeyHited(::getHid(i));
+            }
+        }
+    });
 
     QPushButton* confirmBtn = new QPushButton(tr("完成校准"), pContentWidget);
     confirmBtn->setStyleSheet(R"(
@@ -72,22 +87,22 @@ LinearFixing2::LinearFixing2(const QString& title,const QString& content, QWidge
     )");
     connect(cancelBtn, &QPushButton::clicked, this, &QDialog::reject);
 
-    cancelBtn->setFocusPolicy(Qt::NoFocus) ;
-    cancelBtn->setCursor(Qt::PointingHandCursor) ;
-    confirmBtn->setFocusPolicy(Qt::NoFocus) ;
-    confirmBtn->setCursor(Qt::PointingHandCursor) ;
+    cancelBtn->setFocusPolicy(Qt::NoFocus);
+    cancelBtn->setCursor(Qt::PointingHandCursor);
+    confirmBtn->setFocusPolicy(Qt::NoFocus);
+    confirmBtn->setCursor(Qt::PointingHandCursor);
 
     // 内容布局
     QVBoxLayout* contentLayout = new QVBoxLayout(pContentWidget);
     contentLayout->addWidget(pLabTitle);
     contentLayout->addWidget(pKeyBoard,1);
 
-    QHBoxLayout* btnLayout = new QHBoxLayout(nullptr) ;
+    QHBoxLayout* btnLayout = new QHBoxLayout(nullptr);
     btnLayout->addWidget(cancelBtn);
     btnLayout->addWidget(confirmBtn);
     btnLayout->setAlignment(Qt::AlignHCenter);
     btnLayout->setSpacing(20) ;
-    btnLayout->setContentsMargins(10,10,10,10) ;
+    btnLayout->setContentsMargins(10,10,10,10);
     contentLayout->addItem(btnLayout) ;
 
     contentLayout->setContentsMargins(15,15,15,5);
@@ -117,5 +132,9 @@ void LinearFixing2::keyPressEvent(QKeyEvent *event)
     //qDebug() << "LinearFixing2::keyPressEvent" << Qt::hex << event->key() << event->text()  << event->nativeVirtualKey() << event->nativeScanCode() ;
     //qDebug() << QString::asprintf("pushButton_%04X",event->nativeScanCode());
     event->ignore() ;
-    pKeyBoard->setkeyHited(event->nativeScanCode()) ;
+    // pKeyBoard->setkeyHited(event->nativeScanCode()) ;
+}
+void LinearFixing2::keyReleaseEvent(QKeyEvent *event)
+{
+    event->ignore() ;
 }

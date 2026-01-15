@@ -51,6 +51,9 @@
        <pointsize>-1</pointsize>
       </font>
      </property>
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">background:gray;border-radius:17px;color:red;font-size:100px;</string>
      </property>
@@ -73,6 +76,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="labelTitleL1">
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>AKKO 2025-10-20</string>
        </property>
@@ -93,6 +99,9 @@
      </item>
      <item>
       <widget class="QLabel" name="labelTitleL2">
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>5:20</string>
        </property>

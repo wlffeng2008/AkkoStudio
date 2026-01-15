@@ -96,6 +96,9 @@
          </property>
          <item>
           <widget class="QPushButton" name="pushButtonM1">
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -130,6 +133,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonP1">
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -211,6 +217,9 @@
          </property>
          <item>
           <widget class="QPushButton" name="pushButtonM2">
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -244,6 +253,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonP2">
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string/>
            </property>

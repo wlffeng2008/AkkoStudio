@@ -28,12 +28,16 @@ public:
 
     MacroProject *addMacroProject();
     MacroProject *getMarcoProject(quint8 macroId);
-    void delMacroProject(MacroProject *item);
+    void delMacroProject(MacroProject *prj);
     void saveLoadHeader(bool save=true);
 
-    MacroEvent *addMacroEvent(MacroProject *item,quint8 type,quint16 value,bool down,const QString&text);
-    void delMacroEvent(MacroProject *item,MacroEvent *event);
-    void saveLoadEvent(MacroProject *item,bool save=true);
+    MacroEvent *addMacroEvent(MacroProject *prj,quint8 type,quint16 value,bool down,const QString&text);
+    void delMacroEvent(MacroProject *prj,MacroEvent *event);
+    void saveLoadEvent(MacroProject *prj,bool save=true);
+
+    static QByteArray packMacroPack(MacroProject *prj);
+    static void unackMacroPack(MacroProject *prj,QByteArray&data);
+    static ModuleMacroManager* instance();
 
 signals:
     void nothing();

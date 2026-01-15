@@ -52,6 +52,9 @@
      <height>15</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="styleSheet">
     <string notr="true">color: #2DC3BE;</string>
    </property>
@@ -70,6 +73,9 @@
      <width>53</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
    </property>
    <property name="styleSheet">
     <string notr="true"/>
@@ -105,6 +111,9 @@
      <width>53</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
    </property>
    <property name="styleSheet">
     <string notr="true"/>

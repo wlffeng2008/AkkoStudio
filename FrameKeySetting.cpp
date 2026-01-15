@@ -203,8 +203,6 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     });
 
     connect(ui->tabWidget2,&QTabWidget::currentChanged,this,[=](int index){
-
-
     }) ;
 
     // DKS
@@ -317,7 +315,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
 
         if(m_setType == 0)
         {
-            keyData setTo={0};
+            keyData setTo = {0};
             if(ui->tabWidgetKey->currentIndex() == 0)
             {
                 DialogVKPicker VKDlg(this);
@@ -331,6 +329,14 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 if(FNDlg.exec() != QDialog::Accepted)
                     return;
                 setTo = FNDlg.m_kd;
+
+                if(FNDlg.m_macro)
+                {
+                    ModuleMacroManager *pMM = ModuleMacroManager::instance();
+                    pCnn->setMacro(hid,setTo.b0,setTo.b1,setTo.b2,pMM->packMacroPack(pMM->getMarcoProject(setTo.b2)));
+                    refresh();
+                    return ;
+                }
             }
 
             pCnn->changeKey(hid,&setTo);
@@ -509,7 +515,8 @@ void FrameKeySetting::refresh()
 
             if(type == 2)
             {
-                strT2 = tr("动态键程(DKS):\n");
+                strT2 = tr("动态键程(DKS)");
+                strT2 += ":\n";
                 strT2 += res[0] + "\n";
                 strT2 += res[1] + "\n";
                 strT2 += res[2] + "\n";
@@ -518,14 +525,16 @@ void FrameKeySetting::refresh()
 
             if(type == 3)
             {
-                strT2 = tr("按住单击(MT):\n");
+                strT2 = tr("按住单击(MT)");
+                strT2 += ":\n";
                 strT2 += res[0] + "\n";
                 strT2 += res[1];
             }
 
             if(type == 4 || type == 5)
             {
-                strT2 = tr("切换开关(TGL):\n");
+                strT2 = tr("切换开关(TGL)");
+                strT2 += ":\n";
                 strT2 += res[0];
             }
 
@@ -535,9 +544,15 @@ void FrameKeySetting::refresh()
                 strT2 += res[0];
             }
 
+            if(kd.b0 == 0x09) // Macor
+            {
+                MacroProject *prj = ModuleMacroManager::instance()->getMarcoProject(kd.b2);
+                if(prj) strT2 = QString(tr("宏设置")) + QString(":\n") + prj->name;
+            }
+
             if(kd.b0 == 0 && kd.b1 == 0 && kd.b2 == 0 && kd.b3 == 0)
                 strT1 = "DISABLED";
-            ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
+            ui->frameKeyboard->setKeyTip(hid, strT1.trimmed(), strT2.trimmed());
         }
     }
     m_bUpdating=true;

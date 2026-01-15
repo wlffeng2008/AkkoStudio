@@ -1,5 +1,6 @@
 #include "LinearFixing1.h"
 #include "LinearFixing2.h"
+#include "DialogDeviceConnect.h"
 
 #include <QScreen>
 #include <QPainter>
@@ -50,11 +51,19 @@ LinearFixing1::LinearFixing1(const QString& title,const QString& content, QWidge
         QPushButton:hover { background-color: #0E42F2; }
         QPushButton:pressed { background-color: #0A34A1; }
     )");
-    // connect(confirmBtn, &QPushButton::clicked, this, &QDialog::accept);
+
+    DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
+
     connect(confirmBtn, &QPushButton::clicked, this, [=]{
-        LinearFixing2 T2("","",this) ;
-        T2.setGeometry(frameGeometry()) ;
-        T2.exec() ;
+        pCnn->StartCalibration();
+
+        LinearFixing2 T2("","",this);
+        T2.setGeometry(frameGeometry());
+        T2.exec();
+
+        pCnn->StopCalibration();
+
+        QDialog::reject();
     });
 
     QPushButton* cancelBtn = new QPushButton(tr("取消"), pContentWidget);
@@ -110,7 +119,6 @@ LinearFixing1::LinearFixing1(const QString& title,const QString& content, QWidge
 
 void LinearFixing1::paintEvent(QPaintEvent *event)
 {
-    // 确保样式表生效
     QStyleOption opt;
     opt.initFrom(this);
     QPainter p(this);

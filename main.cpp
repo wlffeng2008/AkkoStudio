@@ -359,6 +359,49 @@ QTabBar::separator {
     background-color: #aaa;
 }
 
+    QSpinBox {
+        border: 1px solid #DDDDDD;
+        border-radius: 4px;
+        padding: 2px 28px 2px 2px;
+        font-size: 14px;
+        color: #333333;
+        background-color: #FFFFFF;
+    }
+
+    QSpinBox:focus {
+        border-color: #007AFF;
+        outline: none;
+    }
+
+    QSpinBox::up-button, QSpinBox::down-button {
+        width: 24px;
+        border: none;
+        background-color: transparent;
+    }
+
+    QSpinBox::up-arrow, QSpinBox::down-arrow {
+        width: 6px;
+        height: 6px;
+        image: none;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+    }
+
+    QSpinBox::up-arrow {
+        border-bottom: 3px solid #007AFF;
+    }
+
+    QSpinBox::down-arrow {
+        border-top: 3px solid #007AFF;
+    }
+
+    /* 只读状态样式 */
+    QSpinBox:read-only {
+        background-color: #F5F5F5;
+        color: #666666;
+        border-color: #EEEEEE;
+    }
+
     )");
 
     MainWindow w;

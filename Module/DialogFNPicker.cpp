@@ -45,19 +45,33 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
     m_kd.b2=0;
     m_kd.b3=0;
 
+    ModuleMacroManager *pMM = ModuleMacroManager::instance();
     connect(ui->buttonGroup,&QButtonGroup::buttonClicked,this,[=](QAbstractButton *btn){
 
-        QString text = btn->objectName();
-        quint8 index = text.right(2).toUInt();
+        m_macro = false;
+        QString name = btn->objectName();
+        quint8 index = name.right(2).toLatin1().toUInt();
+        if(name.contains("_Micro"))
+        {
+            m_macro = true;
+            m_kd.b0 = ui->spinBoxM->value();
+            m_kd.b1 = 0;
+            if(ui->radioButtonM2->isChecked()) m_kd.b1 = 1;
+            if(ui->radioButtonM3->isChecked()) m_kd.b1 = 2;
+            m_kd.b2 = index;
+            MacroProject *prj = pMM->getMarcoProject(index);
+            if(prj)
+                ui->labelSelect1->setText(prj->name);
+            else
+                ui->labelSelect1->setText("尚未录制的宏");
+        }
+        else
+        {
+            if(name.contains("_F"))     m_kd = *(keyData *)getFnData(index-1);
+            if(name.contains("_Mouse")) m_kd = *(keyData *)getMuData(index);
 
-        if(text.contains("_F"))
-            m_kd = *(keyData *)getFnData(index);
-        if(text.contains("_Mouse"))
-            m_kd = *(keyData *)getMuData(index);
-        if(text.contains("_Micro"))
-            m_kd = *(keyData *)getFnData(index);
-
-        ui->labelSelect1->setText(getKeyString(&m_kd));
+            ui->labelSelect1->setText(getKeyString(&m_kd));
+        }
     });
 
     {
@@ -89,8 +103,8 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
             QPushButton *btn = findChild<QPushButton*>(strName) ;
             if(!btn) continue;
 
-            btn->setCheckable(true) ;
-            btn->setText("") ;
+            btn->setCheckable(true);
+            btn->setText("");
 
             QString strStyle=QString(R"(
                 QPushButton {
@@ -114,6 +128,20 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
             btn->setToolTip(getKeyString(getFnData(i)));
             btn->setFocusPolicy(Qt::NoFocus) ;
             btn->setCursor(Qt::PointingHandCursor) ;
+        }
+
+        for(int i=0; i<50; i++)
+        {
+            QPushButton *mBtn = new QPushButton(QString("宏")+QString("%1").arg(i+1),this);
+            QString strName = QString::asprintf("pushButton_Micro%02d",i);
+            mBtn->setObjectName(strName);
+
+            MacroProject *prj = pMM->getMarcoProject(i);
+            if(prj && prj->events.size() >= 2)
+                mBtn->setText(prj->name);
+
+            ui->buttonGroup->addButton(mBtn);
+            ui->gridLayout2->addWidget(mBtn,i/12,i%12);
         }
     }
 

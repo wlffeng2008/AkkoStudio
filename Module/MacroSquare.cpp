@@ -31,7 +31,6 @@ MacroSquare::MacroSquare(const QString &text, quint8 type, quint8 value, bool do
 
     if(type == 3)
     {
-        m_text = QString::number(rand()%500);
         m_spin1 = new QSpinBox(this);
         m_spin1->setRange(5,10000);
         m_spin1->hide() ;
@@ -39,12 +38,11 @@ MacroSquare::MacroSquare(const QString &text, quint8 type, quint8 value, bool do
         m_spin1->setGeometry(QRect(0,12,48,24));
         m_spin1->installEventFilter(this);
         connect(m_spin1,&QSpinBox::valueChanged,this,[=](int value){
-            m_text=QString::number(value);
+            m_value=value;
         });
     }
     else if(type == 2)
     {
-        m_text = QString::number(rand()%500);
         m_spin1 = new QSpinBox(this);
         m_spin1->setRange(5,10000);
         m_spin1->hide() ;
@@ -208,7 +206,7 @@ bool MacroSquare::event(QEvent *event)
         {
             if(m_spin1->isHidden())
             {
-                m_spin1->setValue(m_text.toInt());
+                m_spin1->setValue(m_value);
                 m_spin1->show();
                 m_spin1->setFocus();
             }
@@ -221,7 +219,7 @@ bool MacroSquare::event(QEvent *event)
         {
             if(m_tTip->isHidden())
             {
-                if(m_bSelected)
+                //if(m_bSelected)
                 {
                     QPoint pos = mapToGlobal(QPoint(width()+1,(height() - m_rTip->height())/2));
                     m_rTip->move(pos);

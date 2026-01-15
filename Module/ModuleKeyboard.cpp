@@ -116,7 +116,7 @@ ModuleKeyboard::~ModuleKeyboard()
 
 void ModuleKeyboard::keepSpeacial()
 {
-    return;
+    // return;
     KeyboardButton *btn1 = findChild<KeyboardButton*>("pushButton_Hid234");
     KeyboardButton *btn2 = findChild<KeyboardButton*>("pushButton_Hid233");
     if(m_bSetLightMode || m_bSetMtMode || m_bFixMode)

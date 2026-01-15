@@ -29,9 +29,9 @@ INCLUDEPATH += ./Module
 
 
 SOURCES += \
-    ColorLabel.cpp \
-    ColorSquare.cpp \
-    CustumSlider.cpp \
+    Module/ColorLabel.cpp \
+    Module/ColorSquare.cpp \
+    Module/CustumSlider.cpp \
     DialogDeviceConnect.cpp \
     DialogMainwork.cpp \
     FrameAbout.cpp \
@@ -42,7 +42,7 @@ SOURCES += \
     FrameMain.cpp \
     LinearFixing1.cpp \
     LinearFixing2.cpp \
-    MacroSquare.cpp \
+    Module/MacroSquare.cpp \
     Module/ColorSlider.cpp \
     Module/DialogFNPicker.cpp \
     Module/DialogVKPicker.cpp \
@@ -63,17 +63,17 @@ SOURCES += \
     Module/VirtualKeyboard.cpp \
     Module/keyboardbutton.cpp \
     Module/modulemacromanager.cpp \
-    ModuleScrollValue.cpp \
-    NewTabWidget.cpp \
-    SuperLabel.cpp \
-    ToggleButton.cpp \
+    Module/ModuleScrollValue.cpp \
+    Module/NewTabWidget.cpp \
+    Module/SuperLabel.cpp \
+    Module/ToggleButton.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
-    ColorLabel.h \
-    ColorSquare.h \
-    CustumSlider.h \
+    Module/ColorLabel.h \
+    Module/ColorSquare.h \
+    Module/CustumSlider.h \
     DialogDeviceConnect.h \
     DialogMainwork.h \
     FrameAbout.h \
@@ -84,8 +84,8 @@ HEADERS += \
     FrameMain.h \
     LinearFixing1.h \
     LinearFixing2.h \
-    MacroSquare.h \
     MainWindow.h \
+    Module/MacroSquare.h \
     Module/ColorSlider.h \
     Module/DialogFNPicker.h \
     Module/DialogVKPicker.h \
@@ -106,10 +106,10 @@ HEADERS += \
     Module/VirtualKeyboard.h \
     Module/keyboardbutton.h \
     Module/modulemacromanager.h \
-    ModuleScrollValue.h \
-    NewTabWidget.h \
-    SuperLabel.h \
-    ToggleButton.h
+    Module/ModuleScrollValue.h \
+    Module/NewTabWidget.h \
+    Module/SuperLabel.h \
+    Module/ToggleButton.h
 
 FORMS += \
     DialogDeviceConnect.ui \
@@ -136,7 +136,7 @@ FORMS += \
     Module/ModuleKeyboard.ui \
     Module/ModuleVideoItem.ui \
     Module/VirtualKeyboard.ui \
-    ModuleScrollValue.ui
+    Module/ModuleScrollValue.ui
 
 TRANSLATIONS += \
     AKKOStudio_en_US.ts \

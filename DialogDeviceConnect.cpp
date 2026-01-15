@@ -13,7 +13,6 @@
 #include <QMessageBox>
 #include <QWindow>
 
-
 typedef struct
 {
     QString name;
@@ -95,20 +94,24 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             pWin->setFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
     });
 
+    m_pCntSet = new QSettings(QApplication::applicationDirPath() + "/device.ini",QSettings::IniFormat);
+    ui->lineEditVID->setText(m_pCntSet->value("lastVID","3151").toString());
+    ui->lineEditPID->setText(m_pCntSet->value("lastPID","502F").toString());
+
     {
-        m_pTable = ui->tableView ;
-        m_pModel = new QStandardItemModel() ;
+        m_pTable = ui->tableView;
+        m_pModel = new QStandardItemModel();
         m_pModel->setHorizontalHeaderLabels(QString("命令,数据长度,Byte0\n命令号(Hex),Byte1\nEffect,Byte2\nSpeed,Byte3\nBrightness,Byte4\nOption,Byte5\nR,Byte6\nG,Byte7\nB").split(',')) ;
         m_pTable->setModel(m_pModel) ;
 
-        QHeaderView *pHDV = m_pTable->horizontalHeader() ;
+        QHeaderView *pHDV = m_pTable->horizontalHeader();
         pHDV->setSectionResizeMode(QHeaderView::Stretch);
         pHDV->setSectionResizeMode(0,QHeaderView::Fixed);
-        pHDV->resizeSection(0,165) ;
+        pHDV->resizeSection(0,165);
         pHDV->setSectionResizeMode(2,QHeaderView::Fixed);
-        pHDV->resizeSection(2,90) ;
+        pHDV->resizeSection(2,90);
         pHDV->setSectionResizeMode(5,QHeaderView::Fixed);
-        pHDV->resizeSection(5,90) ;
+        pHDV->resizeSection(5,90);
 
         foreach(const HidCmd & cmd,CmdTable)
         {
@@ -125,12 +128,12 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             QStandardItem *item8 = new QStandardItem(QString("%1").arg(cmd.byte6)) ;
             QStandardItem *item9 = new QStandardItem(QString("%1").arg(cmd.byte7)) ;
 
-            QFont font = this->font() ;
+            QFont font = this->font();
             font.setBold(true);
 
-            item0->setEditable(false) ;
-            item1->setEditable(false) ;
-            item2->setEditable(false) ;
+            item0->setEditable(false);
+            item1->setEditable(false);
+            item2->setEditable(false);
 
             item0->setForeground(QBrush(Qt::blue)) ;
             if(cmd.nLen == 9)
@@ -196,42 +199,68 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     static USBNotifier *pUsb = new USBNotifier(this);
     QCoreApplication::instance()->installNativeEventFilter(pUsb) ;
     connect(pUsb, &USBNotifier::devicePluggined,this,[=](bool in) {
-        qDebug() << "USB device plugged in" << in;
         pTMUsb->stop();
         pTMUsb->start(800);
     });
 
     connect(pTMUsb,&QTimer::timeout,this,[=]{
         pTMUsb->stop();
-        ui->pushButtonRefresh->click() ;
+        ui->pushButtonRefresh->click();
     });
 
+    connect(ui->comboBoxPID,&QComboBox::currentIndexChanged,this,[=](int index){
+        ui->lineEditPID->setText(ui->comboBoxPID->currentText());
+        ui->pushButtonConnect->click();
+    });
     connect(ui->pushButtonRefresh,&QPushButton::clicked,this,[=]{
+        quint16 VID = ui->lineEditVID->text().trimmed().toUInt(nullptr,16);
+
+        QStringList VIDList;
+        hid_device_info *pRoot = hid_enumerate(VID,0);
+        hid_device_info *pTemp = pRoot;
+        while(pTemp)
+        {
+            if(pTemp->usage_page == 0xFFFF && pTemp->usage == 1)
+            {
+                VIDList.push_back(QString::asprintf("%04X", pTemp->product_id));
+            }
+            pTemp = pTemp->next;
+        }
+        hid_free_enumeration(pRoot);
+
+        ui->comboBoxPID->blockSignals(true);
+        ui->comboBoxPID->clear();
+        ui->comboBoxPID->addItems(VIDList);
+        ui->comboBoxPID->blockSignals(false);
+
+        QString strPID = ui->lineEditPID->text().trimmed().toUpper();
+        int index = ui->comboBoxPID->findText(strPID);
+        if(index == -1) index = 0;
+        ui->comboBoxPID->setCurrentIndex(index);
+    });
+
+    connect(ui->pushButtonConnect,&QPushButton::clicked,this,[=]{
         disconnect();
 
-        quint32 VID = ui->lineEditVID->text().trimmed().toUInt(nullptr,16) ;
-        hid_device_info *pRoot = hid_enumerate(VID,0x502F);
-        hid_device_info *pTemp = pRoot;
+        quint16 VID = ui->lineEditVID->text().trimmed().toUInt(nullptr,16);
+        quint16 PID = ui->lineEditPID->text().trimmed().toUInt(nullptr,16);
 
+        hid_device_info *pRoot = hid_enumerate(VID,PID);
+        hid_device_info *pTemp = pRoot;
         while(pTemp)
         {
             if(pTemp->usage_page == 0xFFFF)
             {
-                unsigned char szInfo[128]={0};
                 if(pTemp->usage == 1)
                 {
-                    m_pDev0 = hid_open_path(pTemp->path) ;
-                    hid_get_report_descriptor(m_pDev0,szInfo,64);
-                    //qDebug() << "Open m_pDev0: " << pTemp->path << pTemp->usage << pTemp->usage_page;
-                    hid_set_nonblocking(m_pDev0,1) ;
+                    m_pDev0 = hid_open_path(pTemp->path);
+                    hid_set_nonblocking(m_pDev0,1);
                     ui->labelFlag0->setPixmap(QString(":/images/General_OK4.png"));
                 }
 
                 if(pTemp->usage == 2)
                 {
-                    m_pDev1 = hid_open_path(pTemp->path) ;
-                    hid_get_report_descriptor(m_pDev1,szInfo,64);
-                    //qDebug() << "Open m_pDev1: " << pTemp->path << pTemp->usage << pTemp->usage_page;
+                    m_pDev1 = hid_open_path(pTemp->path);
                     ui->labelFlag1->setPixmap(QString(":/images/General_OK4.png"));
                 }
             }
@@ -240,31 +269,30 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             if(m_pDev0 && m_pDev1)
             {
                 emit onConnect();
-                addReadCmd(CMD_GET_PROFILE,true);
-
+                addReadCmd(CMD_GET_INFOR,true);
+                m_pCntSet->setValue("lastVID",ui->lineEditVID->text().trimmed());
+                m_pCntSet->setValue("lastPID",ui->lineEditPID->text().trimmed());
                 break;
             }
-
         }
+        hid_free_enumeration(pRoot);
 
         if(!m_pDev0 || !m_pDev1)
         {
             emit onDisconnect();
         }
-
-        hid_free_enumeration(pRoot);
     });
 
     connect(ui->pushButtonWrite,&QPushButton::clicked,this,[=]{
         if(!m_pDev1) return;
-        QString strCmd = ui->lineEditCmd->text().trimmed(); //"8F 00 00 00 00 00 00 70" ;
+        QString strCmd = ui->lineEditCmd->text().trimmed(); // "8F 00 00 00 00 00 00 70" ;
         QByteArray data(QByteArray::fromHex(strCmd.toLatin1()));
         addReadCmd(data,true);
     });
 
     connect(ui->pushButtonRead,&QPushButton::clicked,this,[=]{
 
-        char buf[1024]={0};
+        char buf[1024] = {0};
         int nlen = hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
         if( nlen>0 )
         {
@@ -283,8 +311,18 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             quint8 *pCmd=(quint8 *)m_lastCmd.data();
             switch(pCmd[0])
             {
+            case CMD_GET_INFOR:
+                m_Info = data;
+                addReadCmd(CMD_GET_PROFILE,true);
+                break;
+
             case CMD_GET_PROFILE:
                 m_layer = data[1];
+                addReadCmd(CMD_GET_KBOPTION,true);
+                break;
+
+            case CMD_GET_KBOPTION:
+                m_Optn = data;
                 break;
 
             case CMD_GET_KEYMATRIX:
@@ -304,6 +342,19 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 break;
 
             case 0xE5:
+                if(m_bCalibration && pCmd[1] == 0xFE)
+                {
+                    m_Cali.append(data);
+                    if(pCmd[3] == 3)
+                    {
+                        static QByteArray tmp;
+                        tmp = m_Cali;
+                        m_Cali.clear();
+                        emit onCalibration(tmp);
+                    }
+                    break;
+                }
+
                 if(pCmd[1] == 0x00) m_E500.append(data);
                 if(pCmd[1] == 0x01) m_E501.append(data);
                 if(pCmd[1] == 0x02) m_E502.append(data);
@@ -480,7 +531,7 @@ void DialogDeviceConnect::executeCmd()
 
     m_lastCmd = cmd ;
 
-    qDebug() << "send:" << cmd.left(16).toHex(' ').toUpper();
+    //qDebug() << "send:" << cmd.left(16).toHex(' ').toUpper();
 
     cmd.insert(0,(char)0) ; // report id
     hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
@@ -492,7 +543,7 @@ void DialogDeviceConnect::executeCmd()
 
 void DialogDeviceConnect::set65Value(quint8 option,quint8 index,quint32 value)
 {
-    if(index>=128) return;
+    if(index >= 128) return;
     int type = 1;
     char *data = nullptr;
     switch(option)
@@ -696,23 +747,23 @@ void DialogDeviceConnect::enableKey(quint8 hid, bool enable, quint8 subLayer)
 {
     keyData set={0} ;
     if(enable) set.b2 = hid;
-    changeKey(hid,&set,subLayer);
+    changeKey(hid, &set, subLayer);
 }
 
 QByteArray DialogDeviceConnect::getMatix(int sub)
 {
-    return m_KeyMatrix[sub] ;
+    return m_KeyMatrix[sub];
 }
 
 void DialogDeviceConnect::addLog(const QByteArray&log)
 {
-    if(m_bClear) ui->plainTextEdit->clear() ;
+    if(m_bClear) ui->plainTextEdit->clear();
     QString strLog(log.toHex(' ').toUpper());
     int nLen = strLog.length() ;
     for(int at=nLen-12; at>0; at -= 12)
         strLog.insert(at,' ');
-    ui->plainTextEdit->appendPlainText(strLog + "\n") ;
-    m_bClear = false ;
+    ui->plainTextEdit->appendPlainText(strLog + "\n");
+    m_bClear = false;
     pTMClear->stop();
     pTMClear->start(500);
 }
@@ -720,21 +771,31 @@ void DialogDeviceConnect::addLog(const QByteArray&log)
 void DialogDeviceConnect::addReadCmd(quint8 cmd, int len, bool execute)
 {
     QByteArray data(len,0);
-    data[0]=cmd;
+    data[0] = cmd;
     addReadCmd(data, execute);
 }
 
 void DialogDeviceConnect::addReadCmd(const QString&strCmd, bool execute)
 {
-    QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1()) ;
+    QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1());
     addReadCmd(cmd, execute);
 }
 
 void DialogDeviceConnect::addReadCmd(QByteArray&cmd, bool execute)
 {
+    if(!m_pDev1) return;
+
     m_readList.push_back(cmd);
-    m_pExecute->stop();
-    m_pExecute->start(10);
+
+    if(execute)
+    {
+        executeCmd();
+    }
+    else
+    {
+        m_pExecute->stop();
+        m_pExecute->start(5);
+    }
 }
 
 void DialogDeviceConnect::startConnect()
@@ -795,7 +856,7 @@ int DialogDeviceConnect::getRow(int cmd)
     int count = m_pModel->rowCount();
     for(int i=0; i<count; i++)
     {
-        int value = m_pModel->item(i,2)->text().toInt(nullptr,16);
+        int value = m_pModel->item(i,2)->text().toInt(nullptr, 16);
         if(value == cmd)
             return i;
     }
@@ -806,9 +867,9 @@ void DialogDeviceConnect::setLEDOn(bool on)
 {
     int row = getRow(CMD_SET_LEDONOFF);
     if(row == -1) return;
-    setRowValue(row,3,on?0:1);
-    setRowValue(row,4,on?0:1);
-    makeCmd(row,true);
+    setRowValue(row, 3, on ? 0 : 1);
+    setRowValue(row, 4, on ? 0 : 1);
+    makeCmd(row, true);
 }
 
 void DialogDeviceConnect::setRowValue(int row, int col, int value)
@@ -822,7 +883,7 @@ void DialogDeviceConnect::setLEDPicture(int index)
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
 
-    setRowValue(row,6,0x10 * (index));
+    setRowValue(row, 6, 0x10 * (index));
     setLEDMode(0x0D);
 }
 
@@ -831,7 +892,7 @@ void DialogDeviceConnect::setLEDOption(int option)
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
 
-    setRowValue(row,6,option);
+    setRowValue(row, 6, option);
     makeCmd(row,true);
 }
 
@@ -840,60 +901,100 @@ void DialogDeviceConnect::setLEDMode(int mode)
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
 
-    setRowValue(row,3,mode);
+    setRowValue(row, 3, mode);
     if(mode != 0x0D)
-    setRowValue(row,6,7);
-    makeCmd(row,true);
+    setRowValue(row, 6, 7);
+    makeCmd(row, true);
 }
 
 void DialogDeviceConnect::setLEDSpeed(int speed)
 {
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
-    setRowValue(row,4,speed);
-    makeCmd(row,true);
+    setRowValue(row, 4, speed);
+    makeCmd(row, true);
 }
 
 void DialogDeviceConnect::setLEDBright(int bright)
 {
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
-    setRowValue(row,5,bright);
-    makeCmd(row,true);
+    setRowValue(row, 5, bright);
+    makeCmd(row, true);
 }
 
-void DialogDeviceConnect::setLEDColor(const QColor&color,int option)
+void DialogDeviceConnect::setLEDColor(const QColor&color, int option)
 {
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
-    setRowValue(row,6,option);
+    setRowValue(row, 6, option);
     if(option>6)
     {
-        setRowValue(row,7,color.red());
-        setRowValue(row,8,color.green());
-        setRowValue(row,9,color.blue());
+        setRowValue(row, 7, color.red()  );
+        setRowValue(row, 8, color.green());
+        setRowValue(row, 9, color.blue() );
     }
 
     makeCmd(row,true);
 }
 
-void DialogDeviceConnect::setMacro(quint8 hid,quint16 repeat,quint8 mode,quint8 macroId,const QByteArray&data)
+void DialogDeviceConnect::setMacro(quint8 hid, quint16 repeat, quint8 mode, quint8 macroId, const QByteArray&data)
 {
-    QByteArray buf((char*)&repeat,2);
+    QByteArray buf((char*)&repeat, 2);
     buf.append(data);
-    quint16 len = buf.size();
-    buf.append(56-len%56,0);
 
-    len = buf.size();
-    quint8 count = len%56;
+    quint8 count = buf.size() / 56;
+    quint8 tail  = buf.size() % 56;
+    if(tail>0)
+    {
+        buf.append(56 - tail, 0);
+        count++;
+    }
+
     for(quint8 i=0; i<count; i++)
     {
-        quint8 szTmp[]={CMD_SET_MACRO,macroId,i,56,(i==count-1),0,0,0};
-        QByteArray pack((char *)szTmp,8);
-        pack.append(buf.left(56),56);
-        buf.remove(0,56);
+        quint8 szTmp[] = {CMD_SET_MACRO, macroId, i, 56, (i == count-1), 0, 0, 0};
+        QByteArray pack((char *)szTmp, 8);
+        pack.append(buf.left(56));
+        buf.remove(0, 56);
         addReadCmd(pack);
     }
-    keyData set{0x09,mode,macroId,0};
-    changeKey(hid,&set);
+
+    keyData set{0x09, mode, macroId, 0};
+    changeKey(hid, &set);
+}
+
+void DialogDeviceConnect::StartCalibration()
+{
+    m_bCalibration = true;
+    if(!m_TMCali)
+        m_TMCali = new QTimer(this);
+    m_Cali.clear();
+    addReadCmd("1E 01", true);
+    m_TMCali->start(120);
+    connect(m_TMCali,&QTimer::timeout, this, [=]{
+        static quint64 index = 0;
+        addReadCmd(QString::asprintf("E5 FE 01 %02X", index++ % 4));
+    });
+}
+
+void DialogDeviceConnect::StopCalibration()
+{
+    m_bCalibration = false;
+    if(m_TMCali)
+        m_TMCali->stop();
+    m_readList.clear();
+    addReadCmd("1E 00", true);
+}
+
+void DialogDeviceConnect::setKBOption(quint8 option, quint8 value)
+{
+    m_Optn[0     ] = CMD_SET_KBOPTION;
+    m_Optn[option] = value;
+    addReadCmd(m_Optn,true);
+}
+
+quint8 DialogDeviceConnect::getKBOption(quint8 option)
+{
+    return m_Optn[option];
 }

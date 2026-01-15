@@ -8,9 +8,12 @@
 #include <QFile>
 #include <QDebug>
 
+static ModuleMacroManager *s_instance = nullptr;
 ModuleMacroManager::ModuleMacroManager(QObject *parent)
     : QObject{parent}
 {
+    if(!s_instance) s_instance = this;
+
     m_strPath = QApplication::applicationDirPath() + "\\macro\\" ;
     QDir A(m_strPath);
     if(!A.exists())
@@ -19,8 +22,15 @@ ModuleMacroManager::ModuleMacroManager(QObject *parent)
     saveLoadHeader(false);
 }
 
+ModuleMacroManager *ModuleMacroManager::instance()
+{
+    return s_instance;
+}
+
 MacroProject *ModuleMacroManager::addMacroProject()
 {
+    if(m_macros.count() >= 50)
+        return nullptr;
     MacroProject *item = new MacroProject();
     item->mode = 0;
     item->repeat=1;
@@ -40,17 +50,18 @@ MacroProject *ModuleMacroManager::addMacroProject()
 
 MacroProject *ModuleMacroManager::getMarcoProject(quint8 macroId)
 {
-    for(int i=0; i<m_macros.size(); i++)
+    for(MacroProject *prj: std::as_const(m_macros))
     {
-        if(m_macros[i]->id == macroId)
-            return m_macros[i];
+        if(prj->id == macroId)
+            return prj;
     }
     return nullptr;
 }
 
-void ModuleMacroManager::delMacroProject(MacroProject *item)
+void ModuleMacroManager::delMacroProject(MacroProject *prj)
 {
-    m_macros.remove(m_macros.indexOf(item));
+    m_macros.remove(m_macros.indexOf(prj));
+    delete prj;
     saveLoadHeader();
 }
 
@@ -80,6 +91,7 @@ void ModuleMacroManager::saveLoadHeader(bool save)
         if (jF.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate))
         {
             jF.write(data);
+            jF.close();
         }
     }
     else
@@ -101,6 +113,8 @@ void ModuleMacroManager::saveLoadHeader(bool save)
                 item->name   = It["name"].toString();
                 item->repeat = It["repeat"].toInt();
                 m_macros.push_back(item);
+
+                saveLoadEvent(item,false);
             }
             jF.close();
         }
@@ -116,36 +130,36 @@ void ModuleMacroManager::saveLoadHeader(bool save)
     }
 }
 
-MacroEvent *ModuleMacroManager::addMacroEvent(MacroProject *item,quint8 type,quint16 value,bool down,const QString&text)
+MacroEvent *ModuleMacroManager::addMacroEvent(MacroProject *prj,quint8 type,quint16 value,bool down,const QString&text)
 {
     MacroEvent *event = new MacroEvent();
     event->type=type;
     event->value=value;
     event->down=down;
     event->text=text;
-    item->events.push_back(event);
+    prj->events.push_back(event);
     return nullptr;
 }
 
-void ModuleMacroManager::delMacroEvent(MacroProject *item,MacroEvent *event)
+void ModuleMacroManager::delMacroEvent(MacroProject *prj,MacroEvent *event)
 {
-    int index = item->events.indexOf(event);
+    int index = prj->events.indexOf(event);
     if(index != -1)
-        item->events.remove(index,2);
-    saveLoadEvent(item);
+        prj->events.remove(index,2);
+    saveLoadEvent(prj);
 }
 
-void ModuleMacroManager::saveLoadEvent(MacroProject *item,bool save)
+void ModuleMacroManager::saveLoadEvent(MacroProject *prj,bool save)
 {
-    int id = item->id;
+    int id = prj->id;
     QFile jF(m_strPath+QString("macroevent%1.txt").arg(id));
     if(save)
     {
         QJsonArray jData;
-        int count = item->events.count();
+        int count = prj->events.count();
         for(int i=0; i<count; i++)
         {
-            MacroEvent *event = item->events[i];
+            MacroEvent *event = prj->events[i];
             QJsonObject jE;
             jE["type"]=event->type;
             jE["value"]=event->value;
@@ -153,19 +167,20 @@ void ModuleMacroManager::saveLoadEvent(MacroProject *item,bool save)
             jE["text"]=event->text;
             jData.push_back(jE);
         }
-        qDebug() << "saveLoadEvent" <<  jData.size();
-        QJsonObject jS ;
+
+        QJsonObject jS;
         jS["data"]=jData;
         QJsonDocument jDoc(jS);
         QByteArray data = jDoc.toJson();
         if (jF.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate))
         {
             jF.write(data);
+            jF.close();
         }
     }
     else
     {
-        item->events.clear();
+        prj->events.clear();
         if (jF.open(QIODevice::ReadOnly))
         {
             QByteArray data = jF.readAll();
@@ -180,13 +195,79 @@ void ModuleMacroManager::saveLoadEvent(MacroProject *item,bool save)
             {
                 QJsonObject jE = jArr[i].toObject();
                 MacroEvent *event = new MacroEvent();
-
                 event->type  = jE["type"].toInt();
                 event->value = jE["value"].toInt();
                 event->down  = jE["down"].toBool();
                 event->text  = jE["text"].toString();
-                item->events.push_back(event);
+                prj->events.push_back(event);
             }
         }
     }
+}
+
+
+QByteArray ModuleMacroManager::packMacroPack(MacroProject *prj)
+{
+    QByteArray data;
+    if(prj)
+    {
+        int count = prj->events.count();
+        for(int i=0; i<count; i+= 2)
+        {
+            MacroEvent *evt0 = prj->events[i+0];
+            MacroEvent *evt1 = prj->events[i+1];
+            int len = 2;
+            quint8 unit[8] = {0};
+            switch(evt0->type)
+            {
+            case 0:
+            case 1:
+                unit[0] = evt0->value & 0xFF;
+                if(evt1->value <= 0x7F)
+                {
+                    unit[1] = evt1->value + (evt0->down ? 0x80 : 0x00);
+                }
+                else
+                {
+                    unit[1] = (evt0->down ? 0x80 : 0x00);
+                    unit[2] = (evt1->value & 0x00FF);
+                    unit[3] = (evt1->value & 0xFF00) >> 8;
+                    len = 4;
+                }
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                unit[0] = 0xF9;
+                unit[1] = 0x00;
+
+                len = 4;
+                if(evt1->value <= 0x7F)
+                {
+                    unit[1] = (evt1->value & 0xFF);
+                }
+                unit[2] = (evt0->value & 0x00FF);
+                unit[3] = (evt0->value & 0xFF00) >> 8;
+
+                if(evt1->value > 0x7F)
+                {
+                    unit[4] = (evt1->value & 0x00FF);
+                    unit[5] = (evt1->value & 0xFF00) >> 8;
+                    len = 6;
+                }
+                break;
+            }
+
+            data.append((char *)unit,len);
+        }
+    }
+
+    return data;
+}
+
+void ModuleMacroManager::unackMacroPack(MacroProject *prj,QByteArray&data)
+{
+
 }

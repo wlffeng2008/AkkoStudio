@@ -19,11 +19,18 @@ ModuleLangMenu::ModuleLangMenu(QWidget *parent)
     static QStringList Langs={
         tr("中文简体"),
         tr("English"),
-        tr("한국어"),
+        tr("中文繁体"),
         tr("日本語"),
+        tr("한국어"),
         tr("Русский"),
         tr("Tiếng Việt"),
-        tr("Português")
+        tr("Português"),
+        tr("ภาษาไทย"),
+        tr("Deutsch"),
+        tr("Français"),
+        tr("Svenska"),
+        tr("Italiano"),
+        tr("Türkçe")
     } ;
 
     QString strStyle(R"(

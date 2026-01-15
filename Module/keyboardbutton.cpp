@@ -29,8 +29,8 @@ keySetTooltip::keySetTooltip(QWidget *parent):QWidget(parent)
     pBox->setContentsMargins(10,8,10,16);
     pBox->setSpacing(4);
 
-    label1->hide();
-    midLine->hide();
+    //label1->hide();
+    //midLine->hide();
 }
 
 void keySetTooltip::setText1(const QString&text)

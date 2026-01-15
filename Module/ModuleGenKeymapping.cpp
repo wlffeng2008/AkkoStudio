@@ -49,47 +49,45 @@ void ModuleGenKeymapping::initList()
     m_fnList.push_back(new keyItem({0x14, 0x00, 0x02, 0x00}, tr("DPI-"      ))) ;
     m_fnList.push_back(new keyItem({0x14, 0x00, 0x04, 0x00}, tr("DPI-Shift" ))) ; //29
 
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x00, 0x00}, tr("Profile-Value"))) ;
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x01, 0x00}, tr("Profile+"     ))) ;
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x02, 0x00}, tr("Profile-"     ))) ;
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x03, 0x00}, tr("Profile-Loop" ))) ;
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x00}, tr("Profile-Exchange1"))) ;
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x01}, tr("Profile-Exchange2"))) ;
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x02}, tr("Profile-Exchange3"))) ;
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x03}, tr("Profile-Exchange4"))) ;
-    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x04}, tr("Profile-Exchange5"))) ; // 39
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x00, 0x00}, tr("Profile-Value")));
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x01, 0x00}, tr("Profile+"     )));
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x02, 0x00}, tr("Profile-"     )));
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x03, 0x00}, tr("Profile-Loop" )));
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x00}, tr("Profile-1"    )));
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x01}, tr("Profile-2"    )));
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x02}, tr("Profile-3"    )));
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x03}, tr("Profile-4"    )));
+    m_fnList.push_back(new keyItem({0x08, 0x00, 0x04, 0x04}, tr("Profile-5"    ))); // 39
 
-    m_fnList.push_back(new keyItem({0x0a, 0x05, 0x00, 0x00}, tr("切换Win"     ))) ;
-    m_fnList.push_back(new keyItem({0x0a, 0x05, 0x01, 0x00}, tr("切换Mac"     ))) ;
-    m_fnList.push_back(new keyItem({0x0d, 0x03, 0x01, 0x00}, tr("背光速度-"   ))) ;
-    m_fnList.push_back(new keyItem({0x0d, 0x03, 0x02, 0x00}, tr("背光速度+"   ))) ;
-    m_fnList.push_back(new keyItem({0x0d, 0x02, 0x01, 0x00}, tr("背光亮度+"   ))) ;
-    m_fnList.push_back(new keyItem({0x0d, 0x02, 0x02, 0x00}, tr("背光亮度-"   ))) ;
-    m_fnList.push_back(new keyItem({0x0d, 0x01, 0x00, 0x00}, tr("灯效循环切换"))) ;
-    m_fnList.push_back(new keyItem({0x0d, 0x05, 0x01, 0x00}, tr("背光颜色切换"))) ;
-    m_fnList.push_back(new keyItem({0x0a, 0x0c, 0x00, 0x00}, tr("关闭背光"    ))) ;
-    m_fnList.push_back(new keyItem({0x0a, 0x02, 0x00, 0x00}, tr("恢复出厂设置"))) ;
-    m_fnList.push_back(new keyItem({0x0a, 0x03, 0x00, 0x00}, tr("锁Win"       ))) ;
-    m_fnList.push_back(new keyItem({0x0a, 0x05, 0x03, 0x00}, tr("系统切换"    ))) ; // 51
+    m_fnList.push_back(new keyItem({0x0a, 0x05, 0x00, 0x00}, tr("切换Win"     )));
+    m_fnList.push_back(new keyItem({0x0a, 0x05, 0x01, 0x00}, tr("切换Mac"     )));
+    m_fnList.push_back(new keyItem({0x0d, 0x03, 0x01, 0x00}, tr("背光速度-"   )));
+    m_fnList.push_back(new keyItem({0x0d, 0x03, 0x02, 0x00}, tr("背光速度+"   )));
+    m_fnList.push_back(new keyItem({0x0d, 0x02, 0x01, 0x00}, tr("背光亮度+"   )));
+    m_fnList.push_back(new keyItem({0x0d, 0x02, 0x02, 0x00}, tr("背光亮度-"   )));
+    m_fnList.push_back(new keyItem({0x0d, 0x01, 0x00, 0x00}, tr("灯效循环切换")));
+    m_fnList.push_back(new keyItem({0x0d, 0x05, 0x01, 0x00}, tr("背光颜色切换")));
+    m_fnList.push_back(new keyItem({0x0a, 0x0c, 0x00, 0x00}, tr("关闭背光"    )));
+    m_fnList.push_back(new keyItem({0x0a, 0x02, 0x00, 0x00}, tr("恢复出厂设置")));
+    m_fnList.push_back(new keyItem({0x0a, 0x03, 0x00, 0x00}, tr("锁Win"       )));
+    m_fnList.push_back(new keyItem({0x0a, 0x05, 0x03, 0x00}, tr("系统切换"    ))); // 51
 
-    // -----------------------------------------------------------------------
-
-    m_muList.push_back(new keyItem({0x01, 0x00, 0xf0, 0x00}, tr("鼠标左键单击")));
-    m_muList.push_back(new keyItem({0x01, 0x00, 0xf1, 0x00}, tr("鼠标右键单击")));
-    m_muList.push_back(new keyItem({0x01, 0x00, 0xf2, 0x00}, tr("鼠标中键按下")));
-    m_muList.push_back(new keyItem({0x01, 0x00, 0xf3, 0x00}, tr("鼠标向后移动")));
-    m_muList.push_back(new keyItem({0x01, 0x00, 0xf4, 0x00}, tr("鼠标向前移动")));
+    // ---------------------------------------------------------------------------
+    m_muList.push_back(new keyItem({0x01, 0x00, 0xf0, 0x00}, tr("左键单击"    )));
+    m_muList.push_back(new keyItem({0x01, 0x00, 0xf1, 0x00}, tr("右键单击"    )));
+    m_muList.push_back(new keyItem({0x01, 0x00, 0xf2, 0x00}, tr("中键按下"    )));
+    m_muList.push_back(new keyItem({0x01, 0x00, 0xf3, 0x00}, tr("光标前进"    )));
+    m_muList.push_back(new keyItem({0x01, 0x00, 0xf4, 0x00}, tr("光标后退"    )));
     m_muList.push_back(new keyItem({0x01, 0x00, 0xf5, 0x00}, tr("滚轮-向左"   )));
     m_muList.push_back(new keyItem({0x01, 0x00, 0xf6, 0x00}, tr("滚轮-向右"   )));
-    m_muList.push_back(new keyItem({0x01, 0x00, 0xf7, 0x00}, tr("滚轮-向前"   )));
-    m_muList.push_back(new keyItem({0x01, 0x00, 0xf8, 0x00}, tr("滚轮-向后"   )));
+    m_muList.push_back(new keyItem({0x01, 0x00, 0xf7, 0x00}, tr("滚轮-向上"   )));
+    m_muList.push_back(new keyItem({0x01, 0x00, 0xf8, 0x00}, tr("滚轮-向下"   )));
     m_muList.push_back(new keyItem({0x01, 0x00, 0xf5, 0x01}, tr("向上滚屏"    )));
     m_muList.push_back(new keyItem({0x01, 0x00, 0xf5, 0xff}, tr("向下滚屏"    )));
     m_muList.push_back(new keyItem({0x01, 0x00, 0xf6, 0xfb}, tr("XUP"         )));
     m_muList.push_back(new keyItem({0x01, 0x00, 0xf6, 0x05}, tr("XDOWN"       )));
     m_muList.push_back(new keyItem({0x01, 0x00, 0xf7, 0xfb}, tr("YUP"         )));
     m_muList.push_back(new keyItem({0x01, 0x00, 0xf7, 0x05}, tr("YDOWN"       )));
-
 }
 
 ModuleGenKeymapping::~ModuleGenKeymapping()
@@ -184,7 +182,7 @@ static quint8 defaultMatrix_id2807[] =
     0,0,19,0,
     0,0,51,0,
     0,0,55,0,
-    10,1,0,0,
+    10,1,0,0, // 65 R-FN;
     0,0,68,0,
     0,0,45,0,
     0,0,47,0,
@@ -212,14 +210,14 @@ static quint8 defaultMatrix_id2807[] =
     0,0,77,0,
     0,0,79,0, // 89
 
-    3,0,234,0,
-    3,0,233,0,
-    10,14,0,0,
-    0,0,0,0,
-    0,0,0,0,
-    0,0,0,0,
-    13,2,2,0,
-    13,2,1,0,
+    3,0,234,0,  // 音量+  90
+    3,0,233,0,  // 音量-  91
+    10,14,0,0,  // L-Fn键   92   -- 240
+    0,0,0,0,    // 93
+    0,0,0,0,    // 94
+    0,0,0,0,    // 95
+    13,2,2,0,   // 背光亮度- 96 -- 241
+    13,2,1,0,   // 背光亮度+ 97 -- 242
     0,0,0,0,
     0,0,0,0, // 99
 
@@ -269,6 +267,14 @@ quint8 getIndex(quint8 hid)
 
 quint8 getHid(quint8 index)
 {
+    switch(index)
+    {
+    case 65: return 250;
+    case 92: return 251;
+    case 96: return 252;
+    case 97: return 253;
+    }
+
     if(index<128)
         return defaultMatrix_id2807[index*4 + 2];
     return 0;
@@ -463,7 +469,7 @@ QString ModuleGenKeymapping::getKeyString(const keyData *data,bool addPreffix)
     {
         if(isKeyEqual(&k->data,data))
         {
-            return QString(tr("功能键: ")) + k->text;
+            return QString(tr("功能: ")) + k->text;
         }
     }
 
@@ -471,7 +477,7 @@ QString ModuleGenKeymapping::getKeyString(const keyData *data,bool addPreffix)
     {
         if(isKeyEqual(&k->data,data))
         {
-            return QString(tr("鼠标键: ")) + k->text;
+            return QString(tr("鼠标: ")) + k->text;
         }
     }
 
@@ -481,7 +487,7 @@ QString ModuleGenKeymapping::getKeyString(const keyData *data,bool addPreffix)
 
     if(strV1.isEmpty()) return QString("");
 
-    QString strTxt(tr("组合键: "));
+    QString strTxt(tr("组合: "));
     if(!addPreffix) strTxt="";
     if(!strV1.isEmpty()) strTxt += strV1;
     if(!strV2.isEmpty()) strTxt += QString(" + ") + strV2;

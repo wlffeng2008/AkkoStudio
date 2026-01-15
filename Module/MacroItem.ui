@@ -34,6 +34,9 @@
    </property>
    <item>
     <widget class="QLabel" name="labelMacroName">
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>M1</string>
      </property>
@@ -41,8 +44,14 @@
    </item>
    <item>
     <widget class="QLineEdit" name="lineEditMacroName">
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit{background-color: #F6F6F6;border:0px solid #A4A4A4;border-radius:6px;}</string>
+     </property>
+     <property name="maxLength">
+      <number>16</number>
      </property>
     </widget>
    </item>

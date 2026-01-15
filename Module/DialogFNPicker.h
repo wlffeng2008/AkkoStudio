@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "ModuleGenKeymapping.h"
+#include "modulemacromanager.h"
 
 namespace Ui {
 class DialogFNPicker;
@@ -16,6 +17,7 @@ public:
     explicit DialogFNPicker(QWidget *parent = nullptr);
     ~DialogFNPicker();
     keyData m_kd={0};
+    bool m_macro=false;
 
 protected:
     void paintEvent(QPaintEvent *event) override;

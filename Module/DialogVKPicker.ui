@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>899</width>
+    <width>938</width>
     <height>659</height>
    </rect>
   </property>
@@ -82,6 +82,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>A</string>
          </property>
@@ -106,6 +109,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>B</string>
@@ -132,6 +138,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>C</string>
          </property>
@@ -156,6 +165,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>D</string>
@@ -182,6 +194,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>E</string>
          </property>
@@ -206,6 +221,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>F</string>
@@ -232,6 +250,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>G</string>
          </property>
@@ -256,6 +277,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>H</string>
@@ -282,6 +306,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>I</string>
          </property>
@@ -306,6 +333,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>J</string>
@@ -332,6 +362,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>K</string>
          </property>
@@ -356,6 +389,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>L</string>
@@ -382,6 +418,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>M</string>
          </property>
@@ -406,6 +445,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>N</string>
@@ -432,6 +474,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>O</string>
          </property>
@@ -456,6 +501,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>P</string>
@@ -482,6 +530,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>Q</string>
          </property>
@@ -506,6 +557,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>R</string>
@@ -532,6 +586,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>S</string>
          </property>
@@ -556,6 +613,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>T</string>
@@ -582,6 +642,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>U</string>
          </property>
@@ -606,6 +669,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>V</string>
@@ -632,6 +698,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>W</string>
          </property>
@@ -656,6 +725,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>X</string>
@@ -682,6 +754,9 @@
            <height>48</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>Y</string>
          </property>
@@ -706,6 +781,9 @@
            <width>548</width>
            <height>48</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>Z</string>
@@ -738,6 +816,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">1!</string>
          </property>
@@ -768,6 +849,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">2@</string>
@@ -800,6 +884,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">3#</string>
          </property>
@@ -830,6 +917,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">4$</string>
@@ -862,6 +952,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">5%</string>
          </property>
@@ -892,6 +985,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">6^</string>
@@ -924,6 +1020,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">7&amp;&amp;</string>
          </property>
@@ -954,6 +1053,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">8*</string>
@@ -986,6 +1088,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">9(</string>
          </property>
@@ -1016,6 +1121,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">0)</string>
@@ -1048,6 +1156,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">-_</string>
          </property>
@@ -1078,6 +1189,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">=+</string>
@@ -1110,6 +1224,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">[{</string>
          </property>
@@ -1140,6 +1257,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">]}</string>
@@ -1172,6 +1292,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">;:</string>
          </property>
@@ -1202,6 +1325,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">' &quot;</string>
@@ -1234,6 +1360,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">,&lt;</string>
          </property>
@@ -1264,6 +1393,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">. &gt;</string>
@@ -1296,6 +1428,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">/ ?</string>
          </property>
@@ -1327,6 +1462,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">|\</string>
          </property>
@@ -1357,6 +1495,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">`~</string>
@@ -1400,6 +1541,9 @@
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Esc</string>
          </property>
@@ -1430,6 +1574,9 @@
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Caps
@@ -1463,6 +1610,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Tab</string>
          </property>
@@ -1493,6 +1643,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Back
@@ -1526,6 +1679,9 @@ space</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Num
 Lock</string>
@@ -1558,6 +1714,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Enter</string>
          </property>
@@ -1589,6 +1748,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">SPACE</string>
          </property>
@@ -1619,6 +1781,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">L-
@@ -1652,6 +1817,9 @@ CTRL</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">R-
 CTRL</string>
@@ -1683,6 +1851,9 @@ CTRL</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">L-
@@ -1716,6 +1887,9 @@ SHIFT</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">R-
 SHIFT</string>
@@ -1747,6 +1921,9 @@ SHIFT</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">L-
@@ -1780,6 +1957,9 @@ ALT</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">R-
 ALT</string>
@@ -1812,6 +1992,9 @@ ALT</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">WIN</string>
          </property>
@@ -1843,6 +2026,9 @@ ALT</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Menu</string>
          </property>
@@ -1873,6 +2059,9 @@ ALT</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true"/>
@@ -1915,6 +2104,9 @@ ALT</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true"/>
          </property>
@@ -1955,6 +2147,9 @@ ALT</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true"/>
@@ -1997,6 +2192,9 @@ ALT</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true"/>
          </property>
@@ -2038,6 +2236,9 @@ ALT</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Print
 Screen</string>
@@ -2069,6 +2270,9 @@ Screen</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Scroll
@@ -2102,6 +2306,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Pause</string>
          </property>
@@ -2132,6 +2339,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">HOME</string>
@@ -2164,6 +2374,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Insert</string>
          </property>
@@ -2195,6 +2408,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">END</string>
          </property>
@@ -2225,6 +2441,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="autoFillBackground">
           <bool>false</bool>
@@ -2263,6 +2482,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">PgUp</string>
          </property>
@@ -2293,6 +2515,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">PgDn</string>
@@ -2325,6 +2550,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">F1</string>
          </property>
@@ -2355,6 +2583,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">F2</string>
@@ -2387,6 +2618,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">F3</string>
          </property>
@@ -2417,6 +2651,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">F4</string>
@@ -2449,6 +2686,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">F5</string>
          </property>
@@ -2479,6 +2719,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">F6</string>
@@ -2511,6 +2754,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">F7</string>
          </property>
@@ -2541,6 +2787,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">F8</string>
@@ -2573,6 +2822,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">F9</string>
          </property>
@@ -2603,6 +2855,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">F10</string>
@@ -2635,6 +2890,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">F11</string>
          </property>
@@ -2666,6 +2924,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">F12</string>
          </property>
@@ -2696,6 +2957,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Num
@@ -2729,6 +2993,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Num
 1</string>
@@ -2760,6 +3027,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Num
@@ -2793,6 +3063,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Num
 3</string>
@@ -2824,6 +3097,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Num
@@ -2857,6 +3133,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Num
 5</string>
@@ -2888,6 +3167,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Num
@@ -2921,6 +3203,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Num
 7</string>
@@ -2952,6 +3237,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Num
@@ -2985,6 +3273,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Num
 9</string>
@@ -3016,6 +3307,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Num
@@ -3049,6 +3343,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Num
 .</string>
@@ -3080,6 +3377,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Num
@@ -3113,6 +3413,9 @@ Lock</string>
            <fontweight>DemiBold</fontweight>
           </font>
          </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string notr="true">Num
 +</string>
@@ -3144,6 +3447,9 @@ Lock</string>
            <family>MiSans</family>
            <fontweight>DemiBold</fontweight>
           </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string notr="true">Num

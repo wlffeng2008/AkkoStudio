@@ -25,7 +25,7 @@
                         max-width:42px;
                         min-height:42px;}
 
-        QPushButton:hover { background-color: #EAEAEA; border: 1px solid #EAEAEA;}</string>
+        QPushButton:hover { background-color: #E0EAE0; border: 1px solid blue;}</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_4">
    <item>
@@ -67,9 +67,12 @@
       </widget>
      </item>
      <item>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout" name="gridLayout1">
        <item row="0" column="0">
         <widget class="QPushButton" name="pushButton_F01">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -90,8 +93,11 @@
        </item>
        <item row="0" column="1">
         <widget class="QPushButton" name="pushButton_F02">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F2</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -106,8 +112,11 @@
        </item>
        <item row="0" column="2">
         <widget class="QPushButton" name="pushButton_F03">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F3</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -122,8 +131,11 @@
        </item>
        <item row="0" column="3">
         <widget class="QPushButton" name="pushButton_F04">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F4</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -138,8 +150,11 @@
        </item>
        <item row="0" column="4">
         <widget class="QPushButton" name="pushButton_F05">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F5</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -154,8 +169,11 @@
        </item>
        <item row="0" column="5">
         <widget class="QPushButton" name="pushButton_F06">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F6</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -170,8 +188,11 @@
        </item>
        <item row="0" column="6">
         <widget class="QPushButton" name="pushButton_F07">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F7</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -186,8 +207,11 @@
        </item>
        <item row="0" column="7">
         <widget class="QPushButton" name="pushButton_F08">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F8</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -202,8 +226,11 @@
        </item>
        <item row="0" column="8">
         <widget class="QPushButton" name="pushButton_F09">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F9</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -218,8 +245,11 @@
        </item>
        <item row="0" column="9">
         <widget class="QPushButton" name="pushButton_F10">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F10</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -234,8 +264,11 @@
        </item>
        <item row="0" column="10">
         <widget class="QPushButton" name="pushButton_F11">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F11</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -250,8 +283,11 @@
        </item>
        <item row="0" column="11">
         <widget class="QPushButton" name="pushButton_F12">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F12</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -266,8 +302,11 @@
        </item>
        <item row="0" column="12">
         <widget class="QPushButton" name="pushButton_F13">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F13</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -282,8 +321,11 @@
        </item>
        <item row="0" column="13">
         <widget class="QPushButton" name="pushButton_F14">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F14</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -298,8 +340,11 @@
        </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="pushButton_F15">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F15</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -314,8 +359,11 @@
        </item>
        <item row="1" column="1">
         <widget class="QPushButton" name="pushButton_F16">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F16</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -330,8 +378,11 @@
        </item>
        <item row="1" column="2">
         <widget class="QPushButton" name="pushButton_F17">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F17</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -346,8 +397,11 @@
        </item>
        <item row="1" column="3">
         <widget class="QPushButton" name="pushButton_F18">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F18</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -362,8 +416,11 @@
        </item>
        <item row="1" column="4">
         <widget class="QPushButton" name="pushButton_F19">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>F1</string>
+          <string>F19</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -378,6 +435,9 @@
        </item>
        <item row="1" column="5">
         <widget class="QPushButton" name="pushButton_F20">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>IME On</string>
          </property>
@@ -394,6 +454,9 @@
        </item>
        <item row="1" column="6">
         <widget class="QPushButton" name="pushButton_F21">
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>IME Off</string>
          </property>
@@ -420,9 +483,25 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
+        <widget class="QPushButton" name="pushButton_Mouse00">
+         <property name="text">
+          <string>左键</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton_Mouse01">
          <property name="text">
-          <string>m1</string>
+          <string>右键</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -438,7 +517,7 @@
        <item>
         <widget class="QPushButton" name="pushButton_Mouse02">
          <property name="text">
-          <string>m2</string>
+          <string>中键</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -454,7 +533,7 @@
        <item>
         <widget class="QPushButton" name="pushButton_Mouse03">
          <property name="text">
-          <string>m3</string>
+          <string>前移</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -470,7 +549,7 @@
        <item>
         <widget class="QPushButton" name="pushButton_Mouse04">
          <property name="text">
-          <string>m4</string>
+          <string>后移</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -486,7 +565,7 @@
        <item>
         <widget class="QPushButton" name="pushButton_Mouse05">
          <property name="text">
-          <string>m5</string>
+          <string>左滚</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -502,7 +581,7 @@
        <item>
         <widget class="QPushButton" name="pushButton_Mouse06">
          <property name="text">
-          <string>m6</string>
+          <string>右滚</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -518,7 +597,55 @@
        <item>
         <widget class="QPushButton" name="pushButton_Mouse07">
          <property name="text">
-          <string>m7</string>
+          <string>上滚</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Mouse08">
+         <property name="text">
+          <string>下滚</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Mouse09">
+         <property name="text">
+          <string>向上滚屏</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Mouse10">
+         <property name="text">
+          <string>向下滚屏</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -556,7 +683,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="spacing">
-        <number>10</number>
+        <number>15</number>
        </property>
        <item>
         <widget class="QLabel" name="labelTitle">
@@ -566,31 +693,34 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_1">
+        <widget class="QRadioButton" name="radioButtonM1">
          <property name="text">
           <string>循环</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="spinBox">
+        <widget class="QSpinBox" name="spinBoxM">
          <property name="minimum">
           <number>1</number>
          </property>
          <property name="maximum">
-          <number>100</number>
+          <number>10000</number>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_2">
+        <widget class="QRadioButton" name="radioButtonM2">
          <property name="text">
           <string>自动</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_3">
+        <widget class="QRadioButton" name="radioButtonM3">
          <property name="text">
           <string>按下</string>
          </property>
@@ -612,149 +742,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QPushButton" name="radioButton_Micro01">
-         <property name="text">
-          <string>M1</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="radioButton_Micro02">
-         <property name="text">
-          <string>M2</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="radioButton_Micro03">
-         <property name="text">
-          <string>M3</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="radioButton_Micro04">
-         <property name="text">
-          <string>M4</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="radioButton_Micro05">
-         <property name="text">
-          <string>M5</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="radioButton_Micro06">
-         <property name="text">
-          <string>M6</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="radioButton_Micro07">
-         <property name="text">
-          <string>M7</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="radioButton_Micro08">
-         <property name="text">
-          <string>M8</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+      <layout class="QGridLayout" name="gridLayout2"/>
      </item>
      <item>
       <spacer name="verticalSpacer_3">
@@ -785,7 +773,7 @@
         <widget class="QLabel" name="labelSelect1">
          <property name="minimumSize">
           <size>
-           <width>80</width>
+           <width>120</width>
            <height>0</height>
           </size>
          </property>

@@ -190,9 +190,9 @@ color:gray;
     <widget class="QLabel" name="labelTitleL1">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>296</x>
        <y>215</y>
-       <width>71</width>
+       <width>47</width>
        <height>20</height>
       </rect>
      </property>
@@ -206,7 +206,7 @@ color:gray;
     <widget class="ToggleButton" name="checkBoxSingle">
      <property name="geometry">
       <rect>
-       <x>355</x>
+       <x>357</x>
        <y>215</y>
        <width>41</width>
        <height>20</height>
@@ -240,6 +240,9 @@ color:gray;
        <height>40</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>C0</string>
      </property>
@@ -267,6 +270,9 @@ color:gray;
        <width>40</width>
        <height>40</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>C0</string>
@@ -296,6 +302,9 @@ color:gray;
        <height>40</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>C0</string>
      </property>
@@ -323,6 +332,9 @@ color:gray;
        <width>40</width>
        <height>40</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>C0</string>
@@ -352,6 +364,9 @@ color:gray;
        <height>40</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>C0</string>
      </property>
@@ -379,6 +394,9 @@ color:gray;
        <width>40</width>
        <height>40</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>C0</string>
@@ -408,6 +426,9 @@ color:gray;
        <height>40</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
      <property name="text">
       <string>C0</string>
      </property>
@@ -435,6 +456,9 @@ color:gray;
        <width>40</width>
        <height>40</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>C0</string>

@@ -28,11 +28,10 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
 signals:
-    void onAction(MacroSquare *from,quint8 action);
+    void onAction(MacroSquare *from, quint8 action);
 
 private:
     bool m_bSelected = false;
-
 
     CustomTooltip *m_tTip=nullptr;
     CustomTooltip *m_rTip=nullptr;
