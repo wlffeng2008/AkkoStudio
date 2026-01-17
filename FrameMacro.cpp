@@ -5,6 +5,8 @@
 
 #include "MacroItem.h"
 #include "MacroSquare.h"
+#include "ModuleGeneralMasker.h"
+#include "ModuleAddMacroSquare.h"
 
 #include <QLayout>
 #include <QKeyEvent>
@@ -69,6 +71,31 @@ FrameMacro::FrameMacro(QWidget *parent)
             {
                 //addMacroSquare(QString((char)('A'+ i)),rand()%3,rand(),rand()%2);
             }
+            static ModuleAddMacroSquare *pEvt = new ModuleAddMacroSquare(this);
+            ModuleGeneralMasker mask(pEvt,ui->frameRight);
+            pEvt->show();
+            pEvt->update();
+            mask.setStyleSheet("QDialog { background-color: rgba(200, 200, 200, 0.9); border: none; border-radius: 32px; }");
+            auto res = mask.exec();
+            qDebug() << res;
+            if(res == QDialog::Accepted)
+            {
+                if(pEvt->type() == 0)
+                {
+                    addMacroSquare("",0,pEvt->bKey(),true);
+                    addMacroSquare("",0,pEvt->bKey(),false);
+                }
+                else if(pEvt->type() == 1)
+                {
+                    addMacroSquare("",1,pEvt->mKey(),true);
+                    addMacroSquare("",1,pEvt->mKey(),false);
+                }
+                else
+                {
+                    quint16 value=(pEvt->xPos()<<8) | pEvt->yPos();
+                    addMacroSquare("",2,pEvt->bKey(),false);
+                }
+            }
             updateView();
         });
 
@@ -99,7 +126,7 @@ FrameMacro::~FrameMacro()
     delete ui;
 }
 
-void FrameMacro::addMacroSquare(const QString&text, quint8 type, quint8 value, bool down)
+void FrameMacro::addMacroSquare(const QString&text, quint8 type, quint16 value, bool down)
 {
     if(!m_loading)
     {
@@ -108,13 +135,21 @@ void FrameMacro::addMacroSquare(const QString&text, quint8 type, quint8 value, b
     }
 
     {
+        quint8 final = value;
+        if(type == 1)
+        {
+            if(final == Qt::LeftButton)   final = 240;
+            if(final == Qt::RightButton)  final = 241;
+            if(final == Qt::MiddleButton) final = 242;
+        }
+
         QString strText = text;
         if(text.contains(' '))
             strText=text.left(2);
-        if(value == 240) strText=tr("左键");
-        if(value == 241) strText=tr("右键");
-        if(value == 242) strText=tr("中键");
-        MacroSquare *macro = new MacroSquare(strText.trimmed(), type, value, down, this);
+        if(final == 240) strText=tr("左键");
+        if(final == 241) strText=tr("右键");
+        if(final == 242) strText=tr("中键");
+        MacroSquare *macro = new MacroSquare(strText.trimmed(), type, final, down, this);
         macro->setFixedSize(56,56);
         macro->setFocusPolicy(Qt::NoFocus);
         s_MSquares.push_back(macro);
@@ -284,9 +319,7 @@ bool FrameMacro::event(QEvent *event)
         m_tcount.restart();
 
         QMouseEvent *pME = static_cast<QMouseEvent *>(event);
-        quint8 btn = 240;
-        if(pME->button() == Qt::RightButton ) btn = 241;
-        if(pME->button() == Qt::MiddleButton) btn = 242;
+        quint8 btn = pME->button();
         addMacroSquare("",1,btn,true);
         addMacroSquare("",1,btn,false);
         addMacroSquare("",1,btn,true);
@@ -306,9 +339,7 @@ bool FrameMacro::event(QEvent *event)
         m_tcount.restart();
 
         QMouseEvent *pME = static_cast<QMouseEvent *>(event);
-        quint8 btn = 240;
-        if(pME->button() == Qt::RightButton ) btn = 241;
-        if(pME->button() == Qt::MiddleButton) btn = 242;
+        quint8 btn = pME->button();
         addMacroSquare("",1,btn,true);
     }
 
@@ -321,9 +352,7 @@ bool FrameMacro::event(QEvent *event)
         m_tcount.restart();
 
         QMouseEvent *pME = static_cast<QMouseEvent *>(event);
-        quint8 btn = 240;
-        if(pME->button() == Qt::RightButton ) btn = 241;
-        if(pME->button() == Qt::MiddleButton) btn = 242;
+        quint8 btn = pME->button();
         addMacroSquare("",1,btn,false);
     }
 

@@ -137,7 +137,7 @@ public:
     quint8 getReport();
     void setReport(quint8 level=0);
 
-    void reset() ;
+    void reset();
 
     void restKey(quint8 hid);
     void changeKey(quint8 hid, keyData *pDk, quint8 subLayer=0,quint8 save=1);

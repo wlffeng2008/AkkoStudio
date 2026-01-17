@@ -45,7 +45,7 @@
   <widget class="ToggleButton" name="checkBoxEFMode">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>226</x>
      <y>30</y>
      <width>43</width>
      <height>20</height>
@@ -63,7 +63,7 @@
     <rect>
      <x>26</x>
      <y>56</y>
-     <width>247</width>
+     <width>259</width>
      <height>233</height>
     </rect>
    </property>
@@ -84,7 +84,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>245</width>
+         <width>257</width>
          <height>206</height>
         </rect>
        </property>

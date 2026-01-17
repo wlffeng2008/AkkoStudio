@@ -14,9 +14,9 @@ RC_ICONS = AKKO.ico
 VERSION = 1.0.0.0
 TARGET = AKKOStudio
 QMAKE_TARGET_COMPANY = "AKKO"
-QMAKE_TARGET_PRODUCT = "AKKO "
+QMAKE_TARGET_PRODUCT = "AKKO"
 QMAKE_TARGET_DESCRIPTION = "AKKO: Created by Qt6.10.0"
-QMAKE_TARGET_COPYRIGHT = "AKKO(2025.10)"
+QMAKE_TARGET_COPYRIGHT = "AKKO(2026.01)"
 RC_LANG = 0x0004
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -67,6 +67,7 @@ SOURCES += \
     Module/NewTabWidget.cpp \
     Module/SuperLabel.cpp \
     Module/ToggleButton.cpp \
+    ModuleAddMacroSquare.cpp \
     main.cpp \
     MainWindow.cpp
 
@@ -109,7 +110,8 @@ HEADERS += \
     Module/ModuleScrollValue.h \
     Module/NewTabWidget.h \
     Module/SuperLabel.h \
-    Module/ToggleButton.h
+    Module/ToggleButton.h \
+    ModuleAddMacroSquare.h
 
 FORMS += \
     DialogDeviceConnect.ui \
@@ -136,11 +138,24 @@ FORMS += \
     Module/ModuleKeyboard.ui \
     Module/ModuleVideoItem.ui \
     Module/VirtualKeyboard.ui \
-    Module/ModuleScrollValue.ui
+    Module/ModuleScrollValue.ui \
+    ModuleAddMacroSquare.ui
 
 TRANSLATIONS += \
+    AKKOStudio_de_DE.ts \
     AKKOStudio_en_US.ts \
-    AKKOStudio_zh_CN.ts
+    AKKOStudio_fr_FR.ts \
+    AKKOStudio_it_IT.ts \
+    AKKOStudio_ja_JP.ts \
+    AKKOStudio_ko_KR.ts \
+    AKKOStudio_pt_PT.ts \
+    AKKOStudio_ru_RU.ts \
+    AKKOStudio_sk_SK.ts \
+    AKKOStudio_th_TH.ts \
+    AKKOStudio_tr_TR.ts \
+    AKKOStudio_vi_VN.ts \
+    AKKOStudio_zh_CN.ts \
+    AKKOStudio_zh_TW.ts
 CONFIG += lrelease
 CONFIG += embed_translations
 

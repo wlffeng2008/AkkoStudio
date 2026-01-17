@@ -497,7 +497,8 @@ void FrameKeySetting::showEvent(QShowEvent *event)
 
 void FrameKeySetting::refresh()
 {
-    DialogDeviceConnect *pCnn = DialogDeviceConnect::instance() ;
+    DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
+    ModuleMacroManager *pMM = ModuleMacroManager::instance();
     QByteArray data = pCnn->getMatix(0);
     for(int i=0; i<128; i++)
     {
@@ -544,9 +545,9 @@ void FrameKeySetting::refresh()
                 strT2 += res[0];
             }
 
-            if(kd.b0 == 0x09) // Macor
+            if(kd.b0 == 0x09) // Macro
             {
-                MacroProject *prj = ModuleMacroManager::instance()->getMarcoProject(kd.b2);
+                MacroProject *prj = pMM->getMarcoProject(kd.b2);
                 if(prj) strT2 = QString(tr("宏设置")) + QString(":\n") + prj->name;
             }
 
@@ -554,9 +555,14 @@ void FrameKeySetting::refresh()
                 strT1 = "DISABLED";
             ui->frameKeyboard->setKeyTip(hid, strT1.trimmed(), strT2.trimmed());
         }
+        else
+        {
+            ui->frameKeyboard->setKeyTip(hid,"","");
+        }
     }
     m_bUpdating=true;
-    QTimer::singleShot(500,this,[=]{m_bUpdating=false;});
+
+    QTimer::singleShot(500,this,[=]{ m_bUpdating=false; });
     ui->frameSV1->setIndex(pCnn->getReport());
     ui->frameSV2->setIndex(pCnn->getSleepTime()->time24/60);
     ui->frameSV3->setIndex(pCnn->getSleepTime()->timeBt/60);

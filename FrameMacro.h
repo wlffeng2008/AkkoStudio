@@ -19,7 +19,7 @@ public:
     explicit FrameMacro(QWidget *parent = nullptr);
     ~FrameMacro();
 
-    void addMacroSquare(const QString&text,quint8 type,quint8 value,bool down=true);
+    void addMacroSquare(const QString&text,quint8 type,quint16 value,bool down=true);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;

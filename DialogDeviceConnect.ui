@@ -25,6 +25,9 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
     <string>8F 00 00 00 00 00 00 70</string>
    </property>
@@ -74,6 +77,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
     <string>3151</string>
    </property>
@@ -99,6 +105,9 @@
      <width>41</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>VID:</string>
@@ -186,6 +195,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
     <string>502F</string>
    </property>
@@ -198,6 +210,9 @@
      <width>41</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>PID:</string>

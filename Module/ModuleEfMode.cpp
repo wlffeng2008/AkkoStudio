@@ -26,13 +26,13 @@ static QList<EfMode> EfModeList={
     {"彩泉涌动",0x0B},
     {"百花争艳",0x0C},
     {"一石二鸟",0x0E},
-    {"峰回路转",0x0F}, //自定义色彩
+    {"峰回路转",0x0F},  // 自定义色彩
     {"斜风细雨",0x10},
     {"踏雪无痕",0x13},
     {"层出不穷",0x18},
-    {"光影",0x15},  //持续发送音律 0E --------
-    {"音乐律动",0x16}, //持续发送音律 0D --------
-    {"自定义",0x0D} // 选图案
+    {"光影",0x15},     // 持续发送音律 0E --------
+    {"音乐律动",0x16}, // 持续发送音律 0D --------  炫彩 0
+    {"自定义",0x0D}    // 选图案
 };
 
 
@@ -46,9 +46,9 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
         QString strStyle(R"(
 
             QPushButton {
-                width: 220px;
-                height: 32px;
-                border-radius: 16px ;
+                width: 240px;
+                height: 28px;
+                border-radius: 16px;
                 font-weight:500;
                 outline: none;
 
@@ -63,27 +63,27 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
             QPushButton:hover { border: 1px solid #6329B6; }
             )") ;
         pBtnGrp = new QButtonGroup(this) ;
-        QLayout *pLayout = ui->scrollAreaWidgetContents->layout() ;
-        pLayout->setSpacing(8) ;
+        QLayout *pLayout = ui->scrollAreaWidgetContents->layout();
+        pLayout->setSpacing(8);
         pLayout->setContentsMargins(0,0,0,0);
 
         for(int i=0; i<EfModeList.count(); i++)
         {
-            QPushButton *btn = new QPushButton(EfModeList[i].name,this) ;
-            btn->setFixedSize(200,44);
-            btn->setCheckable(true) ;
+            QPushButton *btn = new QPushButton(EfModeList[i].name,this);
+            btn->setFixedSize(240,28);
+            btn->setCheckable(true);
             btn->setStyleSheet(strStyle);
 
             pBtnGrp->addButton(btn,EfModeList[i].mode);
             pLayout->addWidget(btn);
             if(i==0)
-                btn->click() ;
-            btn->setFocusPolicy(Qt::NoFocus) ;
+                btn->click();
+            btn->setFocusPolicy(Qt::NoFocus);
         }
 
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
             if(!m_bOutSet)
-                emit onModeChanged(id) ;
+                emit onModeChanged(id);
             m_bOutSet = false;
             ui->comboBoxPic->setHidden(id != 0x0D);
             ui->labelPicture->setHidden(id != 0x0D);
@@ -102,7 +102,7 @@ ModuleEfMode::~ModuleEfMode()
 
 void ModuleEfMode::setEfMode(int mode)
 {
-    m_bOutSet=true;
+    m_bOutSet = true;
     if(pBtnGrp->button(mode))
     pBtnGrp->button(mode)->click();
 }

@@ -41,6 +41,9 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color:transparent;</string>
    </property>
@@ -62,6 +65,9 @@
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color:transparent;</string>
@@ -85,6 +91,9 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color:transparent;</string>
    </property>
@@ -106,6 +115,9 @@
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color:transparent;</string>

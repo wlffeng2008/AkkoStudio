@@ -253,8 +253,22 @@ static quint8 defaultMatrix_id2807[] =
     0,0,0,0   // 127 line
 };
 
+QByteArray getDefaultMatrix()
+{
+    static QByteArray data((char *)defaultMatrix_id2807,512);
+    return data;
+}
+
 quint8 getIndex(quint8 hid)
 {
+    switch(hid)
+    {
+    case 250: return 65;
+    case 251: return 92;
+    case 252: return 96;
+    case 253: return 97;
+    }
+
     for(int i=0; i<512; i += 4)
     {
         if(defaultMatrix_id2807[i+2] == hid)
@@ -262,7 +276,7 @@ quint8 getIndex(quint8 hid)
             return i/4;
         }
     }
-    return 0xFF;
+    return 0x00;
 }
 
 quint8 getHid(quint8 index)
@@ -372,25 +386,25 @@ static QList<keyMapItem> s_keMapTable=
 
     { "Num-Lock",     83, 57413 },
     { "Num-7",        95,    71 },
-    { "Num-Home",   0x4A,    71 },
+    { "Num-Home",     74,    71 },
     { "Num-4",        92,    75 },
-    { "Num-←",     0x50,    75 },
+    { "Num-←",       80,    75 },
     { "Num-1",        89,    79 },
-    { "Num-End",    0x4D,    79 },
+    { "Num-End",      77,    79 },
     { "Num-/",        84, 57397 },
     { "Num-8",        96,    72 },
-    { "Num-↑",      0x52,   72 },
+    { "Num-↑",       82,    72 },
     { "Num-5",        93,    76 },
     { "Num-2",        90,    80 },
-    { "Num-↓",     0x51,    80 },
+    { "Num-↓",       81,    80 },
     { "Num-0",        98,    82 },
     { "Num-*",        85,    55 },
     { "Num-9",        97,    73 },
-    { "Num-Pgup",   0x4B,    73 },
+    { "Num-Pgup",     75,    73 },
     { "Num-6",        94,    77 },
-    { "Num-→",     0x4F,    77 },
+    { "Num-→",       79,    77 },
     { "Num-3",        91,    81 },
-    { "Num-Pgdn",   0x4E,    82 },
+    { "Num-Pgdn",     78,    82 },
     { "Num-.",        99,    83 },
     { "Num--",        86,    74 },
     { "Num-+",        87,    78 },
@@ -412,8 +426,8 @@ static QList<keyMapItem> s_keMapTable=
     { "Print-Screen", 70, 57436 },
     { "Scroll-Lock" , 71,    70 },
     { "Pause-Break" , 72,    69 },
-    { "VOL +" ,      234,     0 },
-    { "VOL -" ,      233,     0 }
+    { "VOL+" ,      234,     0 },
+    { "VOL-" ,      233,     0 }
 };
 
 QString getKeyValue(quint16 hid)

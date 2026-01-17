@@ -635,6 +635,8 @@ QStringList DialogDeviceConnect::getKeyString(quint8 hid)
 {
     QStringList res;
     int index = getIndex(hid);
+    if(m_E507.size()<=index)
+        return res;
     quint8 type = m_E507[index];
 
     if(type == 7)
@@ -820,6 +822,7 @@ void DialogDeviceConnect::makeCmd(int row, bool autoSend)
 void DialogDeviceConnect::reset()
 {
     makeCmd(getRow(CMD_SET_RESET),true);
+    m_KeyMatrix[m_layer] = ::getDefaultMatrix();
 }
 
 void DialogDeviceConnect::disconnect()

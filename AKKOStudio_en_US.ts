@@ -9,62 +9,62 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="29"/>
+        <location filename="DialogDeviceConnect.ui" line="32"/>
         <source>8F 00 00 00 00 00 00 70</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="42"/>
+        <location filename="DialogDeviceConnect.ui" line="45"/>
         <source>Read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="65"/>
+        <location filename="DialogDeviceConnect.ui" line="68"/>
         <source>Write</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="78"/>
+        <location filename="DialogDeviceConnect.ui" line="84"/>
         <source>3151</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="91"/>
+        <location filename="DialogDeviceConnect.ui" line="97"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="104"/>
+        <location filename="DialogDeviceConnect.ui" line="113"/>
         <source>VID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="158"/>
+        <location filename="DialogDeviceConnect.ui" line="167"/>
         <source>Device1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="174"/>
+        <location filename="DialogDeviceConnect.ui" line="183"/>
         <source>Device2:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="190"/>
+        <location filename="DialogDeviceConnect.ui" line="202"/>
         <source>502F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="270"/>
+        <location filename="DialogDeviceConnect.ui" line="285"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="203"/>
+        <location filename="DialogDeviceConnect.ui" line="218"/>
         <source>PID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="219"/>
+        <location filename="DialogDeviceConnect.ui" line="234"/>
         <source>ON TOP</source>
         <translation type="unfinished"></translation>
     </message>

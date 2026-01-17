@@ -20,6 +20,8 @@ QT_END_NAMESPACE
 
 #include "DialogDeviceConnect.h"
 
+class FrameKeySetting;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -45,17 +47,18 @@ private:
     QPoint m_dragPosition;
     bool m_dragging = false;
 
+
     DialogDeviceConnect *m_pDevice = nullptr;
+    ModuleLangMenu *m_pLangMenu = nullptr;
+    FrameKeySetting *m_pKSetting = nullptr;
 
     int m_nStatus = 0;
     void setConnect(int nFlag);
 
-
-    QList<SuperLabel *>m_pLBtns ;
-    QList<QFrame *>m_pFrames ;
+    QList<SuperLabel *>m_pLBtns;
+    QList<QFrame *>m_pFrames;
     void clickLabel(QLabel *label,int index=0);
 
-    ModuleLangMenu *m_pLangMenu = nullptr ;
 
 };
 #endif // MAINWINDOW_H

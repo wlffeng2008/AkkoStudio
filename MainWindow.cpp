@@ -59,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
         m_pDevice = new DialogDeviceConnect(this);
 
         FrameKeySetting *pKSet = new FrameKeySetting(this);
+        m_pKSetting = pKSet;
 
         FrameMain  *pFMain = new FrameMain (this);
         FrameMagic *pMagic = new FrameMagic(this);
@@ -143,7 +144,8 @@ MainWindow::MainWindow(QWidget *parent)
         });
 
         connect(ui->pushButtonReset,&QPushButton::clicked,this,[=]{
-            m_pDevice->reset() ;
+            m_pDevice->reset();
+            m_pKSetting->refresh();
         });
 
         connect(ui->pushButtonFixed,&QPushButton::clicked,this,[=]{

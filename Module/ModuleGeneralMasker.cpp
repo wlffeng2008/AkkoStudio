@@ -37,20 +37,21 @@ ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
 
     if(cotnent)
     {
-        cotnent->setParent(this) ;
-        mainLayout->addWidget(cotnent, 1, Qt::AlignCenter);
+        cotnent->setWindowFlags(Qt::SubWindow | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
+        cotnent->setParent(this);
+        mainLayout->addWidget(cotnent, 0, Qt::AlignCenter);
 
         cotnent->show();
-        cotnent->installEventFilter(this) ;
+        cotnent->installEventFilter(this);
         m_watch = cotnent;
     }
 
     QRect geoMetry = QApplication::primaryScreen()->geometry();
     if(parent)
     {
-        geoMetry = parent->frameGeometry() ;//parent->mapToGlobal(parent->pos());
+        geoMetry = parent->frameGeometry(); // parent->mapToGlobal(parent->pos());
         QPoint globalPos = getGlobalPos(parent);
-        geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height()) ;
+        geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height());
     }
     setGeometry(geoMetry);
     setFixedSize(geoMetry.width(), geoMetry.height());
@@ -60,10 +61,12 @@ bool ModuleGeneralMasker::eventFilter(QObject*watched,QEvent*event)
 {
     if (event->type() == QEvent::Hide && watched == m_watch)
     {
-        layout()->removeWidget(m_watch) ;
-        m_watch->setParent(nullptr) ;
-        m_watch->removeEventFilter(this) ;
-        this->close() ;
+        layout()->removeWidget(m_watch);
+        m_watch->setParent(nullptr);
+        m_watch->removeEventFilter(this);
+        if(m_nFlag == 0) QDialog::reject();
+        if(m_nFlag == 1) QDialog::accept();
+        //this->close();
     }
 
     return QDialog::eventFilter(watched,event);
