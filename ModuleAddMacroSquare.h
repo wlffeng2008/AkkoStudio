@@ -20,9 +20,11 @@ public:
     quint8 bKey();
     quint8 xPos();
     quint8 yPos();
-
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 private:
     Ui::ModuleAddMacroSquare *ui;
+    quint8 m_hid = 0;
 };
 
 #endif // MODULEADDMACROSQUARE_H

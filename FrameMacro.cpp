@@ -67,10 +67,6 @@ FrameMacro::FrameMacro(QWidget *parent)
         connect(ui->pushButtonSave,&QPushButton::clicked,this,[=]{ saveEvents(); });
 
         connect(ui->pushButtonInsert,&QPushButton::clicked,this,[=]{
-            for(int i=0; i<10; i++)
-            {
-                //addMacroSquare(QString((char)('A'+ i)),rand()%3,rand(),rand()%2);
-            }
             static ModuleAddMacroSquare *pEvt = new ModuleAddMacroSquare(this);
             ModuleGeneralMasker mask(pEvt,ui->frameRight);
             pEvt->show();
@@ -80,10 +76,12 @@ FrameMacro::FrameMacro(QWidget *parent)
             qDebug() << res;
             if(res == QDialog::Accepted)
             {
+                m_recording = true;
                 if(pEvt->type() == 0)
                 {
-                    addMacroSquare("",0,pEvt->bKey(),true);
-                    addMacroSquare("",0,pEvt->bKey(),false);
+                    quint8 hid = pEvt->bKey();
+                    addMacroSquare(::getKeyValue(hid),0,hid,true);
+                    addMacroSquare(::getKeyValue(hid),0,hid,false);
                 }
                 else if(pEvt->type() == 1)
                 {
@@ -93,8 +91,9 @@ FrameMacro::FrameMacro(QWidget *parent)
                 else
                 {
                     quint16 value=(pEvt->xPos()<<8) | pEvt->yPos();
-                    addMacroSquare("",2,pEvt->bKey(),false);
+                    addMacroSquare("",2,value,false);
                 }
+                m_recording = false;
             }
             updateView();
         });
