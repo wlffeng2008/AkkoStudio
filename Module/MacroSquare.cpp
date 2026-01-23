@@ -1,11 +1,14 @@
 #include "MacroSquare.h"
+#include "ui_MacroSquare.h"
 
+
+#include "SuperLabel.h"
+
+#include <QTimer>
+#include <QKeyEvent>
 #include <QPainter>
-#include <QEvent>
-#include <QPaintEvent>
-#include <QMouseEvent>
 
-static MacroSquare *s_pCurItem = nullptr ;
+static MacroSquare *s_pCurItem = nullptr;
 static QString s_strTipBtnStyle(R"(
     background-color: white;
     border: 1px solid #DEDEDE;
@@ -18,71 +21,154 @@ static QString s_strTipBtnStyle(R"(
     font-weight:400;
 )");
 
-MacroSquare::MacroSquare(const QString &text, quint8 type, quint8 value, bool down, QWidget *parent)
-    : QWidget{parent}
+
+static MacroSquare *s_Items[256]={nullptr};
+
+MacroSquare *MacroSquare::getSquare(int index,QWidget *parent)
 {
+    MacroSquare *item = s_Items[index];
+    if( !item) item = new MacroSquare(parent);
+    s_Items[index] = item;
+    return item;
+}
+
+MacroSquare::MacroSquare(QWidget *parent)
+    : QFrame(parent)
+    , ui(new Ui::MacroSquare)
+{
+    ui->setupUi(this);
+
     setCursor(Qt::PointingHandCursor);
     setFocusPolicy(Qt::StrongFocus);
 
+    ui->spinBox1->hide();
+    ui->spinBox2->hide();
+    ui->label2->hide();
+
+    hide();
+
+    QTimer::singleShot(50,this,[=]{
+        ui->label1->setAlignment(Qt::AlignCenter);
+        ui->label2->setAlignment(Qt::AlignCenter);
+        ui->label1->setFocusPolicy(Qt::StrongFocus);
+        ui->label2->setFocusPolicy(Qt::StrongFocus);
+        ui->spinBox1->setFocusPolicy(Qt::StrongFocus);
+        ui->spinBox2->setFocusPolicy(Qt::StrongFocus);
+
+        connect(ui->spinBox1,&QSpinBox::valueChanged,this,[=](int value){
+            m_xpos = value;
+            m_value = value;
+
+            if(m_type == 2)
+            {
+                m_value = m_xpos << 8 | m_ypos;
+            }
+        });
+        connect(ui->spinBox2,&QSpinBox::valueChanged,this,[=](int value){
+            m_ypos = value;
+            if(m_type == 2)
+            {
+                m_value = m_xpos << 8 | m_ypos;
+            }
+        });
+
+        //setData("A",2,0x04,false);
+    });
+
+    m_tTip=new CustomTooltip(this);
+    m_rTip=new CustomTooltip(this);
+    m_bTip=new CustomTooltip(this);
+
+    m_tTip->setStyleSheet(s_strTipBtnStyle);
+    m_rTip->setStyleSheet(s_strTipBtnStyle);
+    m_bTip->setStyleSheet(s_strTipBtnStyle);
+
+    m_tTip->setText(tr("插入按键"));
+    m_rTip->setText(tr("修改"));
+    m_bTip->setText(tr("删除"));
+
+    connect(m_tTip,&CustomTooltip::onClicked,this,[=]{ closeItems(); emit onAction(this,0); });
+    connect(m_rTip,&CustomTooltip::onClicked,this,[=]{ closeItems(); emit onAction(this,1); });
+    connect(m_bTip,&CustomTooltip::onClicked,this,[=]{ closeItems(); emit onAction(this,2); });
+    m_tTip->setFocusPolicy(Qt::StrongFocus);
+    m_tTip->installEventFilter(this);
+
+    installEventFilter(this);
+    ui->label1->installEventFilter(this);
+    ui->label2->installEventFilter(this);
+    ui->spinBox1->installEventFilter(this);
+    ui->spinBox2->installEventFilter(this);
+}
+
+MacroSquare::~MacroSquare()
+{
+    delete ui;
+}
+
+
+void MacroSquare::setData(const QString&text, quint8 type,quint16 value, bool down)
+{
     m_type = type;
     m_text = text;
     m_down = down;
     m_value= value;
 
+    m_tTip->hide();
+    m_rTip->hide();
+    m_bTip->hide();
+    ui->label2->hide();
+    ui->spinBox1->hide();
+    ui->spinBox2->hide();
+
+    ui->label1->show();
+
+    ui->label1->setAttribute(Qt::WA_Hover, false);
+    ui->label2->setAttribute(Qt::WA_Hover, false);
+    ui->label1->setStyleSheet("QLabel{color:black; background-color:transparent;}");
+    ui->label2->setStyleSheet("QLabel{color:black; background-color:transparent;}");
+
     if(type == 3)
     {
-        m_spin1 = new QSpinBox(this);
-        m_spin1->setRange(5,10000);
-        m_spin1->hide() ;
-        m_spin1->setAlignment(Qt::AlignCenter);
-        m_spin1->setGeometry(QRect(0,12,48,24));
-        m_spin1->installEventFilter(this);
-        connect(m_spin1,&QSpinBox::valueChanged,this,[=](int value){
-            m_value=value;
-        });
+        ui->spinBox1->setRange(5,0xFFFF);
+        ui->label2->show();
+        ui->label1->setAttribute(Qt::WA_Hover, true);
+        ui->label1->setText(QString::asprintf("%d",value));
+        ui->label2->setText("ms");
+        ui->label1->setStyleSheet("QLabel:hover{color:black; background-color:#D0D0D0;border-radius:8px;}");
     }
     else if(type == 2)
     {
-        m_spin1 = new QSpinBox(this);
-        m_spin1->setRange(5,10000);
-        m_spin1->hide() ;
-        m_spin1->setAlignment(Qt::AlignCenter);
-        m_spin1->setGeometry(QRect(0,12,48,24));
-        m_spin1->installEventFilter(this);
-        connect(m_spin1,&QSpinBox::valueChanged,this,[=](int value){
-            m_text=QString::number(value);
-        });
+        m_xpos =  value&0x00FF    ;
+        m_ypos = (value&0xFF00) >> 8;
+        ui->spinBox1->setRange(0,127);
+        ui->spinBox2->setRange(0,127);
+        ui->label2->show();
+        ui->label1->setAttribute(Qt::WA_Hover, true);
+        ui->label2->setAttribute(Qt::WA_Hover, true);
+        ui->label1->setText(QString::asprintf("X: %d", m_xpos));
+        ui->label2->setText(QString::asprintf("Y: %d", m_ypos));
+
+        ui->label1->setStyleSheet("QLabel:hover{color:black; background-color:#D0D0D0;border-radius:8px;}");
+        ui->label2->setStyleSheet("QLabel:hover{color:black; background-color:#D0D0D0;border-radius:8px;}");
     }
     else
     {
-        m_tTip=new CustomTooltip(this);
-        m_rTip=new CustomTooltip(this);
-        m_bTip=new CustomTooltip(this);
+        if(!down)
+            ui->label1->setStyleSheet("QLabel{color:white; background-color:transparent;}");
+
+        ui->label1->setText(text);
 
         m_tTip->setAutohide(false);
         m_rTip->setAutohide(false);
         m_bTip->setAutohide(false);
-
-        m_tTip->setStyleSheet(s_strTipBtnStyle);
-        m_rTip->setStyleSheet(s_strTipBtnStyle);
-        m_bTip->setStyleSheet(s_strTipBtnStyle);
-
-        m_tTip->setText(tr("添加"));
-        m_rTip->setText(tr("修改"));
-        m_bTip->setText(tr("删除"));
-
-        connect(m_tTip,&CustomTooltip::onClicked,this,[=]{ closeItems(); emit onAction(this,0); });
-        connect(m_rTip,&CustomTooltip::onClicked,this,[=]{ closeItems(); emit onAction(this,1); });
-        connect(m_bTip,&CustomTooltip::onClicked,this,[=]{ closeItems(); emit onAction(this,2); });
-        m_tTip->installEventFilter(this);
     }
 
+    show();
+    update();
 }
 
 void MacroSquare::closeItems()
 {
-    //if(m_spin) m_spin->hide();
-
     if(m_tTip)
     {
         m_tTip->hide();
@@ -108,52 +194,32 @@ void MacroSquare::setDelay(quint16 delay)
 void MacroSquare::paintEvent(QPaintEvent*event)
 {
     QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing) ;
-    QRect rect = this->rect().adjusted(3,3,-3,-3) ;
+    painter.setRenderHint(QPainter::Antialiasing);
+    QRect rect = this->rect().adjusted(3,3,-3,-3);
 
     if(m_type == 3)
     {
-        if(m_spin1 && m_spin1->isHidden())
-        {
-            painter.setPen(QPen(QBrush(0xFF9052),1));
-            painter.setBrush(Qt::NoBrush) ;
-            int nCY = rect.center().y() ;
-            int nHY = rect.height() ;
-            painter.drawLine(QPoint(rect.left(),nCY),QPoint(rect.right(),nCY));
-
-            painter.drawLine(QPoint(rect.right()-8,nCY+3),QPoint(rect.right(),nCY));
-            painter.drawLine(QPoint(rect.right()-8,nCY-3),QPoint(rect.right(),nCY));
-
-            painter.setPen(Qt::black);
-            painter.drawText(rect.adjusted(0,0,0,-nHY/2),QString("%1").arg(m_value),QTextOption(Qt::AlignCenter));
-            painter.drawText(rect.adjusted(0,nHY/2-5,0,0),"ms",QTextOption(Qt::AlignCenter));
-        }
+        painter.setPen(QPen(QBrush(0xFF9052),1));
+        painter.setBrush(Qt::NoBrush);
+        int nCY = rect.center().y()+2;
+        painter.drawLine(QPoint(rect.left(),nCY),QPoint(rect.right(),nCY));
+        painter.drawLine(QPoint(rect.right()-8,nCY+3),QPoint(rect.right(),nCY));
+        painter.drawLine(QPoint(rect.right()-8,nCY-3),QPoint(rect.right(),nCY));
     }
     else
     {
         QColor penColor = 0x4B4B4B;
 
-        if(!m_down)
+        painter.setBrush(Qt::white);
+        if(!m_down && (m_type == 0 || m_type == 1))
         {
             painter.setBrush(0x4B4B4B);
-        }
-        else
-        {
-            painter.setBrush(Qt::white);
         }
 
         QPen pen(penColor,0.5) ;
         pen.setCapStyle(Qt::FlatCap);
         painter.setPen(pen);
         painter.drawRoundedRect(rect,16,16);
-
-        if(!m_down)
-            painter.setPen(Qt::white);
-        else
-            painter.setPen(Qt::black);
-
-        painter.setFont(this->font());
-        painter.drawText(rect,m_text,QTextOption(Qt::AlignCenter));
     }
 
     if(m_bSelected)
@@ -169,80 +235,97 @@ void MacroSquare::paintEvent(QPaintEvent*event)
     event->accept() ;
 }
 
-bool MacroSquare::eventFilter(QObject *watched, QEvent *event)
+bool MacroSquare::eventFilter(QObject *object, QEvent *event)
 {
-    if(watched == this)
+    if(event->type() == QEvent::MouseButtonRelease)
     {
-        qDebug() << event->type();
+        if(ui->label1 == object && (m_type == 2 ||m_type == 3))
+        {
+            closeItems();
+            ui->spinBox1->show();
+            ui->label1->hide();
+            ui->spinBox1->setValue(m_xpos);
+
+            return true;
+        }
+
+        if(ui->label2 == object && m_type == 2)
+        {
+            closeItems();
+            ui->spinBox2->show();
+            ui->label2->hide();
+            ui->spinBox2->setValue(m_ypos);
+            return true;
+        }
     }
 
-    if (event->type() == QEvent::FocusOut)
+    if(event->type() == QEvent::FocusOut)
     {
-        //qDebug() << "MacroSquare::eventFilter:FocusOut" ;
-        closeItems() ;
-        if(watched == m_spin1) m_spin1->hide();
+        if(ui->spinBox1 == object)
+        {
+            ui->spinBox1->hide();
+            ui->label1->show();
+            ui->label1->setText(QString("%1").arg(m_value));
+            if(m_type == 2)
+                ui->label1->setText(QString("X: %1").arg(m_xpos));
+        }
+
+        if(ui->spinBox2 == object)
+        {
+            ui->spinBox2->hide();
+            ui->label2->show();
+            ui->label2->setText(QString("Y: %1").arg(m_ypos));
+        }
+
+        if(m_tTip == object)
+            closeItems();
     }
 
-    return QWidget::eventFilter(watched, event);
+    return QFrame::eventFilter(object,event);
 }
 
 bool MacroSquare::event(QEvent *event)
 {
-    if(event->type() == QEvent::FocusOut)
-    {
-        //qDebug() << "MacroSquare::event:FocusOut" ;
-        closeItems();
-    }
-
     if(event->type() == QEvent::MouseButtonPress)
     {
         MacroSquare *old = s_pCurItem;
-        s_pCurItem = this ;
+        s_pCurItem = this;
         if(old) old->update();
-
         m_bSelected = !m_bSelected;
-
-        if(m_type == 3)
-        {
-            if(m_spin1->isHidden())
-            {
-                m_spin1->setValue(m_value);
-                m_spin1->show();
-                m_spin1->setFocus();
-            }
-            else
-            {
-                m_spin1->hide();
-            }
-        }
-        else
-        {
-            if(m_tTip->isHidden())
-            {
-                //if(m_bSelected)
-                {
-                    QPoint pos = mapToGlobal(QPoint(width()+1,(height() - m_rTip->height())/2));
-                    m_rTip->move(pos);
-
-                    pos = mapToGlobal(QPoint(size().width()/2 - m_tTip->width()/2,( -1 - m_tTip->height())));
-                    m_tTip->move(pos);
-
-                    pos = mapToGlobal(QPoint(size().width()/2 - m_bTip->width()/2,(height() + 1)));
-                    m_bTip->move(pos);
-
-                    m_rTip->show();
-                    m_tTip->show();
-                    m_bTip->show();
-                    m_tTip->setFocus();
-                }
-            }
-            else
-            {
-                closeItems();
-            }
-        }
         update();
-        return true;
+\
+        closeItems();
     }
-    return QWidget::event(event);
+
+    if(event->type() == QEvent::MouseButtonRelease)
+    {
+        if(m_type != 3)
+        {
+            QPoint pos = mapToGlobal(QPoint(width()+1,(height() - m_rTip->height())/2));
+            m_rTip->move(pos);
+
+            pos = mapToGlobal(QPoint(size().width()/2 - m_tTip->width()/2,( -1 - m_tTip->height())));
+            m_tTip->move(pos);
+
+            pos = mapToGlobal(QPoint(size().width()/2 - m_bTip->width()/2,(height() + 1)));
+            m_bTip->move(pos);
+
+            //m_rTip->show();
+            m_tTip->show();
+            m_bTip->show();
+            m_tTip->setFocus();
+        }
+    }
+
+    if(event->type() == QEvent::KeyRelease)
+    {
+        QKeyEvent *pKE = static_cast<QKeyEvent*>(event);
+        if(pKE->key() == Qt::Key_Enter || pKE->key() == Qt::Key_Return)
+        {
+            ui->spinBox1->hide();
+            ui->spinBox2->hide();
+        }
+    }
+
+    return QFrame::event(event);
 }

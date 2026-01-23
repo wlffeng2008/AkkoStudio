@@ -139,6 +139,7 @@ FORMS += \
     Module/ModuleVideoItem.ui \
     Module/VirtualKeyboard.ui \
     Module/ModuleScrollValue.ui \
+    Module/MacroSquare.ui \
     ModuleAddMacroSquare.ui
 
 TRANSLATIONS += \

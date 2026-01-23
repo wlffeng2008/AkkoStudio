@@ -84,10 +84,11 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 {
     ui->setupUi(this);
     s_connect = this ;
-    setWindowFlags(windowFlags()|Qt::MSWindowsFixedSizeDialogHint);
-    setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
+    setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint );
+
     connect(ui->checkBoxOntop,&QCheckBox::clicked,this,[=](bool checked){
-        QWindow *pWin = windowHandle() ;
+        QWindow *pWin = windowHandle();
         if(checked)
             pWin->setFlags(windowFlags() | Qt::WindowStaysOnTopHint);
         else
@@ -97,6 +98,15 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     m_pCntSet = new QSettings(QApplication::applicationDirPath() + "/device.ini",QSettings::IniFormat);
     ui->lineEditVID->setText(m_pCntSet->value("lastVID","3151").toString());
     ui->lineEditPID->setText(m_pCntSet->value("lastPID","502F").toString());
+
+    connect(ui->pushButtonSaveMatrix,&QPushButton::clicked,this,[=]{
+        setDefaultMatrix(m_KeyMatrix[0]);
+        quint8 *data = (quint8 *)m_KeyMatrix[0].data();
+        for(int i=0; i<512; i+=4)
+        {
+            qDebug().noquote() << QString::asprintf("%3d,%3d,%3d,%3d,  // %3d  0x%08X", data[i+0], data[i+1], data[i+2], data[i+3], i/4, qToBigEndian(*(quint32*)(data + i)) );
+        }
+    });
 
     {
         m_pTable = ui->tableView;
@@ -135,7 +145,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             item1->setEditable(false);
             item2->setEditable(false);
 
-            item0->setForeground(QBrush(Qt::blue)) ;
+            item0->setForeground(QBrush(Qt::blue));
             if(cmd.nLen == 9)
             {
                 item1->setFont(font);
@@ -309,20 +319,39 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             }
             //qDebug() << "get_:" << data.toHex(' ').toUpper();
             quint8 *pCmd=(quint8 *)m_lastCmd.data();
+            QString strInfo ;
             switch(pCmd[0])
             {
             case CMD_GET_INFOR:
                 m_Info = data;
-                addReadCmd(CMD_GET_PROFILE,true);
-                break;
+                m_version = *(quint16*)(data.data()+7);
+                m_deviceId = *(quint32*)(data.data()+1);
+                strInfo = QString::asprintf("Ver:0x%03X Id:%d[%03X]",m_version,m_deviceId,m_deviceId);
+                qDebug() << strInfo ;
+                ui->labelVersion->setText(strInfo);
 
-            case CMD_GET_PROFILE:
-                m_layer = data[1];
+                if(m_version >= 0x300)
+                    m_isSupportAxis = true;
+                if(m_version >= 0x400)
+                    m_isSupportTopDeadZone = true;
+
+                if(m_version<0x300)
+                    m_multiple = 10;
+                else if(m_version < 0x500)
+                    m_multiple = 100;
+                else if(m_version >= 0x500)
+                    m_multiple = 200;
+
                 addReadCmd(CMD_GET_KBOPTION,true);
                 break;
 
             case CMD_GET_KBOPTION:
                 m_Optn = data;
+                addReadCmd(CMD_GET_PROFILE,true);
+                break;
+
+            case CMD_GET_PROFILE:
+                setProfile(data[1]) ;
                 break;
 
             case CMD_GET_KEYMATRIX:
@@ -375,6 +404,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
             emit onReadBack(data);
 
+            addLog(m_lastCmd.left(8));
             addLog(data);
 
             executeCmd(); // next cmd
@@ -420,6 +450,12 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
 void DialogDeviceConnect::readAllData()
 {
+    m_readList.clear();
+    m_isSupportAxis = false;
+    m_isSupportTopDeadZone=false;
+    m_multiple = 10;
+    m_version = 0;
+
     m_KeyMatrix[0].clear();
     m_KeyMatrix[1].clear();
     m_KeyMatrix[2].clear();
@@ -444,14 +480,13 @@ void DialogDeviceConnect::readAllData()
     m_E5FC.clear();
     m_E5FB.clear();
 
-    addReadCmd(CMD_GET_INFOR);
     addReadCmd(CMD_GET_REPORT);
     addReadCmd(CMD_GET_LEDPARAM);
     addReadCmd(CMD_GET_SLEDPARAM);
     addReadCmd(CMD_GET_DEBOUNCE);
     addReadCmd(CMD_GET_SLEEPTIME);
 
-    quint8 layer=m_layer;
+    quint8 layer = m_layer;
     for(quint8 subLayer=0; subLayer<4; subLayer++) // subLayer;
     {
         for(quint8 page=0; page<8; page++) // page
@@ -487,18 +522,12 @@ void DialogDeviceConnect::readAllData()
     {
         quint8 option = readE5s[i+0];
         quint8 countR = readE5s[i+1];
+
         for(int j=0; j<countR; j++)
         {
             addReadCmd(strCmd.asprintf("E5 %02X 01 %02X",option,j));
         }
     }
-    // executeCmd();
-}
-
-void DialogDeviceConnect::setProfile(int layer)
-{
-    m_layer = layer;
-    readAllData();
 }
 
 DialogDeviceConnect::~DialogDeviceConnect()
@@ -515,7 +544,7 @@ void DialogDeviceConnect::executeCmd()
     }
 
     QByteArray cmd = m_readList[0];
-    m_readList.pop_front() ;
+    m_readList.pop_front();
     cmd.append(128,0);
 
     int nLen = 8;
@@ -523,94 +552,102 @@ void DialogDeviceConnect::executeCmd()
         (quint8)cmd[0] == CMD_SET_SLEDPARAM)
         nLen = 9;
 
-    quint8 sum = 0 ;
+    quint8 sum = 0;
     for(int i=0; i<nLen-1; i++)
         sum += cmd[i];
     sum = 0xFF - (sum & 0xFF);
-    cmd[nLen-1] = sum ;
+    cmd[nLen-1] = sum;
 
-    m_lastCmd = cmd ;
+    m_lastCmd = cmd;
 
     //qDebug() << "send:" << cmd.left(16).toHex(' ').toUpper();
 
     cmd.insert(0,(char)0) ; // report id
     hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
 
-    QTimer::singleShot(10,this,[=]{
-        ui->pushButtonRead->click() ;
+    QTimer::singleShot(20,this,[=]{
+        ui->pushButtonRead->click();
     });
+}
+
+void DialogDeviceConnect::setProfile(int layer)
+{
+    m_layer = layer;
+    readAllData();
 }
 
 void DialogDeviceConnect::set65Value(quint8 option,quint8 index,quint32 value)
 {
     if(index >= 128) return;
     int type = 1;
-    char *data = nullptr;
+    char *buf = nullptr;
     switch(option)
     {
-    case 0x00: data=m_E500.data(); type=2; break;
-    case 0x01: data=m_E501.data(); type=2; break;
-    case 0x02: data=m_E502.data(); type=2; break;
-    case 0x03: data=m_E503.data(); type=2; break;
-    case 0x04: data=m_E504.data(); type=2; break;
-    case 0x05: data=m_E505.data(); type=1; break;
-    case 0x06: data=m_E506.data(); type=2; break;
-    case 0x07: data=m_E507.data(); type=1; break;
-    case 0x08: data=m_E508.data(); type=1; break;
-    case 0x09: data=m_E509.data(); type=1; break;
-    case 0x0A: data=m_E50A.data(); type=4; break;
-    case 0xFF: data=m_E5FF.data(); type=2; break;
-    case 0xFE: data=m_E5FE.data(); type=2; break;
-    case 0xFC: data=m_E5FC.data(); type=1; break;
-    case 0xFB: data=m_E5FB.data(); type=1; break;
+    case 0x00: buf=m_E500.data(); type=2; break;
+    case 0x01: buf=m_E501.data(); type=2; break;
+    case 0x02: buf=m_E502.data(); type=2; break;
+    case 0x03: buf=m_E503.data(); type=2; break;
+    case 0x04: buf=m_E504.data(); type=2; break;
+    case 0x05: buf=m_E505.data(); type=1; break;
+    case 0x06: buf=m_E506.data(); type=2; break;
+    case 0x07: buf=m_E507.data(); type=1; break;
+    case 0x08: buf=m_E508.data(); type=1; break;
+    case 0x09: buf=m_E509.data(); type=1; break;
+    case 0x0A: buf=m_E50A.data(); type=4; break;
+    case 0xFF: buf=m_E5FF.data(); type=2; break;
+    case 0xFE: buf=m_E5FE.data(); type=2; break;
+    case 0xFC: buf=m_E5FC.data(); type=1; break;
+    case 0xFB: buf=m_E5FB.data(); type=1; break;
         break;
     }
 
-    if(data)
+    if(buf)
     {
-        if(type == 1) ((quint8  *)data)[index] = value;
-        if(type == 2) ((quint16 *)data)[index] = value;
-        if(type == 4) ((quint32 *)data)[index] = value;
+        if(type == 1) ((quint8  *)buf)[index] = value;
+        if(type == 2) ((quint16 *)buf)[index] = value;
+        if(type == 4) ((quint32 *)buf)[index] = value;
     }
 }
 
 quint32 DialogDeviceConnect::get65Value(quint8 option,quint8 index)
 {
-    if(index>=128) return 0;
+    if(index >= 128) return 0;
     int type = 1;
-    char *data = nullptr;
+    char *buf = nullptr;
     switch(option)
     {
-    case 0x00: data=m_E500.data(); type=2; break;
-    case 0x01: data=m_E501.data(); type=2; break;
-    case 0x02: data=m_E502.data(); type=2; break;
-    case 0x03: data=m_E503.data(); type=2; break;
-    case 0x04: data=m_E504.data(); type=2; break;
-    case 0x05: data=m_E505.data(); type=1; break;
-    case 0x06: data=m_E506.data(); type=2; break;
-    case 0x07: data=m_E507.data(); type=1; break;
-    case 0x08: data=m_E508.data(); type=1; break;
-    case 0x09: data=m_E509.data(); type=1; break;
-    case 0x0A: data=m_E50A.data(); type=4; break;
-    case 0xFF: data=m_E5FF.data(); type=2; break;
-    case 0xFE: data=m_E5FE.data(); type=2; break;
-    case 0xFC: data=m_E5FC.data(); type=1; break;
-    case 0xFB: data=m_E5FB.data(); type=1; break;
+    case 0x00: buf=m_E500.data(); type=2; break;
+    case 0x01: buf=m_E501.data(); type=2; break;
+    case 0x02: buf=m_E502.data(); type=2; break;
+    case 0x03: buf=m_E503.data(); type=2; break;
+    case 0x04: buf=m_E504.data(); type=2; break;
+    case 0x05: buf=m_E505.data(); type=1; break;
+    case 0x06: buf=m_E506.data(); type=2; break;
+    case 0x07: buf=m_E507.data(); type=1; break;
+    case 0x08: buf=m_E508.data(); type=1; break;
+    case 0x09: buf=m_E509.data(); type=1; break;
+    case 0x0A: buf=m_E50A.data(); type=4; break;
+    case 0xFF: buf=m_E5FF.data(); type=2; break;
+    case 0xFE: buf=m_E5FE.data(); type=2; break;
+    case 0xFC: buf=m_E5FC.data(); type=1; break;
+    case 0xFB: buf=m_E5FB.data(); type=1; break;
         break;
     }
 
-    if(data)
+    if(buf)
     {
-        if(type == 1) return ((quint8  *)data)[index];
-        if(type == 2) return ((quint16 *)data)[index];
-        if(type == 4) return ((quint32 *)data)[index];
+        if(type == 1) return ((quint8  *)buf)[index];
+        if(type == 2) return ((quint16 *)buf)[index];
+        if(type == 4) return ((quint32 *)buf)[index];
     }
 
-    return 0 ;
+    return 0;
 }
 
 quint8 DialogDeviceConnect::getKeyType(quint8 hid)
 {
+    //if(m_version<0x300)
+    //    return 0;
     int index = getIndex(hid);
     quint8 type = get65Value(0x07,index);
     return type;
@@ -634,8 +671,9 @@ void DialogDeviceConnect::getKeydata(keyData *pDk,quint8 index,quint8 layer)
 QStringList DialogDeviceConnect::getKeyString(quint8 hid)
 {
     QStringList res;
+
     int index = getIndex(hid);
-    if(m_E507.size()<=index)
+    if(m_E507.size() <= index)
         return res;
     quint8 type = m_E507[index];
 
@@ -796,7 +834,7 @@ void DialogDeviceConnect::addReadCmd(QByteArray&cmd, bool execute)
     else
     {
         m_pExecute->stop();
-        m_pExecute->start(5);
+        m_pExecute->start(10);
     }
 }
 

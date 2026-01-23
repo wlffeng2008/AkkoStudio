@@ -31,6 +31,7 @@ private:
     QElapsedTimer m_tcount;
     quint16 m_lastDelay = 0;
     MacroSquare *m_delay = nullptr;
+    MacroSquare *m_insert = nullptr;
     bool m_recording = false;
     bool m_canAdd = true;
 

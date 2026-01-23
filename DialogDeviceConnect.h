@@ -168,7 +168,7 @@ protected:
 
 private:
     Ui::DialogDeviceConnect *ui;
-    QList<QByteArray>m_readList ;
+    QList<QByteArray>m_readList;
     void addReadCmd(quint8 cmd,int len=8,bool execute=false);
     void addReadCmd(QByteArray &cmd,bool execute=false);
     void addReadCmd(const QString&strCmd,bool execute=false);
@@ -222,6 +222,12 @@ private:
     QByteArray m_Optn ;
     QByteArray m_Info ;
     QByteArray m_KeyMatrix[8] ;
+
+    bool m_isSupportAxis = false;
+    bool m_isSupportTopDeadZone=false;
+    quint16 m_multiple = 10;
+    quint16 m_version = 0 ;
+    quint32 m_deviceId = 0 ;
 };
 
 #endif // DIALOGDEVICECONNECT_H

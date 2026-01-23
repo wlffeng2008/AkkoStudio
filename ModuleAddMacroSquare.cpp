@@ -34,15 +34,15 @@ void ModuleAddMacroSquare::keyPressEvent(QKeyEvent *event)
     int code = event->nativeScanCode();
     int hid = ::getKeyHid(code);
     m_hid = hid;
-    QString text= event->text();
+    QString text = event->text();
     ui->lineEditKey->setText(text.toUpper());
 }
 
 quint8 ModuleAddMacroSquare::type()
 {
-    if(ui->radioButton1->isChecked()) return 0;
-    if(ui->radioButton2->isChecked()) return 1;
-    if(ui->radioButton3->isChecked()) return 2;
+    if(ui->radioButton1->isChecked()) return 0; // key
+    if(ui->radioButton2->isChecked()) return 1; // mouse
+    if(ui->radioButton3->isChecked()) return 2; // position
     return 0;
 }
 
@@ -56,16 +56,15 @@ quint8 ModuleAddMacroSquare::mKey()
 
 quint8 ModuleAddMacroSquare::bKey()
 {
-    //return ui->lineEditKey->text().toInt();
     return m_hid;
 }
 
-quint8 ModuleAddMacroSquare::xPos()
+quint16 ModuleAddMacroSquare::xPos()
 {
-    return ui->lineEditX->text().toInt();
+    return ui->spinBoxX->value();
 }
 
-quint8 ModuleAddMacroSquare::yPos()
+quint16 ModuleAddMacroSquare::yPos()
 {
-    return ui->lineEditY->text().toInt();
+    return ui->spinBoxY->value();
 }

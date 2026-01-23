@@ -138,7 +138,7 @@ MacroEvent *ModuleMacroManager::addMacroEvent(MacroProject *prj,quint8 type,quin
     event->down=down;
     event->text=text;
     prj->events.push_back(event);
-    return nullptr;
+    return event;
 }
 
 void ModuleMacroManager::delMacroEvent(MacroProject *prj,MacroEvent *event)

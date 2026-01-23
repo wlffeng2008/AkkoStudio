@@ -38,6 +38,7 @@ quint16 getKeyHid(quint16 nCode);
 quint16 getKeyNCode(quint16 hid);
 
 QByteArray getDefaultMatrix();
+void setDefaultMatrix(const QByteArray&data);
 
 class ModuleGenKeymapping:public QWidget
 {

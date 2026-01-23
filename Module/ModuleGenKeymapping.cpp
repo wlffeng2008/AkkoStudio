@@ -253,10 +253,16 @@ static quint8 defaultMatrix_id2807[] =
     0,0,0,0   // 127 line
 };
 
+static QByteArray matrixData((char *)defaultMatrix_id2807,512);
+
 QByteArray getDefaultMatrix()
 {
-    static QByteArray data((char *)defaultMatrix_id2807,512);
-    return data;
+    return matrixData;
+}
+
+void setDefaultMatrix(const QByteArray&data)
+{
+    matrixData = data;
 }
 
 quint8 getIndex(quint8 hid)
@@ -271,7 +277,7 @@ quint8 getIndex(quint8 hid)
 
     for(int i=0; i<512; i += 4)
     {
-        if(defaultMatrix_id2807[i+2] == hid)
+        if(matrixData[i+2] == hid)
         {
             return i/4;
         }
@@ -290,7 +296,7 @@ quint8 getHid(quint8 index)
     }
 
     if(index<128)
-        return defaultMatrix_id2807[index*4 + 2];
+        return matrixData[index*4 + 2];
     return 0;
 }
 
@@ -367,7 +373,8 @@ static QList<keyMapItem> s_keMapTable=
 
     { "L-Ctrl",      224,    29 },
     { "L-Alt",       226,    56 },
-    { "Win",         227, 57435 },
+    { "L-Win",       227, 57435 },
+    { "R-Win",       231, 57436 },
     { "Menu",        101, 57437 },
     { "Space",        44,    57 },
     { "R-Alt",       230, 57400 },
@@ -426,8 +433,8 @@ static QList<keyMapItem> s_keMapTable=
     { "Print-Screen", 70, 57436 },
     { "Scroll-Lock" , 71,    70 },
     { "Pause-Break" , 72,    69 },
-    { "VOL+" ,      234,     0 },
-    { "VOL-" ,      233,     0 }
+    { "VOL+",        234,     0 },
+    { "VOL-",        233,     0 }
 };
 
 QString getKeyValue(quint16 hid)
@@ -527,9 +534,9 @@ bool isKeyChanged(quint8 index,const keyData*kd)
 
 bool isKeyDisabled(quint8 index)
 {
-    keyData*tk0 = getFnData(index);
+    keyData*tk0 = getMatData(index);
     keyData tk1 = {0,0,0,0};
-    return isKeyEqual(tk0,&tk1) ;
+    return isKeyEqual(tk0,&tk1);
 }
 
 keyData* getMuData(quint8 index)
@@ -544,12 +551,12 @@ keyData* getFnData(quint8 index)
 
 keyData* getMatData(quint8 index)
 {
-    static keyData kd ;
+    static keyData kd;
 
-    kd.b0 = defaultMatrix_id2807[index * 4 + 0];
-    kd.b1 = defaultMatrix_id2807[index * 4 + 1];
-    kd.b2 = defaultMatrix_id2807[index * 4 + 2];
-    kd.b3 = defaultMatrix_id2807[index * 4 + 3];
+    kd.b0 = matrixData[index * 4 + 0];
+    kd.b1 = matrixData[index * 4 + 1];
+    kd.b2 = matrixData[index * 4 + 2];
+    kd.b3 = matrixData[index * 4 + 3];
 
     return &kd;
 }

@@ -66,7 +66,6 @@ bool ModuleGeneralMasker::eventFilter(QObject*watched,QEvent*event)
         m_watch->removeEventFilter(this);
         if(m_nFlag == 0) QDialog::reject();
         if(m_nFlag == 1) QDialog::accept();
-        //this->close();
     }
 
     return QDialog::eventFilter(watched,event);
@@ -76,8 +75,8 @@ void ModuleGeneralMasker::paintEvent(QPaintEvent *event)
 {
     QStyleOption opt;
     opt.initFrom(this);
-    QPainter p(this);
-    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+    QPainter painter(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
 
     QDialog::paintEvent(event);
 }

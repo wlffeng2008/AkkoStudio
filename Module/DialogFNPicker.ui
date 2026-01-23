@@ -77,7 +77,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../res.qrc">
+          <iconset>
            <normaloff>:/images/macro/fn0/fn.png</normaloff>:/images/macro/fn0/fn.png</iconset>
          </property>
          <property name="checkable">
@@ -858,9 +858,7 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>

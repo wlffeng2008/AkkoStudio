@@ -512,6 +512,7 @@ void FrameKeySetting::refresh()
         {
             QString strT1 = getKeyValue(hid);
             QString strT2 = getKeyString(&kd);
+
             QStringList res = pCnn->getKeyString(hid);
 
             if(type == 2)

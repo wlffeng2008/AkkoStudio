@@ -18,8 +18,8 @@ public:
     quint8 type();
     quint8 mKey();
     quint8 bKey();
-    quint8 xPos();
-    quint8 yPos();
+    quint16 xPos();
+    quint16 yPos();
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 private:

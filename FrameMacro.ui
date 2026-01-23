@@ -439,10 +439,13 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                </size>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>5</number>
               </property>
               <property name="maximum">
                <number>10000</number>
+              </property>
+              <property name="value">
+               <number>50</number>
               </property>
              </widget>
             </item>
@@ -632,7 +635,7 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                   </font>
                  </property>
                  <property name="text">
-                  <string>宏内容</string>
+                  <string>宏名称</string>
                  </property>
                 </widget>
                </item>

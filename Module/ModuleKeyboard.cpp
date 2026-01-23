@@ -209,6 +209,7 @@ void ModuleKeyboard::setKeyTip(const QString&objname,const QString&strTip1,const
         }
         else
         {
+            btn->setDisabled(false);
             static_cast<KeyboardButton *>(btn)->setTipText(strTip1, strTip2);
         }
     }

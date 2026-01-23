@@ -26,24 +26,9 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(240, 220, 240);
+   <string notr="true">background-color: rgb(230, 230, 230);
 border-radius:32px;
-
-QPushButton {
-            border: 1px solid #EAEAEA;
-			border-radius:14px;
-            color: black;
-            outline: none;
-            background-color: #FBFBFB;
-                        max-width:442px;
-                        min-height:42px;
-                        min-width:42px;
- }
-
-QPushButton:hover { background-color: #EAEAEA; border: 1px solid #EAEAEA;}
-QPushButton:pressed { background-color: #3F3F3F; }
-QPushButton:checked { border-color: #6329B6; background-color: #6329B6; color:white; font-weight:600; }
-QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
+</string>
   </property>
   <widget class="QRadioButton" name="radioButton1">
    <property name="geometry">
@@ -136,11 +121,31 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
      <height>36</height>
     </rect>
    </property>
+   <property name="maximumSize">
+    <size>
+     <width>90</width>
+     <height>16777215</height>
+    </size>
+   </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="focusPolicy">
     <enum>Qt::FocusPolicy::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">        QPushButton {
+            background-color: #6329B6;
+            color: white;
+            width:102px;
+            height:32px;
+            padding: 2px 2px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        QPushButton:hover { background-color: #0E42F2; }
+        QPushButton:pressed { background-color: #0A34A1; }</string>
    </property>
    <property name="text">
     <string>确定</string>
@@ -155,11 +160,31 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
      <height>36</height>
     </rect>
    </property>
+   <property name="maximumSize">
+    <size>
+     <width>90</width>
+     <height>16777215</height>
+    </size>
+   </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="focusPolicy">
     <enum>Qt::FocusPolicy::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">        QPushButton {
+            background-color: gray;
+            color: white;
+            width:102px;
+            height:32px;
+            padding: 2px 2px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        QPushButton:hover { background-color: #C2C2C2; }
+        QPushButton:pressed { background-color: #0A34A1; }</string>
    </property>
    <property name="text">
     <string>取消</string>
@@ -282,23 +307,23 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
     <string>请按下按键......</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditX">
+  <widget class="QSpinBox" name="spinBoxX">
    <property name="geometry">
     <rect>
-     <x>152</x>
-     <y>216</y>
-     <width>85</width>
-     <height>20</height>
+     <x>150</x>
+     <y>214</y>
+     <width>90</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditY">
+  <widget class="QSpinBox" name="spinBoxY">
    <property name="geometry">
     <rect>
-     <x>152</x>
-     <y>242</y>
-     <width>85</width>
-     <height>20</height>
+     <x>150</x>
+     <y>240</y>
+     <width>90</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>

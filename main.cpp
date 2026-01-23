@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
         QLabel:disabled { color: #B3B3B3;}
 
         QLineEdit {
-            border: 1px solid #EDEDED;
+            border: 1px solid #D0D0D0;
             background-color: #EDEDED;
             border-radius: 6px;
             min-height: 20px;
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
         QLabel#labelTitleS1,#labelTitleS2,#labelTitleS3,#labelTitleS4,#labelTitleS5 { font-size: 16px; font-weight: 500 ;}
         QLabel#labelValue1,#labelValue5{ font-size: 10px; font-weight: 500;}
         QLabel#labelValue2,#labelValue4{ font-size: 14px; font-weight: 500;}
-        QLabel#labelValue3{ font-size: 18px; font-weight: 600;}
+        QLabel#labelValue3,#labelValue6{ font-size: 18px; font-weight: 600;}
 
         QTableView{
                  border: 1px solid gray;
@@ -360,9 +360,9 @@ QTabBar::separator {
 }
 
     QSpinBox {
-        border: 1px solid #DDDDDD;
+        border: 1px solid #D0D0D0;
         border-radius: 4px;
-        padding: 2px 28px 2px 2px;
+        padding: 2px 2px 2px 2px;
         font-size: 14px;
         color: #333333;
         background-color: #FFFFFF;
@@ -374,8 +374,8 @@ QTabBar::separator {
     }
 
     QSpinBox::up-button, QSpinBox::down-button {
-        width: 24px;
-        border: none;
+        width: 12px;
+        border: 2px solid transparent;
         background-color: transparent;
     }
 
