@@ -69,7 +69,8 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
 
         for(int i=0; i<EfModeList.count(); i++)
         {
-            QPushButton *btn = new QPushButton(EfModeList[i].name,this);
+            QString strName=QString::asprintf("%s (%02X)",EfModeList[i].name.toStdString().c_str(),EfModeList[i].mode) ;
+            QPushButton *btn = new QPushButton(strName,this);
             btn->setFixedSize(240,28);
             btn->setCheckable(true);
             btn->setStyleSheet(strStyle);
@@ -85,9 +86,22 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
             if(!m_bOutSet)
                 emit onModeChanged(id);
             m_bOutSet = false;
-            ui->comboBoxPic->setHidden(id != 0x0D);
-            ui->labelPicture->setHidden(id != 0x0D);
+            bool hide=true;
+            ui->comboBoxPic->blockSignals(true);
+            QStringList addOption;
+            switch(id)
+            {
+            case 0x04:
+                addOption.push_back(tr(""));
+                hide = false;
+                break;
 
+            }
+
+            ui->comboBoxPic->setHidden(hide);
+            ui->labelPicture->setHidden(hide);
+
+            ui->comboBoxPic->blockSignals(false);
         });
 
         connect(ui->checkBoxEFMode,&QCheckBox::clicked,this,[=](bool checked){ emit onModeChanged(0,checked); });

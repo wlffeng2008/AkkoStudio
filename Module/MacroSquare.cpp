@@ -187,6 +187,7 @@ void MacroSquare::setDelay(quint16 delay)
     if(m_type == 3)
     {
         m_value = delay;
+        ui->label1->setText(QString("%1").arg(delay));
         update();
     }
 }
@@ -224,15 +225,15 @@ void MacroSquare::paintEvent(QPaintEvent*event)
 
     if(m_bSelected)
     {
-        painter.setRenderHint(QPainter::Antialiasing,false) ;
+        painter.setRenderHint(QPainter::Antialiasing,false);
         painter.setPen(QPen(s_pCurItem == this ? Qt::green : Qt::blue, 0.5, Qt::DashLine));
-        painter.setBrush(Qt::NoBrush) ;
-        painter.drawRect(this->rect().adjusted(1,1,-1,-1)) ;
+        painter.setBrush(Qt::NoBrush);
+        painter.drawRect(this->rect().adjusted(1,1,-1,-1));
     }
 
     if(s_pCurItem != this) closeItems();
 
-    event->accept() ;
+    event->accept();
 }
 
 bool MacroSquare::eventFilter(QObject *object, QEvent *event)
