@@ -205,9 +205,9 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         });
     }
 
-    QTimer *pTMUsb = new QTimer(this) ;
+    QTimer *pTMUsb = new QTimer(this);
     static USBNotifier *pUsb = new USBNotifier(this);
-    QCoreApplication::instance()->installNativeEventFilter(pUsb) ;
+    QCoreApplication::instance()->installNativeEventFilter(pUsb);
     connect(pUsb, &USBNotifier::devicePluggined,this,[=](bool in) {
         pTMUsb->stop();
         pTMUsb->start(800);
@@ -239,14 +239,18 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         hid_free_enumeration(pRoot);
 
         ui->comboBoxPID->blockSignals(true);
+
         ui->comboBoxPID->clear();
         ui->comboBoxPID->addItems(VIDList);
-        ui->comboBoxPID->blockSignals(false);
 
         QString strPID = ui->lineEditPID->text().trimmed().toUpper();
         int index = ui->comboBoxPID->findText(strPID);
         if(index == -1) index = 0;
         ui->comboBoxPID->setCurrentIndex(index);
+
+        ui->comboBoxPID->blockSignals(false);
+
+        ui->pushButtonConnect->click();
     });
 
     connect(ui->pushButtonConnect,&QPushButton::clicked,this,[=]{
@@ -279,6 +283,12 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             if(m_pDev0 && m_pDev1)
             {
                 emit onConnect();
+
+                m_isSupportAxis = false;
+                m_isSupportTopDeadZone=false;
+                m_multiple = 10;
+                m_version = 0;
+                m_deviceId = 0;
                 addReadCmd(CMD_GET_INFOR,true);
                 m_pCntSet->setValue("lastVID",ui->lineEditVID->text().trimmed());
                 m_pCntSet->setValue("lastPID",ui->lineEditPID->text().trimmed());
@@ -295,7 +305,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
     connect(ui->pushButtonWrite,&QPushButton::clicked,this,[=]{
         if(!m_pDev1) return;
-        QString strCmd = ui->lineEditCmd->text().trimmed(); // "8F 00 00 00 00 00 00 70" ;
+        QString strCmd = ui->lineEditCmd->text().trimmed();
         QByteArray data(QByteArray::fromHex(strCmd.toLatin1()));
         addReadCmd(data,true);
     });
@@ -404,7 +414,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
             emit onReadBack(data);
 
-            addLog(m_lastCmd.left(8));
+            addLog(m_lastCmd.left(8),false);
             addLog(data);
 
             executeCmd(); // next cmd
@@ -451,8 +461,6 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 void DialogDeviceConnect::readAllData()
 {
     m_readList.clear();
-    m_isSupportAxis = false;
-    m_isSupportTopDeadZone=false;
     m_multiple = 10;
     m_version = 0;
 
@@ -497,35 +505,38 @@ void DialogDeviceConnect::readAllData()
         }
     }
 
-    quint8 readE5s[]=
+    if(m_isSupportAxis)
     {
-        0x00, 4,
-        0x01, 4,
-        0x02, 4,
-        0x03, 4,
-        0x04, 4,
-        0x05, 2,
-        0x06, 4,
-        0x07, 2,
-        0x08, 2,
-        0x09, 2,
-        0x0A, 8,
-        0xFF, 4,
-        0xFE, 4,
-        0xFC, 2,
-        0xFB, 2
-    };
-
-    QString strCmd;
-    int nCount = sizeof(readE5s)/sizeof(quint8);
-    for(int i=0; i<nCount; i+=2)
-    {
-        quint8 option = readE5s[i+0];
-        quint8 countR = readE5s[i+1];
-
-        for(int j=0; j<countR; j++)
+        quint8 readE5s[]=
         {
-            addReadCmd(strCmd.asprintf("E5 %02X 01 %02X",option,j));
+            0x00, 4,
+            0x01, 4,
+            0x02, 4,
+            0x03, 4,
+            0x04, 4,
+            0x05, 2,
+            0x06, 4,
+            0x07, 2,
+            0x08, 2,
+            0x09, 2,
+            0x0A, 8,
+            0xFF, 4,
+            0xFE, 4,
+            0xFC, 2,
+            0xFB, 2
+        };
+
+        QString strCmd;
+        int nCount = sizeof(readE5s)/sizeof(quint8);
+        for(int i=0; i<nCount; i+=2)
+        {
+            quint8 option = readE5s[i+0];
+            quint8 countR = readE5s[i+1];
+
+            for(int j=0; j<countR; j++)
+            {
+                addReadCmd(strCmd.asprintf("E5 %02X 01 %02X",option,j));
+            }
         }
     }
 }
@@ -795,14 +806,16 @@ QByteArray DialogDeviceConnect::getMatix(int sub)
     return m_KeyMatrix[sub];
 }
 
-void DialogDeviceConnect::addLog(const QByteArray&log)
+void DialogDeviceConnect::addLog(const QByteArray&log, bool addRetrun)
 {
     if(m_bClear) ui->plainTextEdit->clear();
     QString strLog(log.toHex(' ').toUpper());
     int nLen = strLog.length() ;
     for(int at=nLen-12; at>0; at -= 12)
         strLog.insert(at,' ');
-    ui->plainTextEdit->appendPlainText(strLog + "\n");
+    ui->plainTextEdit->appendPlainText(strLog);
+    if(addRetrun)
+        ui->plainTextEdit->appendPlainText("\n");
     m_bClear = false;
     pTMClear->stop();
     pTMClear->start(500);

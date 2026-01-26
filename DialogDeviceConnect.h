@@ -200,7 +200,7 @@ private:
     int  getRow(int cmd);
     void setRowValue(int row, int col,int value);
 
-    void addLog(const QByteArray&log);
+    void addLog(const QByteArray&log,bool addRetrun=true);
     QByteArray m_lastCmd ;
 
     QByteArray m_E500 ; /** 读4次 触发行程 = 0,*/

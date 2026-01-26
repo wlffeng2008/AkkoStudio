@@ -250,7 +250,7 @@ MainWindow::MainWindow(QWidget *parent)
         trayIcon->setContextMenu(trayMenu);
     }
 
-    m_pDevice->readAllData();
+    m_pDevice->startConnect();
 }
 
 MainWindow::~MainWindow()
