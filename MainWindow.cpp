@@ -128,6 +128,7 @@ MainWindow::MainWindow(QWidget *parent)
         m_pLangMenu = new ModuleLangMenu(this) ;
         connect(m_pLangMenu,&ModuleLangMenu::onLangChanged,this,[=](int langId,const QString&lang){
             ui->pushButtonLang->setText(QString(" ")+lang) ;
+
         }) ;
 
         connect(ui->pushButtonLang,&QPushButton::clicked,this,[=]{

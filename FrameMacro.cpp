@@ -104,7 +104,6 @@ FrameMacro::FrameMacro(QWidget *parent)
 
                 QTimer::singleShot(20,this,[=]{
                     saveEvents();
-                    //loadEvents();
                 });
             }
         });
@@ -113,7 +112,8 @@ FrameMacro::FrameMacro(QWidget *parent)
             m_delay=nullptr;
             m_recording = ui->pushButtonRecord->isChecked();
             ui->pushButtonRecord->setText(m_recording ? tr("停止录制") : tr("开始录制"));
-            if(!m_recording) saveEvents();
+            if(!m_recording)
+                saveEvents();
             setFocus();
         });
 
