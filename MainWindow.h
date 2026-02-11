@@ -1,16 +1,21 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+
+#include <windows.h>
+#include <dbt.h>
+
+#include <QCoreApplication>
+#include <QAbstractNativeEventFilter>
+
 #include <QMainWindow>
+#include <QLayout>
+
+#include <QDialog>
 #include <QTimer>
 
-#include <QLabel>
-#include <QTimer>
-#include <QPaintEvent>
-#include "SuperLabel.h"
+
 #include "ModuleLangMenu.h"
-
-class FrameMacro;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,9 +23,36 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
-#include "DialogDeviceConnect.h"
+/*
+class USBNotifier : public QObject, public QAbstractNativeEventFilter
+{
+    Q_OBJECT
+public:
+    explicit USBNotifier(QObject *parent = nullptr) : QObject(parent) {
+        //QCoreApplication::instance()->installNativeEventFilter(this) ;
+    }
 
-class FrameKeySetting;
+signals:
+    void devicePluggined(bool in=true);
+
+protected:
+    bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override
+    {
+        Q_UNUSED(eventType)
+        Q_UNUSED(result)
+        MSG* msg = reinterpret_cast<MSG*>(message);
+        if (msg->message == WM_DEVICECHANGE)
+        {
+            qDebug() << "USBNotifier::nativeEventFilter: " << msg->wParam << msg->lParam;
+            //if(msg->wParam == DBT_DEVICEARRIVAL       )  emit devicePluggined(true);
+            //if(msg->wParam == DBT_DEVICEREMOVECOMPLETE)  emit devicePluggined(false);
+            emit devicePluggined(true);
+            return true;
+        }
+        return false;
+    }
+};*/
+
 
 class MainWindow : public QMainWindow
 {
@@ -31,34 +63,36 @@ public:
     ~MainWindow();
 
 protected:
-    void paintEvent(QPaintEvent *event) override ;
-    bool eventFilter(QObject *watched, QEvent *event) override ;
-    void keyPressEvent(QKeyEvent *event) override;
-    void keyReleaseEvent(QKeyEvent *event) override;
-    void closeEvent(QCloseEvent *event) override ;
-
+    void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
-    void focusOutEvent(QFocusEvent *event) override;
+    bool eventFilter(QObject *obj, QEvent *e) override;
+
+    bool event(QEvent *event) override;
+
+    void enumDevice();
+    void addDevice(quint32 id, const QString&path, int creator=0);
+
+private slots:
+    void on_pushButtonExit_clicked();
+    void on_pushButtonMin_clicked();
 
 private:
     Ui::MainWindow *ui;
-    QPoint m_dragPosition;
+
+    ModuleLangMenu *m_pLangMenu=nullptr;
+
+    QLayout *m_layout = nullptr;
+
+    QPointF m_dragPosition;
     bool m_dragging = false;
 
+    QTimer *m_pTmHide = nullptr;
+    QDialog *m_pFloatLeft = nullptr;
+    QDialog *m_pFloatRight = nullptr;
+    QDialog *m_pFloatReturn = nullptr;
 
-    DialogDeviceConnect *m_pDevice = nullptr;
-    ModuleLangMenu *m_pLangMenu = nullptr;
-    FrameKeySetting *m_pKSetting = nullptr;
-
-    int m_nStatus = 0;
-    void setConnect(int nFlag);
-
-    QList<SuperLabel *>m_pLBtns;
-    QList<QFrame *>m_pFrames;
-    void clickLabel(QLabel *label,int index=0);
-
-
+    int m_creator = 0;
 };
 #endif // MAINWINDOW_H

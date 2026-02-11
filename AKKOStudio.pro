@@ -23,12 +23,20 @@ RC_LANG = 0x0004
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+# 仅Windows平台生效
+win32 {
+    LIBS += -luser32 -lkernel32 -lpsapi # 链接窗口/进程相关库
+}
+
 LIBS += -L$$PWD -lhidapi
 
 INCLUDEPATH += ./Module
 
 
 SOURCES += \
+    AkkoDeviceBase.cpp \
+    FrameDeviceHolder.cpp \
+    FrameDeviceShow.cpp \
     Module/ColorLabel.cpp \
     Module/ColorSquare.cpp \
     Module/CustumSlider.cpp \
@@ -72,6 +80,9 @@ SOURCES += \
     MainWindow.cpp
 
 HEADERS += \
+    AkkoDeviceBase.h \
+    FrameDeviceHolder.h \
+    FrameDeviceShow.h \
     Module/ColorLabel.h \
     Module/ColorSquare.h \
     Module/CustumSlider.h \
@@ -117,6 +128,8 @@ FORMS += \
     DialogDeviceConnect.ui \
     DialogMainwork.ui \
     FrameAbout.ui \
+    FrameDeviceHolder.ui \
+    FrameDeviceShow.ui \
     FrameKeySetting.ui \
     FrameLight.ui \
     FrameMacro.ui \
@@ -166,4 +179,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    images.qrc \
     res.qrc

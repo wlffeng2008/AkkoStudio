@@ -458,6 +458,13 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     ui->plainTextEdit->setStyleSheet("font-family: Fixedsys;");
 }
 
+void DialogDeviceConnect::DoConnectDevice(quint16 PID)
+{
+    QString strPID = QString::asprintf("%04X",PID);
+    ui->lineEditPID->setText(strPID);
+    ui->pushButtonConnect->click();
+}
+
 void DialogDeviceConnect::readAllData()
 {
     m_readList.clear();

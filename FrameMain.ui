@@ -324,41 +324,6 @@
             <number>10</number>
            </property>
            <item alignment="Qt::AlignmentFlag::AlignVCenter">
-            <widget class="QLabel" name="labelPriv">
-             <property name="minimumSize">
-              <size>
-               <width>48</width>
-               <height>48</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>48</width>
-               <height>48</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MiSans</family>
-               <italic>false</italic>
-               <fontweight>Medium</fontweight>
-              </font>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="res.qrc">:/images/a-left.png</pixmap>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item alignment="Qt::AlignmentFlag::AlignVCenter">
             <widget class="QLabel" name="labelPic">
              <property name="minimumSize">
               <size>
@@ -380,41 +345,6 @@
              </property>
              <property name="scaledContents">
               <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item alignment="Qt::AlignmentFlag::AlignVCenter">
-            <widget class="QLabel" name="labelNext">
-             <property name="minimumSize">
-              <size>
-               <width>48</width>
-               <height>48</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>48</width>
-               <height>48</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MiSans</family>
-               <italic>false</italic>
-               <fontweight>Medium</fontweight>
-              </font>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="res.qrc">:/images/a-right.png</pixmap>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
              </property>
             </widget>
            </item>

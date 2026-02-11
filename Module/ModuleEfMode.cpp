@@ -48,7 +48,7 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
             QPushButton {
                 width: 240px;
                 height: 28px;
-                border-radius: 16px;
+                border-radius: 14px;
                 font-weight:500;
                 outline: none;
 

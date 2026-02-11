@@ -12,12 +12,6 @@ FrameMain::FrameMain(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->labelPriv->installEventFilter(this);
-    ui->labelNext->installEventFilter(this);
-
-    ui->labelPriv->setEnabled(false) ;
-    ui->labelNext->setEnabled(false) ;
-
     DialogDeviceConnect *pConnector = DialogDeviceConnect::instance();
 
     connect(ui->frameLEDMode,&ModuleEfMode::onModeChanged,this,[=](int mode,bool on){
@@ -62,19 +56,13 @@ FrameMain::~FrameMain()
     delete ui;
 }
 
+void FrameMain::setDeviceImage(const QString&strImage)
+{
+    ui->labelPic->setPixmap(QPixmap(strImage));
+}
+
 bool FrameMain::eventFilter(QObject*watched,QEvent*event)
 {
-    if(event->type() == QEvent::MouseButtonRelease)
-    {
-        if(watched == ui->labelPriv)
-        {
-            return true ;
-        }
 
-        if(watched == ui->labelNext)
-        {
-            return true ;
-        }
-    }
     return QFrame::eventFilter(watched,event);
 }

@@ -20,7 +20,6 @@ public:
     void setLanguage(int langId) ;
 
 protected:
-    bool eventFilter(QObject *watch, QEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     void showEvent(QShowEvent *event) override;
 

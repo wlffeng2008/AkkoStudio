@@ -18,7 +18,6 @@
 #include "ModuleGenKeymapping.h"
 #include "hidapi.h"
 
-
 namespace Ui {
 class DialogDeviceConnect;
 }
@@ -94,9 +93,9 @@ protected:
             //if(msg->wParam == DBT_DEVICEARRIVAL       )  emit devicePluggined(true);
             //if(msg->wParam == DBT_DEVICEREMOVECOMPLETE)  emit devicePluggined(false);
             emit devicePluggined(true);
-            return true ;
+            return true;
         }
-        return false ;
+        return false;
     }
 };
 
@@ -155,6 +154,8 @@ public:
 
     void StartCalibration();
     void StopCalibration();
+
+    void DoConnectDevice(quint16 PID);
 
 signals:
     void onConnect();

@@ -13,6 +13,7 @@ class FrameMain : public QFrame
 public:
     explicit FrameMain(QWidget *parent = nullptr);
     ~FrameMain();
+    void setDeviceImage(const QString&strImage);
 protected:
     bool eventFilter(QObject*watched, QEvent*event) override;
 

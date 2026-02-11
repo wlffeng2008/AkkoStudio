@@ -13,7 +13,7 @@ ModuleLangMenu::ModuleLangMenu(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setWindowFlags(Qt::FramelessWindowHint |Qt::WindowStaysOnTopHint|Qt::Tool|Qt::Dialog|Qt::Popup);
+    setWindowFlags(windowFlags()|Qt::FramelessWindowHint |Qt::WindowStaysOnTopHint|Qt::Tool);
     setAttribute(Qt::WA_TranslucentBackground);
 
     static QStringList Langs={
@@ -54,40 +54,38 @@ ModuleLangMenu::ModuleLangMenu(QWidget *parent)
                 background: #6329B6; }
             )") ;
 
-    m_pBtnGrp = new QButtonGroup(this) ;
-    QLayout *pLayout = ui->verticalLayout ;
-    pLayout->setSpacing(8) ;
-    pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter) ;
-    pLayout->setContentsMargins(3,10,3,3);
+    m_pBtnGrp = new QButtonGroup(this);
+    QLayout *pLayout = ui->verticalLayout;
+    pLayout->setSpacing(8);
+    pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
+    pLayout->setContentsMargins(3,10,3,10);
 
     connect(m_pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
-        //qDebug() << "Language QButtonGroup:" << id  << Langs[id];
         hide() ;
-        emit onLangChanged(id,Langs[id]) ;
+        emit onLangChanged(id,Langs[id]);
     });
 
     for(int i=0; i<Langs.count(); i++)
     {
         QPushButton *btn = new QPushButton(Langs[i],this) ;
         btn->setFixedSize(90,24);
-        btn->setCheckable(true) ;
+        btn->setCheckable(true);
         btn->setStyleSheet(strStyle);
-        btn->setFocusPolicy(Qt::NoFocus) ;
-        btn->setCursor(Qt::PointingHandCursor) ;
+        btn->setFocusPolicy(Qt::NoFocus);
+        btn->setCursor(Qt::PointingHandCursor);
 
         m_pBtnGrp->addButton(btn,i);
         pLayout->addWidget(btn);
     }
-    //pLayout->setAlignment(Qt::AlignTrailing|Qt::AlignHCenter);
 
-    QTimer::singleShot(100,this,[=]{ m_pBtnGrp->button(0)->click(); /*setFocusPolicy(Qt::NoFocus);*/});
+    QTimer::singleShot(100,this,[=]{ m_pBtnGrp->button(0)->click();});
 
-    setStyleSheet("QDialog{background-color: rgba(255, 255, 255, 0.9); border: 1px solid #EAEAEA; border-radius:12px;}");
+    setStyleSheet("QDialog{background-color: rgba(255, 255, 255, 0.8); border: 1px solid #EAEAEA; border-radius:12px;}");
 }
 
 void ModuleLangMenu::showEvent(QShowEvent *event)
 {
-    event->accept() ;
+    event->accept();
 }
 
 ModuleLangMenu::~ModuleLangMenu()
@@ -100,17 +98,7 @@ void ModuleLangMenu::setLanguage(int langId)
     if(langId>6)
         return ;
 
-    m_pBtnGrp->button(langId)->click() ;
-}
-
-bool ModuleLangMenu::eventFilter(QObject *watch, QEvent *event)
-{
-    if(event->type() == QEvent::Paint || event->type() == QEvent::WindowDeactivate)
-    {
-        this->hide() ;
-    }
-
-    return QDialog::eventFilter(watch, event);
+    m_pBtnGrp->button(langId)->click();
 }
 
 void ModuleLangMenu::paintEvent(QPaintEvent *event)

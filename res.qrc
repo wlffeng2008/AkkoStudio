@@ -171,20 +171,19 @@
         <file>images/k/ic_press.png</file>
         <file>images/k/ic_selected.png</file>
         <file>images/btn-close.png</file>
-        <file>font/MiSans-Bold.ttf</file>
-        <file>font/MiSans-Demibold.ttf</file>
-        <file>font/MiSans-ExtraLight.ttf</file>
-        <file>font/MiSans-Heavy.ttf</file>
-        <file>font/MiSans-Light.ttf</file>
-        <file>font/MiSans-Medium.ttf</file>
-        <file>font/MiSans-Normal.ttf</file>
-        <file>font/MiSans-Regular.ttf</file>
-        <file>font/MiSans-Semibold.ttf</file>
-        <file>font/MiSans-Thin.ttf</file>
         <file>images/inworking.gif</file>
         <file>images/mt0.png</file>
         <file>images/mt1.png</file>
         <file>images/Akko-Kb3.png</file>
         <file>images/logowww.png</file>
+        <file>images/battery.png</file>
+        <file>images/btn-close1.png</file>
+        <file>images/btn-close2.png</file>
+        <file>images/btn-min.png</file>
+        <file>images/btn-return.png</file>
+        <file>images/delete.png</file>
+        <file>images/m-fixline.png</file>
+        <file>images/m-lang.png</file>
+        <file>images/m-reset.png</file>
     </qresource>
 </RCC>
