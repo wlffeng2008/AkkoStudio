@@ -11,8 +11,8 @@
 #include <QMovie>
 #include <QGraphicsDropShadowEffect>
 #include <QSystemTrayIcon>
-#include <QMenu>       // 用于托盘菜单
-#include <QAction>     // 用于菜单动作
+#include <QMenu>
+#include <QAction>
 
 #include "FrameMain.h"
 #include "FrameKeySetting.h"
@@ -25,8 +25,6 @@
 #include "ModuleGeneralMasker.h"
 #include "ModuleGenKeymapping.h"
 #include "ModuleLinear.h"
-#include <QMenu>
-#include <QAction>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -318,20 +316,20 @@ void MainWindow::setConnect(int nFlag)
     {
     case 1:
         ui->labelStatus->setText(QString(R"(<html><head/><body><p><span style=" font-size:16pt;">%1</span><span style=" font-size:16pt; color:#35ac4f;">%2</span></p></body></html>)").arg(strText0,strText1)) ;
-        ui->pushButtonEnter->setText(tr("立即进入")) ;
+        ui->pushButtonEnter->setText(tr("立即进入"));
         ui->pushButtonEnter->setHidden(false);
         ui->labelKeyboard->setHidden(false) ;
         break;
 
     case 2:
         ui->labelStatus->setText(QString(R"(<html><head/><body><p><span style=" font-size:16pt;">%1</span></p></body></html>)").arg(strText2));
-        ui->pushButtonEnter->setText(tr("重新搜索")) ;
+        ui->pushButtonEnter->setText(tr("重新搜索"));
         ui->pushButtonEnter->setHidden(false);
         break;
 
     default:
         ui->labelStatus->setText(QString(R"(<html><head/><body><p><span style=" font-size:16pt;">%1</span></p></body></html>)").arg(strText3));
-        ui->labelGif->setHidden(false) ;
+        ui->labelGif->setHidden(false);
         break;
     }
     update() ;
@@ -339,9 +337,9 @@ void MainWindow::setConnect(int nFlag)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    m_pDevice->disconnect() ;
+    m_pDevice->disconnect();
 
-    QCoreApplication::exit() ;
+    QCoreApplication::exit();
     QMainWindow::closeEvent(event);
 }
 
