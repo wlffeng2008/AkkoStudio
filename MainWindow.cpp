@@ -89,7 +89,7 @@ MainWindow::MainWindow(QWidget *parent)
 
         QDir::Filters filters = QDir::Files | QDir::NoDotAndDotDot | QDir::Readable;
         QStringList nameFilters;
-        // nameFilters << "*.txt" << "*.cpp"; // 取消注释可筛选指定后缀
+        // nameFilters << "*.txt" << "*.cpp";
         QStringList fileList = d.entryList(nameFilters, filters);
         for(QString strFile:fileList)
         {

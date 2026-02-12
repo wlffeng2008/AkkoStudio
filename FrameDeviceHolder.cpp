@@ -10,7 +10,6 @@
 #include "FrameMagic.h"
 #include "FrameLight.h"
 #include "FrameAbout.h"
-#include "ModuleLangMenu.h"
 #include "LinearFixing1.h"
 #include "ModuleGeneralMasker.h"
 #include "ModuleLinear.h"
@@ -24,10 +23,11 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     ui->setupUi(this);
 
     DialogDeviceConnect *pCnnt = new DialogDeviceConnect(this);
+    ModuleGenKeymapping *pKmap = new ModuleGenKeymapping(this);
 
-    FrameKeySetting *pKS = new FrameKeySetting(this) ;
-    FrameMain *pFM = new FrameMain(this) ;
-    pKS->hide() ;
+    FrameKeySetting *pKS = new FrameKeySetting(this);
+    FrameMain *pFM = new FrameMain(this);
+    pKS->hide();
     FrameMagic *pMagic = new FrameMagic(this);
     FrameMacro *pMacro = new FrameMacro(this);
     FrameLight *pLight = new FrameLight(this);
@@ -113,8 +113,8 @@ void FrameDeviceHolder::clickLabel(QLabel *label, int index)
 {
     if(index == 6)
     {
-        hide() ;
-        return ;
+        hide();
+        return;
     }
 
     ((SuperLabel *)label)->setFocus();
