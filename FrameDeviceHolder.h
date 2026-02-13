@@ -24,6 +24,8 @@ public:
 protected:
     bool eventFilter(QObject *watch, QEvent *event) override;
     void paintEvent(QPaintEvent *event) override ;
+    void changeEvent(QEvent *pEvt) final;
+
 
 signals:
     void onReturn();

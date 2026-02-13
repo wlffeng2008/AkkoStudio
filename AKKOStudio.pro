@@ -37,6 +37,7 @@ SOURCES += \
     AkkoDeviceBase.cpp \
     FrameDeviceHolder.cpp \
     FrameDeviceShow.cpp \
+    FrameSystemInfo.cpp \
     Module/ColorLabel.cpp \
     Module/ColorSquare.cpp \
     Module/CustumSlider.cpp \
@@ -83,6 +84,7 @@ HEADERS += \
     AkkoDeviceBase.h \
     FrameDeviceHolder.h \
     FrameDeviceShow.h \
+    FrameSystemInfo.h \
     Module/ColorLabel.h \
     Module/ColorSquare.h \
     Module/CustumSlider.h \
@@ -135,6 +137,7 @@ FORMS += \
     FrameMacro.ui \
     FrameMagic.ui \
     FrameMain.ui \
+    FrameSystemInfo.ui \
     MainWindow.ui \
     Module/DialogFNPicker.ui \
     Module/DialogVKPicker.ui \
@@ -165,6 +168,7 @@ TRANSLATIONS += \
     AKKOStudio_pt_PT.ts \
     AKKOStudio_ru_RU.ts \
     AKKOStudio_sk_SK.ts \
+    AKKOStudio_sv_SE.ts \
     AKKOStudio_th_TH.ts \
     AKKOStudio_tr_TR.ts \
     AKKOStudio_vi_VN.ts \

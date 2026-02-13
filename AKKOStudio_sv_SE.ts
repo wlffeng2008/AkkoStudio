@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="sv_SE">
 <context>
     <name>DialogDeviceConnect</name>
     <message>
@@ -39,13 +39,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="282"/>
-        <source>Save Matrix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="295"/>
-        <source>0x000</source>
+        <location filename="DialogDeviceConnect.ui" line="167"/>
+        <source>Status:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -54,23 +49,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="269"/>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="DialogDeviceConnect.ui" line="202"/>
         <source>PID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="167"/>
-        <source>Status:</source>
+        <location filename="DialogDeviceConnect.ui" line="218"/>
+        <source>ON TOP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogDeviceConnect.ui" line="218"/>
-        <source>ON TOP</source>
+        <location filename="DialogDeviceConnect.ui" line="269"/>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogDeviceConnect.ui" line="282"/>
+        <source>Save Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogDeviceConnect.ui" line="295"/>
+        <source>0x000</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -300,26 +300,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogMainwork.ui" line="445"/>
-        <source> 对码</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogMainwork.ui" line="350"/>
-        <source> 恢复默认</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogMainwork.ui" line="416"/>
-        <source> 行程校准</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogMainwork.ui" line="318"/>
-        <source> 语种选择</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="DialogMainwork.ui" line="78"/>
         <source>首页</source>
         <translation type="unfinished"></translation>
@@ -347,6 +327,26 @@
     <message>
         <location filename="DialogMainwork.ui" line="233"/>
         <source>关于</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogMainwork.ui" line="318"/>
+        <source> 语种选择</source>
+        <translation type="unfinished">Språkval</translation>
+    </message>
+    <message>
+        <location filename="DialogMainwork.ui" line="350"/>
+        <source> 恢复默认</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogMainwork.ui" line="416"/>
+        <source> 行程校准</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogMainwork.ui" line="445"/>
+        <source> 对码</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -413,7 +413,6 @@
     <message>
         <location filename="FrameAbout.ui" line="159"/>
         <source>键盘固件版本：V1.0</source>
-        <oldsource>键盘固件版本：1.0</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -452,42 +451,42 @@
     <message>
         <location filename="FrameDeviceHolder.ui" line="104"/>
         <source>恢复默认</source>
-        <translation type="unfinished">Restore Default</translation>
+        <translation type="unfinished">Återställ standard</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="138"/>
         <source>行程校准</source>
-        <translation type="unfinished">travel calibration</translation>
+        <translation type="unfinished">kalibrering av körsträcka</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="221"/>
         <source>首页</source>
-        <translation type="unfinished">Home Page</translation>
+        <translation type="unfinished">förstasidan</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="252"/>
         <source>键盘设置</source>
-        <translation type="unfinished">Button settings</translation>
+        <translation type="unfinished">Knappinställningar</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="283"/>
         <source>磁轴设置</source>
-        <translation type="unfinished">Magnetic axis settings</translation>
+        <translation type="unfinished">Inställningar för magnetaxel</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="314"/>
         <source>宏设置</source>
-        <translation type="unfinished">Macro settings</translation>
+        <translation type="unfinished">Makroinställningar</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="345"/>
         <source>灯效设置</source>
-        <translation type="unfinished">Lighting settings</translation>
+        <translation type="unfinished">Belysningsinställningar</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="376"/>
         <source>关于</source>
-        <translation type="unfinished">About</translation>
+        <translation type="unfinished">Om</translation>
     </message>
 </context>
 <context>
@@ -536,12 +535,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="294"/>
-        <source>M2</source>
-        <oldsource>,</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="FrameKeySetting.ui" line="269"/>
         <location filename="FrameKeySetting.cpp" line="552"/>
         <source>宏设置</source>
@@ -550,6 +543,11 @@
     <message>
         <location filename="FrameKeySetting.ui" line="281"/>
         <source>M1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="294"/>
+        <source>M2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -684,6 +682,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="FrameKeySetting.ui" line="1306"/>
+        <location filename="FrameKeySetting.ui" line="1553"/>
+        <location filename="FrameKeySetting.ui" line="1610"/>
+        <location filename="FrameKeySetting.ui" line="1752"/>
+        <source>确定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="FrameKeySetting.ui" line="1312"/>
         <source>按住/单击(MT)</source>
         <translation type="unfinished"></translation>
@@ -694,33 +700,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1815"/>
-        <source>绑定2个选定按键(分别从上面选择)，当两个按键被同时按下时，以最后按下的按键为准</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameKeySetting.ui" line="1834"/>
-        <source>选择A键</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameKeySetting.ui" line="1850"/>
-        <source>选择B键</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameKeySetting.ui" line="2061"/>
-        <source>2.4G深度睡眠时间</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameKeySetting.ui" line="2132"/>
-        <source>蓝牙深度睡眠时间</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameKeySetting.ui" line="2203"/>
-        <source>按键防抖等级设置</source>
+        <location filename="FrameKeySetting.ui" line="1370"/>
+        <source>按住</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -745,21 +726,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1306"/>
-        <location filename="FrameKeySetting.ui" line="1553"/>
-        <location filename="FrameKeySetting.ui" line="1610"/>
-        <location filename="FrameKeySetting.ui" line="1752"/>
-        <source>确定</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameKeySetting.ui" line="1370"/>
-        <source>按住</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="FrameKeySetting.ui" line="1638"/>
         <source>未设置功能</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="1657"/>
+        <source>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -773,13 +746,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1657"/>
-        <source>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</source>
+        <location filename="FrameKeySetting.ui" line="1726"/>
+        <source>SnapKey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1726"/>
-        <source>SnapKey</source>
+        <location filename="FrameKeySetting.ui" line="1815"/>
+        <source>绑定2个选定按键(分别从上面选择)，当两个按键被同时按下时，以最后按下的按键为准</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="1834"/>
+        <source>选择A键</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="1850"/>
+        <source>选择B键</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -795,6 +778,21 @@
     <message>
         <location filename="FrameKeySetting.ui" line="2006"/>
         <source>蓝牙关闭背光</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="2061"/>
+        <source>2.4G深度睡眠时间</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="2132"/>
+        <source>蓝牙深度睡眠时间</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="2203"/>
+        <source>按键防抖等级设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -825,29 +823,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="FrameMacro.ui" line="165"/>
+        <source>宏列表</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="FrameMacro.ui" line="347"/>
         <location filename="FrameMacro.cpp" line="114"/>
         <source>开始录制</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMacro.ui" line="551"/>
-        <source>保存</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMacro.ui" line="503"/>
-        <source>清空</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMacro.ui" line="474"/>
-        <source>删除</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMacro.ui" line="165"/>
-        <source>宏列表</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -858,6 +841,21 @@
     <message>
         <location filename="FrameMacro.ui" line="425"/>
         <source>设置固定延迟(ms):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.ui" line="474"/>
+        <source>删除</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.ui" line="503"/>
+        <source>清空</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.ui" line="551"/>
+        <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1190,21 +1188,6 @@
 <context>
     <name>MacroSquare</name>
     <message>
-        <location filename="Module/MacroSquare.cpp" line="86"/>
-        <source>插入按键</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/MacroSquare.cpp" line="87"/>
-        <source>修改</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/MacroSquare.cpp" line="88"/>
-        <source>删除</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Module/MacroSquare.ui" line="14"/>
         <source>Frame</source>
         <translation type="unfinished"></translation>
@@ -1219,54 +1202,69 @@
         <source>T2</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="Module/MacroSquare.cpp" line="86"/>
+        <source>插入按键</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/MacroSquare.cpp" line="87"/>
+        <source>修改</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/MacroSquare.cpp" line="88"/>
+        <source>删除</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
+        <location filename="MainWindow.ui" line="112"/>
+        <source> 语种选择</source>
+        <translation type="unfinished">Språkval</translation>
+    </message>
+    <message>
         <location filename="MainWindow.ui" line="228"/>
         <location filename="MainWindow.cpp" line="589"/>
         <source>我的设备</source>
-        <translation type="unfinished">My Devices</translation>
+        <translation type="unfinished">Min enhet</translation>
     </message>
     <message>
         <location filename="MainWindow.ui" line="259"/>
         <source>添加设备</source>
-        <translation type="unfinished">Add device</translation>
-    </message>
-    <message>
-        <location filename="MainWindow.ui" line="112"/>
-        <source> 语种选择</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lägg till enhet</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="592"/>
         <source>显示窗口</source>
-        <translation type="unfinished">Display window</translation>
+        <translation type="unfinished">Skyltfönster</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="593"/>
         <source>隐藏窗口</source>
-        <translation type="unfinished">Hide window</translation>
+        <translation type="unfinished">Dölj fönstret</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="594"/>
         <source>退出程序</source>
-        <translation type="unfinished">Hide window</translation>
+        <translation type="unfinished">Avsluta programmet</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="726"/>
         <source>请插入设备</source>
-        <translation type="unfinished">Please insert the device</translation>
+        <translation type="unfinished">Avsluta programmet</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="741"/>
         <source>提示</source>
-        <translation type="unfinished">hint</translation>
+        <translation type="unfinished">antydan</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="741"/>
         <source>确定要退出 AKKO 驱动程序？</source>
-        <translation type="unfinished">Are you sure you want to exit the AKKO driver?</translation>
+        <translation type="unfinished">Är du säker på att du vill avsluta AKKO-drivrutinen?</translation>
     </message>
 </context>
 <context>
@@ -1382,6 +1380,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="Module/ModuleEfColor.ui" line="200"/>
+        <source>单键</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfColor.ui" line="216"/>
+        <source>ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Module/ModuleEfColor.ui" line="247"/>
         <location filename="Module/ModuleEfColor.ui" line="278"/>
         <location filename="Module/ModuleEfColor.ui" line="309"/>
@@ -1391,16 +1399,6 @@
         <location filename="Module/ModuleEfColor.ui" line="433"/>
         <location filename="Module/ModuleEfColor.ui" line="464"/>
         <source>C0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="200"/>
-        <source>单键</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="216"/>
-        <source>ON</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1917,8 +1915,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Module/ModuleLangMenu.cpp" line="24"/>
-        <source>한국어</source>
+        <location filename="Module/ModuleLangMenu.cpp" line="22"/>
+        <source>中文繁体</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1927,8 +1925,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Module/ModuleLangMenu.cpp" line="22"/>
-        <source>中文繁体</source>
+        <location filename="Module/ModuleLangMenu.cpp" line="24"/>
+        <source>한국어</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2095,41 +2093,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1831"/>
-        <source>A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="3060"/>
-        <source>B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="194"/>
-        <source>C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="997"/>
-        <source>D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="222"/>
-        <source>E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1894"/>
-        <source>F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1129"/>
-        <source>G</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Module/VirtualKeyboard.ui" line="104"/>
         <source>H</source>
         <translation type="unfinished"></translation>
@@ -2140,8 +2103,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="Module/VirtualKeyboard.ui" line="194"/>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="222"/>
+        <source>E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Module/VirtualKeyboard.ui" line="352"/>
         <source>J</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="482"/>
+        <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2150,8 +2128,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Module/VirtualKeyboard.ui" line="2639"/>
-        <source>L</source>
+        <location filename="Module/VirtualKeyboard.ui" line="997"/>
+        <source>D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="1129"/>
+        <source>G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="1260"/>
+        <source>U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="1503"/>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="1634"/>
+        <source>S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2160,8 +2158,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Module/VirtualKeyboard.ui" line="2969"/>
-        <source>N</source>
+        <location filename="Module/VirtualKeyboard.ui" line="1768"/>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="1831"/>
+        <source>A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="1894"/>
+        <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2175,28 +2183,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Module/VirtualKeyboard.ui" line="3122"/>
-        <source>Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Module/VirtualKeyboard.ui" line="2611"/>
         <source>R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1634"/>
-        <source>S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="3032"/>
-        <source>T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1260"/>
-        <source>U</source>
+        <location filename="Module/VirtualKeyboard.ui" line="2639"/>
+        <source>L</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2205,23 +2198,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="Module/VirtualKeyboard.ui" line="2969"/>
+        <source>N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="3032"/>
+        <source>T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="3060"/>
+        <source>B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Module/VirtualKeyboard.ui" line="3122"/>
+        <source>Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Module/VirtualKeyboard.ui" line="3150"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1768"/>
-        <source>X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="482"/>
-        <source>Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1503"/>
-        <source>Z</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

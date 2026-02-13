@@ -18,7 +18,7 @@ static QString s_strDefTipStyle(R"(
 
 void CustomTooltip::setDefTipStyle(const QString &stryle)
 {
-    s_strDefTipStyle = stryle ;
+    s_strDefTipStyle = stryle;
 }
 
 void CustomTooltip::setGroupTipStyle(QObject *parent, QString&style)
@@ -107,7 +107,7 @@ void CustomTooltip::setTextStyle(const QString& stryle)
 SuperLabel::SuperLabel(QWidget *parent)
     : QLabel{parent}
 {
-    if(!s_group[parent]) s_group[parent] = this ;
+    if(!s_group[parent]) s_group[parent] = this;
 
     QTimer::singleShot(100,this,[=]{
         tooltip = new CustomTooltip(this);
@@ -127,7 +127,7 @@ SuperLabel::SuperLabel(QWidget *parent)
             tooltip->show();
         });
     });
-    setAlignment(Qt::AlignCenter) ;
+    setAlignment(Qt::AlignCenter);
 }
 
 bool SuperLabel::event(QEvent *event)
@@ -145,6 +145,10 @@ bool SuperLabel::event(QEvent *event)
 
     case QEvent::MouseButtonPress:
         tooltip->hide();
+        break;
+
+    case QEvent::LanguageChange:
+        tooltip->setText(this->toolTip());
         break;
 
     default:
@@ -169,14 +173,14 @@ void SuperLabel::setImages(const QString&strGetfocus, const QString&strLostfocus
 void SuperLabel::setFocus(bool foucs)
 {
     m_bFoucs = foucs ;
-    //setScaledContents(true) ;
+    //setScaledContents(true);
     setPixmap(QPixmap(foucs ? m_strGetfocus : m_strLostfocus));
     setStyleSheet(foucs ? m_strSheetGetfocus : m_strSheetLostfocus);
     if(!foucs)
-        return ;
+        return;
 
     SuperLabel *pLast = s_group[this->parent()] ;
     if(pLast && pLast != this)
-        pLast->setFocus(false) ;
-    s_group[this->parent()] = this ;
+        pLast->setFocus(false);
+    s_group[this->parent()] = this;
 }

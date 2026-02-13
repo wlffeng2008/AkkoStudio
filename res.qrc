@@ -185,5 +185,6 @@
         <file>images/m-fixline.png</file>
         <file>images/m-lang.png</file>
         <file>images/m-reset.png</file>
+        <file>images/btn-setting.png</file>
     </qresource>
 </RCC>

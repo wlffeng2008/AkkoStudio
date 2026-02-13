@@ -74,10 +74,10 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string/>
+          <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset>
+          <iconset resource="../res.qrc">
            <normaloff>:/images/macro/fn0/fn.png</normaloff>:/images/macro/fn0/fn.png</iconset>
          </property>
          <property name="checkable">
@@ -97,7 +97,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F2</string>
+          <string notr="true">F2</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -116,7 +116,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F3</string>
+          <string notr="true">F3</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -135,7 +135,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F4</string>
+          <string notr="true">F4</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -154,7 +154,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F5</string>
+          <string notr="true">F5</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -173,7 +173,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F6</string>
+          <string notr="true">F6</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -192,7 +192,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F7</string>
+          <string notr="true">F7</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -211,7 +211,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F8</string>
+          <string notr="true">F8</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -230,7 +230,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F9</string>
+          <string notr="true">F9</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -249,7 +249,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F10</string>
+          <string notr="true">F10</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -268,7 +268,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F11</string>
+          <string notr="true">F11</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -287,7 +287,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F12</string>
+          <string notr="true">F12</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -306,7 +306,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F13</string>
+          <string notr="true">F13</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -325,7 +325,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F14</string>
+          <string notr="true">F14</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -344,7 +344,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F15</string>
+          <string notr="true">F15</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -363,7 +363,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F16</string>
+          <string notr="true">F16</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -382,7 +382,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F17</string>
+          <string notr="true">F17</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -401,7 +401,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F18</string>
+          <string notr="true">F18</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -420,7 +420,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F19</string>
+          <string notr="true">F19</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -439,7 +439,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>IME On</string>
+          <string notr="true">IME On</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -458,7 +458,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>IME Off</string>
+          <string notr="true">IME Off</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -858,7 +858,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../res.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>

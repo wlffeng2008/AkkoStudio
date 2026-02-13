@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QFrame#frameTop{background-color: #FBFBFB;border-radius:32px;}
@@ -1760,6 +1760,17 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ModuleLinear</class>
+   <extends>QFrame</extends>
+   <header>modulelinear.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>ModuleKeyboard</class>
    <extends>QFrame</extends>
    <header>modulekeyboard.h</header>
@@ -1771,25 +1782,14 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <header>newtabwidget.h</header>
    <container>1</container>
   </customwidget>
-  <customwidget>
-   <class>ToggleButton</class>
-   <extends>QCheckBox</extends>
-   <header>togglebutton.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ModuleLinear</class>
-   <extends>QFrame</extends>
-   <header>modulelinear.h</header>
-   <container>1</container>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="res.qrc"/>
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

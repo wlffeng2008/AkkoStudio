@@ -28,14 +28,14 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    QTranslator translator;
+    QTranslator translatorM;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     qDebug() << uiLanguages;
     for (const QString &locale : uiLanguages) {
         const QString baseName = "AKKOStudio_" + QLocale(locale).name();
         qDebug() << baseName;
-        if (translator.load(":/i18n/" + baseName)) {
-            a.installTranslator(&translator);
+        if (translatorM.load(":/i18n/" + baseName)) {
+            a.installTranslator(&translatorM);
             break;
         }
     }
@@ -158,7 +158,7 @@ int main(int argc, char *argv[])
                 min-height: 24px; }
 
         QMessageBox {min-width: 400px; min-height: 150px;}
-        QMessageBox QLabel#qt_msgbox_label{min-width: 280px; min-height: 60px; max-width: 450px; max-height: 520px; qproperty-alignment: AlignLeft; white-space: pre-wrap;font: bold 12px 微软雅黑;}
+        QMessageBox QLabel#qt_msgbox_label{min-width: 320px; min-height: 60px; max-width: 450px; max-height: 520px; qproperty-alignment: AlignLeft; white-space: pre-wrap;font: bold 12px 微软雅黑;}
         QMessageBox QLabel#qt_msgboxex_icon_label{ min-width: 32px; min-height: 32px; max-width: 32px; max-height: 32px;qproperty-alignment: AlignTop;}
 
 
@@ -429,6 +429,9 @@ QTabBar::separator {
     )");
 
     MainWindow w;
+    w.m_pMainTrM = &translatorM;
+    w.m_pMainTrA = &translatorB;
+    w.m_pMainTrB = &translatorW;
     w.show();
     return a.exec();
 }

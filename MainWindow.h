@@ -13,6 +13,7 @@
 
 #include <QDialog>
 #include <QTimer>
+#include <QTranslator>
 
 
 #include "ModuleLangMenu.h"
@@ -62,14 +63,19 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-protected:
-    void paintEvent(QPaintEvent *event) override;
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
-    bool eventFilter(QObject *obj, QEvent *e) override;
+    QTranslator *m_pMainTrM = nullptr;
+    QTranslator *m_pMainTrA = nullptr;
+    QTranslator *m_pMainTrB = nullptr;
 
-    bool event(QEvent *event) override;
+protected:
+    void changeEvent(QEvent *pEvt) final;
+    void paintEvent(QPaintEvent *event) final;
+    void mousePressEvent(QMouseEvent *event) final;
+    void mouseMoveEvent(QMouseEvent *event) final;
+    void mouseReleaseEvent(QMouseEvent *event) final;
+    bool eventFilter(QObject *obj, QEvent *e) final;
+
+    bool event(QEvent *event) final;
 
     void enumDevice();
     void addDevice(quint32 id, const QString&path, int creator=0);
@@ -94,5 +100,10 @@ private:
     QDialog *m_pFloatReturn = nullptr;
 
     int m_creator = 0;
+    QString m_langName;
+    void updateDeviceInfo();
+    QAction *m_act0 = nullptr;
+    QAction *m_act1 = nullptr;
+    QAction *m_act2 = nullptr;
 };
 #endif // MAINWINDOW_H

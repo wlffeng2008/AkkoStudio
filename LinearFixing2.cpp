@@ -8,7 +8,7 @@
 #include <QStyleOption>
 #include <QApplication>
 
-static ModuleKeyboard *pKeyBoard = nullptr ;
+static ModuleKeyboard *pKeyBoard = nullptr;
 
 LinearFixing2::LinearFixing2(const QString& title,const QString& content, QWidget *parent)
     : QDialog(parent)
@@ -17,7 +17,7 @@ LinearFixing2::LinearFixing2(const QString& title,const QString& content, QWidge
     setAttribute(Qt::WA_TranslucentBackground);
     setModal(true);
 
-    setStyleSheet("QDialog{background-color: rgba(0, 0, 0, 0);  border: 1px solid transparent;border-radius:12px;}"); // 黑色半透明
+    setStyleSheet("QDialog{background-color: rgba(0, 0, 0, 0);  border: 1px solid transparent;border-radius:20px;}"); // 黑色半透明
 
     QWidget* pContentWidget = new QWidget(this);
     pContentWidget->setObjectName("MyContentWidget");

@@ -33,12 +33,12 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     FrameLight *pLight = new FrameLight(this);
     FrameAbout *pAbout = new FrameAbout(this);
 
-    m_pFrames.push_back(pFM) ;
-    m_pFrames.push_back(pKS) ;
-    m_pFrames.push_back(pMagic) ;
-    m_pFrames.push_back(pMacro) ;
-    m_pFrames.push_back(pLight) ;
-    m_pFrames.push_back(pAbout) ;
+    m_pFrames.push_back(pFM);
+    m_pFrames.push_back(pKS);
+    m_pFrames.push_back(pMagic);
+    m_pFrames.push_back(pMacro);
+    m_pFrames.push_back(pLight);
+    m_pFrames.push_back(pAbout);
 
     ui->horizontalLayoutBR->addWidget(pFM);
     ui->horizontalLayoutBR->addWidget(pKS);
@@ -62,13 +62,13 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     static QStringList images={"shouye","jianweishezhi","cizhoushezhi","hongshezhi","dengxiaoshezhi","guanyu","",""};
     foreach (SuperLabel *label, m_pLBtns) {
         label->setCursor(Qt::PointingHandCursor);
-        label->installEventFilter(this) ;
-        label->setAlignment(Qt::AlignCenter) ;
-        label->setOwnSheet("QLabel { background-color: #6329B6; border-radius: 16px;}","QLabel { background-color: transparent; }") ;
+        label->installEventFilter(this);
+        label->setAlignment(Qt::AlignCenter);
+        label->setOwnSheet("QLabel { background-color: #6329B6; border-radius: 16px;}","QLabel { background-color: transparent; }");
         QString strImg = images[index++] + ".png";
-        label->setImages(QString(":/images/leftbtns/1/") + strImg,QString(":/images/leftbtns/0/") + strImg) ;
+        label->setImages(QString(":/images/leftbtns/1/") + strImg,QString(":/images/leftbtns/0/") + strImg);
     }
-    clickLabel(ui->label1) ;
+    clickLabel(ui->label1);
 
     m_pLBtns[6]->setImages(QString(":/images/User.png"),QString(":/images/User.png"));
 
@@ -77,8 +77,8 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     });
 
     connect(ui->pushButtonFixline,&QPushButton::clicked,this,[=]{
-        LinearFixing1 T("","",this) ;
-        T.exec() ;
+        LinearFixing1 T("","",this->parentWidget()->parentWidget()->parentWidget()->parentWidget());
+        T.exec();
     });
 
     connect(ui->pushButtonReset,&QPushButton::clicked,this,[=]{
@@ -88,11 +88,11 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     ui->pushButtonPairing->hide();
     connect(ui->pushButtonPairing,&QPushButton::clicked,this,[=]{
 
-        ModuleLinear *pTest = new ModuleLinear(this) ;
+        ModuleLinear *pTest = new ModuleLinear(this);
         pTest->setObjectName("TestLinear");
-        pTest->layout()->setContentsMargins(20,20,20,20) ;
-        pTest->setStyleSheet("QFrame#TestLinear{background-color:white;min-height:320px; border-radius:24px;}") ;
-        ModuleGeneralMasker T(pTest ,this) ;
+        pTest->layout()->setContentsMargins(20,20,20,20);
+        pTest->setStyleSheet("QFrame#TestLinear{background-color:white;min-height:320px; border-radius:24px;}");
+        ModuleGeneralMasker T(pTest ,this);
         T.exec();
     });
 }
@@ -106,6 +106,15 @@ void FrameDeviceHolder::setDeviceImage(const QString&strImage)
 {
     FrameMain *pFM = (FrameMain *)m_pFrames[0];
     pFM->setDeviceImage(strImage);
+}
+
+void FrameDeviceHolder::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+    QFrame::changeEvent(pEvt);
 }
 
 
@@ -138,8 +147,8 @@ bool FrameDeviceHolder::eventFilter(QObject *watch, QEvent *event)
             if(m_pLBtns[i] == watch)
             {
                 QLabel* label = qobject_cast<QLabel*>(watch);
-                clickLabel(label,i) ;
-                return true ;
+                clickLabel(label,i);
+                return true;
             }
         }
     }
@@ -157,6 +166,6 @@ void FrameDeviceHolder::paintEvent(QPaintEvent *event)
     painter.setPen(QPen(QColor(200, 200, 200), 1));
     //painter.drawRoundedRect(rect, 12, 12);
 
-    event->accept() ;
+    event->accept();
 }
 

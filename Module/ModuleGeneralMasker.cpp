@@ -62,6 +62,7 @@ bool ModuleGeneralMasker::eventFilter(QObject*watched,QEvent*event)
     if (event->type() == QEvent::Hide && watched == m_watch)
     {
         layout()->removeWidget(m_watch);
+        m_watch->hide();
         m_watch->setParent(nullptr);
         m_watch->removeEventFilter(this);
         if(m_nFlag == 0) QDialog::reject();

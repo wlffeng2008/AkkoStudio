@@ -12,12 +12,12 @@ LinearFixing1::LinearFixing1(const QString& title,const QString& content, QWidge
 {
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
     setAttribute(Qt::WA_TranslucentBackground);
-    setModal(true);
+    //setModal(true);
 
-    setStyleSheet("QDialog{background-color: rgba(120, 120, 120, 0.8);  border: 1px solid transparent;border-radius:12px;}"); // 黑色半透明
+    setStyleSheet("QDialog{background-color: rgba(120, 120, 120, 0.8);  border: 1px solid transparent;border-radius:20px;}"); // 黑色半透明
 
     QWidget* pContentWidget = new QWidget(this);
-    pContentWidget->setObjectName("pContentWidget") ;
+    pContentWidget->setObjectName("pContentWidget");
     pContentWidget->setStyleSheet(R"(
         QWidget {
             background-color: white;
@@ -111,7 +111,8 @@ LinearFixing1::LinearFixing1(const QString& title,const QString& content, QWidge
     pContentWidget->setFixedSize(426,223);
     pContentWidget->adjustSize();
 
-    QRect geoMetry = QApplication::primaryScreen()->geometry(); ;
+    QRect geoMetry = QApplication::primaryScreen()->geometry();
+    qDebug() << parent;
     if(parent) geoMetry = parent->frameGeometry() ;
     setGeometry(geoMetry);
     setFixedSize(geoMetry.width(), geoMetry.height());

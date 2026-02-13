@@ -78,7 +78,7 @@ ModuleLangMenu::ModuleLangMenu(QWidget *parent)
         pLayout->addWidget(btn);
     }
 
-    QTimer::singleShot(100,this,[=]{ m_pBtnGrp->button(0)->click();});
+    // QTimer::singleShot(1000,this,[=]{ m_pBtnGrp->button(0)->click();});
 
     setStyleSheet("QDialog{background-color: rgba(255, 255, 255, 0.8); border: 1px solid #EAEAEA; border-radius:12px;}");
 }
@@ -95,9 +95,6 @@ ModuleLangMenu::~ModuleLangMenu()
 
 void ModuleLangMenu::setLanguage(int langId)
 {
-    if(langId>6)
-        return ;
-
     m_pBtnGrp->button(langId)->click();
 }
 

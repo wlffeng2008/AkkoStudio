@@ -23,6 +23,7 @@
 #include <QAction>
 #include <Qdir>
 #include <QFile>
+#include <QLibraryInfo>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -31,6 +32,9 @@
 #include "AkkoDeviceBase.h"
 #include "DialogDeviceConnect.h"
 #include "FrameDeviceHolder.h"
+#include "ModuleGeneralMasker.h"
+#include "FrameSystemInfo.h"
+#include "ModuleAddMacroSquare.h"
 
 static HWND s_hWndEmb0 = NULL;
 static HWND s_hWndEmb1 = NULL;
@@ -100,8 +104,18 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     m_pLangMenu = new ModuleLangMenu(this);
+    QTimer::singleShot(500,this,[=]{m_pLangMenu->setLanguage(settings.value("lastlang").toInt());});
     connect(m_pLangMenu, &ModuleLangMenu::onLangChanged, this, [=](int langId, const QString &lang) {
-        ui->pushButtonLang->setText(QString(" ") + lang);
+        m_langName = QString(" ") + lang ;
+        settings.setValue("lastlang",langId);
+
+        {
+            QStringList langs = {"zh_CN","en_US","zh_TW","ja_JP","ko_KR","ru_RU","vi_VN","pt_PT","th_TH","de_DE","fr_FR","sv_SE","it_IT","tr_TR"};
+            QString baseName = langs[langId] + ".qm";
+            m_pMainTrM->load(QString(":/i18n/AKKOStudio_")+baseName);
+            m_pMainTrA->load("qtbase_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+            m_pMainTrB->load("qt_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+        }
 
         {
             QStringList langs = {"cn","en","tw","jp","kr","ru","vi","pt","th","de","fr","sv","it","tr"};
@@ -135,6 +149,17 @@ MainWindow::MainWindow(QWidget *parent)
         pLangMenu->show();
     });
 
+    connect(ui->pushButtonSet, &QPushButton::clicked, this, [=] {
+
+        FrameSystemInfo *pSetInfo= new FrameSystemInfo(this);
+        //static ModuleAddMacroSquare *pSetInfo= new ModuleAddMacroSquare(this);
+        ModuleGeneralMasker gMask(pSetInfo,ui->stackedWidget);
+        pSetInfo->show();
+        pSetInfo->update();
+        gMask.setStyleSheet("QDialog { background-color: rgba(200, 200, 200, 0.9); border: none; border-radius: 20px; }");
+        gMask.exec();
+
+    });
 
     m_layout = ui->scrollAreaWidgetContents->layout();
 
@@ -194,9 +219,6 @@ MainWindow::MainWindow(QWidget *parent)
         m_pFloatLeft->hide();
         m_pFloatRight->hide();
     });
-
-    enumDevice();
-    connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] { enumDevice(); });
 
     QTimer *pTMUsb = new QTimer(this);
     static USBNotifier *pUsb = new USBNotifier(this);
@@ -325,9 +347,13 @@ MainWindow::MainWindow(QWidget *parent)
 
         QMenu *trayMenu = new QMenu(this);
 
-        QAction *showAction = new QAction(tr("显示窗口"), this);
-        QAction *hideAction = new QAction(tr("隐藏窗口"), this);
-        QAction *exitAction = new QAction(tr("退出程序"), this);
+        QAction *showAction = new QAction("", this);
+        QAction *hideAction = new QAction("", this);
+        QAction *exitAction = new QAction("", this);
+
+        m_act0 = showAction;
+        m_act1 = hideAction;
+        m_act2 = exitAction;
 
         trayMenu->addAction(showAction);
         trayMenu->addAction(hideAction);
@@ -338,13 +364,17 @@ MainWindow::MainWindow(QWidget *parent)
         connect(showAction, &QAction::triggered, this, &QMainWindow::showNormal);
         connect(hideAction, &QAction::triggered, this, &QMainWindow::hide);
         trayIcon->setContextMenu(trayMenu);
-    }
 
+        updateDeviceInfo();
+    }
 
     ui->stackedWidget->setCurrentIndex(0);
     connect(ui->frameHold,&FrameDeviceHolder::onReturn,this,[=]{
         ui->stackedWidget->setCurrentIndex(0);
     });
+
+    enumDevice();
+    connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] { enumDevice(); });
 
     //resize(2560,1800);
 }
@@ -415,6 +445,16 @@ void MainWindow::addDevice(quint32 id,const QString &path, int creator)
             });
         }
     }
+}
+
+void MainWindow::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+        updateDeviceInfo();
+    }
+    QMainWindow::changeEvent(pEvt);
 }
 
 void MainWindow::enumDevice()
@@ -557,9 +597,19 @@ void MainWindow::enumDevice()
         }
         hid_free_enumeration(pRoot);
     }
+    updateDeviceInfo();
+}
 
+void MainWindow::updateDeviceInfo()
+{
     QString strInfo = QString(tr("我的设备")) + QString("(%1)").arg(m_layout->count());
     ui->labelInfo0->setText(strInfo);
+
+    m_act0->setText(tr("显示窗口"));
+    m_act1->setText(tr("隐藏窗口"));
+    m_act2->setText(tr("退出程序"));
+
+    ui->pushButtonLang->setText(m_langName);
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -599,7 +649,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
         QPoint P2 = mapToGlobal(QPoint(geometry().width() - 60*scale,nYPos));
         m_pFloatLeft->setGeometry(P1.x(),P1.y(),48*scale,48*scale);
         m_pFloatRight->setGeometry(P2.x(),P2.y(),48*scale,48*scale);
-        QPoint P3 = mapToGlobal(QPoint(5,50));
+
+        QPoint P3 = mapToGlobal(QPoint(5,ui->stackedWidget->geometry().top()+5));
         m_pFloatReturn->setGeometry(P3.x(),P3.y(),80*scale,32*scale);
 
         if(obj == ui->scrollArea->viewport() || m_pFloatLeft == obj || m_pFloatRight == obj)
@@ -630,9 +681,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
             opt.initFrom(m_pFloatLeft);
             QPainter p(m_pFloatLeft);
             p.setRenderHint(QPainter::Antialiasing, true);
-            //style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
-            //p.setBrush(QBrush(QColor(0,255,0,200)));
-            //p.drawRoundedRect(m_pFloatLeft->rect(),24,24);
             p.drawImage(m_pFloatLeft->rect(),QImage(":/images/a-left.png"));
         }
         if(m_pFloatRight == obj)
@@ -641,9 +689,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
             opt.initFrom(m_pFloatRight);
             QPainter p(m_pFloatRight);
             p.setRenderHint(QPainter::Antialiasing, true);
-            //style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
-            //p.setBrush(QBrush(QColor(0,255,0,200)));
-            //p.drawRoundedRect(m_pFloatRight->rect(),24,24);
             p.drawImage(m_pFloatRight->rect(),QImage(":/images/a-right.png"));
         }
 
@@ -682,6 +727,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
     p.setRenderHint(QPainter::Antialiasing, true);
 
+    ui->labelLogo->hide();
     int borderRadius = 20;
     QPainterPath path;
     path.addRoundedRect(this->rect(), borderRadius, borderRadius);
@@ -700,6 +746,8 @@ void MainWindow::paintEvent(QPaintEvent *event)
     else
     {
         p.fillRect(this->rect(), Qt::white);
+        p.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        p.drawImage(QRect(30,20,136,40), QImage(":/images/AkkoFlag.png"));
     }
 
     p.setPen(Qt::blue);
@@ -747,7 +795,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         move(MP.toPoint());
         event->accept();
 
-        QPoint P3 = mapToGlobal(QPoint(5,35));
+        QPoint P3 = mapToGlobal(QPoint(5,ui->stackedWidget->geometry().top()+5));
         m_pFloatReturn->setGeometry(P3.x(),P3.y(),80,32);
     }
 }

@@ -11,7 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string notr="true">MainWindow</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
   </property>
   <property name="styleSheet">
    <string notr="true">border-radius:20px;</string>
@@ -46,7 +49,7 @@
         <number>20</number>
        </property>
        <property name="bottomMargin">
-        <number>5</number>
+        <number>25</number>
        </property>
        <item>
         <widget class="QLabel" name="labelLogo">
@@ -120,6 +123,32 @@
          </property>
          <property name="flat">
           <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonSet">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:none;</string>
+         </property>
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/images/btn-setting.png</normaloff>:/images/btn-setting.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -307,7 +336,7 @@ background:transparent;</string>
                <x>0</x>
                <y>0</y>
                <width>1260</width>
-               <height>619</height>
+               <height>615</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">

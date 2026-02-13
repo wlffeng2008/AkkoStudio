@@ -86,7 +86,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>A</string>
+          <string notr="true">A</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -114,7 +114,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>B</string>
+          <string notr="true">B</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -142,7 +142,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>C</string>
+          <string notr="true">C</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -170,7 +170,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>D</string>
+          <string notr="true">D</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -198,7 +198,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>E</string>
+          <string notr="true">E</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -226,7 +226,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>F</string>
+          <string notr="true">F</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -254,7 +254,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>G</string>
+          <string notr="true">G</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -282,7 +282,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>H</string>
+          <string notr="true">H</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -310,7 +310,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>I</string>
+          <string notr="true">I</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -338,7 +338,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>J</string>
+          <string notr="true">J</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -366,7 +366,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>K</string>
+          <string notr="true">K</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -394,7 +394,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>L</string>
+          <string notr="true">L</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -422,7 +422,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>M</string>
+          <string notr="true">M</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -450,7 +450,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>N</string>
+          <string notr="true">N</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -478,7 +478,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>O</string>
+          <string notr="true">O</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -506,7 +506,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>P</string>
+          <string notr="true">P</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -534,7 +534,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>Q</string>
+          <string notr="true">Q</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -562,7 +562,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>R</string>
+          <string notr="true">R</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -590,7 +590,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>S</string>
+          <string notr="true">S</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -618,7 +618,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>T</string>
+          <string notr="true">T</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -646,7 +646,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>U</string>
+          <string notr="true">U</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -674,7 +674,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>V</string>
+          <string notr="true">V</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -702,7 +702,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>W</string>
+          <string notr="true">W</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -730,7 +730,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>X</string>
+          <string notr="true">X</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -758,7 +758,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>Y</string>
+          <string notr="true">Y</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -786,7 +786,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>Z</string>
+          <string notr="true">Z</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -3545,7 +3545,7 @@ SHIFT</string>
                     background-color: #DBFBDB ;</string>
          </property>
          <property name="text">
-          <string>--</string>
+          <string notr="true">--</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -3574,7 +3574,7 @@ SHIFT</string>
                     background-color: #DBFBDB ;</string>
          </property>
          <property name="text">
-          <string>--</string>
+          <string notr="true">--</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -3603,7 +3603,7 @@ SHIFT</string>
                     background-color: #DBFBDB ;</string>
          </property>
          <property name="text">
-          <string>--</string>
+          <string notr="true">--</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>

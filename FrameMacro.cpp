@@ -309,7 +309,7 @@ void FrameMacro::updateView()
         QByteArray data = ModuleMacroManager::packMacroPack(m_prj);
         int size = data.size();
         if(size >= 2) size += 2;
-        ui->labelTitle4->setText(tr("占用: ") + QString::asprintf("%d / 256",size) + tr("字节"));
+        ui->labelTitle4->setText(tr("占用") + QString::asprintf(": %d / 256",size) + tr("字节"));
     }
 }
 

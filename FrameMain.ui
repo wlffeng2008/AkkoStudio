@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
   </property>
   <property name="styleSheet">
    <string notr="true">#frameInfo,#frameRTSetting,#frameLinear,#frameLEDBright,#frameLEDSpeed,#frameLEDColor,#frameLEDMode{background-color: #F6F6F6;border-radius:32px;}</string>
