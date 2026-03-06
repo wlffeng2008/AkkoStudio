@@ -1,8 +1,12 @@
 #include "FrameDeviceShow.h"
 #include "ui_FrameDeviceShow.h"
 
+#include "hidapi.h"
+
 #include <QScrollBar>
 #include <QWheelEvent>
+#include <QTimer>
+#include <QThread>
 
 static FrameDeviceShow *s_active = nullptr;
 
@@ -26,9 +30,89 @@ FrameDeviceShow::FrameDeviceShow(QWidget *parent)
     if (!s_active)
         s_active = this;
     setSelect(false);
+
+    QTimer *pTMBatt = new QTimer(this);
+    connect(pTMBatt,&QTimer::timeout,this,[=]{
+        updateBattary();
+    });
+
+    pTMBatt->start(10000);
 }
 
 FrameDeviceShow::~FrameDeviceShow() { delete ui; }
+
+void FrameDeviceShow::updateBattary()
+{
+    if(m_connect == 0)
+    {
+        return;
+    }
+    quint32 batt = 100;
+    if(m_creator == 0)
+    {
+        char buf[1024] = {0};
+        int nlen = 0;
+
+        hid_device *pDev = hid_open_path(m_path.toStdString().c_str());
+        hid_set_nonblocking(pDev,1);
+
+        QByteArray tmp(120, 0);
+
+        while(1)
+        {
+            tmp[1] = 0xf7;
+            tmp[2] = 0x00;
+            tmp[8] = 0xFF - tmp[1] - tmp[2];
+            hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
+            QThread::msleep(15);
+            nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+            if(buf[6] == 1)
+                break;
+        }
+
+        // tmp[1] = 0x82;
+        // tmp[8] = 0xFF - tmp[1];
+        // hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
+        // QThread::msleep(20);
+        // nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+
+        if( nlen>0 )
+        {
+            batt = buf[2];
+            QByteArray Log((char *)(buf+1),16);
+            qDebug() << "batt:" << Log.left(16).toHex(' ').toUpper() << (int)batt;
+        }
+
+        hid_close(pDev);
+    }
+    else
+    {
+        QString strCmd("04 00 00 1A 06 00 00 00");
+        hid_device *pDev = hid_open_path(m_path.toStdString().c_str());
+        QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1());
+        hid_write(pDev,(quint8*)cmd.data(),cmd.size());
+        QThread::msleep(5);
+        quint8 buf[128] = {0};
+        int len = hid_read_timeout(pDev,buf,16,500);
+        if( len>0 )
+        {
+            batt = buf[8];
+            QByteArray Log((char *)buf,len);
+            qDebug() << "batt:" << Log.left(16).toHex(' ').toUpper() << (int)batt;
+        }
+        hid_close(pDev);
+    }
+
+    quint8 level=0;
+    QStringList imgPowers={"batt-low.png","batt-25.png","batt-50.png","batt-75.png","batt-full.png"};
+    if(batt>20) level=1;
+    if(batt>40) level=2;
+    if(batt>60) level=3;
+    if(batt>80) level=4;
+
+    ui->labelPower->setPixmap(QPixmap(QString(":/images/dev/")+imgPowers[level]));
+    ui->labelPower->setToolTip(QString(tr("设备剩余电量"))+QString(": %1%%").arg(batt));
+}
 
 void FrameDeviceShow::setImage(const QString &image,int type)
 {
@@ -39,8 +123,14 @@ void FrameDeviceShow::setImage(const QString &image,int type)
     {
         QString strDef = QString("./images/default%1.png").arg(type);
         Img = QPixmap(strDef);
-        m_image = strDef ;
+        m_image = strDef;
     }
+
+    ui->labelPower->setHidden(m_connect == 0);
+    QTimer::singleShot(500,this,[=]{updateBattary();});
+
+    QStringList imgTypes={"usb.png","2.4g.png","ble.png"};
+    ui->labelType->setPixmap(QPixmap(QString(":/images/dev/")+imgTypes[m_connect]));
 
     if (!Img.isNull())
     {
@@ -50,7 +140,7 @@ void FrameDeviceShow::setImage(const QString &image,int type)
         int nW = this->width() - 40;
         int nH = this->height() - 160;
 
-        nH = 360;
+        nH = 210;
 
         qreal ir = imgW * 1.0 / imgH;
         if (ir > 1)
@@ -89,7 +179,7 @@ void FrameDeviceShow::setImage(const QString &image,int type)
 
 void FrameDeviceShow::setName(const QString &name,int type)
 {
-    ui->labelName->setText(name);
+    ui->labelDeviceName->setText(name);
     QString strImg = QString("./images/%1.png").arg(name);
     strImg.replace(' ','-');
     setImage(strImg,type);

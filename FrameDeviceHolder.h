@@ -20,6 +20,7 @@ public:
     explicit FrameDeviceHolder(QWidget *parent = nullptr);
     ~FrameDeviceHolder();
     void setDeviceImage(const QString&strImage);
+    void setDeviceName(const QString&strName);
 
 protected:
     bool eventFilter(QObject *watch, QEvent *event) override;

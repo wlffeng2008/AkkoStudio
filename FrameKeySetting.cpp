@@ -28,7 +28,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 width: 120px;
                 max-height: 32px;
                 min-height: 32px;
-                border-radius: 16px ;
+                border-radius: 17px;
                 font-size:18px;
 
                 padding-left: 25px;
@@ -48,28 +48,28 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
 
             )") ;
 
-        QLayout *pLayout = ui->frameMode->layout() ;
-        pLayout->setSpacing(12) ;
-        pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter) ;
+        QLayout *pLayout = ui->frameMode->layout();
+        pLayout->setSpacing(12);
+        pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
 
-        QList<QPushButton *>btns = {ui->pushButtonSet1,ui->pushButtonSet2,ui->pushButtonSet3} ;
-        QButtonGroup *pBtnGrp = new QButtonGroup(this) ;
+        QList<QPushButton *>btns = {ui->pushButtonSet1,ui->pushButtonSet2,ui->pushButtonSet3};
+        QButtonGroup *pBtnGrp = new QButtonGroup(this);
         for(int i=0; i<btns.count(); i++)
         {
-            QPushButton *btn = btns[i] ;
-            btn->setFixedSize(120,24);
-            btn->setCheckable(true) ;
+            QPushButton *btn = btns[i];
+            btn->setFixedSize(120,32);
+            btn->setCheckable(true);
             btn->setStyleSheet(strStyle);
-            btn->setFocusPolicy(Qt::NoFocus) ;
-            btn->setCursor(Qt::PointingHandCursor) ;
+            btn->setFocusPolicy(Qt::NoFocus);
+            btn->setCursor(Qt::PointingHandCursor);
             pBtnGrp->addButton(btn,i);
         }
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
-            ui->stackedWidget->setCurrentIndex(id) ;
-            m_setType = id ;
+            ui->stackedWidget->setCurrentIndex(id);
+            m_setType = id;
             ui->frameKeyboard->setEnabled(id != 2);
         });
-        ui->pushButtonSet1->click() ;
+        ui->pushButtonSet1->click();
     }
     {
         QStringList Files={
@@ -95,12 +95,12 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         //QButtonGroup *pBtnGrp = new QButtonGroup(this) ;
         for(int i=0; i<19; i++)
         {
-            QString strName = QString::asprintf("pushButton_F%02d",i+1) ;
-            QPushButton *btn = findChild<QPushButton*>(strName) ;
+            QString strName = QString::asprintf("pushButton_F%02d",i+1);
+            QPushButton *btn = findChild<QPushButton*>(strName);
             if(!btn) continue;
 
-            btn->setCheckable(true) ;
-            btn->setText("") ;
+            btn->setCheckable(true);
+            btn->setText("");
 
             QString strStyle=QString(R"(
                 QPushButton {
@@ -121,8 +121,8 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
             )").arg(Files[i],Files[i],Files[i]);
 
             btn->setStyleSheet(strStyle);
-            btn->setFocusPolicy(Qt::NoFocus) ;
-            btn->setCursor(Qt::PointingHandCursor) ;
+            btn->setFocusPolicy(Qt::NoFocus);
+            btn->setCursor(Qt::PointingHandCursor);
             //pBtnGrp->addButton(btn,i);
         }
     }
@@ -132,38 +132,38 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
 
         QStringList Values2 ; //={"5 min","15 min","30 min","45 min","60 min"} ;
         for(int i=0; i<=1800; i++)
-            Values2.push_back(QString("%1 min").arg(i)) ;
-        ui->frameSV2->setValueList(Values2) ;
-        ui->frameSV3->setValueList(Values2) ;
+            Values2.push_back(QString("%1 min").arg(i));
+        ui->frameSV2->setValueList(Values2);
+        ui->frameSV3->setValueList(Values2);
 
-        ui->horizontalSlider->setFixedHeight(40) ;
+        ui->horizontalSlider->setFixedHeight(40);
         connect(ui->horizontalSlider,&QSlider::valueChanged,this,[=](int value){ui->lineEditValue->setText(QString::asprintf("%d ms",value));});
 
-        ui->horizontalSlider->setValue(25) ;
+        ui->horizontalSlider->setValue(25);
 
-        QTimer *pTMUpdate = new QTimer(this) ;
+        QTimer *pTMUpdate = new QTimer(this);
         connect(pTMUpdate,&QTimer::timeout,this,[=]{
             pTMUpdate->stop();
             QString strTmp = ui->lineEditValue->text().trimmed();
             char szText[100]={0} ;
-            strcpy_s(szText,strTmp.toStdString().c_str()) ;
+            strcpy_s(szText,strTmp.toStdString().c_str());
             for(int i=0; i<strlen(szText); i++)
             {
                 if(szText[i] == '.' || (szText[i] >= '0' && szText[i] <= '9'))
                     continue ;
-                szText[i] = 0 ;
+                szText[i] = 0;
                 break;
             }
             strTmp = szText;
-            int value = strTmp.toFloat() ;
-            if(value>200) value = 200 ;
-            if(value<0)   value = 0 ;
+            int value = strTmp.toFloat();
+            if(value>200) value = 200;
+            if(value<0)   value = 0;
             ui->horizontalSlider->setValue(value);
         });
 
         connect(ui->lineEditValue,&QLineEdit::textEdited,this,[=](const QString&text){
-            pTMUpdate->stop() ;
-            pTMUpdate->start(300) ;
+            pTMUpdate->stop();
+            pTMUpdate->start(300);
         });
     }
 
@@ -178,19 +178,19 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         ui->labelRelease4->installEventFilter(this);
     }
 
-    m_adjust = new ModuleDKSAdjust(this) ;
-    m_adjust->setObjectName("DKSAdjust") ;
-    m_adjust->setStyleSheet("QFrame#DKSAdjust{background-color:#F6F6F6; border-radius:20px; min-width:200px; min-height:240px;margin:20px;}") ;
+    m_adjust = new ModuleDKSAdjust(this);
+    m_adjust->setObjectName("DKSAdjust");
+    m_adjust->setStyleSheet("QFrame#DKSAdjust{background-color:#F6F6F6; border-radius:20px; min-width:200px; min-height:240px;margin:20px;}");
     m_adjust->adjustSize();
     m_adjust->update();
     m_adjust->hide();
     connect(m_adjust,&ModuleDKSAdjust::onValueSave,this,[=](const QString&text){
         m_DKSLen = text.toFloat();
-        ui->labelPress1->setText(QString::asprintf("%.2f",m_DKSLen) + " mm") ;
-        ui->labelRelease2->setText(QString::asprintf("%.2f",m_DKSLen) + " mm") ;
+        ui->labelPress1->setText(QString::asprintf("%.2f mm",m_DKSLen));
+        ui->labelRelease2->setText(QString::asprintf("%.2f mm",m_DKSLen));
 
-        //ui->labelPress2->setText(QString::asprintf("%.2f",3.9 - text.toFloat()) + " mm") ;
-        //ui->labelRelease1->setText(QString::asprintf("%.2f",3.9 - text.toFloat()) + " mm") ;
+        //ui->labelPress2->setText(QString::asprintf("%.2f mm",3.9 - text.toFloat())) ;
+        //ui->labelRelease1->setText(QString::asprintf("%.2f mm",3.9 - text.toFloat())) ;
     });
 
     connect(ui->pushButton_Snap1,&QPushButton::clicked,this,[=]{
@@ -209,7 +209,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     connect(ui->frameDKS1,&ModuleDKSItem::onButtonClicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
-            return ;
+            return;
         ui->frameDKS1->setText(getKeyString(&VKDlg.m_kd,false));
         m_DKS1 = VKDlg.m_kd;
     });
@@ -217,7 +217,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     connect(ui->frameDKS2,&ModuleDKSItem::onButtonClicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
-            return ;
+            return;
         ui->frameDKS2->setText(getKeyString(&VKDlg.m_kd,false));
         m_DKS2 = VKDlg.m_kd;
     });
@@ -225,7 +225,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     connect(ui->frameDKS3,&ModuleDKSItem::onButtonClicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
-            return ;
+            return;
         ui->frameDKS3->setText(getKeyString(&VKDlg.m_kd,false));
         m_DKS3 = VKDlg.m_kd;
     });
@@ -233,7 +233,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     connect(ui->frameDKS4,&ModuleDKSItem::onButtonClicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
-            return ;
+            return;
         ui->frameDKS4->setText(getKeyString(&VKDlg.m_kd,false));
         m_DKS4 = VKDlg.m_kd;
     });
@@ -256,7 +256,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     connect(ui->pushButton_MT1,&QPushButton::clicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
-            return ;
+            return;
         ui->pushButton_MT1->setText(getKeyString(&VKDlg.m_kd,false));
         m_MT1 = VKDlg.m_kd;
     });
@@ -264,7 +264,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     connect(ui->pushButton_MT2,&QPushButton::clicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
-            return ;
+            return;
         ui->pushButton_MT2->setText(getKeyString(&VKDlg.m_kd,false));
         m_MT2 = VKDlg.m_kd;
     });
@@ -284,7 +284,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
     connect(ui->pushButton_TGL1,&QPushButton::clicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
-            return ;
+            return;
         ui->pushButton_TGL1->setText(getKeyString(&VKDlg.m_kd,false));
         m_TGL1 = VKDlg.m_kd;
     });
@@ -335,7 +335,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                     ModuleMacroManager *pMM = ModuleMacroManager::instance();
                     pCnn->setMacro(hid,setTo.b0,setTo.b1,setTo.b2,pMM->packMacroPack(pMM->getMarcoProject(setTo.b2)));
                     refresh();
-                    return ;
+                    return;
                 }
             }
 
@@ -345,7 +345,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
             QString strT2 = getKeyString(&setTo);
             ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
 
-            if(m_pMask) m_pMask->hide() ;
+            if(m_pMask) m_pMask->hide();
         }
 
         if(m_setType == 1)
@@ -367,8 +367,8 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 pCnn->getKeydata(&m_DKS3,index,2);
                 pCnn->getKeydata(&m_DKS4,index,3);
                 m_DKSLen = pCnn->get65Value(0x04,index)/200.0;
-                ui->labelPress1->setText(QString::asprintf("%.2f",m_DKSLen) + " mm") ;
-                ui->labelRelease2->setText(QString::asprintf("%.2f",m_DKSLen) + " mm") ;
+                ui->labelPress1->setText(QString::asprintf("%.2f mm", m_DKSLen));
+                ui->labelRelease2->setText(QString::asprintf("%.2f mm", m_DKSLen));
             }
 
             if(type == 3)
@@ -431,9 +431,9 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         }
     });
 
-    connect(ui->frameSV1,&ModuleScrollValue::onIndexChanged,this,[=](int index){pCnn->setReport(index);});
-    connect(ui->frameSV2,&ModuleScrollValue::onIndexChanged,this,[=](int index){pCnn->setSleepTime(index,1);});
-    connect(ui->frameSV3,&ModuleScrollValue::onIndexChanged,this,[=](int index){pCnn->setSleepTime(index,0);});
+    connect(ui->frameSV1,&ModuleScrollValue::onIndexChanged,this,[=](int index){ pCnn->setReport(index); });
+    connect(ui->frameSV2,&ModuleScrollValue::onIndexChanged,this,[=](int index){ pCnn->setSleepTime(index,1); });
+    connect(ui->frameSV3,&ModuleScrollValue::onIndexChanged,this,[=](int index){ pCnn->setSleepTime(index,0); });
 
     connect(ui->horizontalSlider24Deep,&QSlider::valueChanged,this,[=](int value){ ui->lineEditV1->setText(QString("%1").arg(value)); });
     connect(ui->horizontalSliderBTDeep,&QSlider::valueChanged,this,[=](int value){ ui->lineEditV2->setText(QString("%1").arg(value)); });
@@ -462,22 +462,23 @@ bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
 {
     if (event->type() == QEvent::MouseButtonRelease)
     {
-        QLabel *labCilck = nullptr ;
-        if(watched == ui->labelPress1   || watched == ui->labelPress3  )  labCilck = ui->labelPress1 ;
+        QLabel *labCilck = nullptr;
+        if(watched == ui->labelPress1   || watched == ui->labelPress3  )  labCilck = ui->labelPress1;
         //if(watched == ui->labelPress2   || watched == ui->labelPress4  )  labCilck = ui->labelPress2 ;
         //if(watched == ui->labelRelease1 || watched == ui->labelRelease3)  labCilck = ui->labelRelease1 ;
-        if(watched == ui->labelRelease2 || watched == ui->labelRelease4)  labCilck = ui->labelRelease2 ;
+        if(watched == ui->labelRelease2 || watched == ui->labelRelease4)  labCilck = ui->labelRelease2;
 
         if(labCilck)
         {
             m_toAdjust = labCilck;
             QString strValue = labCilck->text().replace("mm","").trimmed();
-            m_adjust->setOriginValue(strValue) ;
+            m_adjust->setOriginValue(strValue);
+
             ModuleGeneralMasker M(m_adjust,ui->frameTab2);
             M.setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.8);  border: none; border-radius: 32px;}");
-            M.exec() ;
+            M.exec();
 
-            return true ;
+            return true;
         }
     }
 
@@ -517,43 +518,44 @@ void FrameKeySetting::refresh()
 
             if(type == 2)
             {
-                strT2 = tr("动态键程(DKS)");
-                strT2 += ":\n";
-                strT2 += res[0] + "\n";
-                strT2 += res[1] + "\n";
-                strT2 += res[2] + "\n";
+                strT2 = QString(tr("动态键程(DKS)")) + QString(":\n");
+                strT2 += res[0] + QString(":\n");
+                strT2 += res[1] + QString(":\n");
+                strT2 += res[2] + QString(":\n");
                 strT2 += res[3];
             }
 
             if(type == 3)
             {
-                strT2 = tr("按住单击(MT)");
-                strT2 += ":\n";
-                strT2 += res[0] + "\n";
+                strT2 = QString(tr("按住单击(MT)")) + QString(":\n");
+                strT2 += res[0] + QString(":\n");
                 strT2 += res[1];
             }
 
             if(type == 4 || type == 5)
             {
-                strT2 = tr("切换开关(TGL)");
-                strT2 += ":\n";
+                strT2 = QString(tr("切换开关(TGL)")) + QString(":\n");
                 strT2 += res[0];
             }
 
             if(type == 7)
             {
-                strT2 = tr("SnapKey:\n");
+                strT2 = QString(tr("SnapKey")) + QString(":\n");
                 strT2 += res[0];
             }
 
             if(kd.b0 == 0x09) // Macro
             {
                 MacroProject *prj = pMM->getMarcoProject(kd.b2);
-                if(prj) strT2 = QString(tr("宏设置")) + QString(":\n") + prj->name;
+                if(prj)
+                {
+                    strT2 = QString(tr("宏设置")) + QString(":\n");
+                    strT2 += prj->name;
+                }
             }
 
             if(kd.b0 == 0 && kd.b1 == 0 && kd.b2 == 0 && kd.b3 == 0)
-                strT1 = "DISABLED";
+                strT1 = QString("DISABLED");
             ui->frameKeyboard->setKeyTip(hid, strT1.trimmed(), strT2.trimmed());
         }
         else

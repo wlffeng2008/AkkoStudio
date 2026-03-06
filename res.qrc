@@ -186,5 +186,14 @@
         <file>images/m-lang.png</file>
         <file>images/m-reset.png</file>
         <file>images/btn-setting.png</file>
+        <file>images/dev/2.4g.png</file>
+        <file>images/dev/batt-50.png</file>
+        <file>images/dev/batt-full.png</file>
+        <file>images/dev/batt-in.png</file>
+        <file>images/dev/batt-low.png</file>
+        <file>images/dev/ble.png</file>
+        <file>images/dev/usb.png</file>
+        <file>images/dev/batt-25.png</file>
+        <file>images/dev/batt-75.png</file>
     </qresource>
 </RCC>

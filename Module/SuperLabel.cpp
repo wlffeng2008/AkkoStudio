@@ -1,8 +1,8 @@
 #include "SuperLabel.h"
 #include <QEvent>
 
-static QMap<QObject *,SuperLabel *>s_group ;
-static QMap<QObject *,QString>s_tipStyle ;
+static QMap<QObject *,SuperLabel *>s_group;
+static QMap<QObject *,QString>s_tipStyle;
 
 static QString s_strDefTipStyle(R"(
     background-color: white;
@@ -72,20 +72,20 @@ void CustomTooltip::mousePressEvent(QMouseEvent *event)
 
     hide() ;
     m_timer->stop();
-    QWidget::mousePressEvent(event) ;
+    QWidget::mousePressEvent(event);
 }
 
 void CustomTooltip::focusOutEvent(QFocusEvent *event)
 {
-    hide() ;
-    QWidget::focusOutEvent(event) ;
+    hide();
+    QWidget::focusOutEvent(event);
 }
 
 void CustomTooltip::showEvent(QShowEvent *event)
 {
-    m_timer->stop() ;
-    m_timer->start(3000) ;
-    QWidget::showEvent(event) ;
+    m_timer->stop();
+    m_timer->start(3000);
+    QWidget::showEvent(event);
 }
 
 void CustomTooltip::setText(const QString&text)
@@ -104,8 +104,7 @@ void CustomTooltip::setTextStyle(const QString& stryle)
 
 //-------------------------------------
 
-SuperLabel::SuperLabel(QWidget *parent)
-    : QLabel{parent}
+SuperLabel::SuperLabel(QWidget *parent) : QLabel{parent}
 {
     if(!s_group[parent]) s_group[parent] = this;
 
@@ -113,15 +112,15 @@ SuperLabel::SuperLabel(QWidget *parent)
         tooltip = new CustomTooltip(this);
         tooltip->setText(this->toolTip());
 
-        timer = new QTimer(this) ;
+        timer = new QTimer(this);
         timer->setSingleShot(true);
         timer->setInterval(100);
 
-        m_bEmpty = this->toolTip().isEmpty() ;
-        setToolTip("") ;
+        m_bEmpty = this->toolTip().isEmpty();
 
         connect(timer, &QTimer::timeout, this, [=]() {
-            if(m_bEmpty)  return ;
+            if(m_bEmpty) return;
+            setToolTip("");
             QPoint pos = mapToGlobal(QPoint(width()+5,(height() - tooltip->height())/2));
             tooltip->move(pos);
             tooltip->show();
@@ -154,6 +153,7 @@ bool SuperLabel::event(QEvent *event)
     default:
         break;
     }
+
     return QLabel::event(event);
 }
 
@@ -167,19 +167,19 @@ void SuperLabel::setImages(const QString&strGetfocus, const QString&strLostfocus
 {
     m_strGetfocus  = strGetfocus;
     m_strLostfocus = strLostfocus;
-    setFocus(false) ;
+    setFocus(false);
 }
 
 void SuperLabel::setFocus(bool foucs)
 {
-    m_bFoucs = foucs ;
+    m_bFoucs = foucs;
     //setScaledContents(true);
     setPixmap(QPixmap(foucs ? m_strGetfocus : m_strLostfocus));
     setStyleSheet(foucs ? m_strSheetGetfocus : m_strSheetLostfocus);
     if(!foucs)
         return;
 
-    SuperLabel *pLast = s_group[this->parent()] ;
+    SuperLabel *pLast = s_group[this->parent()];
     if(pLast && pLast != this)
         pLast->setFocus(false);
     s_group[this->parent()] = this;

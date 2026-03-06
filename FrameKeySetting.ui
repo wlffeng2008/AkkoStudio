@@ -10,6 +10,11 @@
     <height>894</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <bold>false</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Frame</string>
   </property>
@@ -974,6 +979,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <height>310</height>
                </rect>
               </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="currentIndex">
                <number>0</number>
               </property>
@@ -1000,7 +1008,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  </font>
                 </property>
                 <property name="text">
-                 <string>未选择按键</string>
+                 <string notr="true">--</string>
                 </property>
                </widget>
                <widget class="QLabel" name="labelPress1">
@@ -1326,6 +1334,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <height>44</height>
                  </size>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="autoFillBackground">
                  <bool>false</bool>
                 </property>
@@ -1362,6 +1373,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <width>122</width>
                   <height>35</height>
                  </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">width:120px; height:40px;</string>
@@ -1543,6 +1557,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <bold>false</bold>
                  </font>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::NoFocus</enum>
                 </property>
@@ -1565,11 +1582,17 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <height>82</height>
                  </rect>
                 </property>
+                <property name="font">
+                 <font>
+                  <pointsize>24</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">width:80px; height:80px;</string>
                 </property>
                 <property name="text">
-                 <string>未选择按键</string>
+                 <string notr="true">--</string>
                 </property>
                </widget>
               </widget>
@@ -1599,6 +1622,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <italic>false</italic>
                   <bold>false</bold>
                  </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::NoFocus</enum>
@@ -1630,6 +1656,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <width>122</width>
                   <height>30</height>
                  </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">width:120px; height:40px;</string>
@@ -1681,11 +1710,23 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <height>82</height>
                  </size>
                 </property>
+                <property name="font">
+                 <font>
+                  <pointsize>24</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">width:80px; height:80px;</string>
                 </property>
                 <property name="text">
-                 <string>未选择按键</string>
+                 <string notr="true">--</string>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -1742,6 +1783,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <bold>false</bold>
                  </font>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::NoFocus</enum>
                 </property>
@@ -1764,11 +1808,20 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <height>74</height>
                  </rect>
                 </property>
+                <property name="font">
+                 <font>
+                  <pointsize>24</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">width:72px; height:72px;</string>
                 </property>
                 <property name="text">
-                 <string>未选择按键</string>
+                 <string notr="true">--</string>
                 </property>
                 <property name="checkable">
                  <bool>false</bool>
@@ -1789,11 +1842,20 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <height>74</height>
                  </rect>
                 </property>
+                <property name="font">
+                 <font>
+                  <pointsize>24</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">width:72px; height:72px;</string>
                 </property>
                 <property name="text">
-                 <string>未选择按键</string>
+                 <string notr="true">--</string>
                 </property>
                 <property name="checkable">
                  <bool>false</bool>
@@ -2278,9 +2340,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupMT"/>
-  <buttongroup name="buttonGroupFN"/>
-  <buttongroup name="buttonGroupTGL"/>
   <buttongroup name="buttonGroupSnap"/>
+  <buttongroup name="buttonGroupTGL"/>
+  <buttongroup name="buttonGroupFN"/>
+  <buttongroup name="buttonGroupMT"/>
  </buttongroups>
 </ui>

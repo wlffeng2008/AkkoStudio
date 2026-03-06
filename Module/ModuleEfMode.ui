@@ -46,8 +46,8 @@
    <property name="geometry">
     <rect>
      <x>226</x>
-     <y>30</y>
-     <width>43</width>
+     <y>28</y>
+     <width>45</width>
      <height>20</height>
     </rect>
    </property>
@@ -61,9 +61,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>26</x>
+     <x>22</x>
      <y>56</y>
-     <width>259</width>
+     <width>263</width>
      <height>233</height>
     </rect>
    </property>
@@ -84,7 +84,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>257</width>
+         <width>261</width>
          <height>206</height>
         </rect>
        </property>
@@ -106,7 +106,7 @@
       <item alignment="Qt::AlignmentFlag::AlignRight">
        <widget class="QLabel" name="labelPicture">
         <property name="text">
-         <string>灯效播放模式:</string>
+         <string>灯光播放模式:</string>
         </property>
        </widget>
       </item>

@@ -24,6 +24,8 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
 
     DialogDeviceConnect *pCnnt = new DialogDeviceConnect(this);
     ModuleGenKeymapping *pKmap = new ModuleGenKeymapping(this);
+    Q_UNUSED(pCnnt)
+    Q_UNUSED(pKmap)
 
     FrameKeySetting *pKS = new FrameKeySetting(this);
     FrameMain *pFM = new FrameMain(this);
@@ -46,9 +48,10 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     ui->horizontalLayoutBR->addWidget(pMacro);
     ui->horizontalLayoutBR->addWidget(pLight);
     ui->horizontalLayoutBR->addWidget(pAbout);
+    ui->horizontalLayoutBR->setAlignment(Qt::AlignRight);
 
     for(QFrame*frame:std::as_const(m_pFrames))
-        frame->setFixedSize(1124,800);
+        frame->setFixedSize(1130,800);
 
     m_pLBtns.push_back(ui->label1);
     m_pLBtns.push_back(ui->label2);
@@ -108,6 +111,11 @@ void FrameDeviceHolder::setDeviceImage(const QString&strImage)
     pFM->setDeviceImage(strImage);
 }
 
+void FrameDeviceHolder::setDeviceName(const QString&strName)
+{
+    ui->labelName->setText(strName);
+}
+
 void FrameDeviceHolder::changeEvent(QEvent *pEvt)
 {
     if(pEvt->type() == QEvent::LanguageChange)
@@ -122,7 +130,8 @@ void FrameDeviceHolder::clickLabel(QLabel *label, int index)
 {
     if(index == 6)
     {
-        hide();
+        emit onReturn();
+        //hide();
         return;
     }
 

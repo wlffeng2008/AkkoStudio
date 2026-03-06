@@ -12,17 +12,15 @@ FrameLight::FrameLight(QWidget *parent)
 
     DialogDeviceConnect *pConnector = DialogDeviceConnect::instance();
 
-    connect(ui->frameLEDMode,&ModuleEfMode::onModeChanged,this,[=](int mode,bool on){
-        if(mode == 0)
+    connect(ui->frameLEDMode,&ModuleEfMode::onModeChanged,this,[=](int mode,quint8 opt){
+        if(mode == -1)
         {
-            pConnector->setLEDOn(on);
-            return ;
+            pConnector->setLEDOn(opt);
+            return;
         }
-        pConnector->setLEDMode(mode);
+        pConnector->setLEDMode(mode,opt);
     });
-    connect(ui->frameLEDMode,&ModuleEfMode::onModePicture,this,[=](int index){
-        pConnector->setLEDPicture(index);
-    });
+
     connect(ui->frameLEDBright,&ModuleEfLumi::onBrightChanged,this,[=](int bright){
         pConnector->setLEDBright(bright);
     });

@@ -78,7 +78,7 @@ protected:
     bool event(QEvent *event) final;
 
     void enumDevice();
-    void addDevice(quint32 id, const QString&path, int creator=0);
+    void addDevice(quint32 id, const QString&path, int connectType, int creator);
 
 private slots:
     void on_pushButtonExit_clicked();

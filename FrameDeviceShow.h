@@ -23,9 +23,12 @@ public:
     void setCreator(int creator){ m_creator = creator;};
     void setSelect(bool select=true);
 
+    void updateBattary();
+
     QScrollArea *m_sa = nullptr;
     void *m_device = nullptr;
     bool m_bConacted = false;
+    quint8 m_connect =0;
     QString m_path;
     QString m_image;
     int m_creator;

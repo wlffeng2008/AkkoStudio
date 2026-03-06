@@ -110,15 +110,13 @@ public:
     void readAllData();
     void setProfile(int layer=0);
 
-    static DialogDeviceConnect *instance() ;
+    static DialogDeviceConnect *instance();
 
-    void disconnect() ;
+    void disconnect();
     void startConnect();
 
     void setLEDOn(bool on);
-    void setLEDPicture(int index);
-    void setLEDOption(int option);
-    void setLEDMode(int mode);
+    void setLEDMode(int mode,quint8 opt);
     void setLEDSpeed(int speed);
     void setLEDBright(int bright);
     void setLEDColor(const QColor&color, int option);
@@ -169,7 +167,7 @@ protected:
 
 private:
     Ui::DialogDeviceConnect *ui;
-    QList<QByteArray>m_readList;
+    QList<QByteArray>m_cmdList;
     void addReadCmd(quint8 cmd,int len=8,bool execute=false);
     void addReadCmd(QByteArray &cmd,bool execute=false);
     void addReadCmd(const QString&strCmd,bool execute=false);

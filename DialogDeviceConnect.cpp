@@ -380,6 +380,23 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 m_report = data[2];
                 break;
 
+            case CMD_GET_LEDPARAM:
+            {
+                int row = getRow(CMD_SET_LEDPARAM);
+                setRowValue(row,3,data[1]);
+                setRowValue(row,4,data[2]);
+                setRowValue(row,5,data[3]);
+            }
+            break;
+
+            case CMD_GET_SLEDPARAM:
+            {
+                int row = getRow(CMD_SET_SLEDPARAM);
+                setRowValue(row,3,data[1]);
+                setRowValue(row,4,data[2]);
+                setRowValue(row,5,data[3]);
+            }
+            break;
             case 0xE5:
                 if(m_bCalibration && pCmd[1] == 0xFE)
                 {
@@ -467,7 +484,7 @@ void DialogDeviceConnect::DoConnectDevice(quint16 PID)
 
 void DialogDeviceConnect::readAllData()
 {
-    m_readList.clear();
+    m_cmdList.clear();
     m_multiple = 10;
     m_version = 0;
 
@@ -555,14 +572,14 @@ DialogDeviceConnect::~DialogDeviceConnect()
 
 void DialogDeviceConnect::executeCmd()
 {
-    if(m_readList.count() <= 0)
+    if(m_cmdList.count() <= 0)
     {
         emit onReadDone();
         return;
     }
 
-    QByteArray cmd = m_readList[0];
-    m_readList.pop_front();
+    QByteArray cmd = m_cmdList[0];
+    m_cmdList.pop_front();
     cmd.append(128,0);
 
     int nLen = 8;
@@ -731,11 +748,12 @@ void DialogDeviceConnect::send65Cmd(quint8 option, quint8 hid, char *data, quint
 
 void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, quint8 save)
 {
-    quint8 pack[12] = {0x0A, m_layer, getIndex(hid), 0,   0, save, subLayer, 0,   pDk->b0, pDk->b1, pDk->b2, pDk->b3};
+    quint8 index=getIndex(hid);
+    quint8 pack[12] = {CMD_SET_KEYMATRIX, m_layer, index, 0,   0, save, subLayer, 0,   pDk->b0, pDk->b1, pDk->b2, pDk->b3};
     QByteArray snd((char*)pack,12);
     addReadCmd(snd,true);
 
-    ((keyData*)m_KeyMatrix[subLayer].data())[::getIndex(hid)] = *(keyData*)pDk;
+    ((keyData*)m_KeyMatrix[subLayer].data())[index] = *(keyData*)pDk;
 }
 
 void DialogDeviceConnect::restKey(quint8 hid)
@@ -762,7 +780,7 @@ void DialogDeviceConnect::setSleepTime(quint16 value, int type)
     if(type==2) m_sleepTime.timeDBt=value*60;
     if(type==3) m_sleepTime.timeD24=value*60;
 
-    quint8 tmp[12] = {0x11, 0, 0, 0, 0, 0, 0, 0};
+    quint8 tmp[12] = {CMD_SET_SLEEPTIME, 0, 0, 0, 0, 0, 0, 0};
     QByteArray snd((char*)tmp,8);
     snd.append((char *)&m_sleepTime,8);
     addReadCmd(snd,true);
@@ -845,7 +863,7 @@ void DialogDeviceConnect::addReadCmd(QByteArray&cmd, bool execute)
 {
     if(!m_pDev1) return;
 
-    m_readList.push_back(cmd);
+    m_cmdList.push_back(cmd);
 
     if(execute)
     {
@@ -935,36 +953,22 @@ void DialogDeviceConnect::setLEDOn(bool on)
 
 void DialogDeviceConnect::setRowValue(int row, int col, int value)
 {
-    QStandardItem *item =m_pModel->item(row,col);
+    QStandardItem *item = m_pModel->item(row,col);
     if(item) item->setText(QString::number(value));
 }
 
-void DialogDeviceConnect::setLEDPicture(int index)
-{
-    int row = getRow(CMD_SET_LEDPARAM);
-    if(row == -1) return;
 
-    setRowValue(row, 6, 0x10 * (index));
-    setLEDMode(0x0D);
-}
-
-void DialogDeviceConnect::setLEDOption(int option)
-{
-    int row = getRow(CMD_SET_LEDPARAM);
-    if(row == -1) return;
-
-    setRowValue(row, 6, option);
-    makeCmd(row,true);
-}
-
-void DialogDeviceConnect::setLEDMode(int mode)
+void DialogDeviceConnect::setLEDMode(int mode, quint8 opt)
 {
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
 
     setRowValue(row, 3, mode);
     if(mode != 0x0D)
-    setRowValue(row, 6, 7);
+        setRowValue(row, 6, (opt<<4) | 0x07);
+    else
+        setRowValue(row, 6, (opt<<4) );
+
     makeCmd(row, true);
 }
 
@@ -972,7 +976,7 @@ void DialogDeviceConnect::setLEDSpeed(int speed)
 {
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
-    setRowValue(row, 4, speed);
+    setRowValue(row, 4, 4-speed);
     makeCmd(row, true);
 }
 
@@ -1044,7 +1048,7 @@ void DialogDeviceConnect::StopCalibration()
     m_bCalibration = false;
     if(m_TMCali)
         m_TMCali->stop();
-    m_readList.clear();
+    m_cmdList.clear();
     addReadCmd("1E 00", true);
 }
 

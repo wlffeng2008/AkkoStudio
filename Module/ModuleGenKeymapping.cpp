@@ -9,7 +9,7 @@ ModuleGenKeymapping::ModuleGenKeymapping(QWidget *parent):QWidget(parent)
 {
     s_map = this;
     initList();
-    hide() ;
+    hide();
 }
 
 void ModuleGenKeymapping::initList()
@@ -277,7 +277,7 @@ quint8 getIndex(quint8 hid)
 
     for(int i=0; i<512; i += 4)
     {
-        if(matrixData[i+2] == hid)
+        if(hid == (quint8)matrixData[i+2])
         {
             return i/4;
         }

@@ -106,6 +106,7 @@ int main(int argc, char *argv[])
         QLabel#labelValue1,#labelValue5{ font-size: 10px; font-weight: 500;}
         QLabel#labelValue2,#labelValue4{ font-size: 14px; font-weight: 500;}
         QLabel#labelValue3,#labelValue6{ font-size: 18px; font-weight: 600;}
+        QLabel#labelDeviceName,#labelDeviceName1{ font-size: 26px; font-weight: 600;}
         QLabel#labelInfo0{ font-size: 32px; font-weight: 600; color:#202020;}
 
         QTableView{
@@ -261,7 +262,21 @@ int main(int argc, char *argv[])
             background: #FFFFFF;
             color: #333333;
             font-weight: normal;
-            padding: 2px 2px; }
+            padding: 2px 2px;
+        }
+
+        QComboBox:hover { border-color: #ADADFD; }
+
+        QComboBox::drop-down {
+            subcontrol-origin: padding;
+            subcontrol-position: top right;
+            width: 18px;
+            border-left: 1px solid #E0E0E0;
+        }
+
+        QComboBox::down-arrow { width: 14px; height: 14px; image: url(:/images/down-arrow.png); }
+        QComboBox:disabled { background: #F5F5F5; color: #9E9E9E; }
+        QComboBox:disabled::down-arrow { opacity: 0.5; }
 
     QScrollBar:vertical,
     QScrollBar:horizontal {

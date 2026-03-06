@@ -23,6 +23,5 @@ ModuleEfSpeed::~ModuleEfSpeed()
 void ModuleEfSpeed::setSpeed(quint8 speed)
 {
     m_bOutSet = true;
-    ui->horiCyanSlider->setValue(speed);
-
+    ui->horiCyanSlider->setValue(4-speed);
 }

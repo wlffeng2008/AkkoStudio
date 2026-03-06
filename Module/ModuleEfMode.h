@@ -18,13 +18,13 @@ public:
     void setEfMode(int mode);
 
 signals:
-    void onModeChanged(int mode,bool on=true);
-    void onModePicture(int index);
+    void onModeChanged(int mode,quint8 opt=true);
 
 private:
     Ui::ModuleEfMode *ui;
     QButtonGroup *pBtnGrp = nullptr;
     bool m_bOutSet=false;
+    quint8 m_mode=0;
 };
 
 #endif // MODULEEFMODE_H

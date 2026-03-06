@@ -38,7 +38,7 @@ ModuleLangMenu::ModuleLangMenu(QWidget *parent)
             QPushButton {
                 width: 86px;
                 height: 24px;
-                border-radius: 10px ;
+                border-radius: 10px;
 
                 color: #333;
                 border: 1px soild white;
@@ -61,13 +61,13 @@ ModuleLangMenu::ModuleLangMenu(QWidget *parent)
     pLayout->setContentsMargins(3,10,3,10);
 
     connect(m_pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
-        hide() ;
+        hide();
         emit onLangChanged(id,Langs[id]);
     });
 
     for(int i=0; i<Langs.count(); i++)
     {
-        QPushButton *btn = new QPushButton(Langs[i],this) ;
+        QPushButton *btn = new QPushButton(Langs[i],this);
         btn->setFixedSize(90,24);
         btn->setCheckable(true);
         btn->setStyleSheet(strStyle);
