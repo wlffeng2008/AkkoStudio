@@ -58,6 +58,15 @@ MacroProject *ModuleMacroManager::getMarcoProject(quint8 macroId)
     return nullptr;
 }
 
+QString ModuleMacroManager::getMarcoName(quint8 macroId)
+{
+    QString name;
+    MacroProject *prj = getMarcoProject(macroId);
+    if(prj) name = prj->name;
+
+    return name;
+}
+
 void ModuleMacroManager::delMacroProject(MacroProject *prj)
 {
     m_macros.remove(m_macros.indexOf(prj));

@@ -98,6 +98,31 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
         ModuleGeneralMasker T(pTest ,this);
         T.exec();
     });
+    ui->label6->setHidden(true);
+
+    connect(ui->buttonGroupLayer,&QButtonGroup::idClicked,this,[=](int clikedId){
+        switch (clikedId) {
+        case -2:
+            pCnnt->setProfile(0);
+            break;
+        case -3:
+            pCnnt->setProfile(1);
+            break;
+        case -4:
+            pCnnt->setProfile(2);
+            break;
+        case -5:
+            pCnnt->setProfile(3);
+            break;
+
+        default:
+            break;
+        }
+    });
+
+    connect(pCnnt,&DialogDeviceConnect::onReadDone,this,[=]{
+        pKS->refresh();
+    });
 }
 
 FrameDeviceHolder::~FrameDeviceHolder()

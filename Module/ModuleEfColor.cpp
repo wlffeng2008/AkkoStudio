@@ -15,20 +15,20 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
     ui->tabWidget->setAttribute(Qt::WA_TranslucentBackground);
     ui->tabWidget->setStyleSheet("QWidget{background-color: rgba(0, 0, 0, 0.0);}") ;
     connect(ui->tabWidget,&QTabWidget::currentChanged,this,[=](int index){
-        ui->labelBKImage->setHidden(index != 0) ;
+        ui->labelBKImage->setHidden(index != 0);
     });
-    ui->tabWidget->setCurrentIndex(0) ;
+    ui->tabWidget->setCurrentIndex(0);
     {
-        m_pModel = new QStandardItemModel(this) ;
-        m_pModel->setHorizontalHeaderLabels(QString("0,0,0,0,0,0,0").split(',')) ;
-        ui->tableView->setModel(m_pModel) ;
-        ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch) ;
-        ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch) ;
-        ui->tableView->setShowGrid(false) ;
+        m_pModel = new QStandardItemModel(this);
+        m_pModel->setHorizontalHeaderLabels(QString("0,0,0,0,0,0,0").split(','));
+        ui->tableView->setModel(m_pModel);
+        ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->tableView->setShowGrid(false);
 
-        ColorDelegate *pDele = new ColorDelegate(this) ;
+        ColorDelegate *pDele = new ColorDelegate(this);
         pDele->setTableView(ui->tableView);
-        pDele->setImage(":/images/Color-picked.png") ;
+        pDele->setImage(":/images/Color-picked.png");
         ui->tableView->setItemDelegateForRow(0,pDele);
         ui->tableView->setStyleSheet(R"(
             QTableView{ border: none; background-color: transparent; font: 400 9px "宋体"; }
@@ -43,7 +43,7 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
             new QStandardItem("1"),
             new QStandardItem("1")
         }) ;
-        QFont font = ui->tableView->font() ;
+        QFont font = ui->tableView->font();
         font.setPointSize(24);
         srand(time(nullptr)) ;
 
@@ -58,21 +58,21 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
         for(int i=0; i<7; i++)
         {
             QStandardItem *item = m_pModel->item(0,i);
-            item->setTextAlignment(Qt::AlignBottom|Qt::AlignHCenter) ;
-            item->setText("●") ;
-            item->setFont(font) ;
-            item->setEditable(false) ;
-            item->setForeground(QBrush(col_list[i])) ;
+            item->setTextAlignment(Qt::AlignBottom|Qt::AlignHCenter);
+            item->setText("●");
+            item->setFont(font);
+            item->setEditable(false);
+            item->setForeground(QBrush(col_list[i]));
         }
         connect(pDele,&ColorDelegate::onClicked,this,[=](int index){
-            static quint64 s_pos = 700000000 ;
+            static quint64 s_pos = 700000000;
             s_pos += (index - 3);
             for(int i=0; i<7; i++)
             {
                 QStandardItem *item = m_pModel->item(0,i);
-                item->setForeground(QBrush(col_list[(i+s_pos)%7])) ;
+                item->setForeground(QBrush(col_list[(i+s_pos)%7]));
             }
-            ui->tableView->update() ;
+            ui->tableView->update();
 
             QColor selColor = m_pModel->item(0,3)->data(Qt::ForegroundRole).value<QBrush>().color();
             for(int i=0; i<7; i++)
@@ -88,14 +88,14 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
     }
 
     ui->labelAddColor->installEventFilter(this);
-    ui->labelAddColor->hide() ;
+    ui->labelAddColor->hide();
 
     ColorSquare *pCSq = new ColorSquare(this);
     ColorSlider *pCSl = new ColorSlider(this);
-    pCSl->setRange(0,359) ;
+    pCSl->setRange(0,359);
 
     pCSq->setFixedSize(266,200);
-    pCSl->setFixedWidth(266) ;
+    pCSl->setFixedWidth(266);
     ui->verticalLayout1->addWidget(pCSq,0,Qt::AlignCenter);
     ui->verticalLayout2->addWidget(pCSl,0,Qt::AlignCenter);
 
@@ -111,6 +111,9 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
 
         emit onSetColor(color,8);
     });
+
+    ui->checkBoxSingle->setHidden(true);
+    ui->labelTitleL1->setHidden(true);
 }
 
 ModuleEfColor::~ModuleEfColor()
@@ -129,7 +132,7 @@ bool ModuleEfColor::eventFilter(QObject*watched ,QEvent *event)
         // }
 
         QColorDialog dialog(nullptr);
-        dialog.setStyleSheet("QPushButton{border:1px solid gray;font: none;background: transparent; color:black; border-radius:0px;}");
+        dialog.setStyleSheet("QPushButton{ border: 1px solid gray; font: none;background: transparent; color: black; border-radius: 0px;}");
         dialog.setWindowTitle("恢复默认样式的颜色对话框");
         dialog.setCurrentColor(Qt::blue);
         if (dialog.exec() == QColorDialog::Accepted) {

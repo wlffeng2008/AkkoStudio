@@ -2,8 +2,8 @@
 #include "ui_FrameKeySetting.h"
 
 #include <QTimer>
+#include <QWheelEvent>
 #include <QButtonGroup>
-#include <QTimer>
 
 #include "ModuleDKSAdjust.h"
 #include "ModuleDKSItem.h"
@@ -176,6 +176,9 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         ui->labelRelease2->installEventFilter(this);
         ui->labelRelease3->installEventFilter(this);
         ui->labelRelease4->installEventFilter(this);
+        ui->lineEditV1->installEventFilter(this);
+        ui->lineEditV2->installEventFilter(this);
+        ui->lineEditV3->installEventFilter(this);
     }
 
     m_adjust = new ModuleDKSAdjust(this);
@@ -189,16 +192,16 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         ui->labelPress1->setText(QString::asprintf("%.2f mm",m_DKSLen));
         ui->labelRelease2->setText(QString::asprintf("%.2f mm",m_DKSLen));
 
-        //ui->labelPress2->setText(QString::asprintf("%.2f mm",3.9 - text.toFloat())) ;
-        //ui->labelRelease1->setText(QString::asprintf("%.2f mm",3.9 - text.toFloat())) ;
+        //ui->labelPress2->setText(QString::asprintf("%.2f mm",3.9 - text.toFloat()));
+        //ui->labelRelease1->setText(QString::asprintf("%.2f mm",3.9 - text.toFloat()));
     });
 
     connect(ui->pushButton_Snap1,&QPushButton::clicked,this,[=]{
 
         // static ModuleGeneralMasker *mask = new ModuleGeneralMasker(nullptr,ui->frameTab2) ;
         // mask->setStyleSheet("QDialog { background-color: rgba(255, 255, 255, 0.8); border: none; border-radius: 32px; }");
-        // mask->show() ;
-        // m_pMask = mask ;
+        // mask->show();
+        // m_pMask = mask;
 
     });
 
@@ -482,6 +485,24 @@ bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
         }
     }
 
+    if (event->type() == QEvent::Wheel)
+    {
+        if( watched == ui->lineEditV1 ||
+            watched == ui->lineEditV2 ||
+            watched == ui->lineEditV3 )
+        {
+            QWheelEvent *pQW = static_cast<QWheelEvent *>(event);
+            QPoint angleDelta = pQW->angleDelta();
+            QLineEdit *pLE = static_cast<QLineEdit *>(watched);
+            int value = pLE->text().toInt();
+            if(angleDelta.y()>0)
+                value ++ ;
+            else
+                value -- ;
+            pLE->setText(QString("%1").arg(value));
+        }
+    }
+
     return QFrame::eventFilter(watched,event);
 }
 
@@ -501,6 +522,9 @@ void FrameKeySetting::refresh()
     DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
     ModuleMacroManager *pMM = ModuleMacroManager::instance();
     QByteArray data = pCnn->getMatix(0);
+    if(data.size() < 20)
+        return;
+
     for(int i=0; i<128; i++)
     {
         quint8 hid = ::getHid(i);
@@ -518,7 +542,7 @@ void FrameKeySetting::refresh()
 
             if(type == 2)
             {
-                strT2 = QString(tr("动态键程(DKS)")) + QString(":\n");
+                strT2 = QString(tr("动态键程")) + QString("(DKS):\n");
                 strT2 += res[0] + QString(":\n");
                 strT2 += res[1] + QString(":\n");
                 strT2 += res[2] + QString(":\n");
@@ -527,14 +551,14 @@ void FrameKeySetting::refresh()
 
             if(type == 3)
             {
-                strT2 = QString(tr("按住单击(MT)")) + QString(":\n");
+                strT2 = QString(tr("按住单击")) + QString("(MT):\n");
                 strT2 += res[0] + QString(":\n");
                 strT2 += res[1];
             }
 
             if(type == 4 || type == 5)
             {
-                strT2 = QString(tr("切换开关(TGL)")) + QString(":\n");
+                strT2 = QString(tr("切换开关")) + QString("(TGL):\n");
                 strT2 += res[0];
             }
 
@@ -560,12 +584,12 @@ void FrameKeySetting::refresh()
         }
         else
         {
-            ui->frameKeyboard->setKeyTip(hid,"","");
+            ui->frameKeyboard->setKeyTip(hid, "", "");
         }
     }
     m_bUpdating=true;
 
-    QTimer::singleShot(500,this,[=]{ m_bUpdating=false; });
+    QTimer::singleShot(500,this,[=]{ m_bUpdating = false; });
     ui->frameSV1->setIndex(pCnn->getReport());
     ui->frameSV2->setIndex(pCnn->getSleepTime()->time24/60);
     ui->frameSV3->setIndex(pCnn->getSleepTime()->timeBt/60);

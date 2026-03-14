@@ -32,14 +32,14 @@ FrameLight::FrameLight(QWidget *parent)
     });
 
     connect(pConnector,&DialogDeviceConnect::onReadBack,[=](const QByteArray&data){
-        quint8 *pPack = (quint8 *)data.data() ;
+        quint8 *pPack = (quint8 *)data.data();
         quint8 cmd = pPack[0] ;
         if(cmd == CMD_GET_LEDPARAM)
         {
             if(ui->frameLEDMode)
                 ui->frameLEDMode->setEfMode(pPack[1]);
             if(ui->frameLEDSpeed)
-                ui->frameLEDSpeed->setSpeed(pPack[2]);
+                ui->frameLEDSpeed->setSpeed(4 - pPack[2]);
             if(ui->frameLEDSpeed)
                 ui->frameLEDBright->setBright(pPack[3]);
         }

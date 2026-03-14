@@ -110,7 +110,7 @@
   <widget class="QLabel" name="labelSwitch4">
    <property name="geometry">
     <rect>
-     <x>372</x>
+     <x>378</x>
      <y>10</y>
      <width>21</width>
      <height>21</height>

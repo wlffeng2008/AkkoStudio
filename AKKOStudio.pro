@@ -124,7 +124,8 @@ HEADERS += \
     Module/NewTabWidget.h \
     Module/SuperLabel.h \
     Module/ToggleButton.h \
-    ModuleAddMacroSquare.h
+    ModuleAddMacroSquare.h \
+    miniaudio.h
 
 FORMS += \
     DialogDeviceConnect.ui \

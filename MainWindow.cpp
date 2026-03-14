@@ -73,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent)
     setAttribute(Qt::WA_TranslucentBackground);
     setWindowTitle("Akko Cloud Dirver Hub");
 
-    setStyleSheet("QMainWindow{ : rgba(255, 255, 255, 1); border: 1px solid skyblue; border-radius: 20px; }");
+    setStyleSheet("QMainWindow{ background-color: rgba(255, 255, 255, 1); border: 1px solid skyblue; border-radius: 20px; }");
 
     {
         QString strPath = QApplication::applicationDirPath() + "/images";
@@ -186,7 +186,7 @@ MainWindow::MainWindow(QWidget *parent)
         ModuleGeneralMasker gMask(pSetInfo,ui->stackedWidget);
         pSetInfo->show();
         pSetInfo->update();
-        gMask.setStyleSheet("QDialog { : rgba(200, 200, 200, 0.6); border: none; border-radius: 20px; }");
+        gMask.setStyleSheet("QDialog { background-color: rgba(200, 200, 200, 0.6); border: none; border-radius: 20px; }");
         gMask.exec();
         pSetInfo->deleteLater();
     });
@@ -195,6 +195,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->labelPrev->setHidden(true);
     ui->labelNext->setHidden(true);
+    ui->pushButtonSet->setHidden(true);
+
 
     ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -225,8 +227,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_pFloatLeft->setAttribute(Qt::WA_TranslucentBackground);
     m_pFloatRight->setAttribute(Qt::WA_TranslucentBackground);
     m_pFloatReturn->setAttribute(Qt::WA_TranslucentBackground);
-    m_pFloatLeft->setStyleSheet( ": rgba(0, 255, 0, 0.8); border: 1px solid skyblue; border-radius: 30px; ");
-    m_pFloatRight->setStyleSheet(": rgba(0, 0, 255, 0.8); border: 1px solid skyblue; border-radius: 30px; ");
+    m_pFloatLeft->setStyleSheet( "background-color: rgba(0, 255, 0, 0.8); border: 1px solid skyblue; border-radius: 30px; ");
+    m_pFloatRight->setStyleSheet("background-color: rgba(0, 0, 255, 0.8); border: 1px solid skyblue; border-radius: 30px; ");
     m_pFloatLeft->setCursor(Qt::PointingHandCursor);
     m_pFloatRight->setCursor(Qt::PointingHandCursor);
     m_pFloatReturn->setCursor(Qt::PointingHandCursor);
@@ -426,7 +428,7 @@ void MainWindow::addDevice(quint32 id, const QString &path, int connectType, int
         device->m_sa = ui->scrollArea;
         device->m_device = dev;
         device->m_connect = connectType;
-        device->setName(dev->name);
+        device->setName(dev->name,dev->type);
         device->setPath(path);
         device->setCreator(creator);
         device->show();
@@ -456,13 +458,13 @@ void MainWindow::addDevice(quint32 id, const QString &path, int connectType, int
                     settings.setValue("iotManagerInitialized",true);
                     settings.setValue("DevicePath",path);
                     ::SetWindowPos(s_hWndEmb1, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_HIDEWINDOW);
-                    ui->frameEmb->setStyleSheet("#frameEmb{: rgb(240, 240, 240); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
+                    ui->frameEmb->setStyleSheet("#frameEmb{background-color: rgb(240, 240, 240); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
                 }
                 else
                 {
                     settings.setValue("AkkoDeviceIndex",dev->id);
                     ::SetWindowPos(s_hWndEmb0, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_HIDEWINDOW);
-                    ui->frameEmb->setStyleSheet("#frameEmb{: rgb(30, 30, 30); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
+                    ui->frameEmb->setStyleSheet("#frameEmb{background-color: rgb(30, 30, 30); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
                 }
                 update();
 
@@ -692,6 +694,9 @@ void MainWindow::enumDevice()
                 case 0x0008:
                     devId = 11;
                     break;
+                case 0x22b4:
+                    devId = 12;
+                    break;
                 }
                 if(PID == 0xf) connectType=1;
 
@@ -859,13 +864,12 @@ void MainWindow::paintEvent(QPaintEvent *event)
         p.fillRect(this->rect(), Qt::white);
         p.setRenderHint(QPainter::SmoothPixmapTransform, true);
         p.drawImage(QRect(30,25,136,40), QImage(":/images/AkkoFlag.png"));
+    }
 
     p.setPen(Qt::blue);
     p.drawRoundedRect(this->rect(), borderRadius, borderRadius);
 
     QMainWindow::paintEvent(event);
-    p.fillRect(this->rect(), Qt::white);
-    p.setRenderHint(QPainter::SmoothPixmapTransform, true);
 }
 
 void MainWindow::on_pushButtonExit_clicked()

@@ -8,10 +8,14 @@
 
 #include "ModuleGenKeymapping.h"
 
+#include <QThread>
 #include <QTimer>
 #include <QDebug>
 #include <QMessageBox>
 #include <QWindow>
+
+#define  MINIAUDIO_IMPLEMENTATION
+#include "miniaudio.h"
 
 typedef struct
 {
@@ -72,10 +76,29 @@ static QList<HidCmd> CmdTable =
     {"",0,8,0,0,0,0,0,0,0}
 };
 
-static DialogDeviceConnect *s_connect = nullptr ;
+static DialogDeviceConnect *s_connect = nullptr;
 DialogDeviceConnect *DialogDeviceConnect::instance()
 {
     return s_connect;
+}
+
+
+static float m_MusicBuf[1920];
+
+// 音频数据回调函数：每次获取到音频数据时触发
+static void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
+{
+    const float* pcmBuf = (const float*)pInput;
+    //ma_uint32 dataSize = frameCount * pDevice->playback.channels * sizeof(float);
+
+    for (int i = 0; i < 960; i++)
+    {
+        m_MusicBuf[i] = pcmBuf[i];
+    }
+
+    //TRACE(_T("--------%s %d,%d,%d,%d,%d,%d,%d,%d,%d\n"), CA2W((pDevice->playback.name)), dataSize, (int)(pcmDataO[2] * 6), (int)(pcmDataO[25] * 6), (int)(pcmDataO[49] * 6), (int)(pcmDataO[83] * 6),
+    //	(int)(pcmDataO[360] * 6), (int)(pcmDataO[400] * 6), (int)(pcmDataO[430] * 6), (int)(pcmDataO[470] * 6));
+    //if (pWDlg) pWDlg->DrawCurv(pcmDataO);
 }
 
 DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
@@ -86,6 +109,56 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     s_connect = this ;
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint );
+
+    {
+        static ma_device_config config = ma_device_config_init(ma_device_type_loopback);
+        config.playback.format = ma_format_f32;
+        config.playback.channels = 2;           // 声道数：立体声
+        config.sampleRate = 0;                  // Set to 0 to use the device's native sample rate.
+        config.dataCallback = data_callback;    // This function will be called when miniaudio needs more data.
+        config.pUserData = this;
+
+        static ma_device device;
+        if (ma_device_init(NULL, &config, &device) != MA_SUCCESS)
+        {
+            qCritical() << "ma_device_init ERROR --------";
+        }
+
+        device.pUserData = this;
+        ma_device_start(&device);     // The device is sleeping by default so you'll need to start it manually.
+
+        QTimer *pTMMusic = new QTimer(this);
+        connect(pTMMusic,&QTimer::timeout,this,[=]{
+
+            if(!m_bSendMusic) return;
+
+            QByteArray cmd(128,0);
+            cmd[1] = 0x0d;
+            cmd[8] = 0xf2;
+            for(int i=0; i<22; i++)
+            {
+                quint8 value = ((quint8)(fabs(m_MusicBuf[i*2+100]) * 6.0)) % 0xFF;
+                if(value>6) value = 6;
+                cmd[i+9] = value;
+            }
+
+            char buf[1024] = {0};
+            pTMMusic->stop();
+            hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
+            QThread::msleep(20);
+            hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
+            hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
+            QThread::msleep(20);
+            hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
+            hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
+            QThread::msleep(20);
+            hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
+            hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
+            pTMMusic->start(20);
+            hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
+        });
+        pTMMusic->start(20);
+    }
 
     connect(ui->checkBoxOntop,&QCheckBox::clicked,this,[=](bool checked){
         QWindow *pWin = windowHandle();
@@ -112,7 +185,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         m_pTable = ui->tableView;
         m_pModel = new QStandardItemModel();
         m_pModel->setHorizontalHeaderLabels(QString("命令,数据长度,Byte0\n命令号(Hex),Byte1\nEffect,Byte2\nSpeed,Byte3\nBrightness,Byte4\nOption,Byte5\nR,Byte6\nG,Byte7\nB").split(',')) ;
-        m_pTable->setModel(m_pModel) ;
+        m_pTable->setModel(m_pModel);
 
         QHeaderView *pHDV = m_pTable->horizontalHeader();
         pHDV->setSectionResizeMode(QHeaderView::Stretch);
@@ -127,16 +200,16 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         {
             if(cmd.name.isEmpty())
                 continue;
-            QStandardItem *item0 = new QStandardItem(cmd.name) ;
-            QStandardItem *item1 = new QStandardItem(QString("%1").arg(cmd.nLen)) ;
-            QStandardItem *item2 = new QStandardItem(QString("%1").arg(cmd.cmd,2,16,QLatin1Char('0')).toUpper()) ;
-            QStandardItem *item3 = new QStandardItem(QString("%1").arg(cmd.byte1)) ;
-            QStandardItem *item4 = new QStandardItem(QString("%1").arg(cmd.byte2)) ;
-            QStandardItem *item5 = new QStandardItem(QString("%1").arg(cmd.byte3)) ;
-            QStandardItem *item6 = new QStandardItem(QString("%1").arg(cmd.byte4)) ;
-            QStandardItem *item7 = new QStandardItem(QString("%1").arg(cmd.byte5)) ;
-            QStandardItem *item8 = new QStandardItem(QString("%1").arg(cmd.byte6)) ;
-            QStandardItem *item9 = new QStandardItem(QString("%1").arg(cmd.byte7)) ;
+            QStandardItem *item0 = new QStandardItem(cmd.name);
+            QStandardItem *item1 = new QStandardItem(QString("%1").arg(cmd.nLen));
+            QStandardItem *item2 = new QStandardItem(QString("%1").arg(cmd.cmd,2,16,QLatin1Char('0')).toUpper());
+            QStandardItem *item3 = new QStandardItem(QString("%1").arg(cmd.byte1));
+            QStandardItem *item4 = new QStandardItem(QString("%1").arg(cmd.byte2));
+            QStandardItem *item5 = new QStandardItem(QString("%1").arg(cmd.byte3));
+            QStandardItem *item6 = new QStandardItem(QString("%1").arg(cmd.byte4));
+            QStandardItem *item7 = new QStandardItem(QString("%1").arg(cmd.byte5));
+            QStandardItem *item8 = new QStandardItem(QString("%1").arg(cmd.byte6));
+            QStandardItem *item9 = new QStandardItem(QString("%1").arg(cmd.byte7));
 
             QFont font = this->font();
             font.setBold(true);
@@ -287,8 +360,8 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 m_isSupportAxis = false;
                 m_isSupportTopDeadZone=false;
                 m_multiple = 10;
-                m_version = 0;
                 m_deviceId = 0;
+                m_version  = 0;
                 addReadCmd(CMD_GET_INFOR,true);
                 m_pCntSet->setValue("lastVID",ui->lineEditVID->text().trimmed());
                 m_pCntSet->setValue("lastPID",ui->lineEditPID->text().trimmed());
@@ -314,7 +387,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
         char buf[1024] = {0};
         int nlen = hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
-        if( nlen>0 )
+        if(nlen > 0)
         {
             QByteArray data(buf+1,nlen-1);
             quint8 cmd = (quint8)data[0];
@@ -329,7 +402,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             }
             //qDebug() << "get_:" << data.toHex(' ').toUpper();
             quint8 *pCmd=(quint8 *)m_lastCmd.data();
-            QString strInfo ;
+            QString strInfo;
             switch(pCmd[0])
             {
             case CMD_GET_INFOR:
@@ -337,7 +410,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 m_version = *(quint16*)(data.data()+7);
                 m_deviceId = *(quint32*)(data.data()+1);
                 strInfo = QString::asprintf("Ver:0x%03X Id:%d[%03X]",m_version,m_deviceId,m_deviceId);
-                qDebug() << strInfo ;
+                qDebug() << strInfo;
                 ui->labelVersion->setText(strInfo);
 
                 if(m_version >= 0x300)
@@ -361,11 +434,12 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 break;
 
             case CMD_GET_PROFILE:
-                setProfile(data[1]) ;
+                qDebug() << "CMD_GET_PROFILE:" << data.toHex(' ').toUpper();
+                setProfile(data[1]);
                 break;
 
             case CMD_GET_KEYMATRIX:
-                m_KeyMatrix[pCmd[4]].append(data);
+                m_KeyMatrix[m_layer].append(data);
                 break;
 
             case CMD_GET_SLEEPTIME:
@@ -384,8 +458,10 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             {
                 int row = getRow(CMD_SET_LEDPARAM);
                 setRowValue(row,3,data[1]);
-                setRowValue(row,4,data[2]);
+                setRowValue(row,4,4 - data[2]);
                 setRowValue(row,5,data[3]);
+
+                if(data[1] == 0x16) m_bSendMusic=true;
             }
             break;
 
@@ -393,10 +469,11 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             {
                 int row = getRow(CMD_SET_SLEDPARAM);
                 setRowValue(row,3,data[1]);
-                setRowValue(row,4,data[2]);
+                setRowValue(row,4,4 - data[2]);
                 setRowValue(row,5,data[3]);
             }
             break;
+
             case 0xE5:
                 if(m_bCalibration && pCmd[1] == 0xFE)
                 {
@@ -453,11 +530,16 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
         {
             int nlen = hid_read(m_pDev0,(quint8 *)buf,64);
 
-            if( nlen>0 )
+            if(nlen > 0)
             {
                 QByteArray data(buf,nlen);
-                //qDebug() << "read:" << data.toHex(' ').toUpper();
+                qDebug() << "read:" << data.toHex(' ').toUpper();
                 addLog(data);
+                if(data[0] == 0x05 || data[1] == 0x04)
+                {
+                    if(data[2] == 0x16) m_bSendMusic=true;
+                    addReadCmd(CMD_GET_LEDPARAM,true);
+                }
             }
         }
         m_pRdInput->start(20);
@@ -484,6 +566,8 @@ void DialogDeviceConnect::DoConnectDevice(quint16 PID)
 
 void DialogDeviceConnect::readAllData()
 {
+    m_bReadAll=true;
+    m_bSendMusic=false;
     m_cmdList.clear();
     m_multiple = 10;
     m_version = 0;
@@ -523,7 +607,7 @@ void DialogDeviceConnect::readAllData()
     {
         for(quint8 page=0; page<8; page++) // page
         {
-            quint8 tmp[8] = {0x8A,layer,0xFF,page,subLayer,0,0,0} ;
+            quint8 tmp[8] = {CMD_GET_KEYMATRIX,layer,0xFF,page,subLayer,0,0,0} ;
             QByteArray cmd((char *)tmp,8);
             addReadCmd(cmd);
         }
@@ -574,7 +658,11 @@ void DialogDeviceConnect::executeCmd()
 {
     if(m_cmdList.count() <= 0)
     {
-        emit onReadDone();
+        if(m_bReadAll)
+        {
+            m_bReadAll=false;
+            emit onReadDone();
+        }
         return;
     }
 
@@ -666,7 +754,6 @@ quint32 DialogDeviceConnect::get65Value(quint8 option,quint8 index)
     case 0xFE: buf=m_E5FE.data(); type=2; break;
     case 0xFC: buf=m_E5FC.data(); type=1; break;
     case 0xFB: buf=m_E5FB.data(); type=1; break;
-        break;
     }
 
     if(buf)
@@ -696,7 +783,7 @@ quint8 DialogDeviceConnect::getSnapkey(quint8 index)
 
 void DialogDeviceConnect::getKeydata(keyData *pDk,quint8 index,quint8 layer)
 {
-    quint8 *data = (quint8 *)m_KeyMatrix[layer].data();
+    quint8 *data = (quint8 *)m_KeyMatrix[m_layer].data();
     pDk->b0 = data[index*4 + 0];
     pDk->b1 = data[index*4 + 1];
     pDk->b2 = data[index*4 + 2];
@@ -753,7 +840,7 @@ void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, q
     QByteArray snd((char*)pack,12);
     addReadCmd(snd,true);
 
-    ((keyData*)m_KeyMatrix[subLayer].data())[index] = *(keyData*)pDk;
+    ((keyData*)m_KeyMatrix[m_layer].data())[index] = *(keyData*)pDk;
 }
 
 void DialogDeviceConnect::restKey(quint8 hid)
@@ -828,7 +915,7 @@ void DialogDeviceConnect::enableKey(quint8 hid, bool enable, quint8 subLayer)
 
 QByteArray DialogDeviceConnect::getMatix(int sub)
 {
-    return m_KeyMatrix[sub];
+    return m_KeyMatrix[m_layer];
 }
 
 void DialogDeviceConnect::addLog(const QByteArray&log, bool addRetrun)
@@ -963,11 +1050,16 @@ void DialogDeviceConnect::setLEDMode(int mode, quint8 opt)
     int row = getRow(CMD_SET_LEDPARAM);
     if(row == -1) return;
 
+    m_bSendMusic = (mode == 0x16);
     setRowValue(row, 3, mode);
     if(mode != 0x0D)
+    {
         setRowValue(row, 6, (opt<<4) | 0x07);
+    }
     else
+    {
         setRowValue(row, 6, (opt<<4) );
+    }
 
     makeCmd(row, true);
 }

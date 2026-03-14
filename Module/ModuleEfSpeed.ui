@@ -13,115 +13,130 @@
   <property name="windowTitle">
    <string>Frame</string>
   </property>
-  <widget class="QSlider" name="horiCyanSlider">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>65</y>
-     <width>242</width>
-     <height>32</height>
-    </rect>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>20</number>
    </property>
-   <property name="font">
-    <font>
-     <bold>true</bold>
-    </font>
+   <property name="topMargin">
+    <number>10</number>
    </property>
-   <property name="maximum">
-    <number>4</number>
+   <property name="rightMargin">
+    <number>20</number>
    </property>
-   <property name="singleStep">
-    <number>1</number>
-   </property>
-   <property name="pageStep">
-    <number>1</number>
-   </property>
-   <property name="value">
-    <number>1</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Orientation::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelTitle2">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>30</y>
-     <width>53</width>
-     <height>15</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string notr="true"/>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: #2DC3BE;</string>
-   </property>
-   <property name="text">
-    <string>25%</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelTitleL2">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>105</y>
-     <width>53</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string notr="true"/>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>100%</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelTitle1">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>101</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>灯光速度</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelTitleL1">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>105</y>
-     <width>53</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string notr="true"/>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>0%</string>
-   </property>
-  </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="labelTitle1">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>灯光速度</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelTitle2">
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #2DC3BE;</string>
+       </property>
+       <property name="text">
+        <string>25%</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QSlider" name="horiCyanSlider">
+     <property name="font">
+      <font>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="maximum">
+      <number>4</number>
+     </property>
+     <property name="singleStep">
+      <number>1</number>
+     </property>
+     <property name="pageStep">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="labelTitleL1">
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>0%</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelTitleL2">
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>100%</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

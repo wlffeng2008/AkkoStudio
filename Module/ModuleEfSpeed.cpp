@@ -9,8 +9,7 @@ ModuleEfSpeed::ModuleEfSpeed(QWidget *parent)
 
     connect(ui->horiCyanSlider,&QSlider::valueChanged,this,[=](int value){
         ui->labelTitle2->setText(QString::asprintf("%d%%",value*25));
-        if(!m_bOutSet)
-            emit onSpeedChanged(value);
+        if(!m_bOutSet) emit onSpeedChanged(value);
         m_bOutSet=false;
     });
 }
@@ -23,5 +22,5 @@ ModuleEfSpeed::~ModuleEfSpeed()
 void ModuleEfSpeed::setSpeed(quint8 speed)
 {
     m_bOutSet = true;
-    ui->horiCyanSlider->setValue(4-speed);
+    ui->horiCyanSlider->setValue(speed);
 }

@@ -9,9 +9,7 @@ ModuleEfLumi::ModuleEfLumi(QWidget *parent)
 
     connect(ui->horizontalSlider,&QSlider::valueChanged,this,[=](int value){
         ui->labelTitle2->setText(QString::asprintf("%d%%",value*25));
-
         if(!m_bOutSet) emit onBrightChanged(value);
-
         m_bOutSet = false;
     });
 }
@@ -23,6 +21,6 @@ ModuleEfLumi::~ModuleEfLumi()
 
 void ModuleEfLumi::setBright(quint8 bright)
 {
-    m_bOutSet=true;
+    m_bOutSet = true;
     ui->horizontalSlider->setValue(bright);
 }

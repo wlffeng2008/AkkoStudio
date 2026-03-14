@@ -47,18 +47,20 @@ void FrameDeviceShow::updateBattary()
     {
         return;
     }
+
     quint32 batt = 100;
+    int nlen = 0;
     if(m_creator == 0)
     {
         char buf[1024] = {0};
-        int nlen = 0;
 
         hid_device *pDev = hid_open_path(m_path.toStdString().c_str());
         hid_set_nonblocking(pDev,1);
 
         QByteArray tmp(120, 0);
 
-        while(1)
+        int ntry=0;
+        while(ntry++ < 8)
         {
             tmp[1] = 0xf7;
             tmp[2] = 0x00;
@@ -76,13 +78,10 @@ void FrameDeviceShow::updateBattary()
         // QThread::msleep(20);
         // nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
 
-        if( nlen>0 )
+        if(nlen > 0)
         {
             batt = buf[2];
-            QByteArray Log((char *)(buf+1),16);
-            qDebug() << "batt:" << Log.left(16).toHex(' ').toUpper() << (int)batt;
         }
-
         hid_close(pDev);
     }
     else
@@ -93,12 +92,10 @@ void FrameDeviceShow::updateBattary()
         hid_write(pDev,(quint8*)cmd.data(),cmd.size());
         QThread::msleep(5);
         quint8 buf[128] = {0};
-        int len = hid_read_timeout(pDev,buf,16,500);
-        if( len>0 )
+        nlen = hid_read_timeout(pDev,buf,16,500);
+        if(nlen > 0)
         {
             batt = buf[8];
-            QByteArray Log((char *)buf,len);
-            qDebug() << "batt:" << Log.left(16).toHex(' ').toUpper() << (int)batt;
         }
         hid_close(pDev);
     }
@@ -111,7 +108,19 @@ void FrameDeviceShow::updateBattary()
     if(batt>80) level=4;
 
     ui->labelPower->setPixmap(QPixmap(QString(":/images/dev/")+imgPowers[level]));
-    ui->labelPower->setToolTip(QString(tr("设备剩余电量"))+QString(": %1%%").arg(batt));
+    ui->labelPower->setToolTip(QString(tr("剩余电量"))+QString(": %1%").arg(batt));
+
+    QString qss = R"(
+        QToolTip {
+            background-color: #F0F8FF;
+            color: #333333;
+            font-size: 12px;
+            border-radius: 4px;
+            border: 1px solid #CCCCCC;
+            padding: 4px 4px;
+        }
+    )";
+    ui->labelPower->setStyleSheet(qss);
 }
 
 void FrameDeviceShow::setImage(const QString &image,int type)
@@ -191,6 +200,7 @@ void FrameDeviceShow::setSelect(bool select)
         setStyleSheet("#FrameDeviceShow{background-color:#E0E0E0; border-radius:32px; border: 1px solid #B0B0B0;}");
     else
         setStyleSheet("#FrameDeviceShow{background-color:#F4F4F4; border-radius:32px; border: 1px solid transparent;}");
+
     update();
 }
 

@@ -15,8 +15,9 @@
 #include <QTableView>
 #include <QStandardItemModel>
 
-#include "ModuleGenKeymapping.h"
 #include "hidapi.h"
+#include "miniaudio.h"
+#include "ModuleGenKeymapping.h"
 
 namespace Ui {
 class DialogDeviceConnect;
@@ -220,13 +221,16 @@ private:
     QByteArray m_Cali ;
     QByteArray m_Optn ;
     QByteArray m_Info ;
-    QByteArray m_KeyMatrix[8] ;
+    QByteArray m_KeyMatrix[8];
 
     bool m_isSupportAxis = false;
     bool m_isSupportTopDeadZone=false;
     quint16 m_multiple = 10;
-    quint16 m_version = 0 ;
     quint32 m_deviceId = 0 ;
+    quint16 m_version  = 0 ;
+
+    bool m_bReadAll=false;
+    bool m_bSendMusic=false;
 };
 
 #endif // DIALOGDEVICECONNECT_H

@@ -14,9 +14,9 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#frameT{background-color: #FBBBFB;border-radius:32px;}
+   <string notr="true">#frameT{background-color: #FBFBFB;border-radius:32px;}
 
-#frameLEDBright,#frameLEDSpeed,#frameLEDColor,#frameLEDMode{background-color: #F6B6F6;border-radius:32px;}</string>
+#frameLEDBright,#frameLEDSpeed,#frameLEDColor,#frameLEDMode{background-color: #F6F6F6;border-radius:32px;}</string>
   </property>
   <property name="lineWidth">
    <number>0</number>

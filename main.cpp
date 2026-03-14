@@ -194,9 +194,9 @@ int main(int argc, char *argv[])
                 font-size: 18px ;
                 font-weight: 600;
             }
-        QWidget#pageWakeup{ background-color: #F6F6F6;border-radius:32px;}
+        QWidget#pageWakeup{ background-color: #F6F6F6; border-radius: 32px; }
 
-        QSlider { border-radius: 12px; }
+        QSlider { border-radius: 12px; height: 24px; }
         QSlider::groove:horizontal { height: 12px; background: #DCDCDC; border-radius: 6px; }
         QSlider::sub-page:horizontal { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #FDDFBA, stop:1 #FFA73C);  border-radius: 6px; }
         QSlider::sub-page:horizontal:disabled { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 white, stop:1 #B3B3B3);  border-radius: 6px; }

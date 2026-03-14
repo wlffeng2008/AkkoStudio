@@ -20,7 +20,8 @@ ToggleButton::ToggleButton(QWidget *parent) : QCheckBox(parent)
                 border: none; }
         )");
     m_bchecked = this->isChecked() ;
-    setColor(s_colorChecked,s_colorUnchecked) ;
+    setColor(s_colorChecked,s_colorUnchecked);
+    setCursor(Qt::PointingHandCursor);
 }
 
 bool ToggleButton::getChecked()

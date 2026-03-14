@@ -15,6 +15,7 @@ public:
     explicit ModuleEfLumi(QWidget *parent = nullptr);
     ~ModuleEfLumi();
     void setBright(quint8 bright);
+
 signals:
     void onBrightChanged(int bright);
 

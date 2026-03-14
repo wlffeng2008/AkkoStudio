@@ -390,6 +390,7 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {  11, 0x38EE, 0x0008, 1, "3087RF"},
     {   4, 0x38EE, 0x000B, 1, "Pulse 01"},
     {   4, 0x38EE, 0x000C, 1, "Pulse 01"},
+    {  12, 0x38EE, 0x22b4, 1, "Pulse01 Pro"},
     {   5, 0x320F, 0x5151, 0, "3108RF"},  // 2.4G
     {   5, 0x320F, 0x5152, 0, "3108RF"},  // 有线
     {   6, 0x38EE, 0x000B, 1, "AG ONE"},
@@ -398,8 +399,8 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {  16, 0x38EE, 0x000F, 1, "Earthra"},
     {  17, 0x38EE, 0x0010, 1, "Earthra"},
     {  17, 0x38EE, 0x0011, 1, "Earthra"},
-    {   7, 0x38EE, 0x0010, 1, "灵动V9 Max"},
-    {   7, 0x38EE, 0x0011, 1, "灵动V9 Max"},
+    {   7, 0x38EE, 0x0010, 1, "灵动V9 Ultra"},
+    {   7, 0x38EE, 0x0011, 1, "灵动V9 Ultra"},
     {   8, 0x38EE, 0x0010, 1, "泰坦N9 Max"},
     {   8, 0x38EE, 0x0011, 1, "泰坦N9 Max"},
     {   9, 0x38EE, 0x000D, 1, "灵动V9 Ultra"},
@@ -409,7 +410,7 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {  15, 0x38EE, 0x0012, 1, "MX01"},
     {  15, 0x38EE, 0x0013, 1, "MX01"},
 
-    {   0, 0x38EE, 0x0000, 1, "0000"}
+    {   0, 0x38EE, 0x0000, 1, "Unkown"}
 
 };
 

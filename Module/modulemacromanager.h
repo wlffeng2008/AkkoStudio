@@ -28,6 +28,7 @@ public:
 
     MacroProject *addMacroProject();
     MacroProject *getMarcoProject(quint8 macroId);
+    QString getMarcoName(quint8 macroId);
     void delMacroProject(MacroProject *prj);
     void saveLoadHeader(bool save=true);
 

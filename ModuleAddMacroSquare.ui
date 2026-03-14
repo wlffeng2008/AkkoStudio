@@ -112,84 +112,6 @@ border-radius:32px;
     <string>请选择添加宏事件类型</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonOK">
-   <property name="geometry">
-    <rect>
-     <x>156</x>
-     <y>290</y>
-     <width>90</width>
-     <height>36</height>
-    </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>90</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::FocusPolicy::NoFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">        QPushButton {
-            background-color: #6329B6;
-            color: white;
-            width:102px;
-            height:32px;
-            padding: 2px 2px;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-        }
-        QPushButton:hover { background-color: #0E42F2; }
-        QPushButton:pressed { background-color: #0A34A1; }</string>
-   </property>
-   <property name="text">
-    <string>确定</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButtonCancel">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>290</y>
-     <width>90</width>
-     <height>36</height>
-    </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>90</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::FocusPolicy::NoFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">        QPushButton {
-            background-color: gray;
-            color: white;
-            width:102px;
-            height:32px;
-            padding: 2px 2px;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-        }
-        QPushButton:hover { background-color: #C2C2C2; }
-        QPushButton:pressed { background-color: #0A34A1; }</string>
-   </property>
-   <property name="text">
-    <string>取消</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label1">
    <property name="geometry">
     <rect>
@@ -327,11 +249,102 @@ border-radius:32px;
     </rect>
    </property>
   </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>31</x>
+     <y>290</y>
+     <width>237</width>
+     <height>53</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButtonCancel">
+      <property name="maximumSize">
+       <size>
+        <width>90</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">        QPushButton {
+            background-color: gray;
+            color: white;
+            width:102px;
+            height:32px;
+            padding: 2px 2px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        QPushButton:hover { background-color: #C2C2C2; }
+        QPushButton:pressed { background-color: #0A34A1; }</string>
+      </property>
+      <property name="text">
+       <string>取消</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButtonOK">
+      <property name="maximumSize">
+       <size>
+        <width>90</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">        QPushButton {
+            background-color: #6329B6;
+            color: white;
+            width:102px;
+            height:32px;
+            padding: 2px 2px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        QPushButton:hover { background-color: #0E42F2; }
+        QPushButton:pressed { background-color: #0A34A1; }</string>
+      </property>
+      <property name="text">
+       <string>确定</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupType"/>
   <buttongroup name="buttonGroupMKey"/>
+  <buttongroup name="buttonGroupType"/>
  </buttongroups>
 </ui>
