@@ -137,25 +137,21 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             cmd[8] = 0xf2;
             for(int i=0; i<22; i++)
             {
-                quint8 value = ((quint8)(fabs(m_MusicBuf[i*2+100]) * 6.0)) % 0xFF;
+                quint8 value = ((quint8)(fabs(m_MusicBuf[i]) * 6.0)) % 0xFF;
                 if(value>6) value = 6;
                 cmd[i+9] = value;
             }
+            hid_device *pDev = m_pDev2;
 
             char buf[1024] = {0};
             pTMMusic->stop();
-            hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
-            QThread::msleep(20);
-            hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
-            hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
-            QThread::msleep(20);
-            hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
-            hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
-            QThread::msleep(20);
-            hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
-            hid_send_feature_report(m_pDev1,(quint8 *)cmd.data(),65);
+            for(int i=0; i<10; i++)
+            {
+                hid_send_feature_report(pDev,(quint8 *)cmd.data(),65);
+                QThread::msleep(20);
+                hid_get_feature_report(pDev,(quint8 *)buf,65);
+            }
             pTMMusic->start(20);
-            hid_get_feature_report(m_pDev1,(quint8 *)buf,65);
         });
         pTMMusic->start(20);
     }
@@ -348,12 +344,13 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 if(pTemp->usage == 2)
                 {
                     m_pDev1 = hid_open_path(pTemp->path);
+                    m_pDev2 = hid_open_path(pTemp->path);
                     ui->labelFlag1->setPixmap(QString(":/images/General_OK4.png"));
                 }
             }
             pTemp = pTemp->next;
 
-            if(m_pDev0 && m_pDev1)
+            if(m_pDev0 && m_pDev1 && m_pDev2)
             {
                 emit onConnect();
 
@@ -407,7 +404,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             {
             case CMD_GET_INFOR:
                 m_Info = data;
-                m_version = *(quint16*)(data.data()+7);
+                m_version  = *(quint16*)(data.data()+7);
                 m_deviceId = *(quint32*)(data.data()+1);
                 strInfo = QString::asprintf("Ver:0x%03X Id:%d[%03X]",m_version,m_deviceId,m_deviceId);
                 qDebug() << strInfo;
@@ -434,12 +431,13 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 break;
 
             case CMD_GET_PROFILE:
-                qDebug() << "CMD_GET_PROFILE:" << data.toHex(' ').toUpper();
-                setProfile(data[1]);
+                //qDebug() << "CMD_GET_PROFILE:" << data.left(16).toHex(' ').toUpper();
+                //setProfile(data[1]);
+                emit onUpdataLayer(data[1]);
                 break;
 
             case CMD_GET_KEYMATRIX:
-                m_KeyMatrix[m_layer].append(data);
+                m_KeyMatrix[pCmd[4]].append(data);
                 break;
 
             case CMD_GET_SLEEPTIME:
@@ -455,6 +453,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 break;
 
             case CMD_GET_LEDPARAM:
+                break;
             {
                 int row = getRow(CMD_SET_LEDPARAM);
                 setRowValue(row,3,data[1]);
@@ -607,7 +606,7 @@ void DialogDeviceConnect::readAllData()
     {
         for(quint8 page=0; page<8; page++) // page
         {
-            quint8 tmp[8] = {CMD_GET_KEYMATRIX,layer,0xFF,page,subLayer,0,0,0} ;
+            quint8 tmp[8] = {CMD_GET_KEYMATRIX,layer,0xFF,page, subLayer,0,0,0};
             QByteArray cmd((char *)tmp,8);
             addReadCmd(cmd);
         }
@@ -696,7 +695,12 @@ void DialogDeviceConnect::executeCmd()
 void DialogDeviceConnect::setProfile(int layer)
 {
     m_layer = layer;
-    readAllData();
+    QByteArray cmd(12,0);
+    cmd[0]=CMD_SET_PROFILE;
+    cmd[1]=layer;
+    addReadCmd(cmd,true);
+
+    QTimer::singleShot(500,this,[=]{readAllData();});
 }
 
 void DialogDeviceConnect::set65Value(quint8 option,quint8 index,quint32 value)
@@ -721,7 +725,6 @@ void DialogDeviceConnect::set65Value(quint8 option,quint8 index,quint32 value)
     case 0xFE: buf=m_E5FE.data(); type=2; break;
     case 0xFC: buf=m_E5FC.data(); type=1; break;
     case 0xFB: buf=m_E5FB.data(); type=1; break;
-        break;
     }
 
     if(buf)
@@ -783,7 +786,7 @@ quint8 DialogDeviceConnect::getSnapkey(quint8 index)
 
 void DialogDeviceConnect::getKeydata(keyData *pDk,quint8 index,quint8 layer)
 {
-    quint8 *data = (quint8 *)m_KeyMatrix[m_layer].data();
+    quint8 *data = (quint8 *)m_KeyMatrix[layer].data();
     pDk->b0 = data[index*4 + 0];
     pDk->b1 = data[index*4 + 1];
     pDk->b2 = data[index*4 + 2];
@@ -840,7 +843,7 @@ void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, q
     QByteArray snd((char*)pack,12);
     addReadCmd(snd,true);
 
-    ((keyData*)m_KeyMatrix[m_layer].data())[index] = *(keyData*)pDk;
+    ((keyData*)m_KeyMatrix[subLayer].data())[index] = *(keyData*)pDk;
 }
 
 void DialogDeviceConnect::restKey(quint8 hid)
@@ -908,14 +911,14 @@ void DialogDeviceConnect::setReport(quint8 level)
 
 void DialogDeviceConnect::enableKey(quint8 hid, bool enable, quint8 subLayer)
 {
-    keyData set={0} ;
+    keyData set = {0};
     if(enable) set.b2 = hid;
     changeKey(hid, &set, subLayer);
 }
 
 QByteArray DialogDeviceConnect::getMatix(int sub)
 {
-    return m_KeyMatrix[m_layer];
+    return m_KeyMatrix[0];
 }
 
 void DialogDeviceConnect::addLog(const QByteArray&log, bool addRetrun)
@@ -985,16 +988,19 @@ void DialogDeviceConnect::makeCmd(int row, bool autoSend)
 void DialogDeviceConnect::reset()
 {
     makeCmd(getRow(CMD_SET_RESET),true);
-    m_KeyMatrix[m_layer] = ::getDefaultMatrix();
+    m_KeyMatrix[0] = ::getDefaultMatrix();
+    readAllData();
 }
 
 void DialogDeviceConnect::disconnect()
 {
     if(m_pDev0) hid_close(m_pDev0);
     if(m_pDev1) hid_close(m_pDev1);
+    if(m_pDev2) hid_close(m_pDev2);
 
     m_pDev0 = nullptr;
     m_pDev1 = nullptr;
+    m_pDev2 = nullptr;
 
     ui->labelFlag0->setPixmap(QString(":/images/General_NG4.png"));
     ui->labelFlag1->setPixmap(QString(":/images/General_NG4.png"));

@@ -5,6 +5,7 @@
 #include <QDialog>
 #include <QDebug>
 #include <QSettings>
+#include <QThread>
 
 #include <windows.h>
 #include <dbt.h>
@@ -160,6 +161,7 @@ signals:
     void onConnect();
     void onDisconnect();
     void onReadBack(const QByteArray&data);
+    void onUpdataLayer(int layer);
     void onReadDone();
     void onCalibration(const QByteArray&data);
 
@@ -178,14 +180,15 @@ private:
 
     hid_device *m_pDev0 = nullptr;
     hid_device *m_pDev1 = nullptr;
+    hid_device *m_pDev2 = nullptr;
 
-    QTimer *pTMClear  = nullptr;
+    QTimer *pTMClear = nullptr;
     QTimer *m_pRdInput = nullptr;
     QTimer *m_pExecute = nullptr;
 
     bool m_bClear = true;
-    QTimer *m_TMCali = nullptr;
     bool m_bCalibration = false;
+    QTimer *m_TMCali = nullptr;
 
     QStandardItemModel *m_pModel = nullptr;
     QTableView *m_pTable = nullptr;
@@ -201,36 +204,36 @@ private:
     void setRowValue(int row, int col,int value);
 
     void addLog(const QByteArray&log,bool addRetrun=true);
-    QByteArray m_lastCmd ;
+    QByteArray m_lastCmd;
 
-    QByteArray m_E500 ; /** 读4次 触发行程 = 0,*/
-    QByteArray m_E501 ; /** 读4次 抬起行程 = 1,*/
-    QByteArray m_E502 ; /** 读4次 RT触发行程 = 2,*/
-    QByteArray m_E503 ; /** 读4次 RT抬起行程 = 3,*/
-    QByteArray m_E504 ; /** 读4次 动态键程的起始行程 = 4,*/
-    QByteArray m_E505 ; /** 读2次 MT的长按时间 = 5,*/
-    QByteArray m_E506 ; /** 读4次 死区 = 6,*/
-    QByteArray m_E507 ; /** 读2次 按键模式 = 7*/
-    QByteArray m_E508 ; /** 读2次 动态键程可选标志 = 8,*/
-    QByteArray m_E509 ; /** 读2次 Snap对号 = 9,*/
-    QByteArray m_E50A ; /** 读8次 所有按键动态键程可选标志 = 10,*/
-    QByteArray m_E5FF ; /** 读4次 按键按压动态数值 = 0xFF,*/
-    QByteArray m_E5FE ; /** 读4次 按键按压行程数值 = 0xFE,*/
-    QByteArray m_E5FC ; /** 读2次 轴体类型 = 0xFC,*/
-    QByteArray m_E5FB ; /** 读2次 顶部死区 = 0xFB,*/
-    QByteArray m_Cali ;
-    QByteArray m_Optn ;
-    QByteArray m_Info ;
+    QByteArray m_E500; /** 读4次 触发行程 = 0,*/
+    QByteArray m_E501; /** 读4次 抬起行程 = 1,*/
+    QByteArray m_E502; /** 读4次 RT触发行程 = 2,*/
+    QByteArray m_E503; /** 读4次 RT抬起行程 = 3,*/
+    QByteArray m_E504; /** 读4次 动态键程的起始行程 = 4,*/
+    QByteArray m_E505; /** 读2次 MT的长按时间 = 5,*/
+    QByteArray m_E506; /** 读4次 死区 = 6,*/
+    QByteArray m_E507; /** 读2次 按键模式 = 7*/
+    QByteArray m_E508; /** 读2次 动态键程可选标志 = 8,*/
+    QByteArray m_E509; /** 读2次 Snap对号 = 9,*/
+    QByteArray m_E50A; /** 读8次 所有按键动态键程可选标志 = 10,*/
+    QByteArray m_E5FF; /** 读4次 按键按压动态数值 = 0xFF,*/
+    QByteArray m_E5FE; /** 读4次 按键按压行程数值 = 0xFE,*/
+    QByteArray m_E5FC; /** 读2次 轴体类型 = 0xFC,*/
+    QByteArray m_E5FB; /** 读2次 顶部死区 = 0xFB,*/
+    QByteArray m_Cali;
+    QByteArray m_Optn;
+    QByteArray m_Info;
     QByteArray m_KeyMatrix[8];
 
     bool m_isSupportAxis = false;
     bool m_isSupportTopDeadZone=false;
     quint16 m_multiple = 10;
-    quint32 m_deviceId = 0 ;
-    quint16 m_version  = 0 ;
+    quint32 m_deviceId = 0;
+    quint16 m_version  = 0;
 
-    bool m_bReadAll=false;
-    bool m_bSendMusic=false;
+    bool m_bReadAll = false;
+    bool m_bSendMusic = false;
 };
 
 #endif // DIALOGDEVICECONNECT_H

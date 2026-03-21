@@ -19,21 +19,22 @@ class FrameDeviceHolder : public QFrame
 public:
     explicit FrameDeviceHolder(QWidget *parent = nullptr);
     ~FrameDeviceHolder();
-    void setDeviceImage(const QString&strImage);
-    void setDeviceName(const QString&strName);
+    void setDevice(void *device,const QString&strImage,const QString&strName);
+
+    void updateBattery(void *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss);
+    void updateLayer(int layer);
 
 protected:
     bool eventFilter(QObject *watch, QEvent *event) override;
     void paintEvent(QPaintEvent *event) override ;
     void changeEvent(QEvent *pEvt) final;
 
-
 signals:
     void onReturn();
 
 private:
     Ui::FrameDeviceHolder *ui;
-
+    void *m_device = nullptr;
     QList<SuperLabel *>m_pLBtns ;
     QList<QFrame *>m_pFrames ;
     void clickLabel(QLabel *label,int index=0);

@@ -92,7 +92,6 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     m_pLangMenu = new ModuleLangMenu(this);
-    QTimer::singleShot(200,this,[=]{m_pLangMenu->setLanguage(settings.value("lastlang").toInt());});
     connect(m_pLangMenu, &ModuleLangMenu::onLangChanged, this, [=](int langId, const QString &lang) {
         m_langName = QString(" ") + lang ;
         settings.setValue("lastlang",langId);
@@ -197,7 +196,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->labelNext->setHidden(true);
     ui->pushButtonSet->setHidden(true);
 
-
     ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
@@ -268,7 +266,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     settings.setValue("AkkoReturn", 0);
     settings.setValue("AkkoWnd", 0);
-    //settings.setValue("DevicePath","Hello-path-1234567890");
+    static  QString strLastPath = settings.value("DevicePath").toString();
+    //settings.setValue("DevicePath","");
     settings.setValue("iotManagerInitialized",false);
 
     QTimer *pTMRet = new QTimer(this);
@@ -288,6 +287,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     QProcess::startDetached("Akko.exe", QStringList{"/super"});
     QProcess::startDetached("RyExe/Akko Cloud Driver v4.exe", QStringList{});
+    QTimer::singleShot(2000,this,[=]{
+        //qDebug() << strLastPath;
+        settings.setValue("DevicePath","");
+    });
+
+    QTimer::singleShot(4000,this,[=]{
+        //qDebug() << strLastPath;
+        settings.setValue("DevicePath",strLastPath);
+    });
 
     QTimer *pTMFindWnd = new QTimer(this);
     pTMFindWnd->start(300);
@@ -303,7 +311,6 @@ MainWindow::MainWindow(QWidget *parent)
                 settings.setValue("AkkoWnd", 0);
                 LONG style = ::GetWindowLongPtr(hWnd, GWL_STYLE);
                 style &= ~WS_CAPTION;
-                //style &= ~WS_VISIBLE;
                 style &= ~WS_POPUP;
                 style &= ~WS_BORDER;
                 style &= ~WS_THICKFRAME;
@@ -315,7 +322,7 @@ MainWindow::MainWindow(QWidget *parent)
                 exStyle &= ~WS_EX_DLGMODALFRAME;
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, exStyle);
 
-                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
             }
         }
 
@@ -329,7 +336,6 @@ MainWindow::MainWindow(QWidget *parent)
             {
                 LONG style = ::GetWindowLongPtr(hWnd, GWL_STYLE);
                 style &= ~WS_CAPTION;
-                //style &= ~WS_VISIBLE;
                 style &= ~WS_POPUP;
                 style &= ~WS_BORDER;
                 style &= ~WS_THICKFRAME;
@@ -341,7 +347,7 @@ MainWindow::MainWindow(QWidget *parent)
                 exStyle &= ~WS_EX_DLGMODALFRAME;
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, exStyle);
 
-                ::SetWindowPos(hWnd, HWND_TOP, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                //::SetWindowPos(hWnd, HWND_TOP, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
             }
         }
 
@@ -349,13 +355,13 @@ MainWindow::MainWindow(QWidget *parent)
         if(s_hWndEmb0)
         {
             ::SetParent(s_hWndEmb0,hParentWnd);
-            ::SetWindowPos(s_hWndEmb0, HWND_TOP, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+            //::SetWindowPos(s_hWndEmb0, HWND_TOP, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
         }
 
         if(s_hWndEmb1)
         {
             ::SetParent(s_hWndEmb1,hParentWnd);
-            ::SetWindowPos(s_hWndEmb1, HWND_TOP, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+            //::SetWindowPos(s_hWndEmb1, HWND_TOP, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
         }
 
         static int nCount = 0;
@@ -412,6 +418,21 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer::singleShot(50,this,[=]{ enumDevice(); });
     connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] { enumDevice(); });
 
+    QTimer::singleShot(10,this,[=]{m_pLangMenu->setLanguage(settings.value("lastlang").toInt());});
+    QTimer::singleShot(5000,this,[=]{m_bWaiting=false;});
+    DialogDeviceConnect *pCnn =DialogDeviceConnect::instance();
+    connect(pCnn,&DialogDeviceConnect::onUpdataLayer,this,[=](int layer){
+        ui->frameHold->updateLayer(layer);
+    });
+
+    m_pShowRy = new QTimer(this);
+    connect(m_pShowRy,&QTimer::timeout,this,[=]{
+        if(m_pFloatReturn->isVisible())
+        {
+            HWND hWnd = m_creator == 0 ? s_hWndEmb0 : s_hWndEmb1;
+            ::SetWindowPos(hWnd, HWND_TOP, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20,  SWP_SHOWWINDOW | SWP_FRAMECHANGED);
+        }
+    });
     //resize(2560,1800);
 }
 
@@ -420,7 +441,6 @@ void MainWindow::addDevice(quint32 id, const QString &path, int connectType, int
     AkkoDeviceInfo *dev = getDevice(id);
     if (dev)
     {
-        // FrameDeviceShow *device = new FrameDeviceShow(this);
         FrameDeviceShow *device = FrameDeviceShow::getFrameShow(m_layout->count(),this);
         if (dev->type == 0)device->setFixedWidth(970);
         if (dev->type == 1)device->setFixedWidth(280);
@@ -438,18 +458,26 @@ void MainWindow::addDevice(quint32 id, const QString &path, int connectType, int
         if(!device->m_bConacted)
         {
             device->m_bConacted = true;
-            connect(device,&FrameDeviceShow::onClicked,this,[=](void *device,const QString&path,const QString&image,int creator){
+            connect(device,&FrameDeviceShow::onReport,this,[=](void *dev,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss){
+                ui->frameHold->updateBattery(dev,battImg,typeImg,tip,qss);
+            });
+
+            connect(device,&FrameDeviceShow::onClicked,this,[=](void *dev,const QString&path,const QString&image,int creator){
+                if(m_bWaiting)
+                {
+                    qDebug() << "Waiting for ......" ;
+                    return;
+                }
 
                 m_creator = creator;
                 m_pLangMenu->hide();
-                AkkoDeviceInfo *dev = static_cast<AkkoDeviceInfo *>(device);
-                QList<quint16>IdList={2807,3131};
-                if(IdList.contains(dev->id))
+                AkkoDeviceInfo *pInfo = static_cast<AkkoDeviceInfo *>(dev);
+                QList<quint16>IdList={2807,3131};//,2743
+                if(IdList.contains(pInfo->id))
                 {
-                    DialogDeviceConnect::instance()->DoConnectDevice(dev->PID);
+                    DialogDeviceConnect::instance()->DoConnectDevice(pInfo->PID);
                     ui->stackedWidget->setCurrentIndex(2);
-                    ui->frameHold->setDeviceImage(image);
-                    ui->frameHold->setDeviceName(dev->name);
+                    ui->frameHold->setDevice(pInfo,image,pInfo->name);
                     return;
                 }
 
@@ -462,7 +490,7 @@ void MainWindow::addDevice(quint32 id, const QString &path, int connectType, int
                 }
                 else
                 {
-                    settings.setValue("AkkoDeviceIndex",dev->id);
+                    settings.setValue("AkkoDeviceIndex",pInfo->id);
                     ::SetWindowPos(s_hWndEmb0, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_HIDEWINDOW);
                     ui->frameEmb->setStyleSheet("#frameEmb{background-color: rgb(30, 30, 30); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
                 }
@@ -528,7 +556,7 @@ void MainWindow::enumDevice()
                 cmd[8] = 0xFF - cmd[1];
 
                 hid_send_feature_report(pDev, (quint8 *)cmd.data(), 65);
-                QThread::msleep(10);
+                QThread::msleep(20);
 
                 char buf[128] = {0};
                 int nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
@@ -568,7 +596,7 @@ void MainWindow::enumDevice()
                             tmp[8] = 0xFF - tmp[1] - tmp[2];
                             hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
                             QThread::msleep(20);
-                            //nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+                            nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
 
                             while(1)
                             {
@@ -578,7 +606,6 @@ void MainWindow::enumDevice()
                                 hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
                                 QThread::msleep(15);
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-                                //QLog(buf);
                                 if(buf[0] == 0)
                                     break;
                             }
@@ -589,7 +616,6 @@ void MainWindow::enumDevice()
                             hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
                             QThread::msleep(15);
                             nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-                            //QLog(buf);
 
                             connectType=1;
                         }
@@ -743,6 +769,9 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
 
         if (m_pFloatReturn == obj)
         {
+            static int nFlag = 0;
+            if(nFlag++ < 3)
+            settings.setValue("DevicePath","");
             ui->stackedWidget->setCurrentIndex(0);
             m_pFloatReturn->hide();
         }
@@ -872,19 +901,46 @@ void MainWindow::paintEvent(QPaintEvent *event)
     QMainWindow::paintEvent(event);
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    event->ignore();
+    auto res = QMessageBox::question(this,tr("提示"),tr("确定要退出 AKKO 驱动程序？"));
+    if(res != QMessageBox::Yes)
+    {
+        return;
+    }
+    m_pFloatReturn->hide();
+
+    ::PostMessage(s_hWndEmb0,WM_CLOSE,0,0);
+    ::PostMessage(s_hWndEmb1,WM_CLOSE,0,0);
+
+    qApp->exit();
+}
+
 void MainWindow::on_pushButtonExit_clicked()
 {
-    auto res = QMessageBox::question(this,tr("提示"),tr("确定要退出 AKKO 驱动程序？"));
-    if(res == QMessageBox::Yes)
-    {
-        m_pFloatReturn->hide();
-        qApp->exit();
-    }
+    this->close();
 }
 
 void MainWindow::on_pushButtonMin_clicked()
 {
     this->showMinimized();
+}
+
+void MainWindow::keyReleaseEvent(QKeyEvent *event)
+{
+    m_pLangMenu->hide();
+    QScrollBar *sb = ui->scrollArea->horizontalScrollBar();
+
+    if(event->key() == Qt::Key_Left || event->key() == Qt::Key_Up)
+    {
+        sb->setValue(sb->value() - sb->width());
+    }
+    if(event->key() == Qt::Key_Right || event->key() == Qt::Key_Down)
+    {
+        sb->setValue(sb->value() + sb->width());
+    }
+    QMainWindow::keyReleaseEvent(event);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

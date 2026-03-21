@@ -410,7 +410,7 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {  15, 0x38EE, 0x0012, 1, "MX01"},
     {  15, 0x38EE, 0x0013, 1, "MX01"},
 
-    {   0, 0x38EE, 0x0000, 1, "Unkown"}
+    {  0xFFFF, 0x38EE, 0x0000, 1, "Unkown"}
 
 };
 

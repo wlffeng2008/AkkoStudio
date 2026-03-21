@@ -331,6 +331,9 @@
        <property name="rightMargin">
         <number>10</number>
        </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <property name="spacing">
@@ -350,7 +353,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="labelPower">
+          <widget class="QLabel" name="labelBatt">
            <property name="text">
             <string/>
            </property>
@@ -360,12 +363,12 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="labelType">
+          <widget class="QLabel" name="labelConn">
            <property name="text">
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="res.qrc">:/images/connect/USB-2.png</pixmap>
+            <pixmap resource="res.qrc">:/images/dev/2.4g.png</pixmap>
            </property>
           </widget>
          </item>
@@ -386,6 +389,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButtonLayer0">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -411,6 +420,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButtonLayer1">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -433,6 +448,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButtonLayer2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -455,6 +476,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButtonLayer3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>

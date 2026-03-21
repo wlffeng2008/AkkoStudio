@@ -506,7 +506,6 @@ bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
     return QFrame::eventFilter(watched,event);
 }
 
-
 FrameKeySetting::~FrameKeySetting()
 {
     delete ui;
@@ -520,17 +519,17 @@ void FrameKeySetting::showEvent(QShowEvent *event)
 void FrameKeySetting::refresh()
 {
     DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
-    ModuleMacroManager *pMM = ModuleMacroManager::instance();
+    ModuleMacroManager  *pMM  = ModuleMacroManager::instance();
     QByteArray data = pCnn->getMatix(0);
     if(data.size() < 20)
         return;
 
     for(int i=0; i<128; i++)
     {
-        quint8 hid = ::getHid(i);
         keyData kd;
         pCnn->getKeydata(&kd,i,0);
 
+        quint8 hid = ::getHid(i);
         quint8 type = pCnn->getKeyType(hid);
 
         if(isKeyChanged(i,&kd) || type != 0)
@@ -579,7 +578,10 @@ void FrameKeySetting::refresh()
             }
 
             if(kd.b0 == 0 && kd.b1 == 0 && kd.b2 == 0 && kd.b3 == 0)
+            {
                 strT1 = QString("DISABLED");
+                qDebug() << "Key Disable: " << i;
+            }
             ui->frameKeyboard->setKeyTip(hid, strT1.trimmed(), strT2.trimmed());
         }
         else

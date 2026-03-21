@@ -23,7 +23,7 @@ public:
     void setCreator(int creator){ m_creator = creator;};
     void setSelect(bool select=true);
 
-    void updateBattary();
+    void updateBattery();
 
     QScrollArea *m_sa = nullptr;
     void *m_device = nullptr;
@@ -31,10 +31,12 @@ public:
     quint8 m_connect =0;
     QString m_path;
     QString m_image;
+    QString m_typeImage;
     int m_creator;
 
 signals:
     void onClicked(void *device,const QString&path,const QString&image,int creator);
+    void onReport(void *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss);
 
 protected:
     bool event(QEvent *event) override;

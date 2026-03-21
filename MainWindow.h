@@ -70,7 +70,9 @@ public:
 protected:
     void changeEvent(QEvent *pEvt) final;
     void paintEvent(QPaintEvent *event) final;
+    void closeEvent(QCloseEvent *event) final;
     void mousePressEvent(QMouseEvent *event) final;
+    void keyReleaseEvent(QKeyEvent *event) final;
     void mouseMoveEvent(QMouseEvent *event) final;
     void mouseReleaseEvent(QMouseEvent *event) final;
     bool eventFilter(QObject *obj, QEvent *e) final;
@@ -94,7 +96,10 @@ private:
     QPointF m_dragPosition;
     bool m_dragging = false;
 
+    bool m_bWaiting = true;
+
     QTimer *m_pTmHide = nullptr;
+    QTimer *m_pShowRy = nullptr;
     QDialog *m_pFloatLeft = nullptr;
     QDialog *m_pFloatRight = nullptr;
     QDialog *m_pFloatReturn = nullptr;

@@ -15,8 +15,8 @@ VERSION = 1.0.0.0
 TARGET = AKKOStudio
 QMAKE_TARGET_COMPANY = "AKKO"
 QMAKE_TARGET_PRODUCT = "AKKO"
-QMAKE_TARGET_DESCRIPTION = "AKKO: Created by Qt6.10.0"
-QMAKE_TARGET_COPYRIGHT = "AKKO(2026.01)"
+QMAKE_TARGET_DESCRIPTION = "AKKO: Created by Qt6.10.2"
+QMAKE_TARGET_COPYRIGHT = "AKKO(2026.03)"
 RC_LANG = 0x0004
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -42,7 +42,6 @@ SOURCES += \
     Module/ColorSquare.cpp \
     Module/CustumSlider.cpp \
     DialogDeviceConnect.cpp \
-    DialogMainwork.cpp \
     FrameAbout.cpp \
     FrameKeySetting.cpp \
     FrameLight.cpp \
@@ -89,7 +88,6 @@ HEADERS += \
     Module/ColorSquare.h \
     Module/CustumSlider.h \
     DialogDeviceConnect.h \
-    DialogMainwork.h \
     FrameAbout.h \
     FrameKeySetting.h \
     FrameLight.h \
@@ -129,7 +127,6 @@ HEADERS += \
 
 FORMS += \
     DialogDeviceConnect.ui \
-    DialogMainwork.ui \
     FrameAbout.ui \
     FrameDeviceHolder.ui \
     FrameDeviceShow.ui \

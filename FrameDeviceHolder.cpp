@@ -15,12 +15,12 @@
 #include "ModuleLinear.h"
 #include "DialogDeviceConnect.h"
 
-
 FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::FrameDeviceHolder)
 {
     ui->setupUi(this);
+    ui->labelBatt->setHidden(true);
 
     DialogDeviceConnect *pCnnt = new DialogDeviceConnect(this);
     ModuleGenKeymapping *pKmap = new ModuleGenKeymapping(this);
@@ -130,15 +130,35 @@ FrameDeviceHolder::~FrameDeviceHolder()
     delete ui;
 }
 
-void FrameDeviceHolder::setDeviceImage(const QString&strImage)
+void FrameDeviceHolder::setDevice(void *device,const QString&strImage,const QString&strName)
 {
+    m_device = device;
     FrameMain *pFM = (FrameMain *)m_pFrames[0];
     pFM->setDeviceImage(strImage);
+    ui->labelName->setText(strName);
 }
 
-void FrameDeviceHolder::setDeviceName(const QString&strName)
+void FrameDeviceHolder::updateLayer(int layer)
 {
-    ui->labelName->setText(strName);
+    switch (layer) {
+    case 0: ui->pushButtonLayer0->click(); break;
+    case 1: ui->pushButtonLayer1->click(); break;
+    case 2: ui->pushButtonLayer2->click(); break;
+    case 3: ui->pushButtonLayer3->click(); break;
+    default: break;
+    }
+}
+
+void FrameDeviceHolder::updateBattery(void *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss)
+{
+    if(m_device != device)
+        return;
+
+    ui->labelBatt->setHidden(battImg.isEmpty());
+    ui->labelBatt->setPixmap(QPixmap(battImg));
+    ui->labelBatt->setStyleSheet(qss);
+    ui->labelBatt->setToolTip(tip);
+    ui->labelConn->setPixmap(QPixmap(typeImg));
 }
 
 void FrameDeviceHolder::changeEvent(QEvent *pEvt)
