@@ -219,7 +219,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page00">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -455,9 +455,6 @@ background:transparent;</string>
          <widget class="QFrame" name="frameEmb">
           <property name="focusPolicy">
            <enum>Qt::FocusPolicy::StrongFocus</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
           </property>
           <property name="frameShape">
            <enum>QFrame::Shape::StyledPanel</enum>
