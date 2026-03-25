@@ -284,7 +284,6 @@ MainWindow::MainWindow(QWidget *parent)
     settings.setValue("AkkoWnd", 0);
     static  QString strLastPath = settings.value("DevicePath").toString();
     static  QString strVdPath = settings.value("VendorDevicePath").toString();
-    //settings.setValue("DevicePath","");
     settings.setValue("iotManagerInitialized",false);
 
     QTimer *pTMRet = new QTimer(this);
@@ -303,17 +302,24 @@ MainWindow::MainWindow(QWidget *parent)
     killProcess("Akko Cloud Driver v4.exe");
 
     QProcess::startDetached("Akko.exe", QStringList{"/super"});
-    QProcess::startDetached("RyExe/Akko Cloud Driver v4.exe", QStringList{});
-    QTimer::singleShot(2000,this,[=]{
-        //qDebug() << strLastPath;
+
+    QProcess *Ryexe = new QProcess(this);
+    Ryexe->start("RyExe/Akko Cloud Driver v4.exe", QStringList{});
+    Ryexe->waitForStarted();
+
+    QTimer::singleShot(1000,this,[=]{
         settings.setValue("DevicePath","");
         settings.setValue("VendorDevicePath","");
     });
 
     QTimer::singleShot(4000,this,[=]{
-        //qDebug() << strLastPath;
         settings.setValue("DevicePath",strLastPath);
         settings.setValue("VendorDevicePath",strVdPath);
+    });
+
+    QTimer::singleShot(5000,this,[=]{
+        settings.setValue("DevicePath","");
+        settings.setValue("VendorDevicePath","");
     });
 
     QTimer *pTMFindWnd = new QTimer(this);
@@ -448,6 +454,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_pShowRy,&QTimer::timeout,this,[=]{
         if(m_pFloatReturn->isVisible())
         {
+            ui->stackedWidget->setCurrentIndex(1);
             HWND hWnd = m_creator == 0 ? s_hWndEmb0 : s_hWndEmb1;
             ::SetWindowPos(hWnd, HWND_TOP, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20,  SWP_SHOWWINDOW | SWP_FRAMECHANGED);
 
