@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="focusPolicy">
-   <enum>Qt::FocusPolicy::StrongFocus</enum>
+   <enum>Qt::FocusPolicy::NoFocus</enum>
   </property>
   <property name="windowTitle">
    <string notr="true">MainWindow</string>
@@ -345,7 +345,7 @@ background:transparent;</string>
                <x>0</x>
                <y>0</y>
                <width>1255</width>
-               <height>430</height>
+               <height>30</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
