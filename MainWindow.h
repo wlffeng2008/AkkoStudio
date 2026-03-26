@@ -14,6 +14,7 @@
 #include <QDialog>
 #include <QTimer>
 #include <QTranslator>
+#include <QSystemTrayIcon>
 
 
 #include "ModuleLangMenu.h"
@@ -97,7 +98,9 @@ private:
     bool m_dragging = false;
 
     bool m_bWaiting = true;
+    QSystemTrayIcon *trayIcon = nullptr;
 
+    QTimer *m_pInitRy = nullptr;
     QTimer *m_pTmHide = nullptr;
     QTimer *m_pShowRy = nullptr;
     QDialog *m_pFloatLeft = nullptr;
