@@ -25,37 +25,6 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
-/*
-class USBNotifier : public QObject, public QAbstractNativeEventFilter
-{
-    Q_OBJECT
-public:
-    explicit USBNotifier(QObject *parent = nullptr) : QObject(parent) {
-        //QCoreApplication::instance()->installNativeEventFilter(this) ;
-    }
-
-signals:
-    void devicePluggined(bool in=true);
-
-protected:
-    bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override
-    {
-        Q_UNUSED(eventType)
-        Q_UNUSED(result)
-        MSG* msg = reinterpret_cast<MSG*>(message);
-        if (msg->message == WM_DEVICECHANGE)
-        {
-            qDebug() << "USBNotifier::nativeEventFilter: " << msg->wParam << msg->lParam;
-            //if(msg->wParam == DBT_DEVICEARRIVAL       )  emit devicePluggined(true);
-            //if(msg->wParam == DBT_DEVICEREMOVECOMPLETE)  emit devicePluggined(false);
-            emit devicePluggined(true);
-            return true;
-        }
-        return false;
-    }
-};*/
-
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -100,9 +69,7 @@ private:
     bool m_bWaiting = true;
     QSystemTrayIcon *trayIcon = nullptr;
 
-    QTimer *m_pInitRy = nullptr;
     QTimer *m_pTmHide = nullptr;
-    QTimer *m_pShowRy = nullptr;
     QDialog *m_pFloatLeft = nullptr;
     QDialog *m_pFloatRight = nullptr;
     QDialog *m_pFloatReturn = nullptr;

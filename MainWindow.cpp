@@ -299,116 +299,46 @@ MainWindow::MainWindow(QWidget *parent)
 
     //qDebug()<< QProcess::systemEnvironment();
     killProcess("Akko.exe");
+    killProcess("AkkoBox.exe");
     killProcess("Akko Cloud Driver v4.exe");
 
-    //::CreateProcess("","RyExe/Akko Cloud Driver v4.exe",);
+    HWND hParentWnd = (HWND)ui->frameEmb->winId();
+    settings.setValue("ParentHwnd", (int)hParentWnd);
 
-    // settings.setValue("PageLoaded","false");
-    // settings.setValue("DevicePath","");
-    // settings.setValue("VendorDevicePath","");
     QProcess::startDetached("Akko.exe", QStringList{"/super"});
-    //QProcess::startDetached("RyExe/Akko Cloud Driver v4.exe", QStringList{});
-    //"--disable-gpu","--disable-software-rasterizer-disabled","--no-sandbox"
-
-    STARTUPINFO si = { sizeof(si) };
-    si.wShowWindow = SW_SHOW; // 必须先显示，不能隐藏！
-    si.dwFlags = STARTF_USESHOWWINDOW;
-
-    wchar_t cmd[1024];
-    wcscpy(cmd, L"你的electron.exe --disable-gpu --no-sandbox --in-process-gpu");
-
-    PROCESS_INFORMATION pi = {};
-    CreateProcess(
-        NULL,
-        (LPWSTR)QString("RyExe/Akko Cloud Driver v4.exe --disable-gpu --no-sandbox --in-process-gpu").toStdU16String().c_str(),
-        NULL, NULL,
-        FALSE,
-        0,
-        NULL, NULL,
-        &si, &pi
-        );
-
-    m_pInitRy = new QTimer(this);
-    connect(m_pInitRy,&QTimer::timeout,this,[=]{
-        static int flag=0;
-        flag++;
-
-        if(flag == 8)
-        {
-            m_pInitRy->stop();
-            HWND hParentWnd = (HWND)ui->frameEmb->winId();
-            ::SetParent(s_hWndEmb0,hParentWnd);
-            ::SetFocus(s_hWndEmb0);
-            return ;
-        }
-        if(flag%2)
-        {
-            settings.setValue("DevicePath",strLastPath);
-            settings.setValue("VendorDevicePath",strVdPath);
-        }
-        else
-        {
-            settings.setValue("PageLoaded","false");
-            settings.setValue("DevicePath","");
-            settings.setValue("VendorDevicePath","");
-        }
-    });
-    //m_pInitRy->start(1000);
-
+    QProcess::startDetached("AkkoBox.exe", QStringList{"/super"});
+    QProcess::startDetached("RyExe/Akko Cloud Driver v4.exe", QStringList{});
     QTimer *pTMFindWnd = new QTimer(this);
     pTMFindWnd->start(300);
 
     connect(pTMFindWnd,&QTimer::timeout,this,[=]{
-        HWND hWnd = s_hWndEmb0;
-        HWND hParentWnd = (HWND)ui->frameEmb->winId();
-        settings.setValue("ParentHwnd", (INT)hParentWnd);
-        if(!hWnd)
+        if(!s_hWndEmb0)
         {
-            hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko Cloud Driver").utf16());
+            //hWnd = (HWND)(settings.value("AkkoCloudDriverHwnd", 0).toUInt());
+            //hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko Cloud Driver").utf16());
+            HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("AkkoBox008").utf16());
             if(hWnd)
             {
-                settings.setValue("AkkoWnd", 0);
-                LONG style = ::GetWindowLongPtr(hWnd, GWL_STYLE);
-                style &= ~WS_CAPTION;
-                style &= ~WS_POPUP;
-                style &= ~WS_BORDER;
-                style &= ~WS_THICKFRAME;
-                style &= ~WS_MAXIMIZEBOX;
-                style &= ~WS_MINIMIZEBOX;
-                //::SetWindowLongPtr(hWnd, GWL_STYLE, style);
-
-                LONG exStyle = ::GetWindowLongPtr(hWnd, GWL_EXSTYLE);
-                exStyle &= ~WS_EX_DLGMODALFRAME;
-                exStyle |=  WS_EX_TOPMOST;
-                //::SetWindowLongPtr(hWnd, GWL_EXSTYLE, exStyle);
+                s_hWndEmb0 = hWnd;
+                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
+                ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
+                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                ::SetParent(hWnd,hParentWnd);
             }
-            s_hWndEmb0 = hWnd;
-            // if(hWnd) ::SetParent(hWnd,hParentWnd);
         }
 
-        hWnd = s_hWndEmb1;
-        if(!hWnd)
+        if(!s_hWndEmb1)
         {
-            hWnd = (HWND)(settings.value("AkkoWnd", 0).toUInt());
-            if(!hWnd) hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko").utf16());
+            HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko").utf16());
 
             if(hWnd)
             {
-                LONG style = ::GetWindowLongPtr(hWnd, GWL_STYLE);
-                style &= ~WS_CAPTION;
-                style &= ~WS_POPUP;
-                style &= ~WS_BORDER;
-                style &= ~WS_THICKFRAME;
-                style &= ~WS_MAXIMIZEBOX;
-                style &= ~WS_MINIMIZEBOX;
-                //::SetWindowLongPtr(hWnd, GWL_STYLE, style|WS_CHILD);
-
-                LONG exStyle = ::GetWindowLongPtr(hWnd, GWL_EXSTYLE);
-                exStyle &= ~WS_EX_DLGMODALFRAME;
-                //::SetWindowLongPtr(hWnd, GWL_EXSTYLE, exStyle);
+                s_hWndEmb1 = hWnd;
+                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
+                ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
+                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                ::SetParent(hWnd,hParentWnd);
             }
-            s_hWndEmb1 = hWnd;
-            if(hWnd) ::SetParent(hWnd,hParentWnd);
         }
 
         if((s_hWndEmb0 && s_hWndEmb1))
@@ -471,20 +401,6 @@ MainWindow::MainWindow(QWidget *parent)
         ui->frameHold->updateLayer(layer);
     });
 
-    m_pShowRy = new QTimer(this);
-    connect(m_pShowRy,&QTimer::timeout,this,[=]{
-        if(m_pFloatReturn->isVisible())
-        {
-            //ui->stackedWidget->setCurrentIndex(1);
-            HWND hWnd = m_creator == 0 ? s_hWndEmb0 : s_hWndEmb1;
-            ::SetWindowPos(hWnd, HWND_TOP, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20,  SWP_SHOWWINDOW | SWP_FRAMECHANGED);
-
-            //::SetFocus(hWnd);
-            //::SetActiveWindow(hWnd);
-            //::BringWindowToTop(hWnd);
-        }
-    });
-    //m_pShowRy->start(100);
     //resize(2560,1800);
 }
 
@@ -508,17 +424,6 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
         m_layout->addWidget(device);
         m_layout->setSpacing(20);
 
-        if(creator == 10)
-        {
-            settings.setValue("VendorDevicePath","");
-            settings.setValue("DevicePath","");
-            settings.setValue("PageLoaded","false");
-            QThread::msleep(500);
-            settings.setValue("VendorDevicePath",path1);
-            settings.setValue("DevicePath",path2);
-            QThread::msleep(1500);
-        }
-
         if(!device->m_bConacted)
         {
             device->m_bConacted = true;
@@ -527,7 +432,6 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
             });
 
             connect(device,&FrameDeviceShow::onClicked,this,[=](void *dev,const QString&path1,const QString&path2,const QString&image,int creator){
-
 
                 m_creator = creator;
                 m_pLangMenu->hide();
@@ -545,7 +449,7 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                 {
                     if(m_bWaiting)
                     {
-                        qDebug() << "Waiting for ......" ;
+                        qDebug() << "Waiting for ......";
                         return;
                     }
                     ::SetWindowPos(s_hWndEmb1, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_HIDEWINDOW);
@@ -575,19 +479,23 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                 QTimer::singleShot(200,this,[=]{
                     m_pFloatReturn->setHidden(m_creator == 1);
                     ui->stackedWidget->setCurrentIndex(1);
+                    ui->frameEmb->show();
 
                     HWND hWnd = m_creator == 0 ? s_hWndEmb0 : s_hWndEmb1;
-                    HWND hParentWnd = (HWND)ui->frameEmb->winId();
-                    ::ShowWindow(hWnd,SW_SHOW);
-                    //::SetParent(hWnd,hParentWnd);
-                    ::SetWindowPos(hWnd, HWND_TOP, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_SHOWWINDOW | SWP_FRAMECHANGED);
-                    ui->stackedWidget->update();
-                    ui->frameEmb->update();
-                    ::RedrawWindow(hWnd, NULL, NULL, 0x07|RDW_UPDATENOW);
 
+                    ::SetWindowLongPtr(hWnd, GWL_STYLE, WS_CHILD | WS_VISIBLE);
+                    ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_SHOWWINDOW);
+
+                    ::ShowWindow(hWnd, SW_SHOW);
+                    ::UpdateWindow(hWnd);
+                    //::RedrawWindow(hWnd, NULL, NULL, 0x07|RDW_UPDATENOW);
+                    ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
+                    //::BringWindowToTop(hWnd);
                     ::SetFocus(hWnd);
                     ::SetActiveWindow(hWnd);
-                    raise();
+                    ui->stackedWidget->update();
+                    ui->frameEmb->update();
+                    ui->frameEmb->repaint();
                 });
             });
         }
@@ -862,22 +770,17 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
 
         if (m_pFloatReturn == obj)
         {
-            static int nFlag = 0;
-            if(++nFlag <= 2)
-            {
-                settings.setValue("DevicePath","");
-                settings.setValue("VendorDevicePath","");
-            }
-            ui->stackedWidget->setCurrentIndex(0);
             m_pFloatReturn->hide();
+            ::ShowWindow(s_hWndEmb0,SW_HIDE);
+            ui->stackedWidget->setCurrentIndex(0);
         }
-
-        ui->scrollArea->update();
 
         if(ui->labelLogo == obj)
         {
             DialogDeviceConnect::instance()->show();
         }
+
+        ui->scrollArea->update();
     }
 
     if(e->type() != QEvent::Paint)
@@ -1070,6 +973,10 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
         QPoint P3 = mapToGlobal(QPoint(5,ui->stackedWidget->geometry().top()+5));
         m_pFloatReturn->setGeometry(P3.x(),P3.y(),80,32);
+
+        if(m_pFloatReturn->isVisible())
+            ::SetWindowPos(s_hWndEmb0, HWND_BOTTOM, 0, 0, ui->frameEmb->width()-5, ui->frameEmb->height()-20, SWP_FRAMECHANGED);
+        m_pFloatReturn->raise();
     }
 }
 
