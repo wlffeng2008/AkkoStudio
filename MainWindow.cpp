@@ -401,6 +401,11 @@ MainWindow::MainWindow(QWidget *parent)
         ui->frameHold->updateLayer(layer);
     });
 
+    ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    QTimer::singleShot(5000,this,[=]{
+        ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    });
+
     //resize(2560,1800);
 }
 
@@ -510,6 +515,18 @@ void MainWindow::changeEvent(QEvent *pEvt)
         updateDeviceInfo();
     }
     QMainWindow::changeEvent(pEvt);
+}
+
+void MainWindow::showEvent(QShowEvent *event)
+{
+    setAttribute(Qt::WA_Mapped);
+
+    // 确保窗口显示、置顶并获得焦点
+    this->showNormal();
+    this->raise();
+    this->activateWindow();
+
+    QMainWindow::showEvent(event);
 }
 
 static void QLog(const char *buf,int nlen=16)

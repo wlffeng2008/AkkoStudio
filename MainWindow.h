@@ -46,6 +46,7 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) final;
     void mouseReleaseEvent(QMouseEvent *event) final;
     bool eventFilter(QObject *obj, QEvent *e) final;
+     void showEvent(QShowEvent *event) final;
 
     bool event(QEvent *event) final;
 
