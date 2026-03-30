@@ -24,7 +24,6 @@ FrameMacro::FrameMacro(QWidget *parent)
 
     m_pMM = new ModuleMacroManager(this);
 
-    ui->frameT->hide();
     {
         QLayout *pLayout = ui->scrollAreaWidgetContents1->layout() ;
         pLayout->setSpacing(10) ;

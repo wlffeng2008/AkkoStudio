@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1126</width>
-    <height>894</height>
+    <height>794</height>
    </rect>
   </property>
   <property name="font">
@@ -57,6 +57,18 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
    </property>
    <item>
     <widget class="QFrame" name="frameT">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>410</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>410</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true">QFrame#frameT{background-color: #FBFBFB;border-radius:32px;}</string>
      </property>
@@ -91,13 +103,13 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>340</height>
+       <height>310</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>340</height>
+       <height>310</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -956,7 +968,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>920</width>
+               <width>918</width>
                <height>341</height>
               </rect>
              </property>
@@ -1062,7 +1074,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  <string>确定</string>
                 </property>
                </widget>
-               <widget class="QWidget" name="">
+               <widget class="QWidget" name="layoutWidget">
                 <property name="geometry">
                  <rect>
                   <x>174</x>
@@ -1226,7 +1238,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="">
+               <widget class="QWidget" name="layoutWidget">
                 <property name="geometry">
                  <rect>
                   <x>60</x>
@@ -2382,9 +2394,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupTGL"/>
-  <buttongroup name="buttonGroupMT"/>
   <buttongroup name="buttonGroupSnap"/>
   <buttongroup name="buttonGroupFN"/>
+  <buttongroup name="buttonGroupTGL"/>
+  <buttongroup name="buttonGroupMT"/>
  </buttongroups>
 </ui>

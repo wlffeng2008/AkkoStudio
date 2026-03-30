@@ -281,6 +281,7 @@ MainWindow::MainWindow(QWidget *parent)
     settings.setValue("AkkoReturn", 0);
     settings.setValue("AkkoWnd", 0);
     settings.setValue("iotManagerInitialized",false);
+    settings.setValue("DeviceLoaded",false);
 
     QTimer *pTMRet = new QTimer(this);
     pTMRet->start(50);
@@ -303,7 +304,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QProcess::startDetached("Akko.exe", QStringList{"/super"});
     QProcess::startDetached("AkkoBox.exe", QStringList{"/super"});
-    QProcess::startDetached("RyExe/Akko Cloud Driver v4.exe", QStringList{});
+    //QProcess::startDetached("RyExe/Akko Cloud Driver v4.exe", QStringList{});
     QTimer *pTMFindWnd = new QTimer(this);
     pTMFindWnd->start(300);
 
@@ -320,6 +321,8 @@ MainWindow::MainWindow(QWidget *parent)
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
                 ::SetParent(hWnd,hParentWnd);
+                settings.setValue("ParentHwnd", (int)hWnd);
+                QProcess::startDetached("RyExe/Akko Cloud Driver v4.exe", QStringList{});
             }
         }
 
@@ -391,7 +394,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] { enumDevice(); });
 
     QTimer::singleShot(10,this,[=]{ m_pLangMenu->setLanguage(settings.value("lastlang").toInt());});
-    QTimer::singleShot(2000,this,[=]{ m_bWaiting = false; });
+    QTimer::singleShot(3000,this,[=]{ m_bWaiting = false; });
     DialogDeviceConnect *pCnn =DialogDeviceConnect::instance();
     connect(pCnn,&DialogDeviceConnect::onUpdataLayer,this,[=](int layer){
         ui->frameHold->updateLayer(layer);
@@ -402,7 +405,7 @@ MainWindow::MainWindow(QWidget *parent)
         ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
     });
 
-    //resize(2560,1800);
+    setFixedSize(1280,900);
 }
 
 void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path2, int connectType, int creator)
@@ -437,7 +440,7 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                 m_creator = creator;
                 m_pLangMenu->hide();
                 AkkoDeviceInfo *pDevInfo = static_cast<AkkoDeviceInfo *>(dev);
-                QList<quint16>IdList={2807,3131};//,2743
+                QList<quint16>IdList={2807};//,2743,3131
                 if(IdList.contains(pDevInfo->id))
                 {
                     DialogDeviceConnect::instance()->DoConnectDevice(pDevInfo->PID);
@@ -453,6 +456,8 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                         qDebug() << "Waiting for ......";
                         return;
                     }
+                    //if(!settings.value("DeviceLoaded").toBool())
+                    //    return;
                     ::SetWindowPos(s_hWndEmb1, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_HIDEWINDOW);
                     // settings.setValue("iotManagerInitialized",true);
                     QString strlastPath = settings.value("DevicePath").toString();
@@ -469,6 +474,7 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                         });
                     }
                     ui->frameEmb->setStyleSheet("#frameEmb{background-color: rgb(237,237,237); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
+                    setFixedSize(1480,900);
                 }
                 else
                 {
@@ -494,6 +500,10 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                     ui->stackedWidget->update();
                     ui->frameEmb->update();
                     ui->frameEmb->repaint();
+                });
+
+                 QTimer::singleShot(1000,this,[=]{
+                    ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_SHOWWINDOW);
                 });
             });
         }
@@ -781,6 +791,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
         if (m_pFloatReturn == obj)
         {
             m_pFloatReturn->hide();
+
+            setFixedSize(1280,900);
             ::ShowWindow(s_hWndEmb0,SW_HIDE);
             ui->stackedWidget->setCurrentIndex(0);
         }
@@ -798,7 +810,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
         qreal scale = 1.0;
         int nYPos = geometry().height()/2 + 50;
         QPoint P1 = mapToGlobal(QPoint(20,nYPos));
-        QPoint P2 = mapToGlobal(QPoint(geometry().width() - 60*scale,nYPos));
+        QPoint P2 = mapToGlobal(QPoint(geometry().width() - 70*scale,nYPos));
         m_pFloatLeft->setGeometry(P1.x(),P1.y(),48*scale,48*scale);
         m_pFloatRight->setGeometry(P2.x(),P2.y(),48*scale,48*scale);
 
@@ -984,10 +996,12 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         QPoint P3 = mapToGlobal(QPoint(5,ui->stackedWidget->geometry().top()+5));
         m_pFloatReturn->setGeometry(P3.x(),P3.y(),80,32);
 
-        if(m_pFloatReturn->isVisible())
-            ::SetWindowPos(s_hWndEmb0, HWND_BOTTOM, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_FRAMECHANGED);
+        //if(m_pFloatReturn->isVisible())
+        //    ::SetWindowPos(s_hWndEmb0, HWND_BOTTOM, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_FRAMECHANGED);
         m_pFloatReturn->raise();
     }
+
+    QMainWindow::mouseMoveEvent(event);
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)

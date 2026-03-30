@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1130</width>
-    <height>800</height>
+    <width>1128</width>
+    <height>762</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>454</width>
+    <height>304</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1128</width>
+    <height>762</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string notr="true">Frame</string>
@@ -19,7 +31,7 @@
   <property name="lineWidth">
    <number>0</number>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,0">
+  <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
     <number>24</number>
    </property>
@@ -35,18 +47,18 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item alignment="Qt::AlignmentFlag::AlignTop">
+   <item>
     <widget class="QFrame" name="frameTop">
      <property name="minimumSize">
       <size>
-       <width>474</width>
-       <height>0</height>
+       <width>0</width>
+       <height>420</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>474</height>
+       <height>420</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -55,7 +67,7 @@
      <property name="lineWidth">
       <number>0</number>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,0">
       <property name="spacing">
        <number>24</number>
       </property>
@@ -75,14 +87,14 @@
        <widget class="QFrame" name="frameInfo">
         <property name="minimumSize">
          <size>
-          <width>796</width>
-          <height>468</height>
+          <width>800</width>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>796</width>
-          <height>468</height>
+          <width>780</width>
+          <height>428</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -119,14 +131,14 @@
             <widget class="QLabel" name="labelPic">
              <property name="minimumSize">
               <size>
-               <width>631</width>
-               <height>294</height>
+               <width>640</width>
+               <height>300</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>631</width>
-               <height>294</height>
+               <width>640</width>
+               <height>300</height>
               </size>
              </property>
              <property name="text">
@@ -147,6 +159,18 @@
       </item>
       <item alignment="Qt::AlignmentFlag::AlignRight">
        <widget class="QFrame" name="frameRight">
+        <property name="minimumSize">
+         <size>
+          <width>304</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>304</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="spacing">
           <number>24</number>
@@ -165,15 +189,9 @@
          </property>
          <item>
           <widget class="ModuleRtSet" name="frameRTSetting">
-           <property name="minimumSize">
-            <size>
-             <width>300</width>
-             <height>140</height>
-            </size>
-           </property>
            <property name="maximumSize">
             <size>
-             <width>304</width>
+             <width>16777215</width>
              <height>140</height>
             </size>
            </property>
@@ -190,18 +208,6 @@
          </item>
          <item>
           <widget class="QFrame" name="frameLinear">
-           <property name="minimumSize">
-            <size>
-             <width>304</width>
-             <height>304</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>304</width>
-             <height>304</height>
-            </size>
-           </property>
            <property name="styleSheet">
             <string notr="true"/>
            </property>
@@ -215,9 +221,9 @@
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>70</y>
+              <y>56</y>
               <width>261</width>
-              <height>211</height>
+              <height>200</height>
              </rect>
             </property>
             <property name="frameShape">
@@ -255,7 +261,7 @@
      </layout>
     </widget>
    </item>
-   <item alignment="Qt::AlignmentFlag::AlignBottom">
+   <item>
     <widget class="QFrame" name="frameBottom">
      <property name="minimumSize">
       <size>
@@ -272,7 +278,7 @@
      <property name="lineWidth">
       <number>0</number>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,1">
       <property name="spacing">
        <number>24</number>
       </property>
@@ -317,14 +323,8 @@
        <widget class="ModuleEfColor" name="frameLEDColor">
         <property name="minimumSize">
          <size>
-          <width>468</width>
-          <height>304</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>302</width>
-          <height>304</height>
+          <width>470</width>
+          <height>0</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -340,16 +340,22 @@
       </item>
       <item>
        <widget class="QFrame" name="frameBR">
+        <property name="minimumSize">
+         <size>
+          <width>304</width>
+          <height>304</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>304</width>
-          <height>16777215</height>
+          <height>304</height>
          </size>
         </property>
         <property name="lineWidth">
          <number>0</number>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1">
          <property name="spacing">
           <number>24</number>
          </property>
@@ -367,15 +373,9 @@
          </property>
          <item>
           <widget class="ModuleEfLumi" name="frameLEDBright">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>140</height>
-            </size>
-           </property>
            <property name="maximumSize">
             <size>
-             <width>304</width>
+             <width>16777215</width>
              <height>140</height>
             </size>
            </property>
@@ -392,15 +392,9 @@
          </item>
          <item>
           <widget class="ModuleEfSpeed" name="frameLEDSpeed">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>140</height>
-            </size>
-           </property>
            <property name="maximumSize">
             <size>
-             <width>304</width>
+             <width>16777215</width>
              <height>140</height>
             </size>
            </property>
@@ -425,12 +419,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ModuleLinear</class>
-   <extends>QFrame</extends>
-   <header>modulelinear.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>ModuleEfMode</class>
    <extends>QFrame</extends>
    <header location="global">moduleefmode.h</header>
@@ -452,6 +440,12 @@
    <class>ModuleEfSpeed</class>
    <extends>QFrame</extends>
    <header>moduleefspeed.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ModuleLinear</class>
+   <extends>QFrame</extends>
+   <header>modulelinear.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

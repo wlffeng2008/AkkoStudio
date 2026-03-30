@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1138</width>
-    <height>825</height>
+    <width>1105</width>
+    <height>604</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
 QScrollArea{background-color:#FFFFFF;border:none;border-radius:12px;}
 </string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
    <property name="spacing">
     <number>24</number>
    </property>
@@ -37,47 +37,7 @@ QScrollArea{background-color:#FFFFFF;border:none;border-radius:12px;}
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="frameT">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>470</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
-      <property name="topMargin">
-       <number>15</number>
-      </property>
-      <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-       <widget class="ModuleKeyboard" name="frameKeyboard">
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="QFrame" name="frameB">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>340</height>
-      </size>
-     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
             border: 1px solid transparent;
@@ -257,8 +217,8 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>264</width>
-              <height>262</height>
+              <width>241</width>
+              <height>526</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3"/>
@@ -306,7 +266,7 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
            <property name="maximumSize">
             <size>
              <width>16777215</width>
-             <height>60</height>
+             <height>64</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -839,7 +799,7 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                  <x>0</x>
                  <y>0</y>
                  <width>780</width>
-                 <height>195</height>
+                 <height>459</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -876,14 +836,6 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>ModuleKeyboard</class>
-   <extends>QFrame</extends>
-   <header>modulekeyboard.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="res.qrc"/>
  </resources>

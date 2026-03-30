@@ -49,9 +49,10 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     ui->horizontalLayoutBR->addWidget(pLight);
     ui->horizontalLayoutBR->addWidget(pAbout);
     ui->horizontalLayoutBR->setAlignment(Qt::AlignRight);
+    //ui->horizontalLayoutBR->setContentsMargins(0,0,20,20);
 
     for(QFrame*frame:std::as_const(m_pFrames))
-        frame->setFixedSize(1130,800);
+        frame->setFixedSize(1124,740);
 
     m_pLBtns.push_back(ui->label1);
     m_pLBtns.push_back(ui->label2);
@@ -189,6 +190,8 @@ void FrameDeviceHolder::clickLabel(QLabel *label, int index)
     }
     QFrame *pFM = m_pFrames[index];
     pFM->show();
+
+    //ui->horizontalLayoutBR->setContentsMargins(0,0,20,20);
 }
 
 bool FrameDeviceHolder::eventFilter(QObject *watch, QEvent *event)

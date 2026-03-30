@@ -6,21 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1365</width>
+    <width>1280</width>
     <height>900</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>1360</width>
-    <height>900</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>1365</width>
-    <height>900</height>
-   </size>
   </property>
   <property name="focusPolicy">
    <enum>Qt::FocusPolicy::NoFocus</enum>
@@ -228,7 +216,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page00">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -335,12 +323,6 @@
           </property>
           <item>
            <widget class="QScrollArea" name="scrollArea">
-            <property name="minimumSize">
-             <size>
-              <width>1255</width>
-              <height>0</height>
-             </size>
-            </property>
             <property name="styleSheet">
              <string notr="true">border: none;
 background:transparent;</string>
@@ -353,8 +335,8 @@ background:transparent;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>1238</width>
-               <height>16</height>
+               <width>1170</width>
+               <height>424</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -480,6 +462,21 @@ background:transparent;</string>
       </widget>
       <widget class="QWidget" name="page02">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <widget class="FrameDeviceHolder" name="frameHold">
           <property name="frameShape">

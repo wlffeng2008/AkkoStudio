@@ -39,6 +39,18 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
    </property>
    <item>
     <widget class="QFrame" name="frameTop">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>410</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>410</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -73,13 +85,13 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>340</height>
+       <height>310</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>340</height>
+       <height>310</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -220,7 +232,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>1</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
@@ -232,7 +244,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
                <x>582</x>
                <y>0</y>
                <width>341</width>
-               <height>341</height>
+               <height>310</height>
               </rect>
              </property>
              <property name="minimumSize">
@@ -254,7 +266,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <property name="geometry">
                <rect>
                 <x>20</x>
-                <y>90</y>
+                <y>74</y>
                 <width>303</width>
                 <height>221</height>
                </rect>
@@ -279,7 +291,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <property name="geometry">
                <rect>
                 <x>20</x>
-                <y>30</y>
+                <y>20</y>
                 <width>261</width>
                 <height>20</height>
                </rect>
@@ -295,7 +307,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
                <x>0</x>
                <y>0</y>
                <width>561</width>
-               <height>341</height>
+               <height>310</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -311,7 +323,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <property name="geometry">
                <rect>
                 <x>240</x>
-                <y>90</y>
+                <y>74</y>
                 <width>303</width>
                 <height>221</height>
                </rect>
@@ -369,7 +381,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <property name="geometry">
                <rect>
                 <x>40</x>
-                <y>90</y>
+                <y>70</y>
                 <width>171</width>
                 <height>221</height>
                </rect>
@@ -1740,8 +1752,20 @@ QPushButton:checked { border-color: #6329B6; }</string>
                <x>350</x>
                <y>90</y>
                <width>141</width>
-               <height>33</height>
+               <height>410</height>
               </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>410</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>410</height>
+              </size>
              </property>
              <property name="text">
               <string>PushButton</string>
@@ -1760,20 +1784,15 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ModuleLinear</class>
-   <extends>QFrame</extends>
-   <header>modulelinear.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ToggleButton</class>
-   <extends>QCheckBox</extends>
-   <header>togglebutton.h</header>
-  </customwidget>
-  <customwidget>
    <class>ModuleKeyboard</class>
    <extends>QFrame</extends>
    <header>modulekeyboard.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ModuleLinear</class>
+   <extends>QFrame</extends>
+   <header>modulelinear.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -1781,6 +1800,11 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <extends>QTabWidget</extends>
    <header>newtabwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
