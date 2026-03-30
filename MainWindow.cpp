@@ -246,8 +246,6 @@ MainWindow::MainWindow(QWidget *parent)
     m_pFloatLeft->setCursor(Qt::PointingHandCursor);
     m_pFloatRight->setCursor(Qt::PointingHandCursor);
     m_pFloatReturn->setCursor(Qt::PointingHandCursor);
-    //m_pFloatLeft->raise();
-    //m_pFloatRight->raise();
 
     m_pFloatLeft->setWindowOpacity(0.6);
     m_pFloatRight->setWindowOpacity(0.6);
@@ -282,8 +280,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     settings.setValue("AkkoReturn", 0);
     settings.setValue("AkkoWnd", 0);
-    static  QString strLastPath = settings.value("DevicePath").toString();
-    static  QString strVdPath = settings.value("VendorDevicePath").toString();
     settings.setValue("iotManagerInitialized",false);
 
     QTimer *pTMRet = new QTimer(this);
@@ -411,42 +407,42 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path2, int connectType, int creator)
 {
-    AkkoDeviceInfo *dev = getDevice(id);
-    if (dev)
+    AkkoDeviceInfo *pDevInfo = getDevice(id);
+    if (pDevInfo)
     {
-        FrameDeviceShow *device = FrameDeviceShow::getFrameShow(m_layout->count(),this);
-        if (dev->type == 0)device->setFixedWidth(970);
-        if (dev->type == 1)device->setFixedWidth(280);
-        if (dev->type == 2)device->setFixedWidth(280);
+        FrameDeviceShow *pFrmDS = FrameDeviceShow::getFrameShow(m_layout->count(),this);
+        if (pDevInfo->type == 0) pFrmDS->setFixedWidth(970);
+        if (pDevInfo->type == 1) pFrmDS->setFixedWidth(280);
+        if (pDevInfo->type == 2) pFrmDS->setFixedWidth(280);
 
-        device->m_sa = ui->scrollArea;
-        device->m_device = dev;
-        device->m_connect = connectType;
-        device->setName(dev->name,dev->type);
-        device->setPath(path1,path2);
-        device->setCreator(creator);
-        device->show();
-        m_layout->addWidget(device);
+        pFrmDS->m_sa = ui->scrollArea;
+        pFrmDS->m_device = pDevInfo;
+        pFrmDS->m_connect = connectType;
+        pFrmDS->setName(pDevInfo->name,pDevInfo->type);
+        pFrmDS->setPath(path1,path2);
+        pFrmDS->setCreator(creator);
+        pFrmDS->show();
+        m_layout->addWidget(pFrmDS);
         m_layout->setSpacing(20);
 
-        if(!device->m_bConacted)
+        if(!pFrmDS->m_bConacted)
         {
-            device->m_bConacted = true;
-            connect(device,&FrameDeviceShow::onReport,this,[=](void *dev,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss){
+            pFrmDS->m_bConacted = true;
+            connect(pFrmDS,&FrameDeviceShow::onReport,this,[=](void *dev,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss){
                 ui->frameHold->updateBattery(dev,battImg,typeImg,tip,qss);
             });
 
-            connect(device,&FrameDeviceShow::onClicked,this,[=](void *dev,const QString&path1,const QString&path2,const QString&image,int creator){
+            connect(pFrmDS,&FrameDeviceShow::onClicked,this,[=](void *dev,const QString&path1,const QString&path2,const QString&image,int creator){
 
                 m_creator = creator;
                 m_pLangMenu->hide();
-                AkkoDeviceInfo *pInfo = static_cast<AkkoDeviceInfo *>(dev);
+                AkkoDeviceInfo *pDevInfo = static_cast<AkkoDeviceInfo *>(dev);
                 QList<quint16>IdList={2807,3131};//,2743
-                if(IdList.contains(pInfo->id))
+                if(IdList.contains(pDevInfo->id))
                 {
-                    DialogDeviceConnect::instance()->DoConnectDevice(pInfo->PID);
+                    DialogDeviceConnect::instance()->DoConnectDevice(pDevInfo->PID);
                     ui->stackedWidget->setCurrentIndex(2);
-                    ui->frameHold->setDevice(pInfo,image,pInfo->name);
+                    ui->frameHold->setDevice(pDevInfo,image,pDevInfo->name);
                     return;
                 }
 
@@ -467,7 +463,7 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                         settings.setValue("PageLoaded","false");
                         QTimer::singleShot(300,this,[=]{
 
-                            settings.setValue("DeviceId",pInfo->id);
+                            settings.setValue("DeviceId",pDevInfo->id);
                             settings.setValue("VendorDevicePath",path1);
                             settings.setValue("DevicePath",path2);
                         });
@@ -477,25 +473,22 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                 else
                 {
                     ::SetWindowPos(s_hWndEmb0, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_HIDEWINDOW);
-                    settings.setValue("AkkoDeviceIndex",pInfo->id);
+                    settings.setValue("AkkoDeviceIndex",pDevInfo->id);
                     ui->frameEmb->setStyleSheet("#frameEmb{background-color: rgb(30, 30, 30); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
                 }
 
-                QTimer::singleShot(200,this,[=]{
+                HWND hWnd = m_creator == 0 ? s_hWndEmb0 : s_hWndEmb1;
+                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_SHOWWINDOW);
+
+                QTimer::singleShot(300,this,[=]{
                     m_pFloatReturn->setHidden(m_creator == 1);
                     ui->stackedWidget->setCurrentIndex(1);
                     ui->frameEmb->show();
 
-                    HWND hWnd = m_creator == 0 ? s_hWndEmb0 : s_hWndEmb1;
-
-                    ::SetWindowLongPtr(hWnd, GWL_STYLE, WS_CHILD | WS_VISIBLE);
                     ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_SHOWWINDOW);
-
-                    ::ShowWindow(hWnd, SW_SHOW);
-                    ::UpdateWindow(hWnd);
-                    //::RedrawWindow(hWnd, NULL, NULL, 0x07|RDW_UPDATENOW);
                     ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
-                    //::BringWindowToTop(hWnd);
+                    ::UpdateWindow(hWnd);
+                    ::BringWindowToTop(hWnd);
                     ::SetFocus(hWnd);
                     ::SetActiveWindow(hWnd);
                     ui->stackedWidget->update();
@@ -992,7 +985,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         m_pFloatReturn->setGeometry(P3.x(),P3.y(),80,32);
 
         if(m_pFloatReturn->isVisible())
-            ::SetWindowPos(s_hWndEmb0, HWND_BOTTOM, 0, 0, ui->frameEmb->width()-5, ui->frameEmb->height()-20, SWP_FRAMECHANGED);
+            ::SetWindowPos(s_hWndEmb0, HWND_BOTTOM, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_FRAMECHANGED);
         m_pFloatReturn->raise();
     }
 }
