@@ -28,7 +28,7 @@ public:
     QScrollArea *m_sa = nullptr;
     void *m_device = nullptr;
     bool m_bConacted = false;
-    quint8 m_connect =0;
+    quint8 m_cnnType =0;
     QString m_path1;
     QString m_path2;
     QString m_image;

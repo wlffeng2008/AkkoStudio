@@ -19,6 +19,9 @@ protected:
     void paintEvent(QPaintEvent *event) override;
     bool eventFilter(QObject*,QEvent*) override;
 
+signals:
+    void onSetValue(float value,int type=0);
+
 private:
     Ui::ModuleRtSet *ui;
     void setValue(float value);

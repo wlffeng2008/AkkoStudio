@@ -115,18 +115,23 @@ SuperLabel::SuperLabel(QWidget *parent) : QLabel{parent}
         timer = new QTimer(this);
         timer->setSingleShot(true);
         timer->setInterval(100);
-
-        m_bEmpty = this->toolTip().isEmpty();
+        setToolTipDuration(2000000);
 
         connect(timer, &QTimer::timeout, this, [=]() {
-            if(m_bEmpty) return;
-            setToolTip("");
+
             QPoint pos = mapToGlobal(QPoint(width()+5,(height() - tooltip->height())/2));
             tooltip->move(pos);
             tooltip->show();
         });
     });
     setAlignment(Qt::AlignCenter);
+}
+
+void SuperLabel::updateToolTip(const QString&text)
+{
+    setText("");
+    setToolTip("");
+    tooltip->setText(text);
 }
 
 bool SuperLabel::event(QEvent *event)
@@ -147,7 +152,8 @@ bool SuperLabel::event(QEvent *event)
         break;
 
     case QEvent::LanguageChange:
-        tooltip->setText(this->toolTip());
+        //tooltip->setText(this->toolTip());
+        //tooltip->setText(this->text());
         break;
 
     default:

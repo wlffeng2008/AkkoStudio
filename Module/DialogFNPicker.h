@@ -16,8 +16,9 @@ class DialogFNPicker : public QDialog
 public:
     explicit DialogFNPicker(QWidget *parent = nullptr);
     ~DialogFNPicker();
-    keyData m_kd={0};
-    bool m_macro=false;
+    void setFunc(int func=0);
+    keyData m_kd = {0};
+    bool m_macro = false;
 
 protected:
     void paintEvent(QPaintEvent *event) override;

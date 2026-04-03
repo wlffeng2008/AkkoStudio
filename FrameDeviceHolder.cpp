@@ -2,7 +2,6 @@
 #include "ui_FrameDeviceHolder.h"
 
 #include <QPainter>
-#include <QGraphicsDropShadowEffect>
 
 #include "FrameMain.h"
 #include "FrameKeySetting.h"
@@ -49,7 +48,6 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     ui->horizontalLayoutBR->addWidget(pLight);
     ui->horizontalLayoutBR->addWidget(pAbout);
     ui->horizontalLayoutBR->setAlignment(Qt::AlignRight);
-    //ui->horizontalLayoutBR->setContentsMargins(0,0,20,20);
 
     for(QFrame*frame:std::as_const(m_pFrames))
         frame->setFixedSize(1124,740);
@@ -61,8 +59,9 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     m_pLBtns.push_back(ui->label5);
     m_pLBtns.push_back(ui->label6);
     m_pLBtns.push_back(ui->label7);
+    m_pLBtns.push_back(ui->label8);
 
-    int index = 0 ;
+    int index = 0;
     static QStringList images={"shouye","jianweishezhi","cizhoushezhi","hongshezhi","dengxiaoshezhi","guanyu","",""};
     foreach (SuperLabel *label, m_pLBtns) {
         label->setCursor(Qt::PointingHandCursor);
@@ -74,11 +73,10 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     }
     clickLabel(ui->label1);
 
+    ui->label6->setHidden(true);
+    ui->label7->setHidden(true);
     m_pLBtns[6]->setImages(QString(":/images/User.png"),QString(":/images/User.png"));
-
-    connect(ui->pushButtonReturn,&QPushButton::clicked,this,[=]{
-        emit onReturn();
-    });
+    m_pLBtns[7]->setImages(QString(":/images/btn-return.png"),QString(":/images/btn-return.png"));
 
     connect(ui->pushButtonFixline,&QPushButton::clicked,this,[=]{
         LinearFixing1 T("","",this->parentWidget()->parentWidget()->parentWidget()->parentWidget());
@@ -91,33 +89,46 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
 
     ui->pushButtonPairing->hide();
     connect(ui->pushButtonPairing,&QPushButton::clicked,this,[=]{
-
         ModuleLinear *pTest = new ModuleLinear(this);
         pTest->setObjectName("TestLinear");
         pTest->layout()->setContentsMargins(20,20,20,20);
         pTest->setStyleSheet("QFrame#TestLinear{background-color:white;min-height:320px; border-radius:24px;}");
-        ModuleGeneralMasker T(pTest ,this);
+        ModuleGeneralMasker T(pTest, this);
         T.exec();
     });
-    ui->label6->setHidden(true);
+
+    {
+        QString strStyle(R"(
+            QPushButton {
+                border-radius: 16px;
+
+                outline: none;
+                width: 80px;
+                height: 30px;
+
+                color: black;
+                border: 1px solid #ECECEC;
+                background: #ECECEC; }
+
+            QPushButton:checked {
+                color: white;
+                border: 1px solid #6329B6;
+                background: #6329B6; }
+            QPushButton:hover { border: 1px solid #6329B6; }
+            )");
+        ui->pushButtonLayer0->setStyleSheet(strStyle);
+        ui->pushButtonLayer1->setStyleSheet(strStyle);
+        ui->pushButtonLayer2->setStyleSheet(strStyle);
+        ui->pushButtonLayer3->setStyleSheet(strStyle);
+    }
 
     connect(ui->buttonGroupLayer,&QButtonGroup::idClicked,this,[=](int clikedId){
         switch (clikedId) {
-        case -2:
-            pCnnt->setProfile(0);
-            break;
-        case -3:
-            pCnnt->setProfile(1);
-            break;
-        case -4:
-            pCnnt->setProfile(2);
-            break;
-        case -5:
-            pCnnt->setProfile(3);
-            break;
-
-        default:
-            break;
+        case -2: pCnnt->setProfile(0); break;
+        case -3: pCnnt->setProfile(1); break;
+        case -4: pCnnt->setProfile(2); break;
+        case -5: pCnnt->setProfile(3); break;
+        default: break;
         }
     });
 
@@ -167,17 +178,25 @@ void FrameDeviceHolder::changeEvent(QEvent *pEvt)
     if(pEvt->type() == QEvent::LanguageChange)
     {
         ui->retranslateUi(this);
+        ui->label1->updateToolTip(tr("首页"));
+        ui->label2->updateToolTip(tr("键盘设置"));
+        ui->label3->updateToolTip(tr("磁轴设置"));
+        ui->label4->updateToolTip(tr("宏设置"));
+        ui->label5->updateToolTip(tr("灯光设置"));
+        ui->label6->updateToolTip(tr("关于"));
+        ui->label7->updateToolTip(tr("用户"));
+        ui->label8->updateToolTip(tr("返回"));
     }
+
     QFrame::changeEvent(pEvt);
 }
 
 
 void FrameDeviceHolder::clickLabel(QLabel *label, int index)
 {
-    if(index == 6)
+    if(index == 6 || index == 7)
     {
         emit onReturn();
-        //hide();
         return;
     }
 
@@ -190,8 +209,6 @@ void FrameDeviceHolder::clickLabel(QLabel *label, int index)
     }
     QFrame *pFM = m_pFrames[index];
     pFM->show();
-
-    //ui->horizontalLayoutBR->setContentsMargins(0,0,20,20);
 }
 
 bool FrameDeviceHolder::eventFilter(QObject *watch, QEvent *event)
@@ -213,16 +230,4 @@ bool FrameDeviceHolder::eventFilter(QObject *watch, QEvent *event)
     return QFrame::eventFilter(watch, event);
 }
 
-void FrameDeviceHolder::paintEvent(QPaintEvent *event)
-{
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-
-    QRect rect = this->rect();
-    painter.setBrush(QBrush(Qt::white));
-    painter.setPen(QPen(QColor(200, 200, 200), 1));
-    //painter.drawRoundedRect(rect, 12, 12);
-
-    event->accept();
-}
 

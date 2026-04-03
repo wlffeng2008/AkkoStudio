@@ -44,10 +44,12 @@ public:
 
     void setImages(const QString&strGetfocus,const QString&strLostfocus);
     void setOwnSheet(const QString&strGetfocus,const QString&strLostfocus);
-    void setFocus(bool foucs = true) ;
+    void setFocus(bool foucs = true);
     bool getFocus(){ return m_bFoucs; }
     CustomTooltip *getToolTip(){ return tooltip; }
-    static void setGroupTipStyle(QObject *parent, QString &style) ;
+    static void setGroupTipStyle(QObject *parent, QString &style);
+
+    void updateToolTip(const QString&text);
 
 protected:
     bool event(QEvent *event) override;
@@ -56,13 +58,12 @@ private:
     CustomTooltip *tooltip;
     QTimer *timer;
 
-    bool m_bFoucs = false ;
-    bool m_bEmpty = false ;
+    bool m_bFoucs = false;
 
-    QString m_strGetfocus ;
-    QString m_strLostfocus ;
-    QString m_strSheetGetfocus ;
-    QString m_strSheetLostfocus ;
+    QString m_strGetfocus;
+    QString m_strLostfocus;
+    QString m_strSheetGetfocus;
+    QString m_strSheetLostfocus;
 };
 
 #endif // SUPERLABEL_H

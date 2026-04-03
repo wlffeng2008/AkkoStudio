@@ -59,7 +59,7 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
                 border: 1px solid #6329B6;
                 background: #6329B6; }
             QPushButton:hover { border: 1px solid #6329B6; }
-            )") ;
+            )");
         pBtnGrp = new QButtonGroup(this) ;
         QLayout *pLayout = ui->scrollAreaWidgetContents->layout();
         pLayout->setSpacing(8);
@@ -84,7 +84,7 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
 
 // LED Param Table:
-// Effect                   Speed	Brightness	Color (Option Low 4bit)	Type (Option High4bit)
+// Effect                   Speed	Brightness	Color (Option Low 4bit) 	Type (Option High4bit)
 // OFF              0x00	xxx     xxx         xxx                         xxx
 // Static           0x01	xxx     0~4         Single-color/Full Color/AP	xxx
 // Breathe          0x02	0~4     0~4         Single-color/Full Color/AP	xxx

@@ -395,8 +395,10 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {   5, 0x320F, 0x5152, 0, "3108RF"},  // 有线
     {   6, 0x38EE, 0x000B, 1, "AG ONE"},
     {   6, 0x38EE, 0x000C, 1, "AG ONE"},
-    {  16, 0x38EE, 0x000D, 1, "Earthra"},
-    {  16, 0x38EE, 0x000F, 1, "Earthra"},
+    {  15, 0x38EE, 0x000B, 1, "灵动V9 Master"},
+    {  15, 0x38EE, 0x000C, 1, "灵动V9 Master"},
+    {  16, 0x38EE, 0x000D, 1, "泰坦N9 Master"},
+    {  16, 0x38EE, 0x000F, 1, "泰坦N9 Master"},
     {  17, 0x38EE, 0x0010, 1, "Earthra"},
     {  17, 0x38EE, 0x0011, 1, "Earthra"},
     {   7, 0x38EE, 0x0010, 1, "灵动V9 Ultra"},
@@ -407,8 +409,6 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {   9, 0x38EE, 0x000F, 1, "灵动V9 Ultra"},
     {  10, 0x38EE, 0x000D, 1, "泰坦N9 Ultra"},
     {  10, 0x38EE, 0x000F, 1, "泰坦N9 Ultra"},
-    {  15, 0x38EE, 0x0012, 1, "MX01"},
-    {  15, 0x38EE, 0x0013, 1, "MX01"},
 
     {  0xFFFF, 0x38EE, 0x0000, 1, "Unkown"}
 

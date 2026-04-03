@@ -69,7 +69,9 @@ typedef enum
     CMD_GET_SLEEPTIME	 =0x91,
     CMD_SET_USERGIF	 =0x12,
     CMD_SET_AUTOOSEN   =0x17,
-    CMD_GET_AUTOOSEN   =0x97
+    CMD_GET_AUTOOSEN   =0x97,
+    CMD_SET_SKU         =0x50,
+    CMD_GET_SKU         =0xD0,
 }KB_CMD;
 
 class USBNotifier : public QObject, public QAbstractNativeEventFilter

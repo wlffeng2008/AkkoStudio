@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1128</width>
-    <height>762</height>
+    <height>761</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -171,7 +171,7 @@
           <height>16777215</height>
          </size>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,0">
          <property name="spacing">
           <number>24</number>
          </property>
@@ -217,42 +217,47 @@
            <property name="frameShadow">
             <enum>QFrame::Shadow::Raised</enum>
            </property>
-           <widget class="ModuleLinear" name="frameLinearSet">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>56</y>
-              <width>261</width>
-              <height>200</height>
-             </rect>
+           <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1">
+            <property name="spacing">
+             <number>10</number>
             </property>
-            <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+            <property name="leftMargin">
+             <number>20</number>
             </property>
-            <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
+            <property name="topMargin">
+             <number>20</number>
             </property>
-           </widget>
-           <widget class="QLabel" name="labelTitle1">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>20</y>
-              <width>211</width>
-              <height>21</height>
-             </rect>
+            <property name="rightMargin">
+             <number>20</number>
             </property>
-            <property name="font">
-             <font>
-              <family>MiSans</family>
-              <italic>false</italic>
-              <fontweight>Medium</fontweight>
-             </font>
+            <property name="bottomMargin">
+             <number>20</number>
             </property>
-            <property name="text">
-             <string>键程设置 (全局)</string>
-            </property>
-           </widget>
+            <item>
+             <widget class="QLabel" name="labelTitle1">
+              <property name="font">
+               <font>
+                <family>MiSans</family>
+                <italic>false</italic>
+                <fontweight>Medium</fontweight>
+               </font>
+              </property>
+              <property name="text">
+               <string>键程设置(全局)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="ModuleLinear" name="frameLinearSet">
+              <property name="frameShape">
+               <enum>QFrame::Shape::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Raised</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>

@@ -319,7 +319,8 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         if(m_setType == 0)
         {
             keyData setTo = {0};
-            if(ui->tabWidgetKey->currentIndex() == 0)
+            int nFunc = ui->tabWidgetKey->currentIndex() ;
+            if(nFunc == 0)
             {
                 DialogVKPicker VKDlg(this);
                 if(VKDlg.exec() != QDialog::Accepted)
@@ -329,6 +330,10 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
             else
             {
                 DialogFNPicker FNDlg(this);
+                if(nFunc == 1)FNDlg.setFunc(2);
+                if(nFunc == 2)FNDlg.setFunc(0);
+                if(nFunc == 3)FNDlg.setFunc(1);
+
                 if(FNDlg.exec() != QDialog::Accepted)
                     return;
                 setTo = FNDlg.m_kd;

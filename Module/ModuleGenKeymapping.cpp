@@ -282,7 +282,7 @@ quint8 getIndex(quint8 hid)
             return i/4;
         }
     }
-    return 0x00;
+    return 0xFF;
 }
 
 quint8 getHid(quint8 index)

@@ -25,8 +25,7 @@ public:
     void updateLayer(int layer);
 
 protected:
-    bool eventFilter(QObject *watch, QEvent *event) override;
-    void paintEvent(QPaintEvent *event) override ;
+    bool eventFilter(QObject *watch, QEvent *event) final;
     void changeEvent(QEvent *pEvt) final;
 
 signals:
@@ -35,8 +34,8 @@ signals:
 private:
     Ui::FrameDeviceHolder *ui;
     void *m_device = nullptr;
-    QList<SuperLabel *>m_pLBtns ;
-    QList<QFrame *>m_pFrames ;
+    QList<SuperLabel *>m_pLBtns;
+    QList<QFrame *>m_pFrames;
     void clickLabel(QLabel *label,int index=0);
 };
 

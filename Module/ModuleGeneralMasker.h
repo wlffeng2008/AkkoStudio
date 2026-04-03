@@ -10,11 +10,15 @@ class ModuleGeneralMasker : public QDialog
 public:
     ModuleGeneralMasker(QWidget *cotnent, QWidget *parent=nullptr);
 
-    void setFlag(int nFlag=0){m_nFlag=nFlag;};
+    void setFlag(int nFlag=0){ m_nFlag = nFlag; };
+
+signals:
+    void onClicked();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
     bool eventFilter(QObject*watched, QEvent*event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 
 private:
     QWidget    *m_watch  = nullptr;

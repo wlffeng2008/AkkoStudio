@@ -16,9 +16,9 @@ DefaultDirName=C:\AkkoDriver
 DefaultGroupName==Akko Driver
 AllowNoIcons=yes
 ;UsePreviousAppDir=yes
-OutputDir=D:\Work\AkkoDriver_Installer
-OutputBaseFilename=Akko Driver安装程序
-SetupIconFile=D:\Work\AKKOStudio\Akko.ico
+OutputDir=Z:\参考资料
+OutputBaseFilename=Akko Driver安装程序0403
+SetupIconFile=./Akko.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -29,8 +29,8 @@ Name: "chinese"; MessagesFile: "compiler:Languages\Chinese-cn.isl"
 Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
 
 [Files]
-Source: D:\Work\AKKOStudio\bin\AKKOStudio.exe; DestDir: {app}; Flags: ignoreversion
-Source: D:\Work\AKKOStudio\bin\*; DestDir: {app}; Flags: recursesubdirs
+Source:./bin/AKKOStudio.exe; DestDir: {app}; Flags: ignoreversion
+Source: ./bin/*; DestDir: {app}; Flags: recursesubdirs
 
 [Icons]
 Name: {group}\Akko Driver; Filename: {app}\AKKOStudio.exe

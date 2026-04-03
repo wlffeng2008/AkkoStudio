@@ -60,6 +60,18 @@
      </item>
      <item>
       <widget class="ToggleButton" name="checkBoxEFMode">
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="text">
         <string>ON</string>
        </property>

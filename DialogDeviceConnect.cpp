@@ -73,6 +73,8 @@ static QList<HidCmd> CmdTable =
     {"CMD_SET_USERGIF",CMD_SET_USERGIF,8,0,0,0,0,0,0,0},
     {"CMD_SET_AUTOOSEN",CMD_SET_AUTOOSEN,8,0,0,0,0,0,0,0},
     {"CMD_GET_AUTOOSEN",CMD_GET_AUTOOSEN,8,0,0,0,0,0,0,0},
+    {"CMD_SET_SKU",CMD_SET_SKU,8,0,0,0,0,0,0,0},
+    {"CMD_GET_SKU",CMD_GET_SKU,8,0,0,0,0,0,0,0},
     {"",0,8,0,0,0,0,0,0,0}
 };
 

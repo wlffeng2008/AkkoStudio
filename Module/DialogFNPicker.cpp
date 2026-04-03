@@ -135,6 +135,7 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
             QPushButton *mBtn = new QPushButton(QString("宏")+QString("%1").arg(i+1),this);
             QString strName = QString::asprintf("pushButton_Micro%02d",i);
             mBtn->setObjectName(strName);
+            mBtn->setCursor(Qt::PointingHandCursor);
 
             MacroProject *prj = pMM->getMarcoProject(i);
             if(prj && prj->events.size() >= 2)
@@ -150,6 +151,11 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
 DialogFNPicker::~DialogFNPicker()
 {
     delete ui;
+}
+
+void DialogFNPicker::setFunc(int func)
+{
+    ui->stackedWidget->setCurrentIndex(func);
 }
 
 void DialogFNPicker::paintEvent(QPaintEvent *event)

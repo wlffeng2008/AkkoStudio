@@ -83,10 +83,10 @@ LinearFixing1::LinearFixing1(const QString& title,const QString& content, QWidge
     )");
     connect(cancelBtn, &QPushButton::clicked, this, &QDialog::reject);
 
-    cancelBtn->setFocusPolicy(Qt::NoFocus) ;
-    cancelBtn->setCursor(Qt::PointingHandCursor) ;
-    confirmBtn->setFocusPolicy(Qt::NoFocus) ;
-    confirmBtn->setCursor(Qt::PointingHandCursor) ;
+    cancelBtn->setFocusPolicy(Qt::NoFocus);
+    cancelBtn->setCursor(Qt::PointingHandCursor);
+    confirmBtn->setFocusPolicy(Qt::NoFocus);
+    confirmBtn->setCursor(Qt::PointingHandCursor);
 
     // 内容布局
     QVBoxLayout* contentLayout = new QVBoxLayout(pContentWidget);
@@ -94,14 +94,14 @@ LinearFixing1::LinearFixing1(const QString& title,const QString& content, QWidge
     contentLayout->addWidget(pLabText,1);
     contentLayout->setSpacing(5);
 
-    QHBoxLayout* btnLayout = new QHBoxLayout(nullptr) ;
+    QHBoxLayout* btnLayout = new QHBoxLayout(nullptr);
     btnLayout->setObjectName("btnLayout");
     btnLayout->addWidget(cancelBtn);
     btnLayout->addWidget(confirmBtn);
     btnLayout->setAlignment(Qt::AlignHCenter);
-    btnLayout->setSpacing(18) ;
-    btnLayout->setContentsMargins(10,10,10,10) ;
-    contentLayout->addItem(btnLayout) ;
+    btnLayout->setSpacing(18);
+    btnLayout->setContentsMargins(10,10,10,10);
+    contentLayout->addItem(btnLayout);
 
     // 主布局
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
@@ -113,7 +113,7 @@ LinearFixing1::LinearFixing1(const QString& title,const QString& content, QWidge
 
     QRect geoMetry = QApplication::primaryScreen()->geometry();
     qDebug() << parent;
-    if(parent) geoMetry = parent->frameGeometry() ;
+    if(parent) geoMetry = parent->frameGeometry();
     setGeometry(geoMetry);
     setFixedSize(geoMetry.width(), geoMetry.height());
 }

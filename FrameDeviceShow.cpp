@@ -24,11 +24,13 @@ FrameDeviceShow *FrameDeviceShow::getFrameShow(int index, QWidget *parent)
 }
 
 FrameDeviceShow::FrameDeviceShow(QWidget *parent)
-    : QFrame(parent), ui(new Ui::FrameDeviceShow) {
+    : QFrame(parent), ui(new Ui::FrameDeviceShow)
+{
     ui->setupUi(this);
 
     if (!s_active)
         s_active = this;
+
     setSelect(false);
 
     QTimer *pTMBatt = new QTimer(this);
@@ -39,12 +41,15 @@ FrameDeviceShow::FrameDeviceShow(QWidget *parent)
     pTMBatt->start(10000);
 }
 
-FrameDeviceShow::~FrameDeviceShow() { delete ui; }
+FrameDeviceShow::~FrameDeviceShow()
+{
+    delete ui;
+}
 
 void FrameDeviceShow::updateBattery()
 {
     quint32 batt = 100;
-    if(m_connect != 0)
+    if(m_cnnType != 0)
     {
         int nlen = 0;
         if(m_creator == 0)
@@ -75,10 +80,7 @@ void FrameDeviceShow::updateBattery()
             // QThread::msleep(20);
             // nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
 
-            if(nlen > 0)
-            {
-                batt = buf[2];
-            }
+            if(nlen > 0) batt = buf[2];
             hid_close(pDev);
         }
         else
@@ -90,23 +92,20 @@ void FrameDeviceShow::updateBattery()
             QThread::msleep(5);
             quint8 buf[128] = {0};
             nlen = hid_read_timeout(pDev,buf,16,500);
-            if(nlen > 0)
-            {
-                batt = buf[8];
-            }
+            if(nlen > 0) batt = buf[8];
             hid_close(pDev);
         }
     }
 
-    quint8 level=0;
-    QStringList imgPowers={"batt-low.png","batt-25.png","batt-50.png","batt-75.png","batt-full.png"};
+    quint8 level = 0;
+    QStringList imgPowers = {"batt-low.png","batt-25.png","batt-50.png","batt-75.png","batt-full.png"};
     if(batt>20) level=1;
     if(batt>40) level=2;
     if(batt>60) level=3;
     if(batt>80) level=4;
 
-    QString strBatt = QString(":/images/dev/")+imgPowers[level];
-    QString strTip  = QString(tr("剩余电量"))+QString(": %1%").arg(batt);
+    QString strBatt = QString(":/images/dev/") + imgPowers[level];
+    QString strTip  = QString(tr("剩余电量")) +  QString(": %1%").arg(batt);
 
     ui->labelPower->setPixmap(QPixmap(strBatt));
     ui->labelPower->setToolTip(strTip);
@@ -121,7 +120,7 @@ void FrameDeviceShow::updateBattery()
             padding: 4px 4px;
         }
     )";
-    if(m_connect==0)strBatt.clear();
+    if(m_cnnType == 0) strBatt.clear();
     ui->labelPower->setStyleSheet(qss);
 
     emit onReport(m_device,strBatt,m_typeImage,strTip,qss);
@@ -139,11 +138,11 @@ void FrameDeviceShow::setImage(const QString &image,int type)
         m_image = strDef;
     }
 
-    ui->labelPower->setHidden(m_connect == 0);
+    ui->labelPower->setHidden(m_cnnType == 0);
     QTimer::singleShot(500,this,[=]{ updateBattery(); });
 
-    QStringList imgTypes={"usb.png","2.4g.png","ble.png"};
-    m_typeImage = QString(":/images/dev/")+imgTypes[m_connect];
+    QStringList imgTypes = {"usb.png","2.4g.png","ble.png"};
+    m_typeImage = QString(":/images/dev/")+imgTypes[m_cnnType];
     ui->labelType->setPixmap(QPixmap(m_typeImage));
 
     if (!Img.isNull())
@@ -181,7 +180,7 @@ void FrameDeviceShow::setImage(const QString &image,int type)
         }
     }
 
-    if(nSetW>0)
+    if(nSetW > 0)
     {
         if(nSetW < 260) nSetW = 260;
         setFixedWidth(nSetW);

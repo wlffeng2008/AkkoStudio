@@ -97,7 +97,7 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
          <property name="leftMargin">
           <number>20</number>
          </property>
@@ -207,7 +207,7 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
             <enum>Qt::FocusPolicy::NoFocus</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: #f6f6f6;border-radius:12px;</string>
+            <string notr="true">background-color: #f6f6f6;border-radius:32px;</string>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -280,10 +280,13 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <property name="leftMargin">
-             <number>15</number>
+             <number>20</number>
             </property>
             <property name="topMargin">
              <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
             </property>
             <property name="bottomMargin">
              <number>0</number>
@@ -547,19 +550,19 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <property name="spacing">
-             <number>5</number>
+             <number>10</number>
             </property>
             <property name="leftMargin">
-             <number>10</number>
+             <number>20</number>
             </property>
             <property name="topMargin">
-             <number>10</number>
+             <number>20</number>
             </property>
             <property name="rightMargin">
-             <number>10</number>
+             <number>20</number>
             </property>
             <property name="bottomMargin">
-             <number>12</number>
+             <number>20</number>
             </property>
             <item>
              <widget class="QFrame" name="frameFlag">
@@ -788,7 +791,7 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                <enum>Qt::FocusPolicy::NoFocus</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: #f6f6f6;border-radius:12px;</string>
+               <string notr="true">background-color: #f6f6f6;border-radius:32px;</string>
               </property>
               <property name="widgetResizable">
                <bool>true</bool>
@@ -798,8 +801,8 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>780</width>
-                 <height>459</height>
+                 <width>760</width>
+                 <height>436</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_5">

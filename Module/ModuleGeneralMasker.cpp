@@ -81,3 +81,9 @@ void ModuleGeneralMasker::paintEvent(QPaintEvent *event)
 
     QDialog::paintEvent(event);
 }
+
+void ModuleGeneralMasker::mousePressEvent(QMouseEvent *event)
+{
+    emit onClicked();
+    QDialog::mousePressEvent(event);
+}

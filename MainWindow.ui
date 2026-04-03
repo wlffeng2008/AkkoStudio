@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="focusPolicy">
-   <enum>Qt::FocusPolicy::NoFocus</enum>
+   <enum>Qt::FocusPolicy::StrongFocus</enum>
   </property>
   <property name="windowTitle">
    <string notr="true">MainWindow</string>
@@ -23,6 +23,9 @@
    <string notr="true">border-radius:20px;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="focusPolicy">
+    <enum>Qt::FocusPolicy::StrongFocus</enum>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <property name="leftMargin">
      <number>0</number>
@@ -335,8 +338,8 @@ background:transparent;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>1170</width>
-               <height>424</height>
+               <width>16</width>
+               <height>16</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -472,10 +475,10 @@ background:transparent;</string>
          <number>0</number>
         </property>
         <property name="rightMargin">
-         <number>0</number>
+         <number>15</number>
         </property>
         <property name="bottomMargin">
-         <number>0</number>
+         <number>15</number>
         </property>
         <item>
          <widget class="FrameDeviceHolder" name="frameHold">

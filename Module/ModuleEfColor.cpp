@@ -87,15 +87,15 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
         });
     }
 
-    ui->labelAddColor->installEventFilter(this);
-    ui->labelAddColor->hide();
+    //ui->labelAddColor->installEventFilter(this);
+    //ui->labelAddColor->hide();
 
     ColorSquare *pCSq = new ColorSquare(this);
     ColorSlider *pCSl = new ColorSlider(this);
     pCSl->setRange(0,359);
 
-    pCSq->setFixedSize(266,200);
-    pCSl->setFixedWidth(266);
+    pCSq->setFixedSize(300,200);
+    pCSl->setFixedWidth(300);
     ui->verticalLayout1->addWidget(pCSq,0,Qt::AlignCenter);
     ui->verticalLayout2->addWidget(pCSl,0,Qt::AlignCenter);
 
@@ -123,22 +123,22 @@ ModuleEfColor::~ModuleEfColor()
 
 bool ModuleEfColor::eventFilter(QObject*watched ,QEvent *event)
 {
-    if(watched == ui->labelAddColor && event->type() == QEvent::MouseButtonRelease)
-    {
-        // QColor color = QColorDialog::getColor(Qt::red, nullptr, "选择颜色");
-        // if(color.isValid())
-        // {
-        //     qDebug() << "get Color ......" ;
-        // }
+    // if(watched == ui->labelAddColor && event->type() == QEvent::MouseButtonRelease)
+    // {
+    //     // QColor color = QColorDialog::getColor(Qt::red, nullptr, "选择颜色");
+    //     // if(color.isValid())
+    //     // {
+    //     //     qDebug() << "get Color ......" ;
+    //     // }
 
-        QColorDialog dialog(nullptr);
-        dialog.setStyleSheet("QPushButton{ border: 1px solid gray; font: none;background: transparent; color: black; border-radius: 0px;}");
-        dialog.setWindowTitle("恢复默认样式的颜色对话框");
-        dialog.setCurrentColor(Qt::blue);
-        if (dialog.exec() == QColorDialog::Accepted) {
-            QColor color = dialog.selectedColor();
-            qDebug() << color;
-        }
-    }
+    //     QColorDialog dialog(nullptr);
+    //     dialog.setStyleSheet("QPushButton{ border: 1px solid gray; font: none;background: transparent; color: black; border-radius: 0px;}");
+    //     dialog.setWindowTitle("恢复默认样式的颜色对话框");
+    //     dialog.setCurrentColor(Qt::blue);
+    //     if (dialog.exec() == QColorDialog::Accepted) {
+    //         QColor color = dialog.selectedColor();
+    //         qDebug() << color;
+    //     }
+    // }
     return QFrame::eventFilter(watched,event);
 }

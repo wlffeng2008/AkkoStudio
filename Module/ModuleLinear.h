@@ -17,6 +17,9 @@ public:
 
     void setText(const QString&text1,const QString&text2);
 
+signals:
+    void onSetValue(float value,int type=0);
+
 protected:
     bool eventFilter(QObject*watched, QEvent*event) override;
 

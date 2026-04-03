@@ -25,6 +25,8 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+class ModuleGeneralMasker;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -60,14 +62,15 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    ModuleLangMenu *m_pLangMenu=nullptr;
+    ModuleLangMenu *m_pLangMenu = nullptr;
+    ModuleGeneralMasker *m_cover = nullptr;
 
     QLayout *m_layout = nullptr;
 
     QPointF m_dragPosition;
     bool m_dragging = false;
+    bool m_closeShow = false;
 
-    bool m_bWaiting = true;
     QSystemTrayIcon *trayIcon = nullptr;
 
     QTimer *m_pTmHide = nullptr;
@@ -81,5 +84,7 @@ private:
     QAction *m_act0 = nullptr;
     QAction *m_act1 = nullptr;
     QAction *m_act2 = nullptr;
+
+    void setHubSize(bool origin=true);
 };
 #endif // MAINWINDOW_H

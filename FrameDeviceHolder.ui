@@ -37,6 +37,9 @@
        <height>0</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayoutBL">
       <property name="spacing">
        <number>30</number>
@@ -45,51 +48,35 @@
        <number>0</number>
       </property>
       <property name="topMargin">
-       <number>5</number>
+       <number>15</number>
       </property>
       <property name="rightMargin">
        <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>10</number>
+       <number>20</number>
       </property>
       <item alignment="Qt::AlignmentFlag::AlignHCenter">
-       <widget class="QPushButton" name="pushButtonReturn">
+       <widget class="SuperLabel" name="label8">
         <property name="minimumSize">
          <size>
-          <width>40</width>
-          <height>40</height>
+          <width>32</width>
+          <height>24</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>40</width>
-          <height>40</height>
+          <width>24</width>
+          <height>20</height>
          </size>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::FocusPolicy::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton::pressed{border:none; background:transparent;}</string>
         </property>
         <property name="text">
-         <string notr="true"/>
+         <string/>
         </property>
-        <property name="icon">
-         <iconset resource="res.qrc">
-          <normaloff>:/images/btn-return.png</normaloff>:/images/btn-return.png</iconset>
+        <property name="pixmap">
+         <pixmap resource="res.qrc">:/images/btn-return.png</pixmap>
         </property>
-        <property name="iconSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="flat">
+        <property name="scaledContents">
          <bool>true</bool>
         </property>
        </widget>
@@ -112,7 +99,7 @@
          <string>首页</string>
         </property>
         <property name="text">
-         <string/>
+         <string notr="true"/>
         </property>
         <property name="pixmap">
          <pixmap resource="res.qrc">:/images/leftbtns/0/shouye.png</pixmap>
@@ -143,7 +130,7 @@
          <string>键盘设置</string>
         </property>
         <property name="text">
-         <string/>
+         <string notr="true"/>
         </property>
         <property name="pixmap">
          <pixmap resource="res.qrc">:/images/leftbtns/0/jianweishezhi.png</pixmap>
@@ -174,7 +161,7 @@
          <string>磁轴设置</string>
         </property>
         <property name="text">
-         <string/>
+         <string notr="true"/>
         </property>
         <property name="pixmap">
          <pixmap resource="res.qrc">:/images/leftbtns/0/cizhoushezhi.png</pixmap>
@@ -205,7 +192,7 @@
          <string>宏设置</string>
         </property>
         <property name="text">
-         <string/>
+         <string notr="true"/>
         </property>
         <property name="pixmap">
          <pixmap resource="res.qrc">:/images/leftbtns/0/hongshezhi.png</pixmap>
@@ -236,7 +223,7 @@
          <string>灯效设置</string>
         </property>
         <property name="text">
-         <string/>
+         <string notr="true"/>
         </property>
         <property name="pixmap">
          <pixmap resource="res.qrc">:/images/leftbtns/0/cizhoushezhi.png</pixmap>
@@ -267,7 +254,7 @@
          <string>关于</string>
         </property>
         <property name="text">
-         <string/>
+         <string notr="true"/>
         </property>
         <property name="pixmap">
          <pixmap resource="res.qrc">:/images/leftbtns/0/guanyu.png</pixmap>
@@ -308,7 +295,7 @@
          </size>
         </property>
         <property name="text">
-         <string/>
+         <string notr="true"/>
         </property>
         <property name="pixmap">
          <pixmap resource="res.qrc">:/images/User.png</pixmap>
@@ -324,13 +311,13 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1">
      <property name="spacing">
-      <number>10</number>
+      <number>15</number>
      </property>
      <property name="rightMargin">
-      <number>20</number>
+      <number>0</number>
      </property>
      <property name="bottomMargin">
-      <number>20</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QFrame" name="FrameToolbar">
@@ -424,6 +411,11 @@
             <height>32</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -455,6 +447,11 @@
             <height>32</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -483,6 +480,11 @@
             <height>32</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -510,6 +512,11 @@
             <width>0</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
           </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
