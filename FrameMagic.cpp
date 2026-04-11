@@ -38,27 +38,27 @@ FrameMagic::FrameMagic(QWidget *parent)
             QPushButton:hover {border: 1px solid #6329B6; }
             )") ;
 
-        QLayout *pLayout = ui->frameBLeft->layout() ;
-        pLayout->setSpacing(12) ;
-        pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter) ;
+        QLayout *pLayout = ui->frameBLeft->layout();
+        pLayout->setSpacing(12);
+        pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
 
-        QList<QPushButton *>btns = {ui->pushButtonSet1,ui->pushButtonSet2,ui->pushButtonSet3,ui->pushButtonSet4} ;
-        QButtonGroup *pBtnGrp = new QButtonGroup(this) ;
+        QList<QPushButton *>btns = {ui->pushButtonSet1,ui->pushButtonSet2,ui->pushButtonSet3,ui->pushButtonSet4};
+        QButtonGroup *pBtnGrp = new QButtonGroup(this);
         for(int i=0; i<4; i++)
         {
-            QPushButton *btn = btns[i] ;
+            QPushButton *btn = btns[i];
             btn->setFixedSize(120,24);
-            btn->setCheckable(true) ;
+            btn->setCheckable(true);
             btn->setStyleSheet(strStyle);
-            btn->setFocusPolicy(Qt::NoFocus) ;
-            btn->setCursor(Qt::PointingHandCursor) ;
+            btn->setFocusPolicy(Qt::NoFocus);
+            btn->setCursor(Qt::PointingHandCursor);
             pBtnGrp->addButton(btn,i);
         }
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
-            qDebug() << "Effect QButtonGroup:" << id ;
-            ui->stackedWidget->setCurrentIndex(id) ;
+            ui->stackedWidget->setCurrentIndex(id);
         });
-        ui->pushButtonSet1->click() ;
+        ui->pushButtonSet1->click();
+        ui->pushButtonSet4->hide();
     }
 
     ui->frameDead->setText(tr("顶部死区"),tr("底部死区"));
@@ -75,17 +75,16 @@ FrameMagic::FrameMagic(QWidget *parent)
                 min-height:20px;
                 max-width:20px;
                 max-height:20px;
-
                 icon-size: 20px;
             }
 
             QPushButton:hover { background-color: #E4E4E4;}
 
-            )") ;
-        ui->pushButtonM1->setStyleSheet(strStyle1) ;
-        ui->pushButtonM2->setStyleSheet(strStyle1) ;
-        ui->pushButtonP1->setStyleSheet(strStyle1) ;
-        ui->pushButtonP2->setStyleSheet(strStyle1) ;
+            )");
+        ui->pushButtonM1->setStyleSheet(strStyle1);
+        ui->pushButtonM2->setStyleSheet(strStyle1);
+        ui->pushButtonP1->setStyleSheet(strStyle1);
+        ui->pushButtonP2->setStyleSheet(strStyle1);
 
         ui->horizontalSlider2->setStyleSheet(R"(
         QSlider::sub-page:horizontal { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #C3FFFD, stop:1 #39E1DC);  border-radius: 6px;}
@@ -100,65 +99,65 @@ FrameMagic::FrameMagic(QWidget *parent)
         QSlider::handle:pressed { background: #E0E0E0; border-color: #2D7FDD; }
     )");
 
-        ui->horizontalSlider1->setFixedHeight(40) ;
-        ui->horizontalSlider2->setFixedHeight(40) ;
+        ui->horizontalSlider1->setFixedHeight(40);
+        ui->horizontalSlider2->setFixedHeight(40);
         connect(ui->horizontalSlider1,&QSlider::valueChanged,this,[=](int value){ui->lineEditValue1->setText(QString::asprintf("%.03f",value/1000.0));});
         connect(ui->horizontalSlider2,&QSlider::valueChanged,this,[=](int value){ui->lineEditValue2->setText(QString::asprintf("%.03f",2.7-value/1000.0));});
 
-        ui->horizontalSlider1->setValue(2050) ;
-        ui->horizontalSlider2->setValue(1950) ;
+        ui->horizontalSlider1->setValue(2050);
+        ui->horizontalSlider2->setValue(1950);
 
         ui->pushButtonM1->setAutoRepeat(true);
-        ui->pushButtonM1->setAutoRepeatInterval(100) ;
+        ui->pushButtonM1->setAutoRepeatInterval(100);
         connect(ui->pushButtonM1,&QPushButton::pressed,this,[=]{
-            int value = ui->horizontalSlider1->value() - 5 ;
+            int value = ui->horizontalSlider1->value() - 5;
             ui->horizontalSlider1->setValue(value);
-        }) ;
+        });
 
         ui->pushButtonP1->setAutoRepeat(true);
         ui->pushButtonP1->setAutoRepeatInterval(100) ;
         connect(ui->pushButtonP1,&QPushButton::pressed,this,[=]{
-            int value = ui->horizontalSlider1->value() + 5 ;
+            int value = ui->horizontalSlider1->value() + 5;
             ui->horizontalSlider1->setValue(value);
-        }) ;
+        });
 
-        QTimer *pTMUpdate1 = new QTimer(this) ;
-        QTimer *pTMUpdate2 = new QTimer(this) ;
+        QTimer *pTMUpdate1 = new QTimer(this);
+        QTimer *pTMUpdate2 = new QTimer(this);
 
         connect(ui->lineEditValue1,&QLineEdit::textEdited,this,[=](const QString&text){
-            pTMUpdate1->stop() ;
-            pTMUpdate1->start(300) ;
+            pTMUpdate1->stop();
+            pTMUpdate1->start(300);
         });
         connect(pTMUpdate1,&QTimer::timeout,this,[=]{
             pTMUpdate1->stop() ;
             QString strTmp = ui->lineEditValue1->text();
             char szText[100]={0} ;
-            strcpy_s(szText, strTmp.toStdString().c_str()) ;
+            strcpy_s(szText, strTmp.toStdString().c_str());
             for(int i=0; i<strlen(szText); i++)
             {
                 if(szText[i] == '.' || (szText[i] >= '0' && szText[i] <= '9'))
-                    continue ;
-                szText[i] = 0 ;
+                    continue;
+                szText[i] = 0;
                 break;
             }
             strTmp = szText;
             int value = strTmp.toFloat() * 1000;
-            if(value>2500) value = 2500 ;
-            if(value<200) value = 200 ;
+            if(value>2500) value = 2500;
+            if(value<200)  value = 200;
             ui->horizontalSlider1->setValue(value);
         });
 
         ui->pushButtonM2->setAutoRepeat(true);
-        ui->pushButtonM2->setAutoRepeatInterval(100) ;
+        ui->pushButtonM2->setAutoRepeatInterval(100);
         connect(ui->pushButtonM2,&QPushButton::pressed,this,[=]{
-            int value = ui->horizontalSlider2->value() - 5 ;
+            int value = ui->horizontalSlider2->value() - 5;
             ui->horizontalSlider2->setValue(value);
         }) ;
 
         ui->pushButtonP2->setAutoRepeat(true);
-        ui->pushButtonP2->setAutoRepeatInterval(100) ;
+        ui->pushButtonP2->setAutoRepeatInterval(100);
         connect(ui->pushButtonP2,&QPushButton::pressed,this,[=]{
-            int value = ui->horizontalSlider2->value() + 5 ;
+            int value = ui->horizontalSlider2->value() + 5;
             ui->horizontalSlider2->setValue(value);
         }) ;
 
@@ -170,27 +169,27 @@ FrameMagic::FrameMagic(QWidget *parent)
             pTMUpdate2->stop();
             QString strTmp = ui->lineEditValue2->text();
             char szText[100]={0} ;
-            strcpy_s(szText,strTmp.toStdString().c_str()) ;
+            strcpy_s(szText,strTmp.toStdString().c_str());
             for(int i=0; i<strlen(szText); i++)
             {
                 if(szText[i] == '.' || (szText[i] >= '0' && szText[i] <= '9'))
-                    continue ;
-                szText[i] = 0 ;
+                    continue;
+                szText[i] = 0;
                 break;
             }
             strTmp = szText;
             int value = strTmp.toFloat() * 1000;
-            if(value>2500) value = 2500 ;
-            if(value<200) value = 200 ;
+            if(value>2500) value = 2500;
+            if(value<200)  value = 200;
             ui->horizontalSlider2->setValue(value);
         });
 
         connect(ui->checkBox3,&QCheckBox::clicked,this,[=](bool checked){
             ui->labelRelease->setHidden(!checked);
             ui->frameRelease->setHidden(!checked);
-        }) ;
+        });
 
-        ui->checkBox3->click() ;
+        ui->checkBox3->click();
     }
 
     ui->frameKeyboard->showMtFlag();

@@ -25,7 +25,7 @@ FrameMacro::FrameMacro(QWidget *parent)
     m_pMM = new ModuleMacroManager(this);
 
     {
-        QLayout *pLayout = ui->scrollAreaWidgetContents1->layout() ;
+        QLayout *pLayout = ui->scrollAreaWidgetContents1->layout();
         pLayout->setSpacing(10) ;
         pLayout->setContentsMargins(5,5,5,5);
         pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
@@ -38,11 +38,11 @@ FrameMacro::FrameMacro(QWidget *parent)
         m_loading=false;
     }
 
-    connect(ui->pushButtonAddMacro,&QPushButton::clicked,this,[=](){
-        addMacroBar((QObject*)m_pMM->addMacroProject());
-    });
-
     {
+        connect(ui->pushButtonAddMacro,&QPushButton::clicked,this,[=](){
+            addMacroBar((QObject*)m_pMM->addMacroProject());
+        });
+
         connect(ui->pushButtonDelete,&QPushButton::clicked,this,[=]{
             removeView();
             saveEvents();
@@ -194,7 +194,7 @@ void FrameMacro::addMacroSquare(const QString&text, quint8 type, quint16 value, 
             });
         }
 
-        MacroSquare *delay = MacroSquare::getSquare(s_MSquares.count(),this);  // new MacroSquare(strText.trimmed(), type, final, down, this);
+        MacroSquare *delay = MacroSquare::getSquare(s_MSquares.count(),this);
         delay->setData(tr("延迟"), 3, 50, false);
         delay->setFixedSize(56,56);
         s_MSquares.insert(addAt+1,delay);
@@ -335,7 +335,7 @@ void FrameMacro::removeView()
 
 bool FrameMacro::event(QEvent *event)
 {
-    if(event->type()==QEvent::MouseButtonDblClick)
+    if(event->type() == QEvent::MouseButtonDblClick)
     {
         m_loading = false;
         m_lastDelay = m_tcount.elapsed();
@@ -354,7 +354,7 @@ bool FrameMacro::event(QEvent *event)
         return true;
     }
 
-    if(event->type()==QEvent::MouseButtonPress)
+    if(event->type() == QEvent::MouseButtonPress)
     {
         m_loading = false;
         MacroSquare::LostFocus();

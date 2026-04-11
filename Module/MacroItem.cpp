@@ -58,7 +58,7 @@ void MacroItem::setActive()
     if(activeItem)
         activeItem->setStyleSheet("QFrame#MacroItem { background-color: transparent;  padding:3px}");
     activeItem=this;
-    setStyleSheet("QFrame#MacroItem{ border: 1px solid #6329B6; border-radius: 10px; padding:2px}");
+    setStyleSheet("QFrame#MacroItem{ border: 1px solid #6329B6; border-radius: 8px; padding:2px}");
 }
 
 bool MacroItem::eventFilter(QObject *watched,QEvent *event)

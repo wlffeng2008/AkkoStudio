@@ -209,6 +209,8 @@ void FrameDeviceHolder::clickLabel(QLabel *label, int index)
     }
     QFrame *pFM = m_pFrames[index];
     pFM->show();
+
+    ui->horizontalFrame->setVisible(index == 1);
 }
 
 bool FrameDeviceHolder::eventFilter(QObject *watch, QEvent *event)

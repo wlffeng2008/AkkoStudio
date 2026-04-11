@@ -907,7 +907,7 @@ bool MainWindow::event(QEvent *event)
     }
     if(event->type() == QEvent::WindowDeactivate)
     {
-        qDebug()  << "QEvent::WindowDeactivate";
+        // qDebug()  << "QEvent::WindowDeactivate";
         if(!m_closeShow)
         {
             QTimer::singleShot(500,this,[=]{
@@ -920,7 +920,7 @@ bool MainWindow::event(QEvent *event)
     }
     if(event->type() == QEvent::WindowActivate)
     {
-        qDebug()  << "QEvent::WindowActivate";
+        // qDebug()  << "QEvent::WindowActivate";
         m_cover->hide();
 
         QTimer::singleShot(100,this,[=]{
@@ -979,9 +979,10 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
+    m_pLangMenu->hide();
     m_closeShow = true;
     event->ignore();
-    auto res = QMessageBox::question(this,tr("提示"),tr("确定要退出 AKKO 驱动程序？"));
+    auto res = QMessageBox::question(this, tr("提示"), tr("确定要退出 AKKO 驱动程序？"));
     if(res != QMessageBox::Yes)
     {
         m_closeShow = false;
@@ -1038,7 +1039,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             pCntTM->stop();
             pCntTM->start(300);
             connect(pCntTM,&QTimer::timeout,this,[=]{ nCount=0; });
-            if(nCount >= 4)
+            if(nCount >= 2 && (::GetKeyState(VK_CONTROL)&0x800) && (::GetKeyState('D')&0x800) )
                 DialogDeviceConnect::instance()->show();
         }
         if (event->pos().y() < 80)

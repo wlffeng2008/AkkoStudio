@@ -28,8 +28,7 @@ FrameDeviceShow::FrameDeviceShow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    if (!s_active)
-        s_active = this;
+    if (!s_active) s_active = this;
 
     setSelect(false);
 
@@ -62,7 +61,7 @@ void FrameDeviceShow::updateBattery()
             QByteArray tmp(120, 0);
 
             int ntry = 0;
-            while(ntry++ < 8)
+            while(ntry++ < 5)
             {
                 tmp[1] = 0xf7;
                 tmp[2] = 0x00;
@@ -141,8 +140,8 @@ void FrameDeviceShow::setImage(const QString &image,int type)
     ui->labelPower->setHidden(m_cnnType == 0);
     QTimer::singleShot(500,this,[=]{ updateBattery(); });
 
-    QStringList imgTypes = {"usb.png","2.4g.png","ble.png"};
-    m_typeImage = QString(":/images/dev/")+imgTypes[m_cnnType];
+    QStringList imgTypes = {"usb.png", "2.4g.png", "ble.png"};
+    m_typeImage = QString(":/images/dev/") + imgTypes[m_cnnType];
     ui->labelType->setPixmap(QPixmap(m_typeImage));
 
     if (!Img.isNull())

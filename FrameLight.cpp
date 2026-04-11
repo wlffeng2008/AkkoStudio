@@ -8,7 +8,7 @@ FrameLight::FrameLight(QWidget *parent)
     , ui(new Ui::FrameLight)
 {
     ui->setupUi(this);
-    ui->frameKeyboard->showFlag(false) ;
+    ui->frameKeyboard->showFlag(false);
 
     DialogDeviceConnect *pConnector = DialogDeviceConnect::instance();
 
@@ -33,7 +33,7 @@ FrameLight::FrameLight(QWidget *parent)
 
     connect(pConnector,&DialogDeviceConnect::onReadBack,[=](const QByteArray&data){
         quint8 *pPack = (quint8 *)data.data();
-        quint8 cmd = pPack[0] ;
+        quint8 cmd = pPack[0];
         if(cmd == CMD_GET_LEDPARAM)
         {
             if(ui->frameLEDMode)

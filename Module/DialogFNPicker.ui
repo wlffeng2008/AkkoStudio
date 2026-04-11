@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>843</width>
+    <width>935</width>
     <height>463</height>
    </rect>
   </property>
@@ -31,15 +31,15 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="page0">
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>18</x>
+         <x>90</x>
          <y>12</y>
-         <width>805</width>
+         <width>733</width>
          <height>149</height>
         </rect>
        </property>
@@ -525,13 +525,13 @@
       </widget>
      </widget>
      <widget class="QWidget" name="page1">
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>18</x>
-         <y>12</y>
+         <x>86</x>
+         <y>28</y>
          <width>753</width>
-         <height>91</height>
+         <height>113</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
@@ -739,12 +739,12 @@
       </widget>
      </widget>
      <widget class="QWidget" name="page2">
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>14</x>
+         <x>92</x>
          <y>12</y>
-         <width>775</width>
+         <width>759</width>
          <height>365</height>
         </rect>
        </property>

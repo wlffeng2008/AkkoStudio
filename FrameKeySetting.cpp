@@ -92,7 +92,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
             "fangda.png",
             "suoxiao.png",
             "yuyin.png" };
-        //QButtonGroup *pBtnGrp = new QButtonGroup(this) ;
+
         for(int i=0; i<19; i++)
         {
             QString strName = QString::asprintf("pushButton_F%02d",i+1);
@@ -213,32 +213,32 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
             return;
-        ui->frameDKS1->setText(getKeyString(&VKDlg.m_kd,false));
         m_DKS1 = VKDlg.m_kd;
+        ui->frameDKS1->setText(getKeyString(&VKDlg.m_kd,false));
     });
 
     connect(ui->frameDKS2,&ModuleDKSItem::onButtonClicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
             return;
-        ui->frameDKS2->setText(getKeyString(&VKDlg.m_kd,false));
         m_DKS2 = VKDlg.m_kd;
+        ui->frameDKS2->setText(getKeyString(&VKDlg.m_kd,false));
     });
 
     connect(ui->frameDKS3,&ModuleDKSItem::onButtonClicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
             return;
-        ui->frameDKS3->setText(getKeyString(&VKDlg.m_kd,false));
         m_DKS3 = VKDlg.m_kd;
+        ui->frameDKS3->setText(getKeyString(&VKDlg.m_kd,false));
     });
 
     connect(ui->frameDKS4,&ModuleDKSItem::onButtonClicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
             return;
-        ui->frameDKS4->setText(getKeyString(&VKDlg.m_kd,false));
         m_DKS4 = VKDlg.m_kd;
+        ui->frameDKS4->setText(getKeyString(&VKDlg.m_kd,false));
     });
 
     connect(ui->pushButton_OKDKS,&QPushButton::clicked,this,[=]{
@@ -260,21 +260,22 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
             return;
-        ui->pushButton_MT1->setText(getKeyString(&VKDlg.m_kd,false));
         m_MT1 = VKDlg.m_kd;
+        ui->pushButton_MT1->setText(getKeyString(&VKDlg.m_kd,false));
     });
 
     connect(ui->pushButton_MT2,&QPushButton::clicked,this,[=]{
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
             return;
-        ui->pushButton_MT2->setText(getKeyString(&VKDlg.m_kd,false));
         m_MT2 = VKDlg.m_kd;
+        ui->pushButton_MT2->setText(getKeyString(&VKDlg.m_kd,false));
     });
 
     connect(ui->pushButton_OKMT,&QPushButton::clicked,this,[=]{
         if(m_MTHid == 0)
             return;
+
         pCnn->changeKey(m_MTHid,&m_MT1,0,false);
         pCnn->changeKey(m_MTHid,&m_MT2,1,true);
 
@@ -288,16 +289,17 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         DialogVKPicker VKDlg(this);
         if(VKDlg.exec() != QDialog::Accepted)
             return;
-        ui->pushButton_TGL1->setText(getKeyString(&VKDlg.m_kd,false));
         m_TGL1 = VKDlg.m_kd;
+        ui->pushButton_TGL1->setText(getKeyString(&VKDlg.m_kd,false));
     });
+
     connect(ui->radioButton_TGL1,&QRadioButton::clicked,this,[=]{ui->pushButton_OKTGL->click();});
     connect(ui->radioButton_TGL2,&QRadioButton::clicked,this,[=]{ui->pushButton_OKTGL->click();});
     connect(ui->pushButton_OKTGL,&QPushButton::clicked,this,[=]{
         if(m_TGLHid == 0)
             return;
         pCnn->changeKey(m_TGLHid,&m_TGL1,0,true);
-        pCnn->send65Cmd(0x07,m_TGLHid,ui->radioButton_TGL1->isChecked()?0x04:0x05,true);
+        pCnn->send65Cmd(0x07,m_TGLHid,ui->radioButton_TGL1->isChecked() ? 0x04 : 0x05,true);
         refresh();
     });
 
