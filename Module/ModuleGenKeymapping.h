@@ -10,7 +10,6 @@ struct keyData
     quint8 b1;
     quint8 b2;
     quint8 b3;
-
 };
 
 struct keyItem
@@ -39,6 +38,8 @@ quint16 getKeyNCode(quint16 hid);
 
 QByteArray getDefaultMatrix();
 void setDefaultMatrix(const QByteArray&data);
+QByteArray getDefaultFnMatrix();
+void setDefaultMatrixFn(const QByteArray&data);
 
 class ModuleGenKeymapping:public QWidget
 {

@@ -19,6 +19,7 @@ public:
     ~FrameKeySetting();
 
     void refresh();
+    void refreshFn();
 
 protected:
     bool eventFilter(QObject*watched,QEvent*event) override;

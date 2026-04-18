@@ -39,7 +39,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
   <property name="lineWidth">
    <number>0</number>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
    <property name="spacing">
     <number>24</number>
    </property>
@@ -126,7 +126,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
-       <number>24</number>
+       <number>20</number>
       </property>
       <property name="leftMargin">
        <number>0</number>
@@ -169,15 +169,31 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="spacing">
-          <number>8</number>
+          <number>10</number>
+         </property>
+         <property name="leftMargin">
+          <number>20</number>
          </property>
          <property name="topMargin">
+          <number>20</number>
+         </property>
+         <property name="rightMargin">
+          <number>20</number>
+         </property>
+         <property name="bottomMargin">
           <number>20</number>
          </property>
          <item>
           <widget class="QPushButton" name="pushButtonSet1">
            <property name="text">
-            <string>自定义按键</string>
+            <string>自定义</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonSet4">
+           <property name="text">
+            <string>Fn层设置</string>
            </property>
           </widget>
          </item>
@@ -251,717 +267,43 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             <string notr="true"/>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
              <string notr="true">#page1{background-color:#F6F6F6;border-radius:32px;}</string>
             </property>
-            <widget class="NewTabWidget" name="tabWidgetKey">
+            <widget class="QLabel" name="labelFunc">
              <property name="geometry">
               <rect>
                <x>20</x>
                <y>20</y>
-               <width>901</width>
-               <height>45</height>
+               <width>211</width>
+               <height>27</height>
               </rect>
              </property>
-             <property name="font">
-              <font>
-               <family>MiSans</family>
-               <italic>false</italic>
-               <fontweight>Medium</fontweight>
-              </font>
+             <property name="styleSheet">
+              <string notr="true">font: 600 16pt &quot;MiSans&quot;;</string>
              </property>
-             <property name="currentIndex">
-              <number>2</number>
+             <property name="text">
+              <string>自定义/Fn层设置</string>
              </property>
-             <widget class="QWidget" name="tab11">
-              <attribute name="title">
-               <string>组合键</string>
-              </attribute>
-             </widget>
-             <widget class="QWidget" name="tab12">
-              <attribute name="title">
-               <string>宏设置</string>
-              </attribute>
-              <widget class="QPushButton" name="pushButton_M1">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>66</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>M1</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_M2">
-               <property name="geometry">
-                <rect>
-                 <x>90</x>
-                 <y>66</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>M2</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_M3">
-               <property name="geometry">
-                <rect>
-                 <x>160</x>
-                 <y>66</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>M3</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_M4">
-               <property name="geometry">
-                <rect>
-                 <x>220</x>
-                 <y>66</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>M4</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_M5">
-               <property name="geometry">
-                <rect>
-                 <x>290</x>
-                 <y>66</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>M5</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_M6">
-               <property name="geometry">
-                <rect>
-                 <x>360</x>
-                 <y>66</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>M6</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_M7">
-               <property name="geometry">
-                <rect>
-                 <x>430</x>
-                 <y>66</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>M7</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_M8">
-               <property name="geometry">
-                <rect>
-                 <x>500</x>
-                 <y>66</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>M8</string>
-               </property>
-              </widget>
-             </widget>
-             <widget class="QWidget" name="tab13">
-              <attribute name="title">
-               <string>功能键</string>
-              </attribute>
-              <widget class="QPushButton" name="pushButton_F01">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="res.qrc">
-                 <normaloff>:/images/macro/fn0/fn.png</normaloff>:/images/macro/fn0/fn.png</iconset>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F02">
-               <property name="geometry">
-                <rect>
-                 <x>80</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F03">
-               <property name="geometry">
-                <rect>
-                 <x>140</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F04">
-               <property name="geometry">
-                <rect>
-                 <x>200</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F05">
-               <property name="geometry">
-                <rect>
-                 <x>260</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F06">
-               <property name="geometry">
-                <rect>
-                 <x>320</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F07">
-               <property name="geometry">
-                <rect>
-                 <x>380</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F08">
-               <property name="geometry">
-                <rect>
-                 <x>440</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F09">
-               <property name="geometry">
-                <rect>
-                 <x>500</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F10">
-               <property name="geometry">
-                <rect>
-                 <x>560</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F11">
-               <property name="geometry">
-                <rect>
-                 <x>620</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F12">
-               <property name="geometry">
-                <rect>
-                 <x>680</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F13">
-               <property name="geometry">
-                <rect>
-                 <x>740</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F14">
-               <property name="geometry">
-                <rect>
-                 <x>800</x>
-                 <y>52</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F15">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>122</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F16">
-               <property name="geometry">
-                <rect>
-                 <x>80</x>
-                 <y>122</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F17">
-               <property name="geometry">
-                <rect>
-                 <x>140</x>
-                 <y>122</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F18">
-               <property name="geometry">
-                <rect>
-                 <x>200</x>
-                 <y>122</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F19">
-               <property name="geometry">
-                <rect>
-                 <x>260</x>
-                 <y>122</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F21">
-               <property name="geometry">
-                <rect>
-                 <x>382</x>
-                 <y>122</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F20">
-               <property name="geometry">
-                <rect>
-                 <x>322</x>
-                 <y>122</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>F1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F28">
-               <property name="geometry">
-                <rect>
-                 <x>382</x>
-                 <y>222</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>m7</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F27">
-               <property name="geometry">
-                <rect>
-                 <x>322</x>
-                 <y>222</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>m6</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F23">
-               <property name="geometry">
-                <rect>
-                 <x>80</x>
-                 <y>222</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>m2</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F22">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>222</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>m1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F24">
-               <property name="geometry">
-                <rect>
-                 <x>140</x>
-                 <y>222</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>m3</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F25">
-               <property name="geometry">
-                <rect>
-                 <x>200</x>
-                 <y>222</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>m4</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QPushButton" name="pushButton_F26">
-               <property name="geometry">
-                <rect>
-                 <x>260</x>
-                 <y>222</y>
-                 <width>44</width>
-                 <height>48</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>m5</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">buttonGroupFN</string>
-               </attribute>
-              </widget>
-              <widget class="QLabel" name="labelFlag4">
-               <property name="geometry">
-                <rect>
-                 <x>24</x>
-                 <y>20</y>
-                 <width>111</width>
-                 <height>21</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>键盘功能</string>
-               </property>
-              </widget>
-              <widget class="QLabel" name="labelFlag5">
-               <property name="geometry">
-                <rect>
-                 <x>26</x>
-                 <y>194</y>
-                 <width>137</width>
-                 <height>21</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>鼠标功能</string>
-               </property>
-              </widget>
-             </widget>
-             <widget class="QWidget" name="tab">
-              <attribute name="title">
-               <string>鼠标功能</string>
-              </attribute>
-             </widget>
+            </widget>
+            <widget class="QLabel" name="labelNote">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>60</y>
+               <width>849</width>
+               <height>33</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>*首先点击选择上方按键，在弹出的对话框中可选择组合键、宏设置、系统功能、鼠标功能进行改建设置</string>
+             </property>
             </widget>
            </widget>
            <widget class="QWidget" name="page2">
@@ -987,7 +329,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <widget class="NewTabWidget" name="tabWidget2">
+             <widget class="NewTabWidget" name="tabWidgetAdv">
               <property name="geometry">
                <rect>
                 <x>20</x>
@@ -995,9 +337,6 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <width>881</width>
                 <height>290</height>
                </rect>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="currentIndex">
                <number>0</number>
@@ -1934,429 +1273,426 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             </widget>
            </widget>
            <widget class="QWidget" name="page3">
-            <widget class="QFrame" name="frame_3">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>180</width>
-               <height>341</height>
-              </rect>
+            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,1,1,1">
+             <property name="spacing">
+              <number>20</number>
              </property>
-             <property name="styleSheet">
-              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_3">
+               <property name="styleSheet">
+                <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}
 </string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <widget class="QLabel" name="labelTitle1">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>131</width>
-                <height>21</height>
-               </rect>
-              </property>
-              <property name="font">
-               <font>
-                <family>MiSans</family>
-                <italic>false</italic>
-                <fontweight>Medium</fontweight>
-               </font>
-              </property>
-              <property name="text">
-               <string>键盘回报率</string>
-              </property>
-             </widget>
-             <widget class="ModuleScrollValue" name="frameSV1">
-              <property name="geometry">
-               <rect>
-                <x>25</x>
-                <y>66</y>
-                <width>130</width>
-                <height>251</height>
-               </rect>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::Shape::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Shadow::Raised</enum>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QFrame" name="frame_5">
-             <property name="geometry">
-              <rect>
-               <x>206</x>
-               <y>0</y>
-               <width>180</width>
-               <height>341</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,1">
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
+                <property name="topMargin">
+                 <number>20</number>
+                </property>
+                <property name="rightMargin">
+                 <number>20</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>20</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelTitle1">
+                  <property name="font">
+                   <font>
+                    <family>MiSans</family>
+                    <italic>false</italic>
+                    <fontweight>Medium</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>键盘回报率</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="ModuleScrollValue" name="frameSV1">
+                  <property name="frameShape">
+                   <enum>QFrame::Shape::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Shadow::Raised</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_5">
+               <property name="styleSheet">
+                <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}
 </string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <widget class="QLabel" name="labelTitle2">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>145</width>
-                <height>21</height>
-               </rect>
-              </property>
-              <property name="font">
-               <font>
-                <family>MiSans</family>
-                <italic>false</italic>
-                <fontweight>Medium</fontweight>
-               </font>
-              </property>
-              <property name="text">
-               <string>2.4G关闭背光</string>
-              </property>
-             </widget>
-             <widget class="ModuleScrollValue" name="frameSV2">
-              <property name="geometry">
-               <rect>
-                <x>25</x>
-                <y>66</y>
-                <width>130</width>
-                <height>251</height>
-               </rect>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::Shape::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Shadow::Raised</enum>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QFrame" name="frame_7">
-             <property name="geometry">
-              <rect>
-               <x>414</x>
-               <y>0</y>
-               <width>180</width>
-               <height>341</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,1">
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
+                <property name="topMargin">
+                 <number>20</number>
+                </property>
+                <property name="rightMargin">
+                 <number>20</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>20</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelTitle2">
+                  <property name="font">
+                   <font>
+                    <family>MiSans</family>
+                    <italic>false</italic>
+                    <fontweight>Medium</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>2.4G关闭背光</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="ModuleScrollValue" name="frameSV2">
+                  <property name="frameShape">
+                   <enum>QFrame::Shape::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Shadow::Raised</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_7">
+               <property name="styleSheet">
+                <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}
 </string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <widget class="QLabel" name="labelTitle3">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>137</width>
-                <height>21</height>
-               </rect>
-              </property>
-              <property name="font">
-               <font>
-                <family>MiSans</family>
-                <italic>false</italic>
-                <fontweight>Medium</fontweight>
-               </font>
-              </property>
-              <property name="text">
-               <string>蓝牙关闭背光</string>
-              </property>
-             </widget>
-             <widget class="ModuleScrollValue" name="frameSV3">
-              <property name="geometry">
-               <rect>
-                <x>25</x>
-                <y>66</y>
-                <width>130</width>
-                <height>251</height>
-               </rect>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::Shape::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Shadow::Raised</enum>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>622</x>
-               <y>0</y>
-               <width>300</width>
-               <height>334</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_6">
-              <property name="spacing">
-               <number>24</number>
-              </property>
-              <item>
-               <widget class="QFrame" name="frameRT">
-                <property name="styleSheet">
-                 <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,1">
+                <property name="leftMargin">
+                 <number>20</number>
                 </property>
-                <property name="frameShape">
-                 <enum>QFrame::Shape::StyledPanel</enum>
+                <property name="topMargin">
+                 <number>20</number>
                 </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
+                <property name="rightMargin">
+                 <number>20</number>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_3">
-                 <property name="leftMargin">
-                  <number>20</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>20</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>15</number>
-                 </property>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_4">
-                   <item>
-                    <widget class="QLabel" name="labelTitle4">
-                     <property name="font">
-                      <font>
-                       <family>MiSans</family>
-                       <italic>false</italic>
-                       <fontweight>Medium</fontweight>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>2.4G深度睡眠时间</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer">
-                     <property name="orientation">
-                      <enum>Qt::Orientation::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Policy::Fixed</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>80</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineEditV1"/>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QSlider" name="horizontalSlider24Deep">
-                   <property name="maximum">
-                    <number>1800</number>
-                   </property>
-                   <property name="singleStep">
-                    <number>10</number>
-                   </property>
-                   <property name="pageStep">
-                    <number>100</number>
-                   </property>
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QFrame" name="frameRM">
-                <property name="styleSheet">
-                 <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+                <property name="bottomMargin">
+                 <number>20</number>
                 </property>
-                <property name="frameShape">
-                 <enum>QFrame::Shape::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_4">
-                 <property name="leftMargin">
-                  <number>20</number>
+                <item>
+                 <widget class="QLabel" name="labelTitle3">
+                  <property name="font">
+                   <font>
+                    <family>MiSans</family>
+                    <italic>false</italic>
+                    <fontweight>Medium</fontweight>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>蓝牙关闭背光</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="ModuleScrollValue" name="frameSV3">
+                  <property name="frameShape">
+                   <enum>QFrame::Shape::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Shadow::Raised</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_6">
+               <property name="spacing">
+                <number>20</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="frameRT">
+                 <property name="styleSheet">
+                  <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
                  </property>
-                 <property name="topMargin">
-                  <number>10</number>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
                  </property>
-                 <property name="rightMargin">
-                  <number>20</number>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
                  </property>
-                 <property name="bottomMargin">
-                  <number>15</number>
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <property name="leftMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>15</number>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_4">
+                    <item>
+                     <widget class="QLabel" name="labelTitle4">
+                      <property name="font">
+                       <font>
+                        <family>MiSans</family>
+                        <italic>false</italic>
+                        <fontweight>Medium</fontweight>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>2.4G深度睡眠时间</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Policy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>80</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="lineEditV1"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QSlider" name="horizontalSlider24Deep">
+                    <property name="maximum">
+                     <number>1080</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>10</number>
+                    </property>
+                    <property name="pageStep">
+                     <number>100</number>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameRM">
+                 <property name="styleSheet">
+                  <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
                  </property>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_5">
-                   <item>
-                    <widget class="QLabel" name="labelTitle5">
-                     <property name="font">
-                      <font>
-                       <family>MiSans</family>
-                       <italic>false</italic>
-                       <fontweight>Medium</fontweight>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>蓝牙深度睡眠时间</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_2">
-                     <property name="orientation">
-                      <enum>Qt::Orientation::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Policy::Fixed</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>80</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineEditV2"/>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QSlider" name="horizontalSliderBTDeep">
-                   <property name="maximum">
-                    <number>1800</number>
-                   </property>
-                   <property name="singleStep">
-                    <number>10</number>
-                   </property>
-                   <property name="pageStep">
-                    <number>100</number>
-                   </property>
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QFrame" name="frameRB">
-                <property name="styleSheet">
-                 <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::Shape::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_5">
-                 <property name="leftMargin">
-                  <number>20</number>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
                  </property>
-                 <property name="topMargin">
-                  <number>20</number>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
                  </property>
-                 <property name="rightMargin">
-                  <number>20</number>
+                 <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <property name="leftMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>15</number>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <item>
+                     <widget class="QLabel" name="labelTitle5">
+                      <property name="font">
+                       <font>
+                        <family>MiSans</family>
+                        <italic>false</italic>
+                        <fontweight>Medium</fontweight>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>蓝牙深度睡眠时间</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_2">
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Policy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>80</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="lineEditV2"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QSlider" name="horizontalSliderBTDeep">
+                    <property name="maximum">
+                     <number>1080</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>10</number>
+                    </property>
+                    <property name="pageStep">
+                     <number>100</number>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameRB">
+                 <property name="styleSheet">
+                  <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
                  </property>
-                 <property name="bottomMargin">
-                  <number>15</number>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
                  </property>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_6">
-                   <item>
-                    <widget class="QLabel" name="labelTitle6">
-                     <property name="font">
-                      <font>
-                       <family>MiSans</family>
-                       <italic>false</italic>
-                       <fontweight>Medium</fontweight>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>按键防抖等级设置</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_3">
-                     <property name="orientation">
-                      <enum>Qt::Orientation::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Policy::Fixed</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>80</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineEditV3"/>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QSlider" name="horizontalSliderDebounce">
-                   <property name="maximum">
-                    <number>255</number>
-                   </property>
-                   <property name="singleStep">
-                    <number>1</number>
-                   </property>
-                   <property name="pageStep">
-                    <number>20</number>
-                   </property>
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_5">
+                  <property name="leftMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>15</number>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_6">
+                    <item>
+                     <widget class="QLabel" name="labelTitle6">
+                      <property name="font">
+                       <font>
+                        <family>MiSans</family>
+                        <italic>false</italic>
+                        <fontweight>Medium</fontweight>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>按键防抖等级设置</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_3">
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Policy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>80</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="lineEditV3"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QSlider" name="horizontalSliderDebounce">
+                    <property name="maximum">
+                     <number>10</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>1</number>
+                    </property>
+                    <property name="pageStep">
+                     <number>20</number>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
           </widget>
          </item>
@@ -2370,15 +1706,15 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ModuleKeyboard</class>
-   <extends>QFrame</extends>
-   <header>modulekeyboard.h</header>
+   <class>NewTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header location="global">newtabwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>NewTabWidget</class>
-   <extends>QTabWidget</extends>
-   <header>newtabwidget.h</header>
+   <class>ModuleKeyboard</class>
+   <extends>QFrame</extends>
+   <header>modulekeyboard.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -2399,9 +1735,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupTGL"/>
-  <buttongroup name="buttonGroupFN"/>
   <buttongroup name="buttonGroupMT"/>
+  <buttongroup name="buttonGroupTGL"/>
   <buttongroup name="buttonGroupSnap"/>
  </buttongroups>
 </ui>

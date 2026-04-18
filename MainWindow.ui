@@ -39,7 +39,7 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item>
+    <item alignment="Qt::AlignmentFlag::AlignTop">
      <widget class="QFrame" name="frameTop">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="spacing">
@@ -219,7 +219,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page00">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -290,6 +290,9 @@
             <property name="focusPolicy">
              <enum>Qt::FocusPolicy::NoFocus</enum>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton::pressed{border:none; background:transparent;}</string>
+            </property>
             <property name="text">
              <string>添加设备</string>
             </property>
@@ -338,8 +341,8 @@ background:transparent;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>16</width>
-               <height>16</height>
+               <width>1170</width>
+               <height>424</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -480,7 +483,7 @@ background:transparent;</string>
         <property name="bottomMargin">
          <number>15</number>
         </property>
-        <item>
+        <item alignment="Qt::AlignmentFlag::AlignBottom">
          <widget class="FrameDeviceHolder" name="frameHold">
           <property name="frameShape">
            <enum>QFrame::Shape::StyledPanel</enum>

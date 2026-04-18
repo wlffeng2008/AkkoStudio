@@ -173,20 +173,20 @@ void SuperLabel::setImages(const QString&strGetfocus, const QString&strLostfocus
 {
     m_strGetfocus  = strGetfocus;
     m_strLostfocus = strLostfocus;
-    setFocus(false);
+    setHold(false);
 }
 
-void SuperLabel::setFocus(bool foucs)
+void SuperLabel::setHold(bool hold)
 {
-    m_bFoucs = foucs;
+    m_bHold = hold;
     //setScaledContents(true);
-    setPixmap(QPixmap(foucs ? m_strGetfocus : m_strLostfocus));
-    setStyleSheet(foucs ? m_strSheetGetfocus : m_strSheetLostfocus);
-    if(!foucs)
+    setPixmap(QPixmap(hold ? m_strGetfocus : m_strLostfocus));
+    setStyleSheet(hold ? m_strSheetGetfocus : m_strSheetLostfocus);
+    if(!hold)
         return;
 
     SuperLabel *pLast = s_group[this->parent()];
     if(pLast && pLast != this)
-        pLast->setFocus(false);
+        pLast->setHold(false);
     s_group[this->parent()] = this;
 }

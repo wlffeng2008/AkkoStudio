@@ -1,7 +1,3 @@
-
-//#include <winsock2.h>
-//#pragma comment(lib, "ws2_32.lib")
-
 #include "DialogDeviceConnect.h"
 #include "qforeach.h"
 #include "ui_DialogDeviceConnect.h"
@@ -111,6 +107,9 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     s_connect = this ;
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint );
+
+    m_KeyMatrix[0]   = ::getDefaultMatrix();
+    m_KeyMatrixFn[0] = ::getDefaultFnMatrix();
 
     {
         static ma_device_config config = ma_device_config_init(ma_device_type_loopback);
@@ -650,6 +649,11 @@ void DialogDeviceConnect::readAllData()
     }
 }
 
+bool DialogDeviceConnect::isLoading()
+{
+    return (m_cmdList.count() > 0);
+}
+
 DialogDeviceConnect::~DialogDeviceConnect()
 {
     delete ui;
@@ -788,7 +792,13 @@ quint8 DialogDeviceConnect::getSnapkey(quint8 index)
 
 void DialogDeviceConnect::getKeydata(keyData *pDk,quint8 index,quint8 layer)
 {
-    quint8 *data = (quint8 *)m_KeyMatrix[layer].data();
+    quint8 *data = nullptr;
+
+    if(layer == 0xFF)
+        data = (quint8 *)m_KeyMatrixFn[0].data();
+    else
+        data = (quint8 *)m_KeyMatrix[0].data();
+
     pDk->b0 = data[index*4 + 0];
     pDk->b1 = data[index*4 + 1];
     pDk->b2 = data[index*4 + 2];
@@ -918,8 +928,12 @@ void DialogDeviceConnect::enableKey(quint8 hid, bool enable, quint8 subLayer)
     changeKey(hid, &set, subLayer);
 }
 
-QByteArray DialogDeviceConnect::getMatix(int sub)
+QByteArray DialogDeviceConnect::getMatix(bool fnLayer)
 {
+    qDebug() << "getMatix: " << fnLayer;
+    if(fnLayer)
+        return m_KeyMatrixFn[0];
+
     return m_KeyMatrix[0];
 }
 
@@ -989,8 +1003,9 @@ void DialogDeviceConnect::makeCmd(int row, bool autoSend)
 
 void DialogDeviceConnect::reset()
 {
+    m_KeyMatrix[0]   = ::getDefaultMatrix();
+    m_KeyMatrixFn[0] = ::getDefaultFnMatrix();
     makeCmd(getRow(CMD_SET_RESET),true);
-    m_KeyMatrix[0] = ::getDefaultMatrix();
     readAllData();
 }
 

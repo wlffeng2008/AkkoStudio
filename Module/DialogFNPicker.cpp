@@ -1,10 +1,13 @@
 #include "DialogFNPicker.h"
 #include "ui_DialogFNPicker.h"
 
+#include "modulemacromanager.h"
+
 #include <QApplication>
 #include <QStyleOption>
 #include <QScreen>
 #include <QStyleOption>
+#include <QButtonGroup>
 #include <QPainter>
 #include <QEvent>
 
@@ -12,7 +15,7 @@ static QPoint getGlobalPos(QWidget *widget) {
     QPoint pos = widget->pos();
     QWidget *w = widget->parentWidget();
     if(w && !(w->windowFlags() & Qt::Popup))
-        pos = w->mapToGlobal(pos) ;
+        pos = w->mapToGlobal(pos);
     return pos;
 }
 
@@ -30,23 +33,53 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
     QRect geoMetry = QApplication::primaryScreen()->geometry();
     if(parent)
     {
-        geoMetry = parent->frameGeometry() ;//parent->mapToGlobal(parent->pos());
+        geoMetry = parent->frameGeometry();//parent->mapToGlobal(parent->pos());
         QPoint globalPos = getGlobalPos(parent);
-        geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height()) ;
+        geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height());
     }
     setGeometry(geoMetry);
     setFixedSize(geoMetry.width(), geoMetry.height());
 
     connect(ui->pushButtonCancel,&QPushButton::clicked,this,[=]{ this->reject(); });
     connect(ui->pushButtonOK,&QPushButton::clicked,this,[=]{ this->accept(); });
+    ui->labelSelect1->installEventFilter(this);
+    ui->labelSelect2->installEventFilter(this);
+    ui->labelSelect3->installEventFilter(this);
 
     m_kd.b0=0;
     m_kd.b1=0;
     m_kd.b2=0;
     m_kd.b3=0;
 
-    ModuleMacroManager *pMM = ModuleMacroManager::instance();
     connect(ui->buttonGroup,&QButtonGroup::buttonClicked,this,[=](QAbstractButton *btn){
+        m_macro = false;
+        QString text = btn->text();
+        quint8 hid = btn->objectName().right(3).toUInt();
+        if(m_kd.b1 == 0)
+        {
+            m_kd.b1 = hid;
+            ui->labelSelect1->setText(text);
+            return;
+        }
+
+        if(m_kd.b2 == 0)
+        {
+            m_kd.b2 = hid;
+            ui->labelSelect2->setText(text);
+            return;
+        }
+
+        if(m_kd.b3 == 0)
+        {
+            m_kd.b3=hid;
+            ui->labelSelect3->setText(text);
+            return;
+        }
+    });
+
+    QButtonGroup *pNewGroup= ui->buttonGroupFN;
+    ModuleMacroManager *pMM = ModuleMacroManager::instance();
+    connect(pNewGroup,&QButtonGroup::buttonClicked,this,[=](QAbstractButton *btn){
 
         m_macro = false;
         QString name = btn->objectName();
@@ -54,16 +87,20 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
         if(name.contains("_Micro"))
         {
             m_macro = true;
+
             m_kd.b0 = ui->spinBoxM->value();
+
             m_kd.b1 = 0;
             if(ui->radioButtonM2->isChecked()) m_kd.b1 = 1;
             if(ui->radioButtonM3->isChecked()) m_kd.b1 = 2;
+
             m_kd.b2 = index;
+
             MacroProject *prj = pMM->getMarcoProject(index);
             if(prj)
                 ui->labelSelect1->setText(prj->name);
             else
-                ui->labelSelect1->setText("尚未录制的宏");
+                ui->labelSelect1->setText(tr("未录制的宏"));
         }
         else
         {
@@ -99,8 +136,8 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
         };
         for(int i=0; i<19; i++)
         {
-            QString strName = QString::asprintf("pushButton_F%02d",i+1) ;
-            QPushButton *btn = findChild<QPushButton*>(strName) ;
+            QString strName = QString::asprintf("pushButton_F%02d",i+1);
+            QPushButton *btn = findChild<QPushButton*>(strName);
             if(!btn) continue;
 
             btn->setCheckable(true);
@@ -126,8 +163,8 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
 
             btn->setStyleSheet(strStyle);
             btn->setToolTip(getKeyString(getFnData(i)));
-            btn->setFocusPolicy(Qt::NoFocus) ;
-            btn->setCursor(Qt::PointingHandCursor) ;
+            btn->setFocusPolicy(Qt::NoFocus);
+            btn->setCursor(Qt::PointingHandCursor);
         }
 
         for(int i=0; i<50; i++)
@@ -141,11 +178,30 @@ DialogFNPicker::DialogFNPicker(QWidget *parent)
             if(prj && prj->events.size() >= 2)
                 mBtn->setText(prj->name);
 
-            ui->buttonGroup->addButton(mBtn);
-            ui->gridLayout2->addWidget(mBtn,i/12,i%12);
+            int lineCount = 5;
+
+            pNewGroup->addButton(mBtn);
+            ui->gridLayout2->addWidget(mBtn,i/lineCount,i%lineCount);
         }
     }
 
+    connect(ui->tabWidgetKey,&QTabWidget::currentChanged,this,[=](int index){
+        m_macro = false;
+
+        m_kd.b0 = 0;
+        m_kd.b1 = 0;
+        m_kd.b2 = 0;
+        m_kd.b3 = 0;
+
+        ui->labelSelect1->setText("--");
+        ui->labelSelect2->setText("--");
+        ui->labelSelect3->setText("--");
+
+        ui->labelSelect2->setVisible(index == 0);
+        ui->labelSelect3->setVisible(index == 0);
+    });
+
+    ui->tabWidgetKey->setCurrentIndex(0);
 }
 
 DialogFNPicker::~DialogFNPicker()
@@ -153,9 +209,30 @@ DialogFNPicker::~DialogFNPicker()
     delete ui;
 }
 
-void DialogFNPicker::setFunc(int func)
+bool DialogFNPicker::eventFilter(QObject *watched,QEvent *event)
 {
-    ui->stackedWidget->setCurrentIndex(func);
+    if(event->type() == QEvent::MouseButtonPress)
+    {
+        if(watched == ui->labelSelect1)
+        {
+            m_kd.b1 = 0;
+            ui->labelSelect1->setText("--");
+        }
+
+        if(watched == ui->labelSelect2)
+        {
+            m_kd.b2 = 0;
+            ui->labelSelect2->setText("--");
+        }
+
+        if(watched == ui->labelSelect3)
+        {
+            m_kd.b3 = 0;
+            ui->labelSelect3->setText("--");
+        }
+    }
+
+    return QDialog::eventFilter(watched,event);
 }
 
 void DialogFNPicker::paintEvent(QPaintEvent *event)

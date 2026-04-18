@@ -27,7 +27,7 @@
     <number>20</number>
    </property>
    <property name="bottomMargin">
-    <number>12</number>
+    <number>15</number>
    </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -96,13 +96,25 @@
     <widget class="QFrame" name="FrameBt">
      <property name="maximumSize">
       <size>
-       <width>200</width>
+       <width>150</width>
        <height>16777215</height>
       </size>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
-       <number>15</number>
+       <number>10</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
       </property>
       <item>
        <widget class="QPushButton" name="pushButtonMinus">

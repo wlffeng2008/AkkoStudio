@@ -28,63 +28,21 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QLabel" name="labelBKImage">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>471</width>
-     <height>301</height>
-    </rect>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="leftMargin">
+    <number>20</number>
    </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel{background-color:transparent:}</string>
+   <property name="topMargin">
+    <number>20</number>
    </property>
-   <property name="text">
-    <string/>
+   <property name="rightMargin">
+    <number>20</number>
    </property>
-   <property name="pixmap">
-    <pixmap resource="../res.qrc">:/images/light/light.png</pixmap>
+   <property name="bottomMargin">
+    <number>5</number>
    </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="NewTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>16</y>
-     <width>431</width>
-     <height>272</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MiSans</family>
-     <italic>false</italic>
-     <fontweight>Medium</fontweight>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="tab1">
-    <attribute name="title">
-     <string>系统默认</string>
-    </attribute>
-    <widget class="QTableView" name="tableView">
-     <property name="geometry">
-      <rect>
-       <x>28</x>
-       <y>142</y>
-       <width>369</width>
-       <height>78</height>
-      </rect>
-     </property>
+   <item>
+    <widget class="NewTabWidget" name="tabWidget">
      <property name="font">
       <font>
        <family>MiSans</family>
@@ -92,296 +50,364 @@
        <fontweight>Medium</fontweight>
       </font>
      </property>
-     <property name="focusPolicy">
-      <enum>Qt::FocusPolicy::NoFocus</enum>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+     <property name="currentIndex">
+      <number>1</number>
      </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SelectionMode::NoSelection</enum>
-     </property>
-     <property name="showGrid">
-      <bool>false</bool>
-     </property>
-     <attribute name="horizontalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="horizontalHeaderHighlightSections">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderHighlightSections">
-      <bool>false</bool>
-     </attribute>
+     <widget class="QWidget" name="tab1">
+      <attribute name="title">
+       <string>系统默认</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="bottomMargin">
+        <number>15</number>
+       </property>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>133</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QTableView" name="tableView">
+         <property name="minimumSize">
+          <size>
+           <width>369</width>
+           <height>78</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>369</width>
+           <height>78</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MiSans</family>
+           <italic>false</italic>
+           <fontweight>Medium</fontweight>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::NoFocus</enum>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SelectionMode::NoSelection</enum>
+         </property>
+         <property name="showGrid">
+          <bool>false</bool>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderHighlightSections">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderHighlightSections">
+          <bool>false</bool>
+         </attribute>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab2">
+      <attribute name="title">
+       <string>自定义</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,0">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout1"/>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout2"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="0">
+              <widget class="ColorLabel" name="label_1">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>C0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="ColorLabel" name="label_2">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>C0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="ColorLabel" name="label_3">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>C0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="ColorLabel" name="label_4">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>C0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="ColorLabel" name="label_5">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>C0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="ColorLabel" name="label_6">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>C0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="ColorLabel" name="label_7">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>C0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="ColorLabel" name="label_8">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>C0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QFrame" name="frameSingle">
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QLabel" name="labelTitleL1">
+                <property name="text">
+                 <string>单键</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="ToggleButton" name="checkBoxSingle">
+                <property name="text">
+                 <string>ON</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </widget>
-   </widget>
-   <widget class="QWidget" name="tab2">
-    <attribute name="title">
-     <string>自定义</string>
-    </attribute>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>6</x>
-       <y>2</y>
-       <width>415</width>
-       <height>237</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout1"/>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout2"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <widget class="ColorLabel" name="label_1">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>C0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="ColorLabel" name="label_2">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>C0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="ColorLabel" name="label_3">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>C0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="ColorLabel" name="label_4">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>C0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="ColorLabel" name="label_5">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>C0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="ColorLabel" name="label_6">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>C0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="ColorLabel" name="label_7">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>C0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="ColorLabel" name="label_8">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>C0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="labelTitleL1">
-          <property name="text">
-           <string>单键</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="ToggleButton" name="checkBoxSingle">
-          <property name="text">
-           <string>ON</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-  </widget>
+   </item>
+  </layout>
  </widget>
  <customwidgets>
   <customwidget>
    <class>NewTabWidget</class>
    <extends>QTabWidget</extends>
-   <header>newtabwidget.h</header>
+   <header location="global">newtabwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -395,8 +421,6 @@
    <header location="global">colorlabel.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="../res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

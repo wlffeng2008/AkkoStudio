@@ -17,7 +17,7 @@ DefaultGroupName==Akko Driver
 AllowNoIcons=yes
 ;UsePreviousAppDir=yes
 OutputDir=Z:\参考资料
-OutputBaseFilename=Akko Driver安装程序0403
+OutputBaseFilename=Akko Driver安装程序04015
 SetupIconFile=./Akko.ico
 Compression=lzma
 SolidCompression=yes

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1176</width>
-    <height>782</height>
+    <height>744</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -150,12 +150,21 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="spacing">
-          <number>8</number>
+          <number>10</number>
+         </property>
+         <property name="leftMargin">
+          <number>20</number>
          </property>
          <property name="topMargin">
           <number>20</number>
          </property>
-         <item>
+         <property name="rightMargin">
+          <number>20</number>
+         </property>
+         <property name="bottomMargin">
+          <number>20</number>
+         </property>
+         <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="pushButtonSet1">
            <property name="text">
             <string>行程设置</string>
@@ -176,7 +185,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="pushButtonSet4">
            <property name="text">
             <string>唤醒设置</string>
@@ -232,171 +241,187 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>3</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
              <string notr="true"/>
             </property>
-            <widget class="QFrame" name="frameBR">
-             <property name="geometry">
-              <rect>
-               <x>582</x>
-               <y>0</y>
-               <width>341</width>
-               <height>310</height>
-              </rect>
+            <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1,0">
+             <property name="spacing">
+              <number>20</number>
              </property>
-             <property name="minimumSize">
-              <size>
-               <width>303</width>
-               <height>0</height>
-              </size>
+             <property name="leftMargin">
+              <number>0</number>
              </property>
-             <property name="styleSheet">
-              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+             <property name="topMargin">
+              <number>0</number>
              </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+             <property name="rightMargin">
+              <number>0</number>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+             <property name="bottomMargin">
+              <number>0</number>
              </property>
-             <widget class="ModuleLinear" name="frameDead">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>74</y>
-                <width>303</width>
-                <height>221</height>
-               </rect>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>303</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::Shape::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Shadow::Raised</enum>
-              </property>
-             </widget>
-             <widget class="QLabel" name="labelTitle2">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>261</width>
-                <height>20</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>死区设定</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QFrame" name="frameBM">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>561</width>
-               <height>310</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <widget class="ModuleLinear" name="frame_5">
-              <property name="geometry">
-               <rect>
-                <x>240</x>
-                <y>74</y>
-                <width>303</width>
-                <height>221</height>
-               </rect>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>303</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::Shape::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Shadow::Raised</enum>
-              </property>
-             </widget>
-             <widget class="NewTabWidget" name="tabWidget">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>521</width>
-                <height>41</height>
-               </rect>
-              </property>
-              <property name="currentIndex">
-               <number>0</number>
-              </property>
-              <widget class="QWidget" name="tab1">
-               <attribute name="title">
-                <string>舒适模式</string>
-               </attribute>
+             <item>
+              <widget class="QFrame" name="frameBM">
+               <property name="styleSheet">
+                <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,1">
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
+                <property name="topMargin">
+                 <number>20</number>
+                </property>
+                <property name="rightMargin">
+                 <number>20</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>20</number>
+                </property>
+                <item>
+                 <widget class="NewTabWidget" name="tabWidget">
+                  <property name="currentIndex">
+                   <number>3</number>
+                  </property>
+                  <widget class="QWidget" name="tab1">
+                   <attribute name="title">
+                    <string>舒适模式</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab2">
+                   <attribute name="title">
+                    <string>灵敏模式</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab3">
+                   <attribute name="title">
+                    <string>游戏模式</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab4">
+                   <attribute name="title">
+                    <string>自定义模式</string>
+                   </attribute>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="1,1">
+                  <item>
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="res.qrc">:/images/rt/zhouti.png</pixmap>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="ModuleLinear" name="frame_5">
+                    <property name="minimumSize">
+                     <size>
+                      <width>303</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>303</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
               </widget>
-              <widget class="QWidget" name="tab2">
-               <attribute name="title">
-                <string>灵敏模式</string>
-               </attribute>
+             </item>
+             <item>
+              <widget class="QFrame" name="frameBR">
+               <property name="minimumSize">
+                <size>
+                 <width>303</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>303</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_11" stretch="0,1">
+                <property name="spacing">
+                 <number>30</number>
+                </property>
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
+                <property name="topMargin">
+                 <number>20</number>
+                </property>
+                <property name="rightMargin">
+                 <number>20</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>20</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelTitle2">
+                  <property name="text">
+                   <string>死区设定</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="ModuleLinear" name="frameDead">
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::Shape::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Shadow::Raised</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
-              <widget class="QWidget" name="tab3">
-               <attribute name="title">
-                <string>游戏模式</string>
-               </attribute>
-              </widget>
-              <widget class="QWidget" name="tab4">
-               <attribute name="title">
-                <string>自定义模式</string>
-               </attribute>
-              </widget>
-             </widget>
-             <widget class="QLabel" name="label_2">
-              <property name="geometry">
-               <rect>
-                <x>40</x>
-                <y>70</y>
-                <width>171</width>
-                <height>221</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="res.qrc">:/images/rt/zhouti.png</pixmap>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignmentFlag::AlignCenter</set>
-              </property>
-             </widget>
-            </widget>
+             </item>
+            </layout>
            </widget>
            <widget class="QWidget" name="page2">
             <property name="styleSheet">
@@ -406,7 +431,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>30</x>
-               <y>65</y>
+               <y>62</y>
                <width>851</width>
                <height>2</height>
               </rect>
@@ -469,7 +494,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>30</x>
-               <y>200</y>
+               <y>184</y>
                <width>611</width>
                <height>29</height>
               </rect>
@@ -535,7 +560,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>30</x>
-               <y>238</y>
+               <y>220</y>
                <width>380</width>
                <height>27</height>
               </rect>
@@ -558,7 +583,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>500</x>
-               <y>238</y>
+               <y>220</y>
                <width>380</width>
                <height>27</height>
               </rect>
@@ -581,7 +606,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>30</x>
-               <y>270</y>
+               <y>252</y>
                <width>380</width>
                <height>50</height>
               </rect>
@@ -738,7 +763,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>500</x>
-               <y>270</y>
+               <y>252</y>
                <width>380</width>
                <height>50</height>
               </rect>
@@ -895,7 +920,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>30</x>
-               <y>20</y>
+               <y>12</y>
                <width>851</width>
                <height>41</height>
               </rect>
@@ -1357,7 +1382,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>306</x>
-               <y>260</y>
+               <y>240</y>
                <width>332</width>
                <height>48</height>
               </rect>
@@ -1784,6 +1809,12 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </widget>
  <customwidgets>
   <customwidget>
+   <class>NewTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header location="global">newtabwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>ModuleKeyboard</class>
    <extends>QFrame</extends>
    <header>modulekeyboard.h</header>
@@ -1793,12 +1824,6 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <class>ModuleLinear</class>
    <extends>QFrame</extends>
    <header>modulelinear.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>NewTabWidget</class>
-   <extends>QTabWidget</extends>
-   <header>newtabwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -1812,8 +1837,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

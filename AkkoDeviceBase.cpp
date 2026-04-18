@@ -410,6 +410,8 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {  10, 0x38EE, 0x000D, 1, "泰坦N9 Ultra"},
     {  10, 0x38EE, 0x000F, 1, "泰坦N9 Ultra"},
 
+    {  0xFF52, 0x38EE, 0x0016, 0, "FUN60"},
+    {  0xFF59, 0x38EE, 0x0016, 0, "TAC75 HE"},
     {  0xFFFF, 0x38EE, 0x0000, 1, "Unkown"}
 
 };

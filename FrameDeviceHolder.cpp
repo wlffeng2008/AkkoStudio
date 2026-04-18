@@ -200,15 +200,13 @@ void FrameDeviceHolder::clickLabel(QLabel *label, int index)
         return;
     }
 
-    ((SuperLabel *)label)->setFocus();
+    ((SuperLabel *)label)->setHold();
 
-    for(int i=0; i<m_pFrames.count(); i++)
-    {
-        QFrame *pFM = m_pFrames[i];
+    foreach (QFrame *pFM, m_pFrames) {
         pFM->hide();
     }
-    QFrame *pFM = m_pFrames[index];
-    pFM->show();
+
+    m_pFrames[index]->show();
 
     ui->horizontalFrame->setVisible(index == 1);
 }
@@ -224,7 +222,7 @@ bool FrameDeviceHolder::eventFilter(QObject *watch, QEvent *event)
             {
                 QLabel* label = qobject_cast<QLabel*>(watch);
                 clickLabel(label,i);
-                return true;
+                break;
             }
         }
     }

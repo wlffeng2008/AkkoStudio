@@ -143,7 +143,7 @@ public:
     void restKey(quint8 hid);
     void changeKey(quint8 hid, keyData *pDk, quint8 subLayer=0,quint8 save=1);
     void enableKey(quint8 hid, bool enable=true, quint8 subLayer=0);
-    QByteArray getMatix(int sub=0);
+    QByteArray getMatix(bool fnLayer=false);
     void getKeydata(keyData *pDk, quint8 index, quint8 layer=0);
     quint8 getSnapkey(quint8 index);
     void send65Cmd(quint8 option,quint8 hid,quint32 data,bool save);
@@ -158,6 +158,8 @@ public:
     void StopCalibration();
 
     void DoConnectDevice(quint16 PID);
+
+    bool isLoading();
 
 signals:
     void onConnect();
@@ -227,6 +229,7 @@ private:
     QByteArray m_Optn;
     QByteArray m_Info;
     QByteArray m_KeyMatrix[8];
+    QByteArray m_KeyMatrixFn[8];
 
     bool m_isSupportAxis = false;
     bool m_isSupportTopDeadZone=false;

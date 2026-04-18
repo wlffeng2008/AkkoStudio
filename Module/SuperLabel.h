@@ -14,21 +14,21 @@ public:
     explicit CustomTooltip(QWidget *parent = nullptr);
     void setText(const QString&text);
 
-    void setTextStyle(const QString& stryle) ;
+    void setTextStyle(const QString& stryle);
     void setAutohide(bool bSet=true){m_bAutohide = bSet;}
 
-    static void setDefTipStyle(const QString& stryle) ;
-    static void setGroupTipStyle( QObject *parent, QString&style) ;
+    static void setDefTipStyle(const QString& stryle);
+    static void setGroupTipStyle( QObject *parent, QString&style);
 
 protected:
-    void mousePressEvent(QMouseEvent *event) override ;
-    void focusOutEvent(QFocusEvent *event) override ;
-    void showEvent(QShowEvent *event) override ;
-    void enterEvent(QEnterEvent *event) override ;
-    void leaveEvent(QEvent *event) override ;
+    void mousePressEvent(QMouseEvent *event) override;
+    void focusOutEvent(QFocusEvent *event) override;
+    void showEvent(QShowEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 signals:
-    void onClicked() ;
+    void onClicked();
 
 private:
     QLabel *content = nullptr;
@@ -44,8 +44,8 @@ public:
 
     void setImages(const QString&strGetfocus,const QString&strLostfocus);
     void setOwnSheet(const QString&strGetfocus,const QString&strLostfocus);
-    void setFocus(bool foucs = true);
-    bool getFocus(){ return m_bFoucs; }
+    void setHold(bool hold = true);
+    bool getHold(){ return m_bHold; }
     CustomTooltip *getToolTip(){ return tooltip; }
     static void setGroupTipStyle(QObject *parent, QString &style);
 
@@ -58,7 +58,7 @@ private:
     CustomTooltip *tooltip;
     QTimer *timer;
 
-    bool m_bFoucs = false;
+    bool m_bHold = false;
 
     QString m_strGetfocus;
     QString m_strLostfocus;

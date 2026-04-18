@@ -57,23 +57,22 @@ DialogVKPicker::DialogVKPicker(QWidget *parent)
         {
             m_kd.b1 = hid;
             ui->labelSelect1->setText(text);
-            return ;
+            return;
         }
 
         if(m_kd.b2 == 0)
         {
             m_kd.b2 = hid;
             ui->labelSelect2->setText(text);
-            return ;
+            return;
         }
 
         if(m_kd.b3 == 0)
         {
             m_kd.b3=hid;
             ui->labelSelect3->setText(text);
-            return ;
+            return;
         }
-
     });
 }
 
@@ -84,23 +83,23 @@ DialogVKPicker::~DialogVKPicker()
 
 bool DialogVKPicker::eventFilter(QObject *watched,QEvent *event)
 {
-    if(event->type()==QEvent::MouseButtonPress)
+    if(event->type() == QEvent::MouseButtonPress)
     {
         if(watched == ui->labelSelect1)
         {
-            m_kd.b1 = 0 ;
+            m_kd.b1 = 0;
             ui->labelSelect1->setText("--");
         }
 
         if(watched == ui->labelSelect2)
         {
-            m_kd.b2 = 0 ;
+            m_kd.b2 = 0;
             ui->labelSelect2->setText("--");
         }
 
         if(watched == ui->labelSelect3)
         {
-            m_kd.b3 = 0 ;
+            m_kd.b3 = 0;
             ui->labelSelect3->setText("--");
         }
     }

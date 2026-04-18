@@ -15,10 +15,9 @@
 
 int main(int argc, char *argv[])
 {
-#if(QT_VERSION <= QT_VERSION_CHECK(5,6,0))
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);// 启用高分辨率 pixmap
-#endif
+    QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);      // 开启高分屏缩放
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);       // 图片高清
 
 #ifdef _WIN32
     setlocale(LC_ALL, ".UTF-8");
@@ -54,27 +53,21 @@ int main(int argc, char *argv[])
 
     SetConsoleOutputCP(CP_UTF8);
 
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-Bold.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-Demibold.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-ExtraLight.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-Heavy.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-Light.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-Medium.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-Normal.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-Regular.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "/font/MiSans-Semibold.ttf");
-    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                      "./font/MiSans-Thin.ttf");
-
+    QStringList fontNames={
+        "MiSans-Bold.ttf",
+        "MiSans-Demibold.ttf",
+        "MiSans-ExtraLight.ttf",
+        "MiSans-Heavy.ttf",
+        "MiSans-Light.ttf",
+        "MiSans-Medium.ttf",
+        "MiSans-Normal.ttf",
+        "MiSans-Regular.ttf",
+        "MiSans-Semibold.ttf",
+        "MiSans-Thin.ttf"};
+    foreach (QString fontName, fontNames) {
+        QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
+                                          QString("./font/") + fontName);
+    }
 
     //QApplication::setStyle("Fusion");
 

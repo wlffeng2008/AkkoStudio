@@ -2,8 +2,9 @@
 #include "ui_ModuleEfColor.h"
 #include "ColorSlider.h"
 #include "ColorSquare.h"
-#include <QColorDialog>
 
+#include <QPainter>
+#include <QColorDialog>
 
 static QVector<QColor> col_list;
 
@@ -13,11 +14,14 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
 {
     ui->setupUi(this);
     ui->tabWidget->setAttribute(Qt::WA_TranslucentBackground);
-    ui->tabWidget->setStyleSheet("QWidget{background-color: rgba(0, 0, 0, 0.0);}") ;
+    ui->tabWidget->setStyleSheet("QWidget{background-color: rgba(0, 0, 0, 0.0);}");
+
     connect(ui->tabWidget,&QTabWidget::currentChanged,this,[=](int index){
-        ui->labelBKImage->setHidden(index != 0);
+        update();
     });
+
     ui->tabWidget->setCurrentIndex(0);
+
     {
         m_pModel = new QStandardItemModel(this);
         m_pModel->setHorizontalHeaderLabels(QString("0,0,0,0,0,0,0").split(','));
@@ -119,6 +123,18 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
 ModuleEfColor::~ModuleEfColor()
 {
     delete ui;
+}
+
+void ModuleEfColor::paintEvent(QPaintEvent *event)
+{
+    if(ui->tabWidget->currentIndex() == 0)
+    {
+        static QPixmap map(":/images/light/light.png");
+        QPainter painter(this);
+        painter.drawPixmap(this->rect(),map);
+    }
+
+    QFrame::paintEvent(event);
 }
 
 bool ModuleEfColor::eventFilter(QObject*watched ,QEvent *event)
