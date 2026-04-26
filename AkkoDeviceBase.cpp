@@ -342,8 +342,8 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {3397, 0x38EE, 0x0001, 0, "MOD68"},
     {3424, 0x38EE, 0x0001, 0, "5087 V3 HE TMR"},
     {3416, 0x38EE, 0x0001, 0, "5075 V3 HE TMR"},
-    {3457, 0x38EE, 0x0006, 0, "Hitbox"},
-    {3458, 0x3151, 0x504A, 0, "Hitbox"},
+    {3457, 0x38EE, 0x0006, 0, "FUNBOX"},
+
     // PAN1086
     // {2286,0x普通,0,"Mineral 02(微技机型KG118)"},
     // {2322,0x普通,0,"GEM 02(微技机型KG119)"},
@@ -412,6 +412,7 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
 
     {  0xFF52, 0x38EE, 0x0016, 0, "FUN60"},
     {  0xFF59, 0x38EE, 0x0016, 0, "TAC75 HE"},
+    {  0xFB29, 0x3554, 0xFB29, 1, "Plus 01"},
     {  0xFFFF, 0x38EE, 0x0000, 1, "Unkown"}
 
 };

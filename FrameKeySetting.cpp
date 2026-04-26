@@ -90,20 +90,6 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         ui->pushButtonSet1->click();
     }
     {
-        QStringList Values1 ={"8000 hz","4000 hz","2000 hz","1000 hz","500 hz","250 hz","125 hz"} ;
-        ui->frameSV1->setValueList(Values1);
-
-        QStringList Values2; //={"5 min","15 min","30 min","45 min","60 min"} ;
-        for(int i=0; i<=1800; i++)
-            Values2.push_back(QString("%1 min").arg(i));
-        ui->frameSV2->setValueList(Values2);
-        ui->frameSV3->setValueList(Values2);
-
-        ui->horizontalSlider->setFixedHeight(40);
-        connect(ui->horizontalSlider,&QSlider::valueChanged,this,[=](int value){ui->lineEditValue->setText(QString::asprintf("%d ms",value));});
-
-        ui->horizontalSlider->setValue(25);
-
         QTimer *pTMUpdate = new QTimer(this);
         connect(pTMUpdate,&QTimer::timeout,this,[=]{
             pTMUpdate->stop();
@@ -287,21 +273,28 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 return;
             setTo = FNDlg.m_kd;
 
-            if(FNDlg.m_macro)
+            ModuleMacroManager *pMM = ModuleMacroManager::instance();
+            if(m_setType == 0)
             {
-                ModuleMacroManager *pMM = ModuleMacroManager::instance();
-                pCnn->setMacro(hid,setTo.b0,setTo.b1,setTo.b2,pMM->packMacroPack(pMM->getMarcoProject(setTo.b2)));
+                if(FNDlg.m_macro)
+                {
+                    pCnn->setMacro(hid,setTo.b0,setTo.b1,setTo.b2,pMM->packMacroPack(pMM->getMarcoProject(setTo.b2)));
+                    refresh();
+                    return;
+                }
+
+                pCnn->changeKey(hid,&setTo);
                 refresh();
-                return;
+            }
+            else
+            {
+                pCnn->changeKeyFn(hid,&setTo);
+                refreshFn();
             }
 
-            pCnn->changeKey(hid,&setTo);
-
-            QString strT1 = getKeyValue(hid);
-            QString strT2 = getKeyString(&setTo);
-            ui->frameKeyboard->setKeyTip(hid, strT1, strT2);
-
             if(m_pMask) m_pMask->hide();
+
+            return;
         }
 
         if(m_setType == 1)
@@ -387,9 +380,23 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         }
     });
 
+    QStringList Values1 ={"8000 hz","4000 hz","2000 hz","1000 hz","500 hz","250 hz","125 hz"} ;
+    ui->frameSV1->setValueList(Values1);
+
+    QList<quint16>sleepMins={0,5,10,15,30,45,60,120,180,240,300,600,900,1080};
+    QStringList Values2;
+    for(int i=0; i<sleepMins.size(); i++)
+        Values2.push_back(QString("%1 min").arg(sleepMins[i]));
+    ui->frameSV2->setValueList(Values2);
+    ui->frameSV3->setValueList(Values2);
+
+    ui->horizontalSlider->setFixedHeight(40);
+    connect(ui->horizontalSlider,&QSlider::valueChanged,this,[=](int value){ui->lineEditValue->setText(QString::asprintf("%d ms",value));});
+
+    ui->horizontalSlider->setValue(25);
     connect(ui->frameSV1,&ModuleScrollValue::onIndexChanged,this,[=](int index){ pCnn->setReport(index); });
-    connect(ui->frameSV2,&ModuleScrollValue::onIndexChanged,this,[=](int index){ pCnn->setSleepTime(index,1); });
-    connect(ui->frameSV3,&ModuleScrollValue::onIndexChanged,this,[=](int index){ pCnn->setSleepTime(index,0); });
+    connect(ui->frameSV2,&ModuleScrollValue::onIndexChanged,this,[=](int index){ pCnn->setSleepTime(sleepMins[index],1); });
+    connect(ui->frameSV3,&ModuleScrollValue::onIndexChanged,this,[=](int index){ pCnn->setSleepTime(sleepMins[index],0); });
 
     connect(ui->horizontalSlider24Deep,&QSlider::valueChanged,this,[=](int value){ ui->lineEditV1->setText(QString("%1").arg(value)); });
     connect(ui->horizontalSliderBTDeep,&QSlider::valueChanged,this,[=](int value){ ui->lineEditV2->setText(QString("%1").arg(value)); });
@@ -408,10 +415,16 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         if(!m_bUpdating) pCnn->setDebounce(text.toInt());
     });
 
+    connect(ui->frameKeyboard,&ModuleKeyboard::onKeyChanged,this,[=](quint8 hid,quint8 type,bool enable){
+        if(m_setType == 3)
+        {
+            pCnn->enableKeyFn(hid,enable);
+        }
+    });
+
     ui->tabWidgetAdv->setCurrentIndex(0);
     ui->frameKeyboard->setSelectCount(1);
 }
-
 
 bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
 {
@@ -419,8 +432,8 @@ bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
     {
         QLabel *labCilck = nullptr;
         if(watched == ui->labelPress1   || watched == ui->labelPress3  )  labCilck = ui->labelPress1;
-        //if(watched == ui->labelPress2   || watched == ui->labelPress4  )  labCilck = ui->labelPress2 ;
-        //if(watched == ui->labelRelease1 || watched == ui->labelRelease3)  labCilck = ui->labelRelease1 ;
+        //if(watched == ui->labelPress2   || watched == ui->labelPress4  )  labCilck = ui->labelPress2;
+        //if(watched == ui->labelRelease1 || watched == ui->labelRelease3)  labCilck = ui->labelRelease1;
         if(watched == ui->labelRelease2 || watched == ui->labelRelease4)  labCilck = ui->labelRelease2;
 
         if(labCilck)
@@ -465,7 +478,10 @@ FrameKeySetting::~FrameKeySetting()
 
 void FrameKeySetting::showEvent(QShowEvent *event)
 {
-    refresh();
+    if(m_setType == 0)
+        refresh();
+    if(m_setType == 3)
+        refreshFn();
 }
 
 void FrameKeySetting::refresh()
@@ -532,7 +548,7 @@ void FrameKeySetting::refresh()
             if(kd.b0 == 0 && kd.b1 == 0 && kd.b2 == 0 && kd.b3 == 0)
             {
                 strT1 = QString("DISABLED");
-                qDebug() << "Key Disable: " << i;
+                //qDebug() << "Key Disable: " << i;
             }
             ui->frameKeyboard->setKeyTip(hid, strT1.trimmed(), strT2.trimmed());
         }
@@ -557,13 +573,13 @@ void FrameKeySetting::refreshFn()
     DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
     if(pCnn->isLoading())
         return;
-    ModuleMacroManager  *pMM  = ModuleMacroManager::instance();
+    ModuleMacroManager *pMM  = ModuleMacroManager::instance();
     m_bUpdating = true;
 
     for(int i=0; i<128; i++)
     {
         keyData kd;
-        pCnn->getKeydata(&kd,i,0xFF);
+        pCnn->getKeydata(&kd,i,0xF0);
 
         quint8 hid = ::getHid(i);
         ui->frameKeyboard->setKeyTip(hid, "", "");
@@ -572,6 +588,13 @@ void FrameKeySetting::refreshFn()
         {
             QString strT1 = QString("Fn + ") + getKeyValue(hid);
             QString strT2 = getKeyString(&kd);
+            if(strT2.isEmpty())
+                strT2 = QString(tr("系统按键"));
+
+            // strT2 += QString::asprintf(" [%02X,%02X,%02X,%02X]",kd.b0,kd.b1,kd.b2,kd.b3);
+
+            if(kd.b0 == 0 && kd.b1 == 0 && kd.b2 == 0 && kd.b3 == 1)
+                strT1 = QString("DISABLED");
 
             ui->frameKeyboard->setKeyTip(hid, strT1.trimmed(), strT2.trimmed());
         }

@@ -36,7 +36,7 @@ public:
     int m_creator;
 
 signals:
-    void onClicked(void *device,const QString&path1,const QString&path2,const QString&image,int creator);
+    void onClicked(void *device,const QString&path1,const QString&path2,const QString&image,int creator,bool bleMode);
     void onReport(void *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss);
 
 protected:

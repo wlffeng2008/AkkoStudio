@@ -142,7 +142,9 @@ public:
 
     void restKey(quint8 hid);
     void changeKey(quint8 hid, keyData *pDk, quint8 subLayer=0,quint8 save=1);
+    void changeKeyFn(quint8 hid, keyData *pDk, quint8 subLayer=0,quint8 save=1);
     void enableKey(quint8 hid, bool enable=true, quint8 subLayer=0);
+    void enableKeyFn(quint8 hid, bool enable=true, quint8 subLayer=0);
     QByteArray getMatix(bool fnLayer=false);
     void getKeydata(keyData *pDk, quint8 index, quint8 layer=0);
     quint8 getSnapkey(quint8 index);
@@ -157,7 +159,7 @@ public:
     void StartCalibration();
     void StopCalibration();
 
-    void DoConnectDevice(quint16 PID);
+    void DoConnectDevice(quint16 PID,bool bleMode,const QString&path1,const QString&path2);
 
     bool isLoading();
 
@@ -201,6 +203,9 @@ private:
     quint8 m_report=0;
     quint8 m_debounce=0;
     quint8 m_layer=0;
+    bool m_bleMode=false;
+    QString m_path1;
+    QString m_path2;
 
     bool m_bLedOn=true;
     void makeCmd(int row,bool autoSend=false);

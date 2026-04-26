@@ -79,6 +79,7 @@ private:
     QDialog *m_pFloatReturn = nullptr;
 
     int m_creator = 0;
+    QString m_langSet;
     QString m_langName;
     void updateDeviceInfo();
     QAction *m_act0 = nullptr;

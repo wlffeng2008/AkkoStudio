@@ -18,8 +18,8 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setMinimumHeight(400) ;
-    setMinimumWidth(960) ;
+    setMinimumHeight(400);
+    setMinimumWidth(960);
 
     QTimer::singleShot(100,this,[=]{
         if(parent)
@@ -68,24 +68,24 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
             }
         }
 
-        QPushButton *btn = static_cast<QPushButton *>(ui->buttonGroup->button(id)) ;
-        emit onKeyClicked(btn->text(),btn->objectName().right(3).toUInt()) ;
-        // qDebug() << "Clicked:" << id << btn->objectName() ;
+        QPushButton *btn = static_cast<QPushButton *>(ui->buttonGroup->button(id));
+        emit onKeyClicked(btn->text(),btn->objectName().right(3).toUInt());
+        // qDebug() << "Clicked:" << id << btn->objectName();
     });
 
-    m_Menu = new CustomTooltip() ;
-    m_Menu->setTextStyle("QLabel { color: red; }") ;
+    m_Menu = new CustomTooltip();
+    m_Menu->setTextStyle("QLabel { color: red; }");
 
     connect(m_Menu,&CustomTooltip::onClicked,this,[=]{
-        setButtonEnable(m_curBtn,!m_curBtn->isEnabled(),true) ;
-    }) ;
+        setButtonEnable(m_curBtn,!m_curBtn->isEnabled(),true);
+    });
 
     s_kbInstance.push_back(this);
 }
 
 void ModuleKeyboard::setButtonEnable(QAbstractButton*btn, bool bEnable, bool bToDevice)
 {
-    KeyboardButton * tkb = static_cast<KeyboardButton *>(btn) ;
+    KeyboardButton * tkb = static_cast<KeyboardButton *>(btn);
     if(bEnable)
     {
         btn->removeEventFilter(this);
@@ -101,7 +101,7 @@ void ModuleKeyboard::setButtonEnable(QAbstractButton*btn, bool bEnable, bool bTo
             m_disables.push_back(btn);
         }
 
-        btn->setChecked(false) ;
+        btn->setChecked(false);
         tkb->setTipText();
     }
 
@@ -236,6 +236,7 @@ void ModuleKeyboard::setKeyEnable(const QString&objname, bool bEnable, bool bToD
     if(bToDevice)
     {
         pCnn->restKey(hid);
+        emit onKeyChanged(hid,type,bEnable);
         if(type == 7)
         {
             quint8 index=::getIndex(hid);

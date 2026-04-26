@@ -56,6 +56,7 @@ void FrameDeviceShow::updateBattery()
             char buf[1024] = {0};
 
             hid_device *pDev = hid_open_path(m_path2.toStdString().c_str());
+            if(!pDev) return;
             hid_set_nonblocking(pDev,1);
 
             QByteArray tmp(120, 0);
@@ -84,8 +85,10 @@ void FrameDeviceShow::updateBattery()
         }
         else
         {
+            hid_device *pDev = hid_open_path(m_path2.toStdString().c_str());            
+            if(!pDev) return;
+
             QString strCmd("04 00 00 1A 06 00 00 00");
-            hid_device *pDev = hid_open_path(m_path2.toStdString().c_str());
             QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1());
             hid_write(pDev,(quint8*)cmd.data(),cmd.size());
             QThread::msleep(5);
@@ -238,7 +241,7 @@ bool FrameDeviceShow::event(QEvent *event)
 
     if (event->type() == QEvent::MouseButtonRelease)
     {
-        emit onClicked(m_device,m_path1,m_path2,m_image,m_creator);
+        emit onClicked(m_device,m_path1,m_path2,m_image,m_creator,m_cnnType);
         QTimer::singleShot(10,this,[=]{ updateBattery(); });
     }
 

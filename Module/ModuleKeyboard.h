@@ -36,6 +36,7 @@ public:
 
 signals:
     void onKeyClicked(const QString&text,quint8 hid);
+    void onKeyChanged(quint8 hid,quint8 type,bool enable);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;

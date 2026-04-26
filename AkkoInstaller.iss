@@ -6,39 +6,53 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{E4CA0A60-4573-483B-8E56-884F19770908}
-AppName=Akko Driver
+AppName=Akko Hub
 AppVerName=V1.1
 AppPublisher=深圳市银宸电子科技有限公司
 AppPublisherURL=http:///
 AppSupportURL=http:///
 AppUpdatesURL=http:///
-DefaultDirName=C:\AkkoDriver
-DefaultGroupName==Akko Driver
+DefaultDirName=C:\AkkoHub
+DefaultGroupName==Akko Hub
 AllowNoIcons=yes
-;UsePreviousAppDir=yes
+UsePreviousAppDir=yes
 OutputDir=Z:\参考资料
-OutputBaseFilename=Akko Driver安装程序04015
-SetupIconFile=./Akko.ico
+OutputBaseFilename=AkkoHubInstaller-V5.01-Win20260424
+SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes
+PrivilegesRequired=lowest
 
 [Languages]
-Name: "chinese"; MessagesFile: "compiler:Languages\Chinese-cn.isl"
+Name: "Enlish"; MessagesFile: "compiler:Default.isl"
+Name: "Chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
+Name: "Chinesetraditional"; MessagesFile: "compiler:Languages\ChineseTraditional.isl"
+Name: "Japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
+Name: "Korean"; MessagesFile: "compiler:Languages\Korean.isl"
+Name: "French"; MessagesFile: "compiler:Languages\French.isl"
+Name: "German"; MessagesFile: "compiler:Languages\German.isl"
+Name: "Portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "Russian"; MessagesFile: "compiler:Languages\Russian.isl"
+Name: "Slovenian"; MessagesFile: "compiler:Languages\Slovenian.isl"
+Name: "Swedish"; MessagesFile: "compiler:Languages\Swedish.isl"
+Name: "Turkish"; MessagesFile: "compiler:Languages\Turkish.isl"
+Name: "Thai"; MessagesFile: "compiler:Languages\Thai.isl"
+Name: "Italian"; MessagesFile: "compiler:Languages\Italian.isl"
+
+[Files]
+Source: bin\*; DestDir: {app}; Flags: recursesubdirs
+//Source: bin\AKKOStudio.exe; DestDir: {app}; Flags: recursesubdirs
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
 
-[Files]
-Source:./bin/AKKOStudio.exe; DestDir: {app}; Flags: ignoreversion
-Source: ./bin/*; DestDir: {app}; Flags: recursesubdirs
-
 [Icons]
-Name: {group}\Akko Driver; Filename: {app}\AKKOStudio.exe
-Name: {group}\{cm:UninstallProgram,Akko Driver}; Filename: {uninstallexe}
-Name: {commondesktop}\Akko Driver; Filename: {app}\AKKOStudio.exe; Tasks: desktopicon
+Name: {group}\Akko Hub; Filename: {app}\AKKOStudio.exe
+Name: {group}\{cm:UninstallProgram,Akko Hub}; Filename: {uninstallexe}
+Name: {userdesktop}\Akko Hub; Filename: {app}\AKKOStudio.exe; Tasks: desktopicon
 
 [Run]
-Filename: {app}\AKKOStudio.exe; Description: {cm:LaunchProgram,Akko Driver}; Flags: nowait postinstall skipifsilent
+Filename: {app}\AKKOStudio.exe; Description: {cm:LaunchProgram,Akko Hub}; Flags: nowait postinstall skipifsilent
 
 [Registry]
-Root: HKLM; Subkey: Software\Microsoft\Windows\CurrentVersion\Run; ValueType: string; ValueName: AKKOStudio; ValueData: {app}\AKKOStudio.exe
+Root: HKCU; Subkey: Software\Microsoft\Windows\CurrentVersion\Run; ValueType: string; ValueName: AkkoHub; ValueData: {app}\AKKOStudio.exe; Flags: uninsdeletevalue;
