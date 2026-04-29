@@ -7,6 +7,8 @@
 #include <QWheelEvent>
 #include <QTimer>
 #include <QThread>
+#include <QApplication>
+#include <QMessageBox>
 
 static FrameDeviceShow *s_active = nullptr;
 
@@ -135,7 +137,8 @@ void FrameDeviceShow::setImage(const QString &image,int type)
     int nSetW = 0;
     if (Img.isNull())
     {
-        QString strDef = QString("./images/default%1.png").arg(type);
+        //QMessageBox::information(this,"Sorry",image);
+        QString strDef = QApplication::applicationDirPath() + QString("/images/default%1.png").arg(type);
         Img = QPixmap(strDef);
         m_image = strDef;
     }
@@ -195,7 +198,7 @@ void FrameDeviceShow::setImage(const QString &image,int type)
 void FrameDeviceShow::setName(const QString &name,int type)
 {
     ui->labelDeviceName->setText(name);
-    QString strImg = QString("./images/%1.png").arg(name);
+    QString strImg = QApplication::applicationDirPath() + QString("/images/%1.png").arg(name);
     strImg.replace(' ','-');
     setImage(strImg,type);
 }

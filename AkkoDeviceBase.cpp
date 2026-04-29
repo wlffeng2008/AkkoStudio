@@ -1,5 +1,10 @@
 #include "AkkoDeviceBase.h"
-
+#include "qforeach.h"
+#include <QFile>
+#include <QApplication>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 AkkoDeviceBase::AkkoDeviceBase(QWidget *parent)
     : QWidget(parent)
@@ -343,6 +348,7 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {3424, 0x38EE, 0x0001, 0, "5087 V3 HE TMR"},
     {3416, 0x38EE, 0x0001, 0, "5075 V3 HE TMR"},
     {3457, 0x38EE, 0x0006, 0, "FUNBOX"},
+    {3458, 0x3151, 0x504A, 0, "FUNBOX Screen"},
 
     // PAN1086
     // {2286,0x普通,0,"Mineral 02(微技机型KG118)"},
@@ -426,4 +432,27 @@ AkkoDeviceInfo *getDevice(quint32 id)
             return &s_AkkoDeviceTable[i];
     }
     return nullptr;
+}
+
+QString getDisplayName(quint32 id, int type)
+{
+    QString strFile = QApplication::applicationDirPath() + (type == 0 ? "/AkkoHubDevices.json" : "/MGKHubDevices.json");
+    QFile JF;
+    JF.setFileName(strFile);
+    if(JF.open(QIODevice::ReadOnly))
+    {
+        QString strJson = JF.readAll();
+        QJsonDocument jDoc = QJsonDocument::fromJson(strJson.toUtf8());
+        QJsonArray jArr = jDoc.array();
+        //qDebug() << jArr.count() << jArr;
+        for(int i=0; i<jArr.count(); i++)
+        {
+            QJsonObject jOb = jArr[i].toObject();
+            if(jOb["id"].toInt() == id)
+            {
+                return jOb["displayName"].toString();
+            }
+        }
+    }
+    return QString();
 }

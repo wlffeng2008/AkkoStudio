@@ -41,6 +41,7 @@
 #include <windows.h>
 #endif
 
+static float scaleFactor=1.0;
 
 static HWND s_hWndEmb[10]={0};
 
@@ -71,7 +72,7 @@ static void killProcess(QString processName)
     }
 }
 
-void HideStartProcess(LPCWSTR szExePath)
+void HideStartProcess(const QString&strExePath)
 {
     STARTUPINFOW si = { sizeof(si) };
     PROCESS_INFORMATION pi;
@@ -81,7 +82,7 @@ void HideStartProcess(LPCWSTR szExePath)
     si.wShowWindow = SW_HIDE;
 
     BOOL bRet = CreateProcessW(
-        szExePath,
+        (LPCWSTR)QString(strExePath).utf16(),
         NULL,
         NULL,
         NULL,
@@ -348,14 +349,14 @@ MainWindow::MainWindow(QWidget *parent)
     killProcess("Akko.exe");
     killProcess("Akko.exe");
     killProcess("AkkoBox.exe");
+    killProcess("JmMouse.exe");
     killProcess("Akko Cloud Driver v4.exe");
 
-    HideStartProcess(L"Akko.exe");
-    HideStartProcess(L"ByExe/Akko.exe");
-    HideStartProcess(L"AkkoBox.exe");
-    //HideStartProcess(L"RyExe/Akko Cloud Driver v4.exe");
-    //QProcess::startDetached("Akko.exe", QStringList{"/super"});
-    //QProcess::startDetached("AkkoBox.exe", QStringList{"/super"});
+    HideStartProcess(QApplication::applicationDirPath() + "/RyExe/Akko Cloud Driver v4.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/Akko.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/ByExe/Akko.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/AkkoBox.exe");
+    //HideStartProcess(QApplication::applicationDirPath() + "/JmExe/JmMouse.exe");
 
     HWND hParentWnd = (HWND)ui->frameEmb->winId();
     QTimer *pTMFindWnd= new QTimer(this);
@@ -365,8 +366,6 @@ MainWindow::MainWindow(QWidget *parent)
         if(!s_hWndEmb[0])
         {
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("AkkoBox008").utf16());
-            //if(!hWnd)
-            //     hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko Cloud Driver").utf16());
             if(hWnd)
             {
                 s_hWndEmb[0] = hWnd;
@@ -375,9 +374,6 @@ MainWindow::MainWindow(QWidget *parent)
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
                 ::SetParent(hWnd,hParentWnd);
                 settings.setValue("ParentHwnd", (quint32)hWnd);
-
-                HideStartProcess(L"RyExe/Akko Cloud Driver v4.exe");
-                //QProcess::startDetached("RyExe/Akko Cloud Driver v4.exe", QStringList{});
             }
         }
 
@@ -494,7 +490,25 @@ MainWindow::MainWindow(QWidget *parent)
         ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
     });
 
+    //QString strName = getDisplayName(1042);
+    //qDebug() << strName;
+
     setHubSize(true);
+
+    scaleFactor = this->devicePixelRatio();
+    QTimer *pTMMonitor = new QTimer(this);
+    pTMMonitor->start(500);
+    connect(pTMMonitor,&QTimer::timeout,this,[=]{
+
+        qreal scale = this->devicePixelRatio();
+        if(scale != scaleFactor)
+        {
+            scaleFactor = scale;
+            HWND hWnd = s_hWndEmb[m_creator];
+            ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
+        }
+    });
+
 }
 
 void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path2, int connectType, int creator)
@@ -502,16 +516,21 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
     AkkoDeviceInfo *pDevInfo = getDevice(id);
     if (pDevInfo)
     {
+        QString strName(pDevInfo->name);
+        // if(creator == 0x00) strName= getDisplayName(id);
+        // if(creator == 0x0F) strName= getDisplayName(id,1);
+        // if(strName.isEmpty())
+        //     return;
+
         ui->stackedWidget->show();
         FrameDeviceShow *pFrmDS = FrameDeviceShow::getFrameShow(m_layout->count(), this);
         if (pDevInfo->type == 0) pFrmDS->setFixedWidth(970);
         if (pDevInfo->type == 1) pFrmDS->setFixedWidth(280);
         if (pDevInfo->type == 2) pFrmDS->setFixedWidth(280);
-
         pFrmDS->m_sa = ui->scrollArea;
         pFrmDS->m_device = pDevInfo;
         pFrmDS->m_cnnType = connectType;
-        pFrmDS->setName(pDevInfo->name,pDevInfo->type);
+        pFrmDS->setName(strName,pDevInfo->type);
         pFrmDS->setPath(path1,path2);
         pFrmDS->setCreator(creator);
         pFrmDS->show();
@@ -533,15 +552,13 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
 
                 for(int i=0; i<10; i++)
                 {
-                    HWND hWnd = s_hWndEmb[i];
-                    if(!hWnd) continue;
-                    ::ShowWindow(hWnd,SW_HIDE);
-                    //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_HIDEWINDOW);
+                    if(!s_hWndEmb[i]) continue;
+                    ::ShowWindow(s_hWndEmb[i],SW_HIDE);
                 }
 
                 if(creator == 0)
                 {
-                    QList<quint16>IdList={2807};//,2743,3131
+                    QList<quint16>IdList={2807}; //,2743,3131
                     if(IdList.contains(pDevInfo->id))
                     {
                         DialogDeviceConnect::instance()->DoConnectDevice(pDevInfo->PID,bleMode,path1,path2);
@@ -576,12 +593,21 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                     {
                         settings.setValue("AkkoDeviceIndex",pDevInfo->id);
                     }
+
                     if(creator == 2)
                     {
                         QString strSet = m_langSet;
                         if(!strSet.isEmpty())
                             settings.setValue("ByLocale",strSet);
                         settings.setValue("ByDeviceUuid",QString("0x") + path1);
+                    }
+
+                    if(creator == 3)
+                    {
+                        QString strSet = m_langSet;
+                        if(!strSet.isEmpty())
+                            settings.setValue("JmLocale",strSet);
+                        settings.setValue("JmDevicePath",path2);
                     }
 
                     ui->frameEmb->setStyleSheet("#frameEmb{background-color: rgb(30, 30, 30); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
@@ -593,7 +619,8 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                     ui->frameEmb->show();
 
                     HWND hWnd = s_hWndEmb[m_creator];
-                    ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width(), ui->frameEmb->height()-20, SWP_SHOWWINDOW);
+                    qreal scaleFactor = this->devicePixelRatio();
+                    ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
                     ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
                     ::UpdateWindow(hWnd);
                     ::BringWindowToTop(hWnd);
@@ -606,27 +633,6 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
             });
         }
     }
-}
-
-void MainWindow::changeEvent(QEvent *pEvt)
-{
-    if(pEvt->type() == QEvent::LanguageChange)
-    {
-        ui->retranslateUi(this);
-        updateDeviceInfo();
-    }
-    QMainWindow::changeEvent(pEvt);
-}
-
-void MainWindow::showEvent(QShowEvent *event)
-{
-    setAttribute(Qt::WA_Mapped);
-
-    this->showNormal();
-    this->raise();
-    this->activateWindow();
-
-    QMainWindow::showEvent(event);
 }
 
 static void QLog(const char *buf,int nlen=16)
@@ -647,23 +653,36 @@ void MainWindow::enumDevice()
           item->hide();
     }
 
+
+    quint16 VID = 0;
+    quint16 PID = 0;
+    quint16 UPG = 0;
+    quint16 USA = 0;
+    const char *PATH = nullptr;
+
     QString path1,path2;
     QList<quint16> VidList = {0x3151, 0x38EE, 0x25A7, 0x05AC, 0x0461};//
-    foreach (quint16 VID, VidList)
+    foreach (quint16 Vid, VidList)
     {
-        hid_device_info *pRoot = hid_enumerate(VID, 0);
-        hid_device_info *pTemp = pRoot;
+        hid_device_info *pRoot = hid_enumerate(Vid, 0);
+        hid_device_info *pEDev = pRoot;
 
-        while (pTemp)
+        while (pEDev)
         {
-            if(pTemp->usage_page == 0xFF55 && pTemp->usage == 0x0202)
-            {
-                path2 = pTemp->path;
+            VID = pEDev->vendor_id;
+            PID = pEDev->product_id;
+            UPG = pEDev->usage_page;
+            USA = pEDev->usage;
+            PATH= pEDev->path;
+            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
 
-                hid_device *pDev = hid_open_path(path2.toStdString().c_str());
+            if(UPG == 0xFF55 && USA == 0x0202) // BLE
+            {
+                path2 = PATH;
+
+                hid_device *pDev = hid_open_path(PATH);
                 if (pDev)
                 {
-                    quint16 PID = pTemp->product_id;
                     QByteArray cmd(120, 0);
                     cmd[0] = 0x06;
                     cmd[1] = 0x55;
@@ -689,16 +708,22 @@ void MainWindow::enumDevice()
                     if(id)
                     {
                         addDevice(id,"null",path2,2,0);
-                        qDebug() << "BLE_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("%04d 0x%04X",id,PID);
+                        qDebug().noquote() << "BLE_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("id:%04d VID:0x%04X,VID:0x%04X",id,VID,PID);
                     }
                 }
             }
             else
             {
-                if(pTemp->usage_page == 0xFFFF)
+                if(UPG == 0xFFFF)
                 {
-                    if(pTemp->usage == 1) path1 = pTemp->path;
-                    if(pTemp->usage == 2) path2 = pTemp->path;
+                    if(USA == 1) path1 = pEDev->path;
+                    if(USA == 2) path2 = pEDev->path;
+                }
+
+                if(UPG == 0xFF01 && USA == 1 && VID == 0x3151 && PID == 0x504A)
+                {
+                    path1 = "HitScreen";
+                    path2 = pEDev->path;
                 }
 
                 if(!path1.isEmpty() && !path2.isEmpty())
@@ -706,8 +731,6 @@ void MainWindow::enumDevice()
                     hid_device *pDev = hid_open_path(path2.toStdString().c_str());
                     if (pDev)
                     {
-                        quint16 PID = pTemp->product_id;
-
                         QByteArray cmd(120, 0);
                         cmd[1] = 0x8F;
                         cmd[8] = 0xFF - cmd[1];
@@ -734,7 +757,7 @@ void MainWindow::enumDevice()
                                 hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
                                 QThread::msleep(10);
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-                                QLog(buf);
+                                //QLog(buf);
 
                                 while(nTry++ < 5)
                                 {
@@ -747,7 +770,7 @@ void MainWindow::enumDevice()
                                     if(buf[6] == 1)
                                         break;
                                 }
-                                QLog(buf);
+                                //QLog(buf);
 
                                 tmp[1] = 0x8F;
                                 tmp[2] = 0x00;
@@ -756,7 +779,7 @@ void MainWindow::enumDevice()
                                 QThread::msleep(20);
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
 
-                                nTry=0;
+                                nTry = 0;
                                 while(nTry++ < 5)
                                 {
                                     tmp[1] = 0xf7;
@@ -765,8 +788,7 @@ void MainWindow::enumDevice()
                                     hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
                                     QThread::msleep(20);
                                     nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-                                    if(buf[0] == 0)
-                                        break;
+                                    if(buf[0] == 0) break;
                                 }
 
                                 tmp[1] = 0xfc;
@@ -776,7 +798,7 @@ void MainWindow::enumDevice()
                                 QThread::msleep(20);
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
 
-                                connectType=1;
+                                connectType = 1;
 
                                 if (nlen > 0)
                                 {
@@ -784,7 +806,7 @@ void MainWindow::enumDevice()
                                     id = *(quint32 *)(data.data() + 1);
                                 }
                             }
-                            qDebug() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("%04d 0x%04X",id,PID);
+                            qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("id:%04d VID:0x%04X,VID:0x%04X",id,VID,PID);
 
                             addDevice(id,path1,path2,connectType,0);
                             path1.clear();
@@ -795,45 +817,41 @@ void MainWindow::enumDevice()
                     }
                 }
             }
-            pTemp = pTemp->next;
+            pEDev = pEDev->next;
         }
-        hid_free_enumeration(pRoot);
+        if(pRoot) hid_free_enumeration(pRoot);
     }
 
     QString strCmd0("04 00 00 1a 06 00 00 00");
     QString strCmd1("04 00 00 30 06 00 00 00");
     QList<quint16>VShengs = {0x38EE,0x320F};
-    foreach (quint16 VID, VShengs)
+    foreach (quint16 Vid, VShengs)
     {
-        hid_device_info *pRoot = hid_enumerate(VID, 0);
-        hid_device_info *pTemp = pRoot;
-        while (pTemp)
+        hid_device_info *pRoot = hid_enumerate(Vid, 0);
+        hid_device_info *pEDev = pRoot;
+
+        while (pEDev)
         {
-            if(pTemp->usage == 146 && pTemp->usage_page == 65308)
+            VID = pEDev->vendor_id;
+            PID = pEDev->product_id;
+            UPG = pEDev->usage_page;
+            USA = pEDev->usage;
+            PATH= pEDev->path;
+            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            if(USA == 146 && UPG == 65308)
             {
-                hid_device *pDev = hid_open_path(pTemp->path);
+                hid_device *pDev = hid_open_path(PATH);
                 if(pDev)
                 {
-                    quint16 PID = pTemp->product_id;
-
-                    quint8 szBuf[128] = {0};
                     QByteArray cmd = QByteArray::fromHex(strCmd0.toLatin1());
                     hid_write(pDev,(quint8*)cmd.data(),cmd.size());
-                    QThread::msleep(10);
+                    QThread::msleep(20);
+                    quint8 szBuf[128] = {0};
                     int len = hid_read_timeout(pDev,szBuf,16,500);
 
                     QByteArray Log((char *)szBuf,len);
-                    qDebug() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("0x%04X",PID);
+                    qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("0x%04X",PID);
                     quint8 device = szBuf[11];
-
-                    cmd = QByteArray::fromHex(strCmd1.toLatin1());
-                    hid_write(pDev,(quint8*)cmd.data(),cmd.size());
-                    QThread::msleep(10);
-                    hid_read_timeout(pDev,szBuf,16,500);
-                    hid_close(pDev);
-
-                    Log = QByteArray((char *)szBuf,len);
-                    qDebug() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("0x%04X",PID);
 
                     //发送：04 00 00 30 06 00 00 00指令，鼠标回复第12个字节区分同pid的设备，值：
                     //灵动V9 ultra 为0
@@ -923,8 +941,7 @@ void MainWindow::enumDevice()
                         break;
                     }
 
-                    if(PID == 0x0F)
-                        connectType = 1;
+                    if(PID == 0x0F) connectType = 1;
 
                     if(VID == 0x3311)
                     {
@@ -932,29 +949,33 @@ void MainWindow::enumDevice()
                         if(device == 1) devId = 16;
                     }
 
-                    addDevice(devId,"null",pTemp->path,connectType,1);
+                    addDevice(devId,"null",PATH,connectType,1);
                 }
             }
-            pTemp = pTemp->next;
+            pEDev = pEDev->next;
         }
-        hid_free_enumeration(pRoot);
+        if(pRoot) hid_free_enumeration(pRoot);
     }
 
     {
-        const unsigned char kReadBufferHead = 0x82;
-        const unsigned char kReadCodeSubCmd = 0x01;
-        const unsigned char kReportId = 0x09;
+        quint8 kReadBufferHead = 0x82;
+        quint8 kReadCodeSubCmd = 0x01;
+        quint8 kReportId = 0x09;
 
-        const unsigned char kReadPowerHead = 0x87;
+        hid_device_info* pRoot = hid_enumerate(0x38ee, 0x0016);
+        hid_device_info* pEDev = pRoot;
 
-        hid_device_info* devices = hid_enumerate(0x38ee, 0x0016);
-        hid_device_info* current = devices;
-
-        while (current)
+        while (pEDev)
         {
-            if(current->usage_page == 65376) // 65280
+            VID = pEDev->vendor_id;
+            PID = pEDev->product_id;
+            UPG = pEDev->usage_page;
+            USA = pEDev->usage;
+            PATH= pEDev->path;
+            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            if(pEDev->usage_page == 65376) // 65280
             {
-                hid_device* pDev = hid_open_path(current->path);
+                hid_device* pDev = hid_open_path(PATH);
                 if (pDev)
                 {
                     unsigned char report[128]={0};
@@ -974,7 +995,6 @@ void MainWindow::enumDevice()
 
                     QByteArray Log((char *)report,64);
                     QString Uuid = Log.mid(7,6).toHex();
-                    qDebug().noquote() << "Uuid:" << Uuid;
 
                     if(Uuid == "110000000059")
                         addDevice(0xFF59,Uuid,Uuid,0,2);
@@ -985,9 +1005,9 @@ void MainWindow::enumDevice()
                 }
             }
 
-            current = current->next;
+            pEDev = pEDev->next;
         }
-        hid_free_enumeration(devices);
+        if(pRoot) hid_free_enumeration(pRoot);
     }
 
     {
@@ -1000,21 +1020,48 @@ void MainWindow::enumDevice()
         // "0xFF04 0002" \\?\HID#VID_3554&PID_FB29&MI_01&Col06#7&121d5b32&0&0005#{4d1e55b2-f16f-11cf-88cb-001111000030}
         // "0xFF06 0002" \\?\HID#VID_3554&PID_FB29&MI_01&Col07#7&121d5b32&0&0006#{4d1e55b2-f16f-11cf-88cb-001111000030}
         // "0x0001 0002" \\?\HID#VID_3554&PID_FB29&MI_02#7&3a8808fb&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
-        hid_device_info* devices = hid_enumerate(0x3554, 0);
-        hid_device_info* current = devices;
+        hid_device_info* pRoot = hid_enumerate(0x3554, 0);
+        hid_device_info* pEDev = pRoot;
 
-        while (current)
+        while (pEDev)
         {
-            qDebug() << QString::asprintf("0x%04X %04d",current->usage_page, current->usage) << current->path;
-            if(current->usage_page == 0xFF02 && current->usage == 0x02)
-                addDevice(0xFB29,"null",current->path,1,3);
+            VID = pEDev->vendor_id;
+            PID = pEDev->product_id;
+            UPG = pEDev->usage_page;
+            USA = pEDev->usage;
+            PATH= pEDev->path;
+            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            //qDebug() << QString::asprintf("0x%04X %04d",pEDev->usage_page, pEDev->usage) << pEDev->path;
+            if(UPG == 0xFF02 && USA == 0x02)
+                addDevice(0xFB29,"null",PATH,0,3);
 
-            current = current->next;
+            pEDev = pEDev->next;
         }
-        hid_free_enumeration(devices);
+        if(pRoot) hid_free_enumeration(pRoot);
     }
 
     updateDeviceInfo();
+}
+
+void MainWindow::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+        updateDeviceInfo();
+    }
+    QMainWindow::changeEvent(pEvt);
+}
+
+void MainWindow::showEvent(QShowEvent *event)
+{
+    setAttribute(Qt::WA_Mapped);
+
+    this->showNormal();
+    this->raise();
+    this->activateWindow();
+
+    QMainWindow::showEvent(event);
 }
 
 void MainWindow::updateDeviceInfo()
@@ -1055,6 +1102,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
             m_pFloatReturn->hide();
             ::ShowWindow(s_hWndEmb[0],SW_HIDE);
             ::ShowWindow(s_hWndEmb[2],SW_HIDE);
+            ::ShowWindow(s_hWndEmb[3],SW_HIDE);
             ui->stackedWidget->setCurrentIndex(0);
         }
 
@@ -1101,7 +1149,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
         if(m_pFloatLeft == obj)
         {
             QPainter p(m_pFloatLeft);
-            p.setRenderHint(QPainter::Antialiasing, true);
             p.drawImage(m_pFloatLeft->rect(),QImage(":/images/a-left.png"));
         }
 
@@ -1115,14 +1162,13 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
         if(m_pFloatReturn == obj)
         {
             QPainter p(m_pFloatReturn);
-            p.setRenderHint(QPainter::Antialiasing, true);
+            p.setRenderHint(QPainter::SmoothPixmapTransform, true);
             QRect rect = m_pFloatReturn->rect();
             QRgb A = qRgba(255,255,255,100);
             p.setBrush(QColor::fromRgba(A));
             p.setPen(QColor::fromRgba(qRgba(100,100,100,100)));
-            p.drawRoundedRect(rect,16,16);
-            p.setRenderHint(QPainter::SmoothPixmapTransform, true);
-            p.drawImage(rect.adjusted(24,5,-24,1),QImage(":/images/btn-return.png"));
+            p.drawRoundedRect(rect.adjusted(1,1,-1,-1),16,16);
+            p.drawImage(rect.adjusted(24,2,-24,-2),QImage(":/images/btn-return.png"));
         }
     }
 
@@ -1187,7 +1233,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
     if (ui->stackedWidget->isHidden())
     {
         m_pFloatReturn->hide();
-        p.drawImage(this->rect(), QImage("./images/MainPicture.png"));
+        p.drawImage(this->rect(), QImage(QApplication::applicationDirPath() + "/images/MainPicture.png"));
         QFont font = this->font();
         //font.setBold(true);
         font.setPointSize(22);

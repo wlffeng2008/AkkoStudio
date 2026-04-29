@@ -15,6 +15,8 @@ typedef struct {
 } AkkoDeviceInfo;
 
 AkkoDeviceInfo *getDevice(quint32 id);
+QString getDisplayName(quint32 id,int type=0);
+
 
 class AkkoDeviceBase : public QWidget
 {

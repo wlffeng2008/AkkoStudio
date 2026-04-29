@@ -17,7 +17,7 @@ DefaultGroupName==Akko Hub
 AllowNoIcons=yes
 UsePreviousAppDir=yes
 OutputDir=Z:\参考资料
-OutputBaseFilename=AkkoHubInstaller-V5.01-Win20260424
+OutputBaseFilename=AkkoHubInstaller-V5.02-Win20260428
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes
@@ -40,8 +40,8 @@ Name: "Thai"; MessagesFile: "compiler:Languages\Thai.isl"
 Name: "Italian"; MessagesFile: "compiler:Languages\Italian.isl"
 
 [Files]
-Source: bin\*; DestDir: {app}; Flags: recursesubdirs
-//Source: bin\AKKOStudio.exe; DestDir: {app}; Flags: recursesubdirs
+Source: bin\*; DestDir: {app}; Flags: recursesubdirs ignoreversion
+Source: bin\AKKOStudio.exe; DestDir: {app}; Flags: ignoreversion
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
@@ -56,3 +56,17 @@ Filename: {app}\AKKOStudio.exe; Description: {cm:LaunchProgram,Akko Hub}; Flags:
 
 [Registry]
 Root: HKCU; Subkey: Software\Microsoft\Windows\CurrentVersion\Run; ValueType: string; ValueName: AkkoHub; ValueData: {app}\AKKOStudio.exe; Flags: uninsdeletevalue;
+
+[Code]
+procedure CurStepChanged(CurStep: TSetupStep);
+var
+  ResultCode: Integer;
+begin
+  if CurStep = ssInstall then
+  begin
+    // 尝试静默结束进程
+    // taskkill /F 表示强制结束，/IM 指定映像名称
+    Exec(ExpandConstant('{sys}\taskkill.exe'), '/F /IM AKKOStudio.exe', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    // ResultCode 为 0 表示成功，为 128 表示未找到进程，其他值表示失败
+  end;
+end;

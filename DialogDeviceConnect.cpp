@@ -426,7 +426,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                     setRowValue(row,2+i,(quint8)data[i]);
                 }
             }
-            qDebug() << "get_:" << data.toHex(' ').toUpper();
+            //qDebug() << "get_:" << data.toHex(' ').toUpper();
             quint8 *pCmd=(quint8 *)m_lastCmd.data();
             QString strInfo;
             switch(pCmd[0])
@@ -754,7 +754,7 @@ void DialogDeviceConnect::executeCmd()
         });
     }
 
-    qDebug() << "send:" << cmd.left(16).toHex(' ').toUpper();
+    //qDebug() << "send:" << cmd.left(16).toHex(' ').toUpper();
 }
 
 void DialogDeviceConnect::setProfile(int layer)
