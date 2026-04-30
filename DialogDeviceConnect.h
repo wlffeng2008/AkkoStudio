@@ -72,6 +72,8 @@ typedef enum
     CMD_GET_AUTOOSEN   =0x97,
     CMD_SET_SKU         =0x50,
     CMD_GET_SKU         =0xD0,
+    CMD_SET_MAGNETISM  = 0x1D,
+    CMD_GET_MAGNETISM  = 0x9D,
 }KB_CMD;
 
 class USBNotifier : public QObject, public QAbstractNativeEventFilter
@@ -79,7 +81,7 @@ class USBNotifier : public QObject, public QAbstractNativeEventFilter
     Q_OBJECT
 public:
     explicit USBNotifier(QObject *parent = nullptr) : QObject(parent) {
-        //QCoreApplication::instance()->installNativeEventFilter(this) ;
+        // QCoreApplication::instance()->installNativeEventFilter(this);
     }
 
 signals:

@@ -41,8 +41,6 @@
 #include <windows.h>
 #endif
 
-static float scaleFactor=1.0;
-
 static HWND s_hWndEmb[10]={0};
 
 static QSettings settings("HKEY_CURRENT_USER\\Software\\Akko",QSettings::NativeFormat);
@@ -490,16 +488,13 @@ MainWindow::MainWindow(QWidget *parent)
         ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
     });
 
-    //QString strName = getDisplayName(1042);
-    //qDebug() << strName;
-
     setHubSize(true);
 
-    scaleFactor = this->devicePixelRatio();
     QTimer *pTMMonitor = new QTimer(this);
     pTMMonitor->start(500);
     connect(pTMMonitor,&QTimer::timeout,this,[=]{
 
+        static qreal scaleFactor = this->devicePixelRatio();
         qreal scale = this->devicePixelRatio();
         if(scale != scaleFactor)
         {
@@ -517,10 +512,10 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
     if (pDevInfo)
     {
         QString strName(pDevInfo->name);
-        // if(creator == 0x00) strName= getDisplayName(id);
-        // if(creator == 0x0F) strName= getDisplayName(id,1);
-        // if(strName.isEmpty())
-        //     return;
+        if(creator == 0x00) strName= getDisplayName(id);
+        if(creator == 0x0F) strName= getDisplayName(id,1);
+        if(strName.isEmpty())
+            return;
 
         ui->stackedWidget->show();
         FrameDeviceShow *pFrmDS = FrameDeviceShow::getFrameShow(m_layout->count(), this);
@@ -1370,8 +1365,8 @@ void MainWindow::setHubSize(bool origin)
 {
     int width  = 1280;
     int height =  900;
-    if(!origin) width  = 1280;
-    if(!origin) height =  900;
+    if(!origin) width  = 1520;
+    if(!origin) height = 900;
 
     QRect geoMetry = QApplication::primaryScreen()->geometry();
     QRect rcSet((geoMetry.width() - width)/2, (geoMetry.height() - height)/2,width,height);

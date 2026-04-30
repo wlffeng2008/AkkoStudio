@@ -437,20 +437,63 @@ AkkoDeviceInfo *getDevice(quint32 id)
 QString getDisplayName(quint32 id, int type)
 {
     QString strFile = QApplication::applicationDirPath() + (type == 0 ? "/AkkoHubDevices.json" : "/MGKHubDevices.json");
-    QFile JF;
-    JF.setFileName(strFile);
+    QFile JF(strFile);
     if(JF.open(QIODevice::ReadOnly))
     {
         QString strJson = JF.readAll();
         QJsonDocument jDoc = QJsonDocument::fromJson(strJson.toUtf8());
-        QJsonArray jArr = jDoc.array();
-        //qDebug() << jArr.count() << jArr;
-        for(int i=0; i<jArr.count(); i++)
+        if(jDoc.isArray())
         {
-            QJsonObject jOb = jArr[i].toObject();
-            if(jOb["id"].toInt() == id)
+            QJsonArray jArray = jDoc.array();
+            for(int i=0; i<jArray.count(); i++)
             {
-                return jOb["displayName"].toString();
+                QJsonObject jOb = jArray[i].toObject();
+                if(jOb.value("id").toInt() == id)
+                {
+                    return jOb.value("displayName").toString().trimmed();
+                }
+            }
+        }
+        else
+        {
+            QJsonArray jArray = jDoc.object().value("keyboard").toArray();
+            for(int i=0; i<jArray.count(); i++)
+            {
+                QJsonObject jOb = jArray[i].toObject();
+                if(jOb.value("id").toInt() == id)
+                {
+                    return jOb.value("displayName").toString().trimmed();
+                }
+            }
+
+            jArray = jDoc.object().value("mouse").toArray();
+            for(int i=0; i<jArray.count(); i++)
+            {
+                QJsonObject jOb = jArray[i].toObject();
+                if(jOb.value("id").toInt() == id)
+                {
+                    return jOb.value("displayName").toString().trimmed();
+                }
+            }
+
+            jArray = jDoc.object().value("hitBoxKeyboard").toArray();
+            for(int i=0; i<jArray.count(); i++)
+            {
+                QJsonObject jOb = jArray[i].toObject();
+                if(jOb.value("id").toInt() == id)
+                {
+                    return jOb.value("displayName").toString().trimmed();
+                }
+            }
+
+            jArray = jDoc.object().value("hitBoxScreen").toArray();
+            for(int i=0; i<jArray.count(); i++)
+            {
+                QJsonObject jOb = jArray[i].toObject();
+                if(jOb.value("id").toInt() == id)
+                {
+                    return jOb.value("displayName").toString().trimmed();
+                }
             }
         }
     }
