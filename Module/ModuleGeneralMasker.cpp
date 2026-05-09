@@ -29,7 +29,6 @@ ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
 {
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
     setAttribute(Qt::WA_TranslucentBackground);
-    //setModal(true);
 
     setStyleSheet("QDialog { background-color: rgba(180, 180, 180, 0.8);  border: none; border-radius: 24px;}");
 
@@ -42,6 +41,7 @@ ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
         mainLayout->addWidget(cotnent, 0, Qt::AlignCenter);
 
         cotnent->show();
+        cotnent->raise();
         cotnent->installEventFilter(this);
         m_watch = cotnent;
     }
@@ -55,6 +55,7 @@ ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
     }
     setGeometry(geoMetry);
     setFixedSize(geoMetry.width(), geoMetry.height());
+    this->raise();
 }
 
 bool ModuleGeneralMasker::eventFilter(QObject*watched,QEvent*event)

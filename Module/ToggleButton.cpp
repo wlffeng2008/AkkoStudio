@@ -15,8 +15,8 @@ ToggleButton::ToggleButton(QWidget *parent) : QCheckBox(parent)
 
     setStyleSheet(R"(
             QCheckBox {
-                min-width: 40px;
-                min-height: 18px;
+                min-width: 48px;
+                min-height: 24px;
                 border: none; }
         )");
     m_bchecked = this->isChecked() ;
@@ -40,31 +40,31 @@ void ToggleButton::setColor(const QColor&checkedColor,const QColor&UncheckedColo
 {
     m_colorChecked   = checkedColor;
     m_colorUnchecked = UncheckedColor;
-    update() ;
+    update();
 }
 
 void ToggleButton::setCheckedColor(const QColor&color)
 {
-    m_colorChecked = color ;
-    update() ;
+    m_colorChecked = color;
+    update();
 }
 
 void ToggleButton::setUnheckedColor(const QColor&color)
 {
-    m_colorUnchecked = color ;
-    update() ;
+    m_colorUnchecked = color;
+    update();
 }
 
 bool ToggleButton::event(QEvent *event)
 {
     if(event->type() == QEvent::MouseButtonRelease)
     {
-        m_bchecked = !m_bchecked ;
-        update() ;
-        emit clicked(m_bchecked) ;
-        return true ;
+        m_bchecked = !m_bchecked;
+        update();
+        emit clicked(m_bchecked);
+        return true;
     }
-    return QCheckBox::event(event) ;
+    return QCheckBox::event(event);
 }
 
 void ToggleButton::paintEvent(QPaintEvent *event)
@@ -83,17 +83,17 @@ void ToggleButton::paintEvent(QPaintEvent *event)
         painter.setPen(m_colorUnchecked);
         painter.setBrush(m_colorUnchecked);
     }
-    painter.drawRoundedRect(rect,nH/2,nH/2) ;
+    painter.drawRoundedRect(rect,nH/2,nH/2);
 
-    int nRadius = nH/2 -2 ;
-    QRect rc = rect.adjusted(2,2,-2,-2) ;
+    int nRadius = nH/2 -2;
+    QRect rc = rect.adjusted(2,2,-2,-2);
     if(m_bchecked)
     {
-        rc.setLeft(rc.right() - nRadius*2) ;
+        rc.setLeft(rc.right() - nRadius*2);
     }
     else
     {
-        rc.setRight(rc.left() + nRadius*2) ;
+        rc.setRight(rc.left() + nRadius*2);
     }
 
     if(m_bchecked)
@@ -107,7 +107,7 @@ void ToggleButton::paintEvent(QPaintEvent *event)
         painter.setBrush(0xE0E0E0);
     }
 
-    painter.drawRoundedRect(rc,nRadius,nRadius) ;
+    painter.drawRoundedRect(rc,nRadius,nRadius);
 
     event->accept();
 }

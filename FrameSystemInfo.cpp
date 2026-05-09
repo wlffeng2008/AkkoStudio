@@ -36,7 +36,8 @@ FrameSystemInfo::FrameSystemInfo(QWidget *parent)
         pTop->setFlag(QDialog::Rejected);
         hide();
     });
-    //show();
+
+    raise();
 }
 
 FrameSystemInfo::~FrameSystemInfo()

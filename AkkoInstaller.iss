@@ -17,7 +17,7 @@ DefaultGroupName==Akko Hub
 AllowNoIcons=yes
 UsePreviousAppDir=yes
 OutputDir=Z:\²Î¿¼×ÊÁÏ
-OutputBaseFilename=AkkoHubInstaller-V5.03-Win20260430
+OutputBaseFilename=AkkoHubInstaller-V5.05-Win20260505
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes

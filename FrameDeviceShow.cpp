@@ -101,15 +101,15 @@ void FrameDeviceShow::updateBattery()
         }
     }
 
+    static QStringList imgPowers = {"batt-low.png","batt-25.png","batt-50.png","batt-75.png","batt-full.png"};
     quint8 level = 0;
-    QStringList imgPowers = {"batt-low.png","batt-25.png","batt-50.png","batt-75.png","batt-full.png"};
     if(batt>20) level=1;
     if(batt>40) level=2;
     if(batt>60) level=3;
     if(batt>80) level=4;
 
     QString strBatt = QString(":/images/dev/") + imgPowers[level];
-    QString strTip  = QString(tr("剩余电量")) +  QString(": %1%").arg(batt);
+    QString strTip  = QString(tr("剩余电量")) +  QString(": %1%").arg(batt%101);
 
     ui->labelPower->setPixmap(QPixmap(strBatt));
     ui->labelPower->setToolTip(strTip);
@@ -127,7 +127,7 @@ void FrameDeviceShow::updateBattery()
     if(m_cnnType == 0) strBatt.clear();
     ui->labelPower->setStyleSheet(qss);
 
-    emit onReport(m_device,strBatt,m_typeImage,strTip,qss);
+    emit onReport(m_devInfo,strBatt,m_typeImage,strTip,qss);
 }
 
 void FrameDeviceShow::setImage(const QString &image,int type)
@@ -137,7 +137,6 @@ void FrameDeviceShow::setImage(const QString &image,int type)
     int nSetW = 0;
     if (Img.isNull())
     {
-        //QMessageBox::information(this,"Sorry",image);
         QString strDef = QApplication::applicationDirPath() + QString("/images/default%1.png").arg(type);
         Img = QPixmap(strDef);
         m_image = strDef;
@@ -146,7 +145,7 @@ void FrameDeviceShow::setImage(const QString &image,int type)
     ui->labelPower->setHidden(m_cnnType == 0);
     QTimer::singleShot(500,this,[=]{ updateBattery(); });
 
-    QStringList imgTypes = {"usb.png", "2.4g.png", "ble.png"};
+    static QStringList imgTypes = {"usb.png", "2.4g.png", "ble.png"};
     m_typeImage = QString(":/images/dev/") + imgTypes[m_cnnType];
     ui->labelType->setPixmap(QPixmap(m_typeImage));
 
@@ -244,7 +243,7 @@ bool FrameDeviceShow::event(QEvent *event)
 
     if (event->type() == QEvent::MouseButtonRelease)
     {
-        emit onClicked(m_device,m_path1,m_path2,m_image,m_creator,m_cnnType);
+        emit onClicked(m_devInfo,m_path1,m_path2,m_image,m_creator,m_cnnType);
         QTimer::singleShot(10,this,[=]{ updateBattery(); });
     }
 

@@ -65,11 +65,14 @@ private:
     ModuleLangMenu *m_pLangMenu = nullptr;
     ModuleGeneralMasker *m_cover = nullptr;
 
+    bool m_bForMGK=false;
+
     QLayout *m_layout = nullptr;
 
     QPointF m_dragPosition;
     bool m_dragging = false;
     bool m_closeShow = false;
+    bool m_bActive=true;
 
     QSystemTrayIcon *trayIcon = nullptr;
 

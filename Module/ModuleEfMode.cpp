@@ -70,7 +70,7 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
         {
             QString strName=QString::asprintf("%s (%02X)",EfModeList[i].name.toStdString().c_str(),EfModeList[i].mode) ;
             QPushButton *btn = new QPushButton(strName,this);
-            btn->setFixedSize(240,28);
+            btn->setFixedSize(250,28);
             btn->setCheckable(true);
             btn->setStyleSheet(strStyle);
             btn->setCursor(Qt::PointingHandCursor);

@@ -4,6 +4,8 @@
 #include <QFrame>
 #include <QScrollArea>
 
+#include <AkkoDeviceBase.h>
+
 namespace Ui {
 class FrameDeviceShow;
 }
@@ -26,7 +28,7 @@ public:
     void updateBattery();
 
     QScrollArea *m_sa = nullptr;
-    void *m_device = nullptr;
+    AkkoDeviceInfo *m_devInfo = nullptr;
     bool m_bConacted = false;
     quint8 m_cnnType =0;
     QString m_path1;
@@ -36,8 +38,8 @@ public:
     int m_creator;
 
 signals:
-    void onClicked(void *device,const QString&path1,const QString&path2,const QString&image,int creator,bool bleMode);
-    void onReport(void *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss);
+    void onClicked(AkkoDeviceInfo *device,const QString&path1,const QString&path2,const QString&image,int creator,bool bleMode);
+    void onReport(AkkoDeviceInfo *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss);
 
 protected:
     bool event(QEvent *event) override;

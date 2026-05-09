@@ -12,11 +12,11 @@ typedef struct {
     quint8 type; // 0 keyboard 1 mouse 2 headphone
     QString name;
 
+    QString image;
 } AkkoDeviceInfo;
 
 AkkoDeviceInfo *getDevice(quint32 id);
 QString getDisplayName(quint32 id,int type=0);
-
 
 class AkkoDeviceBase : public QWidget
 {

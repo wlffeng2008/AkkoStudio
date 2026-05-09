@@ -46,40 +46,76 @@ static HWND s_hWndEmb[10]={0};
 static QSettings settings("HKEY_CURRENT_USER\\Software\\Akko",QSettings::NativeFormat);
 
 #include<tlhelp32.h>
-static void killProcess(QString processName)
+static bool killProcess(const QString&processName)
 {
-    if (processName.isEmpty()) return;
+    if (processName.isEmpty())
+        return false;
 
-    HANDLE hRootHandle = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-    if (INVALID_HANDLE_VALUE == hRootHandle) return;
+    HANDLE hRootSnap = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (INVALID_HANDLE_VALUE == hRootSnap)
+        return false;
 
+    bool bKill = false;
     PROCESSENTRY32 pEntry = {0};
     pEntry.dwSize = sizeof(PROCESSENTRY32);
-
-    BOOL bProcess = ::Process32First(hRootHandle, &pEntry);
-
+    BOOL bProcess = ::Process32First(hRootSnap, &pEntry);
     while (bProcess)
     {
         QString strProcName = QString::fromWCharArray(pEntry.szExeFile);
         if (strProcName.compare(processName,Qt::CaseInsensitive) == 0)
         {
-            HANDLE handLe = ::OpenProcess(PROCESS_TERMINATE, FALSE, pEntry.th32ProcessID);
-            if (handLe) ::TerminateProcess(handLe, 0);
+            HANDLE hKill = ::OpenProcess(PROCESS_TERMINATE, FALSE, pEntry.th32ProcessID);
+            if (hKill)
+            {
+                bKill =::TerminateProcess(hKill, 0);
+                break;
+            }
         }
-        bProcess = ::Process32Next(hRootHandle, &pEntry);
+        bProcess = ::Process32Next(hRootSnap, &pEntry);
     }
+    ::CloseHandle(hRootSnap);
+
+    return bKill;
+}
+
+static bool isRunning(const QString&processName)
+{
+    if (processName.isEmpty())
+        return false;
+
+    HANDLE hRootSnap = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (INVALID_HANDLE_VALUE == hRootSnap)
+        return false;
+
+    bool bRunning = false;
+
+    PROCESSENTRY32 pEntry = {0};
+    pEntry.dwSize = sizeof(PROCESSENTRY32);
+    BOOL bProcess = ::Process32First(hRootSnap, &pEntry);
+    while (bProcess)
+    {
+        QString strProcName = QString::fromWCharArray(pEntry.szExeFile);
+        if (strProcName.compare(processName,Qt::CaseInsensitive) == 0)
+        {
+            bRunning = true;
+            break;
+        }
+        bProcess = ::Process32Next(hRootSnap, &pEntry);
+    }
+    ::CloseHandle(hRootSnap);
+
+    return bRunning;
 }
 
 void HideStartProcess(const QString&strExePath)
 {
     STARTUPINFOW si = { sizeof(si) };
-    PROCESS_INFORMATION pi;
+    PROCESS_INFORMATION pi = {0};
 
-    // 关键：强制隐藏窗口
     si.dwFlags = STARTF_USESHOWWINDOW;
     si.wShowWindow = SW_HIDE;
 
-    BOOL bRet = CreateProcessW(
+    BOOL bRet = ::CreateProcessW(
         (LPCWSTR)QString(strExePath).utf16(),
         NULL,
         NULL,
@@ -111,8 +147,8 @@ MainWindow::MainWindow(QWidget *parent)
         {
             QMessageBox::warning(nullptr, tr("提示"), QString("AKKOStudio") + tr("程序已经在运行中！"));
             hide();
-            exit(0);
             qApp->quit(); // 直接退出
+            exit(0);
             return;
         }
         sharedMemory.create(1);
@@ -132,7 +168,7 @@ MainWindow::MainWindow(QWidget *parent)
         QStringList nameFilters;
         // nameFilters << "*.txt" << "*.cpp";
         QStringList fileList = d.entryList(nameFilters, filters);
-        for(QString strFile:fileList)
+        for(QString strFile:std::as_const(fileList))
         {
             QString strNew = strFile;
             strNew.replace(" ","-");
@@ -149,9 +185,9 @@ MainWindow::MainWindow(QWidget *parent)
         {
             QStringList langs = {"zh_CN","en_US","zh_TW","ja_JP","ko_KR","ru_RU","vi_VN","pt_PT","th_TH","de_DE","fr_FR","sv_SE","it_IT","tr_TR"};
             QString baseName = langs[langId] + ".qm";
-            m_pMainTrM->load(QString(":/i18n/AKKOStudio_")+baseName);
-            m_pMainTrA->load("qtbase_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath));
-            m_pMainTrB->load("qt_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+            if(m_pMainTrM->load(QString(":/i18n/AKKOStudio_")+baseName)){}
+            if(m_pMainTrA->load("qtbase_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath))){}
+            if(m_pMainTrB->load("qt_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath))){}
 
             QString strSet = langs[langId].replace('_','-');
             if(m_creator == 2)
@@ -344,21 +380,28 @@ MainWindow::MainWindow(QWidget *parent)
 
     //qDebug()<< QProcess::systemEnvironment();
 
-    killProcess("Akko.exe");
-    killProcess("Akko.exe");
+    killProcess("Akko-WS.exe");
+    killProcess("Akko-BY.exe");
     killProcess("AkkoBox.exe");
     killProcess("JmMouse.exe");
-    killProcess("Akko Cloud Driver v4.exe");
+    killProcess("AkkoCloudDriver.exe");
 
-    HideStartProcess(QApplication::applicationDirPath() + "/RyExe/Akko Cloud Driver v4.exe");
-    HideStartProcess(QApplication::applicationDirPath() + "/Akko.exe");
-    HideStartProcess(QApplication::applicationDirPath() + "/ByExe/Akko.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/RyExe/AkkoCloudDriver.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/Akko-WS.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/ByExe/Akko-BY.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/AkkoBox.exe");
     //HideStartProcess(QApplication::applicationDirPath() + "/JmExe/JmMouse.exe");
 
     HWND hParentWnd = (HWND)ui->frameEmb->winId();
     QTimer *pTMFindWnd= new QTimer(this);
     pTMFindWnd->start(300);
+
+    if(!isRunning("Akko-WS.exe"))
+    {
+        settings.setValue("AkkoWnd", 0);
+        s_hWndEmb[1] = nullptr;
+        HideStartProcess(QApplication::applicationDirPath() + "/Akko-WS.exe");
+    }
 
     connect(pTMFindWnd,&QTimer::timeout,this,[=]{
         if(!s_hWndEmb[0])
@@ -367,7 +410,7 @@ MainWindow::MainWindow(QWidget *parent)
             if(hWnd)
             {
                 s_hWndEmb[0] = hWnd;
-                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
+                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
                 ::SetParent(hWnd,hParentWnd);
@@ -382,7 +425,7 @@ MainWindow::MainWindow(QWidget *parent)
             if(hWnd)
             {
                 s_hWndEmb[1] = hWnd;
-                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
+                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
                 ::SetParent(hWnd,hParentWnd);
@@ -392,11 +435,10 @@ MainWindow::MainWindow(QWidget *parent)
         if(!s_hWndEmb[2])
         {
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("bytech").utf16());
-
             if(hWnd)
             {
                 s_hWndEmb[2] = hWnd;
-                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
+                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
                 ::SetParent(hWnd,hParentWnd);
@@ -406,11 +448,10 @@ MainWindow::MainWindow(QWidget *parent)
         if(!s_hWndEmb[3])
         {
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko Cloud Gaming Hub").utf16());
-
             if(hWnd)
             {
                 s_hWndEmb[3] = hWnd;
-                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
+                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
                 ::SetParent(hWnd,hParentWnd);
@@ -419,7 +460,7 @@ MainWindow::MainWindow(QWidget *parent)
 
         if(s_hWndEmb[0] && s_hWndEmb[1] && s_hWndEmb[2] && s_hWndEmb[3])
         {
-            pTMFindWnd->stop();
+            // pTMFindWnd->stop();
         }
     });
 
@@ -504,6 +545,15 @@ MainWindow::MainWindow(QWidget *parent)
         }
     });
 
+    QTimer *pTMEsc = new QTimer(this);
+    pTMEsc->start(30);
+    connect(pTMEsc,&QTimer::timeout,this,[=]{
+        if(m_bActive && (::GetKeyState(VK_ESCAPE)&0x8000))
+        {
+            settings.setValue("AkkoReturn", 1);
+            ui->stackedWidget->setCurrentIndex(0);
+        }
+    });
 }
 
 void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path2, int connectType, int creator)
@@ -512,7 +562,7 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
     if (pDevInfo)
     {
         QString strName(pDevInfo->name);
-        if(creator == 0x00) strName= getDisplayName(id);
+        if(creator == 0x00) strName= getDisplayName(id,m_bForMGK?1:0);
         if(creator == 0x0F) strName= getDisplayName(id,1);
         if(strName.isEmpty())
             return;
@@ -523,7 +573,7 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
         if (pDevInfo->type == 1) pFrmDS->setFixedWidth(280);
         if (pDevInfo->type == 2) pFrmDS->setFixedWidth(280);
         pFrmDS->m_sa = ui->scrollArea;
-        pFrmDS->m_device = pDevInfo;
+        pFrmDS->m_devInfo = pDevInfo;
         pFrmDS->m_cnnType = connectType;
         pFrmDS->setName(strName,pDevInfo->type);
         pFrmDS->setPath(path1,path2);
@@ -536,11 +586,11 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
         if(!pFrmDS->m_bConacted)
         {
             pFrmDS->m_bConacted = true;
-            connect(pFrmDS,&FrameDeviceShow::onReport,this,[=](void *dev,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss){
+            connect(pFrmDS,&FrameDeviceShow::onReport,this,[=](AkkoDeviceInfo *dev,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss){
                 ui->frameHold->updateBattery(dev,battImg,typeImg,tip,qss);
             });
 
-            connect(pFrmDS,&FrameDeviceShow::onClicked,this,[=](void *dev,const QString&path1,const QString&path2,const QString&image,int creator,bool bleMode){
+            connect(pFrmDS,&FrameDeviceShow::onClicked,this,[=](AkkoDeviceInfo *dev,const QString&path1,const QString&path2,const QString&image,int creator,bool bleMode){
                 m_creator = creator;
                 m_pLangMenu->hide();
                 AkkoDeviceInfo *pDevInfo = static_cast<AkkoDeviceInfo *>(dev);
@@ -579,7 +629,14 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                             settings.setValue("DevicePath",path2);
                         });
                     }
-                    ui->frameEmb->setStyleSheet("#frameEmb{background-color: rgb(237,237,237); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
+                    ui->frameEmb->setStyleSheet(R"(
+                                #frameEmb
+                                {
+                                    background-color: rgb(237,237,237);
+                                    border-bottom-left-radius: 20px;
+                                    border-bottom-right-radius:20px;
+                                }
+                                )");
                     setHubSize(false);
                 }
                 else
@@ -605,11 +662,23 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                         settings.setValue("JmDevicePath",path2);
                     }
 
-                    ui->frameEmb->setStyleSheet("#frameEmb{background-color: rgb(30, 30, 30); border-bottom-left-radius: 20px; border-bottom-right-radius:20px;}");
+                    ui->frameEmb->setStyleSheet(R"(
+                                #frameEmb
+                                {
+                                    background-color: rgb(30,30,30);
+                                    border-bottom-left-radius: 20px;
+                                    border-bottom-right-radius:20px;
+                                }
+                                )");
                 }
 
                 QTimer::singleShot(100,this,[=]{
-                    m_pFloatReturn->setHidden(creator == 1);
+
+                    QTimer::singleShot(3000,this,[=]{
+                        if(ui->stackedWidget->currentIndex() == 1)
+                            m_pFloatReturn->setHidden(creator == 1);
+                    });
+
                     ui->stackedWidget->setCurrentIndex(1);
                     ui->frameEmb->show();
 
@@ -618,12 +687,13 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                     ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
                     ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
                     ::UpdateWindow(hWnd);
-                    ::BringWindowToTop(hWnd);
-                    ::SetFocus(hWnd);
-                    ::SetActiveWindow(hWnd);
+                    //::BringWindowToTop(hWnd);
+                    //::SetFocus(hWnd);
+                    //::SetActiveWindow(hWnd);
                     ui->stackedWidget->update();
                     ui->frameEmb->update();
-                    ui->frameEmb->repaint();
+                    //ui->frameEmb->repaint();
+                    m_bActive=true;
                 });
             });
         }
@@ -647,7 +717,6 @@ void MainWindow::enumDevice()
         m_layout->removeWidget(item);
           item->hide();
     }
-
 
     quint16 VID = 0;
     quint16 PID = 0;
@@ -762,8 +831,7 @@ void MainWindow::enumDevice()
                                     hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
                                     QThread::msleep(20);
                                     nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-                                    if(buf[6] == 1)
-                                        break;
+                                    if(buf[6] == 1) break;
                                 }
                                 //QLog(buf);
 
@@ -825,7 +893,7 @@ void MainWindow::enumDevice()
         hid_device_info *pRoot = hid_enumerate(Vid, 0);
         hid_device_info *pEDev = pRoot;
 
-        while (pEDev)
+        while (pEDev && !m_bForMGK)
         {
             VID = pEDev->vendor_id;
             PID = pEDev->product_id;
@@ -919,7 +987,6 @@ void MainWindow::enumDevice()
                             devId = 16;
                         break;
 
-
                     case 0x5152:connectType = 1;
                     case 0x5151:
                         devId = 5;
@@ -1009,7 +1076,7 @@ void MainWindow::enumDevice()
         // "0x0001 0006" \\?\HID#VID_3554&PID_FB29&MI_00#7&254d7770&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}\KBD
         // "0xFF05 0000" \\?\HID#VID_3554&PID_FB29&MI_01&Col01#7&121d5b32&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
         // "0xFF03 0000" \\?\HID#VID_3554&PID_FB29&MI_01&Col02#7&121d5b32&0&0001#{4d1e55b2-f16f-11cf-88cb-001111000030}
-        // "0x000C 0001" \\?\HID#VID_3554&PID_FB29&MI_01&Col03#7&121d5b32&0&0002#{4d1e55b2-f16f-11cf-88cb-001111000030}
+        // "0x000C 0001" \\?\HID#VID_3554&PID_FB29&MI_01&Col03#7&121d5b32&0&0002#{4d1e55b2-f16f-11cf-88cb-001111000030} 1
         // "0x0001 0128" \\?\HID#VID_3554&PID_FB29&MI_01&Col04#7&121d5b32&0&0003#{4d1e55b2-f16f-11cf-88cb-001111000030}
         // "0xFF02 0002" \\?\HID#VID_3554&PID_FB29&MI_01&Col05#7&121d5b32&0&0004#{4d1e55b2-f16f-11cf-88cb-001111000030}
         // "0xFF04 0002" \\?\HID#VID_3554&PID_FB29&MI_01&Col06#7&121d5b32&0&0005#{4d1e55b2-f16f-11cf-88cb-001111000030}
@@ -1018,7 +1085,7 @@ void MainWindow::enumDevice()
         hid_device_info* pRoot = hid_enumerate(0x3554, 0);
         hid_device_info* pEDev = pRoot;
 
-        while (pEDev)
+        while (pEDev && !m_bForMGK)
         {
             VID = pEDev->vendor_id;
             PID = pEDev->product_id;
@@ -1093,12 +1160,12 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
 
         if (m_pFloatReturn == obj)
         {
-            setHubSize(true);
             m_pFloatReturn->hide();
+            ui->stackedWidget->setCurrentIndex(0);
             ::ShowWindow(s_hWndEmb[0],SW_HIDE);
             ::ShowWindow(s_hWndEmb[2],SW_HIDE);
             ::ShowWindow(s_hWndEmb[3],SW_HIDE);
-            ui->stackedWidget->setCurrentIndex(0);
+            QTimer::singleShot(100,this,[=]{ setHubSize(true); });
         }
 
         ui->scrollArea->update();
@@ -1174,12 +1241,29 @@ bool MainWindow::event(QEvent *event)
 {
     if(event->type() == QEvent::Leave)
     {
+        QTimer::singleShot(100,this,[=]{
+            if(! this->geometry().contains(QCursor::pos()))
+            {
+                //qDebug() << "QEvent::Leave";
+                m_bActive=false;
+            }
+        });
         if(!geometry().contains(QCursor::pos()))
             m_pLangMenu->hide();
     }
+    if(event->type() == QEvent::Enter)
+    {
+        //qDebug() << "QEvent::Enter";
+        m_bActive=true;
+    }
     if(event->type() == QEvent::WindowDeactivate)
     {
-        // qDebug()  << "QEvent::WindowDeactivate";
+        if(! this->geometry().contains(QCursor::pos()))
+        {
+            //qDebug() << "QEvent::WindowDeactivate";
+            m_bActive=false;
+        }
+
         if(!m_closeShow)
         {
             QTimer::singleShot(500,this,[=]{
@@ -1192,7 +1276,9 @@ bool MainWindow::event(QEvent *event)
     }
     if(event->type() == QEvent::WindowActivate)
     {
-        // qDebug()  << "QEvent::WindowActivate";
+        //qDebug() << "QEvent::WindowActivate";
+        m_bActive=true;
+
         m_cover->hide();
 
         QTimer::singleShot(100,this,[=]{
@@ -1207,6 +1293,17 @@ bool MainWindow::event(QEvent *event)
             }
         });
     }
+
+    if(event->type() == QEvent::KeyRelease)
+    {
+        QKeyEvent *pKEvt = static_cast<QKeyEvent *>(event);
+        if(pKEvt->key() == Qt::Key_Escape)
+        {
+            settings.setValue("AkkoReturn", 1);
+            ui->stackedWidget->setCurrentIndex(0);
+        }
+    }
+
     return QMainWindow::event(event);
 }
 
@@ -1228,18 +1325,20 @@ void MainWindow::paintEvent(QPaintEvent *event)
     if (ui->stackedWidget->isHidden())
     {
         m_pFloatReturn->hide();
-        p.drawImage(this->rect(), QImage(QApplication::applicationDirPath() + "/images/MainPicture.png"));
+        p.drawImage(this->rect(), QImage(QApplication::applicationDirPath() + (m_bForMGK ? "/images/mogear.png":"/images/MainPicture.png")));
         QFont font = this->font();
         //font.setBold(true);
         font.setPointSize(22);
         p.setFont(font);
         int adjust = this->height() - 90;
+        if(m_bForMGK) p.setPen(Qt::white);
         p.drawText(this->rect().adjusted(0,adjust,0,0), Qt::AlignCenter, tr("正在搜索设备") + QString("..."));
     }
     else
     {
         p.fillRect(this->rect(), Qt::white);
         p.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        if(!m_bForMGK)
         p.drawImage(QRect(30,25,136,40), QImage(":/images/AkkoFlag.png"));
     }
 
@@ -1268,10 +1367,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
     ::PostMessage(s_hWndEmb[1],WM_CLOSE,0,0);
     ::PostMessage(s_hWndEmb[2],WM_CLOSE,0,0);
 
-    killProcess("Akko.exe");
-    killProcess("Akko.exe");
+    killProcess("Akko-WS.exe");
+    killProcess("Akko-BY.exe");
     killProcess("AkkoBox.exe");
-    killProcess("Akko Cloud Driver v4.exe");
+    killProcess("JmMouse.exe");
+    killProcess("AkkoCloudDriver.exe");
 
     qApp->exit();
 
