@@ -241,10 +241,12 @@ bool FrameDeviceShow::event(QEvent *event)
         setSelect(false);
     }
 
-    if (event->type() == QEvent::MouseButtonRelease)
+    if (event->type() == QEvent::MouseButtonPress)
     {
-        emit onClicked(m_devInfo,m_path1,m_path2,m_image,m_creator,m_cnnType);
-        QTimer::singleShot(10,this,[=]{ updateBattery(); });
+        QTimer::singleShot(50,this,[=]{
+            emit onClicked(m_devInfo,m_path1,m_path2,m_image,m_creator,m_cnnType);
+            updateBattery();
+        });
     }
 
     return QFrame::event(event);
@@ -257,4 +259,6 @@ void FrameDeviceShow::mousePressEvent(QMouseEvent *event)
 
     s_active = this;
     setSelect();
+
+    QFrame::mousePressEvent(event);
 }

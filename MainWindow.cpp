@@ -362,7 +362,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     settings.setValue("AkkoReturn", 0);
     settings.setValue("AkkoWnd", 0);
+    settings.setValue("AkkoDeviceIndex", 0xFF);
     settings.setValue("iotManagerInitialized",false);
+    settings.setValue("ShowWindowControlButtons",false);
     settings.setValue("DeviceId",0);
     settings.setValue("DevicePath","");
     settings.setValue("PageLoaded",false);
@@ -375,6 +377,8 @@ MainWindow::MainWindow(QWidget *parent)
             settings.setValue("AkkoReturn", 0);
             ui->stackedWidget->setCurrentIndex(0);
             m_pFloatReturn->hide();
+            ::ShowWindow(m_hCurHwnd,SW_HIDE);
+            this->show();
         };
     });
 
@@ -383,27 +387,34 @@ MainWindow::MainWindow(QWidget *parent)
     killProcess("Akko-WS.exe");
     killProcess("Akko-BY.exe");
     killProcess("AkkoBox.exe");
-    killProcess("JmMouse.exe");
+    killProcess("Akko-Gaming-Bub.exe");
     killProcess("AkkoCloudDriver.exe");
 
-    HideStartProcess(QApplication::applicationDirPath() + "/RyExe/AkkoCloudDriver.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/Akko-WS.exe");
-    HideStartProcess(QApplication::applicationDirPath() + "/ByExe/Akko-BY.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/RyExe/AkkoCloudDriver.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/AkkoBox.exe");
-    //HideStartProcess(QApplication::applicationDirPath() + "/JmExe/JmMouse.exe");
+    // HideStartProcess(QApplication::applicationDirPath() + "/Akko-Gaming-Bub.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/ByExe/Akko-BY.exe");
 
     HWND hParentWnd = (HWND)ui->frameEmb->winId();
     QTimer *pTMFindWnd= new QTimer(this);
-    pTMFindWnd->start(300);
-
-    if(!isRunning("Akko-WS.exe"))
-    {
-        settings.setValue("AkkoWnd", 0);
-        s_hWndEmb[1] = nullptr;
-        HideStartProcess(QApplication::applicationDirPath() + "/Akko-WS.exe");
-    }
+    pTMFindWnd->start(100);
 
     connect(pTMFindWnd,&QTimer::timeout,this,[=]{
+
+        if(this->isVisible())
+        {
+            if(!s_hWndEmb[1]) ::ShowWindow(s_hWndEmb[1],SW_HIDE);
+            if(!s_hWndEmb[3]) ::ShowWindow(s_hWndEmb[3],SW_HIDE);
+        }
+
+        if(!isRunning("Akko-WS.exe"))
+        {
+            settings.setValue("AkkoWnd", 0);
+            s_hWndEmb[1] = nullptr;
+            HideStartProcess(QApplication::applicationDirPath() + "/Akko-WS.exe");
+        }
+
         if(!s_hWndEmb[0])
         {
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("AkkoBox008").utf16());
@@ -425,10 +436,11 @@ MainWindow::MainWindow(QWidget *parent)
             if(hWnd)
             {
                 s_hWndEmb[1] = hWnd;
-                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
-                ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
-                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
-                ::SetParent(hWnd,hParentWnd);
+                //::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
+                //::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
+                //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                ::ShowWindow(hWnd,SW_HIDE);
+                //::SetParent(hWnd,hParentWnd);
             }
         }
 
@@ -441,27 +453,25 @@ MainWindow::MainWindow(QWidget *parent)
                 ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                ::ShowWindow(hWnd,SW_HIDE);
                 ::SetParent(hWnd,hParentWnd);
             }
         }
 
         if(!s_hWndEmb[3])
         {
-            HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko Cloud Gaming Hub").utf16());
+            HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko-Gaming-Bub").utf16());
             if(hWnd)
             {
                 s_hWndEmb[3] = hWnd;
-                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
-                ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
-                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
-                ::SetParent(hWnd,hParentWnd);
+                //::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
+                //::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
+                //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                ::ShowWindow(hWnd,SW_HIDE);
+                //::SetParent(hWnd,hParentWnd);
             }
         }
 
-        if(s_hWndEmb[0] && s_hWndEmb[1] && s_hWndEmb[2] && s_hWndEmb[3])
-        {
-            // pTMFindWnd->stop();
-        }
     });
 
     {
@@ -540,8 +550,11 @@ MainWindow::MainWindow(QWidget *parent)
         if(scale != scaleFactor)
         {
             scaleFactor = scale;
-            HWND hWnd = s_hWndEmb[m_creator];
-            ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
+            if(scaleFactor == 0 || scaleFactor == 2)
+            {
+                HWND hWnd = s_hWndEmb[m_creator];
+                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
+            }
         }
     });
 
@@ -612,8 +625,8 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                         return;
                     }
 
-                    if(!settings.value("DeviceLoaded").toBool())
-                        return;
+                    //if(!settings.value("DeviceLoaded").toBool())
+                    //    return;
 
                     QString strlastPath = settings.value("DevicePath").toString();
                     if(strlastPath != path2)
@@ -682,9 +695,32 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                     ui->stackedWidget->setCurrentIndex(1);
                     ui->frameEmb->show();
 
-                    HWND hWnd = s_hWndEmb[m_creator];
                     qreal scaleFactor = this->devicePixelRatio();
-                    ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
+                    HWND hWnd = s_hWndEmb[m_creator];
+                    if(m_creator == 1 || m_creator == 3)
+                    {
+                        RECT rc;
+                        ::GetWindowRect(hWnd,&rc);
+
+                        QSize cs = QApplication::screens().at(0)->size();
+
+                        int x = (cs.width() * scaleFactor  - (rc.right-rc.left))/2;
+                        int y = (cs.height() * scaleFactor - (rc.bottom-rc.top))/2;
+
+                        m_hCurHwnd = hWnd;
+
+                        QTimer::singleShot(100,this,[=]{
+                            hide();
+                            ::SetWindowPos(hWnd, HWND_TOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
+                            ::BringWindowToTop(hWnd);
+                            ::SetFocus(hWnd);
+                            ::SetActiveWindow(hWnd);
+                        });
+                    }
+                    else
+                    {
+                        ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
+                    }
                     ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
                     ::UpdateWindow(hWnd);
                     //::BringWindowToTop(hWnd);
@@ -730,7 +766,6 @@ void MainWindow::enumDevice()
     {
         hid_device_info *pRoot = hid_enumerate(Vid, 0);
         hid_device_info *pEDev = pRoot;
-
         while (pEDev)
         {
             VID = pEDev->vendor_id;
@@ -738,7 +773,7 @@ void MainWindow::enumDevice()
             UPG = pEDev->usage_page;
             USA = pEDev->usage;
             PATH= pEDev->path;
-            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
 
             if(UPG == 0xFF55 && USA == 0x0202) // BLE
             {
@@ -885,14 +920,13 @@ void MainWindow::enumDevice()
         if(pRoot) hid_free_enumeration(pRoot);
     }
 
-    QString strCmd0("04 00 00 1a 06 00 00 00");
-    QString strCmd1("04 00 00 30 06 00 00 00");
+    QString strCmd0("04 00 00 1a 06 00 00 00"); //电量
+    QString strCmd1("04 00 00 30 06 00 00 00"); //
     QList<quint16>VShengs = {0x38EE,0x320F};
     foreach (quint16 Vid, VShengs)
     {
         hid_device_info *pRoot = hid_enumerate(Vid, 0);
         hid_device_info *pEDev = pRoot;
-
         while (pEDev && !m_bForMGK)
         {
             VID = pEDev->vendor_id;
@@ -900,20 +934,18 @@ void MainWindow::enumDevice()
             UPG = pEDev->usage_page;
             USA = pEDev->usage;
             PATH= pEDev->path;
-            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
-            if(USA == 146 && UPG == 65308)
+            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X %s",VID,PID,UPG,USA,PATH);
+            if(USA == 0x0092 && UPG == 0xFF1C)
             {
                 hid_device *pDev = hid_open_path(PATH);
                 if(pDev)
                 {
-                    QByteArray cmd = QByteArray::fromHex(strCmd0.toLatin1());
+                    QByteArray cmd = QByteArray::fromHex(strCmd1.toLatin1());
                     hid_write(pDev,(quint8*)cmd.data(),cmd.size());
-                    QThread::msleep(20);
+                    QThread::msleep(50);
                     quint8 szBuf[128] = {0};
                     int len = hid_read_timeout(pDev,szBuf,16,500);
 
-                    QByteArray Log((char *)szBuf,len);
-                    qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("0x%04X",PID);
                     quint8 device = szBuf[11];
 
                     //发送：04 00 00 30 06 00 00 00指令，鼠标回复第12个字节区分同pid的设备，值：
@@ -938,8 +970,8 @@ void MainWindow::enumDevice()
                     case 0x000C:connectType = 1;
                     case 0x000B:
                         devId = 4;
-                        if(device != 0)
-                            devId = 6;
+                        if(device != 0) devId = 6;
+                        if(device == 3) devId = 18;
                         break;
 
                     case 0x0011:
@@ -950,6 +982,8 @@ void MainWindow::enumDevice()
                         if(device == 3) devId = 8;
                         if(device == 0) devId = 9;
                         if(device == 4) devId = 10;
+                        if(device == 5) devId = 15;
+                        if(device == 6) devId = 16;
                         break;
 
                     case 0x0024:connectType = 1;
@@ -978,6 +1012,8 @@ void MainWindow::enumDevice()
                         devId = 15;
                         if(device == 1)
                             devId = 16;
+                        if(device == 5) devId = 15;
+                        if(device == 6) devId = 16;
                         break;
 
                     case 0x0032:connectType = 1;
@@ -1011,6 +1047,8 @@ void MainWindow::enumDevice()
                         if(device == 1) devId = 16;
                     }
 
+                    QByteArray Log((char *)szBuf,len);
+                    qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Apply Driver ID:" << devId;
                     addDevice(devId,"null",PATH,connectType,1);
                 }
             }
@@ -1026,7 +1064,6 @@ void MainWindow::enumDevice()
 
         hid_device_info* pRoot = hid_enumerate(0x38ee, 0x0016);
         hid_device_info* pEDev = pRoot;
-
         while (pEDev)
         {
             VID = pEDev->vendor_id;
@@ -1084,7 +1121,6 @@ void MainWindow::enumDevice()
         // "0x0001 0002" \\?\HID#VID_3554&PID_FB29&MI_02#7&3a8808fb&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
         hid_device_info* pRoot = hid_enumerate(0x3554, 0);
         hid_device_info* pEDev = pRoot;
-
         while (pEDev && !m_bForMGK)
         {
             VID = pEDev->vendor_id;
@@ -1092,7 +1128,7 @@ void MainWindow::enumDevice()
             UPG = pEDev->usage_page;
             USA = pEDev->usage;
             PATH= pEDev->path;
-            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
             //qDebug() << QString::asprintf("0x%04X %04d",pEDev->usage_page, pEDev->usage) << pEDev->path;
             if(UPG == 0xFF02 && USA == 0x02)
                 addDevice(0xFB29,"null",PATH,0,3);
@@ -1160,6 +1196,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
 
         if (m_pFloatReturn == obj)
         {
+            this->show();
             m_pFloatReturn->hide();
             ui->stackedWidget->setCurrentIndex(0);
             ::ShowWindow(s_hWndEmb[0],SW_HIDE);
@@ -1370,7 +1407,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
     killProcess("Akko-WS.exe");
     killProcess("Akko-BY.exe");
     killProcess("AkkoBox.exe");
-    killProcess("JmMouse.exe");
+    killProcess("Akko-Gaming-Bub.exe");
     killProcess("AkkoCloudDriver.exe");
 
     qApp->exit();
@@ -1468,8 +1505,8 @@ void MainWindow::setHubSize(bool origin)
     if(!origin) width  = 1520;
     if(!origin) height = 900;
 
-    QRect geoMetry = QApplication::primaryScreen()->geometry();
-    QRect rcSet((geoMetry.width() - width)/2, (geoMetry.height() - height)/2,width,height);
+    QSize cs = QApplication::screens().at(0)->size();
+    QRect rcSet((cs.width() - width)/2, (cs.height() - height)/2,width,height);
 
     setGeometry(rcSet);
     setFixedSize(width,height);

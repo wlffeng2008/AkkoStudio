@@ -407,6 +407,8 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {  16, 0x38EE, 0x000F, 1, "泰坦N9 Master"},
     {  17, 0x38EE, 0x0010, 1, "Earthra"},
     {  17, 0x38EE, 0x0011, 1, "Earthra"},
+    {  18, 0x38EE, 0x0010, 1, "灵动V9 Pro"},
+    {  18, 0x38EE, 0x0011, 1, "灵动V9 Pro"},
     {   7, 0x38EE, 0x0010, 1, "灵动V9 Ultra"},
     {   7, 0x38EE, 0x0011, 1, "灵动V9 Ultra"},
     {   8, 0x38EE, 0x0010, 1, "泰坦N9 Max"},

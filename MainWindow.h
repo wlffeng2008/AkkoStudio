@@ -42,13 +42,13 @@ public:
 protected:
     void changeEvent(QEvent *pEvt) final;
     void paintEvent(QPaintEvent *event) final;
-    void closeEvent(QCloseEvent *event) final;
-    void mousePressEvent(QMouseEvent *event) final;
     void keyReleaseEvent(QKeyEvent *event) final;
+    void mousePressEvent(QMouseEvent *event) final;
     void mouseMoveEvent(QMouseEvent *event) final;
     void mouseReleaseEvent(QMouseEvent *event) final;
     bool eventFilter(QObject *obj, QEvent *e) final;
-     void showEvent(QShowEvent *event) final;
+    void closeEvent(QCloseEvent *event) final;
+    void showEvent(QShowEvent *event) final;
 
     bool event(QEvent *event) final;
 
@@ -88,6 +88,8 @@ private:
     QAction *m_act0 = nullptr;
     QAction *m_act1 = nullptr;
     QAction *m_act2 = nullptr;
+
+    HWND m_hCurHwnd = nullptr;
 
     void setHubSize(bool origin=true);
 };

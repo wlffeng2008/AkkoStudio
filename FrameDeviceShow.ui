@@ -19,6 +19,9 @@
   <property name="cursor">
    <cursorShape>ArrowCursor</cursorShape>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::FocusPolicy::ClickFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Frame</string>
   </property>
