@@ -197,9 +197,9 @@ void FrameDeviceShow::setImage(const QString &image,int type)
 void FrameDeviceShow::setName(const QString &name,int type)
 {
     ui->labelDeviceName->setText(name);
-    QString strImg = QApplication::applicationDirPath() + QString("/images/%1.png").arg(name);
+    QString strImg =  QString("/images/%1.png").arg(name);
     strImg.replace(' ','-');
-    setImage(strImg,type);
+    setImage(QApplication::applicationDirPath() + strImg,type);
 }
 
 void FrameDeviceShow::setSelect(bool select)

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 #define AppName "Akko Hub"
 #define AppId "E4CA0A60-4573-483B-8E56-884F19770908"
-#define AppVerName "Akko Hub V1.3.0"
+#define AppVerName "Akko Hub V1.4.0"
 #define AppExe "AKKOStudio.exe"
 
 [Setup]
@@ -16,7 +16,7 @@ AppPublisher=深圳银宸电子科技有限公司
 AppPublisherURL=http:///
 AppSupportURL=http:///
 AppUpdatesURL=http:///
-DefaultDirName={commonpf}\AkkoHub
+DefaultDirName={commonappdata}\AkkoHub
 DefaultGroupName={#AppName}
 AllowNoIcons=yes
 UsePreviousAppDir=yes
@@ -25,11 +25,11 @@ OutputBaseFilename=AkkoHubInstaller-V5.06-Win20260512
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes
-PrivilegesRequired=lowest
 Uninstallable=yes
 CreateUninstallRegKey=yes
 UninstallDisplayName={#AppVerName}
 UninstallDisplayIcon={app}\Akko.ico
+PrivilegesRequired=admin
 
 [Languages]
 Name: "Enlish"; MessagesFile: "compiler:Default.isl"
@@ -48,7 +48,7 @@ Name: "Thai"; MessagesFile: "compiler:Languages\Thai.isl"
 Name: "Italian"; MessagesFile: "compiler:Languages\Italian.isl"
 
 [Files]
-Source: bin\*; DestDir: {app}; Flags: recursesubdirs ignoreversion
+;Source: bin\*; DestDir: {app}; Flags: recursesubdirs ignoreversion
 Source: bin\AKKOStudio.exe; DestDir: {app}; Flags: ignoreversion
 Source: bin\AKKO.ico; DestDir: {app}; Flags: ignoreversion
 
@@ -64,19 +64,34 @@ Name: {userdesktop}\{#AppName}; Filename: {app}\{#AppExe}; Tasks: desktopicon
 Filename: {app}\{#AppExe}; Description: {cm:LaunchProgram,{#AppName}}; Flags: nowait postinstall skipifsilent
 
 [Registry]
-Root: HKCU; Subkey: Software\Microsoft\Windows\CurrentVersion\Run; ValueType: string; ValueName: AkkoHub; ValueData: {app}\{#AppExe}; Flags: uninsdeletevalue;
-Root: HKLM; Subkey: "Software\Microsoft\Windows\CurrentVersion\{#AppId}"; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\Microsoft\Windows\CurrentVersion\Run; ValueType: string; ValueName: AkkoHub; ValueData: {app}\{#AppExe}; Flags: uninsdeletevalue;
+;Root: HKLM; Subkey: "Software\Microsoft\Windows\CurrentVersion\{#AppId}"; Flags: uninsdeletekey
 
 [Code]
-procedure CurStepChanged(CurStep: TSetupStep);
 var
+  UninstallPath: String;
   ResultCode: Integer;
+
+function RemoveOldVersion(): Boolean;
+var
+  UninstallString: String;
 begin
-  if CurStep = ssInstall then
+  Result := True; 
+  UninstallPath := ExpandConstant('Software\Microsoft\Windows\CurrentVersion\Uninstall\{#AppId}_is1');
+
+  if RegQueryStringValue(HKLM, UninstallPath, 'UninstallString', UninstallString) then
   begin
-    // 尝试静默结束进程
-    // taskkill /F 表示强制结束，/IM 指定映像名称
-    Exec(ExpandConstant('{sys}\taskkill.exe'), '/F /IM {#AppExe}', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-    // ResultCode 为 0 表示成功，为 128 表示未找到进程，其他值表示失败
+    if Exec(UninstallString, '/SILENT', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+    begin
+    end
+  end;
+end;
+
+// 入口函数：在初始化安装时调用
+function InitializeSetup(): Boolean;
+begin
+  Result := True; 
+  if not RemoveOldVersion() then
+  begin
   end;
 end;

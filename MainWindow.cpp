@@ -41,7 +41,7 @@
 #include <windows.h>
 #endif
 
-static HWND s_hWndEmb[10]={0};
+static HWND s_hWndEmb[10]={nullptr};
 
 static QSettings settings("HKEY_CURRENT_USER\\Software\\Akko",QSettings::NativeFormat);
 
@@ -369,6 +369,7 @@ MainWindow::MainWindow(QWidget *parent)
     settings.setValue("DevicePath","");
     settings.setValue("PageLoaded",false);
     settings.setValue("VendorDevicePath","");
+
     QTimer *pTMRet = new QTimer(this);
     pTMRet->start(50);
     connect(pTMRet,&QTimer::timeout,this,[=]{
@@ -393,7 +394,7 @@ MainWindow::MainWindow(QWidget *parent)
     HideStartProcess(QApplication::applicationDirPath() + "/Akko-WS.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/RyExe/AkkoCloudDriver.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/AkkoBox.exe");
-    // HideStartProcess(QApplication::applicationDirPath() + "/Akko-Gaming-Bub.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/Akko-Gaming-Bub.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/ByExe/Akko-BY.exe");
 
     HWND hParentWnd = (HWND)ui->frameEmb->winId();
@@ -404,8 +405,8 @@ MainWindow::MainWindow(QWidget *parent)
 
         if(this->isVisible())
         {
-            if(!s_hWndEmb[1]) ::ShowWindow(s_hWndEmb[1],SW_HIDE);
-            if(!s_hWndEmb[3]) ::ShowWindow(s_hWndEmb[3],SW_HIDE);
+            if(s_hWndEmb[1]){ this->setFocus(); ::ShowWindow(s_hWndEmb[1],SW_HIDE); }
+            if(s_hWndEmb[3]){ this->setFocus(); ::ShowWindow(s_hWndEmb[3],SW_HIDE); }
         }
 
         if(!isRunning("Akko-WS.exe"))
@@ -436,6 +437,8 @@ MainWindow::MainWindow(QWidget *parent)
             if(hWnd)
             {
                 s_hWndEmb[1] = hWnd;
+                m_hCurHwnd = hWnd;
+                qDebug() << "Find WS ---------------";
                 //::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
                 //::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
                 //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
@@ -449,6 +452,7 @@ MainWindow::MainWindow(QWidget *parent)
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("bytech").utf16());
             if(hWnd)
             {
+                qDebug() << "Find BY ---------------";
                 s_hWndEmb[2] = hWnd;
                 ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
@@ -463,6 +467,7 @@ MainWindow::MainWindow(QWidget *parent)
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko-Gaming-Bub").utf16());
             if(hWnd)
             {
+                qDebug() << "Find JM ---------------";
                 s_hWndEmb[3] = hWnd;
                 //::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 //::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
@@ -687,9 +692,8 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
 
                 QTimer::singleShot(100,this,[=]{
 
-                    QTimer::singleShot(3000,this,[=]{
-                        if(ui->stackedWidget->currentIndex() == 1)
-                            m_pFloatReturn->setHidden(creator == 1);
+                    QTimer::singleShot(2000,this,[=]{
+                        m_pFloatReturn->setHidden(creator == 1 || creator == 3 || ui->stackedWidget->currentIndex() != 1);
                     });
 
                     ui->stackedWidget->setCurrentIndex(1);
@@ -706,6 +710,9 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
 
                         int x = (cs.width() * scaleFactor  - (rc.right-rc.left))/2;
                         int y = (cs.height() * scaleFactor - (rc.bottom-rc.top))/2;
+
+                        if(x < 0) x = 0;
+                        if(y < 0) y = 0;
 
                         m_hCurHwnd = hWnd;
 
@@ -1400,9 +1407,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
     m_pFloatReturn->hide();
     trayIcon->hide();
 
-    ::PostMessage(s_hWndEmb[0],WM_CLOSE,0,0);
-    ::PostMessage(s_hWndEmb[1],WM_CLOSE,0,0);
-    ::PostMessage(s_hWndEmb[2],WM_CLOSE,0,0);
+    for(int i=0; i<10; i++)
+    {
+        if(!s_hWndEmb[i]) continue;
+        ::PostMessage(s_hWndEmb[i],SW_HIDE,0,0);
+    }
 
     killProcess("Akko-WS.exe");
     killProcess("Akko-BY.exe");
@@ -1506,7 +1515,11 @@ void MainWindow::setHubSize(bool origin)
     if(!origin) height = 900;
 
     QSize cs = QApplication::screens().at(0)->size();
-    QRect rcSet((cs.width() - width)/2, (cs.height() - height)/2,width,height);
+    int x = (cs.width() - width)/2 ;
+    int y = (cs.height() - height)/2;
+    if(x < 0) x = 0;
+    if(y < 0) y = 0;
+    QRect rcSet(x, y,width,height);
 
     setGeometry(rcSet);
     setFixedSize(width,height);
