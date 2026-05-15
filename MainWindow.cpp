@@ -692,10 +692,6 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
 
                 QTimer::singleShot(100,this,[=]{
 
-                    QTimer::singleShot(2000,this,[=]{
-                        m_pFloatReturn->setHidden(creator == 1 || creator == 3 || ui->stackedWidget->currentIndex() != 1);
-                    });
-
                     ui->stackedWidget->setCurrentIndex(1);
                     ui->frameEmb->show();
 
@@ -735,8 +731,11 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
                     //::SetActiveWindow(hWnd);
                     ui->stackedWidget->update();
                     ui->frameEmb->update();
-                    //ui->frameEmb->repaint();
                     m_bActive=true;
+
+                    QTimer::singleShot(2000,this,[=]{
+                        m_pFloatReturn->setHidden(creator == 1 || creator == 3 || ui->stackedWidget->currentIndex() != 1);
+                    });
                 });
             });
         }
@@ -992,6 +991,7 @@ void MainWindow::enumDevice()
                         if(device == 4) devId = 10;
                         if(device == 5) devId = 15;
                         if(device == 6) devId = 16;
+                        if(device == 7) devId = 19;
                         break;
 
                     case 0x0024:connectType = 1;

@@ -410,6 +410,8 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {  17, 0x38EE, 0x0011, 1, "Earthra"},
     {  18, 0x38EE, 0x0010, 1, "灵动V9 Pro"},
     {  18, 0x38EE, 0x0011, 1, "灵动V9 Pro"},
+    {  19, 0x38EE, 0x000D, 1, "空影TAN8 Master"},
+    {  19, 0x38EE, 0x000F, 1, "空影TAN8 Master"},
     {   7, 0x38EE, 0x0010, 1, "灵动V9 Max"},
     {   7, 0x38EE, 0x0011, 1, "灵动V9 Max"},
     {   8, 0x38EE, 0x0010, 1, "泰坦N9 Max"},
@@ -418,6 +420,8 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {   9, 0x38EE, 0x000F, 1, "灵动V9 Ultra"},
     {  10, 0x38EE, 0x000D, 1, "泰坦N9 Ultra"},
     {  10, 0x38EE, 0x000F, 1, "泰坦N9 Ultra"},
+    {  13, 0x38EE, 0x0023, 1, "灵动V9 Max"},
+    {  13, 0x38EE, 0x0024, 1, "灵动V9 Max"},
 
     {  0xFF52, 0x38EE, 0x0016, 0, "FUN60"},
     {  0xFF59, 0x38EE, 0x0016, 0, "TAC75 HE"},

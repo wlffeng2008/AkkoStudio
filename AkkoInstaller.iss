@@ -20,8 +20,8 @@ DefaultDirName={commonappdata}\AkkoHub
 DefaultGroupName={#AppName}
 AllowNoIcons=yes
 UsePreviousAppDir=yes
-OutputDir=Z:\参考资料
-OutputBaseFilename=AkkoHubInstaller-V5.06-Win20260512
+OutputDir=Z:\发布软件
+OutputBaseFilename=AkkoHubInstaller-V5.06-Win20260515
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes
@@ -64,8 +64,8 @@ Name: {userdesktop}\{#AppName}; Filename: {app}\{#AppExe}; Tasks: desktopicon
 Filename: {app}\{#AppExe}; Description: {cm:LaunchProgram,{#AppName}}; Flags: nowait postinstall skipifsilent
 
 [Registry]
-Root: HKLM; Subkey: Software\Microsoft\Windows\CurrentVersion\Run; ValueType: string; ValueName: AkkoHub; ValueData: {app}\{#AppExe}; Flags: uninsdeletevalue;
-;Root: HKLM; Subkey: "Software\Microsoft\Windows\CurrentVersion\{#AppId}"; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Microsoft\Windows\CurrentVersion\Run; ValueType: string; ValueName: AkkoHub; ValueData: {app}\{#AppExe}; Flags: uninsdeletevalue;
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\{#AppId}_is1"; Flags: uninsdeletekey
 
 [Code]
 var
@@ -79,7 +79,7 @@ begin
   Result := True; 
   UninstallPath := ExpandConstant('Software\Microsoft\Windows\CurrentVersion\Uninstall\{#AppId}_is1');
 
-  if RegQueryStringValue(HKLM, UninstallPath, 'UninstallString', UninstallString) then
+  if RegQueryStringValue(HKCU, UninstallPath, 'UninstallString', UninstallString) then
   begin
     if Exec(UninstallString, '/SILENT', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
     begin
@@ -91,7 +91,5 @@ end;
 function InitializeSetup(): Boolean;
 begin
   Result := True; 
-  if not RemoveOldVersion() then
-  begin
-  end;
+  RemoveOldVersion();
 end;

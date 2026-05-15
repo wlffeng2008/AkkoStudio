@@ -126,6 +126,7 @@ void FrameDeviceShow::updateBattery()
     )";
     if(m_cnnType == 0) strBatt.clear();
     ui->labelPower->setStyleSheet(qss);
+    ui->labelPower->update();
 
     emit onReport(m_devInfo,strBatt,m_typeImage,strTip,qss);
 }
@@ -186,7 +187,7 @@ void FrameDeviceShow::setImage(const QString &image,int type)
 
     if(nSetW > 0)
     {
-        if(nSetW < 260) nSetW = 260;
+        if(nSetW < 290) nSetW = 290;
         setFixedWidth(nSetW);
     }
 
@@ -225,9 +226,9 @@ bool FrameDeviceShow::event(QEvent *event)
 {
     if (event->type() == QEvent::Wheel)
     {
-        QWheelEvent *we = static_cast<QWheelEvent *>(event);
-        QScrollBar *pSB = m_sa->horizontalScrollBar();
-        pSB->setValue(pSB->value() + we->angleDelta().y());
+        QWheelEvent *whe = static_cast<QWheelEvent *>(event);
+        QScrollBar  *pSB = m_sa->horizontalScrollBar();
+        pSB->setValue(pSB->value() + whe->angleDelta().y());
         return true;
     }
 
@@ -243,7 +244,7 @@ bool FrameDeviceShow::event(QEvent *event)
 
     if (event->type() == QEvent::MouseButtonPress)
     {
-        QTimer::singleShot(50,this,[=]{
+        QTimer::singleShot(50, this, [=]{
             emit onClicked(m_devInfo,m_path1,m_path2,m_image,m_creator,m_cnnType);
             updateBattery();
         });
