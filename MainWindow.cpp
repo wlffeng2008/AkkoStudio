@@ -978,6 +978,7 @@ void MainWindow::enumDevice()
                     case 0x000B:
                         devId = 4;
                         if(device != 0) devId = 6;
+                        if(device == 2) devId = 12;
                         if(device == 3) devId = 18;
                         break;
 
@@ -995,9 +996,9 @@ void MainWindow::enumDevice()
 
                     case 0x0024:connectType = 1;
                     case 0x0023:
-                        devId = 8;
+                        devId = 14;
                         if(device == 5)
-                            devId = 7;
+                            devId = 13;
                         break;
 
                     case 0x0026:connectType = 1;
@@ -1509,12 +1510,13 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::setHubSize(bool origin)
 {
-    int width  = 1280;
+    int width  = 1280 ;
     int height =  900;
     if(!origin) width  = 1520;
     if(!origin) height = 900;
 
     QSize cs = QApplication::screens().at(0)->size();
+    qDebug() << cs ;
     int x = (cs.width() - width)/2 ;
     int y = (cs.height() - height)/2;
     if(x < 0) x = 0;
