@@ -25,9 +25,9 @@ static QPoint getGlobalPos(QWidget *widget) {
 
 
 ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
-    : QDialog(parent)
+    : QDialog(nullptr)
 {
-    setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint |Qt::Tool);
     setAttribute(Qt::WA_TranslucentBackground);
 
     setStyleSheet("QDialog { background-color: rgba(180, 180, 180, 0.8);  border: none; border-radius: 24px;}");

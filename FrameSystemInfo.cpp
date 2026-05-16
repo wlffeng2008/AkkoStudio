@@ -10,19 +10,21 @@ FrameSystemInfo::FrameSystemInfo(QWidget *parent)
 {
     ui->setupUi(this);
 
-    static QSettings regSet("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",QSettings::NativeFormat);
+    static QSettings regSet("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+
     ui->checkBox->setChecked(!regSet.value("AkkoHub").toString().isEmpty());
 
     connect(ui->pushButtonOK,&QPushButton::clicked,this,[=]{
         ModuleGeneralMasker *pTop = static_cast<ModuleGeneralMasker *>(this->parent());
         pTop->setFlag(QDialog::Accepted);
-        hide();
         regSet.remove("AkkoHub");
         if(ui->checkBox->isChecked())
         {
             QString strFile = QString("\"%1\"").arg(QApplication::applicationFilePath().replace("/","\\"));
             regSet.setValue("AkkoHub",strFile);
         }
+
+        hide();
     });
 
     connect(ui->pushButtonClose,&QPushButton::clicked,this,[=]{

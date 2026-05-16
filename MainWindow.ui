@@ -219,7 +219,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page00">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -341,8 +341,8 @@ background:transparent;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>1170</width>
-               <height>424</height>
+               <width>16</width>
+               <height>16</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -483,7 +483,7 @@ background:transparent;</string>
         <property name="bottomMargin">
          <number>15</number>
         </property>
-        <item alignment="Qt::AlignmentFlag::AlignBottom">
+        <item alignment="Qt::AlignmentFlag::AlignTop">
          <widget class="FrameDeviceHolder" name="frameHold">
           <property name="frameShape">
            <enum>QFrame::Shape::StyledPanel</enum>

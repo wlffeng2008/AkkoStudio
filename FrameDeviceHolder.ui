@@ -309,7 +309,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
      <property name="spacing">
       <number>15</number>
      </property>
@@ -319,7 +319,7 @@
      <property name="bottomMargin">
       <number>0</number>
      </property>
-     <item>
+     <item alignment="Qt::AlignmentFlag::AlignTop">
       <widget class="QFrame" name="FrameToolbar">
        <property name="minimumSize">
         <size>
@@ -391,7 +391,7 @@
          </layout>
         </item>
         <item>
-         <spacer name="horizontalSpacer_3">
+         <spacer name="horizontalSpacer1">
           <property name="orientation">
            <enum>Qt::Orientation::Horizontal</enum>
           </property>
@@ -548,7 +548,7 @@
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer">
+            <spacer name="horizontalSpacer2">
              <property name="orientation">
               <enum>Qt::Orientation::Horizontal</enum>
              </property>
@@ -668,21 +668,26 @@
        </layout>
       </widget>
      </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayoutBR">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-      </layout>
+     <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
+      <widget class="QFrame" name="FrameHoder">
+       <layout class="QHBoxLayout" name="horizontalLayoutBR">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>1</number>
+        </property>
+        <property name="topMargin">
+         <number>1</number>
+        </property>
+        <property name="rightMargin">
+         <number>1</number>
+        </property>
+        <property name="bottomMargin">
+         <number>1</number>
+        </property>
+       </layout>
+      </widget>
      </item>
     </layout>
    </item>

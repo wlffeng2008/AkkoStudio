@@ -187,7 +187,7 @@ MainWindow::MainWindow(QWidget *parent)
             QString baseName = langs[langId] + ".qm";
             if(m_pMainTrM->load(QString(":/i18n/AKKOStudio_")+baseName)){}
             if(m_pMainTrA->load("qtbase_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath))){}
-            if(m_pMainTrB->load("qt_" + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath))){}
+            if(m_pMainTrB->load("qt_"     + baseName, QLibraryInfo::path(QLibraryInfo::TranslationsPath))){}
 
             QString strSet = langs[langId].replace('_','-');
             if(m_creator == 2)
@@ -254,7 +254,7 @@ MainWindow::MainWindow(QWidget *parent)
         //     越南语	vi-VN	0x042a	1066
         {
             int id = langId;
-            QList<int> langs= {2052,1033,1028,1041,1042,1049,1066,1046,1054,1031,1036,1053,1040,1055};
+            QList<int> langs = {2052,1033,1028,1041,1042,1049,1066,1046,1054,1031,1036,1053,1040,1055};
             settings.setValue("LANGUAGE",langs[id]);
         }
     });
@@ -272,7 +272,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->pushButtonSet, &QPushButton::clicked, this, [=] {
         FrameSystemInfo *pSetInfo = new FrameSystemInfo();
-        ModuleGeneralMasker gMask(pSetInfo,ui->stackedWidget);
+        ModuleGeneralMasker gMask(pSetInfo,this);
         pSetInfo->show();
         pSetInfo->update();
         gMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.96); border: none; border-radius: 20px; }");
@@ -1510,13 +1510,13 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::setHubSize(bool origin)
 {
-    int width  = 1280 ;
+    int width  = 1280;
     int height =  900;
     if(!origin) width  = 1520;
-    if(!origin) height = 900;
+    if(!origin) height =  900;
 
     QSize cs = QApplication::screens().at(0)->size();
-    qDebug() << cs ;
+    qDebug() << cs  << QApplication::primaryScreen()->size();
     int x = (cs.width() - width)/2 ;
     int y = (cs.height() - height)/2;
     if(x < 0) x = 0;
