@@ -195,5 +195,7 @@
         <file>images/dev/usb.png</file>
         <file>images/dev/batt-25.png</file>
         <file>images/dev/batt-75.png</file>
+        <file>images/pickup.png</file>
+        <file>images/pickup2.png</file>
     </qresource>
 </RCC>

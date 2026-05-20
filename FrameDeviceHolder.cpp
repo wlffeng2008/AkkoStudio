@@ -123,6 +123,7 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     }
 
     connect(ui->buttonGroupLayer,&QButtonGroup::idClicked,this,[=](int clikedId){
+        qDebug() << "buttonGroupLayer" << clikedId;
         switch (clikedId) {
         case -2: pCnnt->setProfile(0); break;
         case -3: pCnnt->setProfile(1); break;
@@ -133,8 +134,14 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     });
 
     connect(pCnnt,&DialogDeviceConnect::onReadDone,this,[=]{
-        pKS->refresh();
+        pKS->reshowTip();
+        qDebug() << "DialogDeviceConnect::onReadDone";
     });
+
+    ui->pushButtonLayer0->installEventFilter(this);
+    ui->pushButtonLayer1->installEventFilter(this);
+    ui->pushButtonLayer2->installEventFilter(this);
+    ui->pushButtonLayer3->installEventFilter(this);
 }
 
 FrameDeviceHolder::~FrameDeviceHolder()
@@ -225,6 +232,11 @@ bool FrameDeviceHolder::eventFilter(QObject *watch, QEvent *event)
                 break;
             }
         }
+
+        if(watch == ui->pushButtonLayer0) updateLayer(0);
+        if(watch == ui->pushButtonLayer1) updateLayer(1);
+        if(watch == ui->pushButtonLayer2) updateLayer(2);
+        if(watch == ui->pushButtonLayer3) updateLayer(3);
     }
 
     return QFrame::eventFilter(watch, event);

@@ -107,7 +107,7 @@ static bool isRunning(const QString&processName)
     return bRunning;
 }
 
-void HideStartProcess(const QString&strExePath)
+static void HideStartProcess(const QString&strExePath)
 {
     STARTUPINFOW si = { sizeof(si) };
     PROCESS_INFORMATION pi = {0};
@@ -316,8 +316,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_pFloatRight = new QDialog(this);
     m_pFloatReturn = new QDialog(this);
 
-    m_pFloatLeft->setWindowFlags(  m_pFloatLeft->windowFlags() | Qt::FramelessWindowHint | Qt::Popup | Qt::WindowStaysOnTopHint|Qt::Tool | Qt::Dialog);
-    m_pFloatRight->setWindowFlags(m_pFloatRight->windowFlags() | Qt::FramelessWindowHint | Qt::Popup | Qt::WindowStaysOnTopHint|Qt::Tool | Qt::Dialog);
+    m_pFloatLeft->setWindowFlags(  m_pFloatLeft->windowFlags()   | Qt::FramelessWindowHint | Qt::Tool);
+    m_pFloatRight->setWindowFlags(m_pFloatRight->windowFlags()   | Qt::FramelessWindowHint | Qt::Tool);
     m_pFloatReturn->setWindowFlags(m_pFloatReturn->windowFlags() | Qt::FramelessWindowHint | Qt::Tool);
     m_pFloatLeft->setAttribute(Qt::WA_TranslucentBackground);
     m_pFloatRight->setAttribute(Qt::WA_TranslucentBackground);
@@ -392,8 +392,8 @@ MainWindow::MainWindow(QWidget *parent)
     killProcess("AkkoCloudDriver.exe");
 
     HideStartProcess(QApplication::applicationDirPath() + "/Akko-WS.exe");
-    HideStartProcess(QApplication::applicationDirPath() + "/RyExe/AkkoCloudDriver.exe");
-    HideStartProcess(QApplication::applicationDirPath() + "/AkkoBox.exe");
+    //HideStartProcess(QApplication::applicationDirPath() + "/RyExe/AkkoCloudDriver.exe");
+    //HideStartProcess(QApplication::applicationDirPath() + "/AkkoBox.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/Akko-Gaming-Bub.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/ByExe/Akko-BY.exe");
 
@@ -405,8 +405,8 @@ MainWindow::MainWindow(QWidget *parent)
 
         if(this->isVisible())
         {
-            if(s_hWndEmb[1]){ this->setFocus(); ::ShowWindow(s_hWndEmb[1],SW_HIDE); }
-            if(s_hWndEmb[3]){ this->setFocus(); ::ShowWindow(s_hWndEmb[3],SW_HIDE); }
+            if(s_hWndEmb[1]){ ::ShowWindow(s_hWndEmb[1],SW_HIDE); }
+            if(s_hWndEmb[3]){ ::ShowWindow(s_hWndEmb[3],SW_HIDE); }
         }
 
         if(!isRunning("Akko-WS.exe"))
@@ -968,82 +968,83 @@ void MainWindow::enumDevice()
                     //10：泰坦N9 Ultra
                     //11：3087
 
-                    quint32 devId = 0;
+                    quint32 driverId = 0;
                     quint8 connectType = 0;
 
                     switch(PID)
                     {
                     case 0x000C:connectType = 1;
                     case 0x000B:
-                        devId = 4;
-                        if(device != 0) devId = 6;
-                        if(device == 2) devId = 12;
-                        if(device == 3) devId = 18;
+                        driverId = 4;
+                        if(device != 0) driverId =  6;
+                        if(device == 2) driverId = 12;
+                        if(device == 3) driverId = 18;
+                        if(device == 4) driverId = 23;
+                        if(device == 5) driverId = 24;
                         break;
 
                     case 0x0011:
                     case 0x000F:connectType = 1;
                     case 0x0010:
                     case 0x000D:
-                        if(device == 1) devId = 7;
-                        if(device == 3) devId = 8;
-                        if(device == 0) devId = 9;
-                        if(device == 4) devId = 10;
-                        if(device == 5) devId = 15;
-                        if(device == 6) devId = 16;
-                        if(device == 7) devId = 19;
+                        if(device == 1) driverId =  7;
+                        if(device == 3) driverId =  8;
+                        if(device == 0) driverId =  9;
+                        if(device == 4) driverId = 10;
+                        if(device == 5) driverId = 15;
+                        if(device == 6) driverId = 16;
+                        if(device == 7) driverId = 19;
+                        if(device == 8) driverId = 20;
+                        if(device == 9) driverId = 21;
                         break;
 
                     case 0x0024:connectType = 1;
                     case 0x0023:
-                        devId = 14;
-                        if(device == 5)
-                            devId = 13;
+                        driverId = 14;
+                        if(device == 5) driverId = 13;
+                        if(device == 1) driverId = 21;
                         break;
 
                     case 0x0026:connectType = 1;
                     case 0x0025:
-                        devId = 9;
+                        driverId = 9;
                         if(device == 1)
-                            devId = 10;
+                            driverId = 10;
                         break;
 
                     case 0x0028:connectType = 1;
                     case 0x0027:
-                        devId = 9;
-                        if(device == 1)
-                            devId = 10;
+                        driverId = 9;
+                        if(device == 1) driverId = 10;
                         break;
 
                     case 0x0030:connectType = 1;
                     case 0x0029:
-                        devId = 15;
-                        if(device == 1)
-                            devId = 16;
-                        if(device == 5) devId = 15;
-                        if(device == 6) devId = 16;
+                        driverId = 15;
+                        if(device == 1) driverId = 16;
+                        if(device == 5) driverId = 15;
+                        if(device == 6) driverId = 16;
                         break;
 
                     case 0x0032:connectType = 1;
                     case 0x0031:
-                        devId = 15;
-                        if(device == 1)
-                            devId = 16;
+                        driverId = 15;
+                        if(device == 1) driverId = 16;
                         break;
 
                     case 0x5152:connectType = 1;
                     case 0x5151:
-                        devId = 5;
+                        driverId = 5;
                         break;
 
                     case 0x0008:connectType = 1;
                     case 0x0007:
-                        devId = 11;
+                        driverId = 11;
                         break;
 
                     case 0x22b5:connectType = 1;
                     case 0x22b4:
-                        devId = 12;
+                        driverId = 12;
                         break;
                     }
 
@@ -1051,13 +1052,13 @@ void MainWindow::enumDevice()
 
                     if(VID == 0x3311)
                     {
-                        if(device == 0) devId = 15;
-                        if(device == 1) devId = 16;
+                        if(device == 0) driverId = 15;
+                        if(device == 1) driverId = 16;
                     }
 
                     QByteArray Log((char *)szBuf,len);
-                    qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Apply Driver ID:" << devId;
-                    addDevice(devId,"null",PATH,connectType,1);
+                    qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Apply Driver ID:" << driverId;
+                    addDevice(driverId,"null",PATH,connectType,1);
                 }
             }
             pEDev = pEDev->next;
@@ -1471,9 +1472,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         if (event->pos().y() < 80)
         {
             m_dragPosition = event->globalPosition() - frameGeometry().topLeft();
-            event->accept();
+            //event->accept();
             m_dragging = true;
-            return;
         }
     }
 
@@ -1502,7 +1502,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton)
     {
         m_dragging = false;
-        event->accept();
+        //event->accept();
     }
 
     QMainWindow::mouseReleaseEvent(event);

@@ -12,7 +12,7 @@ CODECFORSRC = UTF-8
 DESTDIR = ../../bin
 RC_ICONS = AKKO.ico
 VERSION = 1.0.0.0
-TARGET = AKKOStudio
+TARGET = AkkoStudio
 QMAKE_TARGET_COMPANY = "AKKO"
 QMAKE_TARGET_PRODUCT = "AKKO"
 QMAKE_TARGET_DESCRIPTION = "AKKO Driver Hub"
@@ -50,6 +50,7 @@ SOURCES += \
     FrameMain.cpp \
     LinearFixing1.cpp \
     LinearFixing2.cpp \
+    Module/DialogColorPicker.cpp \
     Module/MacroSquare.cpp \
     Module/ColorSlider.cpp \
     Module/DialogFNPicker.cpp \
@@ -97,6 +98,7 @@ HEADERS += \
     LinearFixing1.h \
     LinearFixing2.h \
     MainWindow.h \
+    Module/DialogColorPicker.h \
     Module/MacroSquare.h \
     Module/ColorSlider.h \
     Module/DialogFNPicker.h \
@@ -137,6 +139,7 @@ FORMS += \
     FrameMain.ui \
     FrameSystemInfo.ui \
     MainWindow.ui \
+    Module/DialogColorPicker.ui \
     Module/DialogFNPicker.ui \
     Module/DialogVKPicker.ui \
     Module/MacroItem.ui \

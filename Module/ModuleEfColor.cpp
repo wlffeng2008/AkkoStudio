@@ -2,6 +2,7 @@
 #include "ui_ModuleEfColor.h"
 #include "ColorSlider.h"
 #include "ColorSquare.h"
+#include "DialogColorPicker.h"
 
 #include <QPainter>
 #include <QColorDialog>
@@ -118,6 +119,61 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
 
     ui->checkBoxSingle->setHidden(true);
     ui->labelTitleL1->setHidden(true);
+
+    QString strStyle(R"(
+
+            QPushButton {
+                border-radius: 14px;
+                font-size: 14px;
+                font-weight:500;
+                outline: none;
+
+                color: #333;
+                border: 1px solid #ECECEC;
+                background: #ECECEC; }
+
+            QPushButton:checked {
+                color: white;
+                border: 1px solid #6329B6;
+                background: #6329B6; }
+            QPushButton:hover { border: 1px solid #6329B6; }
+            )");
+    QList<QAbstractButton*> btns = ui->buttonGroupE->buttons();
+    btns.append(ui->pushButtonCol0);
+    btns.append(ui->pushButtonCol1);
+    foreach (QAbstractButton *btn, btns) {
+        btn->setStyleSheet(strStyle);
+        btn->setFixedHeight(28);
+    }
+
+    {
+        ui->labelPickup->installEventFilter(this);
+
+        m_clrDlg = new DialogColorPicker();
+
+        connect(m_clrDlg,&DialogColorPicker::onPickupColor,this,[=](const QColor&color){
+            m_sideClr = color;
+            setSideLed();
+        });
+
+        connect(ui->buttonGroupE,&QButtonGroup::idClicked,this,[=](int id){
+            m_sideE = abs(id) - 2;
+            setSideLed();
+        });
+        connect(ui->buttonGroupC,&QButtonGroup::idClicked,this,[=](int id){
+            m_sideC = abs(id) - 2;
+            setSideLed();
+        });
+        connect(ui->buttonGroupL,&QButtonGroup::idClicked,this,[=](int id){
+            m_sideL = abs(id) - 2;
+            setSideLed();
+        });
+        connect(ui->buttonGroupS,&QButtonGroup::idClicked,this,[=](int id){
+            m_sideS = abs(id) - 2;
+            setSideLed();
+        });
+
+    }
 }
 
 ModuleEfColor::~ModuleEfColor()
@@ -125,10 +181,54 @@ ModuleEfColor::~ModuleEfColor()
     delete ui;
 }
 
+void ModuleEfColor::updateData(const QByteArray &data)
+{
+    qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper();
+    m_bUpdate = true;
+
+    m_sideClr.setRed((quint8)data[5]);
+    m_sideClr.setGreen((quint8)data[6]);
+    m_sideClr.setBlue((quint8)data[7]);
+
+    m_sideE=data[1];
+    ui->buttonGroupE->buttons()[data[1]]->click();
+
+    m_sideS=data[2];
+    ui->buttonGroupS->buttons()[data[2]]->click();
+
+    m_sideL=data[3];
+    ui->buttonGroupL->buttons()[data[3]]->click();
+
+    m_sideC=data[4];
+    ui->buttonGroupC->buttons()[data[4]==0x08]->click();
+
+    m_bUpdate = false;
+}
+
+void ModuleEfColor::setSideLed()
+{
+    QByteArray data(10,0);
+    QColor color = m_sideClr;
+
+    data[1] = m_sideE;
+    data[2] = m_sideS;
+    data[3] = m_sideL;
+    data[4] = (m_sideC == 0 ? 0x07 : 0x08);
+    data[5] = color.red();
+    data[6] = color.green();
+    data[7] = color.blue();
+
+    QString strSheet=QString::asprintf("background-color: rgb(%d, %d, %d);border: 1px solid black;",color.red(),color.green(),color.blue());
+    ui->labelColor->setStyleSheet(strSheet);
+
+    if(!m_bUpdate) emit onSetSideLed(data);
+}
+
 void ModuleEfColor::paintEvent(QPaintEvent *event)
 {
     if(ui->tabWidget->currentIndex() == 0)
     {
+
         static QPixmap map(":/images/light/light.png");
         QPainter painter(this);
         painter.drawPixmap(this->rect(),map);
@@ -139,6 +239,10 @@ void ModuleEfColor::paintEvent(QPaintEvent *event)
 
 bool ModuleEfColor::eventFilter(QObject*watched ,QEvent *event)
 {
+    if(watched == ui->labelPickup && event->type() == QEvent::MouseButtonRelease)
+    {
+        m_clrDlg->showPostion();
+    }
     // if(watched == ui->labelAddColor && event->type() == QEvent::MouseButtonRelease)
     // {
     //     // QColor color = QColorDialog::getColor(Qt::red, nullptr, "选择颜色");

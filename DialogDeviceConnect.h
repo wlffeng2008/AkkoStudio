@@ -127,6 +127,8 @@ public:
     void setLEDBright(int bright);
     void setLEDColor(const QColor&color, int option);
 
+    void setSideLed(const QByteArray&data);
+
     void setKBOption(quint8 option, quint8 value);
     quint8 getKBOption(quint8 option);
 
@@ -235,8 +237,14 @@ private:
     QByteArray m_Cali;
     QByteArray m_Optn;
     QByteArray m_Info;
+
     QByteArray m_KeyMatrix[8];
-    QByteArray m_KeyMatrixFn[8];
+    QByteArray m_FunMatrix[8];
+    QByteArray m_ColorKB[100];
+    QByteArray m_ColorSL[20];
+
+    QByteArray m_tmp0[8];
+    QByteArray m_tmp1[8];
 
     bool m_isSupportAxis = false;
     bool m_isSupportTopDeadZone=false;

@@ -20,12 +20,12 @@ static QPoint getGlobalPos(QWidget *widget) {
 }
 
 DialogFNPicker::DialogFNPicker(QWidget *parent)
-    : QDialog(parent)
+    : QDialog(nullptr)
     , ui(new Ui::DialogFNPicker)
 {
     ui->setupUi(this);
 
-    setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint | Qt::Tool);
     setAttribute(Qt::WA_TranslucentBackground);
 
     setStyleSheet("QDialog { background-color: rgba(230, 230, 230, 0.9);  border: none; border-radius: 24px;}");

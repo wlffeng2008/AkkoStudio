@@ -20,6 +20,7 @@ public:
 
     void refresh();
     void refreshFn();
+    void reshowTip();
 
 protected:
     bool eventFilter(QObject*watched,QEvent*event) override;

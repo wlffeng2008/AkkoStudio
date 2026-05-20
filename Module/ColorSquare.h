@@ -14,7 +14,7 @@ class ColorSquare : public QFrame
 private:
     qreal huem=0, sat=0, val=0;
 
-    QImage colorSquare;
+    QImage m_colorImg;
     char    colorChar;
     qreal clickX, clickY;
 

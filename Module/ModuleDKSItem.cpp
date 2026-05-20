@@ -14,7 +14,8 @@ ModuleDKSItem::ModuleDKSItem(QWidget *parent)
     ui->labelSwitch2->installEventFilter(this);
     ui->labelSwitch3->installEventFilter(this);
     ui->labelSwitch4->installEventFilter(this);
-    setMouseTracking(true) ;
+    ui->pushButton_FuncKey->installEventFilter(this);
+    setMouseTracking(true);
 
     setSwitch(0);
     setSwitch(1);
@@ -30,7 +31,8 @@ ModuleDKSItem::ModuleDKSItem(QWidget *parent)
     });
 
     connect(ui->pushButton_FuncKey,&QPushButton::clicked,this,[=]{
-        emit onButtonClicked();
+        //qDebug() << "onButtonClicked -- " ;
+        //emit onButtonClicked();
     });
 }
 
@@ -43,7 +45,7 @@ void ModuleDKSItem::setSwitch(int index,bool on)
 {
     QList<QLabel*> labels={ui->labelSwitch1,ui->labelSwitch2,ui->labelSwitch3,ui->labelSwitch4};
     m_switchs[index] = on;
-    labels[index]->setPixmap(QPixmap(on?":/images/k/ic_selected.png":":/images/k/ic_add.png"));
+    labels[index]->setPixmap(QPixmap(on ? ":/images/k/ic_selected.png" : ":/images/k/ic_add.png"));
 }
 
 void ModuleDKSItem::setText(const QString&text)
@@ -67,16 +69,19 @@ bool ModuleDKSItem::eventFilter(QObject*watched,QEvent*event)
 {
     if(event->type() == QEvent::MouseButtonRelease)
     {
-        m_dragging = false ;
+        m_dragging = false;
         QList<QLabel*> labels={ui->labelSwitch1,ui->labelSwitch2,ui->labelSwitch3,ui->labelSwitch4};
         for(int i=0; i<4; i++)
         {
             if(watched == labels[i])
             {
-                setSwitch(i,!m_switchs[i]);
-                return true ;
+                setSwitch(i, !m_switchs[i]);
+                break;
             }
         }
+
+        if(watched == ui->pushButton_FuncKey)
+            emit onButtonClicked();
     }
 
     return QFrame::eventFilter(watched, event);
@@ -84,26 +89,26 @@ bool ModuleDKSItem::eventFilter(QObject*watched,QEvent*event)
 
 bool ModuleDKSItem::event(QEvent*event)
 {
-    QMouseEvent *pMEvent = static_cast<QMouseEvent *>(event) ;
+    QMouseEvent *pMEvent = static_cast<QMouseEvent *>(event);
     if(event->type() == QEvent::MouseButtonPress)
     {
         if(m_dragX1 == 0)
-            m_dragX1 = pMEvent->pos().x() ;
-        m_dragging = true ;
+            m_dragX1 = pMEvent->pos().x();
+        m_dragging = true;
     }
     if(event->type() == QEvent::MouseButtonRelease)
     {
-        m_dragging = false ;
+        m_dragging = false;
     }
 
     if(event->type() == QEvent::MouseMove && m_dragging)
     {
-        m_TMReset.stop() ;
-        m_dragX2 = pMEvent->pos().x() ;
+        m_TMReset.stop();
+        m_dragX2 = pMEvent->pos().x();
         QList<QLabel*> labels={ui->labelSwitch1,ui->labelSwitch2,ui->labelSwitch3,ui->labelSwitch4};
         for(int i=0; i<3; i++)
         {
-            QRect rc = labels[i]->geometry() ;
+            QRect rc = labels[i]->geometry();
             if(rc.right()<m_dragX2 && rc.left()>m_dragX1)
                 labels[i]->hide();
             else
@@ -121,11 +126,11 @@ bool ModuleDKSItem::event(QEvent*event)
         }
         if(allshow)
         {
-            m_dragX2=0;
-            m_TMReset.start(500) ;
+            m_dragX2 = 0;
+            m_TMReset.start(500);
         }
 
-        update() ;
+        update();
     }
 
     return QFrame::event(event);
@@ -134,7 +139,7 @@ bool ModuleDKSItem::event(QEvent*event)
 
 void ModuleDKSItem::paintEvent(QPaintEvent*event)
 {
-    QPainter painter(this) ;
+    QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
     int x1 = m_dragX1;
@@ -153,10 +158,10 @@ void ModuleDKSItem::paintEvent(QPaintEvent*event)
 
     for(int i=0; i<4; i++)
     {
-        QPoint pos = labels[3-i]->geometry().bottomRight()  ;
+        QPoint pos = labels[3-i]->geometry().bottomRight();
         if(x2>pos.x())
         {
-            x2 = pos.x() + 50 ;
+            x2 = pos.x() + 50;
             break;
         }
     }
@@ -164,7 +169,7 @@ void ModuleDKSItem::paintEvent(QPaintEvent*event)
     if(x1<130) x1 = 130;
     if(x2>368) x2 = 368;
 
-    int nW = x2-x1 ;
+    int nW = x2-x1;
     if(nW<10)
     {
         QFrame::paintEvent(event);

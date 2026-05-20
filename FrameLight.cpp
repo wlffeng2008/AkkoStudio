@@ -46,6 +46,7 @@ FrameLight::FrameLight(QWidget *parent)
     });
 
     ui->frameKeyboard->setLightMode();
+    ui->stackedWidgetB->setCurrentIndex(1);
 }
 
 FrameLight::~FrameLight()

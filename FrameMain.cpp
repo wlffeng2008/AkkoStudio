@@ -35,6 +35,10 @@ FrameMain::FrameMain(QWidget *parent)
         pCnn->setLEDColor(color,option);
     });
 
+    connect(ui->frameLEDColor,&ModuleEfColor::onSetSideLed,this,[=](const QByteArray&data){
+        pCnn->setSideLed(data);
+    });
+
     connect(pCnn,&DialogDeviceConnect::onReadBack,[=](const QByteArray&data){
         quint8 *pPack = (quint8 *)data.data();
         quint8 cmd = pPack[0];
@@ -43,6 +47,11 @@ FrameMain::FrameMain(QWidget *parent)
             if(ui->frameLEDMode)  ui->frameLEDMode->setEfMode(pPack[1]);
             if(ui->frameLEDSpeed) ui->frameLEDSpeed->setSpeed(4 - pPack[2]);
             if(ui->frameLEDSpeed) ui->frameLEDBright->setBright(pPack[3]);
+        }
+
+        if(cmd == CMD_GET_SLEDPARAM)
+        {
+            ui->frameLEDColor->updateData(data);
         }
     });
     connect(ui->frameRTSetting,&ModuleRtSet::onSetValue,this,[=](float value,int type){

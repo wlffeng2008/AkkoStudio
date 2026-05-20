@@ -445,8 +445,6 @@ bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
             ModuleGeneralMasker M(m_adjust,ui->frameTab2);
             M.setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.8);  border: none; border-radius: 32px;}");
             M.exec();
-
-            return true;
         }
     }
 
@@ -476,12 +474,17 @@ FrameKeySetting::~FrameKeySetting()
     delete ui;
 }
 
-void FrameKeySetting::showEvent(QShowEvent *event)
+void FrameKeySetting::reshowTip()
 {
     if(m_setType == 0)
         refresh();
     if(m_setType == 3)
         refreshFn();
+}
+
+void FrameKeySetting::showEvent(QShowEvent *event)
+{
+    reshowTip();
 }
 
 void FrameKeySetting::refresh()
@@ -510,9 +513,9 @@ void FrameKeySetting::refresh()
             if(type == 2)
             {
                 strT2 = QString(tr("动态键程")) + QString("(DKS):\n");
-                strT2 += res[0] + QString(":\n");
-                strT2 += res[1] + QString(":\n");
-                strT2 += res[2] + QString(":\n");
+                strT2 += res[0] + QString("\n");
+                strT2 += res[1] + QString("\n");
+                strT2 += res[2] + QString("\n");
                 strT2 += res[3];
             }
 

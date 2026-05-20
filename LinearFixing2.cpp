@@ -11,9 +11,9 @@
 static ModuleKeyboard *pKeyBoard = nullptr;
 
 LinearFixing2::LinearFixing2(const QString& title,const QString& content, QWidget *parent)
-    : QDialog(parent)
+    : QDialog(nullptr)
 {
-    setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowFlags(Qt::Dialog | Qt::Tool | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
     setAttribute(Qt::WA_TranslucentBackground);
     setModal(true);
 

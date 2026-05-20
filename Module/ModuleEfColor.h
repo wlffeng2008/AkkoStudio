@@ -1,8 +1,11 @@
 #ifndef MODULEEFCOLOR_H
 #define MODULEEFCOLOR_H
 
+#include "qnamespace.h"
 #include <QFrame>
 #include <QStandardItemModel>
+
+#include "DialogColorPicker.h"
 
 namespace Ui {
 class ModuleEfColor;
@@ -79,8 +82,11 @@ public:
     explicit ModuleEfColor(QWidget *parent = nullptr);
     ~ModuleEfColor();
 
+    void updateData(const QByteArray &data);
+
 signals:
     void onSetColor(const QColor&color,int option=7);
+    void onSetSideLed(const QByteArray &data);
 
 protected:
     bool eventFilter(QObject* watched, QEvent *event) override;
@@ -88,7 +94,16 @@ protected:
 
 private:
     Ui::ModuleEfColor *ui;
-    QStandardItemModel *m_pModel = nullptr ;
+    QStandardItemModel *m_pModel = nullptr;
+
+    bool m_bUpdate = false;
+    QColor m_sideClr=Qt::white;
+    quint8 m_sideE = 3;
+    quint8 m_sideC = 0;
+    quint8 m_sideL = 4;
+    quint8 m_sideS = 2;
+    void setSideLed();
+    DialogColorPicker *m_clrDlg = nullptr;
 };
 
 #endif // MODULEEFCOLOR_H

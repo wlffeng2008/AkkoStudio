@@ -38,6 +38,9 @@ QScrollArea{background-color:#FFFFFF;border:none;border-radius:12px;}
    </property>
    <item>
     <widget class="QFrame" name="frameB">
+     <property name="focusPolicy">
+      <enum>Qt::FocusPolicy::StrongFocus</enum>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
             border: 1px solid transparent;
@@ -347,6 +350,9 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                 <width>156</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
               <property name="text">
                <string>插入</string>

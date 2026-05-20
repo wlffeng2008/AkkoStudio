@@ -62,6 +62,7 @@ bool ToggleButton::event(QEvent *event)
         m_bchecked = !m_bchecked;
         update();
         emit clicked(m_bchecked);
+        event->accept();
         return true;
     }
     return QCheckBox::event(event);

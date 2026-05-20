@@ -110,8 +110,8 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint );
 
-    m_KeyMatrix[0]   = ::getDefaultMatrix();
-    m_KeyMatrixFn[0] = ::getDefaultFnMatrix();
+    m_KeyMatrix[0] = ::getDefaultMatrix();
+    m_FunMatrix[0] = ::getDefaultFnMatrix();
 
     {
         static ma_device_config config = ma_device_config_init(ma_device_type_loopback);
@@ -428,7 +428,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                     setRowValue(row,2+i,(quint8)data[i]);
                 }
             }
-            //qDebug() << "get_:" << data.toHex(' ').toUpper();
+            //qDebug().noquote() << "get_:" << data.toHex(' ').toUpper();
             quint8 *pCmd=(quint8 *)m_lastCmd.data();
             QString strInfo;
             switch(pCmd[0])
@@ -465,10 +465,10 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 break;
 
             case CMD_GET_KEYMATRIX:
-                m_KeyMatrix[pCmd[4]].append(data);
+                m_tmp0[pCmd[4]].append(data);
                 break;
             case CMD_GET_FN:
-                m_KeyMatrixFn[pCmd[2]].append(data);
+                m_tmp1[pCmd[4]].append(data);
                 break;
 
             case CMD_GET_SLEEPTIME:
@@ -484,19 +484,22 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 break;
 
             case CMD_GET_LEDPARAM:
-                break;
             {
+                m_ColorKB[data[1]] = data;
+
                 int row = getRow(CMD_SET_LEDPARAM);
                 setRowValue(row,3,data[1]);
                 setRowValue(row,4,4 - data[2]);
                 setRowValue(row,5,data[3]);
 
-                if(data[1] == 0x16) m_bSendMusic=true;
+                //if(data[1] == 0x16) m_bSendMusic=true;
             }
             break;
 
             case CMD_GET_SLEDPARAM:
             {
+                m_ColorSL[data[1]] = data;
+
                 int row = getRow(CMD_SET_SLEDPARAM);
                 setRowValue(row,3,data[1]);
                 setRowValue(row,4,4 - data[2]);
@@ -541,7 +544,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             addLog(m_lastCmd.left(8),false);
             addLog(data);
 
-            QTimer::singleShot(100,this,[=]{
+            QTimer::singleShot(30,this,[=]{
                 executeCmd(); // next cmd
             });
         }
@@ -613,8 +616,8 @@ void DialogDeviceConnect::readAllData()
 
     for(int i=0; i<8; i++)
     {
-        m_KeyMatrix[i].clear();
-        m_KeyMatrixFn[i].clear();
+        m_tmp0[i].clear();
+        m_tmp1[i].clear();
     }
 
     m_E500.clear();
@@ -661,6 +664,20 @@ void DialogDeviceConnect::readAllData()
                 addReadCmd(cmd);
             }
         }
+    }
+
+    for(quint8 i=0; i<100; i++)
+    {
+        quint8 tmp[8] = {CMD_GET_LEDPARAM,i,0,0,0, 0,0,0};
+        QByteArray cmd((char *)tmp,8);
+        //addReadCmd(cmd);
+    }
+
+    for(quint8 i=0; i<20; i++)
+    {
+        quint8 tmp[8] = {CMD_GET_SLEDPARAM,i,0,0,0, 0,0,0};
+        QByteArray cmd((char *)tmp,8);
+        //addReadCmd(cmd);
     }
 
     if(m_isSupportAxis)
@@ -716,6 +733,13 @@ void DialogDeviceConnect::executeCmd()
         if(m_bReadAll)
         {
             m_bReadAll=false;
+
+            for(int i=0; i<8; i++)
+            {
+                m_KeyMatrix[i] = m_tmp0[i];
+                m_FunMatrix[i] = m_tmp1[i];
+            }
+
             emit onReadDone();
         }
         return;
@@ -856,9 +880,9 @@ void DialogDeviceConnect::getKeydata(keyData *pDk,quint8 index,quint8 layer)
     quint8 *data = nullptr;
 
     if((layer&0xF0) == 0xF0)
-        data = (quint8 *)m_KeyMatrixFn[layer&0x0F].data();
+        data = (quint8 *)m_FunMatrix[layer&0x0F].data();
     else
-        data = (quint8 *)m_KeyMatrix[0].data();
+        data = (quint8 *)m_KeyMatrix[layer].data();
 
     pDk->b0 = data[index * 4 + 0];
     pDk->b1 = data[index * 4 + 1];
@@ -926,7 +950,7 @@ void DialogDeviceConnect::changeKeyFn(quint8 hid,  keyData*pDk, quint8 subLayer,
     QByteArray snd((char*)pack,12);
     addReadCmd(snd,true);
 
-    ((keyData*)m_KeyMatrixFn[0].data())[index] = *(keyData*)pDk;
+    ((keyData*)m_FunMatrix[0].data())[index] = *(keyData*)pDk;
 }
 
 void DialogDeviceConnect::restKey(quint8 hid)
@@ -1010,7 +1034,7 @@ QByteArray DialogDeviceConnect::getMatix(bool fnLayer)
 {
     qDebug() << "getMatix: " << fnLayer;
     if(fnLayer)
-        return m_KeyMatrixFn[0];
+        return m_FunMatrix[0];
 
     return m_KeyMatrix[0];
 }
@@ -1081,8 +1105,8 @@ void DialogDeviceConnect::makeCmd(int row, bool autoSend)
 
 void DialogDeviceConnect::reset()
 {
-    m_KeyMatrix[0]   = ::getDefaultMatrix();
-    m_KeyMatrixFn[0] = ::getDefaultFnMatrix();
+    m_KeyMatrix[0] = ::getDefaultMatrix();
+    m_FunMatrix[0] = ::getDefaultFnMatrix();
     makeCmd(getRow(CMD_SET_RESET),true);
     readAllData();
 }
@@ -1128,6 +1152,13 @@ int DialogDeviceConnect::getRow(int cmd)
             return i;
     }
     return -1;
+}
+
+void DialogDeviceConnect::setSideLed(const QByteArray&data)
+{
+    QByteArray tmp = data;
+    tmp[0] = CMD_SET_SLEDPARAM;
+    addReadCmd(tmp,true);
 }
 
 void DialogDeviceConnect::setLEDOn(bool on)

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1130</width>
-    <height>758</height>
+    <height>763</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,14 +16,14 @@
   <property name="styleSheet">
    <string notr="true">#frameT{background-color: #FBFBFB;border-radius:32px;}
 
-#frameLEDBright,#frameLEDSpeed,#frameLEDColor,#frameLEDMode{background-color: #F6F6F6;border-radius:32px;}</string>
+#frameLEDBright,#frameLEDSpeed,#frameLEDColor,#frameLEDMode,#frameColList{background-color: #F6F6F6;border-radius:32px;}</string>
   </property>
   <property name="lineWidth">
    <number>0</number>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
    <property name="spacing">
-    <number>24</number>
+    <number>12</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -83,8 +83,11 @@
      </layout>
     </widget>
    </item>
-   <item alignment="Qt::AlignmentFlag::AlignBottom">
-    <widget class="QFrame" name="frameB">
+   <item>
+    <widget class="QStackedWidget" name="stackedWidgetB">
+     <property name="styleSheet">
+      <string notr="true">#page0,#page1{background-color: #FBFBFB; border-radius:32px;}</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::Shape::NoFrame</enum>
      </property>
@@ -94,152 +97,534 @@
      <property name="lineWidth">
       <number>0</number>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2,1">
-      <property name="spacing">
-       <number>24</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item alignment="Qt::AlignmentFlag::AlignLeft">
-       <widget class="ModuleEfMode" name="frameLEDMode">
-        <property name="minimumSize">
-         <size>
-          <width>304</width>
-          <height>304</height>
-         </size>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="page0" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2,1">
+       <property name="spacing">
+        <number>24</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignmentFlag::AlignLeft">
+        <widget class="ModuleEfMode" name="frameLEDMode">
+         <property name="minimumSize">
+          <size>
+           <width>304</width>
+           <height>304</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>304</width>
+           <height>304</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Shape::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="ModuleEfColor" name="frameLEDColor">
+         <property name="minimumSize">
+          <size>
+           <width>470</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Shape::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignRight">
+        <widget class="QFrame" name="frameBR">
+         <property name="lineWidth">
+          <number>0</number>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayoutB_2">
+          <property name="spacing">
+           <number>24</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignmentFlag::AlignRight">
+           <widget class="ModuleEfLumi" name="frameLEDBright">
+            <property name="minimumSize">
+             <size>
+              <width>304</width>
+              <height>140</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>304</width>
+              <height>140</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignmentFlag::AlignRight">
+           <widget class="ModuleEfSpeed" name="frameLEDSpeed">
+            <property name="minimumSize">
+             <size>
+              <width>304</width>
+              <height>140</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>304</width>
+              <height>140</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page1">
+      <widget class="QFrame" name="frameColList">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1129</width>
+         <height>303</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Shape::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Shadow::Raised</enum>
+       </property>
+       <widget class="QLabel" name="labelTitle1">
+        <property name="geometry">
+         <rect>
+          <x>24</x>
+          <y>12</y>
+          <width>105</width>
+          <height>19</height>
+         </rect>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>304</width>
-          <height>304</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
+        <property name="text">
+         <string>我的作品</string>
         </property>
        </widget>
-      </item>
-      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-       <widget class="ModuleEfColor" name="frameLEDColor">
-        <property name="minimumSize">
-         <size>
-          <width>470</width>
-          <height>0</height>
-         </size>
+       <widget class="QTreeView" name="treeView">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>44</y>
+          <width>463</width>
+          <height>243</height>
+         </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
+        <property name="focusPolicy">
+         <enum>Qt::FocusPolicy::NoFocus</enum>
         </property>
        </widget>
-      </item>
-      <item alignment="Qt::AlignmentFlag::AlignRight">
-       <widget class="QFrame" name="frameBR">
-        <property name="lineWidth">
-         <number>0</number>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>522</x>
+          <y>102</y>
+          <width>561</width>
+          <height>34</height>
+         </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayoutB_2">
-         <property name="spacing">
-          <number>24</number>
-         </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item alignment="Qt::AlignmentFlag::AlignRight">
-          <widget class="ModuleEfLumi" name="frameLEDBright">
-           <property name="minimumSize">
-            <size>
-             <width>304</width>
-             <height>140</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>304</width>
-             <height>140</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::Shape::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Shadow::Raised</enum>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="labelTitle5">
+           <property name="text">
+            <string>写入层(图):</string>
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignmentFlag::AlignRight">
-          <widget class="ModuleEfSpeed" name="frameLEDSpeed">
-           <property name="minimumSize">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
             <size>
-             <width>304</width>
-             <height>140</height>
+             <width>40</width>
+             <height>20</height>
             </size>
            </property>
-           <property name="maximumSize">
-            <size>
-             <width>304</width>
-             <height>140</height>
-            </size>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonW0">
+           <property name="text">
+            <string>图一</string>
            </property>
-           <property name="styleSheet">
-            <string notr="true"/>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonW1">
+           <property name="text">
+            <string>图二</string>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::Shape::StyledPanel</enum>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonW2">
+           <property name="text">
+            <string>图三</string>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Shadow::Raised</enum>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonW3">
+           <property name="text">
+            <string>图四</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonW4">
+           <property name="text">
+            <string>图五</string>
            </property>
           </widget>
          </item>
         </layout>
        </widget>
-      </item>
-     </layout>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>522</x>
+          <y>166</y>
+          <width>560</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="labelTitle6">
+           <property name="text">
+            <string>读取层(图):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonR0">
+           <property name="text">
+            <string>图一</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonR1">
+           <property name="text">
+            <string>图二</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonR2">
+           <property name="text">
+            <string>图三</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonR3">
+           <property name="text">
+            <string>图四</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonR4">
+           <property name="text">
+            <string>图五</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>522</x>
+          <y>20</y>
+          <width>561</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,1,0,0,1,0,0,1,0,2">
+         <item>
+          <widget class="QLabel" name="labelTitle2">
+           <property name="text">
+            <string>颜色：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelColor">
+           <property name="minimumSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(0, 85, 255); border-radius:12px; width:24px;height:24px;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelTitle3">
+           <property name="text">
+            <string>取色器：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelColor_2">
+           <property name="minimumSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(0, 85, 255); border-radius:12px; width:24px;height:24px;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelTitle4">
+           <property name="text">
+            <string>随机颜色：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="ToggleButton" name="checkBox">
+           <property name="minimumSize">
+            <size>
+             <width>48</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>清除设置</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>524</x>
+          <y>232</y>
+          <width>556</width>
+          <height>54</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,1,0">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="labelName">
+           <property name="text">
+            <string>输入名称：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditName">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonSave">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>保存静态灯效</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
     </widget>
    </item>
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>ModuleKeyboard</class>
-   <extends>QFrame</extends>
-   <header>modulekeyboard.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>ModuleEfMode</class>
    <extends>QFrame</extends>
@@ -263,6 +648,17 @@
    <extends>QFrame</extends>
    <header>moduleefspeed.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ModuleKeyboard</class>
+   <extends>QFrame</extends>
+   <header>modulekeyboard.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
