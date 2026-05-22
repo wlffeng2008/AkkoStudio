@@ -384,6 +384,7 @@ static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
     {3543, 0x38EE, 0x0005, 0, "5108 V5"},
     {3579, 0x38EE, 0x0005, 0, "5087 V5"},
     {3582, 0x38EE, 0x0005, 0, "5075 V5"},
+    {3800, 0x38EE, 0x0001, 0, "5075 V5 HE TMR"},
     //{还没调试,0x38EE,0x0005,0,"Air01 UK"},
 
     // 鼠标案子PAN1080

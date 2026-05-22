@@ -483,6 +483,12 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 m_report = data[2];
                 break;
 
+            case CMD_GET_USERPIC:
+                m_userPic.append(data);
+                if(pCmd[3] == 5)
+                    emit onGetPictrue(m_userPic);
+                break;
+
             case CMD_GET_LEDPARAM:
             {
                 m_ColorKB[data[1]] = data;
@@ -568,7 +574,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             if(nlen > 0)
             {
                 QByteArray data(buf,nlen);
-                qDebug() << "read:" << data.toHex(' ').toUpper();
+                // qDebug().noquote() << "read:" << data.toHex(' ').toUpper();
                 addLog(data);
                 if(data[0] == 0x05 || data[1] == 0x04)
                 {
@@ -1286,4 +1292,33 @@ void DialogDeviceConnect::setKBOption(quint8 option, quint8 value)
 quint8 DialogDeviceConnect::getKBOption(quint8 option)
 {
     return m_Optn[option];
+}
+
+void DialogDeviceConnect::setPicture(quint8 index, const QByteArray&data)
+{
+    qDebug() << "setPicture" << index;
+    setLEDMode(0x0d,index);
+    quint8 cmd[8] = {CMD_SET_USERPIC,index,0xFF,0,0x38,0,0,0};
+    for(quint8 i=0; i<7; i++)
+    {
+        cmd[3] = i;
+        if(i == 6) cmd[5] = 1;
+        QByteArray tmp((char*)cmd, 8);
+        tmp.append(data.data() + i * 0x38, 0x38);
+        addReadCmd(tmp);
+    }
+}
+
+void DialogDeviceConnect::getPicture(quint8 index)
+{
+    qDebug() << "getPicture" << index;
+    m_userPic.clear();
+    quint8 cmd[8] = {CMD_GET_USERPIC,index,0xFF,0,0,0,0,0};
+    for(quint8 i=0; i<6; i++)
+    {
+        cmd[3] = i;
+        QByteArray tmp((char*)cmd, 8);
+        addReadCmd(tmp);
+    }
+
 }

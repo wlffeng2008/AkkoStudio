@@ -26,6 +26,7 @@ class MainWindow;
 QT_END_NAMESPACE
 
 class ModuleGeneralMasker;
+class AkkoDeviceEnum;
 
 class MainWindow : public QMainWindow
 {
@@ -38,6 +39,9 @@ public:
     QTranslator *m_pMainTrM = nullptr;
     QTranslator *m_pMainTrA = nullptr;
     QTranslator *m_pMainTrB = nullptr;
+
+    void enumDevice();
+    void addDevice(quint32 id, const QString&path1, const QString&path2, int connectType, int creator);
 
 protected:
     void changeEvent(QEvent *pEvt) final;
@@ -52,8 +56,9 @@ protected:
 
     bool event(QEvent *event) final;
 
-    void enumDevice();
-    void addDevice(quint32 id, const QString&path1, const QString&path2, int connectType, int creator);
+signals:
+    void onFindNewDeice(quint32 id, const QString &path1, const QString &path2, int connectType, int creator);
+
 
 private slots:
     void on_pushButtonExit_clicked();
@@ -64,6 +69,7 @@ private:
 
     ModuleLangMenu *m_pLangMenu = nullptr;
     ModuleGeneralMasker *m_cover = nullptr;
+    AkkoDeviceEnum *m_Enum = nullptr;
 
     bool m_bForMGK=false;
 
@@ -92,5 +98,6 @@ private:
     HWND m_hCurHwnd = nullptr;
 
     void setHubSize(bool origin=true);
+    void addToHub(quint32 id, const QString &path1, const QString &path2, int connectType, int creator);
 };
 #endif // MAINWINDOW_H

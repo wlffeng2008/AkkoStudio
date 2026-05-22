@@ -160,6 +160,9 @@ public:
     quint8 getKeyType(quint8 hid);
     QStringList getKeyString(quint8 hid);
 
+    void setPicture(quint8 index,const QByteArray&data);
+    void getPicture(quint8 index);
+
     void StartCalibration();
     void StopCalibration();
 
@@ -171,6 +174,7 @@ signals:
     void onConnect();
     void onDisconnect();
     void onReadBack(const QByteArray&data);
+    void onGetPictrue(const QByteArray&data);
     void onUpdataLayer(int layer);
     void onReadDone();
     void onCalibration(const QByteArray&data);
@@ -212,7 +216,7 @@ private:
     QString m_path2;
 
     bool m_bLedOn=true;
-    void makeCmd(int row,bool autoSend=false);
+    void makeCmd(int row, bool autoSend=false);
     int  getRow(int cmd);
     void setRowValue(int row, int col,int value);
 
@@ -238,13 +242,15 @@ private:
     QByteArray m_Optn;
     QByteArray m_Info;
 
+    QByteArray m_tmp0[8];
+    QByteArray m_tmp1[8];
     QByteArray m_KeyMatrix[8];
     QByteArray m_FunMatrix[8];
+
     QByteArray m_ColorKB[100];
     QByteArray m_ColorSL[20];
 
-    QByteArray m_tmp0[8];
-    QByteArray m_tmp1[8];
+    QByteArray m_userPic;
 
     bool m_isSupportAxis = false;
     bool m_isSupportTopDeadZone=false;

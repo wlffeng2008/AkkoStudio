@@ -163,6 +163,8 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
         connect(ui->buttonGroupC,&QButtonGroup::idClicked,this,[=](int id){
             m_sideC = abs(id) - 2;
             setSideLed();
+            ui->labelColor->setHidden(m_sideC == 0);
+            ui->labelPickup->setHidden(m_sideC == 0);
         });
         connect(ui->buttonGroupL,&QButtonGroup::idClicked,this,[=](int id){
             m_sideL = abs(id) - 2;
@@ -200,7 +202,7 @@ void ModuleEfColor::updateData(const QByteArray &data)
     ui->buttonGroupL->buttons()[data[3]]->click();
 
     m_sideC=data[4];
-    ui->buttonGroupC->buttons()[data[4]==0x08]->click();
+    ui->buttonGroupC->buttons()[data[4] == 0x08]->click();
 
     m_bUpdate = false;
 }
@@ -218,7 +220,7 @@ void ModuleEfColor::setSideLed()
     data[6] = color.green();
     data[7] = color.blue();
 
-    QString strSheet=QString::asprintf("background-color: rgb(%d, %d, %d);border: 1px solid black;",color.red(),color.green(),color.blue());
+    QString strSheet=QString::asprintf("background-color: rgb(%d, %d, %d);border: none; border-radius:16px;",color.red(),color.green(),color.blue());
     ui->labelColor->setStyleSheet(strSheet);
 
     if(!m_bUpdate) emit onSetSideLed(data);

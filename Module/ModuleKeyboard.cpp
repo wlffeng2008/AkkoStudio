@@ -21,15 +21,6 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
     setMinimumHeight(400);
     setMinimumWidth(960);
 
-    QTimer::singleShot(100,this,[=]{
-        if(parent)
-        {
-            //parent->setMinimumSize(960,400) ;
-            //parent->layout()->setAlignment(Qt::AlignCenter);
-            //qDebug() << "parent->parentWidget()->layout()->setAlignment(Qt::AlignCenter)";
-        }
-    });
-
     for(int i=0; i<255; i++)
     {
         QString strName = QString::asprintf("pushButton_Hid%03d",i) ;
@@ -70,7 +61,6 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
 
         QPushButton *btn = static_cast<QPushButton *>(ui->buttonGroup->button(id));
         emit onKeyClicked(btn->text(),btn->objectName().right(3).toUInt());
-        // qDebug() << "Clicked:" << id << btn->objectName();
     });
 
     m_Menu = new CustomTooltip();
@@ -117,8 +107,8 @@ ModuleKeyboard::~ModuleKeyboard()
 void ModuleKeyboard::keepSpeacial()
 {
     // return;
-    KeyboardButton *btn1 = findChild<KeyboardButton*>("pushButton_Hid234");
-    KeyboardButton *btn2 = findChild<KeyboardButton*>("pushButton_Hid233");
+    KeyboardButton *btn1 = ui->pushButton_Hid234;
+    KeyboardButton *btn2 = ui->pushButton_Hid233;
     if(m_bSetLightMode || m_bSetMtMode || m_bFixMode)
     {
         btn1->hide();
@@ -145,11 +135,12 @@ void ModuleKeyboard::setLightMode()
     const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
     for(QAbstractButton*btn:btns)
     {
-        btn->setCheckable(true);
         KeyboardButton *pKb = (KeyboardButton *)btn;
         pKb->setTipText();
+        pKb->setCheckable(true);
     }
     keepSpeacial();
+    ui->pushButton_Hid250->setEnabled(true);
 }
 
 void ModuleKeyboard::setSelectCount(int count)
@@ -185,6 +176,26 @@ void ModuleKeyboard::showMtFlag(bool show)
         (static_cast<KeyboardButton *>(btn))->setTipText() ;
     }
     keepSpeacial();
+}
+
+void ModuleKeyboard::setColor(quint8 hid,QColor color)
+{
+    if(hid == 0xFF)
+    {
+        const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
+        for(QAbstractButton*btn:btns)
+        {
+            //btn->setCheckable(true);
+            (static_cast<KeyboardButton *>(btn))->setColor(color);
+        }
+        return;
+    }
+    QString strName = QString::asprintf("pushButton_Hid%03d",hid);
+    QPushButton *btn = findChild<QPushButton*>(strName);
+    if(btn)
+    {
+        static_cast<KeyboardButton *>(btn)->setColor(color);
+    }
 }
 
 void ModuleKeyboard::setKeyTip(quint8 hid, const QString&strTip1, const QString&strTip2, bool bSetToAll)

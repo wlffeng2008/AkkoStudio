@@ -77,6 +77,7 @@ SOURCES += \
     Module/SuperLabel.cpp \
     Module/ToggleButton.cpp \
     ModuleAddMacroSquare.cpp \
+    akkodeviceenum.cpp \
     main.cpp \
     MainWindow.cpp
 
@@ -125,6 +126,7 @@ HEADERS += \
     Module/SuperLabel.h \
     Module/ToggleButton.h \
     ModuleAddMacroSquare.h \
+    akkodeviceenum.h \
     miniaudio.h
 
 FORMS += \

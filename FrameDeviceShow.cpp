@@ -70,7 +70,7 @@ void FrameDeviceShow::updateBattery()
                 tmp[2] = 0x00;
                 tmp[8] = 0xFF - tmp[1] - tmp[2];
                 hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-                QThread::msleep(15);
+                QThread::msleep(100);
                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
                 if(buf[6] == 1)
                     break;
@@ -93,7 +93,7 @@ void FrameDeviceShow::updateBattery()
             QString strCmd("04 00 00 1A 06 00 00 00");
             QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1());
             hid_write(pDev,(quint8*)cmd.data(),cmd.size());
-            QThread::msleep(5);
+            QThread::msleep(100);
             quint8 buf[128] = {0};
             nlen = hid_read_timeout(pDev,buf,16,500);
             if(nlen > 0) batt = buf[8];

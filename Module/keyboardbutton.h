@@ -35,6 +35,7 @@ public:
     KeyboardButton(QWidget *parent);
     void setMtFlag(const QString&flag);
     void showMtFlag(bool show=true);
+    void setColor(QColor color);
 
     void setTipText(const QString&strText1="",const QString&strText2="");
     bool hasTip();
@@ -47,6 +48,8 @@ private:
     QString m_mtFlag;
     bool m_showMtFlag=false;
     bool m_firstShow=true;
+    bool m_colorMode=false;
+    QColor m_color;
 
     keySetTooltip *m_tip = nullptr;
 };

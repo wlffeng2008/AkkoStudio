@@ -50,7 +50,6 @@ void keySetTooltip::setText2(const QString&text)
         label2->adjustSize();
     }
 }
-
 void keySetTooltip::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
@@ -228,13 +227,35 @@ void KeyboardButton::showMtFlag(bool show)
     m_showMtFlag=show;
 }
 
+
+void KeyboardButton::setColor(QColor color)
+{
+    m_color = color;
+    m_colorMode=true;
+    update();
+}
+
+
 void KeyboardButton::paintEvent(QPaintEvent *event)
 {
+    if(m_colorMode)
+    {
+        QPainter painter(this);
+        painter.setRenderHint(QPainter::Antialiasing);
+        painter.setBrush(m_color);
+        painter.setPen(Qt::white);
+        painter.drawRoundedRect(rect(),18,18);
+        painter.drawText(rect(),Qt::AlignCenter,text());
+        return ;
+    }
+
     QPushButton::paintEvent(event);
 
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    if(m_showMtFlag)
-        painter.drawImage(0,0,QImage(m_mtFlag));
+    //if(m_showMtFlag)
+    //    painter.drawImage(0,0,QImage(m_mtFlag));
+
+
 }

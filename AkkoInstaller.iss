@@ -21,7 +21,7 @@ DefaultGroupName={#AppName}
 AllowNoIcons=yes
 UsePreviousAppDir=yes
 OutputDir=Z:\·¢²¼Èí¼þ
-OutputBaseFilename=AkkoHubInstaller-V5.06-Win20260515
+OutputBaseFilename=AkkoHubInstaller-V5.12-Win20260522
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes
@@ -48,7 +48,7 @@ Name: "Thai"; MessagesFile: "compiler:Languages\Thai.isl"
 Name: "Italian"; MessagesFile: "compiler:Languages\Italian.isl"
 
 [Files]
-;Source: bin\*; DestDir: {app}; Flags: recursesubdirs ignoreversion
+Source: bin\*; DestDir: {app}; Flags: recursesubdirs ignoreversion
 Source: bin\AKKOStudio.exe; DestDir: {app}; Flags: ignoreversion
 Source: bin\AKKO.ico; DestDir: {app}; Flags: ignoreversion
 
@@ -81,9 +81,8 @@ begin
 
   if RegQueryStringValue(HKCU, UninstallPath, 'UninstallString', UninstallString) then
   begin
-    if Exec(UninstallString, '/SILENT', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
-    begin
-    end
+    Exec(UninstallString, '/SILENT', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec(UninstallString, '/SILENT', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
   end;
 end;
 

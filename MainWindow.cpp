@@ -8,6 +8,7 @@
 #include "framedeviceholder.h"
 #include "ModuleGeneralMasker.h"
 #include "FrameSystemInfo.h"
+#include "AkkoDeviceEnum.h"
 
 #include "hidapi.h"
 
@@ -315,6 +316,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_pFloatLeft = new QDialog(this);
     m_pFloatRight = new QDialog(this);
     m_pFloatReturn = new QDialog(this);
+    m_Enum = new AkkoDeviceEnum(this);
+    m_Enum->m_Root = this;
 
     m_pFloatLeft->setWindowFlags(  m_pFloatLeft->windowFlags()   | Qt::FramelessWindowHint | Qt::Tool);
     m_pFloatRight->setWindowFlags(m_pFloatRight->windowFlags()   | Qt::FramelessWindowHint | Qt::Tool);
@@ -369,6 +372,7 @@ MainWindow::MainWindow(QWidget *parent)
     settings.setValue("DevicePath","");
     settings.setValue("PageLoaded",false);
     settings.setValue("VendorDevicePath","");
+    settings.setValue("ByDeviceUuid","");
 
     QTimer *pTMRet = new QTimer(this);
     pTMRet->start(50);
@@ -392,7 +396,7 @@ MainWindow::MainWindow(QWidget *parent)
     killProcess("AkkoCloudDriver.exe");
 
     HideStartProcess(QApplication::applicationDirPath() + "/Akko-WS.exe");
-    //HideStartProcess(QApplication::applicationDirPath() + "/RyExe/AkkoCloudDriver.exe");
+    HideStartProcess(QApplication::applicationDirPath() + "/RyExe/AkkoCloudDriver.exe");
     //HideStartProcess(QApplication::applicationDirPath() + "/AkkoBox.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/Akko-Gaming-Bub.exe");
     HideStartProcess(QApplication::applicationDirPath() + "/ByExe/Akko-BY.exe");
@@ -418,7 +422,8 @@ MainWindow::MainWindow(QWidget *parent)
 
         if(!s_hWndEmb[0])
         {
-            HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("AkkoBox008").utf16());
+            HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko Cloud Driver").utf16());
+            //HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("AkkoBox008").utf16());
             if(hWnd)
             {
                 s_hWndEmb[0] = hWnd;
@@ -522,13 +527,6 @@ MainWindow::MainWindow(QWidget *parent)
         ui->stackedWidget->setCurrentIndex(0);
     });
 
-    connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] {
-        setHubSize(true);
-        m_pFloatReturn->hide();
-        ui->stackedWidget->setCurrentIndex(0);
-        enumDevice();
-    });
-    QTimer::singleShot(2000,this,[=]{ enumDevice(); });
 
     QTimer::singleShot(10,this,[=]{ m_pLangMenu->setLanguage(settings.value("lastlang").toInt()); });
 
@@ -572,9 +570,22 @@ MainWindow::MainWindow(QWidget *parent)
             ui->stackedWidget->setCurrentIndex(0);
         }
     });
+
+    {
+        connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] {
+            setHubSize(true);
+            m_pFloatReturn->hide();
+            ui->stackedWidget->setCurrentIndex(0);
+            m_Enum->DoEnum();
+        });
+        QTimer::singleShot(2000,this,[=]{ m_Enum->DoEnum(); });
+        connect(this,&MainWindow::onFindNewDeice,this,[=](quint32 id, const QString &path1, const QString &path2, int connectType, int creator){
+            addToHub(id, path1, path2, connectType, creator);
+        });
+    }
 }
 
-void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path2, int connectType, int creator)
+void MainWindow::addToHub(quint32 id, const QString &path1, const QString &path2, int connectType, int creator)
 {
     AkkoDeviceInfo *pDevInfo = getDevice(id);
     if (pDevInfo)
@@ -621,7 +632,7 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
 
                 if(creator == 0)
                 {
-                    QList<quint16>IdList={2807}; //,2743,3131
+                    QList<quint16>IdList={2807}; //,2743,3131,3800
                     if(IdList.contains(pDevInfo->id))
                     {
                         DialogDeviceConnect::instance()->DoConnectDevice(pDevInfo->PID,bleMode,path1,path2);
@@ -742,6 +753,13 @@ void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path
     }
 }
 
+void MainWindow::addDevice(quint32 id, const QString &path1, const QString &path2, int connectType, int creator)
+{
+    emit onFindNewDeice(id, path1, path2, connectType, creator);
+}
+
+
+
 static void QLog(const char *buf,int nlen=16)
 {
     QByteArray data(buf, nlen);
@@ -804,7 +822,7 @@ void MainWindow::enumDevice()
                         hid_write(pDev, (quint8 *)cmd.data(), 66);
                         nlen = hid_read_timeout(pDev, (quint8 *)buf, 66, 200);
                         if(buf[2] == 0x8F || buf[2] == 0x88) break;
-                        QThread::msleep(50);
+                        QThread::msleep(100);
                     }
 
                     QByteArray data((const char *)buf+2, nlen);
@@ -813,7 +831,7 @@ void MainWindow::enumDevice()
                     if(id)
                     {
                         addDevice(id,"null",path2,2,0);
-                        qDebug().noquote() << "BLE_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("id:%04d VID:0x%04X,VID:0x%04X",id,VID,PID);
+                        qDebug().noquote() << "BLE_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("id:%04d VID:0x%04X,PID:0x%04X",id,VID,PID);
                     }
                 }
             }
@@ -845,7 +863,7 @@ void MainWindow::enumDevice()
                         char buf[128] = {0};
 
                         hid_send_feature_report(pDev, (quint8 *)cmd.data(), 65);
-                        QThread::msleep(50);
+                        QThread::msleep(100);
                         nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
                         if (nlen > 0)
                         {
@@ -860,9 +878,8 @@ void MainWindow::enumDevice()
                                 tmp[2] = 0x0A;
                                 tmp[8] = 0xFF - tmp[1] - tmp[2];
                                 hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-                                QThread::msleep(10);
+                                QThread::msleep(100);
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-                                //QLog(buf);
 
                                 while(nTry++ < 5)
                                 {
@@ -870,17 +887,16 @@ void MainWindow::enumDevice()
                                     tmp[2] = 0x00;
                                     tmp[8] = 0xFF - tmp[1] - tmp[2];
                                     hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-                                    QThread::msleep(20);
+                                    QThread::msleep(100);
                                     nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
                                     if(buf[6] == 1) break;
                                 }
-                                //QLog(buf);
 
                                 tmp[1] = 0x8F;
                                 tmp[2] = 0x00;
                                 tmp[8] = 0xFF - tmp[1] - tmp[2];
                                 hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-                                QThread::msleep(20);
+                                QThread::msleep(100);
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
 
                                 nTry = 0;
@@ -890,7 +906,7 @@ void MainWindow::enumDevice()
                                     tmp[2] = 0x00;
                                     tmp[8] = 0xFF - tmp[1] - tmp[2];
                                     hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-                                    QThread::msleep(20);
+                                    QThread::msleep(100);
                                     nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
                                     if(buf[0] == 0) break;
                                 }
@@ -899,7 +915,7 @@ void MainWindow::enumDevice()
                                 tmp[2] = 0x00;
                                 tmp[8] = 0xFF - tmp[1] - tmp[2];
                                 hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-                                QThread::msleep(20);
+                                QThread::msleep(100);
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
 
                                 connectType = 1;
@@ -910,7 +926,7 @@ void MainWindow::enumDevice()
                                     id = *(quint32 *)(data.data() + 1);
                                 }
                             }
-                            qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("id:%04d VID:0x%04X,VID:0x%04X",id,VID,PID);
+                            qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("id:%04d VID:0x%04X,PID:0x%04X",id,VID,PID);
 
                             addDevice(id,path1,path2,connectType,0);
                             path1.clear();
@@ -926,8 +942,9 @@ void MainWindow::enumDevice()
         if(pRoot) hid_free_enumeration(pRoot);
     }
 
-    QString strCmd0("04 00 00 1a 06 00 00 00"); //电量
-    QString strCmd1("04 00 00 30 06 00 00 00"); //
+    QString strCmd0("04 00 00 1a 06 00 00 00"); // 电量
+    QString strCmd1("04 00 00 30 06 00 00 00"); // 机型ID
+    QString strCmd2("04 AA 00 AA 00 00 00 00"); // 连接状态
     QList<quint16>VShengs = {0x38EE,0x320F};
     foreach (quint16 Vid, VShengs)
     {
@@ -946,119 +963,135 @@ void MainWindow::enumDevice()
                 hid_device *pDev = hid_open_path(PATH);
                 if(pDev)
                 {
-                    QByteArray cmd = QByteArray::fromHex(strCmd1.toLatin1());
+                    quint8 szBuf[128] = {0};
+                    QByteArray cmd = QByteArray::fromHex(strCmd2.toLatin1());
+
+                    hid_write(pDev,(quint8*)cmd.data(),cmd.size());
+                    QThread::msleep(100);
+                    int len0 = hid_read_timeout(pDev,szBuf,16,500);
+
+                    QThread::msleep(100);
+
+                    quint8 st7 = szBuf[7];
+                    quint8 st8 = szBuf[8];
+
+                    QByteArray Log((char *)szBuf,len0);
+                    qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID);
+
+                    cmd = QByteArray::fromHex(strCmd1.toLatin1());
                     hid_write(pDev,(quint8*)cmd.data(),cmd.size());
                     QThread::msleep(50);
-                    quint8 szBuf[128] = {0};
-                    int len = hid_read_timeout(pDev,szBuf,16,500);
-
-                    quint8 device = szBuf[11];
-
-                    //发送：04 00 00 30 06 00 00 00指令，鼠标回复第12个字节区分同pid的设备，值：
-                    //灵动V9 ultra 为0
-                    //泰坦N9 ultra 为4
-                    //灵动V9 max   为1
-                    //泰坦N9 max   为3
-                    // 4：Pulse 01
-                    // 5：3108 RF
-                    // 6：AG ONE
-                    // 7：灵动V9 Max
-                    // 8：泰坦N9 Max
-                    // 9：灵动V9 Ultra
-                    //10：泰坦N9 Ultra
-                    //11：3087
-
-                    quint32 driverId = 0;
-                    quint8 connectType = 0;
-
-                    switch(PID)
+                    int len1 = hid_read_timeout(pDev,szBuf,16,500);
+                    if(len1 >= 12 && len0 >= 12 && (st7 == 0xFF || st8 == 0xFF))
                     {
-                    case 0x000C:connectType = 1;
-                    case 0x000B:
-                        driverId = 4;
-                        if(device != 0) driverId =  6;
-                        if(device == 2) driverId = 12;
-                        if(device == 3) driverId = 18;
-                        if(device == 4) driverId = 23;
-                        if(device == 5) driverId = 24;
-                        break;
+                        quint8 device = szBuf[11];
 
-                    case 0x0011:
-                    case 0x000F:connectType = 1;
-                    case 0x0010:
-                    case 0x000D:
-                        if(device == 1) driverId =  7;
-                        if(device == 3) driverId =  8;
-                        if(device == 0) driverId =  9;
-                        if(device == 4) driverId = 10;
-                        if(device == 5) driverId = 15;
-                        if(device == 6) driverId = 16;
-                        if(device == 7) driverId = 19;
-                        if(device == 8) driverId = 20;
-                        if(device == 9) driverId = 21;
-                        break;
+                        //发送：04 00 00 30 06 00 00 00指令，鼠标回复第12个字节区分同pid的设备，值：
+                        //灵动V9 ultra 为0
+                        //泰坦N9 ultra 为4
+                        //灵动V9 max   为1
+                        //泰坦N9 max   为3
+                        // 4：Pulse 01
+                        // 5：3108 RF
+                        // 6：AG ONE
+                        // 7：灵动V9 Max
+                        // 8：泰坦N9 Max
+                        // 9：灵动V9 Ultra
+                        //10：泰坦N9 Ultra
+                        //11：3087
 
-                    case 0x0024:connectType = 1;
-                    case 0x0023:
-                        driverId = 14;
-                        if(device == 5) driverId = 13;
-                        if(device == 1) driverId = 21;
-                        break;
+                        quint32 driverId = 0;
+                        quint8 connectType = 0;
 
-                    case 0x0026:connectType = 1;
-                    case 0x0025:
-                        driverId = 9;
-                        if(device == 1)
-                            driverId = 10;
-                        break;
+                        switch(PID)
+                        {
+                        case 0x000C:connectType = 1;
+                        case 0x000B:
+                            driverId = 4;
+                            if(device != 0) driverId =  6;
+                            if(device == 2) driverId = 12;
+                            if(device == 3) driverId = 18;
+                            if(device == 4) driverId = 23;
+                            if(device == 5) driverId = 24;
+                            break;
 
-                    case 0x0028:connectType = 1;
-                    case 0x0027:
-                        driverId = 9;
-                        if(device == 1) driverId = 10;
-                        break;
+                        case 0x0011:
+                        case 0x000F:connectType = 1;
+                        case 0x0010:
+                        case 0x000D:
+                            if(device == 1) driverId =  7;
+                            if(device == 3) driverId =  8;
+                            if(device == 0) driverId =  9;
+                            if(device == 4) driverId = 10;
+                            if(device == 5) driverId = 15;
+                            if(device == 6) driverId = 16;
+                            if(device == 7) driverId = 19;
+                            if(device == 8) driverId = 20;
+                            if(device == 9) driverId = 21;
+                            break;
 
-                    case 0x0030:connectType = 1;
-                    case 0x0029:
-                        driverId = 15;
-                        if(device == 1) driverId = 16;
-                        if(device == 5) driverId = 15;
-                        if(device == 6) driverId = 16;
-                        break;
+                        case 0x0024:connectType = 1;
+                        case 0x0023:
+                            driverId = 14;
+                            if(device == 5) driverId = 13;
+                            if(device == 1) driverId = 21;
+                            break;
 
-                    case 0x0032:connectType = 1;
-                    case 0x0031:
-                        driverId = 15;
-                        if(device == 1) driverId = 16;
-                        break;
+                        case 0x0026:connectType = 1;
+                        case 0x0025:
+                            driverId = 9;
+                            if(device == 1)
+                                driverId = 10;
+                            break;
 
-                    case 0x5152:connectType = 1;
-                    case 0x5151:
-                        driverId = 5;
-                        break;
+                        case 0x0028:connectType = 1;
+                        case 0x0027:
+                            driverId = 9;
+                            if(device == 1) driverId = 10;
+                            break;
 
-                    case 0x0008:connectType = 1;
-                    case 0x0007:
-                        driverId = 11;
-                        break;
+                        case 0x0030:connectType = 1;
+                        case 0x0029:
+                            driverId = 15;
+                            if(device == 1) driverId = 16;
+                            if(device == 5) driverId = 15;
+                            if(device == 6) driverId = 16;
+                            break;
 
-                    case 0x22b5:connectType = 1;
-                    case 0x22b4:
-                        driverId = 12;
-                        break;
+                        case 0x0032:connectType = 1;
+                        case 0x0031:
+                            driverId = 15;
+                            if(device == 1) driverId = 16;
+                            break;
+
+                        case 0x5152:connectType = 1;
+                        case 0x5151:
+                            driverId = 5;
+                            break;
+
+                        case 0x0008:connectType = 1;
+                        case 0x0007:
+                            driverId = 11;
+                            break;
+
+                        case 0x22b5:connectType = 1;
+                        case 0x22b4:
+                            driverId = 12;
+                            break;
+                        }
+
+                        if(PID == 0x0F) connectType = 1;
+
+                        if(VID == 0x3311)
+                        {
+                            if(device == 0) driverId = 15;
+                            if(device == 1) driverId = 16;
+                        }
+
+                        QByteArray Log((char *)szBuf,len1);
+                        qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Apply Driver ID:" << driverId;
+                        addDevice(driverId,"null",PATH,connectType,1);
                     }
-
-                    if(PID == 0x0F) connectType = 1;
-
-                    if(VID == 0x3311)
-                    {
-                        if(device == 0) driverId = 15;
-                        if(device == 1) driverId = 16;
-                    }
-
-                    QByteArray Log((char *)szBuf,len);
-                    qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Apply Driver ID:" << driverId;
-                    addDevice(driverId,"null",PATH,connectType,1);
                 }
             }
             pEDev = pEDev->next;
@@ -1080,7 +1113,7 @@ void MainWindow::enumDevice()
             UPG = pEDev->usage_page;
             USA = pEDev->usage;
             PATH= pEDev->path;
-            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
             if(pEDev->usage_page == 65376) // 65280
             {
                 hid_device* pDev = hid_open_path(PATH);
@@ -1139,8 +1172,8 @@ void MainWindow::enumDevice()
             PATH= pEDev->path;
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
             //qDebug() << QString::asprintf("0x%04X %04d",pEDev->usage_page, pEDev->usage) << pEDev->path;
-            if(UPG == 0xFF02 && USA == 0x02)
-                addDevice(0xFB29,"null",PATH,0,3);
+            //if(UPG == 0xFF02 && USA == 0x02)
+            //    addDevice(0xFB29,"null",PATH,0,3);
 
             pEDev = pEDev->next;
         }
