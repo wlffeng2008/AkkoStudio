@@ -35,6 +35,7 @@ private:
     bool m_bShowing=true;
     QDialog *m_picker=nullptr;
     QImage m_image;
+    void refreshColor();
 };
 
 #endif // DIALOGCOLORPICKER_H

@@ -151,8 +151,16 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
 
         m_clrDlg = new DialogColorPicker();
 
+        QTimer *pTMSetColor = new QTimer(this);
+        pTMSetColor->setInterval(200);
         connect(m_clrDlg,&DialogColorPicker::onPickupColor,this,[=](const QColor&color){
             m_sideClr = color;
+            pTMSetColor->stop();
+            pTMSetColor->start();
+        });
+
+        connect(pTMSetColor,&QTimer::timeout,this,[=]{
+            pTMSetColor->stop();
             setSideLed();
         });
 

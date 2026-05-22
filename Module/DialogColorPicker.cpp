@@ -19,6 +19,7 @@ DialogColorPicker::DialogColorPicker(QWidget *parent)
     m_picker->setWindowFlags(Qt::Dialog | Qt::Tool | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint | Qt::WindowStaysOnTopHint);
     m_picker->setFixedSize(64,64);
     m_picker->setAttribute(Qt::WA_TranslucentBackground);
+    m_picker->setWindowOpacity(0);
     ui->labelPick->installEventFilter(this);
     m_picker->installEventFilter(this);
 
@@ -33,15 +34,24 @@ DialogColorPicker::DialogColorPicker(QWidget *parent)
     });
 
     connect(pCSq,&ColorSquare::colorSelected,this,[=](QColor color){
-        QString strSheet=QString::asprintf("background-color:rgb(%d,%d,%d); border-radius: 15px;",color.red(),color.green(),color.blue());
-        ui->labelColor->setStyleSheet(strSheet);
-        ui->lineEditV0->setText(QString::asprintf("%d",color.red()));
-        ui->lineEditV1->setText(QString::asprintf("%d",color.green()));
-        ui->lineEditV2->setText(QString::asprintf("%d",color.blue()));
-        m_HexColor = QString::asprintf("#%02X%02X%02X",color.blue(),color.green(),color.red());
-        ui->lineEditHex->setText(m_HexColor);
         m_color = color;
-        emit onPickupColor(color);
+        ui->lineEditR->setText(QString::asprintf("%d",color.red()));
+        ui->lineEditG->setText(QString::asprintf("%d",color.green()));
+        ui->lineEditB->setText(QString::asprintf("%d",color.blue()));
+        refreshColor();
+    });
+
+    connect(ui->lineEditR,&QLineEdit::textEdited,this,[=](const QString&text){
+        m_color.setRed(text.toInt());
+        refreshColor();
+    });
+    connect(ui->lineEditG,&QLineEdit::textEdited,this,[=](const QString&text){
+        m_color.setGreen(text.toInt());
+        refreshColor();
+    });
+    connect(ui->lineEditB,&QLineEdit::textEdited,this,[=](const QString&text){
+        m_color.setBlue(text.toInt());
+        refreshColor();
     });
 
     connect(ui->pushButton,&QPushButton::clicked,this,[=]{
@@ -51,7 +61,7 @@ DialogColorPicker::DialogColorPicker(QWidget *parent)
 
 
     QTimer *pTimer = new QTimer(this);
-    pTimer->start(50);
+    pTimer->start(10);
     connect(pTimer,&QTimer::timeout,this,[=]{
         if(this->isHidden()) m_picker->hide();
         if(!m_picker->isVisible()) return;
@@ -74,10 +84,24 @@ DialogColorPicker::DialogColorPicker(QWidget *parent)
         QScreen* primaryScreen = QGuiApplication::primaryScreen();
         m_image = primaryScreen->grabWindow(0,  cursorPos.x()-8, cursorPos.y()-8, 16,16).toImage();
 
+        qDebug() << m_image.pixelColor(7,7);
+        ui->framePad->colorSelected(m_image.pixelColor(7,7));
         m_picker->move(x,y);
         m_picker->update();
     });
+}
 
+void DialogColorPicker::refreshColor()
+{
+    QColor color = m_color;
+    emit onPickupColor(color);
+
+    m_HexColor = QString::asprintf("#%02X%02X%02X",color.blue(),color.green(),color.red());
+    ui->lineEditHex->setText(m_HexColor);
+    QString strSheet=QString::asprintf("background-color:rgb(%d,%d,%d); border-radius: 15px;",color.red(),color.green(),color.blue());
+    ui->labelColor->setStyleSheet(strSheet);
+
+    emit onPickupColor(color);
 }
 
 DialogColorPicker::~DialogColorPicker()
@@ -138,6 +162,20 @@ bool DialogColorPicker::eventFilter(QObject *watched,QEvent *event)
             if(watched == ui->labelPick)
             {
                 m_picker->show();
+
+                QTimer::singleShot(100,this,[=]{
+                    static QPixmap pix(":/images/pickup2.png");  // 资源文件 或 路径都可以
+
+                    // 2. 缩放（可选）
+                    pix = pix.scaled(32, 32);
+
+                    // 3. 创建自定义光标，第二个参数是热点（点击点）
+                    static QCursor customCursor(pix, 0, 0);
+
+                    // 4. 设置给整个窗口
+                    m_picker->setCursor(customCursor);
+                });
+
             }
 
             if(watched == m_picker)
@@ -150,6 +188,12 @@ bool DialogColorPicker::eventFilter(QObject *watched,QEvent *event)
             qDebug() << "全局鼠标右键按下，坐标：" << mouseEvent->globalPos();
         }
     }
+
+    if (event->type() == QEvent::MouseButtonRelease)
+    {
+        m_picker->hide();
+    }
+
     if(event->type() == QEvent::Paint && watched == m_picker)
     {
         QPainter painter(m_picker);
@@ -174,8 +218,8 @@ bool DialogColorPicker::eventFilter(QObject *watched,QEvent *event)
         painter.drawRoundedRect(m_picker->rect(),32,32);
         for(int i=0; i<=8; i++)
         {
-            painter.drawLine(QPoint(i*8,0),QPoint(i*8,64));
-            painter.drawLine(QPoint(0,i*8),QPoint(64,i*8));
+            //painter.drawLine(QPoint(i*8,0),QPoint(i*8,64));
+            //painter.drawLine(QPoint(0,i*8),QPoint(64,i*8));
         }
     }
 
