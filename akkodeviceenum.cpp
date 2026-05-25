@@ -23,7 +23,7 @@ void AkkoDeviceEnum::run()
     {
         if(!m_enum)
         {
-            QThread::msleep(10);
+            QThread::msleep(2);
             continue;
         }
 

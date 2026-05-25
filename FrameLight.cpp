@@ -198,6 +198,7 @@ FrameLight::FrameLight(QWidget *parent)
                 ui->pushButtonUpdate->hide();
                 ui->lineEditName->setText(QString("我的作品%1").arg(m_pModel->rowCount()));
                 m_nSelect = -1;
+                saveLoadWork();
             }
         }
         else
@@ -218,14 +219,13 @@ FrameLight::FrameLight(QWidget *parent)
                 ui->frameKeyboard->setColor(hid,color);
             }
         }
-        });
+    });
 
     connect(ui->tableView, &QTableView::entered, this, [=](const QModelIndex &index){
-        if (index.column() == 2) {
+        if (index.column() == 2)
             ui->tableView->setCursor(Qt::PointingHandCursor);
-        } else {
+        else
             ui->tableView->setCursor(Qt::ArrowCursor);
-        }
     });
 }
 

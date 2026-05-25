@@ -227,14 +227,12 @@ void KeyboardButton::showMtFlag(bool show)
     m_showMtFlag=show;
 }
 
-
 void KeyboardButton::setColor(QColor color)
 {
     m_color = color;
     m_colorMode=true;
     update();
 }
-
 
 void KeyboardButton::paintEvent(QPaintEvent *event)
 {
@@ -245,7 +243,15 @@ void KeyboardButton::paintEvent(QPaintEvent *event)
         painter.setBrush(m_color);
         painter.setPen(Qt::white);
         painter.drawRoundedRect(rect(),18,18);
-        painter.drawText(rect(),Qt::AlignCenter,text());
+        QFont font = painter.font();
+        font.setBold(true);
+        painter.setFont(font);
+        QString strTxt=text().trimmed().replace("&&","&");
+        if(objectName() == "pushButton_Hid082") strTxt="↑";
+        if(objectName() == "pushButton_Hid081") strTxt="↓";
+        if(objectName() == "pushButton_Hid080") strTxt="←";
+        if(objectName() == "pushButton_Hid079") strTxt="→";
+        painter.drawText(rect(),Qt::AlignCenter,strTxt);
         return ;
     }
 
@@ -254,8 +260,6 @@ void KeyboardButton::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    //if(m_showMtFlag)
-    //    painter.drawImage(0,0,QImage(m_mtFlag));
-
-
+    if(m_showMtFlag)
+        painter.drawImage(0,0,QImage(m_mtFlag));
 }

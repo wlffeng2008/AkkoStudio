@@ -24,8 +24,20 @@ DialogVKPicker::DialogVKPicker(QWidget *parent)
 
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint | Qt::Tool);
     setAttribute(Qt::WA_TranslucentBackground);
+    setStyleSheet(R"(QDialog { background-color: rgba(230, 230, 230, 0.9);  border: none; border-radius: 24px;}
+        QPushButton {
+                    border: 1px solid #EAEAEA;
+                    border-radius: 14px;
+                    padding: 2px 2px;
+                    color: black;
+                    outline: none;
+                    background-color: #FBFBFB ;
+                        min-width:42px;
+                        max-width:42px;
+                        min-height:42px;}
 
-    setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.85); border: none; border-radius: 24px; font-weight: 600;}");
+        QPushButton:hover { background-color: #E0EAE0; border: 1px solid blue;}
+)");
 
     QRect geoMetry = QApplication::primaryScreen()->geometry();
     if(parent)

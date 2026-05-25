@@ -10,8 +10,10 @@ FrameSystemInfo::FrameSystemInfo(QWidget *parent)
 {
     ui->setupUi(this);
 
-    static QSettings regSet("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+    static QSettings regSet0("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+    regSet0.remove("AkkoHub");
 
+    static QSettings regSet("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
     ui->checkBox->setChecked(!regSet.value("AkkoHub").toString().isEmpty());
 
     connect(ui->pushButtonOK,&QPushButton::clicked,this,[=]{

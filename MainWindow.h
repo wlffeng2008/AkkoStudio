@@ -97,6 +97,8 @@ private:
 
     HWND m_hCurHwnd = nullptr;
 
+    bool m_bCanReturn = true;
+
     void setHubSize(bool origin=true);
     void addToHub(quint32 id, const QString &path1, const QString &path2, int connectType, int creator);
 };
