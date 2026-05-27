@@ -4,8 +4,9 @@
 #include <QMainWindow>
 #include <QLayout>
 
-#include <QDialog>
 #include <QTimer>
+#include <QDialog>
+#include <QSettings>
 #include <QTranslator>
 #include <QSystemTrayIcon>
 
@@ -84,16 +85,17 @@ private:
     ModuleGeneralMasker *m_cover = nullptr;
     AkkoDeviceEnum *m_Enum = nullptr;
 
-    bool m_bForMGK=false;
+    bool m_bForMGK = false;
 
     QLayout *m_layout = nullptr;
 
     QPointF m_dragPosition;
     bool m_dragging = false;
     bool m_closeShow = false;
-    bool m_bActive=true;
+    bool m_bActive = true;
 
     QSystemTrayIcon *trayIcon = nullptr;
+    QSettings *m_pSet = nullptr;
 
     QTimer *m_pTmHide = nullptr;
     QDialog *m_pFloatLeft = nullptr;

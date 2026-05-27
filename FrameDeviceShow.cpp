@@ -9,6 +9,7 @@
 #include <QWheelEvent>
 #include <QTimer>
 #include <QThread>
+#include <QFile>
 #include <QApplication>
 #include <QMessageBox>
 
@@ -150,9 +151,13 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
     m_pDevEI = pDI;
 
     ui->labelDeviceName->setText(pDI->strName);
-    QString strImg =  QString("/images/%1.png").arg(pDI->strName);
-    strImg.replace(' ','-');
-    setImage(QApplication::applicationDirPath() + strImg, pDI->deeviceType);
+
+    QString strRoot = QApplication::applicationDirPath() + "/images/";
+    QString strImg  = QString("%1.png").arg(pDI->strName);
+    QFile FImg(strRoot + strImg);
+    if(!FImg.exists())
+        strImg.replace(' ','-');
+    setImage(strRoot + strImg, pDI->deeviceType);
 
     ui->labelPower->setHidden(pDI->connectType == 0);
     QTimer::singleShot(500,this,[=]{ updateBattery(); });
@@ -178,7 +183,6 @@ void FrameDeviceShow::setImage(const QString &image,int type)
         Img = QPixmap(strDef);
         m_image = strDef;
     }
-
 
     if (!Img.isNull())
     {
