@@ -1,13 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
-#include <windows.h>
-#include <dbt.h>
-
-#include <QCoreApplication>
-#include <QAbstractNativeEventFilter>
-
 #include <QMainWindow>
 #include <QLayout>
 
@@ -15,7 +8,6 @@
 #include <QTimer>
 #include <QTranslator>
 #include <QSystemTrayIcon>
-
 
 #include "ModuleLangMenu.h"
 
@@ -27,6 +19,28 @@ QT_END_NAMESPACE
 
 class ModuleGeneralMasker;
 class AkkoDeviceEnum;
+
+class DeviceEnumInfo
+{
+public:
+    DeviceEnumInfo(){};
+    ~DeviceEnumInfo(){};
+
+    quint16 VID;
+    quint16 PID;
+    int driverId;
+    int deeviceType; //0 KB, 1 Mouse, 2 HP
+    int creator;
+    int connectType;
+    int battery;
+    bool toShow;
+    int deviceClor;
+    quint32 lastTime;
+    QString strName;
+    QString strImage;
+    QString strPath1;
+    QString strPath2;
+};
 
 class MainWindow : public QMainWindow
 {
@@ -41,7 +55,7 @@ public:
     QTranslator *m_pMainTrB = nullptr;
 
     void enumDevice();
-    void addDevice(quint32 id, const QString&path1, const QString&path2, int connectType, int creator);
+    void addDevice(quint16 VID, quint16 PID, quint32 driverId, const QString&path1, const QString&path2, int connectType, int creator);
 
 protected:
     void changeEvent(QEvent *pEvt) final;
@@ -57,8 +71,7 @@ protected:
     bool event(QEvent *event) final;
 
 signals:
-    void onFindNewDeice(quint32 id, const QString &path1, const QString &path2, int connectType, int creator);
-
+    void oEnumDeiceDone();
 
 private slots:
     void on_pushButtonExit_clicked();
@@ -88,6 +101,10 @@ private:
     QDialog *m_pFloatReturn = nullptr;
 
     int m_creator = 0;
+    int m_showId = 0;
+    QString m_showPath;
+    QList<DeviceEnumInfo *> m_tmp;
+
     QString m_langSet;
     QString m_langName;
     void updateDeviceInfo();
@@ -100,6 +117,6 @@ private:
     bool m_bCanReturn = true;
 
     void setHubSize(bool origin=true);
-    void addToHub(quint32 id, const QString &path1, const QString &path2, int connectType, int creator);
+    void addToHub(DeviceEnumInfo *pDevInfo,int index=0);
 };
 #endif // MAINWINDOW_H

@@ -5,6 +5,7 @@
 #include <QTranslator>
 #include <QLibraryInfo>
 #include <QFontDatabase>
+#include <QDir>
 #include <locale.h>
 
 #ifdef _WIN32
@@ -50,8 +51,11 @@ int main(int argc, char *argv[])
         a.installTranslator(&translatorW);
     }
 
-
     SetConsoleOutputCP(CP_UTF8);
+
+    QString strRoot = QApplication::applicationDirPath();
+    QDir E(QApplication::applicationDirPath() + "/RyExe");
+    if(!E.exists()) strRoot += "/..";
 
     QStringList fontNames={
         "MiSans-Bold.ttf",
@@ -65,11 +69,8 @@ int main(int argc, char *argv[])
         "MiSans-Semibold.ttf",
         "MiSans-Thin.ttf"};
     foreach (QString fontName, fontNames) {
-        QFontDatabase::addApplicationFont(QApplication::applicationDirPath() +
-                                          QString("./font/") + fontName);
+        QFontDatabase::addApplicationFont(strRoot+ QString("/WsExe/font/") + fontName);
     }
-
-    //QApplication::setStyle("Fusion");
 
     a.setStyleSheet(R"(
 

@@ -10,6 +10,8 @@ namespace Ui {
 class FrameDeviceShow;
 }
 
+class DeviceEnumInfo;
+
 class FrameDeviceShow : public QFrame
 {
     Q_OBJECT
@@ -19,27 +21,25 @@ public:
     ~FrameDeviceShow();
 
     static FrameDeviceShow *getFrameShow(int index,QWidget *parent);
-    void setImage(const QString & image, int type=0);
-    void setName(const QString & name, int type=0);
-    void setPath(const QString & path1, const QString & path2){ m_path1 = path1; m_path2 = path2;};
-    void setCreator(int creator){ m_creator = creator;};
-    void setSelect(bool select=true);
+    static bool HideDevieByIndex(int index);
 
+    DeviceEnumInfo *m_pDevEI=nullptr;
+    void setDevieInfo(DeviceEnumInfo *pDI);
     void updateBattery();
 
+    void setImage(const QString & image, int type=0);
+    void setSelect(bool select=true);
+
+
     QScrollArea *m_sa = nullptr;
-    AkkoDeviceInfo *m_devInfo = nullptr;
-    bool m_bConacted = false;
-    quint8 m_cnnType =0;
-    QString m_path1;
-    QString m_path2;
+
+    bool m_bConacted=false;
     QString m_image;
     QString m_typeImage;
-    int m_creator;
 
 signals:
-    void onClicked(AkkoDeviceInfo *device,const QString&path1,const QString&path2,const QString&image,int creator,bool bleMode);
-    void onReport(AkkoDeviceInfo *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss);
+    void onClicked(DeviceEnumInfo *device,const QString&deviceImg);
+    void onReport(DeviceEnumInfo *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss);
 
 protected:
     bool event(QEvent *event) override;

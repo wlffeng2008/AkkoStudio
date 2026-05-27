@@ -21,7 +21,7 @@
   <property name="lineWidth">
    <number>0</number>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="400,320">
    <property name="spacing">
     <number>24</number>
    </property>
@@ -39,18 +39,6 @@
    </property>
    <item>
     <widget class="QFrame" name="frameT">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>414</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>414</height>
-      </size>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -272,7 +260,7 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="2,3">
+        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="3,5">
          <property name="spacing">
           <number>50</number>
          </property>
@@ -300,7 +288,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,1,0,0,1,0,0,1,0,2">
              <property name="spacing">
-              <number>10</number>
+              <number>20</number>
              </property>
              <item>
               <widget class="QLabel" name="labelTitle2">
@@ -491,7 +479,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout">
              <property name="spacing">
-              <number>10</number>
+              <number>20</number>
              </property>
              <item>
               <widget class="QLabel" name="labelTitle5">
@@ -585,7 +573,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <property name="spacing">
-              <number>10</number>
+              <number>20</number>
              </property>
              <item>
               <widget class="QLabel" name="labelTitle6">
@@ -679,7 +667,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,4,0,1">
              <property name="spacing">
-              <number>10</number>
+              <number>20</number>
              </property>
              <item>
               <widget class="QLabel" name="labelName">

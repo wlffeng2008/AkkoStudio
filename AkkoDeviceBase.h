@@ -6,17 +6,14 @@
 
 
 typedef struct {
-    quint32 id;
+    quint32 driverId;
     quint16 VID;
     quint16 PID;
     quint8 type; // 0 keyboard 1 mouse 2 headphone
     QString name;
-
-    QString image;
 } AkkoDeviceInfo;
 
-AkkoDeviceInfo *getDevice(quint32 id);
-QString getDisplayName(quint32 id,int type=0);
+QString getDisplayName(quint32 driverId, quint16 & deviceType, int brand=0);
 
 class AkkoDeviceBase : public QWidget
 {

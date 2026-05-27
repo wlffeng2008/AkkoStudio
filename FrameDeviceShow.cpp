@@ -1,6 +1,8 @@
 #include "FrameDeviceShow.h"
 #include "ui_FrameDeviceShow.h"
 
+#include <MainWindow.h>
+
 #include "hidapi.h"
 
 #include <QScrollBar>
@@ -11,10 +13,10 @@
 #include <QMessageBox>
 
 static FrameDeviceShow *s_active = nullptr;
+static FrameDeviceShow *pGroup[256] = {0};
 
 FrameDeviceShow *FrameDeviceShow::getFrameShow(int index, QWidget *parent)
 {
-    static FrameDeviceShow *pGroup[256] = {0};
     FrameDeviceShow *pFrame = pGroup[index];
     if (!pFrame)
     {
@@ -23,6 +25,16 @@ FrameDeviceShow *FrameDeviceShow::getFrameShow(int index, QWidget *parent)
     }
 
     return pFrame;
+}
+
+
+bool FrameDeviceShow::HideDevieByIndex(int index)
+{
+    for(int i=index; i<256; i++)
+    {
+        if(pGroup[i]) pGroup[i]->hide();
+    }
+    return false;
 }
 
 FrameDeviceShow::FrameDeviceShow(QWidget *parent)
@@ -50,14 +62,16 @@ FrameDeviceShow::~FrameDeviceShow()
 void FrameDeviceShow::updateBattery()
 {
     quint32 batt = 100;
-    if(m_cnnType != 0)
+    QString strPath = m_pDevEI->strPath2;
+    int connectType = m_pDevEI->connectType;
+    if(connectType != 0)
     {
         int nlen = 0;
-        if(m_creator == 0)
+        if(m_pDevEI->creator != 0)
         {
             char buf[1024] = {0};
 
-            hid_device *pDev = hid_open_path(m_path2.toStdString().c_str());
+            hid_device *pDev = hid_open_path(strPath.toStdString().c_str());
             if(!pDev) return;
             hid_set_nonblocking(pDev,1);
 
@@ -87,7 +101,7 @@ void FrameDeviceShow::updateBattery()
         }
         else
         {
-            hid_device *pDev = hid_open_path(m_path2.toStdString().c_str());            
+            hid_device *pDev = hid_open_path(strPath.toStdString().c_str());
             if(!pDev) return;
 
             QString strCmd("04 00 00 1A 06 00 00 00");
@@ -124,15 +138,37 @@ void FrameDeviceShow::updateBattery()
             padding: 4px 4px;
         }
     )";
-    if(m_cnnType == 0) strBatt.clear();
+    if(connectType == 0) strBatt.clear();
     ui->labelPower->setStyleSheet(qss);
     ui->labelPower->update();
 
-    emit onReport(m_devInfo,strBatt,m_typeImage,strTip,qss);
+    emit onReport(m_pDevEI,strBatt,m_typeImage,strTip,qss);
 }
+
+void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
+{
+    m_pDevEI = pDI;
+
+    ui->labelDeviceName->setText(pDI->strName);
+    QString strImg =  QString("/images/%1.png").arg(pDI->strName);
+    strImg.replace(' ','-');
+    setImage(QApplication::applicationDirPath() + strImg, pDI->deeviceType);
+
+    ui->labelPower->setHidden(pDI->connectType == 0);
+    QTimer::singleShot(500,this,[=]{ updateBattery(); });
+
+    static QStringList imgTypes = {"usb.png", "2.4g.png", "ble.png"};
+    m_typeImage = QString(":/images/dev/") + imgTypes[pDI->connectType];
+    ui->labelType->setPixmap(QPixmap(m_typeImage));
+}
+
 
 void FrameDeviceShow::setImage(const QString &image,int type)
 {
+    if (type == 0) setFixedWidth(970);
+    if (type == 1) setFixedWidth(280);
+    if (type == 2) setFixedWidth(280);
+
     m_image = image;
     QPixmap Img(image);
     int nSetW = 0;
@@ -143,12 +179,6 @@ void FrameDeviceShow::setImage(const QString &image,int type)
         m_image = strDef;
     }
 
-    ui->labelPower->setHidden(m_cnnType == 0);
-    QTimer::singleShot(500,this,[=]{ updateBattery(); });
-
-    static QStringList imgTypes = {"usb.png", "2.4g.png", "ble.png"};
-    m_typeImage = QString(":/images/dev/") + imgTypes[m_cnnType];
-    ui->labelType->setPixmap(QPixmap(m_typeImage));
 
     if (!Img.isNull())
     {
@@ -193,15 +223,9 @@ void FrameDeviceShow::setImage(const QString &image,int type)
 
     ui->labelImage->setScaledContents(true);
     ui->labelImage->setPixmap(Img);
+
 }
 
-void FrameDeviceShow::setName(const QString &name,int type)
-{
-    ui->labelDeviceName->setText(name);
-    QString strImg =  QString("/images/%1.png").arg(name);
-    strImg.replace(' ','-');
-    setImage(QApplication::applicationDirPath() + strImg,type);
-}
 
 void FrameDeviceShow::setSelect(bool select)
 {
@@ -245,7 +269,7 @@ bool FrameDeviceShow::event(QEvent *event)
     if (event->type() == QEvent::MouseButtonPress)
     {
         QTimer::singleShot(50, this, [=]{
-            emit onClicked(m_devInfo,m_path1,m_path2,m_image,m_creator,m_cnnType);
+            emit onClicked(m_pDevEI,m_image);
             updateBattery();
         });
     }
