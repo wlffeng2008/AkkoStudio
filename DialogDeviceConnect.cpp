@@ -738,7 +738,7 @@ void DialogDeviceConnect::executeCmd()
     {
         if(m_bReadAll)
         {
-            m_bReadAll=false;
+            m_bReadAll = false;
 
             for(int i=0; i<8; i++)
             {
@@ -746,13 +746,14 @@ void DialogDeviceConnect::executeCmd()
                 m_FunMatrix[i] = m_tmp1[i];
             }
 
-            emit onReadDone();
+            QTimer::singleShot(500,this,[=]{
+                emit onReadDone();
+            });
         }
         return;
     }
 
-    QByteArray cmd = m_cmdList[0];
-    m_cmdList.pop_front();
+    QByteArray cmd = m_cmdList.takeFirst();
     cmd.append(128,0);
 
     int nLen = 8;
@@ -800,7 +801,7 @@ void DialogDeviceConnect::setProfile(int layer)
     QTimer::singleShot(500,this,[=]{readAllData();});
 }
 
-void DialogDeviceConnect::set65Value(quint8 option,quint8 index,quint32 value)
+void DialogDeviceConnect::set65Value(quint8 option, quint8 index, quint32 value)
 {
     if(index >= 128) return;
     int type = 1;
@@ -832,7 +833,7 @@ void DialogDeviceConnect::set65Value(quint8 option,quint8 index,quint32 value)
     }
 }
 
-quint32 DialogDeviceConnect::get65Value(quint8 option,quint8 index)
+quint32 DialogDeviceConnect::get65Value(quint8 option, quint8 index)
 {
     if(index >= 128) return 0;
     int type = 1;
@@ -949,7 +950,7 @@ void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, q
     ((keyData*)m_KeyMatrix[subLayer].data())[index] = *(keyData*)pDk;
 }
 
-void DialogDeviceConnect::changeKeyFn(quint8 hid,  keyData*pDk, quint8 subLayer, quint8 save)
+void DialogDeviceConnect::changeKeyFn(quint8 hid,  keyData *pDk, quint8 subLayer, quint8 save)
 {
     quint8 index=getIndex(hid);
     quint8 pack[12] = {CMD_SET_FN, 0, 0,  index, 0, 0, 1,  0, pDk->b0, pDk->b1, pDk->b2, pDk->b3};
@@ -1296,7 +1297,6 @@ quint8 DialogDeviceConnect::getKBOption(quint8 option)
 
 void DialogDeviceConnect::setPicture(quint8 index, const QByteArray&data)
 {
-    qDebug() << "setPicture" << index;
     setLEDMode(0x0d,index);
     quint8 cmd[8] = {CMD_SET_USERPIC,index,0xFF,0,0x38,0,0,0};
     for(quint8 i=0; i<7; i++)
@@ -1311,7 +1311,6 @@ void DialogDeviceConnect::setPicture(quint8 index, const QByteArray&data)
 
 void DialogDeviceConnect::getPicture(quint8 index)
 {
-    qDebug() << "getPicture" << index;
     m_userPic.clear();
     quint8 cmd[8] = {CMD_GET_USERPIC,index,0xFF,0,0,0,0,0};
     for(quint8 i=0; i<6; i++)

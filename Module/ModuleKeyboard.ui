@@ -37,7 +37,6 @@
    <string notr="true">        QPushButton {
                     border: 1px solid #EAEAEA; border-radius:14px;
                     color: black;
-                    outline: none;
                     background-color: #FBFBFB ;
                     max-width:542px;
 }

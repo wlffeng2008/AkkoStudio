@@ -20,6 +20,8 @@ protected:
 
 private:
     Ui::FrameMagic *ui;
+
+    QColor m_selColor;
 };
 
 #endif // FRAMEMAGIC_H

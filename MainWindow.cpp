@@ -1,6 +1,8 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
+#include "hidapi.h"
+
 #include "ModuleLangMenu.h"
 #include "FrameDeviceShow.h"
 #include "AkkoDeviceBase.h"
@@ -9,8 +11,6 @@
 #include "ModuleGeneralMasker.h"
 #include "FrameSystemInfo.h"
 #include "AkkoDeviceEnum.h"
-
-#include "hidapi.h"
 
 #include <QLayout>
 #include <QMouseEvent>
@@ -114,7 +114,7 @@ static void HideStartProcess(const QString&strExePath)
     si.dwFlags = STARTF_USESHOWWINDOW;
     si.wShowWindow = SW_HIDE;
 
-    BOOL bRet = ::CreateProcessW(
+    BOOL bRet = ::CreateProcess(
         (LPCWSTR)QString(strExePath).utf16(),
         NULL,
         NULL,
@@ -317,7 +317,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->pushButtonSet, &QPushButton::clicked, this, [=] {
         FrameSystemInfo *pSetInfo = new FrameSystemInfo();
-        ModuleGeneralMasker gMask(pSetInfo,this);
+        ModuleGeneralMasker gMask(pSetInfo,ui->stackedWidget);
         pSetInfo->show();
         pSetInfo->update();
         gMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.96); border: none; border-radius: 20px; }");
@@ -336,7 +336,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->labelPrev->setHidden(true);
     ui->labelNext->setHidden(true);
-    //ui->pushButtonSet->setHidden(true);
 
     ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -408,6 +407,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     m_pSet->setValue("AkkoReturn", 0);
+    m_pSet->setValue("MonsGeekReturn", 0);
     m_pSet->setValue("AkkoWnd", 0);
     m_pSet->setValue("AkkoDeviceIndex", 0xFF);
     m_pSet->setValue("iotManagerInitialized",false);
@@ -444,7 +444,7 @@ MainWindow::MainWindow(QWidget *parent)
             m_showId = 0;
             m_showPath.clear();
             m_hCurHwnd=nullptr;
-        };
+        }
     });
 
     QTimer *pTMIdle = new QTimer(this);
@@ -480,7 +480,7 @@ MainWindow::MainWindow(QWidget *parent)
     HideStartProcess(strExe3);
 
     HWND hParentWnd = (HWND)ui->frameEmb->winId();
-    QTimer *pTMFindWnd= new QTimer(this);
+    QTimer *pTMFindWnd = new QTimer(this);
     pTMFindWnd->start(100);
 
     connect(pTMFindWnd,&QTimer::timeout,this,[=]{
@@ -501,16 +501,16 @@ MainWindow::MainWindow(QWidget *parent)
         if(!s_hWndEmb[0])
         {
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString(m_bForMGK ? "MonsGeek Driver" : "Akko Cloud Driver").utf16());
-        if(hWnd)
-        {
-            s_hWndEmb[0] = hWnd;
-            qDebug() << "Find RY ---------------";
-            ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
-            ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
-            ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
-            ::SetParent(hWnd,hParentWnd);
-            m_pSet->setValue("ParentHwnd", (quint32)hWnd);
-        }
+            if(hWnd)
+            {
+                s_hWndEmb[0] = hWnd;
+                qDebug() << "Find RY ---------------";
+                ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
+                ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
+                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                ::SetParent(hWnd,hParentWnd);
+                m_pSet->setValue("ParentHwnd", (quint32)hWnd);
+            }
         }
 
         if(!s_hWndEmb[1])
@@ -564,7 +564,7 @@ MainWindow::MainWindow(QWidget *parent)
     {
         trayIcon = new QSystemTrayIcon(this);
         trayIcon->setIcon(QIcon(":/images/logo.png"));
-        trayIcon->setToolTip("AKKO Cloud Driver");
+        trayIcon->setToolTip(m_bForMGK ? "MonsGeek Driver" : "AKKO Cloud Driver");
         trayIcon->show();
 
         connect(trayIcon,&QSystemTrayIcon::activated,this,[=](QSystemTrayIcon::ActivationReason reason){
@@ -671,9 +671,8 @@ MainWindow::MainWindow(QWidget *parent)
         });
 
         connect(this,&MainWindow::oEnumDeiceDone,this,[=]{
-            int count = m_tmp.count();
-            //qDebug() << "Get Device Count:" <<count;
             int index = 0;
+            int count = m_tmp.count();
             for(int i=0; i<count; i++)
             {
                 if(m_tmp[i]->toShow) addToHub(m_tmp[i],index++);
@@ -891,9 +890,11 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint32 driverId, const QSt
 
 void MainWindow::enumDevice()
 {
+    if(m_bEnuming) return;
     if((isMinimized() || isHidden()) && !m_hCurHwnd)
         return;
 
+    m_bEnuming = true;
     QStringList allPaths;
 
     quint16 VID = 0;
@@ -1012,6 +1013,7 @@ void MainWindow::enumDevice()
                             hid_send_feature_report(pDev, tmp, 65);
                             QThread::msleep(100);
                             nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+                            Q_UNUSED(nlen)
 
                             int nTry = 0;
                             while(nTry++ < 5)
@@ -1024,6 +1026,7 @@ void MainWindow::enumDevice()
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
                                 if(buf[6] == 1) break;
                                 QThread::msleep(50);
+                                Q_UNUSED(nlen)
                             }
 
                             tmp[1] = 0x8F;
@@ -1032,6 +1035,7 @@ void MainWindow::enumDevice()
                             hid_send_feature_report(pDev, tmp, 65);
                             QThread::msleep(100);
                             nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+                            Q_UNUSED(nlen)
 
                             nTry = 0;
                             while(nTry++ < 5)
@@ -1044,6 +1048,7 @@ void MainWindow::enumDevice()
                                 nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
                                 if(buf[1] == 0) break;
                                 QThread::msleep(50);
+                                Q_UNUSED(nlen)
                             }
 
                             tmp[1] = 0xfc;
@@ -1138,6 +1143,7 @@ void MainWindow::enumDevice()
                             if(device == 3) driverId = 18;
                             if(device == 4) driverId = 23;
                             if(device == 5) driverId = 24;
+                            if(device == 6) driverId = 26;
                             break;
 
                         case 0x0011:
@@ -1165,8 +1171,7 @@ void MainWindow::enumDevice()
                         case 0x0026:connectType = 1;
                         case 0x0025:
                             driverId = 9;
-                            if(device == 1)
-                                driverId = 10;
+                            if(device == 1) driverId = 10;
                             break;
 
                         case 0x0028:connectType = 1;
@@ -1323,6 +1328,7 @@ void MainWindow::enumDevice()
     }
 
     emit oEnumDeiceDone();
+    m_bEnuming = false;
 }
 
 void MainWindow::changeEvent(QEvent *pEvt)
@@ -1473,7 +1479,6 @@ bool MainWindow::event(QEvent *event)
         QTimer::singleShot(100,this,[=]{
             if(! this->geometry().contains(QCursor::pos()))
             {
-                //qDebug() << "QEvent::Leave";
                 m_bActive=false;
             }
         });
@@ -1483,7 +1488,6 @@ bool MainWindow::event(QEvent *event)
 
     if(event->type() == QEvent::Enter)
     {
-        //qDebug() << "QEvent::Enter";
         m_bActive=true;
     }
 
@@ -1491,7 +1495,6 @@ bool MainWindow::event(QEvent *event)
     {
         if(! this->geometry().contains(QCursor::pos()))
         {
-            //qDebug() << "QEvent::WindowDeactivate";
             m_bActive=false;
         }
 
@@ -1508,7 +1511,6 @@ bool MainWindow::event(QEvent *event)
 
     if(event->type() == QEvent::WindowActivate)
     {
-        //qDebug() << "QEvent::WindowActivate";
         m_bActive=true;
 
         m_cover->hide();
@@ -1536,32 +1538,34 @@ void MainWindow::paintEvent(QPaintEvent *event)
     QPainter p(this);
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 
-    p.setRenderHint(QPainter::Antialiasing, true);
+    p.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform, true);
 
     ui->labelLogo->hide();
+
     int borderRadius = 20;
     QPainterPath path;
     path.addRoundedRect(this->rect(), borderRadius, borderRadius);
-
     p.setClipPath(path);
+
     if (ui->stackedWidget->isHidden())
     {
         m_pFloatReturn->hide();
-        p.drawImage(this->rect(), QImage(QApplication::applicationDirPath() + (m_bForMGK ? "/images/mogear.png":"/images/MainPicture.png")));
+        p.drawImage(this->rect(), QImage(QApplication::applicationDirPath() + (m_bForMGK ? "/images/mogear.png" : "/images/MainPicture.png")));
+
         QFont font = this->font();
         font.setBold(true);
         font.setPointSize(22);
         p.setFont(font);
-        int adjust = this->height() - 90;
+        int adjust = this->height() - 100;
         p.setPen(Qt::white);
         p.drawText(this->rect().adjusted(0,adjust,0,0), Qt::AlignCenter, tr("正在搜索设备") + QString("..."));
     }
     else
     {
         p.fillRect(this->rect(), Qt::white);
-        p.setRenderHint(QPainter::SmoothPixmapTransform, true);
         if(!m_bForMGK)
-        p.drawImage(QRect(30,25,136,40), QImage(":/images/AkkoFlag.png"));
+            p.drawImage(QRect(30,25,136,40), QImage(":/images/AkkoFlag.png"));
+
     }
 
     p.setPen(Qt::blue);
@@ -1649,7 +1653,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         if (event->pos().y() < 80)
         {
             m_dragPosition = event->globalPosition() - frameGeometry().topLeft();
-            //event->accept();
             m_dragging = true;
         }
     }
@@ -1679,7 +1682,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton)
     {
         m_dragging = false;
-        //event->accept();
     }
 
     QMainWindow::mouseReleaseEvent(event);

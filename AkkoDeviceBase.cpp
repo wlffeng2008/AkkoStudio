@@ -14,63 +14,77 @@ AkkoDeviceBase::AkkoDeviceBase(QWidget *parent)
 
 void AkkoDeviceBase::changeEvent(QEvent *event)
 {
-
-
     QWidget::changeEvent(event);
+}
+
+
+static quint32 getIntVal(const QString&val)
+{
+    quint32 value = 0;
+    QString tmp(val.trimmed().toUpper());
+    if(val.startsWith("0X"))
+    {
+        tmp.replace("0X","");
+        value=tmp.toUInt(nullptr,16);
+    }
+    else
+    {
+        value=tmp.toUInt();
+    }
+    return value;
 }
 
 
 static QList<AkkoDeviceInfo> s_AkkoDeviceTable = {
 
-    {  11, 0x38EE, 0x0007, 1, "3087RF"},
-    {  11, 0x38EE, 0x0008, 1, "3087RF"},
-    {   4, 0x38EE, 0x000B, 1, "Pulse01 Pro"},
-    {   4, 0x38EE, 0x000C, 1, "Pulse01 Pro"},
-    {  12, 0x38EE, 0x000B, 1, "泰坦 Pro"},
-    {  12, 0x38EE, 0x000C, 1, "泰坦 Pro"},
-    {   5, 0x320F, 0x5151, 0, "3108RF"},  // 2.4G
-    {   5, 0x320F, 0x5152, 0, "3108RF"},  // 有线
-    {   6, 0x38EE, 0x000B, 1, "AG ONE"},
-    {   6, 0x38EE, 0x000C, 1, "AG ONE"},
-    {  15, 0x38EE, 0x000B, 1, "灵动V9 Master"},
-    {  15, 0x38EE, 0x000C, 1, "灵动V9 Master"},
-    {  16, 0x38EE, 0x000D, 1, "泰坦N9 Master"},
-    {  16, 0x38EE, 0x000F, 1, "泰坦N9 Master"},
-    {  17, 0x38EE, 0x0010, 1, "虫巢"},
-    {  17, 0x38EE, 0x0011, 1, "虫巢"},
-    {  18, 0x38EE, 0x0010, 1, "灵动V9 Pro"},
-    {  18, 0x38EE, 0x0011, 1, "灵动V9 Pro"},
-    {  19, 0x38EE, 0x000D, 1, "空影TAN8 Master"},
-    {  19, 0x38EE, 0x000F, 1, "空影TAN8 Master"},
-
-    {  20, 0x38EE, 0x000D, 1, "疾风TAN7 Master"},
-    {  20, 0x38EE, 0x000F, 1, "疾风TAN7 Master"},
-    {  21, 0x38EE, 0x000D, 1, "疾风TAN7 Ultra"},
-    {  21, 0x38EE, 0x000F, 1, "疾风TAN7 Ultra"},
-    {  22, 0x38EE, 0x0023, 1, "疾风TAN7 Ultra"},
-    {  22, 0x38EE, 0x0024, 1, "疾风TAN7 Ultra"},
-    {  23, 0x38EE, 0x000B, 1, "泰坦N9 Pro"},
-    {  23, 0x38EE, 0x000C, 1, "泰坦N9 Pro"},
-    {  24, 0x38EE, 0x000B, 1, "灵动V9 Pro"},
-    {  24, 0x38EE, 0x000C, 1, "灵动V9 Pro"},
-    {  25, 0x38EE, 0x000B, 1, "MX01"},
-    {  25, 0x38EE, 0x000C, 1, "MX01"},
-
-    {   7, 0x38EE, 0x0010, 1, "灵动V9 Max"},
-    {   7, 0x38EE, 0x0011, 1, "灵动V9 Max"},
-    {   8, 0x38EE, 0x0010, 1, "泰坦N9 Max"},
-    {   8, 0x38EE, 0x0011, 1, "泰坦N9 Max"},
-    {   9, 0x38EE, 0x000D, 1, "灵动V9 Ultra"},
-    {   9, 0x38EE, 0x000F, 1, "灵动V9 Ultra"},
-    {  10, 0x38EE, 0x000D, 1, "泰坦N9 Ultra"},
-    {  10, 0x38EE, 0x000F, 1, "泰坦N9 Ultra"},
-    {  13, 0x38EE, 0x0023, 1, "灵动V9 Max"},
-    {  13, 0x38EE, 0x0024, 1, "灵动V9 Max"},
-
-    {  0xFF52, 0x38EE, 0x0016, 0, "FUN60"},
-    {  0xFF59, 0x38EE, 0x0016, 0, "TAC75 HE"},
-    {  0xFB29, 0x3554, 0xFB29, 1, "巢Nest"},
-    {  0xFFFF, 0x38EE, 0x0000, 1, "Unkown"}
+    {     4, 0x38EE, 0x000B, 0, 1, 0, "Pulse01 Pro"},
+    {     4, 0x38EE, 0x000C, 0, 1, 1, "Pulse01 Pro"},
+    {     5, 0x320F, 0x5151, 0, 0, 0, "3108RF"},  // 2.4G
+    {     5, 0x320F, 0x5152, 0, 0, 1, "3108RF"},  // 有线
+    {     6, 0x38EE, 0x000B, 1, 1, 0, "AG ONE"},
+    {     6, 0x38EE, 0x000C, 1, 1, 1, "AG ONE"},
+    {     7, 0x38EE, 0x0010, 1, 1, 0, "灵动V9 Ultra"},
+    {     7, 0x38EE, 0x0011, 1, 1, 1, "灵动V9 Ultra"},
+    {     8, 0x38EE, 0x0010, 1, 1, 0, "泰坦N9 Ultra"},
+    {     8, 0x38EE, 0x0011, 1, 1, 1, "泰坦N9 Ultra"},
+    {     9, 0x38EE, 0x000D, 1, 1, 0, "灵动V9 Ultra"},
+    {     9, 0x38EE, 0x000F, 1, 1, 1, "灵动V9 Ultra"},
+    {    10, 0x38EE, 0x000D, 1, 1, 0, "泰坦N9 Ultra"},
+    {    10, 0x38EE, 0x000F, 1, 1, 1, "泰坦N9 Ultra"},
+    {    11, 0x38EE, 0x0007, 1, 1, 0, "3087RF"},
+    {    11, 0x38EE, 0x0008, 1, 1, 1, "3087RF"},
+    {    12, 0x38EE, 0x000B, 1, 1, 0, "泰坦N9 Pro"},
+    {    12, 0x38EE, 0x000C, 1, 1, 1, "泰坦N9 Pro"},
+    {    13, 0x38EE, 0x0023, 1, 1, 0, "灵动V9 Ultra"},
+    {    13, 0x38EE, 0x0024, 1, 1, 1, "灵动V9 Ultra"},
+    {    15, 0x38EE, 0x000B, 5, 1, 0, "灵动V9 Master"},
+    {    15, 0x38EE, 0x000C, 5, 1, 1, "灵动V9 Master"},
+    {    16, 0x38EE, 0x000D, 6, 1, 0, "泰坦N9 Master"},
+    {    16, 0x38EE, 0x000F, 6, 1, 1, "泰坦N9 Master"},
+    {    17, 0x38EE, 0x0010, 1, 1, 0, "虫巢"},
+    {    17, 0x38EE, 0x0011, 1, 1, 1, "虫巢"},
+    {    18, 0x38EE, 0x000B, 3, 1, 0, "灵动V9 Pro"},
+    {    18, 0x38EE, 0x000C, 3, 1, 1, "灵动V9 Pro"},
+    {    19, 0x38EE, 0x000D, 7, 1, 0, "空影TAN8 Master"},
+    {    19, 0x38EE, 0x000F, 7, 1, 1, "空影TAN8 Master"},
+    {    20, 0x38EE, 0x000D, 8, 1, 0, "疾风TAN7 Master"},
+    {    20, 0x38EE, 0x000F, 8, 1, 1, "疾风TAN7 Master"},
+    {    21, 0x38EE, 0x000D, 9, 1, 0, "疾风TAN7 Ultra"},
+    {    21, 0x38EE, 0x000F, 9, 1, 1, "疾风TAN7 Ultra"},
+    {    22, 0x38EE, 0x0023, 1, 1, 0, "疾风TAN7 Ultra"},
+    {    22, 0x38EE, 0x0024, 1, 1, 1, "疾风TAN7 Ultra"},
+    {    23, 0x38EE, 0x000B, 4, 1, 0, "泰坦N9 Pro"},
+    {    23, 0x38EE, 0x000C, 4, 1, 1, "泰坦N9 Pro"},
+    {    24, 0x38EE, 0x000B, 5, 1, 0, "灵动V9 Pro"},
+    {    24, 0x38EE, 0x000C, 5, 1, 1, "灵动V9 Pro"},
+    {    25, 0x38EE, 0x0012, 0, 1, 0, "MX01"},
+    {    25, 0x38EE, 0x0013, 0, 1, 1, "MX01"},
+    {    26, 0x38EE, 0x000B, 6, 1, 0, "M0020"},
+    {    26, 0x38EE, 0x000C, 6, 1, 1, "M0020"},
+    {0xFF52, 0x38EE, 0x0016, 0, 0, 0, "FUN60"},
+    {0xFF59, 0x38EE, 0x0016, 0, 0, 0, "TAC75 HE"},
+    {0xFB29, 0x3554, 0xFB29, 1, 1, 0, "巢Nest"},
+    {0xFFFF, 0x38EE, 0x0000, 1, 1, 0, "Unkown"}
 
 };
 

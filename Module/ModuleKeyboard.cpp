@@ -10,7 +10,7 @@
 #include "keyboardbutton.h"
 #include "DialogDeviceConnect.h"
 
-static QList<ModuleKeyboard*>s_kbInstance ;
+static QList<ModuleKeyboard*>s_kbInstance;
 
 ModuleKeyboard::ModuleKeyboard(QWidget *parent)
     : QFrame(parent)
@@ -35,12 +35,13 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
         {
             continue;
         }
-        btn->setMtFlag(rand()%2 ? ":/images/mt0.png" : ":/images/mt1.png");
+
+        //btn->setMtFlag(rand()%2 ? Qt::green : Qt::blue);
     }
 
     ui->buttonGroup->setExclusive(false);
 
-    connect(ui->buttonGroup,&QButtonGroup::idClicked,this,[=](int id){
+    connect(ui->buttonGroup,&QButtonGroup::idClicked, this, [=](int id){
 
         if(m_nSelectCount>1)
         {
@@ -172,13 +173,14 @@ void ModuleKeyboard::showMtFlag(bool show)
     for(QAbstractButton*btn:btns)
     {
         btn->setCheckable(true);
-        (static_cast<KeyboardButton *>(btn))->showMtFlag(true) ;
-        (static_cast<KeyboardButton *>(btn))->setTipText() ;
+        (static_cast<KeyboardButton *>(btn))->setTipText();
+        (static_cast<KeyboardButton *>(btn))->showMtFlag(show);
     }
+    showFlag(!show);
     keepSpeacial();
 }
 
-void ModuleKeyboard::setColor(quint8 hid,QColor color)
+void ModuleKeyboard::setColor(quint8 hid, const QColor &color)
 {
     if(hid == 0xFF)
     {
@@ -195,6 +197,16 @@ void ModuleKeyboard::setColor(quint8 hid,QColor color)
     if(btn)
     {
         static_cast<KeyboardButton *>(btn)->setColor(color);
+    }
+}
+
+void ModuleKeyboard::setMtColor(quint8 hid, const QColor &color)
+{
+    QString strName = QString::asprintf("pushButton_Hid%03d",hid);
+    QPushButton *btn = findChild<QPushButton*>(strName);
+    if(btn)
+    {
+        static_cast<KeyboardButton *>(btn)->setMtFlag(color);
     }
 }
 

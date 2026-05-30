@@ -84,8 +84,7 @@ void keySetTooltip::paintEvent(QPaintEvent *event)
 
 KeyboardButton::KeyboardButton(QWidget *parent):QPushButton(parent)
 {
-    m_mtFlag = ":/images/mt0.png";
-    QTimer::singleShot(100,this,[=]{setTipText();});
+    QTimer::singleShot(100,this,[=]{ setTipText(); });
 
 }
 
@@ -146,7 +145,7 @@ static QString strVolM(R"(
 
 bool KeyboardButton::hasTip()
 {
-    return  (m_tip != nullptr) ;
+    return  (m_tip != nullptr);
 }
 
 void KeyboardButton::setTipText(const QString&strText1,const QString&strText2)
@@ -192,9 +191,9 @@ bool KeyboardButton::event(QEvent *event)
                 m_tip->hide();
                 m_firstShow=false;
             }
+
             QPoint pos = parentWidget()->mapToGlobal( mapToParent( QPoint(rect().center().x()-m_tip->width()/2-5,rect().top()-m_tip->height())));
             m_tip->move(pos);
-            //m_tip->setGeometry(pos.x(),pos.y(),m_tip->width(),m_tip->height());
             m_tip->updateGeometry();
             m_tip->update() ;
             m_tip->repaint() ;
@@ -217,14 +216,30 @@ bool KeyboardButton::event(QEvent *event)
     return QPushButton::event(event);
 }
 
-void KeyboardButton::setMtFlag(const QString&flag)
+void KeyboardButton::setMtFlag(const QColor &color)
 {
-    m_mtFlag=flag;
+    m_mtColor = color;
+    showMtFlag(true);
 }
 
 void KeyboardButton::showMtFlag(bool show)
 {
-    m_showMtFlag=show;
+    m_showMtFlag = show;
+    if(!show) return;
+
+    QString strColor = QString::asprintf("#%02X%02X%02X",m_mtColor.blue(),m_mtColor.green(),m_mtColor.red());
+
+    QString strStyle = QString(R"(
+    QPushButton {
+            color: %1;
+            border: 2px solid %2;
+            background-color: #FBFBFB;
+            padding: 0px 0px;
+            font-size: 14px;
+        }
+    )").arg(strColor,strColor);
+    setStyleSheet(strStyle);
+    update();
 }
 
 void KeyboardButton::setColor(QColor color)
@@ -236,30 +251,45 @@ void KeyboardButton::setColor(QColor color)
 
 void KeyboardButton::paintEvent(QPaintEvent *event)
 {
+    QPainter painter(this);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setBrush(Qt::white);
+    painter.setPen(0xEAEAEA);
+
+    QFont font = painter.font();
+    font.setBold(true);
+    painter.setFont(font);
+    QString strTxt=text().trimmed().replace("&&","&");
+    if(objectName() == "pushButton_Hid082") strTxt="↑";
+    if(objectName() == "pushButton_Hid081") strTxt="↓";
+    if(objectName() == "pushButton_Hid080") strTxt="←";
+    if(objectName() == "pushButton_Hid079") strTxt="→";
+
+    //painter.drawRoundedRect(rect(),14,14);
+    //painter.setPen(Qt::black);
+    //painter.drawText(rect(),Qt::AlignCenter,strTxt);
+
     if(m_colorMode)
     {
-        QPainter painter(this);
-        painter.setRenderHint(QPainter::Antialiasing);
+        m_color.setAlpha(160);
         painter.setBrush(m_color);
         painter.setPen(Qt::white);
-        painter.drawRoundedRect(rect(),18,18);
-        QFont font = painter.font();
-        font.setBold(true);
-        painter.setFont(font);
-        QString strTxt=text().trimmed().replace("&&","&");
-        if(objectName() == "pushButton_Hid082") strTxt="↑";
-        if(objectName() == "pushButton_Hid081") strTxt="↓";
-        if(objectName() == "pushButton_Hid080") strTxt="←";
-        if(objectName() == "pushButton_Hid079") strTxt="→";
+        painter.drawRoundedRect(rect(),14,14);
         painter.drawText(rect(),Qt::AlignCenter,strTxt);
-        return ;
+        return;
     }
 
+    /*if(m_showMtFlag)
+    {
+        painter.setBrush(Qt::NoBrush);
+        QPen mtPen(m_mtColor,1.2,Qt::SolidLine,Qt::RoundCap);
+        mtPen.setCosmetic(true);
+        painter.setPen(mtPen);
+        painter.fillRect(rect(), Qt::white);
+        painter.drawRoundedRect(rect(),14,14);
+        painter.drawText(rect(),Qt::AlignCenter,strTxt);
+        return;
+    }*/
+
     QPushButton::paintEvent(event);
-
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing);
-
-    if(m_showMtFlag)
-        painter.drawImage(0,0,QImage(m_mtFlag));
 }

@@ -30,7 +30,8 @@ public:
     void setSingleMode(bool set=true);
     void setSelectCount(int count=3);
 
-    void setColor(quint8 hid,QColor color);
+    void setColor(quint8 hid,const QColor &color);
+    void setMtColor(quint8 hid,const QColor&color);
     static void Update();
 
     void keepSpeacial();

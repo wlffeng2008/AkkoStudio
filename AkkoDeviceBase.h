@@ -9,7 +9,9 @@ typedef struct {
     quint32 driverId;
     quint16 VID;
     quint16 PID;
-    quint8 type; // 0 keyboard 1 mouse 2 headphone
+    quint8  device;
+    quint8  type; // 0 keyboard 1 mouse 2 headphone
+    quint8  connect;
     QString name;
 } AkkoDeviceInfo;
 

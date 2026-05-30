@@ -54,37 +54,65 @@ FrameMagic::FrameMagic(QWidget *parent)
             btn->setCursor(Qt::PointingHandCursor);
             pBtnGrp->addButton(btn,i);
         }
+
+
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
             ui->stackedWidget->setCurrentIndex(id);
+            ui->frameKeyboard->showMtFlag(id == 2);
         });
+
+        connect(ui->buttonGroupMT,&QButtonGroup::idClicked,this,[=](int id){
+            qDebug() << "buttonGroupMT" << id ;
+            QList<quint32> colors={0x9B9B9B,0x7969F3,0xF369A7,0xC7D827,0xFF8E32,0xBF36FF,0x6B9CFF};
+            m_selColor = colors[abs(id)-2];
+        });
+
+        connect(ui->frameKeyboard,&ModuleKeyboard::onKeyClicked,this,[=](const QString&text,quint8 hid){
+            int page = ui->stackedWidget->currentIndex();
+            if(page == 0)
+            {
+            }
+
+            if(page == 1)
+            {
+            }
+
+            if(page == 2)
+            {
+                QColor color = m_selColor;
+                ui->frameKeyboard->setMtColor(hid,color);
+            }
+        });
+
         ui->pushButtonSet1->click();
         ui->pushButtonSet4->hide();
+        ui->pushButtonMT0->click();
     }
 
     ui->frameDead->setText(tr("顶部死区"),tr("底部死区"));
 
     {
-        static QString strStyle1(R"(
-        QPushButton {
-            border: none;
-            border-radius: 0px;
-            color: black;
-            padding: 0 ;
-            background-color: #E4E4E4;
-                min-width:20px;
-                min-height:20px;
-                max-width:20px;
-                max-height:20px;
-                icon-size: 20px;
-            }
+        // static QString strStyle1(R"(
+        // QPushButton {
+        //     border: none;
+        //     border-radius: 0px;
+        //     color: black;
+        //     padding: 0 ;
+        //     background-color: #E4E4E4;
+        //         min-width:20px;
+        //         min-height:20px;
+        //         max-width:20px;
+        //         max-height:20px;
+        //         icon-size: 20px;
+        //     }
 
-            QPushButton:hover { background-color: #E4E4E4;}
+        //     QPushButton:hover { background-color: #E4E4E4;}
 
-            )");
-        ui->pushButtonM1->setStyleSheet(strStyle1);
-        ui->pushButtonM2->setStyleSheet(strStyle1);
-        ui->pushButtonP1->setStyleSheet(strStyle1);
-        ui->pushButtonP2->setStyleSheet(strStyle1);
+        //     )");
+        // ui->pushButtonM1->setStyleSheet(strStyle1);
+        // ui->pushButtonM2->setStyleSheet(strStyle1);
+        // ui->pushButtonP1->setStyleSheet(strStyle1);
+        // ui->pushButtonP2->setStyleSheet(strStyle1);
 
         ui->horizontalSlider2->setStyleSheet(R"(
         QSlider::sub-page:horizontal { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #C3FFFD, stop:1 #39E1DC);  border-radius: 6px;}

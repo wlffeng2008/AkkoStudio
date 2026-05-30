@@ -33,7 +33,7 @@ class KeyboardButton : public QPushButton
 
 public:
     KeyboardButton(QWidget *parent);
-    void setMtFlag(const QString&flag);
+    void setMtFlag(const QColor&color);
     void showMtFlag(bool show=true);
     void setColor(QColor color);
 
@@ -45,7 +45,7 @@ protected:
     bool event(QEvent *event) override;
 
 private:
-    QString m_mtFlag;
+    QColor m_mtColor=0x9B9B9B;
     bool m_showMtFlag=false;
     bool m_firstShow=true;
     bool m_colorMode=false;

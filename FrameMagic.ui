@@ -137,7 +137,8 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{background-color:#EAEAEA;border:1px solid #6329B6;border-radius:18px;color:black;min-height:34px;}
+QPushButton:checked{background-color:#6329B6;color:white;}</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Shape::NoFrame</enum>
@@ -168,6 +169,12 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
           <widget class="QPushButton" name="pushButtonSet1">
            <property name="text">
             <string>行程设置</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -290,7 +297,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
                 <item>
                  <widget class="NewTabWidget" name="tabWidget">
                   <property name="currentIndex">
-                   <number>3</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="tab1">
                    <attribute name="title">
@@ -315,7 +322,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="1,1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="3,5">
                   <item>
                    <widget class="QLabel" name="label_2">
                     <property name="text">
@@ -432,7 +439,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <rect>
                <x>30</x>
                <y>62</y>
-               <width>886</width>
+               <width>870</width>
                <height>2</height>
               </rect>
              </property>
@@ -465,6 +472,9 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
                <bold>true</bold>
               </font>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::FocusPolicy::NoFocus</enum>
              </property>
@@ -495,7 +505,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <rect>
                <x>30</x>
                <y>182</y>
-               <width>927</width>
+               <width>872</width>
                <height>29</height>
               </rect>
              </property>
@@ -561,7 +571,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <rect>
                <x>30</x>
                <y>12</y>
-               <width>883</width>
+               <width>850</width>
                <height>41</height>
               </rect>
              </property>
@@ -836,7 +846,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <rect>
                <x>30</x>
                <y>80</y>
-               <width>904</width>
+               <width>874</width>
                <height>29</height>
               </rect>
              </property>
@@ -919,6 +929,9 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
                <bold>true</bold>
               </font>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::FocusPolicy::NoFocus</enum>
              </property>
@@ -948,7 +961,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
              <property name="geometry">
               <rect>
                <x>198</x>
-               <y>130</y>
+               <y>126</y>
                <width>30</width>
                <height>30</height>
               </rect>
@@ -969,12 +982,12 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <bool>false</bool>
              </property>
             </widget>
-            <widget class="QWidget" name="">
+            <widget class="QWidget" name="layoutWidget">
              <property name="geometry">
               <rect>
                <x>30</x>
                <y>220</y>
-               <width>463</width>
+               <width>446</width>
                <height>83</height>
               </rect>
              </property>
@@ -1152,12 +1165,12 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="">
+            <widget class="QWidget" name="layoutWidget">
              <property name="geometry">
               <rect>
-               <x>514</x>
+               <x>496</x>
                <y>218</y>
-               <width>442</width>
+               <width>404</width>
                <height>85</height>
               </rect>
              </property>
@@ -1187,7 +1200,10 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
                 <property name="frameShadow">
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,1,0,0">
+                 <property name="spacing">
+                  <number>10</number>
+                 </property>
                  <property name="leftMargin">
                   <number>2</number>
                  </property>
@@ -1406,7 +1422,7 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
               <enum>Qt::FocusPolicy::NoFocus</enum>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton{background-color:#6329B6;border:1px solid #6329B6;border-radius:13px;color:white;}</string>
+              <string notr="true">QPushButton{background-color:#6329B6;border:1px solid #6329B6;border-radius:20px;color:white;}</string>
              </property>
              <property name="text">
               <string>确定</string>
@@ -1431,9 +1447,9 @@ QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</
                  <number>15</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButton">
+                 <widget class="QPushButton" name="pushButtonMT0">
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:1px solid #E2E2E2;border-radius:16px;background-color:white;}
+                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
 QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="text">
@@ -1462,7 +1478,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
+                   <string notr="true">buttonGroupMT</string>
                   </attribute>
                  </widget>
                 </item>
@@ -1481,9 +1497,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  <number>15</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButton_4">
+                 <widget class="QPushButton" name="pushButtonMT1">
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:1px solid #E2E2E2;border-radius:16px;background-color:white;}
+                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
 QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="text">
@@ -1509,7 +1525,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
+                   <string notr="true">buttonGroupMT</string>
                   </attribute>
                  </widget>
                 </item>
@@ -1528,9 +1544,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  <number>15</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButton_5">
+                 <widget class="QPushButton" name="pushButtonMT2">
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:1px solid #E2E2E2;border-radius:16px;background-color:white;}
+                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
 QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="text">
@@ -1556,7 +1572,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
+                   <string notr="true">buttonGroupMT</string>
                   </attribute>
                  </widget>
                 </item>
@@ -1575,9 +1591,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  <number>15</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButton_6">
+                 <widget class="QPushButton" name="pushButtonMT3">
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:1px solid #E2E2E2;border-radius:16px;background-color:white;}
+                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
 QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="text">
@@ -1603,7 +1619,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
+                   <string notr="true">buttonGroupMT</string>
                   </attribute>
                  </widget>
                 </item>
@@ -1622,9 +1638,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  <number>15</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButton_7">
+                 <widget class="QPushButton" name="pushButtonMT4">
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:1px solid #E2E2E2;border-radius:16px;background-color:white;}
+                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
 QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="text">
@@ -1650,7 +1666,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
+                   <string notr="true">buttonGroupMT</string>
                   </attribute>
                  </widget>
                 </item>
@@ -1669,9 +1685,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  <number>15</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButton_10">
+                 <widget class="QPushButton" name="pushButtonMT5">
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:1px solid #E2E2E2;border-radius:16px;background-color:white;}
+                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
 QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="text">
@@ -1697,7 +1713,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
+                   <string notr="true">buttonGroupMT</string>
                   </attribute>
                  </widget>
                 </item>
@@ -1716,9 +1732,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  <number>15</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButton_11">
+                 <widget class="QPushButton" name="pushButtonMT6">
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:1px solid #E2E2E2;border-radius:16px;background-color:white;}
+                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
 QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="text">
@@ -1744,7 +1760,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
+                   <string notr="true">buttonGroupMT</string>
                   </attribute>
                  </widget>
                 </item>
@@ -1845,6 +1861,6 @@ QPushButton:checked { border-color: #6329B6; }</string>
  <buttongroups>
   <buttongroup name="buttonGroup_3"/>
   <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroupMT"/>
  </buttongroups>
 </ui>

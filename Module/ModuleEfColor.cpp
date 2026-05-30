@@ -182,7 +182,6 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
             m_sideS = abs(id) - 2;
             setSideLed();
         });
-
     }
 }
 

@@ -49,7 +49,7 @@
         <number>10</number>
        </property>
        <property name="bottomMargin">
-        <number>20</number>
+        <number>25</number>
        </property>
        <item>
         <widget class="QLabel" name="labelLogo">
@@ -393,7 +393,7 @@ background:transparent;</string>
                <x>0</x>
                <y>0</y>
                <width>1170</width>
-               <height>469</height>
+               <height>464</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">

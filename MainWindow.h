@@ -103,6 +103,7 @@ private:
     QDialog *m_pFloatReturn = nullptr;
 
     int m_creator = 0;
+    bool m_bEnuming=false;
     int m_showId = 0;
     QString m_showPath;
     QList<DeviceEnumInfo *> m_tmp;

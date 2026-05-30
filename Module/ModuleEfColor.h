@@ -38,7 +38,7 @@ protected:
     {
         //QStyledItemDelegate::paint(painter,option,index) ;
 
-        painter->save() ;
+        painter->save();
 
         QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
         QStandardItem *item = pModel->item(index.row(),index.column()) ;
