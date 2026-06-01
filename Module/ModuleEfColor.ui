@@ -77,7 +77,7 @@
          </property>
         </spacer>
        </item>
-       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+       <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignBottom">
         <widget class="QTableView" name="tableView">
          <property name="minimumSize">
           <size>
@@ -653,7 +653,7 @@
         <item>
          <widget class="QLabel" name="label_11">
           <property name="text">
-           <string>颜色：</string>
+           <string>色彩：</string>
           </property>
          </widget>
         </item>
@@ -694,7 +694,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>自定义色彩</string>
+           <string>自定义</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -954,9 +954,9 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupE"/>
-  <buttongroup name="buttonGroupL"/>
   <buttongroup name="buttonGroupC"/>
+  <buttongroup name="buttonGroupL"/>
   <buttongroup name="buttonGroupS"/>
+  <buttongroup name="buttonGroupE"/>
  </buttongroups>
 </ui>

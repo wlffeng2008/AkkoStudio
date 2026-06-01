@@ -10,6 +10,9 @@
     <height>900</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::FocusPolicy::StrongFocus</enum>
+  </property>
   <property name="windowTitle">
    <string notr="true">MainWindow</string>
   </property>

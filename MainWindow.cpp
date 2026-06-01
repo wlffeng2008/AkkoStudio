@@ -471,8 +471,7 @@ MainWindow::MainWindow(QWidget *parent)
     QString strExe1 = strRoot + "/RyExe/AkkoCloudDriver.exe";
     QString strExe2 = strRoot + "/JmExe/Akko-Gaming-Bub.exe";
     QString strExe3 = strRoot + "/ByExe/Akko-BY.exe";
-    if(m_bForMGK)
-        strExe1 = strRoot + "/MgExe/MonsGeekDriver.exe";
+    if(m_bForMGK) strExe1 = strRoot + "/MgExe/MonsGeekDriver.exe";
 
     HideStartProcess(strExe0);
     HideStartProcess(strExe1);
@@ -688,7 +687,7 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
     FrameDeviceShow *pFrmDS = FrameDeviceShow::getFrameShow(index, this);
     pFrmDS->m_sa = ui->scrollArea;
     pFrmDS->setDevieInfo(pDevInfo);
-    pFrmDS->show();
+   pFrmDS->show();
 
     if(m_layout->indexOf(pFrmDS) < 0)
         m_layout->addWidget(pFrmDS);
@@ -893,6 +892,7 @@ void MainWindow::enumDevice()
     if(m_bEnuming) return;
     if((isMinimized() || isHidden()) && !m_hCurHwnd)
         return;
+    qDebug() <<  "enumDevice";
 
     m_bEnuming = true;
     QStringList allPaths;
@@ -1166,6 +1166,7 @@ void MainWindow::enumDevice()
                             driverId = 14;
                             if(device == 5) driverId = 13;
                             if(device == 1) driverId = 21;
+                            if(device == 2) driverId = 27;
                             break;
 
                         case 0x0026:connectType = 1;
@@ -1200,8 +1201,7 @@ void MainWindow::enumDevice()
                             break;
 
                         case 0x0008:connectType = 1;
-                        case 0x0007:
-                            driverId = 11;
+                        case 0x0007: driverId = 11;
                             break;
 
                         case 0x22b5:connectType = 1;
@@ -1343,8 +1343,9 @@ void MainWindow::changeEvent(QEvent *pEvt)
 
 void MainWindow::showEvent(QShowEvent *event)
 {
-    //setAttribute(Qt::WA_Mapped);
+    setAttribute(Qt::WA_Mapped);
 
+    qDebug()<< "MainWindow::showEvent";
     //this->showNormal();
     //this->raise();
     //this->activateWindow();
@@ -1474,6 +1475,16 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
 
 bool MainWindow::event(QEvent *event)
 {
+    if (event->type() == QEvent::NonClientAreaMouseMove)
+    {
+        QMouseEvent *me = static_cast<QMouseEvent*>(event);
+        qDebug() << "非客户区鼠标移动：" << me->globalPos();
+        event->accept(); // 处理掉，避免 Qt 默认忽略
+        //SetActiveWindow(this->window()->activateWindow());
+        activateWindow();
+        return true;
+    }
+
     if(event->type() == QEvent::Leave)
     {
         QTimer::singleShot(100,this,[=]{
