@@ -22,6 +22,7 @@ private:
     Ui::FrameMagic *ui;
 
     QColor m_selColor;
+    quint8 m_mtType=0;
 };
 
 #endif // FRAMEMAGIC_H

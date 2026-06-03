@@ -18,7 +18,7 @@ public:
     QColor m_color;
     QString m_HexColor;
 
-    void showPostion(int x=-1, int y=-1);
+    void showPostion(int x = -1, int y = -1);
     void showPoint(const QPoint &point);
 
 signals:

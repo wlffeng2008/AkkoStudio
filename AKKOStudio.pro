@@ -29,7 +29,7 @@ win32 {
 }
 
 LIBS += -L$$PWD -lhidapi
-
+LIBS += -lgdi32
 INCLUDEPATH += ./Module
 
 

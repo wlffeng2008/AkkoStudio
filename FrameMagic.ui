@@ -178,14 +178,14 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="pushButtonSet2">
            <property name="text">
             <string>RT设定</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="pushButtonSet3">
            <property name="text">
             <string>轴体设置</string>
@@ -248,7 +248,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>1</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
@@ -1457,7 +1457,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="icon">
                    <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/xingyinli.png</normaloff>:/images/rt/xingyinli.png</iconset>
+                    <normaloff>:/images/rt/mtico09.png</normaloff>:/images/rt/mtico09.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -1483,9 +1483,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_17">
+                 <widget class="QLabel" name="labelName0">
                   <property name="text">
-                   <string>星引力</string>
+                   <string>炫光</string>
                   </property>
                  </widget>
                 </item>
@@ -1507,7 +1507,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="icon">
                    <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/xingyao.png</normaloff>:/images/rt/xingyao.png</iconset>
+                    <normaloff>:/images/rt/mtico10.png</normaloff>:/images/rt/mtico10.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -1530,9 +1530,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_18">
+                 <widget class="QLabel" name="labelName1">
                   <property name="text">
-                   <string>星耀</string>
+                   <string>闪电</string>
                   </property>
                  </widget>
                 </item>
@@ -1554,7 +1554,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="icon">
                    <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/shandian.png</normaloff>:/images/rt/shandian.png</iconset>
+                    <normaloff>:/images/rt/mtico14.png</normaloff>:/images/rt/mtico14.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -1577,9 +1577,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_19">
+                 <widget class="QLabel" name="labelName2">
                   <property name="text">
-                   <string>闪电</string>
+                   <string>星芒磁轴</string>
                   </property>
                  </widget>
                 </item>
@@ -1601,7 +1601,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="icon">
                    <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/ciyu_pro.png</normaloff>:/images/rt/ciyu_pro.png</iconset>
+                    <normaloff>:/images/rt/mtico01.png</normaloff>:/images/rt/mtico01.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -1624,9 +1624,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_20">
+                 <widget class="QLabel" name="labelName3">
                   <property name="text">
-                   <string>磁玉Pro</string>
+                   <string>磁玉</string>
                   </property>
                  </widget>
                 </item>
@@ -1648,7 +1648,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="icon">
                    <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/ciyu_gaming.png</normaloff>:/images/rt/ciyu_gaming.png</iconset>
+                    <normaloff>:/images/rt/mtico02.png</normaloff>:/images/rt/mtico02.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -1671,9 +1671,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_21">
+                 <widget class="QLabel" name="labelName4">
                   <property name="text">
-                   <string>磁玉Gaming</string>
+                   <string>磁玉Pro</string>
                   </property>
                  </widget>
                 </item>
@@ -1695,7 +1695,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="icon">
                    <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/tianwang.png</normaloff>:/images/rt/tianwang.png</iconset>
+                    <normaloff>:/images/rt/mtico03.png</normaloff>:/images/rt/mtico03.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -1718,9 +1718,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_22">
+                 <widget class="QLabel" name="labelName5">
                   <property name="text">
-                   <string>天王</string>
+                   <string>磁玉Gaming</string>
                   </property>
                  </widget>
                 </item>
@@ -1742,7 +1742,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                   </property>
                   <property name="icon">
                    <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/wanciwang.png</normaloff>:/images/rt/wanciwang.png</iconset>
+                    <normaloff>:/images/rt/mtico06.png</normaloff>:/images/rt/mtico06.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -1765,7 +1765,54 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_23">
+                 <widget class="QLabel" name="labelName6">
+                  <property name="text">
+                   <string>天王</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_14">
+                <property name="spacing">
+                 <number>15</number>
+                </property>
+                <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                 <widget class="QPushButton" name="pushButtonMT7">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="res.qrc">
+                    <normaloff>:/images/rt/mtico05.png</normaloff>:/images/rt/mtico05.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>64</width>
+                    <height>64</height>
+                   </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupMT</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                 <widget class="QLabel" name="labelName7">
                   <property name="text">
                    <string>万磁王</string>
                   </property>
@@ -1831,6 +1878,12 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </widget>
  <customwidgets>
   <customwidget>
+   <class>NewTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header location="global">newtabwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>ToggleButton</class>
    <extends>QCheckBox</extends>
    <header>togglebutton.h</header>
@@ -1839,12 +1892,6 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <class>ModuleKeyboard</class>
    <extends>QFrame</extends>
    <header>modulekeyboard.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>NewTabWidget</class>
-   <extends>QTabWidget</extends>
-   <header location="global">newtabwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -1859,8 +1906,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroupMT"/>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_3"/>
  </buttongroups>
 </ui>

@@ -468,7 +468,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 m_tmp0[pCmd[4]].append(data);
                 break;
             case CMD_GET_FN:
-                m_tmp1[pCmd[4]].append(data);
+                m_tmp1[pCmd[2]].append(data);
                 break;
 
             case CMD_GET_SLEEPTIME:
@@ -567,7 +567,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     connect(m_pRdInput,&QTimer::timeout,this,[=]{
         m_pRdInput->stop();
         char buf[1024] = {0};
-        if(m_pDev0)
+        if(m_pDev0  && !m_bReadAll)
         {
             int nlen = hid_read(m_pDev0,(quint8 *)buf,64);
 
@@ -578,8 +578,8 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 addLog(data);
                 if(data[0] == 0x05 || data[1] == 0x04)
                 {
-                    if(data[2] == 0x16) m_bSendMusic=true;
-                    addReadCmd(CMD_GET_LEDPARAM,true);
+                    //if(data[2] == 0x16) m_bSendMusic=true;
+                    //addReadCmd(CMD_GET_LEDPARAM,true);
                 }
             }
         }
@@ -614,6 +614,8 @@ void DialogDeviceConnect::DoConnectDevice(quint16 PID, bool bleMode, const QStri
 
 void DialogDeviceConnect::readAllData()
 {
+   emit onReadAll();
+
     m_bReadAll=true;
     m_bSendMusic=false;
     m_cmdList.clear();
@@ -661,9 +663,9 @@ void DialogDeviceConnect::readAllData()
 
     for(quint8 number=0; number<1; number++) // number;
     {
-        for(quint8 index=0; index<2; index ++)
+        for(quint8 index=0; index<1; index ++)
         {
-            for(quint8 page=0; page<8; page++) // page
+            for(quint8 page=0; page<10; page++) // page
             {
                 quint8 tmp[8] = {CMD_GET_FN,number,index,0xFF,page, 0,0,0};
                 QByteArray cmd((char *)tmp,8);
@@ -953,7 +955,7 @@ void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, q
 void DialogDeviceConnect::changeKeyFn(quint8 hid,  keyData *pDk, quint8 subLayer, quint8 save)
 {
     quint8 index=getIndex(hid);
-    quint8 pack[12] = {CMD_SET_FN, 0, 0,  index, 0, 0, 1,  0, pDk->b0, pDk->b1, pDk->b2, pDk->b3};
+    quint8 pack[12] = {CMD_SET_FN, 0, 0,  index, 0, 0, 0,  0, pDk->b0, pDk->b1, pDk->b2, pDk->b3};
     QByteArray snd((char*)pack,12);
     addReadCmd(snd,true);
 

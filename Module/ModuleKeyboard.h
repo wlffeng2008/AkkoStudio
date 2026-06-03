@@ -25,8 +25,8 @@ public:
     void setKeyEnable(const QString&objname, bool bEnable, bool bToDevice, bool bSetToAll=false) ;
     void setLightMode();
 
-    void setKeyTip(const QString&objname,const QString&strTip1,const QString&strTip2,bool bSetToAll=true);
-    void setKeyTip(quint8 hid,const QString&strTip1,const QString&strTip2,bool bSetToAll=true);
+    void setKeyTip(const QString&objname,const QString&strTip1="",const QString&strTip2="",bool bSetToAll=true);
+    void setKeyTip(quint8 hid,const QString&strTip1="",const QString&strTip2="",bool bSetToAll=true);
     void setSingleMode(bool set=true);
     void setSelectCount(int count=3);
 

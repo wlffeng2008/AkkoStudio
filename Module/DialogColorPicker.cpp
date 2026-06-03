@@ -70,22 +70,15 @@ DialogColorPicker::DialogColorPicker(QWidget *parent)
         if(lastPos == cursorPos)
             return;
 
-        if(abs(lastPos.x() - cursorPos.x()) < 8 ||
-           abs(lastPos.y() - cursorPos.y()) < 8)
-            return;
         lastPos = cursorPos;
 
         int x = cursorPos.x() - m_picker->width()/2;
         int y = cursorPos.y() - m_picker->width()/2;
-        // 防止窗口超出屏幕边界
-        //x = qMin(x, QApplication::desktop()->width() - this->width());
-        //y = qMin(y, QApplication::desktop()->height() - this->height());
 
         QScreen* primaryScreen = QGuiApplication::primaryScreen();
-        m_image = primaryScreen->grabWindow(0,  cursorPos.x()-8, cursorPos.y()-8, 16,16).toImage();
+        m_image = primaryScreen->grabWindow(0,  cursorPos.x(), cursorPos.y(), 1,1).toImage();
 
-        qDebug() << m_image.pixelColor(7,7);
-        ui->framePad->colorSelected(m_image.pixelColor(7,7));
+        ui->framePad->colorSelected(m_image.pixelColor(0,0));
         m_picker->move(x,y);
         m_picker->update();
     });

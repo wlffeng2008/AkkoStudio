@@ -5,6 +5,7 @@
 #include <QButtonGroup>
 
 #include "keyboardbutton.h"
+#include "DialogDeviceConnect.h"
 
 FrameMagic::FrameMagic(QWidget *parent)
     : QFrame(parent)
@@ -19,7 +20,7 @@ FrameMagic::FrameMagic(QWidget *parent)
                 width: 120px;
                 max-height: 32px;
                 min-height: 32px;
-                border-radius: 16px ;
+                border-radius: 16px;
                 font-size:18px;
 
                 padding-left: 25px;
@@ -55,16 +56,42 @@ FrameMagic::FrameMagic(QWidget *parent)
             pBtnGrp->addButton(btn,i);
         }
 
+        DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
+
+        static QList<quint32> colors = {0x9B9B9B, 0x7969F3, 0xF369A7, 0xC7D827, 0xFF8E32, 0xBF36FF, 0x6B9CFF, 0x2E2EB9, 0x47CA3B, 0x6969F3, 0x2FC1F3, 0x870339, 0x206599, 0xFF6D6B, 0x363636, 0x2258A9, 0x149819};
+
+        static QList<quint32> typeIds = {0,1,2,3,4,5,7,15,24,25,31,63,71,72,95,118};
+
+        static QStringList names = {tr("高特"),tr("磁玉"),tr("磁玉pro"),tr("磁玉gaming"),tr("天王"),tr("万磁王"),tr("机械轴"),tr("凯华轴"),tr("星引力"),tr("炫光"),tr("闪电"),tr("星耀"),tr("矮磁轴","冠泰轴"),tr("星芒磁轴"),tr("白泽轴"),tr("自定义")};
 
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
             ui->stackedWidget->setCurrentIndex(id);
+
+            if(id == 2)
+            {
+                for(int i=0; i<128; i++)
+                {
+                    quint8 hid = ::getHid(i);
+                    quint8 type= pCnn->get65Value(0xFC,i);
+                    qDebug()<<i << hid << type;
+                    //if(type > 6) type = 0;
+                    int index = typeIds.indexOf(type);
+                    if(index < 0) index = 0;
+                    ui->frameKeyboard->setMtColor(hid,colors[index]);
+                }
+            }
             ui->frameKeyboard->showMtFlag(id == 2);
         });
 
+
         connect(ui->buttonGroupMT,&QButtonGroup::idClicked,this,[=](int id){
-            qDebug() << "buttonGroupMT" << id ;
-            QList<quint32> colors={0x9B9B9B,0x7969F3,0xF369A7,0xC7D827,0xFF8E32,0xBF36FF,0x6B9CFF};
-            m_selColor = colors[abs(id)-2];
+            qDebug() << "buttonGroupMT" << id;
+            QList<quint32> types = {25,31,95,1,2,3,4,5};
+            m_mtType = types[abs(id)-2];
+
+            int index = typeIds.indexOf(m_mtType);
+            if(index < 0) index = 0;
+            m_selColor = colors[index];
         });
 
         connect(ui->frameKeyboard,&ModuleKeyboard::onKeyClicked,this,[=](const QString&text,quint8 hid){
@@ -81,6 +108,7 @@ FrameMagic::FrameMagic(QWidget *parent)
             {
                 QColor color = m_selColor;
                 ui->frameKeyboard->setMtColor(hid,color);
+                pCnn->send65Cmd(0xFC,hid,m_mtType,true);
             }
         });
 
@@ -180,14 +208,14 @@ FrameMagic::FrameMagic(QWidget *parent)
         connect(ui->pushButtonM2,&QPushButton::pressed,this,[=]{
             int value = ui->horizontalSlider2->value() - 5;
             ui->horizontalSlider2->setValue(value);
-        }) ;
+        });
 
         ui->pushButtonP2->setAutoRepeat(true);
         ui->pushButtonP2->setAutoRepeatInterval(100);
         connect(ui->pushButtonP2,&QPushButton::pressed,this,[=]{
             int value = ui->horizontalSlider2->value() + 5;
             ui->horizontalSlider2->setValue(value);
-        }) ;
+        });
 
         connect(ui->lineEditValue2,&QLineEdit::textEdited,this,[=](const QString&text){
             pTMUpdate2->stop();
@@ -223,9 +251,9 @@ FrameMagic::FrameMagic(QWidget *parent)
     ui->frameKeyboard->showMtFlag();
 }
 
-bool FrameMagic::eventFilter(QObject*watched,QEvent*event)
+bool FrameMagic::eventFilter(QObject *watched, QEvent *event)
 {
-    return QFrame::eventFilter(watched,event);
+    return QFrame::eventFilter(watched, event);
 }
 
 FrameMagic::~FrameMagic()

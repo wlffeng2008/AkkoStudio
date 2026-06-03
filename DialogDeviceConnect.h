@@ -176,6 +176,7 @@ signals:
     void onReadBack(const QByteArray&data);
     void onGetPictrue(const QByteArray&data);
     void onUpdataLayer(int layer);
+    void onReadAll();
     void onReadDone();
     void onCalibration(const QByteArray&data);
 

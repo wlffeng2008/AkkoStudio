@@ -86,6 +86,7 @@ private:
     AkkoDeviceEnum *m_Enum = nullptr;
 
     bool m_bForMGK = false;
+    bool m_bManHide = false;
 
     QLayout *m_layout = nullptr;
 
@@ -93,6 +94,7 @@ private:
     bool m_dragging = false;
     bool m_closeShow = false;
     bool m_bActive = true;
+    bool m_bReadAll=false;
 
     QSystemTrayIcon *trayIcon = nullptr;
     QSettings *m_pSet = nullptr;

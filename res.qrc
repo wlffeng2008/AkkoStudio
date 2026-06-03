@@ -153,13 +153,6 @@
         <file>images/macro/fn0/zanting.png</file>
         <file>images/macro/fn0/houtui.png</file>
         <file>images/macro/fn1/shuaxin.png</file>
-        <file>images/rt/ciyu_gaming.png</file>
-        <file>images/rt/ciyu_pro.png</file>
-        <file>images/rt/shandian.png</file>
-        <file>images/rt/tianwang.png</file>
-        <file>images/rt/wanciwang.png</file>
-        <file>images/rt/xingyao.png</file>
-        <file>images/rt/xingyinli.png</file>
         <file>images/rt/zhouti.png</file>
         <file>images/k/icon_helping.png</file>
         <file>images/k/icon_lightning.png</file>
@@ -197,5 +190,21 @@
         <file>images/dev/batt-75.png</file>
         <file>images/pickup.png</file>
         <file>images/pickup2.png</file>
+        <file>images/rt/mtico00.png</file>
+        <file>images/rt/mtico01.png</file>
+        <file>images/rt/mtico02.png</file>
+        <file>images/rt/mtico03.png</file>
+        <file>images/rt/mtico04.png</file>
+        <file>images/rt/mtico05.png</file>
+        <file>images/rt/mtico06.png</file>
+        <file>images/rt/mtico07.png</file>
+        <file>images/rt/mtico08.png</file>
+        <file>images/rt/mtico09.png</file>
+        <file>images/rt/mtico10.png</file>
+        <file>images/rt/mtico11.png</file>
+        <file>images/rt/mtico12.png</file>
+        <file>images/rt/mtico13.png</file>
+        <file>images/rt/mtico14.png</file>
+        <file>images/rt/mtico15.png</file>
     </qresource>
 </RCC>

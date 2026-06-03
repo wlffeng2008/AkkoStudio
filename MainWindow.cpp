@@ -12,6 +12,7 @@
 #include "FrameSystemInfo.h"
 #include "AkkoDeviceEnum.h"
 
+
 #include <QLayout>
 #include <QMouseEvent>
 #include <QPainter>
@@ -464,8 +465,9 @@ MainWindow::MainWindow(QWidget *parent)
     killProcess("Akko-Gaming-Bub.exe");
     killProcess("AkkoCloudDriver.exe");
     QString strRoot = QApplication::applicationDirPath();
-    QDir E(QApplication::applicationDirPath() + "/RyExe");
-    if(!E.exists()) strRoot += "/..";
+    QDir EDir(strRoot + "/RyExe");
+    if(!EDir.exists()) strRoot += "/..";
+    QFile::rename(strRoot + "/WsExe/Akko.exe",strRoot + "/WsExe/Akko-WS.exe");
 
     QString strExe0 = strRoot + "/WsExe/Akko-WS.exe";
     QString strExe1 = strRoot + "/RyExe/AkkoCloudDriver.exe";
@@ -503,7 +505,7 @@ MainWindow::MainWindow(QWidget *parent)
             if(hWnd)
             {
                 s_hWndEmb[0] = hWnd;
-                qDebug() << "Find RY ---------------";
+                qDebug() << "Found RY ---------------";
                 ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
@@ -519,12 +521,8 @@ MainWindow::MainWindow(QWidget *parent)
             if(hWnd)
             {
                 s_hWndEmb[1] = hWnd;
-                qDebug() << "Find WS ---------------";
-                //::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000);
-                //::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
-                //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
+                qDebug() << "Found WS ---------------";
                 ::ShowWindow(hWnd,SW_HIDE);
-                //::SetParent(hWnd,hParentWnd);
             }
         }
 
@@ -533,7 +531,7 @@ MainWindow::MainWindow(QWidget *parent)
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("bytech").utf16());
             if(hWnd)
             {
-                qDebug() << "Find BY ---------------";
+                qDebug() << "Found BY ---------------";
                 s_hWndEmb[2] = hWnd;
                 ::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
                 ::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
@@ -548,13 +546,9 @@ MainWindow::MainWindow(QWidget *parent)
             HWND hWnd = ::FindWindow(nullptr, (LPCWSTR)QString("Akko-Gaming-Bub").utf16());
             if(hWnd)
             {
-                qDebug() << "Find JM ---------------";
+                qDebug() << "Found JM ---------------";
                 s_hWndEmb[3] = hWnd;
-                //::SetWindowLongPtr(hWnd, GWL_STYLE, 0x960a0000|WS_CHILD);
-                //::SetWindowLongPtr(hWnd, GWL_EXSTYLE, 0x80000);
-                //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_HIDEWINDOW | SWP_NOSIZE);
                 ::ShowWindow(hWnd,SW_HIDE);
-                //::SetParent(hWnd,hParentWnd);
             }
         }
 
@@ -591,8 +585,11 @@ MainWindow::MainWindow(QWidget *parent)
         trayMenu->addAction(exitAction);
 
         connect(exitAction, &QAction::triggered, this, &QApplication::quit);
-        connect(showAction, &QAction::triggered, this, &QMainWindow::showNormal);
-        connect(hideAction, &QAction::triggered, this, &QMainWindow::hide);
+        connect(showAction, &QAction::triggered, this, &QMainWindow::show);
+        connect(hideAction, &QAction::triggered, this, [=]{
+            hide();
+            m_bManHide=true;
+        });
         trayIcon->setContextMenu(trayMenu);
 
         updateDeviceInfo();
@@ -610,14 +607,19 @@ MainWindow::MainWindow(QWidget *parent)
         ui->frameHold->updateLayer(layer);
     });
 
-    QTimer::singleShot(500,this,[=]{
-        ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    connect(pCnn,&DialogDeviceConnect::onReadAll,this,[=]{
+        m_bReadAll=true;
     });
-    QTimer::singleShot(2000,this,[=]{
-        ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    connect(pCnn,&DialogDeviceConnect::onReadDone,this,[=]{
+        m_bReadAll=false;
     });
 
-    setHubSize(true);
+    // QTimer::singleShot(500,this,[=]{
+    //     ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    // });
+    // QTimer::singleShot(2000,this,[=]{
+    //     ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    // });
 
     QTimer *pTMMonitor = new QTimer(this);
     pTMMonitor->start(500);
@@ -629,7 +631,7 @@ MainWindow::MainWindow(QWidget *parent)
             scaleFactor = scale;
             if(scaleFactor == 0 || scaleFactor == 2)
             {
-                HWND hWnd = s_hWndEmb[m_creator];
+                //HWND hWnd = s_hWndEmb[m_creator];
                 //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
             }
         }
@@ -680,6 +682,8 @@ MainWindow::MainWindow(QWidget *parent)
 
         m_layout->setSpacing(20);
     }
+
+    setHubSize(true);
 }
 
 void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
@@ -687,7 +691,7 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
     FrameDeviceShow *pFrmDS = FrameDeviceShow::getFrameShow(index, this);
     pFrmDS->m_sa = ui->scrollArea;
     pFrmDS->setDevieInfo(pDevInfo);
-   pFrmDS->show();
+    pFrmDS->show();
 
     if(m_layout->indexOf(pFrmDS) < 0)
         m_layout->addWidget(pFrmDS);
@@ -814,12 +818,12 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
 
                 QTimer::singleShot(100,this,[=]{
                     hide();
-                    ::SetWindowPos(hWnd, HWND_TOP, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
+                    ::SetWindowPos(hWnd, HWND_TOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
                 });
 
                 QTimer::singleShot(1500,this,[=]{
                     hide();
-                    ::SetWindowPos(hWnd, HWND_TOP, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
+                    ::SetWindowPos(hWnd, HWND_NOTOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
                     ::BringWindowToTop(hWnd);
                     ::SetActiveWindow(hWnd);
                     ::SetFocus(hWnd);
@@ -827,7 +831,23 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
             }
             else
             {
-                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
+                int nWidth  = ui->frameEmb->width() *scaleFactor+1;
+                int nHeight = ui->frameEmb->height()*scaleFactor+1;
+                ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, nWidth, nHeight, SWP_SHOWWINDOW);
+
+                HRGN hFullRound = CreateRoundRectRgn(0, 0, nWidth, nHeight,32,32);
+                HRGN hTopRect0 = CreateRectRgn(0, 0, nWidth, nHeight);
+                HRGN hTopRect1 = CreateRectRgn(0, 0, nWidth, 32);
+
+                HRGN hFinalRgn = CreateRectRgn(0, 0, 0, 0);
+                ::CombineRgn(hFinalRgn, hFullRound, hTopRect0, RGN_AND);
+                ::CombineRgn(hFinalRgn, hFinalRgn, hTopRect1, RGN_OR);
+
+                ::SetWindowRgn(hWnd, hFinalRgn, TRUE);
+
+                ::DeleteObject(hFullRound);
+                ::DeleteObject(hTopRect0);
+                ::DeleteObject(hTopRect1);
             }
 
             ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
@@ -892,7 +912,10 @@ void MainWindow::enumDevice()
     if(m_bEnuming) return;
     if((isMinimized() || isHidden()) && !m_hCurHwnd)
         return;
-    qDebug() <<  "enumDevice";
+    if(m_bReadAll)
+        return;
+
+    qDebug() << "MainWindow::enumDevice()";
 
     m_bEnuming = true;
     QStringList allPaths;
@@ -1347,8 +1370,11 @@ void MainWindow::showEvent(QShowEvent *event)
 
     qDebug()<< "MainWindow::showEvent";
     //this->showNormal();
-    //this->raise();
-    //this->activateWindow();
+    this->raise();
+    this->activateWindow();
+    if(m_bManHide)
+        m_pSet->setValue("AkkoReturn",1);
+    m_bManHide = false;
 
     QMainWindow::showEvent(event);
 }
@@ -1395,7 +1421,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
 
         if (m_pFloatReturn == obj)
         {
-            this->show();
             m_pFloatReturn->hide();
             ui->stackedWidget->setCurrentIndex(0);
             ::ShowWindow(s_hWndEmb[0],SW_HIDE);
@@ -1477,11 +1502,13 @@ bool MainWindow::event(QEvent *event)
 {
     if (event->type() == QEvent::NonClientAreaMouseMove)
     {
+        show();
+        activateWindow();
+        raise();
+
         QMouseEvent *me = static_cast<QMouseEvent*>(event);
         qDebug() << "非客户区鼠标移动：" << me->globalPos();
         event->accept(); // 处理掉，避免 Qt 默认忽略
-        //SetActiveWindow(this->window()->activateWindow());
-        activateWindow();
         return true;
     }
 
@@ -1513,7 +1540,7 @@ bool MainWindow::event(QEvent *event)
         {
             QTimer::singleShot(500,this,[=]{
                 if(m_pFloatReturn->isHidden()) return;
-                m_cover->setGeometry(geometry());
+                //m_cover->setGeometry(geometry());
                 //m_cover->show();
                 //m_cover->lower();
             });
@@ -1524,19 +1551,19 @@ bool MainWindow::event(QEvent *event)
     {
         m_bActive=true;
 
-        m_cover->hide();
+        //m_cover->hide();
 
-        QTimer::singleShot(100,this,[=]{
-            if(!m_closeShow)
-            {
-                QTimer::singleShot(100,this,[=]{
-                    ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-                });
-                QTimer::singleShot(500,this,[=]{
-                    ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-                });
-            }
-        });
+        // QTimer::singleShot(100,this,[=]{
+        //     if(!m_closeShow)
+        //     {
+        //         QTimer::singleShot(100,this,[=]{
+        //             ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+        //         });
+        //         QTimer::singleShot(500,this,[=]{
+        //             ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+        //         });
+        //     }
+        // });
     }
 
     return QMainWindow::event(event);
@@ -1626,6 +1653,7 @@ void MainWindow::on_pushButtonExit_clicked()
 void MainWindow::on_pushButtonMin_clicked()
 {
     this->showMinimized();
+    this->lower();
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent *event)
