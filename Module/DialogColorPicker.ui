@@ -32,10 +32,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>22</x>
+     <x>16</x>
      <y>370</y>
-     <width>318</width>
-     <height>34</height>
+     <width>336</width>
+     <height>38</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -52,7 +52,7 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item alignment="Qt::AlignmentFlag::AlignVCenter">
      <widget class="QLabel" name="labelColor">
       <property name="minimumSize">
        <size>
@@ -74,7 +74,7 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item alignment="Qt::AlignmentFlag::AlignVCenter">
      <widget class="QLabel" name="labelPick">
       <property name="minimumSize">
        <size>
@@ -107,13 +107,19 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>22</x>
+     <x>16</x>
      <y>412</y>
-     <width>175</width>
+     <width>165</width>
      <height>56</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <property name="horizontalSpacing">
+     <number>5</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>2</number>
+    </property>
     <item row="0" column="0">
      <widget class="QLineEdit" name="lineEditR">
       <property name="maximumSize">
@@ -188,8 +194,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>216</x>
-     <y>436</y>
+     <x>208</x>
+     <y>438</y>
      <width>123</width>
      <height>32</height>
     </rect>
@@ -217,8 +223,8 @@
   <widget class="QLineEdit" name="lineEditHex">
    <property name="geometry">
     <rect>
-     <x>216</x>
-     <y>410</y>
+     <x>208</x>
+     <y>412</y>
      <width>121</width>
      <height>21</height>
     </rect>

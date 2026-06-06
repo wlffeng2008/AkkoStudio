@@ -50,7 +50,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab11">
       <attribute name="title">
@@ -70,7 +70,7 @@
          <number>10</number>
         </property>
         <item alignment="Qt::AlignmentFlag::AlignTop">
-         <widget class="QLabel" name="labelTitle1_2">
+         <widget class="QLabel" name="labelTitle5">
           <property name="text">
            <string>基本字符</string>
           </property>
@@ -1683,7 +1683,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="labelTitle2_2">
+         <widget class="QLabel" name="labelTitle6">
           <property name="text">
            <string>拓展字符(按键)</string>
           </property>
@@ -4506,6 +4506,9 @@ Lock</string>
           <property name="spacing">
            <number>10</number>
           </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QPushButton" name="pushButton_Mouse00">
             <property name="text">
@@ -4906,7 +4909,7 @@ Lock</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroupFN"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 #define AppName "Akko Hub"
 #define AppId "E4CA0A60-4573-483B-8E56-884F19770908"
-#define AppVerName "Akko Hub V1.5.0"
+#define AppVerName "Akko Hub V1.6.0"
 #define AppExe "AKKOStudio.exe"
 
 [Setup]
@@ -25,7 +25,7 @@ OutputBaseFilename=AkkoHubInstaller-V5.14-Win20260525
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes
-Uninstallable=yesmqtt
+Uninstallable=yes
 CreateUninstallRegKey=yes
 UninstallDisplayName={#AppVerName}
 UninstallDisplayIcon={app}\Akko.ico
@@ -58,8 +58,8 @@ Source: bin\JmExe\*; DestDir: {app}\JmExe; Flags: recursesubdirs ignoreversion o
 Source: bin\RyExe\*; DestDir: {app}\RyExe; Flags: recursesubdirs ignoreversion overwritereadonly
 Source: bin\WsExe\*; DestDir: {app}\WsExe; Flags: recursesubdirs ignoreversion overwritereadonly
 Source: bin\Main\*; DestDir: {app}; Flags: recursesubdirs ignoreversion overwritereadonly
-Source: bin\Main\AKKOStudio.exe; DestDir: {app}; Flags: ignoreversion overwritereadonly
-Source: bin\Main\AKKO.ico; DestDir: {app}; Flags: ignoreversion overwritereadonly
+;Source: bin\Main\AKKOStudio.exe; DestDir: {app}; Flags: ignoreversion overwritereadonly
+;Source: bin\Main\AKKO.ico; DestDir: {app}; Flags: ignoreversion overwritereadonly
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons};

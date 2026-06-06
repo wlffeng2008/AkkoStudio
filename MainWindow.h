@@ -82,7 +82,7 @@ private:
     Ui::MainWindow *ui;
 
     ModuleLangMenu *m_pLangMenu = nullptr;
-    ModuleGeneralMasker *m_cover = nullptr;
+    //ModuleGeneralMasker *m_cover = nullptr;
     AkkoDeviceEnum *m_Enum = nullptr;
 
     bool m_bForMGK = false;

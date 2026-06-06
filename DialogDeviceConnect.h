@@ -166,7 +166,7 @@ public:
     void StartCalibration();
     void StopCalibration();
 
-    void DoConnectDevice(quint16 PID,bool bleMode,const QString&path1,const QString&path2);
+    void DoConnectDevice(quint16 VID,quint16 PID,bool bleMode,const QString&path1,const QString&path2);
 
     bool isLoading();
 

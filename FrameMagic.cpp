@@ -58,7 +58,7 @@ FrameMagic::FrameMagic(QWidget *parent)
 
         DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
 
-        static QList<quint32> colors = {0x9B9B9B, 0x7969F3, 0xF369A7, 0xC7D827, 0xFF8E32, 0xBF36FF, 0x6B9CFF, 0x2E2EB9, 0x47CA3B, 0x6969F3, 0x2FC1F3, 0x870339, 0x206599, 0xFF6D6B, 0x363636, 0x2258A9, 0x149819};
+        static QList<quint32> colors = {0x9B9B9B, 0x7969F3, 0xF369A7, 0xC7D827, 0xFF8E32, 0xFF6BF3, 0x6B9CFF, 0x2E2EB9, 0x6969F3, 0x2FC1FF, 0x870339, 0x206599, 0xFF6D6B, 0x363636, 0x2258A9, 0x149819};
 
         static QList<quint32> typeIds = {0,1,2,3,4,5,7,15,24,25,31,63,71,72,95,118};
 
@@ -73,19 +73,18 @@ FrameMagic::FrameMagic(QWidget *parent)
                 {
                     quint8 hid = ::getHid(i);
                     quint8 type= pCnn->get65Value(0xFC,i);
-                    qDebug()<<i << hid << type;
-                    //if(type > 6) type = 0;
                     int index = typeIds.indexOf(type);
                     if(index < 0) index = 0;
+                    //qDebug()<<i << hid << type << Qt::hex << colors[index] << index;
                     ui->frameKeyboard->setMtColor(hid,colors[index]);
                 }
             }
+
             ui->frameKeyboard->showMtFlag(id == 2);
         });
 
 
         connect(ui->buttonGroupMT,&QButtonGroup::idClicked,this,[=](int id){
-            qDebug() << "buttonGroupMT" << id;
             QList<quint32> types = {25,31,95,1,2,3,4,5};
             m_mtType = types[abs(id)-2];
 

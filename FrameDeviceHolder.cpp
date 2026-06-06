@@ -123,7 +123,7 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     }
 
     connect(ui->buttonGroupLayer,&QButtonGroup::idClicked,this,[=](int clikedId){
-        qDebug() << "buttonGroupLayer" << clikedId;
+        // qDebug() << "buttonGroupLayer" << clikedId;
         switch (clikedId) {
         case -2: pCnnt->setProfile(0); break;
         case -3: pCnnt->setProfile(1); break;

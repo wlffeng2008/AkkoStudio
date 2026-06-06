@@ -165,8 +165,6 @@
         <file>images/k/ic_selected.png</file>
         <file>images/btn-close.png</file>
         <file>images/inworking.gif</file>
-        <file>images/mt0.png</file>
-        <file>images/mt1.png</file>
         <file>images/Akko-Kb3.png</file>
         <file>images/logowww.png</file>
         <file>images/battery.png</file>
@@ -206,5 +204,6 @@
         <file>images/rt/mtico13.png</file>
         <file>images/rt/mtico14.png</file>
         <file>images/rt/mtico15.png</file>
+        <file>images/Mgklogo.png</file>
     </qresource>
 </RCC>

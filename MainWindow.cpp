@@ -326,12 +326,12 @@ MainWindow::MainWindow(QWidget *parent)
         pSetInfo->deleteLater();
     });
 
-    m_cover = new ModuleGeneralMasker(nullptr,this);
-    m_cover->setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.2); border: none; border-radius: 20px; }");
-    connect(m_cover,&ModuleGeneralMasker::onClicked,this,[=]{
-        m_cover->hide();
-        activateWindow();
-    });
+    // m_cover = new ModuleGeneralMasker(nullptr,this);
+    // m_cover->setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.2); border: none; border-radius: 20px; }");
+    // connect(m_cover,&ModuleGeneralMasker::onClicked,this,[=]{
+    //     m_cover->hide();
+    //     activateWindow();
+    // });
 
     m_layout = ui->scrollAreaWidgetContents->layout();
 
@@ -422,9 +422,12 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer *pTMRet = new QTimer(this);
     pTMRet->start(50);
     connect(pTMRet,&QTimer::timeout,this,[=]{
-        if((m_pSet->value("AkkoReturn").toInt() || m_pSet->value("MonsGeekReturn").toInt())&& m_bCanReturn)
-        {
-            qDebug() << "AkkoReturn";
+        if((m_pSet->value("AkkoReturn").toInt() || m_pSet->value("MonsGeekReturn").toInt()) && m_bCanReturn)
+        {            
+            if(m_creator == 1 || m_creator == 3)
+                this->show();
+
+            qDebug() << "Action AkkoReturn";
             m_pSet->setValue("AkkoReturn", 0);
             m_pSet->setValue("MonsGeekReturn", 0);
             ui->stackedWidget->setCurrentIndex(0);
@@ -439,12 +442,11 @@ MainWindow::MainWindow(QWidget *parent)
                     ::SetWindowPos(s_hWndEmb[i], HWND_BOTTOM,0,0,0,0,SWP_NOMOVE|SWP_HIDEWINDOW);
                 }
             }
-            if(m_creator == 1 || m_creator == 3)
-                this->show();
+
             m_creator = -1;
-            m_showId = 0;
+            m_showId  = 0;
             m_showPath.clear();
-            m_hCurHwnd=nullptr;
+            m_hCurHwnd = nullptr;
         }
     });
 
@@ -461,7 +463,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     killProcess("Akko-WS.exe");
     killProcess("Akko-BY.exe");
-    killProcess("AkkoBox.exe");
     killProcess("Akko-Gaming-Bub.exe");
     killProcess("AkkoCloudDriver.exe");
     QString strRoot = QApplication::applicationDirPath();
@@ -497,6 +498,12 @@ MainWindow::MainWindow(QWidget *parent)
             m_pSet->setValue("AkkoWnd", 0);
             s_hWndEmb[1] = nullptr;
             HideStartProcess(strExe0);
+        }
+
+        if(!isRunning("Akko-Gaming-Bub.exe"))
+        {
+            s_hWndEmb[3] = nullptr;
+            HideStartProcess(strExe2);
         }
 
         if(!s_hWndEmb[0])
@@ -563,6 +570,9 @@ MainWindow::MainWindow(QWidget *parent)
         connect(trayIcon,&QSystemTrayIcon::activated,this,[=](QSystemTrayIcon::ActivationReason reason){
             if(reason != QSystemTrayIcon::Context)
             {
+                if(m_creator == 1 || m_creator == 3)
+                    return;
+
                 if(this->isHidden() || this->isMinimized())
                     this->showNormal();
                 else
@@ -585,7 +595,17 @@ MainWindow::MainWindow(QWidget *parent)
         trayMenu->addAction(exitAction);
 
         connect(exitAction, &QAction::triggered, this, &QApplication::quit);
-        connect(showAction, &QAction::triggered, this, &QMainWindow::show);
+        connect(showAction, &QAction::triggered, this, [=]{
+            if(m_creator == 1 || m_creator == 3)
+                return;
+            show();
+            QTimer::singleShot(100,this,[=]{
+                ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+            });
+            QTimer::singleShot(500,this,[=]{
+                ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+            });
+        });
         connect(hideAction, &QAction::triggered, this, [=]{
             hide();
             m_bManHide=true;
@@ -614,12 +634,12 @@ MainWindow::MainWindow(QWidget *parent)
         m_bReadAll=false;
     });
 
-    // QTimer::singleShot(500,this,[=]{
-    //     ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-    // });
-    // QTimer::singleShot(2000,this,[=]{
-    //     ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-    // });
+    QTimer::singleShot(500,this,[=]{
+        ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    });
+    QTimer::singleShot(2000,this,[=]{
+        ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    });
 
     QTimer *pTMMonitor = new QTimer(this);
     pTMMonitor->start(500);
@@ -657,17 +677,15 @@ MainWindow::MainWindow(QWidget *parent)
         });
 
         QTimer *pTMList = new QTimer(this);
-        pTMList->start(2000);
+        pTMList->start(500);
         connect(pTMList,&QTimer::timeout,this,[=]{
             pTMList->stop();
+
+            int interval = 15000;
             if(ui->stackedWidget->currentIndex() == 0)
-            {
-                pTMList->start(3000);
-            }
-            else
-            {
-                pTMList->start(15000);
-            }
+                interval = 2000;
+            pTMList->start(interval);
+
             m_Enum->DoEnum();
         });
 
@@ -676,7 +694,8 @@ MainWindow::MainWindow(QWidget *parent)
             int count = m_tmp.count();
             for(int i=0; i<count; i++)
             {
-                if(m_tmp[i]->toShow) addToHub(m_tmp[i],index++);
+                if(m_tmp[i]->toShow)
+                    addToHub(m_tmp[i],index++);
             }
         },Qt::QueuedConnection);
 
@@ -726,12 +745,12 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
         if(m_creator == 0)
         {
             QList<quint16>IdList={2807}; //,2743,3131,3800
-            if(IdList.contains(pDevInfo->driverId))
+            if(IdList.contains(dev->driverId))
             {
                 bool bleMode = (dev->connectType == 2);
-                DialogDeviceConnect::instance()->DoConnectDevice(pDevInfo->PID,bleMode,dev->strPath1,dev->strPath2);
+                DialogDeviceConnect::instance()->DoConnectDevice(dev->VID,dev->PID,bleMode,dev->strPath1,dev->strPath2);
                 ui->stackedWidget->setCurrentIndex(2);
-                ui->frameHold->setDevice(pDevInfo,image,pDevInfo->strName);
+                ui->frameHold->setDevice(dev,image,dev->strName);
                 return;
             }
 
@@ -747,26 +766,18 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                 m_pSet->setValue("VendorDevicePath","");
 
                 QTimer::singleShot(100,this,[=]{
-                    m_pSet->setValue("DeviceId",pDevInfo->driverId);
+                    m_pSet->setValue("DeviceId",dev->driverId);
                     m_pSet->setValue("VendorDevicePath",dev->strPath1);
                     m_pSet->setValue("DevicePath",dev->strPath2);
                 });
             }
-            ui->frameEmb->setStyleSheet(R"(
-                        #frameEmb
-                        {
-                            background-color: rgb(237,237,237);
-                            border-bottom-left-radius: 20px;
-                            border-bottom-right-radius:20px;
-                        }
-                    )");
             setHubSize(false);
         }
         else
         {
             if(m_creator == 1)
             {
-                m_pSet->setValue("AkkoDeviceIndex",pDevInfo->driverId);
+                m_pSet->setValue("AkkoDeviceIndex",dev->driverId);
             }
 
             if(m_creator == 2)
@@ -784,23 +795,13 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                     m_pSet->setValue("JmLocale",strSet);
                 m_pSet->setValue("JmDevicePath",dev->strPath2);
             }
-
-            ui->frameEmb->setStyleSheet(R"(
-                        #frameEmb
-                        {
-                            background-color: rgb(30,30,30);
-                            border-bottom-left-radius: 20px;
-                            border-bottom-right-radius:20px;
-                        }
-                    )");
         }
 
-        QTimer::singleShot(100,this,[=]{
-            ui->stackedWidget->setCurrentIndex(1);
-            ui->frameEmb->show();
+        QTimer::singleShot(200,this,[=]{
+            HWND hWnd = s_hWndEmb[m_creator];
+            if(!hWnd) return;
 
             qreal scaleFactor = this->devicePixelRatio();
-            HWND hWnd = s_hWndEmb[m_creator];
             if(m_creator == 1 || m_creator == 3)
             {
                 RECT rc;
@@ -831,13 +832,17 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
             }
             else
             {
+                ui->stackedWidget->setCurrentIndex(1);
+
                 int nWidth  = ui->frameEmb->width() *scaleFactor+1;
                 int nHeight = ui->frameEmb->height()*scaleFactor+1;
                 ::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, nWidth, nHeight, SWP_SHOWWINDOW);
 
-                HRGN hFullRound = CreateRoundRectRgn(0, 0, nWidth, nHeight,32,32);
+                int radius = 32;
+
+                HRGN hFullRound = CreateRoundRectRgn(0, 0, nWidth, nHeight,radius,radius);
                 HRGN hTopRect0 = CreateRectRgn(0, 0, nWidth, nHeight);
-                HRGN hTopRect1 = CreateRectRgn(0, 0, nWidth, 32);
+                HRGN hTopRect1 = CreateRectRgn(0, 0, nWidth, radius);
 
                 HRGN hFinalRgn = CreateRectRgn(0, 0, 0, 0);
                 ::CombineRgn(hFinalRgn, hFullRound, hTopRect0, RGN_AND);
@@ -850,11 +855,11 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                 ::DeleteObject(hTopRect1);
             }
 
-            ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
-            ::UpdateWindow(hWnd);
+            // ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
+            // ::UpdateWindow(hWnd);
 
-            ui->stackedWidget->update();
-            ui->frameEmb->update();
+            // ui->stackedWidget->update();
+            // ui->frameEmb->update();
             m_bActive = true;
 
             QTimer::singleShot(2000,this,[=]{
@@ -910,12 +915,11 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint32 driverId, const QSt
 void MainWindow::enumDevice()
 {
     if(m_bEnuming) return;
-    if((isMinimized() || isHidden()) && !m_hCurHwnd)
-        return;
-    if(m_bReadAll)
-        return;
+    if(m_bReadAll) return;
 
-    qDebug() << "MainWindow::enumDevice()";
+    if((isMinimized() || isHidden()) && !m_hCurHwnd) return;
+
+    // qDebug() << "MainWindow::enumDevice()" << time(nullptr);
 
     m_bEnuming = true;
     QStringList allPaths;
@@ -981,8 +985,12 @@ void MainWindow::enumDevice()
             {
                 if(UPG == 0xFFFF)
                 {
-                    if(USA == 1) path1 = pEDev->path;
-                    if(USA == 2) path2 = pEDev->path;
+                    //if(USA == 1) path1 = pEDev->path;
+                    if(USA == 2)
+                    {
+                        path1 = pEDev->path;
+                        path2 = pEDev->path;
+                    }
                 }
 
                 if(UPG == 0xFF01 && USA == 1 && VID == 0x3151 && PID == 0x504A)
@@ -1002,7 +1010,7 @@ void MainWindow::enumDevice()
                         cmd[8] = 0xFF - cmd[1];
 
                         int nlen = 0;
-                        char buf[128] = {0};
+                        quint8 buf[128] = {0};
                         int nTryCount = 0;
                         quint32 devId = 0;
                         int connectType = 0;
@@ -1012,15 +1020,17 @@ void MainWindow::enumDevice()
                         {
                             hid_send_feature_report(pDev, cmd, 65);
                             QThread::msleep(150);
-                            nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-                            if(nlen>0)
+                            nlen = hid_get_feature_report(pDev, buf, 65);
+                            if(buf[1] == 0x8F)
                             {
-                                data = QByteArray(buf + 1, nlen - 1);
-                                devId = *(quint32 *)(data.data() + 1);
+                                if(nlen>0)
+                                {
+                                    data = QByteArray((char *)buf + 1, nlen - 1);
+                                    devId = *(quint32 *)(data.data() + 1);
+                                }
+                                if(nTryCount++ >= 5) break;
+                                if(devId > 0) break;
                             }
-
-                            if(nTryCount++ >= 5) break;
-                            if(devId > 0) break;
 
                             QThread::msleep(50);
                         }while(true);
@@ -1035,7 +1045,7 @@ void MainWindow::enumDevice()
                             tmp[8] = 0xFF - tmp[1] - tmp[2];
                             hid_send_feature_report(pDev, tmp, 65);
                             QThread::msleep(100);
-                            nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+                            nlen = hid_get_feature_report(pDev, buf, 65);
                             Q_UNUSED(nlen)
 
                             int nTry = 0;
@@ -1046,7 +1056,7 @@ void MainWindow::enumDevice()
                                 tmp[8] = 0xFF - tmp[1] - tmp[2];
                                 hid_send_feature_report(pDev, tmp, 65);
                                 QThread::msleep(100);
-                                nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+                                nlen = hid_get_feature_report(pDev, buf, 65);
                                 if(buf[6] == 1) break;
                                 QThread::msleep(50);
                                 Q_UNUSED(nlen)
@@ -1057,7 +1067,7 @@ void MainWindow::enumDevice()
                             tmp[8] = 0xFF - tmp[1] - tmp[2];
                             hid_send_feature_report(pDev, tmp, 65);
                             QThread::msleep(100);
-                            nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+                            nlen = hid_get_feature_report(pDev, buf, 65);
                             Q_UNUSED(nlen)
 
                             nTry = 0;
@@ -1068,7 +1078,7 @@ void MainWindow::enumDevice()
                                 tmp[8] = 0xFF - tmp[1] - tmp[2];
                                 hid_send_feature_report(pDev, tmp, 65);
                                 QThread::msleep(100);
-                                nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+                                nlen = hid_get_feature_report(pDev, buf, 65);
                                 if(buf[1] == 0) break;
                                 QThread::msleep(50);
                                 Q_UNUSED(nlen)
@@ -1079,12 +1089,12 @@ void MainWindow::enumDevice()
                             tmp[8] = 0xFF - tmp[1] - tmp[2];
                             hid_send_feature_report(pDev, tmp, 65);
                             QThread::msleep(100);
-                            nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+                            nlen = hid_get_feature_report(pDev, buf, 65);
 
                             if (nlen > 0)
                             {
                                 connectType = 1;
-                                data  = QByteArray(buf + 1, nlen - 1);
+                                data  = QByteArray((char *)buf + 1, nlen - 1);
                                 devId = *(quint32 *)(data.data() + 1);
                             }
                         }
@@ -1129,36 +1139,32 @@ void MainWindow::enumDevice()
                     quint8 szBuf[128] = {0};
                     QByteArray cmd = QByteArray::fromHex(strCmd2.toLatin1());
 
-
                     int len1 = 0;
-                    for(int i=0; i<20; i++)
+                    for(int i=0; i<10; i++)
                     {
                         cmd = QByteArray::fromHex(strCmd1.toLatin1());
                         hid_write(pDev,(quint8*)cmd.data(),cmd.size());
-                        QThread::msleep(100);
-                        len1 = hid_read_timeout(pDev,szBuf,16,500);
+                        QThread::msleep(50);
+                        len1 = hid_read_timeout(pDev,szBuf,16,50);
 
-                        if(szBuf[3] == 0x30 && szBuf[4] == 0x06)
-                        {
-                            break;
-                        }
+                        if(szBuf[3] == 0x30 && szBuf[4] == 0x06) break;
                         QThread::msleep(30);
                     }
 
                     if(len1 >= 12)
                     {
-                        quint8 device = szBuf[11];
+                        quint8  device = szBuf[11];
                         quint32 driverId = 0;
-                        quint8 connectType = 0;
+                        quint8  connectType = 0;
 
                         switch(PID)
                         {
-                        case 0x0013:connectType = 1;
+                        case 0x0013: connectType = 1;
                         case 0x0012:
                             if(device == 0) driverId = 25;
                             break;
 
-                        case 0x000C:connectType = 1;
+                        case 0x000C: connectType = 1;
                         case 0x000B:
                             driverId = 4;
                             if(device != 0) driverId =  6;
@@ -1170,7 +1176,7 @@ void MainWindow::enumDevice()
                             break;
 
                         case 0x0011:
-                        case 0x000F:connectType = 1;
+                        case 0x000F: connectType = 1;
                         case 0x0010:
                         case 0x000D:
                             if(device == 1) driverId =  7;
@@ -1184,7 +1190,7 @@ void MainWindow::enumDevice()
                             if(device == 9) driverId = 21;
                             break;
 
-                        case 0x0024:connectType = 1;
+                        case 0x0024: connectType = 1;
                         case 0x0023:
                             driverId = 14;
                             if(device == 5) driverId = 13;
@@ -1192,19 +1198,19 @@ void MainWindow::enumDevice()
                             if(device == 2) driverId = 27;
                             break;
 
-                        case 0x0026:connectType = 1;
+                        case 0x0026: connectType = 1;
                         case 0x0025:
                             driverId = 9;
                             if(device == 1) driverId = 10;
                             break;
 
-                        case 0x0028:connectType = 1;
+                        case 0x0028: connectType = 1;
                         case 0x0027:
                             driverId = 9;
                             if(device == 1) driverId = 10;
                             break;
 
-                        case 0x0030:connectType = 1;
+                        case 0x0030: connectType = 1;
                         case 0x0029:
                             driverId = 15;
                             if(device == 1) driverId = 16;
@@ -1212,22 +1218,23 @@ void MainWindow::enumDevice()
                             if(device == 6) driverId = 16;
                             break;
 
-                        case 0x0032:connectType = 1;
+                        case 0x0032: connectType = 1;
                         case 0x0031:
                             driverId = 15;
                             if(device == 1) driverId = 16;
                             break;
 
-                        case 0x5152:connectType = 1;
+                        case 0x5152: connectType = 1;
                         case 0x5151:
                             driverId = 5;
                             break;
 
-                        case 0x0008:connectType = 1;
-                        case 0x0007: driverId = 11;
+                        case 0x0008: connectType = 1;
+                        case 0x0007:
+                            driverId = 11;
                             break;
 
-                        case 0x22b5:connectType = 1;
+                        case 0x22b5: connectType = 1;
                         case 0x22b4:
                             driverId = 12;
                             break;
@@ -1366,10 +1373,8 @@ void MainWindow::changeEvent(QEvent *pEvt)
 
 void MainWindow::showEvent(QShowEvent *event)
 {
-    setAttribute(Qt::WA_Mapped);
+    //setAttribute(Qt::WA_Mapped);
 
-    qDebug()<< "MainWindow::showEvent";
-    //this->showNormal();
     this->raise();
     this->activateWindow();
     if(m_bManHide)
@@ -1597,13 +1602,16 @@ void MainWindow::paintEvent(QPaintEvent *event)
         int adjust = this->height() - 100;
         p.setPen(Qt::white);
         p.drawText(this->rect().adjusted(0,adjust,0,0), Qt::AlignCenter, tr("正在搜索设备") + QString("..."));
+        if(m_bForMGK)
+            p.drawImage(QRect(30,40,427,55), QImage(":/images/Mgklogo.png"));
     }
     else
     {
         p.fillRect(this->rect(), Qt::white);
-        if(!m_bForMGK)
+        if(m_bForMGK)
+            p.drawImage(QRect(30,25,315,40), QImage(":/images/Mgklogo.png"));
+        else
             p.drawImage(QRect(30,25,136,40), QImage(":/images/AkkoFlag.png"));
-
     }
 
     p.setPen(Qt::blue);

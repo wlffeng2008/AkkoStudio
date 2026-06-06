@@ -51,7 +51,7 @@ ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
     {
         geoMetry = parent->frameGeometry(); // parent->mapToGlobal(parent->pos());
         QPoint globalPos = getGlobalPos(parent);
-        geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height());
+        geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height()).adjusted(1,1,-1,-1);
     }
     setGeometry(geoMetry);
     setFixedSize(geoMetry.width(), geoMetry.height());

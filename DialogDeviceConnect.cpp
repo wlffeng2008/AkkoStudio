@@ -598,7 +598,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     ui->plainTextEdit->setStyleSheet("font-family: Fixedsys;");
 }
 
-void DialogDeviceConnect::DoConnectDevice(quint16 PID, bool bleMode, const QString &path1, const QString &path2)
+void DialogDeviceConnect::DoConnectDevice(quint16 VID, quint16 PID, bool bleMode, const QString &path1, const QString &path2)
 {
     if(m_path1 == path1 && m_path2 == path2)
         return;
@@ -607,7 +607,11 @@ void DialogDeviceConnect::DoConnectDevice(quint16 PID, bool bleMode, const QStri
     m_path1 = path1;
     m_path2 = path2;
 
+    QString strVID = QString::asprintf("%04X",VID);
     QString strPID = QString::asprintf("%04X",PID);
+    qDebug() << "DoConnectDevice:" << path2 << strPID;
+
+    ui->lineEditVID->setText(strVID);
     ui->lineEditPID->setText(strPID);
     ui->pushButtonConnect->click();
 }

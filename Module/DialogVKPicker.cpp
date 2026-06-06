@@ -64,7 +64,7 @@ DialogVKPicker::DialogVKPicker(QWidget *parent)
     connect(ui->buttonGroup,&QButtonGroup::buttonClicked,this,[=](QAbstractButton *btn){
 
         QString text = btn->text();
-        quint8 hid = btn->objectName().right(3).toUInt();
+        quint8 hid = btn->objectName().last(3).toUInt();
         if(m_kd.b1 == 0)
         {
             m_kd.b1 = hid;

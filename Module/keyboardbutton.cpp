@@ -13,7 +13,6 @@ keySetTooltip::keySetTooltip(QWidget *parent):QWidget(parent)
     label1 = new QLabel(this);
     label2 = new QLabel(this);
     midLine = new QFrame(this);
-    //midLine->setLineWidth(2);
     midLine->setFixedHeight(2);
 
     label1->setAlignment(Qt::AlignCenter);
@@ -22,15 +21,12 @@ keySetTooltip::keySetTooltip(QWidget *parent):QWidget(parent)
     label2->setStyleSheet("QLabel{color:black;background-color:transparent;}");
     midLine->setStyleSheet("QFrame{color:black;background-color:black;}");
 
-    QVBoxLayout *pBox = new QVBoxLayout(this) ;
+    QVBoxLayout *pBox = new QVBoxLayout(this);
     pBox->addWidget(label1);
     pBox->addWidget(midLine);
     pBox->addWidget(label2);
     pBox->setContentsMargins(10,8,10,16);
     pBox->setSpacing(4);
-
-    //label1->hide();
-    //midLine->hide();
 }
 
 void keySetTooltip::setText1(const QString&text)
@@ -50,19 +46,20 @@ void keySetTooltip::setText2(const QString&text)
         label2->adjustSize();
     }
 }
+
 void keySetTooltip::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
-    QRect rect = this->rect() ;
+    QRect rect = this->rect();
 
     painter.setPen(0xD8BDFF);
     painter.setBrush(0xFAF7FF);
     painter.drawRoundedRect(rect.adjusted(0,0,0,-10),12,12);
 
-    QRect triRC = this->rect() ;
+    QRect triRC = this->rect();
     triRC.setTop(triRC.bottom()-10);
-    int nImgX = rect.center().x() ;
+    int nImgX = rect.center().x();
     int nTriLen = 14;
     QPolygonF triangle;
     triangle<<QPoint(nImgX,triRC.top()) ;
