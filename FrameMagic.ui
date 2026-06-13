@@ -16,7 +16,8 @@
   <property name="styleSheet">
    <string notr="true">QFrame#frameTop{background-color: #FBFBFB;border-radius:32px;}
 QFrame#frameBLeft{background-color: #F6F6F6;border-radius:32px;}
-QFrame#frameBRight,#stackedWidget{background: transparent;border-radius:32px;}</string>
+QFrame#frameBRight{background-color: #F6F6F6;border-radius:32px;}
+</string>
   </property>
   <property name="lineWidth">
    <number>0</number>
@@ -165,8 +166,8 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
          <property name="bottomMargin">
           <number>20</number>
          </property>
-         <item alignment="Qt::AlignmentFlag::AlignTop">
-          <widget class="QPushButton" name="pushButtonSet1">
+         <item>
+          <widget class="QPushButton" name="pushButtonSet0">
            <property name="text">
             <string>行程设置</string>
            </property>
@@ -179,23 +180,36 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
           </widget>
          </item>
          <item alignment="Qt::AlignmentFlag::AlignTop">
-          <widget class="QPushButton" name="pushButtonSet2">
+          <widget class="QPushButton" name="pushButtonSet1">
            <property name="text">
-            <string>RT设定</string>
+            <string>死区设置</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
          <item alignment="Qt::AlignmentFlag::AlignTop">
-          <widget class="QPushButton" name="pushButtonSet3">
+          <widget class="QPushButton" name="pushButtonSet2">
            <property name="text">
             <string>轴体设置</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonSet3">
+           <property name="text">
+            <string>增稳算法</string>
            </property>
           </widget>
          </item>
          <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="pushButtonSet4">
            <property name="text">
-            <string>唤醒设置</string>
+            <string>模拟测试</string>
            </property>
           </widget>
          </item>
@@ -217,9 +231,6 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
       </item>
       <item>
        <widget class="QFrame" name="frameBRight">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
         <property name="frameShape">
          <enum>QFrame::Shape::NoFrame</enum>
         </property>
@@ -247,117 +258,1182 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
          </property>
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
-           <property name="currentIndex">
-            <number>2</number>
+           <property name="styleSheet">
+            <string notr="true">#page4,#page3,#page2,#page1,#page0{background-color: #F6F6F6;border-radius:32px;}</string>
            </property>
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <widget class="QWidget" name="page0">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_19">
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="topMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <property name="bottomMargin">
+              <number>15</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="labelTitle">
+               <property name="text">
+                <string>设置按键触发行程</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item alignment="Qt::AlignmentFlag::AlignBottom">
+                <widget class="QLabel" name="labelKeymt_2">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="pixmap">
+                  <pixmap resource="res.qrc">:/images/key-mt.png</pixmap>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_18" stretch="0,1">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_20">
+                   <item alignment="Qt::AlignmentFlag::AlignLeft">
+                    <widget class="QLabel" name="label_10">
+                     <property name="font">
+                      <font>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>单独设置按下抬起触发行程：</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignmentFlag::AlignLeft">
+                    <widget class="ToggleButton" name="checkBoxUnpress">
+                     <property name="minimumSize">
+                      <size>
+                       <width>40</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="ModuleLinear" name="frameLinear">
+                   <property name="minimumSize">
+                    <size>
+                     <width>260</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>260</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_17" stretch="0,0,0,1,1">
+                 <property name="spacing">
+                  <number>12</number>
+                 </property>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                   <property name="spacing">
+                    <number>5</number>
+                   </property>
+                   <item alignment="Qt::AlignmentFlag::AlignLeft">
+                    <widget class="QLabel" name="labelTitle7">
+                     <property name="font">
+                      <font>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>全程连续快速触发（RT）</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="ToggleButton" name="checkBoxFullRT">
+                     <property name="minimumSize">
+                      <size>
+                       <width>40</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="checked">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_7">
+                   <property name="font">
+                    <font>
+                     <pointsize>8</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>启用时，快速触发在您完全松开按键时才会终止。
+禁用时，松开按键到轴体触发行程后终止快速触发</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame0">
+                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <property name="spacing">
+                     <number>10</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_5">
+                      <property name="font">
+                       <font>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>单独设置按键再次按下触发和松开重置行程</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="ToggleButton" name="checkBoxRTPress">
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>40</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame1">
+                   <layout class="QVBoxLayout" name="verticalLayout_12" stretch="0,1">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_6">
+                      <property name="font">
+                       <font>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>再次按下按键触发所需的行程(mm)</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_8">
+                      <property name="frameShape">
+                       <enum>QFrame::Shape::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Shadow::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="0,1,0,0">
+                       <property name="spacing">
+                        <number>20</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_8">
+                         <property name="text">
+                          <string>0.2</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSlider" name="horizontalSlider1">
+                         <property name="minimum">
+                          <number>200</number>
+                         </property>
+                         <property name="maximum">
+                          <number>2500</number>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_9">
+                         <property name="text">
+                          <string>2.5</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="frame_7">
+                         <property name="maximumSize">
+                          <size>
+                           <width>120</width>
+                           <height>32</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QFrame{background-color: #E4E4E4;border-radius:12px;}
+
+</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Shape::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Shadow::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_6">
+                          <property name="leftMargin">
+                           <number>5</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>2</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>5</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>2</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="pushButtonM1">
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="res.qrc">
+                              <normaloff>:/images/rt/minus-normal.png</normaloff>:/images/rt/minus-normal.png</iconset>
+                            </property>
+                            <property name="flat">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLineEdit" name="lineEditValue1">
+                            <property name="styleSheet">
+                             <string notr="true">border:none;background-color:#E6E6E6;</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignmentFlag::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="pushButtonP1">
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="res.qrc">
+                              <normaloff>:/images/rt/plug-normal.png</normaloff>:/images/rt/plug-normal.png</iconset>
+                            </property>
+                            <property name="flat">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame2">
+                   <layout class="QVBoxLayout" name="verticalLayout_13" stretch="0,1">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="labelRelease">
+                      <property name="font">
+                       <font>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>松开按键重置所需的行程(mm)</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frameRelease">
+                      <property name="frameShape">
+                       <enum>QFrame::Shape::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Shadow::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,1,0,0">
+                       <property name="spacing">
+                        <number>20</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_13">
+                         <property name="text">
+                          <string>2.5</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSlider" name="horizontalSlider2">
+                         <property name="minimum">
+                          <number>200</number>
+                         </property>
+                         <property name="maximum">
+                          <number>2500</number>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_14">
+                         <property name="text">
+                          <string>0.2</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="frame_10">
+                         <property name="maximumSize">
+                          <size>
+                           <width>120</width>
+                           <height>32</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QFrame{background-color: #E4E4E4;border-radius:12px;}
+
+</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Shape::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Shadow::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_9">
+                          <property name="leftMargin">
+                           <number>5</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>2</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>5</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>2</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="pushButtonM2">
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="res.qrc">
+                              <normaloff>:/images/rt/minus-normal.png</normaloff>:/images/rt/minus-normal.png</iconset>
+                            </property>
+                            <property name="flat">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLineEdit" name="lineEditValue2">
+                            <property name="styleSheet">
+                             <string notr="true">border:none;background-color:#E6E6E6;</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignmentFlag::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="pushButtonP2">
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="res.qrc">
+                              <normaloff>:/images/rt/plug-normal.png</normaloff>:/images/rt/plug-normal.png</iconset>
+                            </property>
+                            <property name="flat">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
              <string notr="true"/>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1,0">
+            <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,1">
+             <property name="spacing">
+              <number>5</number>
+             </property>
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="topMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>10</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="labelTitle2">
+               <property name="text">
+                <string>按键死区设定</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,1">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <property name="bottomMargin">
+                <number>5</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>174</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="pixmap">
+                  <pixmap resource="res.qrc">:/images/rt/zhouti.png</pixmap>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ModuleLinear" name="frameDead">
+                 <property name="minimumSize">
+                  <size>
+                   <width>260</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>260</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_11" stretch="0,0,1">
+                 <item alignment="Qt::AlignmentFlag::AlignTop">
+                  <widget class="QLabel" name="labelDeathzone">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(89, 90, 76); font-size:14px;</string>
+                   </property>
+                   <property name="text">
+                    <string>触底到抬起前的距离俗称“死区”。死区可减少磁轴因环境干扰带来的断触问题，磁轴的底部可自定义，您可根据个人需求自定义死区，设定之后，此段行程不会触发。</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="labelSelectKey">
+                   <property name="text">
+                    <string>当前选择按键数量:0</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QPushButton" name="pushButtonSetDeathzone">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{background-color:#6329B6;border:1px solid #6329B6;border-radius:18px;color:white;min-height:34px;font-size:14px;}</string>
+                   </property>
+                   <property name="text">
+                    <string>设定</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page2">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0,0,0,0">
              <property name="spacing">
               <number>20</number>
              </property>
              <property name="leftMargin">
-              <number>0</number>
+              <number>20</number>
              </property>
              <property name="topMargin">
-              <number>0</number>
+              <number>20</number>
              </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QFrame" name="frameBM">
-               <property name="styleSheet">
-                <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+             <item alignment="Qt::AlignmentFlag::AlignTop">
+              <widget class="QLabel" name="labelTitle1">
+               <property name="font">
+                <font>
+                 <family>MiSans</family>
+                 <pointsize>14</pointsize>
+                </font>
                </property>
-               <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
+               <property name="text">
+                <string>轴体设置</string>
                </property>
-               <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignmentFlag::AlignTop">
+              <widget class="QLabel" name="label_16">
+               <property name="font">
+                <font>
+                 <family>MiSans</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,1">
-                <property name="leftMargin">
-                 <number>20</number>
+               <property name="text">
+                <string>更换键盘轴体后，选择对应轴体的按键，点击下方对应的轴体选项进行设置来区分不同轴体</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignmentFlag::AlignTop">
+              <widget class="QFrame" name="frameType">
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <property name="spacing">
+                 <number>10</number>
                 </property>
-                <property name="topMargin">
-                 <number>20</number>
+                <property name="leftMargin">
+                 <number>30</number>
                 </property>
                 <property name="rightMargin">
-                 <number>20</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>20</number>
+                 <number>30</number>
                 </property>
                 <item>
-                 <widget class="NewTabWidget" name="tabWidget">
-                  <property name="currentIndex">
-                   <number>0</number>
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <property name="spacing">
+                   <number>15</number>
                   </property>
-                  <widget class="QWidget" name="tab1">
-                   <attribute name="title">
-                    <string>舒适模式</string>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="tab2">
-                   <attribute name="title">
-                    <string>灵敏模式</string>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="tab3">
-                   <attribute name="title">
-                    <string>游戏模式</string>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="tab4">
-                   <attribute name="title">
-                    <string>自定义模式</string>
-                   </attribute>
-                  </widget>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="3,5">
-                  <item>
-                   <widget class="QLabel" name="label_2">
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="pushButtonMT0">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
+                    </property>
                     <property name="text">
                      <string/>
                     </property>
-                    <property name="pixmap">
-                     <pixmap resource="res.qrc">:/images/rt/zhouti.png</pixmap>
+                    <property name="icon">
+                     <iconset resource="res.qrc">
+                      <normaloff>:/images/rt/mtico09.png</normaloff>:/images/rt/mtico09.png</iconset>
                     </property>
-                    <property name="alignment">
-                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    <property name="iconSize">
+                     <size>
+                      <width>64</width>
+                      <height>64</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupMT</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="labelName0">
+                    <property name="text">
+                     <string>炫光</string>
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="ModuleLinear" name="frame_5">
-                    <property name="minimumSize">
-                     <size>
-                      <width>303</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>303</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <property name="spacing">
+                   <number>15</number>
+                  </property>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="pushButtonMT1">
                     <property name="styleSheet">
-                     <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
+                     <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
                     </property>
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
+                    <property name="text">
+                     <string/>
                     </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
+                    <property name="icon">
+                     <iconset resource="res.qrc">
+                      <normaloff>:/images/rt/mtico10.png</normaloff>:/images/rt/mtico10.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>64</width>
+                      <height>64</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupMT</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="labelName1">
+                    <property name="text">
+                     <string>闪电</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_5">
+                  <property name="spacing">
+                   <number>15</number>
+                  </property>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="pushButtonMT2">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="res.qrc">
+                      <normaloff>:/images/rt/mtico14.png</normaloff>:/images/rt/mtico14.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>64</width>
+                      <height>64</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupMT</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="labelName2">
+                    <property name="text">
+                     <string>星芒磁轴</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_6">
+                  <property name="spacing">
+                   <number>15</number>
+                  </property>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="pushButtonMT3">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="res.qrc">
+                      <normaloff>:/images/rt/mtico01.png</normaloff>:/images/rt/mtico01.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>64</width>
+                      <height>64</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupMT</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="labelName3">
+                    <property name="text">
+                     <string>磁玉</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <property name="spacing">
+                   <number>15</number>
+                  </property>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="pushButtonMT4">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="res.qrc">
+                      <normaloff>:/images/rt/mtico02.png</normaloff>:/images/rt/mtico02.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>64</width>
+                      <height>64</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupMT</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="labelName4">
+                    <property name="text">
+                     <string>磁玉Pro</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <property name="spacing">
+                   <number>15</number>
+                  </property>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="pushButtonMT5">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="res.qrc">
+                      <normaloff>:/images/rt/mtico03.png</normaloff>:/images/rt/mtico03.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>64</width>
+                      <height>64</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupMT</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="labelName5">
+                    <property name="text">
+                     <string>磁玉Gaming</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                  <property name="spacing">
+                   <number>15</number>
+                  </property>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="pushButtonMT6">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="res.qrc">
+                      <normaloff>:/images/rt/mtico06.png</normaloff>:/images/rt/mtico06.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>64</width>
+                      <height>64</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupMT</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="labelName6">
+                    <property name="text">
+                     <string>天王</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_14">
+                  <property name="spacing">
+                   <number>15</number>
+                  </property>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="pushButtonMT7">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
+QPushButton:checked { border-color: #6329B6; }</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="res.qrc">
+                      <normaloff>:/images/rt/mtico05.png</normaloff>:/images/rt/mtico05.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>64</width>
+                      <height>64</height>
+                     </size>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupMT</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="labelName7">
+                    <property name="text">
+                     <string>万磁王</string>
                     </property>
                    </widget>
                   </item>
@@ -367,1504 +1443,468 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
               </widget>
              </item>
              <item>
-              <widget class="QFrame" name="frameBR">
-               <property name="minimumSize">
+              <spacer name="verticalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
                 <size>
-                 <width>303</width>
-                 <height>0</height>
+                 <width>20</width>
+                 <height>40</height>
                 </size>
                </property>
-               <property name="maximumSize">
-                <size>
-                 <width>303</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::Shape::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Shadow::Raised</enum>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_11" stretch="0,1">
-                <property name="spacing">
-                 <number>30</number>
-                </property>
-                <property name="leftMargin">
-                 <number>20</number>
-                </property>
-                <property name="topMargin">
-                 <number>20</number>
-                </property>
-                <property name="rightMargin">
-                 <number>20</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>20</number>
-                </property>
-                <item>
-                 <widget class="QLabel" name="labelTitle2">
-                  <property name="text">
-                   <string>死区设定</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="ModuleLinear" name="frameDead">
-                  <property name="styleSheet">
-                   <string notr="true">QFrame{background-color: #F6F6F6;border-radius:32px;}</string>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::Shape::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Shadow::Raised</enum>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
+              </spacer>
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="page2">
-            <property name="styleSheet">
-             <string notr="true">#page2{background-color: #F6F6F6;border-radius:32px;}</string>
-            </property>
-            <widget class="Line" name="line">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>62</y>
-               <width>870</width>
-               <height>2</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(85, 85, 85);</string>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButtonRTStab">
-             <property name="geometry">
-              <rect>
-               <x>268</x>
-               <y>126</y>
-               <width>223</width>
-               <height>32</height>
-              </rect>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>32</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MiSans</family>
-               <pointsize>10</pointsize>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::FocusPolicy::NoFocus</enum>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{min-width:208px;max-height:32px;border:none;border-radius:16px;background-color:#6F62FF; color:white;padding: 0 ;}
-            QPushButton:checked {
-                color: white;
-                background: #3E3E3E; }</string>
-             </property>
-             <property name="text">
-              <string>RT Stab(All Key)</string>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">buttonGroup_3</string>
-             </attribute>
-            </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>182</y>
-               <width>872</width>
-               <height>29</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <property name="spacing">
-               <number>10</number>
-              </property>
-              <item alignment="Qt::AlignmentFlag::AlignLeft">
-               <widget class="QLabel" name="label_5">
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>单独设置按键再次按下触发和松开重置行程</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignmentFlag::AlignLeft">
-               <widget class="ToggleButton" name="checkBox3">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_4">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>12</y>
-               <width>850</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
-              <property name="spacing">
-               <number>10</number>
-              </property>
-              <property name="bottomMargin">
-               <number>2</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_4">
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>按键选择方式：</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_Select1">
-                <property name="minimumSize">
-                 <size>
-                  <width>68</width>
-                  <height>32</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>32</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{min-width:66px;min-height:30px;border:1px solid #E2E2E2;border-radius:16px;background-color:white; color:#989898;}
-            QPushButton:checked {
-                color: white;
-                border: 1px soild #3E3E3E ;
-                background: #3E3E3E; }</string>
-                </property>
-                <property name="text">
-                 <string>拖选</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">buttonGroup_2</string>
-                </attribute>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_Select2">
-                <property name="minimumSize">
-                 <size>
-                  <width>68</width>
-                  <height>32</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>32</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{min-width:66px;min-height:30px;border:1px solid #E2E2E2;border-radius:16px;background-color:white; color:#989898;}
-            QPushButton:checked {
-                color: white;
-                border: 1px soild #3E3E3E ;
-                background: #3E3E3E; }</string>
-                </property>
-                <property name="text">
-                 <string>全选</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">buttonGroup_2</string>
-                </attribute>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_10">
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>保存方式：</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_11">
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>自动保存</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="labelHelp1">
-                <property name="maximumSize">
-                 <size>
-                  <width>24</width>
-                  <height>24</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="res.qrc">:/images/k/icon_helping.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="ToggleButton" name="checkBox1">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_12">
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>防误触模式</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="labelHelp2">
-                <property name="maximumSize">
-                 <size>
-                  <width>24</width>
-                  <height>24</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="res.qrc">:/images/k/icon_helping.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="ToggleButton" name="checkBox2">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>80</y>
-               <width>874</width>
-               <height>29</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <property name="spacing">
-               <number>10</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_3">
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>全程连续快速触发（RT）</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="labelHelp3">
-                <property name="maximumSize">
-                 <size>
-                  <width>24</width>
-                  <height>24</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="res.qrc">:/images/k/icon_helping.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QPushButton" name="pushButtonRTMode">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>126</y>
-               <width>197</width>
-               <height>32</height>
-              </rect>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>32</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MiSans</family>
-               <pointsize>10</pointsize>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::FocusPolicy::NoFocus</enum>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{min-width:150px;max-height:32px;border:none;border-radius:16px;background-color:#6F62FF; color:white;padding: 0 ;}
-            QPushButton:checked {
-                color: white;
-                background: #3E3E3E; }</string>
-             </property>
-             <property name="text">
-              <string>RT极速模式</string>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>false</bool>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">buttonGroup_3</string>
-             </attribute>
-            </widget>
-            <widget class="QLabel" name="labelLighting">
-             <property name="geometry">
-              <rect>
-               <x>198</x>
-               <y>126</y>
-               <width>30</width>
-               <height>30</height>
-              </rect>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel{background-color:transparent;border-radius:16px;padding:0px;}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="res.qrc">:/images/k/icon_lightning.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>false</bool>
-             </property>
-            </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>220</y>
-               <width>446</width>
-               <height>83</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_12">
-              <item>
-               <widget class="QLabel" name="label_6">
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>14</pointsize>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>再次按下按键触发所需的行程(mm)</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QFrame" name="frame_8">
-                <property name="frameShape">
-                 <enum>QFrame::Shape::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
-                 <property name="spacing">
-                  <number>10</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>2</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>2</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>2</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>2</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_8">
-                   <property name="text">
-                    <string>0.2</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QSlider" name="horizontalSlider1">
-                   <property name="minimum">
-                    <number>200</number>
-                   </property>
-                   <property name="maximum">
-                    <number>2500</number>
-                   </property>
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_9">
-                   <property name="text">
-                    <string>2.5</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_7">
-                   <property name="maximumSize">
-                    <size>
-                     <width>150</width>
-                     <height>28</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QFrame{background-color: #E4E4E4;border-radius:12px;}
-
-</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_6">
-                    <property name="leftMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>2</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>2</number>
-                    </property>
-                    <item>
-                     <widget class="QPushButton" name="pushButtonM1">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="icon">
-                       <iconset resource="res.qrc">
-                        <normaloff>:/images/rt/minus-normal.png</normaloff>:/images/rt/minus-normal.png</iconset>
-                      </property>
-                      <property name="flat">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEditValue1">
-                      <property name="minimumSize">
-                       <size>
-                        <width>80</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>80</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">border:none;background-color:#E6E6E6;</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="pushButtonP1">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="icon">
-                       <iconset resource="res.qrc">
-                        <normaloff>:/images/rt/plug-normal.png</normaloff>:/images/rt/plug-normal.png</iconset>
-                      </property>
-                      <property name="flat">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>496</x>
-               <y>218</y>
-               <width>404</width>
-               <height>85</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_13">
-              <item>
-               <widget class="QLabel" name="labelRelease">
-                <property name="font">
-                 <font>
-                  <family>MiSans</family>
-                  <pointsize>14</pointsize>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>松开按键重置所需的行程(mm)</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QFrame" name="frameRelease">
-                <property name="frameShape">
-                 <enum>QFrame::Shape::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,1,0,0">
-                 <property name="spacing">
-                  <number>10</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>2</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>2</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>2</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>2</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_13">
-                   <property name="text">
-                    <string>2.5</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QSlider" name="horizontalSlider2">
-                   <property name="minimum">
-                    <number>200</number>
-                   </property>
-                   <property name="maximum">
-                    <number>2500</number>
-                   </property>
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_14">
-                   <property name="text">
-                    <string>0.2</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_10">
-                   <property name="maximumSize">
-                    <size>
-                     <width>150</width>
-                     <height>28</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QFrame{background-color: #E4E4E4;border-radius:12px;}
-
-</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_9">
-                    <property name="leftMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>2</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>2</number>
-                    </property>
-                    <item>
-                     <widget class="QPushButton" name="pushButtonM2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="icon">
-                       <iconset resource="res.qrc">
-                        <normaloff>:/images/rt/minus-normal.png</normaloff>:/images/rt/minus-normal.png</iconset>
-                      </property>
-                      <property name="flat">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEditValue2">
-                      <property name="minimumSize">
-                       <size>
-                        <width>80</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>80</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">border:none;background-color:#E6E6E6;</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="pushButtonP2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="icon">
-                       <iconset resource="res.qrc">
-                        <normaloff>:/images/rt/plug-normal.png</normaloff>:/images/rt/plug-normal.png</iconset>
-                      </property>
-                      <property name="flat">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
            <widget class="QWidget" name="page3">
             <property name="styleSheet">
-             <string notr="true">#page3{background-color: #F6F6F6;border-radius:32px;}</string>
+             <string notr="true"/>
             </property>
-            <widget class="QLabel" name="labelTitle1">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>20</y>
-               <width>297</width>
-               <height>21</height>
-              </rect>
+            <layout class="QVBoxLayout" name="verticalLayout_23">
+             <property name="spacing">
+              <number>5</number>
              </property>
-             <property name="font">
-              <font>
-               <family>MiSans</family>
-               <pointsize>14</pointsize>
-              </font>
+             <property name="leftMargin">
+              <number>20</number>
              </property>
-             <property name="text">
-              <string>轴体设置</string>
+             <property name="topMargin">
+              <number>20</number>
              </property>
-            </widget>
-            <widget class="QLabel" name="label_16">
-             <property name="geometry">
-              <rect>
-               <x>116</x>
-               <y>48</y>
-               <width>709</width>
-               <height>47</height>
-              </rect>
+             <property name="rightMargin">
+              <number>20</number>
              </property>
-             <property name="font">
-              <font>
-               <family>MiSans</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>更换键盘轴体后，选择对应轴体的按键，点击下方对应的轴体选项进行设置来区分不同轴体</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_12">
-             <property name="geometry">
-              <rect>
-               <x>346</x>
-               <y>240</y>
-               <width>240</width>
-               <height>40</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MiSans</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::FocusPolicy::NoFocus</enum>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{background-color:#6329B6;border:1px solid #6329B6;border-radius:20px;color:white;}</string>
-             </property>
-             <property name="text">
-              <string>确定</string>
-             </property>
-            </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>66</x>
-               <y>110</y>
-               <width>823</width>
-               <height>113</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_11">
-              <property name="spacing">
-               <number>10</number>
-              </property>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_3">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButtonMT0">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
-QPushButton:checked { border-color: #6329B6; }</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/mtico09.png</normaloff>:/images/rt/mtico09.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>64</width>
-                    <height>64</height>
-                   </size>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroupMT</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="labelName0">
-                  <property name="text">
-                   <string>炫光</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_4">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButtonMT1">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
-QPushButton:checked { border-color: #6329B6; }</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/mtico10.png</normaloff>:/images/rt/mtico10.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>64</width>
-                    <height>64</height>
-                   </size>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroupMT</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="labelName1">
-                  <property name="text">
-                   <string>闪电</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_5">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButtonMT2">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
-QPushButton:checked { border-color: #6329B6; }</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/mtico14.png</normaloff>:/images/rt/mtico14.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>64</width>
-                    <height>64</height>
-                   </size>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroupMT</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="labelName2">
-                  <property name="text">
-                   <string>星芒磁轴</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_6">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButtonMT3">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
-QPushButton:checked { border-color: #6329B6; }</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/mtico01.png</normaloff>:/images/rt/mtico01.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>64</width>
-                    <height>64</height>
-                   </size>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroupMT</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="labelName3">
-                  <property name="text">
-                   <string>磁玉</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_7">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButtonMT4">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
-QPushButton:checked { border-color: #6329B6; }</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/mtico02.png</normaloff>:/images/rt/mtico02.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>64</width>
-                    <height>64</height>
-                   </size>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroupMT</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="labelName4">
-                  <property name="text">
-                   <string>磁玉Pro</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_8">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButtonMT5">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
-QPushButton:checked { border-color: #6329B6; }</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/mtico03.png</normaloff>:/images/rt/mtico03.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>64</width>
-                    <height>64</height>
-                   </size>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroupMT</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="labelName5">
-                  <property name="text">
-                   <string>磁玉Gaming</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_9">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButtonMT6">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
-QPushButton:checked { border-color: #6329B6; }</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/mtico06.png</normaloff>:/images/rt/mtico06.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>64</width>
-                    <height>64</height>
-                   </size>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroupMT</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="labelName6">
-                  <property name="text">
-                   <string>天王</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_14">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QPushButton" name="pushButtonMT7">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{min-width:70px;min-height:70px;border:2px solid #E2E2E2;border-radius:16px;background-color:white;}
-QPushButton:checked { border-color: #6329B6; }</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="res.qrc">
-                    <normaloff>:/images/rt/mtico05.png</normaloff>:/images/rt/mtico05.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>64</width>
-                    <height>64</height>
-                   </size>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroupMT</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="labelName7">
-                  <property name="text">
-                   <string>万磁王</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_22" stretch="0,0,1">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="1">
+                 <item>
+                  <widget class="QLabel" name="labelTitle8">
+                   <property name="font">
+                    <font>
+                     <family>MiSans</family>
+                     <pointsize>14</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>RT Stab(RT 增稳算法)</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameRtStab">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_21">
+                  <property name="spacing">
+                   <number>20</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QRadioButton" name="radioButtonStab0">
+                    <property name="minimumSize">
+                     <size>
+                      <width>80</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>0%(关闭)</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupStab</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButtonStab1">
+                    <property name="minimumSize">
+                     <size>
+                      <width>80</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>25%</string>
+                    </property>
+                    <property name="checked">
+                     <bool>false</bool>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupStab</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButtonStab2">
+                    <property name="minimumSize">
+                     <size>
+                      <width>80</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>50%</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupStab</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButtonStab3">
+                    <property name="minimumSize">
+                     <size>
+                      <width>80</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>75%</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupStab</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButtonStab4">
+                    <property name="minimumSize">
+                     <size>
+                      <width>80</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>100%</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroupStab</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelMemo0">
+                 <property name="styleSheet">
+                  <string notr="true">margin-left:20px;font-size:14px;</string>
+                 </property>
+                 <property name="text">
+                  <string>RT Stab打开后，算法会介入增强轴体底部的稳定性。介入百分比越大，稳定性越强，延迟也会有所增加。</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_21" stretch="0,0,1">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1">
+                 <item>
+                  <widget class="QLabel" name="labelTitle9">
+                   <property name="font">
+                    <font>
+                     <family>MiSans</family>
+                     <pointsize>14</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>防误触模式</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_23">
+                 <property name="spacing">
+                  <number>20</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="ToggleButton" name="checkBoxTouch">
+                   <property name="minimumSize">
+                    <size>
+                     <width>52</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>52</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="checked">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="labelTunch">
+                   <property name="text">
+                    <string>(已关闭)</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelMemo1">
+                 <property name="styleSheet">
+                  <string notr="true">margin-left:20px;font-size:14px;</string>
+                 </property>
+                 <property name="text">
+                  <string>防止极限性能下桌面抖动误触发或轴体公差可能造成还有0.1mm的行程公差。开启后优化底部按键算法补足行程差值提高键盘稳定性。</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
-           <widget class="QWidget" name="pageWakeup">
+           <widget class="QWidget" name="page4">
             <property name="styleSheet">
-             <string notr="true">#page4{background-color: #F6F6F6;border-radius:32px;}</string>
+             <string notr="true"/>
             </property>
-            <widget class="QLineEdit" name="lineEdit">
-             <property name="geometry">
-              <rect>
-               <x>350</x>
-               <y>50</y>
-               <width>139</width>
-               <height>21</height>
-              </rect>
+            <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="4,0,7">
+             <property name="spacing">
+              <number>15</number>
              </property>
-             <property name="text">
-              <string>唤醒设置</string>
+             <property name="leftMargin">
+              <number>20</number>
              </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_2">
-             <property name="geometry">
-              <rect>
-               <x>350</x>
-               <y>90</y>
-               <width>141</width>
-               <height>60</height>
-              </rect>
+             <property name="topMargin">
+              <number>20</number>
              </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
+             <property name="rightMargin">
+              <number>20</number>
              </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>60</height>
-              </size>
+             <property name="bottomMargin">
+              <number>10</number>
              </property>
-             <property name="text">
-              <string>PushButton</string>
-             </property>
-            </widget>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_16" stretch="0,1">
+               <property name="spacing">
+                <number>5</number>
+               </property>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="1,0">
+                 <item>
+                  <widget class="QLabel" name="labelTitle5">
+                   <property name="text">
+                    <string>行程测试</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="ToggleButton" name="checkBoxKeytest0">
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_18">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <item alignment="Qt::AlignmentFlag::AlignBottom">
+                  <widget class="QLabel" name="labelKeymt">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="res.qrc">:/images/key-mt.png</pixmap>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="labelPress">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="Line" name="line_2">
+               <property name="maximumSize">
+                <size>
+                 <width>2</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Plain</enum>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_15" stretch="0,2,0,5">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="1,0">
+                 <item>
+                  <widget class="QLabel" name="labelTitle3">
+                   <property name="text">
+                    <string>按键测试</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="ToggleButton" name="checkBoxKeytest1">
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QScrollArea" name="scrollArea0">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents0">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>569</width>
+                    <height>58</height>
+                   </rect>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_16"/>
+                 </widget>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelTitle4">
+                 <property name="text">
+                  <string>输入值</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QScrollArea" name="scrollArea1">
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents1">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>569</width>
+                    <height>166</height>
+                   </rect>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_17"/>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
           </widget>
          </item>
@@ -1878,15 +1918,10 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>NewTabWidget</class>
-   <extends>QTabWidget</extends>
-   <header location="global">newtabwidget.h</header>
+   <class>ModuleLinear</class>
+   <extends>QFrame</extends>
+   <header>modulelinear.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ToggleButton</class>
-   <extends>QCheckBox</extends>
-   <header>togglebutton.h</header>
   </customwidget>
   <customwidget>
    <class>ModuleKeyboard</class>
@@ -1895,10 +1930,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>ModuleLinear</class>
-   <extends>QFrame</extends>
-   <header>modulelinear.h</header>
-   <container>1</container>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -1906,8 +1940,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroupStab"/>
   <buttongroup name="buttonGroupMT"/>
-  <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup_3"/>
  </buttongroups>
 </ui>

@@ -18,11 +18,11 @@ public:
     explicit ModuleKeyboard(QWidget *parent = nullptr);
     ~ModuleKeyboard();
 
-    void setKeyFixMode() ;
-    void setkeyHited(int id) ;
+    void setKeyFixMode();
+    void setkeyHited(int id);
     void showFlag(bool show=true);
     void showMtFlag(bool show=true);
-    void setKeyEnable(const QString&objname, bool bEnable, bool bToDevice, bool bSetToAll=false) ;
+    void setKeyEnable(const QString&objname, bool bEnable, bool bToDevice, bool bSetToAll=false);
     void setLightMode();
 
     void setKeyTip(const QString&objname,const QString&strTip1="",const QString&strTip2="",bool bSetToAll=true);
@@ -34,11 +34,15 @@ public:
     void setMtColor(quint8 hid,const QColor&color);
     static void Update();
 
+    void selectAll(bool select=true);
+    int  getSelected(QList<quint8>&hids);
+
     void keepSpeacial();
 
 signals:
     void onKeyClicked(const QString&text,quint8 hid);
     void onKeyChanged(quint8 hid,quint8 type,bool enable);
+    void onSelect();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;

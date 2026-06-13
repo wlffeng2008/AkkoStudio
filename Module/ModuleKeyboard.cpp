@@ -74,6 +74,31 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
     s_kbInstance.push_back(this);
 }
 
+void ModuleKeyboard::selectAll(bool select)
+{
+    const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
+    for(QAbstractButton*btn:btns)
+    {
+        btn->setChecked(select);
+    }
+    emit onSelect();
+}
+
+int ModuleKeyboard::getSelected(QList<quint8>&hids)
+{
+    hids.clear();
+    const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
+    for(QAbstractButton*btn:btns)
+    {
+        if(btn->isChecked())
+        {
+            hids.push_back(btn->objectName().right(3).toUInt());
+        }
+    }
+
+    return hids.count();
+}
+
 void ModuleKeyboard::setButtonEnable(QAbstractButton*btn, bool bEnable, bool bToDevice)
 {
     KeyboardButton * tkb = static_cast<KeyboardButton *>(btn);
@@ -301,7 +326,6 @@ void ModuleKeyboard::setKeyFixMode()
         for(QAbstractButton*btn:btns)
         {
             btn->setEnabled(false);
-            //btn->setStyleSheet("QPushButton:disabled { background-color: white; color: black; }" );
         }
         update();
     });
@@ -394,9 +418,12 @@ void ModuleKeyboard::mouseMoveEvent(QMouseEvent *event)
         m_nowPt = event->pos() ;
         QRect rect(m_clkPt,m_nowPt);
 
-        const QList<QAbstractButton*>btns = ui->buttonGroup->buttons() ;
+        const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
         for(QAbstractButton*btn:btns)
         {
+            if(!btn->isVisible()) continue;
+            if(!btn->isEnabled()) continue;
+
             QRect btnRc = btn->rect();
             btn->setChecked(
                 rect.contains( btn->mapToParent(btnRc.topLeft()    ) )||
@@ -407,6 +434,7 @@ void ModuleKeyboard::mouseMoveEvent(QMouseEvent *event)
         }
 
         update();
+        emit onSelect();
     }
 
     QFrame::mouseMoveEvent(event);

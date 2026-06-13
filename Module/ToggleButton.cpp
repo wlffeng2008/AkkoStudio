@@ -15,26 +15,15 @@ ToggleButton::ToggleButton(QWidget *parent) : QCheckBox(parent)
 
     setStyleSheet(R"(
             QCheckBox {
-                min-width: 48px;
+                min-width: 52px;
                 min-height: 24px;
                 border: none; }
         )");
-    m_bchecked = this->isChecked() ;
+
     setColor(s_colorChecked,s_colorUnchecked);
     setCursor(Qt::PointingHandCursor);
 }
 
-bool ToggleButton::getChecked()
-{
-    return m_bchecked;
-}
-
-void ToggleButton::setChecked(bool checked)
-{
-    m_bchecked = checked;
-    emit clicked(checked);
-    update();
-}
 
 void ToggleButton::setColor(const QColor&checkedColor,const QColor&UncheckedColor)
 {
@@ -57,11 +46,10 @@ void ToggleButton::setUnheckedColor(const QColor&color)
 
 bool ToggleButton::event(QEvent *event)
 {
-    if(event->type() == QEvent::MouseButtonRelease)
+    if(event->type() == QEvent::MouseButtonRelease && isEnabled())
     {
-        m_bchecked = !m_bchecked;
+        click();
         update();
-        emit clicked(m_bchecked);
         event->accept();
         return true;
     }
@@ -70,11 +58,12 @@ bool ToggleButton::event(QEvent *event)
 
 void ToggleButton::paintEvent(QPaintEvent *event)
 {
-    QPainter painter(this) ;
+    QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     QRect rect = this->rect().adjusted(1,1,-1,-1);
-    int nH = rect.height() ;
-    if(m_bchecked)
+    int nH = rect.height();
+    bool checked = this->isChecked();
+    if(checked)
     {
         painter.setPen(m_colorChecked);
         painter.setBrush(m_colorChecked);
@@ -84,11 +73,18 @@ void ToggleButton::paintEvent(QPaintEvent *event)
         painter.setPen(m_colorUnchecked);
         painter.setBrush(m_colorUnchecked);
     }
+
+    if(!isEnabled())
+    {
+        painter.setPen(Qt::lightGray);
+        painter.setBrush(Qt::lightGray);
+    }
+
     painter.drawRoundedRect(rect,nH/2,nH/2);
 
     int nRadius = nH/2 -2;
     QRect rc = rect.adjusted(2,2,-2,-2);
-    if(m_bchecked)
+    if(checked)
     {
         rc.setLeft(rc.right() - nRadius*2);
     }
@@ -97,7 +93,7 @@ void ToggleButton::paintEvent(QPaintEvent *event)
         rc.setRight(rc.left() + nRadius*2);
     }
 
-    if(m_bchecked)
+    if(checked)
     {
         painter.setPen(Qt::white);
         painter.setBrush(Qt::white);

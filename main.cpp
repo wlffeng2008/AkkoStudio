@@ -94,14 +94,15 @@ int main(int argc, char *argv[])
         QLineEdit:focus{ border: 1px solid #50b7c1; border-radius: 4px;  background-color: rgb(230, 240, 255);}
         QLineEdit:disabled { background-color: transparent; color: #B7B7B7;border: 1px solid transparent;}
 
-        QLabel#labelTitle1,#labelTitle2,#labelTitle3,#labelTitle4,#labelTitle5,#labelTitle6,#labelTitle,#labelName{ font-size: 16px; font-weight: 600; }
+        QLabel#labelTitle,#labelTitle0,#labelTitle1,#labelTitle2,#labelTitle3,#labelTitle4,#labelTitle5,#labelTitle6,#labelTitle7,#labelTitle8,#labelTitle9,#labelTitle10{ font-size: 16px; font-weight: 600; }
+        QLabel#labelName ,#labelName0 ,#labelName1 ,#labelName2 ,#labelName3 ,#labelName4 ,#labelName5 ,#labelName6 ,#labelName7 ,#labelName8 ,#labelName9 ,#labelName10 { font-size: 16px; font-weight: 600; }
         QLabel#labelTitleL1,#labelTitleL2,#labelTitleL3,#labelTitleL4,#labelTitleL5 { font-size: 14px; font-weight: 500 ;}
         QLabel#labelTitleS1,#labelTitleS2,#labelTitleS3,#labelTitleS4,#labelTitleS5 { font-size: 16px; font-weight: 500 ;}
         QLabel#labelValue1,#labelValue5{ font-size: 10px; font-weight: 500;}
         QLabel#labelValue2,#labelValue4{ font-size: 14px; font-weight: 500;}
         QLabel#labelValue3,#labelValue6{ font-size: 18px; font-weight: 600;}
         QLabel#labelDeviceName,#labelDeviceName1{ font-size: 26px; font-weight: 600;}
-        QLabel#labelInfo0{ font-size: 32px; font-weight: 600; color:#202020;}
+        QLabel#labelInfo0,#labelInfo1,#labelInfo2,#labelInfo3{ font-size: 32px; font-weight: 600; color:#202020;}
 
         QTableView{
                  border: 1px solid gray;
@@ -156,7 +157,6 @@ int main(int argc, char *argv[])
         QMessageBox QLabel#qt_msgbox_label{min-width: 320px; min-height: 60px; max-width: 450px; max-height: 520px; qproperty-alignment: AlignLeft; white-space: pre-wrap;font: bold 12px 微软雅黑;}
         QMessageBox QLabel#qt_msgboxex_icon_label{ min-width: 32px; min-height: 32px; max-width: 32px; max-height: 32px;qproperty-alignment: AlignTop;}
 
-
         #pushButtonPlug,#pushButtonMinus{
                 border: none;
                 border-radius: 0px;
@@ -175,25 +175,11 @@ int main(int argc, char *argv[])
         #pushButtonMinus { icon: url(:/images/rt/minus-normal.png);}
         #pushButtonMinus:disabled { icon: url(:/images/rt/minus-disabled.png);}
 
-        QWidget#pageWakeup QPushButton {
-                background-color: red;
-                border-radius: 10px;
-                color: white;
-                border: 1px solid #6C9F50;
-                padding: 1px;
-                min-width: 46px;
-                min-height: 8px;
-                max-width: 800px;
-                max-height: 200px;
-                font-size: 18px ;
-                font-weight: 600;
-            }
-        QWidget#pageWakeup{ background-color: #F6F6F6; border-radius: 32px; }
-
         QSlider { border-radius: 12px; height: 24px; }
         QSlider::groove:horizontal { height: 12px; background: #DCDCDC; border-radius: 6px; }
         QSlider::sub-page:horizontal { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #FDDFBA, stop:1 #FFA73C);  border-radius: 6px; }
         QSlider::sub-page:horizontal:disabled { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 white, stop:1 #B3B3B3);  border-radius: 6px; }
+        QSlider::handle:horizontal:disabled { border: 2px solid #B3B3B3; }
         QSlider::handle:horizontal {
             width: 20px;
             height: 16px;
@@ -201,10 +187,12 @@ int main(int argc, char *argv[])
             border-radius: 12px;
             background: white;
             border: 2px solid #FFB459; }
-        QSlider::handle:horizontal:disabled { border: 2px solid #B3B3B3; }
 
-        QSlider::groove:vertical { width: 24px; background: #DCDCDC; border-radius: 12px; }
-        QSlider::sub-page:vertical { background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #FDDFBA, stop:1 #FFA73C);  border-radius: 12px; }
+        QSlider::groove:vertical { width: 24px; background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #FFA73C, stop:1 #FDDFBA); border-radius: 12px;}
+        QSlider::groove:vertical:disabled { background: lightgray; }
+        QSlider::handle:vertical:disabled { background: white; border: 2px solid #B3B3B3; }
+        QSlider::sub-page:vertical { background: #DCDCDC;  border-radius: 12px; }
+        QSlider::sub-page:vertical:disabled { background: lightgray; }
         QSlider::handle:vertical {
             width: 32px;
             height: 10px;
@@ -305,92 +293,91 @@ int main(int argc, char *argv[])
     QScrollBar::handle:vertical:pressed,
     QScrollBar::handle:horizontal:pressed { background: rgba(160, 250, 160, 0.98); }
 
+    QScrollBar::add-line:vertical,
+    QScrollBar::sub-line:vertical,
+    QScrollBar::add-line:horizontal,
+    QScrollBar::sub-line:horizontal {
+        border: none;
+        background: transparent;
+        height: 0px;
+        width: 0px;
+    }
 
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical,
-QScrollBar::add-line:horizontal,
-QScrollBar::sub-line:horizontal {
-    border: none;
-    background: transparent;
-    height: 0px;
-    width: 0px;
-}
+    QScrollBar::add-page:vertical:hover,
+    QScrollBar::add-page:horizontal:hover { background: transparent;}
+    QScrollBar::sub-page:vertical:hover,
+    QScrollBar::sub-page:horizontal:hover { background: transparent;}
 
-QScrollBar::add-page:vertical:hover,
-QScrollBar::add-page:horizontal:hover { background: transparent;}
-QScrollBar::sub-page:vertical:hover,
-QScrollBar::sub-page:horizontal:hover { background: transparent;}
+    QScrollBar::add-page:vertical,
+    QScrollBar::add-page:horizontal { background: transparent;}
+    QScrollBar::sub-page:vertical,
+    QScrollBar::sub-page:horizontal { background: transparent;}
 
-QScrollBar::add-page:vertical,
-QScrollBar::add-page:horizontal { background: transparent;}
-QScrollBar::sub-page:vertical,
-QScrollBar::sub-page:horizontal { background: transparent;}
+    QScrollArea { background-color: white;border:none }
 
-QScrollArea { background-color: white;border:none }
+    /*
+    QScrollArea {
+        qproperty-verticalScrollBarPolicy: Qt::ScrollBarAlwaysOff;
+        qproperty-horizontalScrollBarPolicy: Qt::ScrollBarAlwaysOff;
+    }
 
-/*
-QScrollArea {
-    qproperty-verticalScrollBarPolicy: Qt::ScrollBarAlwaysOff;
-    qproperty-horizontalScrollBarPolicy: Qt::ScrollBarAlwaysOff;
-}
+    QScrollArea:hover {
+        qproperty-verticalScrollBarPolicy: Qt::ScrollBarAsNeeded;
+        qproperty-horizontalScrollBarPolicy: Qt::ScrollBarAsNeeded;
+    }*/
 
-QScrollArea:hover {
-    qproperty-verticalScrollBarPolicy: Qt::ScrollBarAsNeeded;
-    qproperty-horizontalScrollBarPolicy: Qt::ScrollBarAsNeeded;
-}*/
+    QTabWidget {
+        background-color: transparent;
+        border: none;
+        border-radius:0;
+        padding: 0px;
+        margin: 0;
+        color: black;
+        font-size: 18px;
+        font-weight: 400;
+    }
 
-QTabWidget {
-    background-color: transparent;
-    border: none;
-    border-radius:0;
-    padding: 0px;
-    margin: 0;
-    color: black;
-    font-size: 18px;
-    font-weight: 400;
-}
+    /* 标签栏的样式 - 水平标签栏 */
+    QTabBar::tab {
+        background-color: transparent;
+        border: 3px solid transparent;
+        padding: 4px 2px;
+        margin-right: 10px;
+        min-width: 40px;
+        min-height: 20px;
+        font-size: 18px;
+        font-weight: 400;
+    }
 
-/* 标签栏的样式 - 水平标签栏 */
-QTabBar::tab {
-    background-color: transparent;
-    border: 3px solid transparent;
-    padding: 4px 2px;
-    margin-right: 10px;
-    min-width: 40px;
-    min-height: 20px;
-    font-size: 18px;
-    font-weight: 400;
-}
+    QTabBar::tab:selected {
+        color: #6329B6;
+        font-weight: 900;
+        border: 3px solid transparent;
+        border-bottom: 3px solid #6329B6;
+    }
 
-QTabBar::tab:selected {
-    color: #6329B6;
-    font-weight: 900;
-    border: 3px solid transparent;
-    border-bottom: 3px solid #6329B6;
-}
+    QTabBar::tab:hover:!selected {
+        background-color: transparent;
+        color: #000;
+    }
 
-QTabBar::tab:hover:!selected {
-    background-color: transparent;
-    color: #000;
-}
+    QTabBar::tab:vertical {
+        min-height: 20px;
+    }
 
-QTabBar::tab:vertical {
-    min-height: 20px;
-}
+    QTabWidget::pane {
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        padding: 0px;
+        margin-top: -1px; /* 与标签栏无缝连接 */
+    }
 
-QTabWidget::pane {
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0px;
-    margin-top: -1px; /* 与标签栏无缝连接 */
-}
-
-/* 标签栏下方的分隔线 */
-QTabBar::separator {
-    width: 1px;
-    background-color: #aaa;
-}
+    /* 标签栏下方的分隔线 */
+    QTabBar::separator {
+        width: 1px;
+        background-color: #aaa;
+    }
 
     QSpinBox {
         border: 1px solid #D0D0D0;
@@ -428,7 +415,6 @@ QTabBar::separator {
         border-top: 3px solid #007AFF;
     }
 
-    /* 只读状态样式 */
     QSpinBox:read-only {
         background-color: #F5F5F5;
         color: #666666;
@@ -442,5 +428,6 @@ QTabBar::separator {
     w.m_pMainTrA = &translatorB;
     w.m_pMainTrB = &translatorW;
     w.show();
+
     return a.exec();
 }

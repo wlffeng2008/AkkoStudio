@@ -35,6 +35,7 @@ public:
     int connectType;
     int battery;
     bool toShow;
+    HWND hShowWnd;
     int deviceClor;
     quint32 lastTime;
     QString strName;
@@ -82,7 +83,6 @@ private:
     Ui::MainWindow *ui;
 
     ModuleLangMenu *m_pLangMenu = nullptr;
-    //ModuleGeneralMasker *m_cover = nullptr;
     AkkoDeviceEnum *m_Enum = nullptr;
 
     bool m_bForMGK = false;
@@ -108,6 +108,7 @@ private:
     bool m_bEnuming=false;
     int m_showId = 0;
     QString m_showPath;
+    DeviceEnumInfo *m_pActDev=nullptr;
     QList<DeviceEnumInfo *> m_tmp;
 
     QString m_langSet;

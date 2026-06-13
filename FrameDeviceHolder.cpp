@@ -201,6 +201,8 @@ void FrameDeviceHolder::changeEvent(QEvent *pEvt)
 
 void FrameDeviceHolder::clickLabel(QLabel *label, int index)
 {
+    if(DialogDeviceConnect::instance()->isLoading())
+        return;
     if(index == 6 || index == 7)
     {
         emit onReturn();

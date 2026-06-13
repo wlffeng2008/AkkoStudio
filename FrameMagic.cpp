@@ -1,11 +1,13 @@
 #include "FrameMagic.h"
 #include "ui_FrameMagic.h"
 
+#include "DialogDeviceConnect.h"
+
 #include <QTimer>
 #include <QButtonGroup>
+#include <QPainter>
+#include <QPainterPath>
 
-#include "keyboardbutton.h"
-#include "DialogDeviceConnect.h"
 
 FrameMagic::FrameMagic(QWidget *parent)
     : QFrame(parent)
@@ -43,9 +45,9 @@ FrameMagic::FrameMagic(QWidget *parent)
         pLayout->setSpacing(12);
         pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
 
-        QList<QPushButton *>btns = {ui->pushButtonSet1,ui->pushButtonSet2,ui->pushButtonSet3,ui->pushButtonSet4};
+        QList<QPushButton *>btns = {ui->pushButtonSet0,ui->pushButtonSet1,ui->pushButtonSet2,ui->pushButtonSet3,ui->pushButtonSet4};
         QButtonGroup *pBtnGrp = new QButtonGroup(this);
-        for(int i=0; i<4; i++)
+        for(int i=0; i<5; i++)
         {
             QPushButton *btn = btns[i];
             btn->setFixedSize(120,24);
@@ -66,6 +68,8 @@ FrameMagic::FrameMagic(QWidget *parent)
 
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
             ui->stackedWidget->setCurrentIndex(id);
+            ui->frameKeyboard->selectAll(false);
+            ui->frameKeyboard->setEnabled( !(id == 3 || id == 4) );
 
             if(id == 2)
             {
@@ -111,38 +115,17 @@ FrameMagic::FrameMagic(QWidget *parent)
             }
         });
 
-        ui->pushButtonSet1->click();
-        ui->pushButtonSet4->hide();
+        ui->pushButtonSet0->click();
         ui->pushButtonMT0->click();
     }
 
     ui->frameDead->setText(tr("顶部死区"),tr("底部死区"));
 
     {
-        // static QString strStyle1(R"(
-        // QPushButton {
-        //     border: none;
-        //     border-radius: 0px;
-        //     color: black;
-        //     padding: 0 ;
-        //     background-color: #E4E4E4;
-        //         min-width:20px;
-        //         min-height:20px;
-        //         max-width:20px;
-        //         max-height:20px;
-        //         icon-size: 20px;
-        //     }
-
-        //     QPushButton:hover { background-color: #E4E4E4;}
-
-        //     )");
-        // ui->pushButtonM1->setStyleSheet(strStyle1);
-        // ui->pushButtonM2->setStyleSheet(strStyle1);
-        // ui->pushButtonP1->setStyleSheet(strStyle1);
-        // ui->pushButtonP2->setStyleSheet(strStyle1);
-
         ui->horizontalSlider2->setStyleSheet(R"(
         QSlider::sub-page:horizontal { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #C3FFFD, stop:1 #39E1DC);  border-radius: 6px;}
+        QSlider::sub-page:horizontal:disabled { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 white, stop:1 #B3B3B3);  border-radius: 6px; }
+        QSlider::handle:horizontal:disabled { border: 2px solid #B3B3B3; }
         QSlider::handle:horizontal {
             width: 20px;
             height: 16px;
@@ -239,19 +222,140 @@ FrameMagic::FrameMagic(QWidget *parent)
             ui->horizontalSlider2->setValue(value);
         });
 
-        connect(ui->checkBox3,&QCheckBox::clicked,this,[=](bool checked){
-            ui->labelRelease->setHidden(!checked);
-            ui->frameRelease->setHidden(!checked);
+        connect(ui->checkBoxFullRT,&QCheckBox::clicked,this,[=](bool checked){
+            ui->frame0->setEnabled(checked);
+            ui->frame1->setEnabled(checked);
+            ui->frame2->setEnabled(false);
+
+            ui->frameLinear->enablePannel(false,false);
+
+            ui->checkBoxRTPress->setChecked(false);
+            ui->checkBoxUnpress->setChecked(false);
+            ui->checkBoxUnpress->setEnabled(!checked);
         });
 
-        ui->checkBox3->click();
+        connect(ui->checkBoxRTPress,&QCheckBox::clicked,this,[=](bool checked){
+            ui->frame2->setEnabled(checked);
+        });
+
+        connect(ui->checkBoxUnpress,&QCheckBox::clicked,[=](bool checked){
+            ui->frameLinear->enablePannel(false,checked);
+        });
+
+        ui->checkBoxRTPress->click();
+        ui->checkBoxFullRT->click();
+
+        ui->frameLinear->enablePannel(false,false);
     }
 
+    {
+        DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
+        connect(pCnn,&DialogDeviceConnect::onReadDone,this,[=]{
+            ui->checkBoxTouch->setChecked(pCnn->getKBOption(2));
+            ui->labelTunch->setText(ui->checkBoxTouch->isChecked() ? tr("已开启") : tr("已关闭"));
+
+            quint8 opt3 = pCnn->getKBOption(3);
+            ui->radioButtonStab0->setChecked(opt3 == 0);
+            ui->radioButtonStab1->setChecked(opt3 == 1);
+            ui->radioButtonStab2->setChecked(opt3 == 2);
+            ui->radioButtonStab3->setChecked(opt3 == 3);
+            ui->radioButtonStab4->setChecked(opt3 == 4);
+        });
+
+        connect(ui->checkBoxTouch,&QCheckBox::clicked,this,[=](bool checked){
+            pCnn->setKBOption(2, checked ? 1 : 0);
+            ui->labelTunch->setText(checked ? tr("已开启") : tr("已关闭"));
+        });
+
+        connect(ui->buttonGroupStab,&QButtonGroup::idClicked,this,[=](int id){
+            quint8 opt3 = abs(id)-2;
+            pCnn->setKBOption(3, opt3);
+        });
+
+        connect(ui->frameKeyboard,&ModuleKeyboard::onSelect,this,[=]{
+            QList<quint8>hids;
+            ui->frameKeyboard->getSelected(hids);
+            ui->labelSelectKey->setText(QString(tr("已选择按键数量")) + QString(": %1").arg(hids.count()));
+        });
+
+        connect(ui->pushButtonSetDeathzone,&QPushButton::clicked,this,[=]{
+            QList<quint8>hids;
+            ui->frameKeyboard->getSelected(hids);
+            int count=hids.count();
+            if(count)
+            {
+                quint32 v0 = ui->frameLinear->getValue() * 200;
+                quint32 v1 = ui->frameLinear->getValue(false) * 200;
+                for(int i=0; i<count; i++)
+                {
+                    quint8 index = getHid(hids[i]);
+                    pCnn->send65Cmd(0x06,index,v0,false);
+                    pCnn->send65Cmd(0x06,index,v1,i == count-1);
+                }
+            }
+        });
+
+        connect(ui->checkBoxKeytest0,&QCheckBox::clicked,this,[=](bool checked){
+        });
+
+        connect(ui->checkBoxKeytest1,&QCheckBox::clicked,this,[=](bool checked){
+        });
+    }
+
+    ui->labelPress->installEventFilter(this);
+
     ui->frameKeyboard->showMtFlag();
+    srand(time(nullptr));
+    QTimer *pTMset = new QTimer(this);
+    connect(pTMset,&QTimer::timeout,this,[=]{
+        if(ui->checkBoxKeytest0->isChecked())
+            ui->labelPress->update();
+    });
+    pTMset->start(100);
 }
 
 bool FrameMagic::eventFilter(QObject *watched, QEvent *event)
 {
+    if(event->type() == QEvent::Paint)
+    {
+        if(watched == ui->labelPress)
+        {
+            QPainter painter(ui->labelPress);
+            painter.setRenderHints(QPainter::Antialiasing);
+
+            painter.setPen(QPen(Qt::blue,2));
+            QRect rect = ui->labelPress->rect().adjusted(4,4,-4,-4);
+            //painter.drawRoundedRect(rect,20,20);
+
+            painter.setRenderHints(QPainter::Antialiasing,false);
+            QFont font = painter.font();
+            font.setPixelSize(8);
+            painter.setFont(font);
+            painter.setPen(QPen(Qt::gray,1));
+            float step = rect.height()/34.0;
+            for(int i=0; i<35; i++)
+            {
+                int offset = (i%5 == 0 ? 10 : 5);
+                painter.drawLine(QPoint(rect.right() - 20, rect.top() + i*step),QPoint(rect.right() - 20 + offset, rect.top() + i*step));
+                painter.drawLine(QPoint(rect.left() + 40, rect.top() + i*step),QPoint(rect.left() + 40 - offset, rect.top() + i*step));
+
+                if(i%5 == 0)
+                painter.drawText(QPoint(rect.left()+2, rect.top() + i*step + 4),QString::asprintf("%.2f",i/10.0));
+            }
+
+            QRect sub = ui->labelPress->rect().adjusted(50,4,-30,-4);
+            QPainterPath path;
+            path.addRoundedRect(sub,10,10);
+            painter.setClipPath(path);
+            painter.setRenderHints(QPainter::Antialiasing);
+
+            painter.fillRect(sub,Qt::gray);
+            //painter.drawRoundedRect(sub,4,4);
+            painter.fillRect(sub.adjusted(0,sub.height()-20,0,0),Qt::black);
+            painter.fillRect(sub.adjusted(0,0,0,  -rand()%(sub.height()-20)),0x6329B6);
+
+        }
+    }
     return QFrame::eventFilter(watched, event);
 }
 

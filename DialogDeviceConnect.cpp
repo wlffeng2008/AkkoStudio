@@ -457,6 +457,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
             case CMD_GET_KBOPTION:
                 m_Optn = data;
+                qDebug().noquote() << "get_:" << data.toHex(' ').toUpper();
                 addReadCmd(CMD_GET_PROFILE,true);
                 break;
 
@@ -550,7 +551,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             addLog(m_lastCmd.left(8),false);
             addLog(data);
 
-            QTimer::singleShot(30,this,[=]{
+            QTimer::singleShot(10,this,[=]{
                 executeCmd(); // next cmd
             });
         }
@@ -937,6 +938,7 @@ void DialogDeviceConnect::send65Cmd(quint8 option, quint8 hid, quint32 data, boo
 
 void DialogDeviceConnect::send65Cmd(quint8 option, quint8 hid, char *data, quint8 len, bool save)
 {
+    if(m_bReadAll) return;
     quint8 index=getIndex(hid);
     quint8 pack[8] = {0x65, option, 0, index, save, 0, 0, 0};
     QByteArray snd((char*)pack,8);
@@ -948,6 +950,7 @@ void DialogDeviceConnect::send65Cmd(quint8 option, quint8 hid, char *data, quint
 
 void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, quint8 save)
 {
+    if(m_bReadAll) return;
     quint8 index=getIndex(hid);
     quint8 pack[12] = {CMD_SET_KEYMATRIX, m_layer, index, 0,   0, save, subLayer, 0,   pDk->b0, pDk->b1, pDk->b2, pDk->b3};
     QByteArray snd((char*)pack,12);
@@ -958,6 +961,7 @@ void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, q
 
 void DialogDeviceConnect::changeKeyFn(quint8 hid,  keyData *pDk, quint8 subLayer, quint8 save)
 {
+    if(m_bReadAll) return;
     quint8 index=getIndex(hid);
     quint8 pack[12] = {CMD_SET_FN, 0, 0,  index, 0, 0, 0,  0, pDk->b0, pDk->b1, pDk->b2, pDk->b3};
     QByteArray snd((char*)pack,12);
@@ -968,6 +972,7 @@ void DialogDeviceConnect::changeKeyFn(quint8 hid,  keyData *pDk, quint8 subLayer
 
 void DialogDeviceConnect::restKey(quint8 hid)
 {
+    if(m_bReadAll) return;
     keyData kd={0,0,hid,0};
     changeKey(hid,&kd,0,false);
     kd.b2=0;
@@ -985,6 +990,7 @@ void DialogDeviceConnect::restKey(quint8 hid)
 
 void DialogDeviceConnect::setSleepTime(quint16 value, int type)
 {
+    if(m_bReadAll) return;
     if(type==0) m_sleepTime.timeBt =value*60;
     if(type==1) m_sleepTime.time24 =value*60;
     if(type==2) m_sleepTime.timeDBt=value*60;
@@ -1104,6 +1110,7 @@ void DialogDeviceConnect::startConnect()
 
 void DialogDeviceConnect::makeCmd(int row, bool autoSend)
 {
+    if(m_bReadAll) return;
     QByteArray data;
     data.append((char)m_pModel->item(row,2)->text().toInt(nullptr,16));
     for(int i=3; i<10; i++)
@@ -1268,6 +1275,7 @@ void DialogDeviceConnect::setMacro(quint8 hid, quint16 repeat, quint8 mode, quin
 
 void DialogDeviceConnect::StartCalibration()
 {
+    if(m_bReadAll) return;
     m_bCalibration = true;
     if(!m_TMCali)
         m_TMCali = new QTimer(this);
@@ -1291,18 +1299,29 @@ void DialogDeviceConnect::StopCalibration()
 
 void DialogDeviceConnect::setKBOption(quint8 option, quint8 value)
 {
-    m_Optn[0     ] = CMD_SET_KBOPTION;
-    m_Optn[option] = value;
+    // OUT
+    // 0x09	00	00	00 	00	00	00	CS
+    // 8~63Byte
+    // Byte0: 0x09
+    // Byte1: 系统0=WIN,1=MAC,2=IOS,3=ANR
+    // Byte2: Fn层 0=0层，1=1层
+    // Byte3: 防抖开关：0，关，1，开
+    // Byte4: RT Stab（RT增稳算法）：0：0%；1：25%；2：50%；3：75%；4：100%；0：25%；
+    // Byte5: WASD与方向键切换：0，关，1，开
+
+    m_Optn[0       ] = CMD_SET_KBOPTION;
+    m_Optn[option+1] = value;
     addReadCmd(m_Optn,true);
 }
 
 quint8 DialogDeviceConnect::getKBOption(quint8 option)
 {
-    return m_Optn[option];
+    return m_Optn[option+1];
 }
 
 void DialogDeviceConnect::setPicture(quint8 index, const QByteArray&data)
 {
+    if(m_bReadAll) return;
     setLEDMode(0x0d,index);
     quint8 cmd[8] = {CMD_SET_USERPIC,index,0xFF,0,0x38,0,0,0};
     for(quint8 i=0; i<7; i++)
@@ -1317,6 +1336,7 @@ void DialogDeviceConnect::setPicture(quint8 index, const QByteArray&data)
 
 void DialogDeviceConnect::getPicture(quint8 index)
 {
+    if(m_bReadAll) return;
     m_userPic.clear();
     quint8 cmd[8] = {CMD_GET_USERPIC,index,0xFF,0,0,0,0,0};
     for(quint8 i=0; i<6; i++)

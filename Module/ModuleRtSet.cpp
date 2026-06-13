@@ -104,7 +104,7 @@ float ModuleRtSet::getValue()
 
 bool ModuleRtSet::eventFilter(QObject*watched,QEvent*event)
 {
-    if(event->type() == QEvent::MouseButtonPress && ui->checkBoxRTMode->getChecked())
+    if(event->type() == QEvent::MouseButtonPress && ui->checkBoxRTMode->isChecked())
     {
         QMouseEvent *pEV = static_cast<QMouseEvent *>(event);
         QRect tmp = s_Rect.adjusted(-2,0,2,0);
@@ -144,7 +144,7 @@ void ModuleRtSet::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     QPen Black(Qt::black,1);
     painter.setBrush(Qt::black);
-    if(!ui->checkBoxRTMode->getChecked())
+    if(!ui->checkBoxRTMode->isChecked())
     {
         painter.setBrush(0xB7B7B7);
         Black.setColor(0xB7B7B7);

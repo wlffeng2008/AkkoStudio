@@ -120,7 +120,7 @@ FrameLight::FrameLight(QWidget *parent)
     connect(ui->frameKeyboard,&ModuleKeyboard::onKeyClicked,this,[=](const QString&text,quint8 hid){
         QColor color = m_color;
 
-        if(ui->checkBoxRam->getChecked())
+        if(ui->checkBoxRam->isChecked())
         {
             color.setRed(  rand()%0x100);
             color.setGreen(rand()%0x100);

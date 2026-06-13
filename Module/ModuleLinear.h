@@ -16,7 +16,10 @@ public:
     ~ModuleLinear();
 
     void setText(const QString&text1,const QString&text2);
-
+    void hidePannel(bool left=true,bool hide=true);
+    void enablePannel(bool left=true,bool enable=true);
+    void setValue(float value, bool left=true);
+    float getValue(bool left=true);
 signals:
     void onSetValue(float value,int type=0);
 
@@ -25,6 +28,8 @@ protected:
 
 private:
     Ui::ModuleLinear *ui;
+    float m_value0=0;
+    float m_value1=0;
 };
 
 #endif // MODULELINEAR_H

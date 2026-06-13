@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>266</width>
+    <width>300</width>
     <height>233</height>
    </rect>
   </property>
@@ -16,7 +16,10 @@
   <property name="windowTitle">
    <string>Frame</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <property name="spacing">
+    <number>10</number>
+   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -29,262 +32,253 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
+   <item alignment="Qt::AlignmentFlag::AlignLeft">
+    <widget class="QFrame" name="leftPan">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>1</number>
+      </property>
+      <item alignment="Qt::AlignmentFlag::AlignHCenter">
+       <widget class="QLabel" name="labelTitleS1">
+        <property name="font">
+         <font>
+          <family>MiSans</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>按下(mm) </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignmentFlag::AlignHCenter">
+       <widget class="QSlider" name="verticalSlider1">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="tabletTracking">
+         <bool>true</bool>
+        </property>
+        <property name="maximum">
+         <number>4000</number>
+        </property>
+        <property name="singleStep">
+         <number>5</number>
+        </property>
+        <property name="value">
+         <number>2000</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,0">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="pushButtonM1">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../res.qrc">
+            <normaloff>:/images/rt/minus-normal.png</normaloff>:/images/rt/minus-normal.png</iconset>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditValue1">
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <pointsize>10</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonP1">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../res.qrc">
+            <normaloff>:/images/rt/plug-normal.png</normaloff>:/images/rt/plug-normal.png</iconset>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <property name="spacing">
-      <number>10</number>
-     </property>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
-       <property name="spacing">
-        <number>10</number>
-       </property>
-       <property name="leftMargin">
-        <number>5</number>
-       </property>
-       <property name="topMargin">
-        <number>5</number>
-       </property>
-       <property name="rightMargin">
-        <number>5</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item alignment="Qt::AlignmentFlag::AlignHCenter">
-        <widget class="QLabel" name="labelTitleS1">
-         <property name="font">
-          <font>
-           <family>MiSans</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>按下(mm) </string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignmentFlag::AlignHCenter">
-        <widget class="QSlider" name="verticalSlider1">
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="tabletTracking">
-          <bool>true</bool>
-         </property>
-         <property name="maximum">
-          <number>4000</number>
-         </property>
-         <property name="singleStep">
-          <number>5</number>
-         </property>
-         <property name="value">
-          <number>2000</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="spacing">
-          <number>2</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="pushButtonM1">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="toolTip">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../res.qrc">
-             <normaloff>:/images/rt/minus-normal.png</normaloff>:/images/rt/minus-normal.png</iconset>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditValue1">
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>MiSans</family>
-             <pointsize>10</pointsize>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButtonP1">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="toolTip">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../res.qrc">
-             <normaloff>:/images/rt/plug-normal.png</normaloff>:/images/rt/plug-normal.png</iconset>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0">
-       <property name="spacing">
-        <number>15</number>
-       </property>
-       <property name="leftMargin">
-        <number>5</number>
-       </property>
-       <property name="topMargin">
-        <number>5</number>
-       </property>
-       <property name="rightMargin">
-        <number>5</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item alignment="Qt::AlignmentFlag::AlignHCenter">
-        <widget class="QLabel" name="labelTitleS2">
-         <property name="font">
-          <font>
-           <family>MiSans</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>抬起(mm)</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignmentFlag::AlignHCenter">
-        <widget class="QSlider" name="verticalSlider2">
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="tabletTracking">
-          <bool>true</bool>
-         </property>
-         <property name="maximum">
-          <number>4000</number>
-         </property>
-         <property name="singleStep">
-          <number>5</number>
-         </property>
-         <property name="value">
-          <number>2000</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="invertedAppearance">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>2</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="pushButtonM2">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="toolTip">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../res.qrc">
-             <normaloff>:/images/rt/minus-normal.png</normaloff>:/images/rt/minus-normal.png</iconset>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditValue2">
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>MiSans</family>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButtonP2">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="toolTip">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../res.qrc">
-             <normaloff>:/images/rt/plug-normal.png</normaloff>:/images/rt/plug-normal.png</iconset>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    <widget class="QFrame" name="rightPan">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>1</number>
+      </property>
+      <item alignment="Qt::AlignmentFlag::AlignHCenter">
+       <widget class="QLabel" name="labelTitleS2">
+        <property name="font">
+         <font>
+          <family>MiSans</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>抬起(mm)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignmentFlag::AlignHCenter">
+       <widget class="QSlider" name="verticalSlider2">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="tabletTracking">
+         <bool>true</bool>
+        </property>
+        <property name="maximum">
+         <number>4000</number>
+        </property>
+        <property name="singleStep">
+         <number>5</number>
+        </property>
+        <property name="value">
+         <number>2000</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="invertedAppearance">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1,0">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="pushButtonM2">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../res.qrc">
+            <normaloff>:/images/rt/minus-normal.png</normaloff>:/images/rt/minus-normal.png</iconset>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditValue2">
+          <property name="font">
+           <font>
+            <family>MiSans</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonP2">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../res.qrc">
+            <normaloff>:/images/rt/plug-normal.png</normaloff>:/images/rt/plug-normal.png</iconset>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

@@ -222,7 +222,14 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 
-    ui->stackedWidget->hide();
+    ui->stackedWidget->setHidden(true);
+    ui->labelPrev->setHidden(true);
+    ui->labelNext->setHidden(true);
+    m_layout = ui->scrollAreaWidgetContents->layout();
+    m_layout->setSpacing(20);
+    ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     m_pLangMenu = new ModuleLangMenu(this);
     connect(m_pLangMenu, &ModuleLangMenu::onLangChanged, this, [=](int langId, const QString &lang){
         m_langName = QString(" ") + lang;
@@ -326,21 +333,6 @@ MainWindow::MainWindow(QWidget *parent)
         pSetInfo->deleteLater();
     });
 
-    // m_cover = new ModuleGeneralMasker(nullptr,this);
-    // m_cover->setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.2); border: none; border-radius: 20px; }");
-    // connect(m_cover,&ModuleGeneralMasker::onClicked,this,[=]{
-    //     m_cover->hide();
-    //     activateWindow();
-    // });
-
-    m_layout = ui->scrollAreaWidgetContents->layout();
-
-    ui->labelPrev->setHidden(true);
-    ui->labelNext->setHidden(true);
-
-    ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
     QTimer *pCheck = new QTimer(this);
     connect(pCheck, &QTimer::timeout, this, [=] {
         bool toHide = m_layout->count() == 0;
@@ -404,7 +396,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(pTMUsb,&QTimer::timeout,this,[=]{
         pTMUsb->stop();
-        ui->pushButtonScan->click();
+        m_Enum->DoEnum();
     });
 
     m_pSet->setValue("AkkoReturn", 0);
@@ -423,10 +415,7 @@ MainWindow::MainWindow(QWidget *parent)
     pTMRet->start(50);
     connect(pTMRet,&QTimer::timeout,this,[=]{
         if((m_pSet->value("AkkoReturn").toInt() || m_pSet->value("MonsGeekReturn").toInt()) && m_bCanReturn)
-        {            
-            if(m_creator == 1 || m_creator == 3)
-                this->show();
-
+        {
             qDebug() << "Action AkkoReturn";
             m_pSet->setValue("AkkoReturn", 0);
             m_pSet->setValue("MonsGeekReturn", 0);
@@ -447,6 +436,12 @@ MainWindow::MainWindow(QWidget *parent)
             m_showId  = 0;
             m_showPath.clear();
             m_hCurHwnd = nullptr;
+            m_pActDev = nullptr;
+
+            QTimer::singleShot(200,this,[=]{
+                this->show();
+                this->raise();
+            });
         }
     });
 
@@ -598,16 +593,19 @@ MainWindow::MainWindow(QWidget *parent)
         connect(showAction, &QAction::triggered, this, [=]{
             if(m_creator == 1 || m_creator == 3)
                 return;
-            show();
-            QTimer::singleShot(100,this,[=]{
+
+            this->show();
+            this->raise();
+
+            QTimer::singleShot(50,this,[=]{
                 ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
             });
-            QTimer::singleShot(500,this,[=]{
+            QTimer::singleShot(1500,this,[=]{
                 ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
             });
         });
         connect(hideAction, &QAction::triggered, this, [=]{
-            hide();
+            this->hide();
             m_bManHide=true;
         });
         trayIcon->setContextMenu(trayMenu);
@@ -657,17 +655,6 @@ MainWindow::MainWindow(QWidget *parent)
         }
     });
 
-    QTimer *pTMEsc = new QTimer(this);
-    pTMEsc->start(30);
-    connect(pTMEsc,&QTimer::timeout,this,[=]{
-        if(m_bActive && (::GetKeyState(VK_ESCAPE)&0x8000) && isVisible() && !isMinimized())
-        {
-            qDebug() << "AkkoReturn 0";
-            m_pSet->setValue("AkkoReturn", 1);
-            ui->stackedWidget->setCurrentIndex(0);
-        }
-    });
-
     {
         connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] {
             setHubSize(true);
@@ -676,15 +663,15 @@ MainWindow::MainWindow(QWidget *parent)
             m_Enum->DoEnum();
         });
 
-        QTimer *pTMList = new QTimer(this);
-        pTMList->start(500);
-        connect(pTMList,&QTimer::timeout,this,[=]{
-            pTMList->stop();
+        QTimer *pTMEnum = new QTimer(this);
+        pTMEnum->start(500);
+        connect(pTMEnum,&QTimer::timeout,this,[=]{
+            pTMEnum->stop();
 
             int interval = 15000;
             if(ui->stackedWidget->currentIndex() == 0)
                 interval = 2000;
-            pTMList->start(interval);
+            pTMEnum->start(interval);
 
             m_Enum->DoEnum();
         });
@@ -698,9 +685,18 @@ MainWindow::MainWindow(QWidget *parent)
                     addToHub(m_tmp[i],index++);
             }
         },Qt::QueuedConnection);
-
-        m_layout->setSpacing(20);
     }
+
+    QTimer *pTMEsc = new QTimer(this);
+    pTMEsc->start(30);
+    connect(pTMEsc,&QTimer::timeout,this,[=]{
+        if(m_bActive && (::GetKeyState(VK_ESCAPE)&0x8000) && isVisible() && !isMinimized())
+        {
+            qDebug() << "AkkoReturn 0";
+            m_pSet->setValue("AkkoReturn", 1);
+            ui->stackedWidget->setCurrentIndex(0);
+        }
+    });
 
     setHubSize(true);
 }
@@ -797,9 +793,10 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
             }
         }
 
-        QTimer::singleShot(200,this,[=]{
+        QTimer::singleShot(100,this,[=]{
             HWND hWnd = s_hWndEmb[m_creator];
             if(!hWnd) return;
+            m_pActDev = dev;
 
             qreal scaleFactor = this->devicePixelRatio();
             if(m_creator == 1 || m_creator == 3)
@@ -809,25 +806,26 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
 
                 QSize cs = QApplication::screens().at(0)->size();
 
-                int x = (cs.width() * scaleFactor  - (rc.right-rc.left))/2;
+                int x = (cs.width()  * scaleFactor - (rc.right-rc.left))/2;
                 int y = (cs.height() * scaleFactor - (rc.bottom-rc.top))/2;
 
                 if(x < 0) x = 0;
                 if(y < 0) y = 0;
 
-                m_hCurHwnd = hWnd;
-
-                QTimer::singleShot(100,this,[=]{
-                    hide();
-                    ::SetWindowPos(hWnd, HWND_TOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
-                });
+                hide();
+                m_bCanReturn = false;
+                ::SetWindowPos(hWnd, HWND_TOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
 
                 QTimer::singleShot(1500,this,[=]{
-                    hide();
                     ::SetWindowPos(hWnd, HWND_NOTOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
                     ::BringWindowToTop(hWnd);
                     ::SetActiveWindow(hWnd);
                     ::SetFocus(hWnd);
+
+                    m_hCurHwnd = hWnd;
+                    m_pSet->setValue("AkkoReturn", 0);
+                    m_pSet->setValue("MonsGeekReturn", 0);
+                    m_bCanReturn = true;
                 });
             }
             else
@@ -840,9 +838,9 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
 
                 int radius = 32;
 
-                HRGN hFullRound = CreateRoundRectRgn(0, 0, nWidth, nHeight,radius,radius);
-                HRGN hTopRect0 = CreateRectRgn(0, 0, nWidth, nHeight);
-                HRGN hTopRect1 = CreateRectRgn(0, 0, nWidth, radius);
+                HRGN hFullRound = ::CreateRoundRectRgn(0, 0, nWidth, nHeight, radius, radius);
+                HRGN hTopRect0 = ::CreateRectRgn(0, 0, nWidth, nHeight);
+                HRGN hTopRect1 = ::CreateRectRgn(0, 0, nWidth, radius);
 
                 HRGN hFinalRgn = CreateRectRgn(0, 0, 0, 0);
                 ::CombineRgn(hFinalRgn, hFullRound, hTopRect0, RGN_AND);
@@ -855,11 +853,6 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                 ::DeleteObject(hTopRect1);
             }
 
-            // ::RedrawWindow(hWnd, nullptr, nullptr, RDW_INVALIDATE | RDW_UPDATENOW);
-            // ::UpdateWindow(hWnd);
-
-            // ui->stackedWidget->update();
-            // ui->frameEmb->update();
             m_bActive = true;
 
             QTimer::singleShot(2000,this,[=]{
@@ -905,6 +898,7 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint32 driverId, const QSt
     pDev->strPath1 = path1;
     pDev->strPath2 = path2;
     pDev->toShow = true;
+    pDev->hShowWnd = nullptr;
     pDev->lastTime = time(nullptr);
     pDev->VID = VID;
     pDev->PID = PID;
@@ -1132,7 +1126,7 @@ void MainWindow::enumDevice()
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X %s",VID,PID,UPG,USA,PATH);
             if(USA == 0x0092 && UPG == 0xFF1C)
             {
-                allPaths.push_back(PATH);
+                //allPaths.push_back(PATH);
                 hid_device *pDev = hid_open_path(PATH);
                 if(pDev)
                 {
@@ -1188,6 +1182,9 @@ void MainWindow::enumDevice()
                             if(device == 7) driverId = 19;
                             if(device == 8) driverId = 20;
                             if(device == 9) driverId = 21;
+                            if(device ==10) driverId = 28;
+                            if(PID == 0x000D || PID == 0x000F)
+                            if(device == 1) driverId = 17;
                             break;
 
                         case 0x0024: connectType = 1;
@@ -1250,8 +1247,9 @@ void MainWindow::enumDevice()
                         }
 
                         //QByteArray Log((char *)szBuf,len1);
-                        //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Apply Driver ID:" << driverId;
+                        //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << device << "Apply Driver ID:" << driverId;
                         addDevice(VID,PID,driverId,"null",PATH,connectType,1);
+                        allPaths.push_back(PATH);
                     }
                 }
             }
@@ -1344,11 +1342,12 @@ void MainWindow::enumDevice()
     {
         if(!allPaths.contains(m_tmp[i]->strPath2))
         {
-            m_tmp[i]->toShow = false;
-            if(m_hCurHwnd)
+            if(m_pActDev == m_tmp[i])
             {
+                qDebug() << "Lost:" << m_pActDev->strName << "Set AkkoReturn 1";
                 m_pSet->setValue("AkkoReturn", 1);
             }
+            m_tmp[i]->toShow = false;
         }
 
         if(time(nullptr) - m_tmp[i]->lastTime>60)
@@ -1373,7 +1372,7 @@ void MainWindow::changeEvent(QEvent *pEvt)
 
 void MainWindow::showEvent(QShowEvent *event)
 {
-    //setAttribute(Qt::WA_Mapped);
+    setAttribute(Qt::WA_Mapped);
 
     this->raise();
     this->activateWindow();
@@ -1545,30 +1544,24 @@ bool MainWindow::event(QEvent *event)
         {
             QTimer::singleShot(500,this,[=]{
                 if(m_pFloatReturn->isHidden()) return;
-                //m_cover->setGeometry(geometry());
-                //m_cover->show();
-                //m_cover->lower();
             });
         }
     }
 
     if(event->type() == QEvent::WindowActivate)
     {
-        m_bActive=true;
-
-        //m_cover->hide();
-
-        // QTimer::singleShot(100,this,[=]{
-        //     if(!m_closeShow)
-        //     {
-        //         QTimer::singleShot(100,this,[=]{
-        //             ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-        //         });
-        //         QTimer::singleShot(500,this,[=]{
-        //             ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-        //         });
-        //     }
-        // });
+        m_bActive = true;
+        QTimer::singleShot(100,this,[=]{
+            if(!m_closeShow)
+            {
+                QTimer::singleShot(100,this,[=]{
+                    ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+                });
+                QTimer::singleShot(500,this,[=]{
+                    ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+                });
+            }
+        });
     }
 
     return QMainWindow::event(event);
