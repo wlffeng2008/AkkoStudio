@@ -22,6 +22,11 @@ public:
     void setkeyHited(int id);
     void showFlag(bool show=true);
     void showMtFlag(bool show=true);
+    void showDZFlag(bool show=true);
+    void showRTFlag(bool show=true);
+    void setDeathZone(quint8 hid,float top,float bottom);
+    void setUpdown(quint8 hid,float up,float down);
+    void setUpdownRt(quint8 hid, float up, float down, bool bRtOn);
     void setKeyEnable(const QString&objname, bool bEnable, bool bToDevice, bool bSetToAll=false);
     void setLightMode();
 
@@ -38,6 +43,7 @@ public:
     int  getSelected(QList<quint8>&hids);
 
     void keepSpeacial();
+    void setFnKeyEnable(bool enable=true);
 
 signals:
     void onKeyClicked(const QString&text,quint8 hid);

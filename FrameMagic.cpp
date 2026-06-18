@@ -7,7 +7,7 @@
 #include <QButtonGroup>
 #include <QPainter>
 #include <QPainterPath>
-
+#include <QScrollBar>
 
 FrameMagic::FrameMagic(QWidget *parent)
     : QFrame(parent)
@@ -71,8 +71,39 @@ FrameMagic::FrameMagic(QWidget *parent)
             ui->frameKeyboard->selectAll(false);
             ui->frameKeyboard->setEnabled( !(id == 3 || id == 4) );
 
+            ui->frameKeyboard->showMtFlag(false);
+
+            if(id == 0)
+            {
+                ui->frameKeyboard->showRTFlag(true);
+                for(int i=0; i<128; i++)
+                {
+                    quint8 hid = ::getHid(i);
+                    float up0 = pCnn->get65Value(0x00,i)/200.0;
+                    float down0 = pCnn->get65Value(0x01,i)/200.0;
+                    float up1 = pCnn->get65Value(0x02,i)/200.0;
+                    float down1 = pCnn->get65Value(0x02,i)/200.0;
+                    bool  bRtOn = pCnn->isRtOn(hid);
+                    ui->frameKeyboard->setUpdown(hid,up0,down0);
+                    ui->frameKeyboard->setUpdownRt(hid,up1,down1,bRtOn);
+                }
+            }
+
+            if(id == 1)
+            {
+                ui->frameKeyboard->showDZFlag(true);
+                for(int i=0; i<128; i++)
+                {
+                    quint8 hid = ::getHid(i);
+                    float top = pCnn->get65Value(0xFB,i)/200.0;
+                    float btm = pCnn->get65Value(0x06,i)/200.0;
+
+                    ui->frameKeyboard->setDeathZone(hid,top,btm);
+                }
+            }
             if(id == 2)
             {
+                ui->frameKeyboard->showMtFlag(true);
                 for(int i=0; i<128; i++)
                 {
                     quint8 hid = ::getHid(i);
@@ -84,7 +115,6 @@ FrameMagic::FrameMagic(QWidget *parent)
                 }
             }
 
-            ui->frameKeyboard->showMtFlag(id == 2);
         });
 
 
@@ -250,9 +280,11 @@ FrameMagic::FrameMagic(QWidget *parent)
 
     {
         DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
+
         connect(pCnn,&DialogDeviceConnect::onReadDone,this,[=]{
             ui->checkBoxTouch->setChecked(pCnn->getKBOption(2));
             ui->labelTunch->setText(ui->checkBoxTouch->isChecked() ? tr("已开启") : tr("已关闭"));
+            ui->pushButtonSet0->click();
 
             quint8 opt3 = pCnn->getKBOption(3);
             ui->radioButtonStab0->setChecked(opt3 == 0);
@@ -260,6 +292,11 @@ FrameMagic::FrameMagic(QWidget *parent)
             ui->radioButtonStab2->setChecked(opt3 == 2);
             ui->radioButtonStab3->setChecked(opt3 == 3);
             ui->radioButtonStab4->setChecked(opt3 == 4);
+        });
+
+        connect(pCnn,&DialogDeviceConnect::onKeyTest,this,[=]{
+            if(ui->checkBoxKeytest0->isChecked())
+                ui->labelPress->update();
         });
 
         connect(ui->checkBoxTouch,&QCheckBox::clicked,this,[=](bool checked){
@@ -275,43 +312,158 @@ FrameMagic::FrameMagic(QWidget *parent)
         connect(ui->frameKeyboard,&ModuleKeyboard::onSelect,this,[=]{
             QList<quint8>hids;
             ui->frameKeyboard->getSelected(hids);
-            ui->labelSelectKey->setText(QString(tr("已选择按键数量")) + QString(": %1").arg(hids.count()));
+            QString strInfo = QString(tr("已选中按键的数量")) + QString(": %1").arg(hids.count());
+            ui->labelSelectDZKey->setText(strInfo);
+            ui->labelSelectRTKey->setText(strInfo);
         });
 
         connect(ui->pushButtonSetDeathzone,&QPushButton::clicked,this,[=]{
             QList<quint8>hids;
             ui->frameKeyboard->getSelected(hids);
-            int count=hids.count();
+            int count = hids.count();
             if(count)
             {
-                quint32 v0 = ui->frameLinear->getValue() * 200;
-                quint32 v1 = ui->frameLinear->getValue(false) * 200;
+                float top = ui->frameLinear->getValue(true);
+                float btm = ui->frameLinear->getValue(false);
+                quint32 v0 = top * 200;
+                quint32 v1 = btm * 200;
                 for(int i=0; i<count; i++)
                 {
-                    quint8 index = getHid(hids[i]);
-                    pCnn->send65Cmd(0x06,index,v0,false);
-                    pCnn->send65Cmd(0x06,index,v1,i == count-1);
+                    pCnn->send65Cmd(0x06,hids[i],v0,false);
+                    pCnn->send65Cmd(0xFB,hids[i],v1,i == count-1);
+
+                    ui->frameKeyboard->setDeathZone(hids[i],top,btm);
+                }
+            }
+        });
+
+        connect(ui->pushButtonSetRT,&QPushButton::clicked,this,[=]{
+            QList<quint8>hids;
+            ui->frameKeyboard->getSelected(hids);
+            int count = hids.count();
+            if(count)
+            {
+                float t0 = ui->frameLinear->getValue(true);
+                float d0 = ui->frameLinear->getValue(false);
+                float t1 = ui->lineEditValue1->text().toFloat();
+                float d1 = ui->lineEditValue2->text().toFloat();
+                if(!ui->checkBoxUnpress->isChecked()) d0 = t0;
+                if(!ui->checkBoxRTPress->isChecked()) d1 = t1;
+                quint32 v0 = t0 * 200;
+                quint32 v1 = d0 * 200;
+                quint32 v2 = t1 * 200;
+                quint32 v3 = d1 * 200;
+                bool v5 = ui->checkBoxFullRT->isChecked();
+                for(int i=0; i<count; i++)
+                {
+                    pCnn->send65Cmd(0x00,hids[i],v0,false);
+                    pCnn->send65Cmd(0x01,hids[i],v1,false);
+                    pCnn->send65Cmd(0x02,hids[i],v2,false);
+                    pCnn->send65Cmd(0x03,hids[i],v3,false);
+                    pCnn->setRtOn(hids[i],v5);
+                    ui->frameKeyboard->setUpdown(hids[i],t0,d0);
+                    ui->frameKeyboard->setUpdownRt(hids[i],t1,d1,v5);
                 }
             }
         });
 
         connect(ui->checkBoxKeytest0,&QCheckBox::clicked,this,[=](bool checked){
+            if(checked)
+                pCnn->StartRtTest();
+            else
+                pCnn->StopRtTest();
         });
 
         connect(ui->checkBoxKeytest1,&QCheckBox::clicked,this,[=](bool checked){
+            QLayout *layout = ui->gridLayout_2;
+            while(layout->count())
+            {
+                QLabel *item = (QLabel *)layout->takeAt(0)->widget();
+                if(!item) break;
+                layout->removeWidget(item);
+                item->hide();
+            }
+            layout->setAlignment(Qt::AlignTop|Qt::AlignVCenter);
         });
+
     }
 
     ui->labelPress->installEventFilter(this);
+    ui->frameKeyboard->setFnKeyEnable(true);
 
     ui->frameKeyboard->showMtFlag();
     srand(time(nullptr));
-    QTimer *pTMset = new QTimer(this);
-    connect(pTMset,&QTimer::timeout,this,[=]{
-        if(ui->checkBoxKeytest0->isChecked())
-            ui->labelPress->update();
-    });
-    pTMset->start(100);
+}
+
+
+void FrameMagic::updateList()
+{
+    QLayout *layout = ui->scrollAreaWidgetContents0->layout();
+    while(layout->count())
+    {
+        QLabel *item = (QLabel *)layout->takeAt(0)->widget();
+        if(!item) break;
+        layout->removeWidget(item);
+        item->hide();
+    }
+
+    layout->setAlignment(Qt::AlignLeft);
+    for(int i=0; i<m_keys.count(); i++)
+    {
+        QLabel *pLabKey = new QLabel(m_keys[i],this);
+        pLabKey->setStyleSheet("QLabel{border:2px solid blue; border-radius:6px; width:30px; height:30px;}");
+        if(m_keys[i].length()>3)
+            pLabKey->setFixedSize(80,42);
+        else
+            pLabKey->setFixedSize(42,42);
+        pLabKey->setAlignment(Qt::AlignCenter);
+        layout->addWidget(pLabKey);
+    }
+}
+
+bool FrameMagic::event(QEvent *pevt)
+{
+    //if(ui->checkBoxKeytest1 && ui->checkBoxKeytest1->isChecked())
+    {
+        if(pevt->type() == QEvent::KeyPress && ui->checkBoxKeytest1->isChecked())
+        {
+            QKeyEvent *pKEvt = static_cast<QKeyEvent *>(pevt);
+
+            QString text = pKEvt->text().trimmed().toUpper();
+            text.replace("\b","");
+            if(text.isEmpty()) text = ::getKeyByCode(pKEvt->nativeScanCode());
+            if(!m_keys.contains(text))
+            {
+                m_keys.push_back(text);
+                updateList();
+
+                QLabel *pLabKey = new QLabel(text,this);
+                pLabKey->setStyleSheet("QLabel{border:2px solid blue; border-radius:6px; width:30px; height:30px;}");
+                if(text.length()>3)
+                    pLabKey->setFixedSize(80,42);
+                else
+                    pLabKey->setFixedSize(42,42);
+                pLabKey->setAlignment(Qt::AlignCenter);
+                int count = ui->gridLayout_2->count();
+                ui->gridLayout_2->addWidget(pLabKey,count/10,count%10);
+                ui->scrollArea1->verticalScrollBar()->setValue(0xFFFF);
+            }
+        }
+
+        if(pevt->type() == QEvent::KeyRelease && ui->checkBoxKeytest1->isChecked())
+        {
+            QKeyEvent *pKEvt = static_cast<QKeyEvent *>(pevt);
+
+            QString text = pKEvt->text().trimmed().toUpper();
+            text.replace("\b","");
+            if(text.isEmpty()) text = ::getKeyByCode(pKEvt->nativeScanCode());
+            int index = m_keys.indexOf(text);
+            if(index >= 0) m_keys.removeAt(index);
+            updateList();
+        }
+    }
+
+    return QFrame::event(pevt);
 }
 
 bool FrameMagic::eventFilter(QObject *watched, QEvent *event)
@@ -337,10 +489,9 @@ bool FrameMagic::eventFilter(QObject *watched, QEvent *event)
             {
                 int offset = (i%5 == 0 ? 10 : 5);
                 painter.drawLine(QPoint(rect.right() - 20, rect.top() + i*step),QPoint(rect.right() - 20 + offset, rect.top() + i*step));
-                painter.drawLine(QPoint(rect.left() + 40, rect.top() + i*step),QPoint(rect.left() + 40 - offset, rect.top() + i*step));
+                painter.drawLine(QPoint(rect.left()  + 40, rect.top() + i*step),QPoint(rect.left()  + 40 - offset, rect.top() + i*step));
 
-                if(i%5 == 0)
-                painter.drawText(QPoint(rect.left()+2, rect.top() + i*step + 4),QString::asprintf("%.2f",i/10.0));
+                if(i%5 == 0) painter.drawText(QPoint(rect.left()+2, rect.top() + i*step + 4),QString::asprintf("%.2f",i/10.0));
             }
 
             QRect sub = ui->labelPress->rect().adjusted(50,4,-30,-4);
@@ -351,11 +502,22 @@ bool FrameMagic::eventFilter(QObject *watched, QEvent *event)
 
             painter.fillRect(sub,Qt::gray);
             //painter.drawRoundedRect(sub,4,4);
-            painter.fillRect(sub.adjusted(0,sub.height()-20,0,0),Qt::black);
-            painter.fillRect(sub.adjusted(0,0,0,  -rand()%(sub.height()-20)),0x6329B6);
+            painter.fillRect(sub.adjusted(0,sub.height()-24,0,0),Qt::black);
 
+            if(ui->checkBoxKeytest0->isChecked())
+            {
+                DialogDeviceConnect *pCnn = DialogDeviceConnect::instance();
+                float deep = pCnn->getPressDeep();
+                if(deep >= 1.0) deep = 0.999;
+                int picture = deep * 10;
+                QString strImg=QString::asprintf(":/images/press/press%02d.png",9-picture);
+                ui->labelKeymt->setPixmap(strImg);
+                sub.setBottom(deep * (sub.height()-20));
+                painter.fillRect(sub,0x6329B6);
+            }
         }
     }
+
     return QFrame::eventFilter(watched, event);
 }
 

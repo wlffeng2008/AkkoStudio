@@ -16,6 +16,7 @@ public:
     ~FrameMagic();
 
 protected:
+    bool event(QEvent*event) override;
     bool eventFilter(QObject*watched, QEvent*event) override;
 
 private:
@@ -23,6 +24,8 @@ private:
 
     QColor m_selColor;
     quint8 m_mtType=0;
+    QStringList m_keys;
+    void updateList();
 };
 
 #endif // FRAMEMAGIC_H

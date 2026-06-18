@@ -157,6 +157,9 @@ public:
     quint32 get65Value(quint8 option,quint8 index);
     void set65Value(quint8 option,quint8 index,quint32 value);
 
+    bool isRtOn(quint8 hid);
+    void setRtOn(quint8 hid,bool bRtOn);
+
     quint8 getKeyType(quint8 hid);
     QStringList getKeyString(quint8 hid);
 
@@ -165,10 +168,14 @@ public:
 
     void StartCalibration();
     void StopCalibration();
+    void StartRtTest();
+    void StopRtTest();
 
     void DoConnectDevice(quint16 VID,quint16 PID,bool bleMode,const QString&path1,const QString&path2);
 
     bool isLoading();
+
+    float getPressDeep();
 
 signals:
     void onConnect();
@@ -179,6 +186,7 @@ signals:
     void onReadAll();
     void onReadDone();
     void onCalibration(const QByteArray&data);
+    void onKeyTest();
 
 protected:
     bool nativeEvent(const QByteArray &eventType, void *message, qintptr *result) override;
@@ -203,8 +211,8 @@ private:
 
     bool m_bClear = true;
     bool m_bCalibration = false;
+    bool m_bKeyTest = false;
     QTimer *m_TMCali = nullptr;
-
     QStandardItemModel *m_pModel = nullptr;
     QTableView *m_pTable = nullptr;
 
@@ -215,6 +223,7 @@ private:
     bool m_bleMode=false;
     QString m_path1;
     QString m_path2;
+    float m_pressDeep=0;
 
     bool m_bLedOn=true;
     void makeCmd(int row, bool autoSend=false);

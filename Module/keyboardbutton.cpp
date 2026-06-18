@@ -216,26 +216,55 @@ bool KeyboardButton::event(QEvent *event)
 void KeyboardButton::setMtFlag(const QColor &color)
 {
     m_mtColor = color;
-    showMtFlag(true);
+    showFlag(1);
 }
 
-void KeyboardButton::showMtFlag(bool show)
+void KeyboardButton::showFlag(quint8 flag)
 {
-    m_showMtFlag = show;
-    if(!show) return;
+    m_showFlag = flag;
+    if(!flag) return;
 
-    QString strColor = QString::asprintf("#%02X%02X%02X",m_mtColor.blue(),m_mtColor.green(),m_mtColor.red());
+    if(flag == 1)
+    {
+        QString strColor = QString::asprintf("#%02X%02X%02X",m_mtColor.blue(),m_mtColor.green(),m_mtColor.red());
 
-    QString strStyle = QString(R"(
-    QPushButton {
-            color: %1;
-            border: 2px solid %2;
-            background-color: #FBFBFB;
-            padding: 0px 0px;
-            font-size: 14px;
-        }
-    )").arg(strColor,strColor);
-    setStyleSheet(strStyle);
+        QString strStyle = QString(R"(
+        QPushButton {
+                color: %1;
+                border: 2px solid %2;
+                background-color: #FBFBFB;
+                padding: 0px 0px;
+                font-size: 14px;
+            }
+        )").arg(strColor,strColor);
+        setStyleSheet(strStyle);
+    }
+
+    update();
+}
+
+void KeyboardButton::setDeathZone(float top,float bottom)
+{
+    m_showFlag = 2;
+    m_strTop = QString::asprintf("%.2f",top);
+    m_strBtm = QString::asprintf("%.3f",bottom);
+    update();
+}
+
+void KeyboardButton::setKeyPress(float up,float down)
+{
+    m_showFlag = 3;
+    m_strUp = QString::asprintf("%.3f",up);
+    m_strDown = QString::asprintf("%.3f",down);
+    update();
+}
+
+void KeyboardButton::setKeyPressRt(float up, float down, bool bRtOn)
+{
+    m_showFlag = 3;
+    m_bRtOn = bRtOn;
+    m_strRtUp = QString::asprintf("%.3f",up);
+    m_strRtDown = QString::asprintf("%.3f",down);
     update();
 }
 
@@ -266,6 +295,9 @@ void KeyboardButton::paintEvent(QPaintEvent *event)
     //painter.setPen(Qt::black);
     //painter.drawText(rect(),Qt::AlignCenter,strTxt);
 
+    int nW = rect().width();
+    int nH = rect().height();
+
     if(m_colorMode)
     {
         m_color.setAlpha(160);
@@ -287,6 +319,47 @@ void KeyboardButton::paintEvent(QPaintEvent *event)
         painter.drawText(rect(),Qt::AlignCenter,strTxt);
         return;
     }*/
+
+    if(m_showFlag == 2)
+    {
+        QPushButton::paintEvent(event);
+        QPainter painter(this);
+        painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+        font = painter.font();
+        font.setBold(false);
+        font.setPixelSize(9);
+        painter.setFont(font);
+        painter.setPen(Qt::magenta);
+        painter.drawText(rect().adjusted(0,0,0,-nH/2-4),Qt::AlignCenter,m_strTop);
+        painter.setPen(Qt::darkCyan);
+        painter.drawText(rect().adjusted(0,nH/2+4,0,0),Qt::AlignCenter,m_strBtm);
+        return;
+    }
+
+    if(m_showFlag == 3)
+    {
+        QPushButton::paintEvent(event);
+        QPainter painter(this);
+        painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+        font = painter.font();
+        font.setBold(false);
+        font.setPixelSize(9);
+        painter.setFont(font);
+        painter.setPen(Qt::magenta);
+        painter.drawText(rect().adjusted(0,nH/2+4,0,0),Qt::AlignLeft,m_strUp);
+        painter.setPen(Qt::darkCyan);
+        if(m_bRtOn)
+        {
+            painter.drawText(rect().adjusted(0,0,0,-nH/2-4),Qt::AlignRight,m_strRtUp);
+            painter.drawText(rect().adjusted(0,nH/2+4,0,0),Qt::AlignRight,m_strRtDown);
+        }
+        else
+        {
+            painter.drawText(rect().adjusted(0,nH/2+4,0,0),Qt::AlignRight,m_strDown);
+
+        }
+        return;
+    }
 
     QPushButton::paintEvent(event);
 }

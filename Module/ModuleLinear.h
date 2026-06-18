@@ -28,8 +28,6 @@ protected:
 
 private:
     Ui::ModuleLinear *ui;
-    float m_value0=0;
-    float m_value1=0;
 };
 
 #endif // MODULELINEAR_H

@@ -35,8 +35,6 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
         {
             continue;
         }
-
-        //btn->setMtFlag(rand()%2 ? Qt::green : Qt::blue);
     }
 
     ui->buttonGroup->setExclusive(false);
@@ -62,6 +60,7 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
 
         QPushButton *btn = static_cast<QPushButton *>(ui->buttonGroup->button(id));
         emit onKeyClicked(btn->text(),btn->objectName().right(3).toUInt());
+        emit onSelect();
     });
 
     m_Menu = new CustomTooltip();
@@ -128,6 +127,11 @@ ModuleKeyboard::~ModuleKeyboard()
 {
     s_kbInstance.removeAll(this);
     delete ui;
+}
+
+void ModuleKeyboard::setFnKeyEnable(bool enable)
+{
+    ui->pushButton_Hid250->setEnabled(enable);
 }
 
 void ModuleKeyboard::keepSpeacial()
@@ -199,10 +203,67 @@ void ModuleKeyboard::showMtFlag(bool show)
     {
         btn->setCheckable(true);
         (static_cast<KeyboardButton *>(btn))->setTipText();
-        (static_cast<KeyboardButton *>(btn))->showMtFlag(show);
+        (static_cast<KeyboardButton *>(btn))->showFlag(show?1:0);
     }
     showFlag(!show);
     keepSpeacial();
+}
+
+void ModuleKeyboard::showDZFlag(bool show)
+{
+    m_bSetMtMode=true;
+    const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
+    for(QAbstractButton*btn:btns)
+    {
+        btn->setCheckable(true);
+        (static_cast<KeyboardButton *>(btn))->setTipText();
+        (static_cast<KeyboardButton *>(btn))->showFlag(show?2:0);
+    }
+    showFlag(true);
+    keepSpeacial();
+}
+
+void ModuleKeyboard::showRTFlag(bool show)
+{
+    const QList<QAbstractButton*>btns = ui->buttonGroup->buttons();
+    for(QAbstractButton*btn:btns)
+    {
+        btn->setCheckable(true);
+        (static_cast<KeyboardButton *>(btn))->setTipText();
+        (static_cast<KeyboardButton *>(btn))->showFlag(show?3:0);
+    }
+    showFlag(true);
+}
+
+void ModuleKeyboard::setDeathZone(quint8 hid,float top,float bottom)
+{
+    QString strName = QString::asprintf("pushButton_Hid%03d",hid);
+    QPushButton *btn = findChild<QPushButton*>(strName);
+    if(btn)
+    {
+        static_cast<KeyboardButton *>(btn)->setDeathZone(top,bottom);
+    }
+}
+
+void ModuleKeyboard::setUpdown(quint8 hid,float up,float down)
+{
+    QString strName = QString::asprintf("pushButton_Hid%03d",hid);
+    QPushButton *btn = findChild<QPushButton*>(strName);
+    if(btn)
+    {
+        static_cast<KeyboardButton *>(btn)->setKeyPress(up,down);
+    }
+}
+
+void ModuleKeyboard::setUpdownRt(quint8 hid,float up,float down,bool bRtOn)
+{
+
+    QString strName = QString::asprintf("pushButton_Hid%03d",hid);
+    QPushButton *btn = findChild<QPushButton*>(strName);
+    if(btn)
+    {
+        static_cast<KeyboardButton *>(btn)->setKeyPressRt(up,down,bRtOn);
+    }
 }
 
 void ModuleKeyboard::setColor(quint8 hid, const QColor &color)

@@ -32,7 +32,8 @@ bool isKeyEqual(const keyData*kdA, const keyData*kdB);
 
 QString getKeyString(keyData *data,bool addPreffix=true);
 
-QString getKeyValue(quint16 nCode);
+QString getKeyValue(quint16 hid);
+QString getKeyByCode(quint16 code);
 quint16 getKeyHid(quint16 nCode);
 quint16 getKeyNCode(quint16 hid);
 

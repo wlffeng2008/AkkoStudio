@@ -11,7 +11,7 @@ ModuleLinear::ModuleLinear(QWidget *parent)
     ui->setupUi(this);
 
     ui->verticalSlider1->setStyleSheet(R"(
-        QSlider::groove:vertical { width: 24px; background: #DCDCDC; border-radius: 12px;}
+        QSlider::groove:vertical {  width: 24px; background: #DCDCDC; border-radius: 12px;}
         QSlider::groove:vertical:disabled { background: lightgray; }
         QSlider::handle:vertical:disabled { background: white; border: 2px solid #B3B3B3; }
         QSlider::sub-page:vertical { background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #FDDFBA, stop:1 #FFA73C);  border-radius: 12px; }
@@ -179,9 +179,9 @@ void ModuleLinear::setValue(float value, bool left)
 float ModuleLinear::getValue(bool left)
 {
     if(left)
-        return m_value0;
+        return ui->lineEditValue1->text().toFloat();
 
-    return m_value1;
+    return ui->lineEditValue2->text().toFloat();
 }
 
 void ModuleLinear::hidePannel(bool left,bool hide)

@@ -206,5 +206,15 @@
         <file>images/rt/mtico15.png</file>
         <file>images/Mgklogo.png</file>
         <file>images/key-mt.png</file>
+        <file>images/press/press00.png</file>
+        <file>images/press/press01.png</file>
+        <file>images/press/press02.png</file>
+        <file>images/press/press03.png</file>
+        <file>images/press/press04.png</file>
+        <file>images/press/press05.png</file>
+        <file>images/press/press06.png</file>
+        <file>images/press/press07.png</file>
+        <file>images/press/press08.png</file>
+        <file>images/press/press09.png</file>
     </qresource>
 </RCC>

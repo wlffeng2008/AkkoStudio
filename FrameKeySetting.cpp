@@ -300,7 +300,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         if(m_setType == 1)
         {
             int nTab = ui->tabWidgetAdv->currentIndex();
-            quint8 type = pCnn->getKeyType(hid);
+            quint8 type = (pCnn->getKeyType(hid) & ~0x80);
             QStringList res = pCnn->getKeyString(hid);
 
             if(type == 2)
@@ -501,7 +501,7 @@ void FrameKeySetting::refresh()
         pCnn->getKeydata(&kd,i,0);
 
         quint8 hid = ::getHid(i);
-        quint8 type = pCnn->getKeyType(hid);
+        quint8 type = (pCnn->getKeyType(hid) & ~0x80);
 
         if(isKeyChanged(i,&kd) || type != 0)
         {

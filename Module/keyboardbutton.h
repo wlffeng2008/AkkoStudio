@@ -34,10 +34,13 @@ class KeyboardButton : public QPushButton
 public:
     KeyboardButton(QWidget *parent);
     void setMtFlag(const QColor&color);
-    void showMtFlag(bool show=true);
+    void showFlag(quint8 flag);
     void setColor(QColor color);
+    void setDeathZone(float top,float bottom);
+    void setKeyPress(float up,float down);
+    void setKeyPressRt(float up,float down, bool bRtOn);
 
-    void setTipText(const QString&strText1="",const QString&strText2="");
+    void setTipText(const QString&strText1="", const QString&strText2="");
     bool hasTip();
 
 protected:
@@ -46,10 +49,20 @@ protected:
 
 private:
     QColor m_mtColor=0x9B9B9B;
-    bool m_showMtFlag=false;
+    quint8 m_showFlag=0;
     bool m_firstShow=true;
     bool m_colorMode=false;
     QColor m_color;
+
+    QString m_strTop="0.30";
+    QString m_strBtm="0.215";
+
+    QString m_strUp="0.30";
+    QString m_strDown="0.215";
+
+    bool m_bRtOn = false;
+    QString m_strRtUp="0.30";
+    QString m_strRtDown="0.215";
 
     keySetTooltip *m_tip = nullptr;
 };

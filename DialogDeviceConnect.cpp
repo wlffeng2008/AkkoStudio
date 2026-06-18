@@ -392,6 +392,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
     connect(ui->pushButtonWrite,&QPushButton::clicked,this,[=]{
         if(!m_pDev1) return;
+        if(m_bReadAll) return;
         QString strCmd = ui->lineEditCmd->text().trimmed();
         QByteArray data(QByteArray::fromHex(strCmd.toLatin1()));
         addReadCmd(data,true);
@@ -575,12 +576,20 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             if(nlen > 0)
             {
                 QByteArray data(buf,nlen);
-                // qDebug().noquote() << "read:" << data.toHex(' ').toUpper();
+                //qDebug().noquote() << "read:" << data.toHex(' ').toUpper() << nlen;
                 addLog(data);
                 if(data[0] == 0x05 || data[1] == 0x04)
                 {
                     //if(data[2] == 0x16) m_bSendMusic=true;
                     //addReadCmd(CMD_GET_LEDPARAM,true);
+                }
+
+                if(data[0] == 0x05 || data[1] == 0x1B)
+                {
+                    quint16 deep = *(quint16*)((char *)(data.data()+2));
+                    //qDebug() << deep << deep/200.0;
+                    m_pressDeep = deep/720.0;
+                    emit onKeyTest();
                 }
             }
         }
@@ -597,6 +606,11 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     ui->lineEditPID->setStyleSheet("font-family: Fixedsys;");
     ui->lineEditVID->setStyleSheet("font-family: Fixedsys;");
     ui->plainTextEdit->setStyleSheet("font-family: Fixedsys;");
+}
+
+float DialogDeviceConnect::getPressDeep()
+{
+    return m_pressDeep;
 }
 
 void DialogDeviceConnect::DoConnectDevice(quint16 VID, quint16 PID, bool bleMode, const QString &path1, const QString &path2)
@@ -876,11 +890,26 @@ quint32 DialogDeviceConnect::get65Value(quint8 option, quint8 index)
 
 quint8 DialogDeviceConnect::getKeyType(quint8 hid)
 {
-    //if(m_version<0x300)
-    //    return 0;
     int index = getIndex(hid);
     quint8 type = get65Value(0x07,index);
     return type;
+}
+
+bool DialogDeviceConnect::isRtOn(quint8 hid)
+{
+    return ((getKeyType(hid) & 0x80) == 0x80);
+}
+
+void DialogDeviceConnect::setRtOn(quint8 hid,bool bRtOn)
+{
+    int index = getIndex(hid);
+    quint8 value = get65Value(0x07,index);
+    if(bRtOn)
+        value |=  0x80;
+    else
+        value &= ~0x80;
+    set65Value(0x07,index,value);
+    send65Cmd(0x07,hid,value,true);
 }
 
 quint8 DialogDeviceConnect::getSnapkey(quint8 index)
@@ -911,7 +940,7 @@ QStringList DialogDeviceConnect::getKeyString(quint8 hid)
     int index = getIndex(hid);
     if(m_E507.size() <= index)
         return res;
-    quint8 type = m_E507[index];
+    quint8 type = m_E507[index] & ~0x80;
 
     if(type == 7)
     {
@@ -933,6 +962,7 @@ QStringList DialogDeviceConnect::getKeyString(quint8 hid)
 
 void DialogDeviceConnect::send65Cmd(quint8 option, quint8 hid, quint32 data, bool save)
 {
+    if(m_bReadAll) return;
     send65Cmd(option,hid,(char *)&data,4,save);
 }
 
@@ -1278,14 +1308,16 @@ void DialogDeviceConnect::StartCalibration()
     if(m_bReadAll) return;
     m_bCalibration = true;
     if(!m_TMCali)
+    {
         m_TMCali = new QTimer(this);
+        connect(m_TMCali,&QTimer::timeout, this, [=]{
+            static quint64 index = 0;
+            addReadCmd(QString::asprintf("E5 FE 01 %02X", index++ % 4));
+        });
+    }
     m_Cali.clear();
     addReadCmd("1E 01", true);
     m_TMCali->start(120);
-    connect(m_TMCali,&QTimer::timeout, this, [=]{
-        static quint64 index = 0;
-        addReadCmd(QString::asprintf("E5 FE 01 %02X", index++ % 4));
-    });
 }
 
 void DialogDeviceConnect::StopCalibration()
@@ -1296,6 +1328,23 @@ void DialogDeviceConnect::StopCalibration()
     m_cmdList.clear();
     addReadCmd("1E 00", true);
 }
+
+void DialogDeviceConnect::StartRtTest()
+{
+    if(m_bReadAll) return;
+
+    m_Cali.clear();
+    addReadCmd("1B 01", true);
+}
+
+void DialogDeviceConnect::StopRtTest()
+{
+    if(m_bReadAll) return;
+
+    m_cmdList.clear();
+    addReadCmd("1B 00", true);
+}
+
 
 void DialogDeviceConnect::setKBOption(quint8 option, quint8 value)
 {

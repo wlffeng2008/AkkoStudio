@@ -646,6 +646,20 @@ QString getKeyValue(quint16 hid)
     return value;
 }
 
+QString getKeyByCode(quint16 code)
+{
+    QString value="";
+    for(const keyMapItem&key:std::as_const(s_keMapTable))
+    {
+        if(key.code == code)
+        {
+            value = key.value;
+            break;
+        }
+    }
+    return value;
+}
+
 quint16 getKeyHid(quint16 nCode)
 {
     quint16 hid=0;
