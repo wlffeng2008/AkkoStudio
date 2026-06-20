@@ -95,6 +95,7 @@ private:
     bool m_closeShow = false;
     bool m_bActive = true;
     bool m_bReadAll=false;
+    bool m_KeyTesting=false;
 
     QSystemTrayIcon *trayIcon = nullptr;
     QSettings *m_pSet = nullptr;

@@ -185,8 +185,9 @@ signals:
     void onUpdataLayer(int layer);
     void onReadAll();
     void onReadDone();
-    void onCalibration(const QByteArray&data);
     void onKeyTest();
+    void onKeyTesting(bool testing);
+    void onCalibration(const QByteArray&data);
 
 protected:
     bool nativeEvent(const QByteArray &eventType, void *message, qintptr *result) override;
