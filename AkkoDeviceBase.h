@@ -4,18 +4,8 @@
 #include <QObject>
 #include <QWidget>
 
-
-typedef struct {
-    quint32 driverId;
-    quint16 VID;
-    quint16 PID;
-    quint8  device;
-    quint8  type; // 0 keyboard 1 mouse 2 headphone
-    quint8  connect;
-    QString name;
-} AkkoDeviceInfo;
-
 QString getDisplayName(quint32 driverId, quint16 & deviceType, int brand=0);
+quint32 getExtrasDevice(quint32 VID, quint32 PID, quint64 MOD,QString & deviceName, quint16 & deviceType, quint16&deviceUSB);
 
 class AkkoDeviceBase : public QWidget
 {

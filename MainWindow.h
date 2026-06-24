@@ -29,14 +29,14 @@ public:
 
     quint16 VID;
     quint16 PID;
-    int driverId;
-    int deeviceType; //0 KB, 1 Mouse, 2 HP
-    int creator;
-    int connectType;
-    int battery;
+    quint64 driverId;
+    quint8 deeviceType; //0 KB, 1 Mouse, 2 HP
+    quint8 creator;
+    quint8 connectType;
+    quint8 battery;
     bool toShow;
     HWND hShowWnd;
-    int deviceClor;
+    quint32 deviceoClor;
     quint32 lastTime;
     QString strName;
     QString strImage;
@@ -57,7 +57,7 @@ public:
     QTranslator *m_pMainTrB = nullptr;
 
     void enumDevice();
-    void addDevice(quint16 VID, quint16 PID, quint32 driverId, const QString&path1, const QString&path2, int connectType, int creator);
+    void addDevice(quint16 VID, quint16 PID, quint64 driverId, const QString&path1, const QString&path2, int connectType, int creator);
 
 protected:
     void changeEvent(QEvent *pEvt) final;

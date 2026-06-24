@@ -62,58 +62,63 @@ FrameDeviceShow::~FrameDeviceShow()
 
 void FrameDeviceShow::updateBattery()
 {
-    quint32 batt = 100;
+    if(m_pDevEI->connectType == 0)
+        return;
+
+    quint32 batt = 0;
     QString strPath = m_pDevEI->strPath2;
-    int connectType = m_pDevEI->connectType;
-    if(connectType != 0)
+
+    int nlen = 0;
+    if(m_pDevEI->creator == 0)
     {
-        int nlen = 0;
-        if(m_pDevEI->creator != 0)
+        char buf[1024] = {0};
+
+        hid_device *pDev = hid_open_path(strPath.toStdString().c_str());
+        if(!pDev) return;
+        //hid_set_nonblocking(pDev,1);
+
+        QByteArray tmp(120, 0);
+
+        int ntry = 0;
+        while(ntry++ < 5)
         {
-            char buf[1024] = {0};
-
-            hid_device *pDev = hid_open_path(strPath.toStdString().c_str());
-            if(!pDev) return;
-            hid_set_nonblocking(pDev,1);
-
-            QByteArray tmp(120, 0);
-
-            int ntry = 0;
-            while(ntry++ < 5)
-            {
-                tmp[1] = 0xf7;
-                tmp[2] = 0x00;
-                tmp[8] = 0xFF - tmp[1] - tmp[2];
-                hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-                QThread::msleep(100);
-                nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-                if(buf[6] == 1)
-                    break;
-            }
-
-            // tmp[1] = 0x82;
-            // tmp[8] = 0xFF - tmp[1];
-            // hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-            // QThread::msleep(20);
-            // nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
-
-            if(nlen > 0) batt = buf[2];
-            hid_close(pDev);
-        }
-        else
-        {
-            hid_device *pDev = hid_open_path(strPath.toStdString().c_str());
-            if(!pDev) return;
-
-            QString strCmd("04 00 00 1A 06 00 00 00");
-            QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1());
-            hid_write(pDev,(quint8*)cmd.data(),cmd.size());
+            tmp[1] = 0xf7;
+            tmp[2] = 0x00;
+            tmp[8] = 0xFF - tmp[1] - tmp[2];
+            hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
             QThread::msleep(100);
-            quint8 buf[128] = {0};
-            nlen = hid_read_timeout(pDev,buf,16,500);
-            if(nlen > 0) batt = buf[8];
-            hid_close(pDev);
+            nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+            if(buf[6] == 1)
+                break;
         }
+
+        // tmp[1] = 0x82;
+        // tmp[8] = 0xFF - tmp[1];
+        // hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
+        // QThread::msleep(20);
+        // nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
+
+        if(nlen > 0) batt = buf[2];
+        hid_close(pDev);
+    }
+
+    if(m_pDevEI->creator == 1)
+    {
+        hid_device *pDev = hid_open_path(strPath.toStdString().c_str());
+        if(!pDev) return;
+
+        QString strCmd("04 00 00 1A 06 00 00 00");
+        QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1());
+        while(1)
+        {
+            hid_write(pDev,(quint8*)cmd.data(),cmd.size());
+            QThread::msleep(30);
+            quint8 buf[128] = {0};
+            nlen = hid_read_timeout(pDev,buf,16,50);
+            if(nlen > 0) batt = buf[8];
+            if(batt<=100) break;
+        }
+        hid_close(pDev);
     }
 
     static QStringList imgPowers = {"batt-low.png","batt-25.png","batt-50.png","batt-75.png","batt-full.png"};
@@ -124,7 +129,7 @@ void FrameDeviceShow::updateBattery()
     if(batt>80) level=4;
 
     QString strBatt = QString(":/images/dev/") + imgPowers[level];
-    QString strTip  = QString(tr("剩余电量")) +  QString(": %1%").arg(batt%101);
+    QString strTip  = QString(tr("剩余电量")) +  QString(": %1%").arg(batt);
 
     ui->labelPower->setPixmap(QPixmap(strBatt));
     ui->labelPower->setToolTip(strTip);
@@ -139,7 +144,7 @@ void FrameDeviceShow::updateBattery()
             padding: 4px 4px;
         }
     )";
-    if(connectType == 0) strBatt.clear();
+
     ui->labelPower->setStyleSheet(qss);
     ui->labelPower->update();
 
@@ -160,7 +165,7 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
     setImage(strRoot + strImg, pDI->deeviceType);
 
     ui->labelPower->setHidden(pDI->connectType == 0);
-    QTimer::singleShot(500,this,[=]{ updateBattery(); });
+    QTimer::singleShot(2000,this,[=]{ updateBattery(); });
 
     static QStringList imgTypes = {"usb.png", "2.4g.png", "ble.png"};
     m_typeImage = QString(":/images/dev/") + imgTypes[pDI->connectType];
