@@ -64,6 +64,8 @@ FrameMain::FrameMain(QWidget *parent)
         if(type == 0) pCnn->send65Cmd(0x02,0xFF,value*200,true);
         if(type == 1) pCnn->send65Cmd(0x03,0xFF,value*200,true);
     });
+
+    ui->labelPic->hide();
 }
 
 FrameMain::~FrameMain()
@@ -73,6 +75,7 @@ FrameMain::~FrameMain()
 
 void FrameMain::setDeviceImage(const QString&strImage)
 {
+    ui->labelPic->show();
     ui->labelPic->setPixmap(QPixmap(strImage));
 }
 

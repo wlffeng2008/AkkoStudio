@@ -10,6 +10,7 @@ AkkoDeviceEnum::AkkoDeviceEnum(QObject *parent)
 void AkkoDeviceEnum::Exit()
 {
     m_bEnding = true;
+    quit();
 }
 
 void AkkoDeviceEnum::DoEnum()

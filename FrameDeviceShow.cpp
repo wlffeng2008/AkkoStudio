@@ -109,7 +109,8 @@ void FrameDeviceShow::updateBattery()
 
         QString strCmd("04 00 00 1A 06 00 00 00");
         QByteArray cmd = QByteArray::fromHex(strCmd.toLatin1());
-        while(1)
+        int ntry = 0;
+        while(ntry++ < 5)
         {
             hid_write(pDev,(quint8*)cmd.data(),cmd.size());
             QThread::msleep(30);

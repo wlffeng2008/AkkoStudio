@@ -95,10 +95,6 @@ static void data_callback(ma_device* pDevice, void* pOutput, const void* pInput,
     {
         m_MusicBuf[i] = pcmBuf[i];
     }
-
-    //TRACE(_T("--------%s %d,%d,%d,%d,%d,%d,%d,%d,%d\n"), CA2W((pDevice->playback.name)), dataSize, (int)(pcmDataO[2] * 6), (int)(pcmDataO[25] * 6), (int)(pcmDataO[49] * 6), (int)(pcmDataO[83] * 6),
-    //	(int)(pcmDataO[360] * 6), (int)(pcmDataO[400] * 6), (int)(pcmDataO[430] * 6), (int)(pcmDataO[470] * 6));
-    //if (pWDlg) pWDlg->DrawCurv(pcmDataO);
 }
 
 DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
@@ -167,7 +163,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             pWin->setFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
     });
 
-    m_pCntSet = new QSettings(QApplication::applicationDirPath() + "/device.ini",QSettings::IniFormat);
+    m_pCntSet = new QSettings(QApplication::applicationDirPath() + "/config/device.ini",QSettings::IniFormat);
     ui->lineEditVID->setText(m_pCntSet->value("lastVID","3151").toString());
     ui->lineEditPID->setText(m_pCntSet->value("lastPID","502F").toString());
 
@@ -588,7 +584,6 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 if(data[0] == 0x05 || data[1] == 0x1B)
                 {
                     quint16 deep = *(quint16*)((char *)(data.data()+2));
-                    //qDebug() << deep << deep/200.0;
                     m_pressDeep = deep/720.0;
                     emit onKeyTest();
                 }
@@ -694,20 +689,6 @@ void DialogDeviceConnect::readAllData()
         }
     }
 
-    for(quint8 i=0; i<100; i++)
-    {
-        quint8 tmp[8] = {CMD_GET_LEDPARAM,i,0,0,0, 0,0,0};
-        QByteArray cmd((char *)tmp,8);
-        //addReadCmd(cmd);
-    }
-
-    for(quint8 i=0; i<20; i++)
-    {
-        quint8 tmp[8] = {CMD_GET_SLEDPARAM,i,0,0,0, 0,0,0};
-        QByteArray cmd((char *)tmp,8);
-        //addReadCmd(cmd);
-    }
-
     if(m_isSupportAxis)
     {
         quint8 readE5s[]=
@@ -768,7 +749,7 @@ void DialogDeviceConnect::executeCmd()
                 m_FunMatrix[i] = m_tmp1[i];
             }
 
-            QTimer::singleShot(500,this,[=]{
+            QTimer::singleShot(50,this,[=]{
                 emit onReadDone();
             });
         }
@@ -1130,7 +1111,7 @@ void DialogDeviceConnect::addReadCmd(QByteArray&cmd, bool execute)
     else
     {
         m_pExecute->stop();
-        m_pExecute->start(10);
+        m_pExecute->start(5);
     }
 }
 

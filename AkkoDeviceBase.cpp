@@ -18,7 +18,7 @@ void AkkoDeviceBase::changeEvent(QEvent *event)
 }
 
 
-static quint64 getIntVal(const QString&val)
+quint64 getIntVal(const QString&val)
 {
     quint64 value = 0;
     QString tmp(val.trimmed().toUpper());
@@ -36,7 +36,7 @@ static quint64 getIntVal(const QString&val)
 
 quint32 getExtrasDevice(quint32 VID, quint32 PID, quint64 MOD,QString & deviceName, quint16 & deviceType, quint16&deviceCnnt)
 {
-    QString strFile = QApplication::applicationDirPath() + "/CustomDeviceList.json";
+    QString strFile = QApplication::applicationDirPath() + "/config/CustomDeviceList.json";
 
     QFile JF(strFile);
     if(JF.open(QIODevice::ReadOnly))
@@ -70,6 +70,7 @@ quint32 getExtrasDevice(quint32 VID, quint32 PID, quint64 MOD,QString & deviceNa
 
                     if(deviceVID == VID && devicePID == PID && deviceMOD == MOD)
                     {
+                        //qDebug() << "Found:" << Qt::hex << VID << PID << MOD << assignId ;
                         deviceType = deviceTYP;
                         deviceCnnt = deviceUSB;
                         deviceName = strDevName;
@@ -88,7 +89,7 @@ QString getDisplayName(quint32 driverId, quint16 & deviceType, int brand)
 {
     if(brand == 0xFF)
     {
-        QString strFile = QApplication::applicationDirPath() + "/CustomDeviceList.json";
+        QString strFile = QApplication::applicationDirPath() + "/config/CustomDeviceList.json";
 
         QFile JF(strFile);
         if(JF.open(QIODevice::ReadOnly))
@@ -135,7 +136,7 @@ QString getDisplayName(quint32 driverId, quint16 & deviceType, int brand)
         return QString();
     }
 
-    QString strFile = QApplication::applicationDirPath() + (brand == 0 ? "/AkkoHubDevices.json" : "/MGKHubDevices.json");
+    QString strFile = QApplication::applicationDirPath() + (brand == 0 ? "/config/AkkoHubDevices.json" : "/config/MGKHubDevices.json");
     QFile JF(strFile);
     if(JF.open(QIODevice::ReadOnly))
     {

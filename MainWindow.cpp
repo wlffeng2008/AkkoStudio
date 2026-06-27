@@ -12,7 +12,6 @@
 #include "FrameSystemInfo.h"
 #include "AkkoDeviceEnum.h"
 
-
 #include <QLayout>
 #include <QMouseEvent>
 #include <QPainter>
@@ -108,6 +107,9 @@ static bool isRunning(const QString&processName)
 
 static void HideStartProcess(const QString&strExePath)
 {
+    ::WinExec(strExePath.toStdString().c_str(),SW_HIDE);
+    return;
+
     STARTUPINFOW si = { sizeof(si) };
     PROCESS_INFORMATION pi = {0};
 
@@ -170,13 +172,18 @@ DWORD GetSystemIdle()
     return nIdle;
 }
 
+static QSettings settings0("HKEY_CURRENT_USER\\Software\\Akko",QSettings::NativeFormat);
+static QSettings settings1("HKEY_CURRENT_USER\\Software\\MonsGeek",QSettings::NativeFormat);
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    m_pSet = m_bForMGK ? &settings1 : &settings0;
+
     {
-        static QSharedMemory sharedMemory(m_bForMGK?"MGKAudioApp_71A7F2D4-5566-4F99":"AkkoAudioApp_71A7F2D4-5566-4F99");
+        static QSharedMemory sharedMemory(m_bForMGK ? "MGKAudioApp_71A7F2D4-5566-4F99" : "AkkoAudioApp_71A7F2D4-5566-4F99");
 
         if (sharedMemory.attach())
         {
@@ -210,11 +217,6 @@ MainWindow::MainWindow(QWidget *parent)
         });
         pTMCheckSM->start(200);
     }
-
-    static QSettings settings0("HKEY_CURRENT_USER\\Software\\Akko",QSettings::NativeFormat);
-    static QSettings settings1("HKEY_CURRENT_USER\\Software\\MonsGeek",QSettings::NativeFormat);
-
-    m_pSet = m_bForMGK ? &settings1 : &settings0;
 
     setWindowFlags(windowFlags() | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
     setAttribute(Qt::WA_TranslucentBackground);
@@ -439,10 +441,10 @@ MainWindow::MainWindow(QWidget *parent)
     HideStartProcess(strExe1);
     HideStartProcess(strExe2);
     HideStartProcess(strExe3);
-
+    //QProcess::startDetached(strExe3,QStringList{"TrayHide"});
     HWND hParentWnd = (HWND)ui->frameEmb->winId();
     QTimer *pTMFindWnd = new QTimer(this);
-    pTMFindWnd->start(100);
+    pTMFindWnd->start(200);
 
     connect(pTMFindWnd,&QTimer::timeout,this,[=]{
 
@@ -517,7 +519,6 @@ MainWindow::MainWindow(QWidget *parent)
                 ::ShowWindow(hWnd,SW_HIDE);
             }
         }
-
     });
 
     {
@@ -529,8 +530,8 @@ MainWindow::MainWindow(QWidget *parent)
         connect(trayIcon,&QSystemTrayIcon::activated,this,[=](QSystemTrayIcon::ActivationReason reason){
             if(reason != QSystemTrayIcon::Context)
             {
-                if(m_creator == 1 || m_creator == 3)
-                    return;
+                //if(m_creator == 1 || m_creator == 3)
+                //   return;
 
                 if(this->isHidden() || this->isMinimized())
                     this->showNormal();
@@ -555,10 +556,10 @@ MainWindow::MainWindow(QWidget *parent)
 
         connect(exitAction, &QAction::triggered, this, &QApplication::quit);
         connect(showAction, &QAction::triggered, this, [=]{
-            if(m_creator == 1 || m_creator == 3)
-                return;
+            // if(m_creator == 1 || m_creator == 3)
+            //     return;
 
-            this->show();
+            this->showNormal();
             this->raise();
 
             QTimer::singleShot(50,this,[=]{
@@ -599,23 +600,19 @@ MainWindow::MainWindow(QWidget *parent)
         m_KeyTesting = testing;
     });
 
-    QTimer *pTMMonitor = new QTimer(this);
-    pTMMonitor->start(500);
-    connect(pTMMonitor,&QTimer::timeout,this,[=]{
-        static qreal scaleFactor = this->devicePixelRatio();
-        qreal scale = this->devicePixelRatio();
-        if(scale != scaleFactor)
-        {
-            scaleFactor = scale;
-            if(scaleFactor == 0 || scaleFactor == 2)
-            {
-                //HWND hWnd = s_hWndEmb[m_creator];
-                //::SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, ui->frameEmb->width()*scaleFactor, ui->frameEmb->height()*scaleFactor-20, SWP_SHOWWINDOW);
-            }
-        }
-    });
-
     {
+        m_pSet->setValue("AkkoReturn", 0);
+        m_pSet->setValue("MonsGeekReturn", 0);
+        m_pSet->setValue("AkkoWnd", 0);
+        // m_pSet->setValue("AkkoDeviceIndex", 0xFF);
+        m_pSet->setValue("iotManagerInitialized",false);
+        m_pSet->setValue("ShowWindowControlButtons",false);
+        m_pSet->setValue("DeviceId",0);
+        m_pSet->setValue("DevicePath","");
+        m_pSet->setValue("PageLoaded",false);
+        m_pSet->setValue("VendorDevicePath","");
+        m_pSet->setValue("ByDeviceUuid","");
+
         connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] {
             setHubSize(true);
             m_pFloatReturn->hide();
@@ -636,9 +633,9 @@ MainWindow::MainWindow(QWidget *parent)
         connect(pTMEnum,&QTimer::timeout,this,[=]{
             pTMEnum->stop();
 
-            int interval = 15000;
+            int interval = 60000;
             if(ui->stackedWidget->currentIndex() == 0)
-                interval = 2000;
+                interval = 30000;
             pTMEnum->start(interval);
 
             m_Enum->DoEnum();
@@ -653,80 +650,68 @@ MainWindow::MainWindow(QWidget *parent)
                     addToHub(m_tmp[i],index++);
             }
         },Qt::QueuedConnection);
+
+        QTimer *pTMRet = new QTimer(this);
+        pTMRet->start(100);
+        connect(pTMRet,&QTimer::timeout,this,[=]{
+            if((m_pSet->value("AkkoReturn").toInt() || m_pSet->value("MonsGeekReturn").toInt()) && m_bCanReturn)
+            {
+                qDebug() << "Action AkkoReturn";
+                m_pSet->setValue("AkkoReturn", 0);
+                m_pSet->setValue("MonsGeekReturn", 0);
+                ui->stackedWidget->setCurrentIndex(0);
+                m_pFloatReturn->hide();
+                for(int i=0; i<10; i++)
+                {
+                    if(s_hWndEmb[i])
+                    {
+                        ::ShowWindow(s_hWndEmb[i], SW_HIDE);
+                        if(i == 1 || i == 3)
+                            continue;
+                        ::SetWindowPos(s_hWndEmb[i], HWND_BOTTOM,0,0,0,0,SWP_NOMOVE|SWP_HIDEWINDOW);
+                    }
+                }
+
+                m_creator = -1;
+                m_showId  = 0;
+                m_showPath.clear();
+                m_hCurHwnd = nullptr;
+                m_pActDev = nullptr;
+
+                QTimer::singleShot(200,this,[=]{
+                    this->show();
+                    this->raise();
+                });
+            }
+        });
+
+        QTimer *pTMIdle = new QTimer(this);
+        pTMIdle->start(5000);
+        connect(pTMIdle,&QTimer::timeout,this,[=]{
+            if(IsScreenLocked() && GetSystemIdle() > 300)
+            {
+                m_pSet->setValue("AkkoReturn", 1);
+            }
+        });
+
+        QTimer *pTMEsc = new QTimer(this);
+        pTMEsc->start(30);
+        connect(pTMEsc,&QTimer::timeout,this,[=]{
+            if((::GetKeyState(VK_ESCAPE)&0x8000) && !m_KeyTesting /*&& m_bActive && isVisible() && !isMinimized()*/)
+            {
+                qDebug() << "AkkoReturn 0";
+                m_pSet->setValue("AkkoReturn", 1);
+                ui->stackedWidget->setCurrentIndex(0);
+            }
+        });
     }
 
-    m_pSet->setValue("AkkoReturn", 0);
-    m_pSet->setValue("MonsGeekReturn", 0);
-    m_pSet->setValue("AkkoWnd", 0);
-    m_pSet->setValue("AkkoDeviceIndex", 0xFF);
-    m_pSet->setValue("iotManagerInitialized",false);
-    m_pSet->setValue("ShowWindowControlButtons",false);
-    m_pSet->setValue("DeviceId",0);
-    m_pSet->setValue("DevicePath","");
-    m_pSet->setValue("PageLoaded",false);
-    m_pSet->setValue("VendorDevicePath","");
-    m_pSet->setValue("ByDeviceUuid","");
-
-    QTimer *pTMRet = new QTimer(this);
-    pTMRet->start(50);
-    connect(pTMRet,&QTimer::timeout,this,[=]{
-        if((m_pSet->value("AkkoReturn").toInt() || m_pSet->value("MonsGeekReturn").toInt()) && m_bCanReturn)
-        {
-            qDebug() << "Action AkkoReturn";
-            m_pSet->setValue("AkkoReturn", 0);
-            m_pSet->setValue("MonsGeekReturn", 0);
-            ui->stackedWidget->setCurrentIndex(0);
-            m_pFloatReturn->hide();
-            for(int i=0; i<10; i++)
-            {
-                if(s_hWndEmb[i])
-                {
-                    ::ShowWindow(s_hWndEmb[i], SW_HIDE);
-                    if( i == 1 || i == 3)
-                        continue;
-                    ::SetWindowPos(s_hWndEmb[i], HWND_BOTTOM,0,0,0,0,SWP_NOMOVE|SWP_HIDEWINDOW);
-                }
-            }
-
-            m_creator = -1;
-            m_showId  = 0;
-            m_showPath.clear();
-            m_hCurHwnd = nullptr;
-            m_pActDev = nullptr;
-
-            QTimer::singleShot(200,this,[=]{
-                this->show();
-                this->raise();
-            });
-        }
-    });
-
-    QTimer *pTMIdle = new QTimer(this);
-    pTMIdle->start(5000);
-    connect(pTMIdle,&QTimer::timeout,this,[=]{
-        if(IsScreenLocked() && GetSystemIdle() > 300)
-        {
-            m_pSet->setValue("AkkoReturn", 1);
-        }
-    });
-
-    QTimer *pTMEsc = new QTimer(this);
-    pTMEsc->start(30);
-    connect(pTMEsc,&QTimer::timeout,this,[=]{
-        if(m_bActive && (::GetKeyState(VK_ESCAPE)&0x8000) && isVisible() && !isMinimized() && !m_KeyTesting)
-        {
-            qDebug() << "AkkoReturn 0";
-            m_pSet->setValue("AkkoReturn", 1);
-            ui->stackedWidget->setCurrentIndex(0);
-        }
-    });
-
-    QTimer::singleShot(500,this,[=]{
-        ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-    });
-    QTimer::singleShot(2000,this,[=]{
-        ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-    });
+    // QTimer::singleShot(500,this,[=]{
+    //     ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    // });
+    // QTimer::singleShot(2000,this,[=]{
+    //     ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
+    // });
 
     setHubSize(true);
 }
@@ -803,7 +788,7 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
         {
             if(m_creator == 1)
             {
-                m_pSet->setValue("AkkoDeviceIndex",dev->driverId);
+                m_pSet->setValue("AkkoDeviceIndex",(quint32)dev->driverId);
             }
 
             if(m_creator == 2)
@@ -839,28 +824,43 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                 int x = (cs.width()  * scaleFactor - (rc.right-rc.left))/2;
                 int y = (cs.height() * scaleFactor - (rc.bottom-rc.top))/2;
 
-                if(x < 0) x = 0;
-                if(y < 0) y = 0;
+                if(x < 0 || x > cs.width())   x = 0;
+                if(y < 0 || y > cs.height())  y = 0;
 
                 hide();
                 m_bCanReturn = false;
-                ::SetWindowPos(hWnd, HWND_TOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
+                qDebug() << ::ShowWindow(hWnd,SW_SHOW);
+                qDebug() << ::BringWindowToTop(hWnd);
+                qDebug() << ::MoveWindow(hWnd,x,y,(rc.right-rc.left),(rc.bottom-rc.top),TRUE);
+                //qDebug() << ::SetWindowPos(hWnd, HWND_TOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
+                //::SetWindowPos(hWnd, HWND_TOPMOST, 0,0,0,0, SWP_NOMOVE | SWP_NOSIZE);
 
-                QTimer::singleShot(1500,this,[=]{
-                    ::SetWindowPos(hWnd, HWND_NOTOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
-                    ::BringWindowToTop(hWnd);
-                    ::SetActiveWindow(hWnd);
-                    ::SetFocus(hWnd);
-
-                    m_hCurHwnd = hWnd;
+                QTimer::singleShot(1000,this,[=]{
                     m_pSet->setValue("AkkoReturn", 0);
                     m_pSet->setValue("MonsGeekReturn", 0);
                     m_bCanReturn = true;
+
+                    ::BringWindowToTop(hWnd);
+                    ::ShowWindow(hWnd,SW_SHOW);
+                    ::SetForegroundWindow(hWnd);
+                    ::RedrawWindow(hWnd,NULL,NULL,RDW_ERASENOW|RDW_UPDATENOW);
+
+                    //::SetActiveWindow(hWnd);
+                    //::SetFocus(hWnd);
+
+                    m_hCurHwnd = hWnd;
+
+                    {
+                        RECT rc;
+                        ::GetWindowRect(hWnd,&rc);
+                        qDebug() << cs << x << y  << scaleFactor << rc.left << rc.right << hWnd;
+                    }
                 });
             }
             else
             {
                 ui->stackedWidget->setCurrentIndex(1);
+                ui->frameEmb->setVisible(true);
 
                 int nWidth  = ui->frameEmb->width() *scaleFactor+1;
                 int nHeight = ui->frameEmb->height()*scaleFactor+1;
@@ -906,7 +906,6 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint64 driverId, const QSt
     else
     {
         driverId = getExtrasDevice(VID,PID,driverId,strName,deviceType,connect);
-        //strName = getDisplayName(driverId,deviceType,0xFF);
     }
 
     if(strName.isEmpty())
@@ -941,14 +940,23 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint64 driverId, const QSt
     m_tmp.append(pDev);
 }
 
+static void stringToInt(const QString&value,QList<quint64>&retList)
+{
+    retList.clear();
+    QStringList vals = value.split(',');
+    int count = vals.count();
+    for(int i=0; i<count; i++)
+    {
+        retList.push_back(getIntVal(vals[i]));
+    }
+}
+
 void MainWindow::enumDevice()
 {
     if(m_bEnuming) return;
     if(m_bReadAll) return;
 
     if((isMinimized() || isHidden()) && !m_hCurHwnd) return;
-
-    // qDebug() << "MainWindow::enumDevice()" << time(nullptr);
 
     m_bEnuming = true;
     QStringList allPaths;
@@ -958,9 +966,13 @@ void MainWindow::enumDevice()
     quint16 UPG = 0;
     quint16 USA = 0;
     const char *PATH = nullptr;
+    QSettings enumSet(QApplication::applicationDirPath() + "/config/enumsetting.ini",QSettings::IniFormat);
 
     QString path1,path2;
-    QList<quint16> VidList = {0x3151, 0x38EE, 0x25A7, 0x05AC, 0x0461};//
+    QList<quint64> VidList;// = {0x3151, 0x38EE, 0x25A7, 0x05AC, 0x0461};//
+
+    stringToInt(enumSet.value("VIDset0","0x3151, 0x38EE, 0x25A7, 0x05AC, 0x0461").toString(),VidList);
+
     foreach (quint16 Vid, VidList)
     {
         hid_device_info *pRoot = hid_enumerate(Vid, 0);
@@ -973,7 +985,7 @@ void MainWindow::enumDevice()
             USA = pEDev->usage;
             PATH= pEDev->path;
 
-            if((PID < 0x0B || PID > 0x50) && PID != 0x5151 && PID != 0x5151)
+            if((PID < 0x0B || PID > 0x50) && !(PID == 0x5151 || PID == 0x5152 || PID == 0x22B4 || PID == 0x22B5))
             {
                 //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
 
@@ -1151,6 +1163,7 @@ void MainWindow::enumDevice()
     QString strCmd1("04 00 00 30 06 00 00 00"); // 机型ID
     QString strCmd2("04 AA 00 AA 00 00 00 00"); // 连接状态
     QList<quint16>VShengs = {0x38EE,0x320F};
+    stringToInt(enumSet.value("VIDset1","0x38EE, 0x320F").toString(),VidList);
     foreach (quint16 Vid, VShengs)
     {
         hid_device_info *pRoot = hid_enumerate(Vid, 0);
@@ -1163,7 +1176,7 @@ void MainWindow::enumDevice()
             USA = pEDev->usage;
             PATH= pEDev->path;
 
-            if((PID >= 0x0B && PID <= 0x50) || (PID == 0x5151 || PID == 0x5152))
+            if((PID >= 0x0B && PID <= 0x50) || (PID == 0x5151 || PID == 0x5152 || PID == 0x22B4 || PID == 0x22B5))
             {
                 //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X %s",VID,PID,UPG,USA,PATH);
                 if(USA == 0x0092 && UPG == 0xFF1C)
@@ -1286,11 +1299,11 @@ void MainWindow::enumDevice()
                             {
                                 if(device == 0) driverId = 15;
                                 if(device == 1) driverId = 16;
-                            }
+                            }*/
 
                             //QByteArray Log((char *)szBuf,len1);
                             //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << device << "Apply Driver ID:" << driverId;
-                            */
+
                             addDevice(VID,PID,device,"null",PATH,connectType,1);
                             allPaths.push_back(PATH);
                         }
@@ -1363,7 +1376,7 @@ void MainWindow::enumDevice()
             UPG = pEDev->usage_page;
             USA = pEDev->usage;
             PATH= pEDev->path;
-            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
             //qDebug() << QString::asprintf("0x%04X %04d",pEDev->usage_page, pEDev->usage) << pEDev->path;
             if(UPG == 0xFF02 && USA == 0x02)
             {
@@ -1665,6 +1678,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->ignore();
         return;
     }
+    killProcess("Akko-WS.exe");
+    killProcess("Akko-BY.exe");
+    killProcess("AkkoBox.exe");
+    killProcess("Akko-Gaming-Bub.exe");
+    killProcess("AkkoCloudDriver.exe");
 
     m_Enum->Exit();
     m_pFloatReturn->hide();
@@ -1675,12 +1693,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
         if(!s_hWndEmb[i]) continue;
         ::PostMessage(s_hWndEmb[i],WM_CLOSE,0,0);
     }
-
-    killProcess("Akko-WS.exe");
-    killProcess("Akko-BY.exe");
-    killProcess("AkkoBox.exe");
-    killProcess("Akko-Gaming-Bub.exe");
-    killProcess("AkkoCloudDriver.exe");
 
     qApp->exit();
 

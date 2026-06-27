@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QWidget>
 
+quint64 getIntVal(const QString&val);
 QString getDisplayName(quint32 driverId, quint16 & deviceType, int brand=0);
 quint32 getExtrasDevice(quint32 VID, quint32 PID, quint64 MOD,QString & deviceName, quint16 & deviceType, quint16&deviceUSB);
 
