@@ -15,6 +15,9 @@ public:
     explicit FrameSystemInfo(QWidget *parent = nullptr);
     ~FrameSystemInfo();
 
+private slots:
+    void on_pushButtonWeb_clicked();
+
 private:
     Ui::FrameSystemInfo *ui;
 };

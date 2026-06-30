@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QFile>
 #include <QDebug>
+#include "MainWindow.h"
 
 static ModuleMacroManager *s_instance = nullptr;
 ModuleMacroManager::ModuleMacroManager(QObject *parent)
@@ -14,7 +15,7 @@ ModuleMacroManager::ModuleMacroManager(QObject *parent)
 {
     if(!s_instance) s_instance = this;
 
-    m_strPath = QApplication::applicationDirPath() + "\\macro\\" ;
+    m_strPath = getUserDataPath() + "/macro/" ;
     QDir A(m_strPath);
     if(!A.exists())
         A.mkdir(m_strPath);

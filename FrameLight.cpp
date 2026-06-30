@@ -11,8 +11,9 @@
 #include <QJsonArray>
 #include <QJsonObject>
 
+#include "MainWindow.h"
 
-QImage g_kbImg;
+static QImage g_kbImg;
 
 QImage decodeImage(const QString &imageData)
 {
@@ -38,7 +39,7 @@ FrameLight::FrameLight(QWidget *parent)
 {
     ui->setupUi(this);
 
-    m_strWork = QApplication::applicationDirPath() + "/work";
+    m_strWork = getUserDataPath() + "/work";
     QDir CD(m_strWork);
     if(!CD.exists()) CD.mkdir(m_strWork);
 

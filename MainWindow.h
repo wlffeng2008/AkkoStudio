@@ -44,6 +44,9 @@ public:
     QString strPath2;
 };
 
+QString getUserDataPath();
+QSettings *getUserSetting();
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -85,8 +88,16 @@ private:
     ModuleLangMenu *m_pLangMenu = nullptr;
     AkkoDeviceEnum *m_Enum = nullptr;
 
-    bool m_bForMGK = false;
     bool m_bManHide = false;
+
+    QString m_strRyExe;
+    QString m_strRyName;
+    QString m_strWsExe;
+    QString m_strWsName;
+    QString m_strByExe;
+    QString m_strByName;
+    QString m_strJmExe;
+    QString m_strJmName;
 
     QLayout *m_layout = nullptr;
 

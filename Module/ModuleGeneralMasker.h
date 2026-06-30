@@ -10,7 +10,8 @@ class ModuleGeneralMasker : public QDialog
 public:
     ModuleGeneralMasker(QWidget *cotnent, QWidget *parent=nullptr);
 
-    void setFlag(int nFlag=0){ m_nFlag = nFlag; };
+    void setFlag(int nFlag=0){ m_nFlag = nFlag;};
+    void setContent(QWidget *cotnent);
 
 signals:
     void onClicked();
@@ -23,6 +24,7 @@ protected:
 private:
     QWidget    *m_watch  = nullptr;
     QVBoxLayout*m_layout = nullptr;
+    QVBoxLayout*mainLayout = nullptr;
 
     quint8 m_nFlag=0;
 };

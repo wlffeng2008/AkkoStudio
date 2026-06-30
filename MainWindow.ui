@@ -52,7 +52,7 @@
         <number>10</number>
        </property>
        <property name="bottomMargin">
-        <number>25</number>
+        <number>12</number>
        </property>
        <item>
         <widget class="QLabel" name="labelLogo">
@@ -100,10 +100,16 @@
        </item>
        <item>
         <widget class="QFrame" name="horizontalFrame">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>48</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>36</height>
+           <height>48</height>
           </size>
          </property>
          <property name="styleSheet">
@@ -396,7 +402,7 @@ background:transparent;</string>
                <x>0</x>
                <y>0</y>
                <width>1170</width>
-               <height>464</height>
+               <height>465</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">

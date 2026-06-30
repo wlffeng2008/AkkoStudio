@@ -268,7 +268,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
             <string notr="true">#page4,#page3,#page2,#page1,#page0{background-color: #F6F6F6;border-radius:32px;}</string>
            </property>
            <property name="currentIndex">
-            <number>4</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="page0">
             <property name="styleSheet">
@@ -279,7 +279,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
               <number>20</number>
              </property>
              <property name="topMargin">
-              <number>20</number>
+              <number>12</number>
              </property>
              <property name="rightMargin">
               <number>20</number>
@@ -2040,9 +2040,10 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ToggleButton</class>
-   <extends>QCheckBox</extends>
-   <header>togglebutton.h</header>
+   <class>ModuleKeyboard</class>
+   <extends>QFrame</extends>
+   <header>modulekeyboard.h</header>
+   <container>1</container>
   </customwidget>
   <customwidget>
    <class>ModuleLinear</class>
@@ -2051,10 +2052,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>ModuleKeyboard</class>
-   <extends>QFrame</extends>
-   <header>modulekeyboard.h</header>
-   <container>1</container>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -2062,7 +2062,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupMT"/>
   <buttongroup name="buttonGroupStab"/>
+  <buttongroup name="buttonGroupMT"/>
  </buttongroups>
 </ui>

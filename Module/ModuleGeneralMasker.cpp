@@ -27,24 +27,14 @@ static QPoint getGlobalPos(QWidget *widget) {
 ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
     : QDialog(nullptr)
 {
-    setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint |Qt::Tool);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint |Qt::Tool);
     setAttribute(Qt::WA_TranslucentBackground);
 
-    setStyleSheet("QDialog { background-color: rgba(180, 180, 180, 0.8);  border: none; border-radius: 24px;}");
+    //setStyleSheet("QDialog { background-color: rgba(180, 180, 180, 0.8);  border: none; border-radius: 24px;}");
 
-    QVBoxLayout* mainLayout = new QVBoxLayout(this);
+    mainLayout = new QVBoxLayout(this);
 
-    if(cotnent)
-    {
-        cotnent->setWindowFlags(Qt::SubWindow | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
-        cotnent->setParent(this);
-        mainLayout->addWidget(cotnent, 0, Qt::AlignCenter);
-
-        cotnent->show();
-        cotnent->raise();
-        cotnent->installEventFilter(this);
-        m_watch = cotnent;
-    }
+    setContent(cotnent);
 
     QRect geoMetry = QApplication::primaryScreen()->geometry();
     if(parent)
@@ -54,8 +44,22 @@ ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
         geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height()).adjusted(1,1,-1,-1);
     }
     setGeometry(geoMetry);
-    setFixedSize(geoMetry.width(), geoMetry.height());
+    setFixedSize(geoMetry.size());
     this->raise();
+}
+
+void ModuleGeneralMasker::setContent(QWidget *cotnent)
+{
+    if(cotnent)
+    {
+        cotnent->setWindowFlags(Qt::SubWindow | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
+        cotnent->setParent(this);
+        mainLayout->addWidget(cotnent, 0, Qt::AlignCenter);
+
+        cotnent->show();
+        cotnent->installEventFilter(this);
+        m_watch = cotnent;
+    }
 }
 
 bool ModuleGeneralMasker::eventFilter(QObject*watched,QEvent*event)

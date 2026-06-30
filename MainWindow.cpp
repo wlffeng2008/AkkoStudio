@@ -36,6 +36,7 @@
 #include <QApplication>
 
 #include <QSharedMemory>
+#include <QStandardPaths>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -172,15 +173,32 @@ DWORD GetSystemIdle()
     return nIdle;
 }
 
+
+static bool m_bForMGK = false;
+
+QString getUserDataPath()
+{
+    QString strPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + QString("/AppData/Local/") + (m_bForMGK ? "MgkStudio" : "AkkoStudio");
+    QDir DData(strPath);
+    if(!DData.exists())
+        DData.mkdir(strPath);
+    return strPath;
+}
+
 static QSettings settings0("HKEY_CURRENT_USER\\Software\\Akko",QSettings::NativeFormat);
 static QSettings settings1("HKEY_CURRENT_USER\\Software\\MonsGeek",QSettings::NativeFormat);
+
+QSettings *getUserSetting()
+{
+    return (m_bForMGK ? &settings1 : &settings0);
+}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    m_pSet = m_bForMGK ? &settings1 : &settings0;
+    m_pSet = getUserSetting();
 
     {
         static QSharedMemory sharedMemory(m_bForMGK ? "MGKAudioApp_71A7F2D4-5566-4F99" : "AkkoAudioApp_71A7F2D4-5566-4F99");
@@ -345,13 +363,14 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     connect(ui->pushButtonSet, &QPushButton::clicked, this, [=] {
-        FrameSystemInfo *pSetInfo = new FrameSystemInfo();
-        ModuleGeneralMasker gMask(pSetInfo,ui->stackedWidget);
-        pSetInfo->show();
-        pSetInfo->update();
-        gMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.96); border: none; border-radius: 20px; }");
-        gMask.exec();
-        pSetInfo->deleteLater();
+        QTimer::singleShot(100,this,[=]{
+            FrameSystemInfo *pSetInfo = new FrameSystemInfo();
+            ModuleGeneralMasker gMask(pSetInfo,ui->stackedWidget);
+            gMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.96); border: none; border-radius: 20px; }");
+            //gMask.setMinimumSize(size().width(),size().height() - 100);
+            gMask.exec();
+            pSetInfo->deleteLater();
+        });
     });
 
     QTimer *pCheck = new QTimer(this);
@@ -406,42 +425,41 @@ MainWindow::MainWindow(QWidget *parent)
         m_pFloatRight->hide();
     });
 
-    QTimer *pTMUsb = new QTimer(this);
     static USBNotifier *pUsb = new USBNotifier(this);
     QCoreApplication::instance()->installNativeEventFilter(pUsb);
     connect(pUsb, &USBNotifier::devicePluggined,this,[=](bool in) {
         Q_UNUSED(in)
-        pTMUsb->stop();
-        pTMUsb->start(300);
-    });
-
-    connect(pTMUsb,&QTimer::timeout,this,[=]{
-        pTMUsb->stop();
         m_Enum->DoEnum();
     });
 
     //qDebug()<< QProcess::systemEnvironment();
 
-    killProcess("Akko-WS.exe");
-    killProcess("Akko-BY.exe");
-    killProcess("Akko-Gaming-Bub.exe");
-    killProcess("AkkoCloudDriver.exe");
     QString strRoot = QApplication::applicationDirPath();
     QDir EDir(strRoot + "/RyExe");
     if(!EDir.exists()) strRoot += "/..";
     QFile::rename(strRoot + "/WsExe/Akko.exe",strRoot + "/WsExe/Akko-WS.exe");
 
-    QString strExe0 = strRoot + "/WsExe/Akko-WS.exe";
-    QString strExe1 = strRoot + "/RyExe/AkkoCloudDriver.exe";
-    QString strExe2 = strRoot + "/JmExe/Akko-Gaming-Bub.exe";
-    QString strExe3 = strRoot + "/ByExe/Akko-BY.exe";
-    if(m_bForMGK) strExe1 = strRoot + "/MgExe/MonsGeekDriver.exe";
+    QString strExe0 = strRoot + "/RyExe/AkkoCloudDriver.exe";
+    QString strExe1 = strRoot + "/WsExe/Akko-WS.exe";
+    QString strExe2 = strRoot + "/ByExe/Akko-BY.exe";
+    QString strExe3 = strRoot + "/JmExe/Akko-Gaming-Bub.exe";
+    if(m_bForMGK) strExe0 = strRoot + "/MgExe/MonsGeekDriver.exe";
 
-    HideStartProcess(strExe0);
-    HideStartProcess(strExe1);
-    HideStartProcess(strExe2);
-    HideStartProcess(strExe3);
-    //QProcess::startDetached(strExe3,QStringList{"TrayHide"});
+    m_strRyExe = strExe0;
+    m_strRyName = (m_bForMGK ? "MonsGeekDriver.exe" : "AkkoCloudDriver.exe");
+
+    m_strWsExe  = strExe1;
+    m_strWsName = "Akko-WS.exe";
+    m_strByExe  = strExe2;
+    m_strByName = "Akko-BY.exe";
+    m_strJmExe  = strExe3;
+    m_strJmName = "Akko-Gaming-Bub.exe";
+
+    //HideStartProcess(strExe0);
+    //HideStartProcess(strExe1);
+    //HideStartProcess(strExe2);
+    //HideStartProcess(strExe3);
+
     HWND hParentWnd = (HWND)ui->frameEmb->winId();
     QTimer *pTMFindWnd = new QTimer(this);
     pTMFindWnd->start(200);
@@ -454,18 +472,18 @@ MainWindow::MainWindow(QWidget *parent)
             if(s_hWndEmb[3]){ ::ShowWindow(s_hWndEmb[3],SW_HIDE); }
         }
 
-        if(!isRunning("Akko-WS.exe"))
-        {
-            m_pSet->setValue("AkkoWnd", 0);
-            s_hWndEmb[1] = nullptr;
-            HideStartProcess(strExe0);
-        }
+        // if(!isRunning("Akko-WS.exe"))
+        // {
+        //     m_pSet->setValue("AkkoWnd", 0);
+        //     s_hWndEmb[1] = nullptr;
+        //     HideStartProcess(strExe0);
+        // }
 
-        if(!isRunning("Akko-Gaming-Bub.exe"))
-        {
-            s_hWndEmb[3] = nullptr;
-            HideStartProcess(strExe2);
-        }
+        // if(!isRunning("Akko-Gaming-Bub.exe"))
+        // {
+        //     s_hWndEmb[3] = nullptr;
+        //     HideStartProcess(strExe2);
+        // }
 
         if(!s_hWndEmb[0])
         {
@@ -615,6 +633,7 @@ MainWindow::MainWindow(QWidget *parent)
 
         connect(ui->pushButtonScan, &QPushButton::clicked, this, [=] {
             setHubSize(true);
+            m_pSet->setValue("ByDeviceUuid","");
             m_pFloatReturn->hide();
             ui->stackedWidget->setCurrentIndex(0);
             m_tmp.clear();
@@ -741,6 +760,8 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
         m_showId  = dev->driverId;
         m_showPath = dev->strPath2;
         m_pLangMenu->hide();
+        m_hCurHwnd = nullptr;
+        m_bCanReturn = false;
 
         for(int i=0; i<10; i++)
         {
@@ -828,12 +849,11 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                 if(y < 0 || y > cs.height())  y = 0;
 
                 hide();
-                m_bCanReturn = false;
-                qDebug() << ::ShowWindow(hWnd,SW_SHOW);
-                qDebug() << ::BringWindowToTop(hWnd);
-                qDebug() << ::MoveWindow(hWnd,x,y,(rc.right-rc.left),(rc.bottom-rc.top),TRUE);
-                //qDebug() << ::SetWindowPos(hWnd, HWND_TOPMOST, x, y, 0, 0, SWP_SHOWWINDOW|SWP_NOSIZE);
-                //::SetWindowPos(hWnd, HWND_TOPMOST, 0,0,0,0, SWP_NOMOVE | SWP_NOSIZE);
+
+                ::ShowWindow(hWnd,SW_SHOW);
+                ::BringWindowToTop(hWnd);
+                //::MoveWindow(hWnd,x,y,(rc.right-rc.left),(rc.bottom-rc.top),TRUE);
+                ::SetForegroundWindow(hWnd);
 
                 QTimer::singleShot(1000,this,[=]{
                     m_pSet->setValue("AkkoReturn", 0);
@@ -845,16 +865,7 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                     ::SetForegroundWindow(hWnd);
                     ::RedrawWindow(hWnd,NULL,NULL,RDW_ERASENOW|RDW_UPDATENOW);
 
-                    //::SetActiveWindow(hWnd);
-                    //::SetFocus(hWnd);
-
                     m_hCurHwnd = hWnd;
-
-                    {
-                        RECT rc;
-                        ::GetWindowRect(hWnd,&rc);
-                        qDebug() << cs << x << y  << scaleFactor << rc.left << rc.right << hWnd;
-                    }
                 });
             }
             else
@@ -938,6 +949,40 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint64 driverId, const QSt
     pDev->PID = PID;
 
     m_tmp.append(pDev);
+
+    switch (creator)
+    {
+    case 0:
+        if(!isRunning(m_strRyName))
+        {
+            ::HideStartProcess(m_strRyExe);
+            QThread::msleep(100);
+        }
+        break;
+    case 1:
+        if(!isRunning(m_strWsName))
+        {
+            ::HideStartProcess(m_strWsExe);
+            QThread::msleep(100);
+        }
+        break;
+    case 2:
+        if(!isRunning(m_strByName))
+        {
+            ::HideStartProcess(m_strByExe);
+            QThread::msleep(100);
+        }
+        break;
+    case 3:
+        if(!isRunning(m_strJmName))
+        {
+            ::HideStartProcess(m_strJmExe);
+            QThread::msleep(100);
+        }
+        break;
+    default:
+        break;
+    }
 }
 
 static void stringToInt(const QString&value,QList<quint64>&retList)
@@ -965,7 +1010,7 @@ void MainWindow::enumDevice()
     quint16 PID = 0;
     quint16 UPG = 0;
     quint16 USA = 0;
-    const char *PATH = nullptr;
+    char *PATH = nullptr;
     QSettings enumSet(QApplication::applicationDirPath() + "/config/enumsetting.ini",QSettings::IniFormat);
 
     QString path1,path2;
@@ -1499,7 +1544,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
         m_pFloatRight->setGeometry(P2.x(),P2.y(),48*scale,48*scale);
 
         QPoint P3 = mapToGlobal(QPoint(15,ui->stackedWidget->geometry().top()+5));
-        m_pFloatReturn->setGeometry(P3.x(),P3.y(),80*scale,32*scale);
+        m_pFloatReturn->setGeometry(P3.x()+(m_creator == 2 ? 40 : 0),P3.y(),80*scale,32*scale);
 
         if(obj == ui->scrollArea->viewport() || m_pFloatLeft == obj || m_pFloatRight == obj)
         {
@@ -1678,11 +1723,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->ignore();
         return;
     }
-    killProcess("Akko-WS.exe");
-    killProcess("Akko-BY.exe");
-    killProcess("AkkoBox.exe");
-    killProcess("Akko-Gaming-Bub.exe");
-    killProcess("AkkoCloudDriver.exe");
+
+    killProcess(m_strRyName);
+    killProcess(m_strWsName);
+    killProcess(m_strByName);
+    killProcess(m_strJmName);
 
     m_Enum->Exit();
     m_pFloatReturn->hide();

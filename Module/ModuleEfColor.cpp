@@ -119,6 +119,7 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
 
     ui->checkBoxSingle->setHidden(true);
     ui->labelTitleL1->setHidden(true);
+    ui->tabWidget->setTabVisible(2,false);
 
     QString strStyle(R"(
 

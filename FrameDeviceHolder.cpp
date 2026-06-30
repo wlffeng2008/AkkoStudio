@@ -20,6 +20,7 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
 {
     ui->setupUi(this);
     ui->labelBatt->setHidden(true);
+    ui->labelConn->setHidden(true);
 
     DialogDeviceConnect *pCnnt = new DialogDeviceConnect(this);
     ModuleGenKeymapping *pKmap = new ModuleGenKeymapping(this);
@@ -201,13 +202,14 @@ void FrameDeviceHolder::changeEvent(QEvent *pEvt)
 
 void FrameDeviceHolder::clickLabel(QLabel *label, int index)
 {
-    if(DialogDeviceConnect::instance()->isLoading())
-        return;
     if(index == 6 || index == 7)
     {
         emit onReturn();
         return;
     }
+
+    if(DialogDeviceConnect::instance()->isLoading())
+        return;
 
     ((SuperLabel *)label)->setHold();
 
