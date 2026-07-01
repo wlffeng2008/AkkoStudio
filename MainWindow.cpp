@@ -362,14 +362,15 @@ MainWindow::MainWindow(QWidget *parent)
         pLangMenu->show();
     });
 
+    static ModuleGeneralMasker gMask(nullptr);
+
+    gMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.96); border: none; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;}");
+    static FrameSystemInfo *pSetInfo = new FrameSystemInfo();
+
     connect(ui->pushButtonSet, &QPushButton::clicked, this, [=] {
         QTimer::singleShot(100,this,[=]{
-            FrameSystemInfo *pSetInfo = new FrameSystemInfo();
-            ModuleGeneralMasker gMask(pSetInfo,ui->stackedWidget);
-            gMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.96); border: none; border-radius: 20px; }");
-            //gMask.setMinimumSize(size().width(),size().height() - 100);
+            gMask.setContent(pSetInfo,ui->stackedWidget);
             gMask.exec();
-            pSetInfo->deleteLater();
         });
     });
 
@@ -700,6 +701,7 @@ MainWindow::MainWindow(QWidget *parent)
                 QTimer::singleShot(200,this,[=]{
                     this->show();
                     this->raise();
+                    setHubSize(true);
                 });
             }
         });
@@ -716,21 +718,12 @@ MainWindow::MainWindow(QWidget *parent)
         QTimer *pTMEsc = new QTimer(this);
         pTMEsc->start(30);
         connect(pTMEsc,&QTimer::timeout,this,[=]{
-            if((::GetKeyState(VK_ESCAPE)&0x8000) && !m_KeyTesting /*&& m_bActive && isVisible() && !isMinimized()*/)
+            if((::GetKeyState(VK_ESCAPE)&0x8000) != 0 && !m_KeyTesting /*&& m_bActive && isVisible() && !isMinimized()*/)
             {
-                qDebug() << "AkkoReturn 0";
                 m_pSet->setValue("AkkoReturn", 1);
-                ui->stackedWidget->setCurrentIndex(0);
             }
         });
     }
-
-    // QTimer::singleShot(500,this,[=]{
-    //     ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-    // });
-    // QTimer::singleShot(2000,this,[=]{
-    //     ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-    // });
 
     setHubSize(true);
 }
@@ -856,9 +849,6 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                 ::SetForegroundWindow(hWnd);
 
                 QTimer::singleShot(1000,this,[=]{
-                    m_pSet->setValue("AkkoReturn", 0);
-                    m_pSet->setValue("MonsGeekReturn", 0);
-                    m_bCanReturn = true;
 
                     ::BringWindowToTop(hWnd);
                     ::ShowWindow(hWnd,SW_SHOW);
@@ -897,6 +887,9 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
             m_bActive = true;
 
             QTimer::singleShot(2000,this,[=]{
+                m_bCanReturn = true;
+                m_pSet->setValue("AkkoReturn", 0);
+                m_pSet->setValue("MonsGeekReturn", 0);
                 m_pFloatReturn->setHidden(m_creator == 1 || m_creator == 3 || ui->stackedWidget->currentIndex() != 1);
             });
         });
@@ -1788,7 +1781,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             if(nCount >= 2 && (::GetKeyState(VK_CONTROL)&0x800) && (::GetKeyState('D')&0x800) )
                 DialogDeviceConnect::instance()->show();
         }
-        if (event->pos().y() < 80)
+        if (event->pos().y() < 60)
         {
             m_dragPosition = event->globalPosition() - frameGeometry().topLeft();
             m_dragging = true;
@@ -1805,10 +1798,6 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         QPointF MP = event->globalPosition() - m_dragPosition;
         move(MP.toPoint());
         event->accept();
-
-        QPoint P3 = mapToGlobal(QPoint(15,ui->stackedWidget->geometry().top()+5));
-        m_pFloatReturn->setGeometry(P3.x(),P3.y(),80,32);
-
         m_pFloatReturn->raise();
     }
 
@@ -1817,10 +1806,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton)
-    {
-        m_dragging = false;
-    }
+    m_dragging = false;
 
     QMainWindow::mouseReleaseEvent(event);
 }
@@ -1833,7 +1819,7 @@ void MainWindow::setHubSize(bool origin)
     if(!origin) height =  900;
 
     QSize cs = QApplication::screens().at(0)->size();
-    qDebug() << cs  << QApplication::primaryScreen()->size();
+    //qDebug() << cs  << QApplication::primaryScreen()->size();
     int x = (cs.width() - width)/2 ;
     int y = (cs.height() - height)/2;
     if(x < 0) x = 0;

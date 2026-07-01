@@ -133,7 +133,7 @@ void ModuleMacroManager::saveLoadHeader(bool save)
         {
             for(int i=0; i<8; i++)
             {
-                addMacroProject();
+                //addMacroProject();
             }
             saveLoadHeader(true);
         }

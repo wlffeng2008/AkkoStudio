@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 #define AppName "Akko Hub"
 #define AppId "E4CA0A60-4573-483B-8E56-884F19770908"
-#define AppVerName "Akko Hub V1.6.6"
+#define AppVerName "Akko Hub V1.6.7"
 #define AppExe "AKKOStudio.exe"
 
 [Setup]
@@ -21,7 +21,7 @@ DefaultGroupName={#AppName}
 AllowNoIcons=yes
 UsePreviousAppDir=yes
 OutputDir=Z:\·¢²¼Èí¼þ
-OutputBaseFilename=AkkoHubInstaller-V5.22-Win20260627
+OutputBaseFilename=AkkoHubInstaller-V5.23-Win20260701
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes

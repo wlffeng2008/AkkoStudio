@@ -11,7 +11,9 @@ public:
     ModuleGeneralMasker(QWidget *cotnent, QWidget *parent=nullptr);
 
     void setFlag(int nFlag=0){ m_nFlag = nFlag;};
-    void setContent(QWidget *cotnent);
+    void setContent(QWidget *cotnent,QWidget *pDest);
+
+    int exec() override;
 
 signals:
     void onClicked();

@@ -27,28 +27,18 @@ static QPoint getGlobalPos(QWidget *widget) {
 ModuleGeneralMasker::ModuleGeneralMasker(QWidget *cotnent, QWidget *parent)
     : QDialog(nullptr)
 {
-    setWindowFlags(Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint |Qt::Tool);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint |Qt::Tool | Qt::Popup);
     setAttribute(Qt::WA_TranslucentBackground);
 
     //setStyleSheet("QDialog { background-color: rgba(180, 180, 180, 0.8);  border: none; border-radius: 24px;}");
 
     mainLayout = new QVBoxLayout(this);
 
-    setContent(cotnent);
+    setContent(cotnent,parent);
 
-    QRect geoMetry = QApplication::primaryScreen()->geometry();
-    if(parent)
-    {
-        geoMetry = parent->frameGeometry(); // parent->mapToGlobal(parent->pos());
-        QPoint globalPos = getGlobalPos(parent);
-        geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height()).adjusted(1,1,-1,-1);
-    }
-    setGeometry(geoMetry);
-    setFixedSize(geoMetry.size());
-    this->raise();
 }
 
-void ModuleGeneralMasker::setContent(QWidget *cotnent)
+void ModuleGeneralMasker::setContent(QWidget *cotnent, QWidget *pDest)
 {
     if(cotnent)
     {
@@ -59,6 +49,16 @@ void ModuleGeneralMasker::setContent(QWidget *cotnent)
         cotnent->show();
         cotnent->installEventFilter(this);
         m_watch = cotnent;
+
+        QRect geoMetry = QApplication::primaryScreen()->geometry();
+        if(pDest)
+        {
+            geoMetry = pDest->frameGeometry(); // parent->mapToGlobal(parent->pos());
+            QPoint globalPos = getGlobalPos(pDest);
+            geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height()).adjusted(1,1,-1,-1);
+        }
+        setGeometry(geoMetry);
+        setFixedSize(geoMetry.size());
     }
 }
 
@@ -91,4 +91,10 @@ void ModuleGeneralMasker::mousePressEvent(QMouseEvent *event)
 {
     emit onClicked();
     QDialog::mousePressEvent(event);
+}
+
+int ModuleGeneralMasker::exec()
+{
+    this->raise();
+    return QDialog::exec();
 }
