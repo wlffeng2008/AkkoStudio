@@ -227,7 +227,7 @@
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4866"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4891"/>
@@ -573,7 +573,7 @@
         <location filename="FrameKeySetting.ui" line="968"/>
         <location filename="FrameKeySetting.ui" line="1131"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="FrameKeySetting.ui" line="189"/>
@@ -1149,32 +1149,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="107"/>
+        <location filename="FrameSystemInfo.ui" line="72"/>
         <source>确定</source>
         <translation type="unfinished">OK</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="126"/>
+        <location filename="FrameSystemInfo.ui" line="91"/>
         <source>开机时自动开启本程序</source>
         <translation type="unfinished">Startup with Windows</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="148"/>
+        <location filename="FrameSystemInfo.ui" line="119"/>
         <source>前往驱动程序网站</source>
         <translation type="unfinished">Go to home page</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="161"/>
+        <location filename="FrameSystemInfo.ui" line="132"/>
         <source>当前版本</source>
         <translation type="unfinished">Currently version</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="174"/>
+        <location filename="FrameSystemInfo.ui" line="145"/>
         <source>编译时间</source>
         <translation type="unfinished">Build time</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="190"/>
+        <location filename="FrameSystemInfo.ui" line="164"/>
         <source>系统设置</source>
         <translation type="unfinished">System Settings</translation>
     </message>
@@ -1279,28 +1279,28 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="MainWindow.ui" line="177"/>
+        <location filename="MainWindow.ui" line="183"/>
         <source>系统设置</source>
         <translation type="unfinished">System Settings</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="212"/>
+        <location filename="MainWindow.ui" line="218"/>
         <source>最小化</source>
         <translation type="unfinished">Minimize</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="247"/>
+        <location filename="MainWindow.ui" line="253"/>
         <source>关闭</source>
         <translation type="unfinished">Exit</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="317"/>
-        <location filename="MainWindow.cpp" line="1494"/>
+        <location filename="MainWindow.ui" line="323"/>
+        <location filename="MainWindow.cpp" line="1553"/>
         <source>我的设备</source>
         <translation type="unfinished">My Devices</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="351"/>
+        <location filename="MainWindow.ui" line="357"/>
         <source>刷新设备</source>
         <translation type="unfinished">Refresh</translation>
     </message>
@@ -1309,27 +1309,27 @@
         <translation type="obsolete">Add device</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="145"/>
+        <location filename="MainWindow.ui" line="151"/>
         <source> 语种选择</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1497"/>
+        <location filename="MainWindow.cpp" line="1556"/>
         <source>显示窗口</source>
         <translation type="unfinished">Display window</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1498"/>
+        <location filename="MainWindow.cpp" line="1557"/>
         <source>隐藏窗口</source>
         <translation type="unfinished">Hide window</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1499"/>
+        <location filename="MainWindow.cpp" line="1558"/>
         <source>退出程序</source>
         <translation type="unfinished">Hide window</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1696"/>
+        <location filename="MainWindow.cpp" line="1755"/>
         <source>正在搜索设备</source>
         <translation type="unfinished">Searching for devices</translation>
     </message>
@@ -1338,12 +1338,18 @@
         <translation type="obsolete">Please insert the device</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1719"/>
+        <location filename="MainWindow.cpp" line="780"/>
+        <location filename="MainWindow.cpp" line="1778"/>
         <source>提示</source>
         <translation type="unfinished">hint</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1719"/>
+        <location filename="MainWindow.cpp" line="780"/>
+        <source>发现新版本，现在要立即更新吗？</source>
+        <translation type="unfinished">A new version has been found. Do you want to update it now?</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="1778"/>
         <source>确定要退出 AKKO 驱动程序？</source>
         <translation type="unfinished">Are you sure you want to exit the AKKO driver?</translation>
     </message>
@@ -1373,7 +1379,7 @@
     <message>
         <location filename="ModuleAddMacroSquare.ui" line="337"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="ModuleAddMacroSquare.ui" line="291"/>
@@ -1546,7 +1552,7 @@
     <message>
         <location filename="Module/ModuleEfColor.ui" line="743"/>
         <source>关闭</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Exit</translation>
     </message>
     <message>
         <location filename="Module/ModuleEfColor.ui" line="768"/>
@@ -1874,7 +1880,7 @@
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="46"/>
         <source>返回</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Home Page</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="47"/>

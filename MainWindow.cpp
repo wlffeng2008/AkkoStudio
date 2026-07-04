@@ -12,6 +12,8 @@
 #include "FrameSystemInfo.h"
 #include "AkkoDeviceEnum.h"
 
+#include "Downloader.h"
+
 #include <QLayout>
 #include <QMouseEvent>
 #include <QPainter>
@@ -31,6 +33,9 @@
 #include <Qdir>
 #include <QFile>
 #include <QLibraryInfo>
+
+#include <QJsonDocument>
+#include <QJsonObject>
 
 #include <QScreen>
 #include <QApplication>
@@ -193,6 +198,7 @@ QSettings *getUserSetting()
     return (m_bForMGK ? &settings1 : &settings0);
 }
 
+// https://www.akkogear.com/akkoupdate.txt
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -725,6 +731,66 @@ MainWindow::MainWindow(QWidget *parent)
         });
     }
 
+    QTimer::singleShot(5000,this,[=]{
+
+        static Downloader *pChecker = new Downloader(this);
+        static Downloader *pRWorker = new Downloader(this);
+        static QTimer *pTMCheck = new QTimer(this);
+
+        static QString strVer;
+        static QString strUrl;
+        static QString strFile;
+
+        pTMCheck->start(200);
+        connect(pTMCheck,&QTimer::timeout,this,[=]{
+            pTMCheck->stop();
+            pTMCheck->start(10000);
+            QString strFile = QApplication::applicationDirPath() + "/config/updateset.ini";
+            QSettings Set(strFile,QSettings::IniFormat);
+            QString strCheck = Set.value("updateurl","https://www.akkogear.com/akkoupdate.txt").toString();
+            pChecker->startDownload(strCheck,"");
+        });
+
+        connect(pChecker,&Downloader::dataIn,this,[=](const QByteArray&data){
+            QJsonDocument jDoc = QJsonDocument::fromJson(data);
+            if(jDoc.isObject())
+            {
+                QJsonObject jObj = jDoc.object();
+                //qDebug() << jObj;
+
+                strVer = jObj["vresion"].toString();
+                strUrl = jObj["url"].toString();
+                if(strVer >= ::currentVersion())
+                {
+                    pTMCheck->stop();
+
+                    strFile = QApplication::applicationDirPath() + "/updatepack";
+                    QDir UP(strFile);
+                    if(!UP.exists()) UP.mkpath(strFile);
+                    strFile += QString("/Updater-V%1.exe").arg(strVer);
+
+                    pRWorker->startDownload(strUrl,strFile);
+                }
+            }
+        });
+
+        connect(pRWorker,&Downloader::finished,this,[=](bool success, const QString &msg){
+            if(success)
+            {
+                if(QMessageBox::question(this,tr("提示"),tr("发现新版本，现在要立即更新吗？") + QString("  (V%1)").arg(strVer)) == QMessageBox::Yes)
+                {
+                    QProcess::startDetached(strFile,QStringList{"/VERYSILENT","/SP-", "/SUPPRESSMSGBOXES"});
+                    trayIcon->hide();
+                    exit(0);
+                }
+                else
+                {
+                    pTMCheck->start(3600000);
+                }
+            }
+        });
+    });
+
     setHubSize(true);
 }
 
@@ -776,27 +842,31 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                 DialogDeviceConnect::instance()->DoConnectDevice(dev->VID,dev->PID,bleMode,dev->strPath1,dev->strPath2);
                 ui->stackedWidget->setCurrentIndex(2);
                 ui->frameHold->setDevice(dev,image,dev->strName);
+                m_pActDev = dev;
+                m_bCanReturn = true;
                 return;
             }
-
-            //if(!m_pSet->value("DeviceLoaded").toBool())
-            //    return;
-
-            QString strlastPath = m_pSet->value("DevicePath").toString();
-            if(strlastPath != dev->strPath2)
+            else
             {
-                m_pSet->setValue("DeviceId",0);
-                m_pSet->setValue("DevicePath","");
-                m_pSet->setValue("PageLoaded","false");
-                m_pSet->setValue("VendorDevicePath","");
+                //if(!m_pSet->value("DeviceLoaded").toBool())
+                //    return;
 
-                QTimer::singleShot(100,this,[=]{
-                    m_pSet->setValue("DeviceId",dev->driverId);
-                    m_pSet->setValue("VendorDevicePath",dev->strPath1);
-                    m_pSet->setValue("DevicePath",dev->strPath2);
-                });
+                QString strlastPath = m_pSet->value("DevicePath").toString();
+                if(strlastPath != dev->strPath2)
+                {
+                    m_pSet->setValue("DeviceId",0);
+                    m_pSet->setValue("DevicePath","");
+                    m_pSet->setValue("PageLoaded","false");
+                    m_pSet->setValue("VendorDevicePath","");
+
+                    QTimer::singleShot(100,this,[=]{
+                        m_pSet->setValue("DeviceId",dev->driverId);
+                        m_pSet->setValue("VendorDevicePath",dev->strPath1);
+                        m_pSet->setValue("DevicePath",dev->strPath2);
+                    });
+                }
+                setHubSize(false);
             }
-            setHubSize(false);
         }
         else
         {
@@ -843,10 +913,10 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
 
                 hide();
 
-                ::ShowWindow(hWnd,SW_SHOW);
                 ::BringWindowToTop(hWnd);
-                //::MoveWindow(hWnd,x,y,(rc.right-rc.left),(rc.bottom-rc.top),TRUE);
+                ::ShowWindow(hWnd,SW_SHOW);
                 ::SetForegroundWindow(hWnd);
+                //::MoveWindow(hWnd,x,y,(rc.right-rc.left),(rc.bottom-rc.top),TRUE);
 
                 QTimer::singleShot(1000,this,[=]{
 

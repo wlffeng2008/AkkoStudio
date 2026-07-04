@@ -6,22 +6,30 @@
 #include <QDateTime>
 #include <Windows.h>
 
-QString g_strVer("1.6.7") ;
+QString g_strVer("1.6.8");
+
+QString currentVersion()
+{
+    return g_strVer;
+}
 
 inline QDateTime getCompileTime()
 {
+    const QString tsStr = QString::fromLatin1(__TIMESTAMP__);
     QLocale enUs(QLocale::English, QLocale::UnitedStates);
 
-    QDateTime dt = enUs.toDateTime(__TIMESTAMP__, "ddd MMM dd HH:mm:ss yyyy");
+    QDateTime dt = enUs.toDateTime(tsStr, "ddd MMM dd HH:mm:ss yyyy");
+    if(!dt.isValid())
+        dt = enUs.toDateTime(tsStr, "ddd MMM  d HH:mm:ss yyyy");
     qDebug() << dt;
     return dt;
 }
 
 inline QString getCompileTimeText(const QString &fmt = "yyyy-MM-dd HH:mm:ss")
 {
-    return getCompileTime().toString(fmt);
+    QDateTime dt = getCompileTime();
+    return dt.isValid() ? dt.toString(fmt) : __TIMESTAMP__;
 }
-
 
 FrameSystemInfo::FrameSystemInfo(QWidget *parent)
     : QFrame(parent)
@@ -54,10 +62,17 @@ FrameSystemInfo::FrameSystemInfo(QWidget *parent)
         hide();
     });
 
-    ui->labelVersion->setText(ui->labelVersion->text().trimmed() + QString(":  ") + g_strVer);
-    ui->labelBuild->setText(ui->labelBuild->text().trimmed()  +QString(":  ") + getCompileTimeText());
+}
 
-    //raise();
+void FrameSystemInfo::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+        ui->labelVersion->setText(tr("当前版本") + QString(":  ") + g_strVer);
+        ui->labelBuild->setText(tr("编译时间")   +QString(":  ") + getCompileTimeText());
+    }
+    QFrame::changeEvent(pEvt);
 }
 
 FrameSystemInfo::~FrameSystemInfo()

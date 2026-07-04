@@ -7,6 +7,8 @@ namespace Ui {
 class FrameSystemInfo;
 }
 
+QString currentVersion();
+
 class FrameSystemInfo : public QFrame
 {
     Q_OBJECT
@@ -17,6 +19,9 @@ public:
 
 private slots:
     void on_pushButtonWeb_clicked();
+
+private:
+    void changeEvent(QEvent *pEvt) final;
 
 private:
     Ui::FrameSystemInfo *ui;

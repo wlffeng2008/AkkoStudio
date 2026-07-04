@@ -171,8 +171,8 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
     static QStringList imgTypes = {"usb.png", "2.4g.png", "ble.png"};
     m_typeImage = QString(":/images/dev/") + imgTypes[pDI->connectType];
     ui->labelType->setPixmap(QPixmap(m_typeImage));
+    update();
 }
-
 
 void FrameDeviceShow::setImage(const QString &image,int type)
 {

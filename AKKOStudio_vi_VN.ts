@@ -227,7 +227,7 @@
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4866"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Được</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4891"/>
@@ -512,7 +512,7 @@
         <location filename="FrameKeySetting.ui" line="968"/>
         <location filename="FrameKeySetting.ui" line="1131"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Được</translation>
     </message>
     <message>
         <location filename="FrameKeySetting.ui" line="189"/>
@@ -1148,32 +1148,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="107"/>
+        <location filename="FrameSystemInfo.ui" line="72"/>
         <source>确定</source>
         <translation type="unfinished">Được</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="126"/>
+        <location filename="FrameSystemInfo.ui" line="91"/>
         <source>开机时自动开启本程序</source>
         <translation type="unfinished">Khởi động cùng Windows</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="148"/>
+        <location filename="FrameSystemInfo.ui" line="119"/>
         <source>前往驱动程序网站</source>
         <translation type="unfinished">Về trang chủ</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="161"/>
+        <location filename="FrameSystemInfo.ui" line="132"/>
         <source>当前版本</source>
         <translation type="unfinished">Phiên bản hiện tại</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="174"/>
+        <location filename="FrameSystemInfo.ui" line="145"/>
         <source>编译时间</source>
         <translation type="unfinished">Thời gian xây dựng</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="190"/>
+        <location filename="FrameSystemInfo.ui" line="164"/>
         <source>系统设置</source>
         <translation type="unfinished">Cài đặt hệ thống</translation>
     </message>
@@ -1278,28 +1278,28 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="MainWindow.ui" line="177"/>
+        <location filename="MainWindow.ui" line="183"/>
         <source>系统设置</source>
         <translation type="unfinished">Cài đặt hệ thống</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="212"/>
+        <location filename="MainWindow.ui" line="218"/>
         <source>最小化</source>
         <translation type="unfinished">Thu nhỏ</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="247"/>
+        <location filename="MainWindow.ui" line="253"/>
         <source>关闭</source>
         <translation type="unfinished">Thoát</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="317"/>
-        <location filename="MainWindow.cpp" line="1494"/>
+        <location filename="MainWindow.ui" line="323"/>
+        <location filename="MainWindow.cpp" line="1553"/>
         <source>我的设备</source>
         <translation type="unfinished">Thiết bị của tôi</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="351"/>
+        <location filename="MainWindow.ui" line="357"/>
         <source>刷新设备</source>
         <translation type="unfinished">Làm mới</translation>
     </message>
@@ -1308,27 +1308,27 @@
         <translation type="obsolete">Thêm thiết bị</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="145"/>
+        <location filename="MainWindow.ui" line="151"/>
         <source> 语种选择</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1497"/>
+        <location filename="MainWindow.cpp" line="1556"/>
         <source>显示窗口</source>
         <translation type="unfinished">Cửa sổ hiển thị</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1498"/>
+        <location filename="MainWindow.cpp" line="1557"/>
         <source>隐藏窗口</source>
         <translation type="unfinished">Ẩn cửa sổ</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1499"/>
+        <location filename="MainWindow.cpp" line="1558"/>
         <source>退出程序</source>
         <translation type="unfinished">Ẩn cửa sổ</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1696"/>
+        <location filename="MainWindow.cpp" line="1755"/>
         <source>正在搜索设备</source>
         <translation type="unfinished">Đang tìm thiết bị</translation>
     </message>
@@ -1337,12 +1337,18 @@
         <translation type="obsolete">Vui lòng lắp thiết bị vào</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1719"/>
+        <location filename="MainWindow.cpp" line="780"/>
+        <location filename="MainWindow.cpp" line="1778"/>
         <source>提示</source>
         <translation type="unfinished">gợi ý</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1719"/>
+        <location filename="MainWindow.cpp" line="780"/>
+        <source>发现新版本，现在要立即更新吗？</source>
+        <translation type="unfinished">Phát hiện phiên bản mới, bạn có muốn cập nhật ngay bây giờ không?</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="1778"/>
         <source>确定要退出 AKKO 驱动程序？</source>
         <translation type="unfinished">Bạn có chắc chắn muốn thoát khỏi trình điều khiển AKKO không?</translation>
     </message>
@@ -1372,7 +1378,7 @@
     <message>
         <location filename="ModuleAddMacroSquare.ui" line="337"/>
         <source>确定</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Được</translation>
     </message>
     <message>
         <location filename="ModuleAddMacroSquare.ui" line="291"/>
@@ -1533,7 +1539,7 @@
     <message>
         <location filename="Module/ModuleEfColor.ui" line="743"/>
         <source>关闭</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thoát</translation>
     </message>
     <message>
         <location filename="Module/ModuleEfColor.ui" line="768"/>
@@ -1873,7 +1879,7 @@
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="46"/>
         <source>返回</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Trang chủ</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="47"/>
