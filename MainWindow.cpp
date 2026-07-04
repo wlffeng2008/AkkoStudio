@@ -1093,7 +1093,7 @@ void MainWindow::enumDevice()
             USA = pEDev->usage;
             PATH= pEDev->path;
 
-            if((PID < 0x0B || PID > 0x50) && !(PID == 0x5151 || PID == 0x5152 || PID == 0x22B4 || PID == 0x22B5))
+            //if((PID < 0x0B || PID > 0x5B || PID == 0x0000) && !(PID == 0x5151 || PID == 0x5152 || PID == 0x22B4 || PID == 0x22B5 ))
             {
                 //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
 
@@ -1251,7 +1251,7 @@ void MainWindow::enumDevice()
                                 }
                             }
 
-                            //qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("devId: %04d VID:0x%04X, PID:0x%04X",devId,VID,PID);
+                            qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("devId: %04d VID:0x%04X, PID:0x%04X",devId,VID,PID);
 
                             addDevice(VID,PID,devId,path1,path2,connectType,0);
                             path1.clear();
