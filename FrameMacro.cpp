@@ -87,13 +87,13 @@ FrameMacro::FrameMacro(QWidget *parent)
                 }
                 else if(pEvt->type() == 1)
                 {
-                    addMacroSquare("鼠标",1,pEvt->mKey(),true);
-                    addMacroSquare("鼠标",1,pEvt->mKey(),false);
+                    addMacroSquare(tr("鼠标"),1,pEvt->mKey(),true);
+                    addMacroSquare(tr("鼠标"),1,pEvt->mKey(),false);
                 }
                 else
                 {
                     quint16 value = ((pEvt->xPos()<<8) | pEvt->yPos());
-                    addMacroSquare("位置",2,value,false);
+                    addMacroSquare(tr("位置"),2,value,false);
                 }
 
                 m_loading = false;
@@ -215,11 +215,13 @@ void FrameMacro::addMacroBar(QObject *item)
     MItem->setMacroName(prj->name);
     MItem->setRelData(item);
     pLayout->addWidget(MItem);
+    MItem->show();
 
     connect(MItem,&MacroItem::onOperation,this,[=](int action,QWidget *widget){
         MacroItem *item=(MacroItem *)widget;
         item->setActive();
         m_prj = (MacroProject *)item->getRelData();
+
         if(action == 1)
         {
             deleteMacro(item);
@@ -260,12 +262,16 @@ void FrameMacro::addMacroBar(QObject *item)
 
 void FrameMacro::deleteMacro(QWidget *item)
 {
+    MacroProject *prj = (MacroProject *)((MacroItem *)item)->getRelData();
+    if(!prj) return;
+    qDebug() << "Remove: " << prj->name;
+    item->hide();
     ui->scrollAreaWidgetContents1->layout()->removeWidget(item);
 
-    MacroProject *prj = (MacroProject *)item;
-    if(!prj) return;
     m_pMM->delMacroProject(prj);
     m_prj = nullptr;
+    update();
+    updateView();
 }
 
 void FrameMacro::updateView()

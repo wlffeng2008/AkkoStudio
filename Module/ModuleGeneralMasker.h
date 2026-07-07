@@ -14,6 +14,7 @@ public:
     void setContent(QWidget *cotnent,QWidget *pDest);
 
     int exec() override;
+    void showEvent(QShowEvent *event) override;
 
 signals:
     void onClicked();
