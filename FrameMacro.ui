@@ -144,6 +144,9 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
            </item>
            <item>
             <widget class="QPushButton" name="pushButtonAddMacro">
+             <property name="toolTip">
+              <string>新建宏</string>
+             </property>
              <property name="text">
               <string/>
              </property>

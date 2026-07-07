@@ -278,6 +278,12 @@
     </item>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="minimumSize">
+       <size>
+        <width>1280</width>
+        <height>824</height>
+       </size>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>

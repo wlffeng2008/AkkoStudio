@@ -113,7 +113,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">color: rgb(0, 0, 0);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::NoFrame</enum>

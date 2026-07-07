@@ -4,6 +4,8 @@
 #include "ColorSquare.h"
 #include "DialogColorPicker.h"
 
+#include "MainWindow.h"
+
 #include <QPainter>
 #include <QColorDialog>
 
@@ -184,6 +186,10 @@ ModuleEfColor::ModuleEfColor(QWidget *parent)
             setSideLed();
         });
     }
+
+    {
+
+    }
 }
 
 ModuleEfColor::~ModuleEfColor()
@@ -193,7 +199,6 @@ ModuleEfColor::~ModuleEfColor()
 
 void ModuleEfColor::updateData(const QByteArray &data)
 {
-    qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper();
     m_bUpdate = true;
 
     m_sideClr.setRed((quint8)data[5]);
@@ -201,16 +206,16 @@ void ModuleEfColor::updateData(const QByteArray &data)
     m_sideClr.setBlue((quint8)data[7]);
 
     m_sideE=data[1];
-    ui->buttonGroupE->buttons()[data[1]]->click();
+    ui->buttonGroupE->buttons().at(data[1])->click();
 
     m_sideS=data[2];
-    ui->buttonGroupS->buttons()[data[2]]->click();
+    ui->buttonGroupS->buttons().at(data[2])->click();
 
     m_sideL=data[3];
-    ui->buttonGroupL->buttons()[data[3]]->click();
+    ui->buttonGroupL->buttons().at(data[3])->click();
 
     m_sideC=data[4];
-    ui->buttonGroupC->buttons()[data[4] == 0x08]->click();
+    ui->buttonGroupC->buttons().at(data[4] == 0x08)->click();
 
     m_bUpdate = false;
 }
@@ -238,7 +243,6 @@ void ModuleEfColor::paintEvent(QPaintEvent *event)
 {
     if(ui->tabWidget->currentIndex() == 0)
     {
-
         static QPixmap map(":/images/light/light.png");
         QPainter painter(this);
         painter.drawPixmap(this->rect(),map);

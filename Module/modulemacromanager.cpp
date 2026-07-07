@@ -46,6 +46,7 @@ MacroProject *ModuleMacroManager::addMacroProject()
         }
     }
     m_macros.push_back(item);
+    saveLoadHeader();
     return item;
 }
 
@@ -70,9 +71,16 @@ QString ModuleMacroManager::getMarcoName(quint8 macroId)
 
 void ModuleMacroManager::delMacroProject(MacroProject *prj)
 {
-    m_macros.remove(m_macros.indexOf(prj));
-    delete prj;
+    int index = m_macros.indexOf(prj);
+    if(index == -1)
+        return;
+    m_macros.remove(index);
+    //delete prj;
     saveLoadHeader();
+
+    QString strMFile=m_strPath+QString("macroevent%1.txt").arg(prj->id);
+    QFile jF(strMFile);
+    if(jF.exists()) jF.remove();
 }
 
 void ModuleMacroManager::saveLoadHeader(bool save)
@@ -114,15 +122,19 @@ void ModuleMacroManager::saveLoadHeader(bool save)
             QJsonObject Head = jDoc.object() ;
             QJsonArray Macro = Head["macro"].toArray();
             int count = Macro.count();
+            QList<int> checker;
             for(int i=0; i<count; i++)
             {
                 QJsonObject It = Macro[i].toObject();
+                if(checker.contains(It["id"].toInt()))
+                    continue;
                 MacroProject *item = new MacroProject();
                 item->id     = It["id"].toInt();
                 item->mode   = It["mode"].toInt();
                 item->name   = It["name"].toString();
                 item->repeat = It["repeat"].toInt();
                 m_macros.push_back(item);
+                checker.push_back(item->id);
 
                 saveLoadEvent(item,false);
             }
@@ -161,8 +173,10 @@ void ModuleMacroManager::delMacroEvent(MacroProject *prj,MacroEvent *event)
 
 void ModuleMacroManager::saveLoadEvent(MacroProject *prj,bool save)
 {
-    int id = prj->id;
-    QFile jF(m_strPath+QString("macroevent%1.txt").arg(id));
+    if(!prj) return;
+
+    QString strMFile=m_strPath+QString("macroevent%1.txt").arg(prj->id);
+    QFile jF(strMFile);
     if(save)
     {
         QJsonArray jData;

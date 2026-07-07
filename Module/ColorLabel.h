@@ -11,7 +11,11 @@ class ColorLabel : public QLabel
 public:
     ColorLabel(QWidget *parent=nullptr);
     void setColor(const QColor&color){ m_color = color; update(); }
+    QString getColor();
     static ColorLabel *Current(QWidget *parent);
+
+signals:
+    void clicked(const QColor&color);
 
 protected:
     void paintEvent(QPaintEvent *event) override;

@@ -7,6 +7,7 @@
 
 #include <QScrollBar>
 #include <QWheelEvent>
+#include <QMouseEvent>
 #include <QTimer>
 #include <QThread>
 #include <QFile>
@@ -278,10 +279,14 @@ bool FrameDeviceShow::event(QEvent *event)
 
     if (event->type() == QEvent::MouseButtonPress)
     {
-        QTimer::singleShot(50, this, [=]{
-            emit onClicked(m_pDevEI,m_image);
-            updateBattery();
-        });
+        QMouseEvent *pME = static_cast<QMouseEvent*>(event);
+        if(pME->button() == Qt::LeftButton)
+        {
+            QTimer::singleShot(50, this, [=]{
+                emit onClicked(m_pDevEI,m_image);
+                updateBattery();
+            });
+        }
     }
 
     return QFrame::event(event);

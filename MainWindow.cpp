@@ -267,7 +267,8 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 
-    ui->stackedWidget->setHidden(true);
+    //ui->stackedWidget->setHidden(true);
+    ui->stackedWidget->setCurrentIndex(0);
     ui->labelPrev->setHidden(true);
     ui->labelNext->setHidden(true);
     m_layout = ui->scrollAreaWidgetContents->layout();
@@ -302,54 +303,46 @@ MainWindow::MainWindow(QWidget *parent)
         //     阿拉伯语(沙特阿拉伯)	ar-SA	0x0401	1025
         //     巴斯克语(巴斯克语)	eu-ES	0x042d	1069
         //     保加利亚语(保加利亚)	bg-BG	0x0402	1026
-        //     加泰罗尼亚语	ca-ES	0x0403	1027
-        //     中文（繁体，香港特别行政区）	zh-HK
-        //         注意： 不再使用。 请参阅 zh-TW。
-
-        //     0x0c04	3076
-        //     中文(简体，中国)	zh-CN	0x0804	2052
-        //     中文(繁体，台湾)	zh-TW	0x0404	1028
+        //     加泰罗尼亚语     	ca-ES	0x0403	1027
+        //     中文(简体，中国)    	zh-CN	0x0804	2052
+        //     中文(繁体，台湾 )	zh-TW	0x0404	1028
         //     克罗地亚语(克罗地亚)	hr-HR	0x041a	1050
         //     捷克语(捷克共和国)	cs-CZ	0x0405	1029
-        //     丹麦语(丹麦)	da-DK	0x0406	1030
-        //     荷兰语(荷兰)	nl-NL	0x0413	1043
-        //     英语(美国)	en-US	0x0409	2052
-        //     英语(英国)	en-GB	0x0809	2057
+        //     丹麦语(丹麦)      	da-DK	0x0406	1030
+        //     荷兰语(荷兰)      	nl-NL	0x0413	1043
+        //     英语(美国)       	en-US	0x0409	2052
+        //     英语(英国)       	en-GB	0x0809	2057
         //     爱沙尼亚语(爱沙尼亚)	et-EE	0x0425	1061
-        //     芬兰语(芬兰)	fi-FI	0x040b	1035
-        //     法语(加拿大)	fr-CA	0x0c0c	3084
-        //     法语(法国)	fr-FR	0x040c	1036
-        //     加利西亚语	gl-ES	0x0456	1110
-        //     德语(德国)	de-DE	0x0407	1031
-        //     希腊语(希腊)	el-GR	0x0408	1032
-        //     希伯来语(以色列)	he-IL	0x040d	1037
-        //     匈牙利语(匈牙利)	hu-HU	0x040e	1038
-        //     印度尼西亚语(印度尼西亚)	id-ID	0x0421	1057
-        //     意大利语(意大利)	it-IT	0x0410	1040
-        //     日语(日本)	ja-JP	0x0411	1041
-        //     韩语(韩国)	ko-KR	0x0412	1042
+        //     芬兰语(芬兰)      	fi-FI	0x040b	1035
+        //     法语(加拿大)      	fr-CA	0x0c0c	3084
+        //     法语(法国)       	fr-FR	0x040c	1036
+        //     加利西亚语        	gl-ES	0x0456	1110
+        //     德语(德国)       	de-DE	0x0407	1031
+        //     希腊语(希腊)      	el-GR	0x0408	1032
+        //     希伯来语(以色列)     he-IL	0x040d	1037
+        //     匈牙利语(匈牙利)    	hu-HU	0x040e	1038
+        //     印度尼西亚语       	id-ID	0x0421	1057
+        //     意大利语(意大利)    	it-IT	0x0410	1040
+        //     日语(日本)       	ja-JP	0x0411	1041
+        //     韩语(韩国)       	ko-KR	0x0412	1042
         //     拉脱维亚语(拉脱维亚)	lv-LV	0x0426	1062
-        //     立陶宛语(立陶宛)	lt-LT	0x0427	1063
-        //     挪威语(博克马尔语，挪威)	nb-NO	0x0414	1044
-        //     波兰语(波兰)	pl-PL	0x0415	1045
-        //     葡萄牙语（巴西）	pt-BR	0x0416	1046
-        //     葡萄牙语(葡萄牙)	pt-PT	0x0816	2070
+        //     立陶宛语(立陶宛)    	lt-LT	0x0427	1063
+        //     挪威语(博克马尔语)	nb-NO	0x0414	1044
+        //     波兰语(波兰)      	pl-PL	0x0415	1045
+        //     葡萄牙语(巴西)      	pt-BR	0x0416	1046
+        //     葡萄牙语(葡萄牙)    	pt-PT	0x0816	2070
         //     罗马尼亚语(罗马尼亚)	ro-RO	0x0418	1048
-        //     俄语(俄罗斯)	ru-RU	0x0419	1049
-        //     塞尔维亚语(拉丁语，塞尔维亚共和国)	sr-Latn-CS
-        //         注意： 不再使用。 请参阅 sr-Latn-RS。
-
-        //     0x081a	2074
-        //     塞尔维亚语(拉丁语，塞尔维亚共和国)	sr-Latn-RS	0x241A	9242
+        //     俄语(俄罗斯)      	ru-RU	0x0419	1049
+        //     塞尔维亚语(拉丁语)	sr-Latn-RS	0x241A	9242
         //     斯洛伐克语(斯洛伐克)	sk-SK	0x041b	1051
-        //     斯洛文尼亚语(斯洛文尼亚)	sl-SI	0x0424	1060
-        //     西班牙语(墨西哥)	es-MX	0x080a	2058
-        //     西班牙语(西班牙)	es-ES	0x0c0a	3082
-        //     瑞典语(瑞典)	sv-SE	0x041d	1053
-        //     泰语(泰国)	th-TH	0x041e	1054
-        //     土耳其语（土耳其）	tr-TR	0x041f	1055
-        //     乌克兰语(乌克兰)	uk-UA	0x0422	1058
-        //     越南语	vi-VN	0x042a	1066
+        //     斯洛文尼亚语         sl-SI	0x0424	1060
+        //     西班牙语(墨西哥)    	es-MX	0x080a	2058
+        //     西班牙语(西班牙)    	es-ES	0x0c0a	3082
+        //     瑞典语(瑞典)      	sv-SE	0x041d	1053
+        //     泰语(泰国)       	th-TH	0x041e	1054
+        //     土耳其语(土耳其)    	tr-TR	0x041f	1055
+        //     乌克兰语(乌克兰)     uk-UA	0x0422	1058
+        //     越南语               vi-VN	0x042a	1066
         {
             int id = langId;
             QList<int> langs = {2052,1033,1028,1041,1042,1049,1066,1046,1054,1031,1036,1053,1040,1055};
@@ -369,13 +362,15 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     static ModuleGeneralMasker gMask(nullptr);
-
     gMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.96); border: none; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;}");
+    gMask.setMinimumSize(QSize(1280,800));
+    //gMask.setParent(this);
     static FrameSystemInfo *pSetInfo = new FrameSystemInfo();
 
     connect(ui->pushButtonSet, &QPushButton::clicked, this, [=] {
         QTimer::singleShot(100,this,[=]{
             gMask.setContent(pSetInfo,ui->stackedWidget);
+            gMask.raise();
             gMask.exec();
         });
     });
@@ -452,20 +447,17 @@ MainWindow::MainWindow(QWidget *parent)
     QString strExe3 = strRoot + "/JmExe/Akko-Gaming-Bub.exe";
     if(m_bForMGK) strExe0 = strRoot + "/MgExe/MonsGeekDriver.exe";
 
-    m_strRyExe = strExe0;
+    m_strRyExe  = strExe0;
     m_strRyName = (m_bForMGK ? "MonsGeekDriver.exe" : "AkkoCloudDriver.exe");
 
     m_strWsExe  = strExe1;
     m_strWsName = "Akko-WS.exe";
+
     m_strByExe  = strExe2;
     m_strByName = "Akko-BY.exe";
+
     m_strJmExe  = strExe3;
     m_strJmName = "Akko-Gaming-Bub.exe";
-
-    //HideStartProcess(strExe0);
-    //HideStartProcess(strExe1);
-    //HideStartProcess(strExe2);
-    //HideStartProcess(strExe3);
 
     HWND hParentWnd = (HWND)ui->frameEmb->winId();
     QTimer *pTMFindWnd = new QTimer(this);
@@ -479,18 +471,24 @@ MainWindow::MainWindow(QWidget *parent)
             if(s_hWndEmb[3]){ ::ShowWindow(s_hWndEmb[3],SW_HIDE); }
         }
 
-        // if(!isRunning("Akko-WS.exe"))
-        // {
-        //     m_pSet->setValue("AkkoWnd", 0);
-        //     s_hWndEmb[1] = nullptr;
-        //     HideStartProcess(strExe0);
-        // }
+        if(!isRunning(m_strWsName) && s_hWndEmb[1])
+        {
+            m_pSet->setValue("AkkoWnd", 0);
+            s_hWndEmb[1] = nullptr;
+            HideStartProcess(m_strWsExe);
+        }
 
-        // if(!isRunning("Akko-Gaming-Bub.exe"))
-        // {
-        //     s_hWndEmb[3] = nullptr;
-        //     HideStartProcess(strExe2);
-        // }
+        if(!isRunning(m_strByName) && s_hWndEmb[2])
+        {
+            s_hWndEmb[2] = nullptr;
+            HideStartProcess(m_strByExe);
+        }
+
+        if(!isRunning(m_strJmName) && s_hWndEmb[3])
+        {
+            s_hWndEmb[3] = nullptr;
+            HideStartProcess(m_strJmExe);
+        }
 
         if(!s_hWndEmb[0])
         {
@@ -555,13 +553,21 @@ MainWindow::MainWindow(QWidget *parent)
         connect(trayIcon,&QSystemTrayIcon::activated,this,[=](QSystemTrayIcon::ActivationReason reason){
             if(reason != QSystemTrayIcon::Context)
             {
-                //if(m_creator == 1 || m_creator == 3)
-                //   return;
+                if(m_creator == 1 || m_creator == 3)
+                  return;
 
+                qDebug() <<"QSystemTrayIcon::activated";
                 if(this->isHidden() || this->isMinimized())
+                {
+                    this->raise();
                     this->showNormal();
+                    this->setFocus();
+                    this->activateWindow();
+                }
                 else
+                {
                     this->hide();
+                }
             }
         });
 
@@ -581,18 +587,13 @@ MainWindow::MainWindow(QWidget *parent)
 
         connect(exitAction, &QAction::triggered, this, &QApplication::quit);
         connect(showAction, &QAction::triggered, this, [=]{
-            // if(m_creator == 1 || m_creator == 3)
-            //     return;
+            if(m_creator == 1 || m_creator == 3)
+                return;
 
-            this->showNormal();
             this->raise();
-
-            QTimer::singleShot(50,this,[=]{
-                ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-            });
-            QTimer::singleShot(1500,this,[=]{
-                ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-            });
+            this->showNormal();
+            this->setFocus();
+            this->activateWindow();
         });
         connect(hideAction, &QAction::triggered, this, [=]{
             this->hide();
@@ -651,6 +652,10 @@ MainWindow::MainWindow(QWidget *parent)
                 m_layout->removeWidget(item);
                 item->hide();
             }
+
+            killProcess(m_strWsName);
+            killProcess(m_strByName);
+
             m_Enum->DoEnum();
         });
 
@@ -975,7 +980,7 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint64 driverId, const QSt
     {
         if(driverId == 0 || driverId > 0x10000)
             return;
-        strName = getDisplayName(driverId,deviceType,m_bForMGK?1:0);
+        strName = getDisplayName(driverId, deviceType, m_bForMGK ? 1 : 0);
     }
     else
     {
@@ -1251,7 +1256,7 @@ void MainWindow::enumDevice()
                                 }
                             }
 
-                            qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("devId: %04d VID:0x%04X, PID:0x%04X",devId,VID,PID);
+                            //qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("devId: %04d VID:0x%04X, PID:0x%04X",devId,VID,PID);
 
                             addDevice(VID,PID,devId,path1,path2,connectType,0);
                             path1.clear();
@@ -1410,7 +1415,7 @@ void MainWindow::enumDevice()
                             }*/
 
                             //QByteArray Log((char *)szBuf,len1);
-                            //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << device << "Apply Driver ID:" << driverId;
+                            //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << device << "Device ID:" << device;
 
                             addDevice(VID,PID,device,"null",PATH,connectType,1);
                             allPaths.push_back(PATH);
@@ -1536,7 +1541,7 @@ void MainWindow::showEvent(QShowEvent *event)
     setAttribute(Qt::WA_Mapped);
 
     this->raise();
-    this->activateWindow();
+
     if(m_bManHide)
         m_pSet->setValue("AkkoReturn",1);
     m_bManHide = false;
@@ -1599,15 +1604,18 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *e)
 
     if(e->type() != QEvent::Paint)
     {
-        qreal scale = 1.0;
-        int nYPos = geometry().height()/2 + 50;
-        QPoint P1 = mapToGlobal(QPoint(20,nYPos));
-        QPoint P2 = mapToGlobal(QPoint(geometry().width() - 70*scale,nYPos));
-        m_pFloatLeft->setGeometry(P1.x(),P1.y(),48*scale,48*scale);
-        m_pFloatRight->setGeometry(P2.x(),P2.y(),48*scale,48*scale);
+        if(obj == m_pFloatReturn || m_pFloatLeft == obj || m_pFloatRight == obj)
+        {
+            qreal scale = 1.0;
+            int nYPos = geometry().height()/2 + 50;
+            QPoint P1 = mapToGlobal(QPoint(20,nYPos));
+            QPoint P2 = mapToGlobal(QPoint(geometry().width() - 70*scale,nYPos));
+            m_pFloatLeft->setGeometry(P1.x(),P1.y(),48*scale,48*scale);
+            m_pFloatRight->setGeometry(P2.x(),P2.y(),48*scale,48*scale);
 
-        QPoint P3 = mapToGlobal(QPoint(15,ui->stackedWidget->geometry().top()+5));
-        m_pFloatReturn->setGeometry(P3.x()+(m_creator == 2 ? 40 : 0),P3.y(),80*scale,32*scale);
+            QPoint P3 = mapToGlobal(QPoint(15,ui->stackedWidget->geometry().top()+5));
+            m_pFloatReturn->setGeometry(P3.x()+(m_creator == 2 ? 40 : 0),P3.y(),80*scale,32*scale);
+        }
 
         if(obj == ui->scrollArea->viewport() || m_pFloatLeft == obj || m_pFloatRight == obj)
         {
@@ -1681,7 +1689,7 @@ bool MainWindow::event(QEvent *event)
     if(event->type() == QEvent::Leave)
     {
         QTimer::singleShot(100,this,[=]{
-            if(! this->geometry().contains(QCursor::pos()))
+            if(!geometry().contains(QCursor::pos()))
             {
                 m_bActive=false;
             }
@@ -1697,7 +1705,7 @@ bool MainWindow::event(QEvent *event)
 
     if(event->type() == QEvent::WindowDeactivate)
     {
-        if(! this->geometry().contains(QCursor::pos()))
+        if(!geometry().contains(QCursor::pos()))
         {
             m_bActive=false;
         }
@@ -1713,17 +1721,6 @@ bool MainWindow::event(QEvent *event)
     if(event->type() == QEvent::WindowActivate)
     {
         m_bActive = true;
-        QTimer::singleShot(100,this,[=]{
-            if(!m_closeShow)
-            {
-                QTimer::singleShot(100,this,[=]{
-                    ::SetWindowPos((HWND)this->winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-                });
-                QTimer::singleShot(500,this,[=]{
-                    ::SetWindowPos((HWND)this->winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
-                });
-            }
-        });
     }
 
     return QMainWindow::event(event);
@@ -1763,6 +1760,8 @@ void MainWindow::paintEvent(QPaintEvent *event)
     else
     {
         p.fillRect(this->rect(), Qt::white);
+        p.fillRect(this->rect(), QColor("#FBFBFB"));
+        //p.drawImage(this->rect(), QImage(QApplication::applicationDirPath() + (m_bForMGK ? "/images/mogear.png" : "/images/MainPicture.png")));
         if(m_bForMGK)
             p.drawImage(QRect(30,25,315,40), QImage(":/images/Mgklogo.png"));
         else
@@ -1889,7 +1888,6 @@ void MainWindow::setHubSize(bool origin)
     if(!origin) height =  900;
 
     QSize cs = QApplication::screens().at(0)->size();
-    //qDebug() << cs  << QApplication::primaryScreen()->size();
     int x = (cs.width() - width)/2 ;
     int y = (cs.height() - height)/2;
     if(x < 0) x = 0;

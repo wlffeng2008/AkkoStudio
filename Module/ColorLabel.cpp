@@ -11,12 +11,19 @@ ColorLabel::ColorLabel(QWidget *parent):QLabel(parent)
 {
     if(!s_map[parent]) s_map[parent] = this;
 
+    m_color = rand();
     setCursor(Qt::PointingHandCursor);
 }
 
 ColorLabel *ColorLabel::Current(QWidget *parent)
 {
     return s_map[parent];
+}
+
+QString ColorLabel::getColor()
+{
+    QString strColor = QString::asprintf("#%02x%02x%02x",m_color.blue(),m_color.green(),m_color.red());
+    return strColor;
 }
 
 void ColorLabel::paintEvent(QPaintEvent *event)
@@ -50,6 +57,8 @@ void ColorLabel::mousePressEvent(QMouseEvent *event)
     s_map[parent()] = this;
     update();
     if(old) old->update();
+
+    emit clicked(m_color);
 
     QLabel::mousePressEvent(event);
 }

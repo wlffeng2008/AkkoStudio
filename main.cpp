@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     a.setStyleSheet(R"(
 
         * { font-family: MiSans,MiSans;}
-        QLabel { font-size: 14px; font-weight: 400 ;}
+        QLabel { font-size: 14px; font-weight: 400; color: #202020;}
 
         QLabel:disabled { color: #B3B3B3;}
 
@@ -84,24 +84,24 @@ int main(int argc, char *argv[])
             background-color: #EDEDED;
             border-radius: 6px;
             min-height: 20px;
-            color: black;
+            color: #202020;
             text-align: center;
             font-size: 14px;
             font-weight: 500;
             }
 
         QLineEdit:hover { background-color: #F0F0F0;}
-        QLineEdit:focus{ border: 1px solid #50b7c1; border-radius: 4px;  background-color: rgb(230, 240, 255);}
+        QLineEdit:focus{ border: 1px solid #50b7c1; border-radius: 4px; background-color: rgb(230, 240, 255);}
         QLineEdit:disabled { background-color: transparent; color: #B7B7B7;border: 1px solid transparent;}
 
-        QLabel#labelTitle,#labelTitle0,#labelTitle1,#labelTitle2,#labelTitle3,#labelTitle4,#labelTitle5,#labelTitle6,#labelTitle7,#labelTitle8,#labelTitle9,#labelTitle10{ font-size: 16px; font-weight: 600; }
-        QLabel#labelName ,#labelName0 ,#labelName1 ,#labelName2 ,#labelName3 ,#labelName4 ,#labelName5 ,#labelName6 ,#labelName7 ,#labelName8 ,#labelName9 ,#labelName10 { font-size: 16px; font-weight: 600; }
-        QLabel#labelTitleL1,#labelTitleL2,#labelTitleL3,#labelTitleL4,#labelTitleL5 { font-size: 14px; font-weight: 500 ;}
-        QLabel#labelTitleS1,#labelTitleS2,#labelTitleS3,#labelTitleS4,#labelTitleS5 { font-size: 16px; font-weight: 500 ;}
-        QLabel#labelValue1,#labelValue5{ font-size: 10px; font-weight: 500;}
-        QLabel#labelValue2,#labelValue4{ font-size: 14px; font-weight: 500;}
-        QLabel#labelValue3,#labelValue6{ font-size: 18px; font-weight: 600;}
-        QLabel#labelDeviceName,#labelDeviceName1{ font-size: 26px; font-weight: 600;}
+        QLabel#labelTitle,#labelTitle0,#labelTitle1,#labelTitle2,#labelTitle3,#labelTitle4,#labelTitle5,#labelTitle6,#labelTitle7,#labelTitle8,#labelTitle9,#labelTitle10{ font-size: 16px; font-weight: 600;  color: #202020;}
+        QLabel#labelName ,#labelName0 ,#labelName1 ,#labelName2 ,#labelName3 ,#labelName4 ,#labelName5 ,#labelName6 ,#labelName7 ,#labelName8 ,#labelName9 ,#labelName10 { font-size: 16px; font-weight: 600;  color: #202020;}
+        QLabel#labelTitleL1,#labelTitleL2,#labelTitleL3,#labelTitleL4,#labelTitleL5 { font-size: 14px; font-weight: 500; color: #202020;}
+        QLabel#labelTitleS1,#labelTitleS2,#labelTitleS3,#labelTitleS4,#labelTitleS5 { font-size: 16px; font-weight: 500; color: #202020;}
+        QLabel#labelValue1,#labelValue5{ font-size: 10px; font-weight: 500; color: #202020;}
+        QLabel#labelValue2,#labelValue4{ font-size: 14px; font-weight: 500; color: #202020;}
+        QLabel#labelValue3,#labelValue6{ font-size: 18px; font-weight: 600; color: #202020;}
+        QLabel#labelDeviceName,#labelDeviceName1{ font-size: 26px; font-weight: 600; color: #202020;}
         QLabel#labelInfo0,#labelInfo1,#labelInfo2,#labelInfo3{ font-size: 32px; font-weight: 600; color:#202020;}
 
         QTableView{
@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
         QHeaderView::section:horizontal{ padding-left: 2px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-right: 1px solid gray;}
         QHeaderView::section:vertical{ padding-left: 2px; min-width: 36px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-left: 0px solid gray; border-right: 1px solid gray;}
         QHeaderView::section:vertical{ text-align: right;}
-
+        QPushButton {  background:none; }
         /*QPushButton {
                 background-color: #2D7FDD;
                 border-radius: 8px;
