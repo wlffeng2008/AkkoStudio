@@ -21,7 +21,11 @@ DefaultGroupName={#AppName}
 AllowNoIcons=yes
 UsePreviousAppDir=yes
 OutputDir=Z:\·¢²¼Èí¼þ
+<<<<<<< HEAD
 OutputBaseFilename=AkkoHubInstaller-V5.26-Win20260708
+=======
+OutputBaseFilename=AkkoHubInstaller-V5.25-Win20260706
+>>>>>>> b86a29e38e55175c86a0dbd9093e56f1849e9348
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes
