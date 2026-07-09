@@ -17,7 +17,7 @@
    <string notr="true">Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame#frameTop{background-color: #FBFBFB;border-radius:32px;}
+   <string notr="true">QFrame#frameTop{background-color: #F6F6F6;border-radius:32px;}
 QFrame#frameBLeft{background-color: #F6F6F6;border-radius:32px;}
 QFrame#frameBRight{background-color: #F6F6F6;border-radius:32px;}
 </string>
@@ -1966,8 +1966,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>571</width>
-                    <height>60</height>
+                    <width>100</width>
+                    <height>30</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_16"/>
@@ -1997,8 +1997,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>571</width>
-                    <height>168</height>
+                    <width>100</width>
+                    <height>30</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -2046,15 +2046,15 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>ModuleLinear</class>
    <extends>QFrame</extends>
    <header>modulelinear.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ToggleButton</class>
-   <extends>QCheckBox</extends>
-   <header>togglebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>

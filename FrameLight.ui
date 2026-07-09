@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">#frameT{background-color: #FBFBFB;border-radius:32px;}
-
+#FrameLight{background-color: #FBFBFB;}
 #frameLEDBright,#frameLEDSpeed,#frameLEDColor,#frameLEDMode,#page1,#stackedWidgetB{background-color: #F6F6F6;border-radius:32px;}</string>
   </property>
   <property name="lineWidth">
@@ -40,7 +40,7 @@
    <item>
     <widget class="QFrame" name="frameT">
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">#frameT{background-color: #F6F6F6;border-radius:32px;}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::NoFrame</enum>
@@ -74,7 +74,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidgetB">
      <property name="styleSheet">
-      <string notr="true">#page0,#page1{background-color: #FBFBFB; border-radius:32px;}</string>
+      <string notr="true">#page0,#page1{background-color: #F6F6F6; border-radius:32px;}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::NoFrame</enum>
@@ -765,6 +765,12 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ModuleKeyboard</class>
+   <extends>QFrame</extends>
+   <header>modulekeyboard.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>ToggleButton</class>
    <extends>QCheckBox</extends>
    <header>togglebutton.h</header>
@@ -791,12 +797,6 @@
    <class>ModuleEfSpeed</class>
    <extends>QFrame</extends>
    <header>moduleefspeed.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ModuleKeyboard</class>
-   <extends>QFrame</extends>
-   <header>modulekeyboard.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 
     a.setStyleSheet(R"(
 
-        * { font-family: MiSans,MiSans;}
+        * { font-family: MiSans,MiSans; border:none;}
         QLabel { font-size: 14px; font-weight: 400; color: #202020;}
 
         QLabel:disabled { color: #B3B3B3;}
