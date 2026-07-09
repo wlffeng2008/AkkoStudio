@@ -761,20 +761,20 @@ MainWindow::MainWindow(QWidget *parent)
             if(jDoc.isObject())
             {
                 QJsonObject jObj = jDoc.object();
-                //qDebug() << jObj;
 
-                strVer = jObj["vresion"].toString();
-                strUrl = jObj["url"].toString();
+                strVer = jObj["version"].toString().trimmed();
+                strUrl = jObj["url"].toString().trimmed();
                 if(strVer >= ::currentVersion())
                 {
                     pTMCheck->stop();
 
                     strFile = QApplication::applicationDirPath() + "/updatepack";
+                    if(strFile.contains("/Main/")) strFile = QApplication::applicationDirPath() + "/../updatepack";
                     QDir UP(strFile);
                     if(!UP.exists()) UP.mkpath(strFile);
                     strFile += QString("/Updater-V%1.exe").arg(strVer);
 
-                    pRWorker->startDownload(strUrl,strFile);
+                    pRWorker->startDownload(strUrl, strFile);
                 }
             }
         });
@@ -782,7 +782,7 @@ MainWindow::MainWindow(QWidget *parent)
         connect(pRWorker,&Downloader::finished,this,[=](bool success, const QString &msg){
             if(success)
             {
-                if(QMessageBox::question(this,tr("提示"),tr("发现新版本，现在要立即更新吗？") + QString("  (V%1)").arg(strVer)) == QMessageBox::Yes)
+                if(QMessageBox::question(this, tr("提示"), tr("发现新版本，现在要立即更新吗？") + QString("  (V%1)").arg(strVer)) == QMessageBox::Yes)
                 {
                     QProcess::startDetached(strFile,QStringList{"/VERYSILENT","/SP-", "/SUPPRESSMSGBOXES"});
                     trayIcon->hide();
@@ -1494,7 +1494,11 @@ void MainWindow::enumDevice()
             if(UPG == 0xFF02 && USA == 0x02)
             {
                 //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
-                addDevice(VID,PID,0xFB29,"null",PATH,0,3);
+                if(PID == 0xFB29)
+                    addDevice(VID,PID,0,"null",PATH,0,3);
+                if(PID == 0xFB2A)
+                    addDevice(VID,PID,0,"null",PATH,1,3);
+
                 allPaths.push_back(PATH);
             }
 

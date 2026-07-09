@@ -20,15 +20,14 @@ Downloader::~Downloader()
 void Downloader::startDownload(const QString &url, const QString &savePath)
 {
     cancel();
-    m_url = url;
+    m_url = url.trimmed();
     m_downloadedSize = 0;
     m_isPaused = false;
     m_isCanceled = false;
 
     if(!savePath.isEmpty())
     {
-        m_file.setFileName(savePath);
-        // 文件不存在新建，存在则追加（断点）
+        m_file.setFileName(savePath.trimmed());
         if (!m_file.open(QIODevice::ReadWrite | QIODevice::Append))
         {
             emit errorOccurred("无法打开文件：" + m_file.errorString());
@@ -66,6 +65,9 @@ void Downloader::resume()
         req.setRawHeader("Range", range.toUtf8());
     }
 
+    if(!m_reply)
+        delete m_reply;
+
     m_reply = m_manager->get(req);
     connect(m_reply, &QNetworkReply::readyRead, this, &Downloader::onReadyRead);
     connect(m_reply, &QNetworkReply::downloadProgress, this, &Downloader::downloadProgress);
@@ -79,8 +81,8 @@ void Downloader::cancel()
     if (m_reply)
     {
         m_reply->abort();
-        m_reply->deleteLater();
-        m_reply = nullptr;
+        //m_reply->deleteLater();
+        //m_reply = nullptr;
     }
     if (m_file.isOpen())
         m_file.close();
