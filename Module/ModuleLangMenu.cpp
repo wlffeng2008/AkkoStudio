@@ -34,25 +34,24 @@ ModuleLangMenu::ModuleLangMenu(QWidget *parent)
     } ;
 
     QString strStyle(R"(
+        QPushButton {
+            width: 100px;
+            height: 24px;
+            border-radius: 10px;
 
-            QPushButton {
-                width: 86px;
-                height: 24px;
-                border-radius: 10px;
+            color: #333;
+            border: 1px soild white;
+            background: white; }
 
-                color: #333;
-                border: 1px soild white;
-                background: white; }
+        QPushButton:hover {
+            border: 1px soild #F0F0F0;
+            background: #F0F0F0; }
 
-            QPushButton:hover {
-                border: 1px soild #F0F0F0;
-                background: #F0F0F0; }
-
-            QPushButton:checked {
-                color: white;
-                border: 1px soild #6329B6;
-                background: #6329B6; }
-            )") ;
+        QPushButton:checked {
+            color: white;
+            border: 1px soild #6329B6;
+            background: #6329B6; }
+        )") ;
 
     m_pBtnGrp = new QButtonGroup(this);
     QLayout *pLayout = ui->verticalLayout;
@@ -77,8 +76,6 @@ ModuleLangMenu::ModuleLangMenu(QWidget *parent)
         m_pBtnGrp->addButton(btn,i);
         pLayout->addWidget(btn);
     }
-
-    // QTimer::singleShot(1000,this,[=]{ m_pBtnGrp->button(0)->click();});
 
     setStyleSheet("QDialog{background-color: rgba(255, 255, 255, 0.8); border: 1px solid #EAEAEA; border-radius:12px;}");
 }

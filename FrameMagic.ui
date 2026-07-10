@@ -38,7 +38,7 @@ QFrame#frameBRight{background-color: #F6F6F6;border-radius:32px;}
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="0" column="0">
+   <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignTop">
     <widget class="QFrame" name="frameTop">
      <property name="minimumSize">
       <size>
@@ -268,7 +268,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
             <string notr="true">#page4,#page3,#page2,#page1,#page0{background-color: #F6F6F6;border-radius:32px;}</string>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>3</number>
            </property>
            <widget class="QWidget" name="page0">
             <property name="styleSheet">
@@ -1574,6 +1574,12 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  <property name="enabled">
                   <bool>true</bool>
                  </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>32</height>
+                  </size>
+                 </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_21">
                   <property name="spacing">
                    <number>20</number>
@@ -1770,6 +1776,12 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </item>
                  <item>
                   <widget class="QLabel" name="labelTunch">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
                    <property name="text">
                     <string>(已关闭)</string>
                    </property>
@@ -1966,8 +1978,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>100</width>
-                    <height>30</height>
+                    <width>18</width>
+                    <height>18</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_16"/>
@@ -1997,8 +2009,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>100</width>
-                    <height>30</height>
+                    <width>16</width>
+                    <height>16</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_17">

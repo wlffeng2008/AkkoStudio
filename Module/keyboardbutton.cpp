@@ -246,8 +246,14 @@ void KeyboardButton::showFlag(quint8 flag)
 void KeyboardButton::setDeathZone(float top,float bottom)
 {
     m_showFlag = 2;
-    m_strTop = QString::asprintf("%.2f",top);
-    m_strBtm = QString::asprintf("%.3f",bottom);
+    m_strTop.clear();
+    m_strBtm.clear();
+
+    if(top>0 || bottom>0)
+    {
+        m_strTop = QString::asprintf("%.2f",top);
+        m_strBtm = QString::asprintf("%.3f",bottom);
+    }
     update();
 }
 
@@ -256,6 +262,12 @@ void KeyboardButton::setKeyPress(float up,float down)
     m_showFlag = 3;
     m_strUp = QString::asprintf("%.3f",up);
     m_strDown = QString::asprintf("%.3f",down);
+
+    if(down + up == 24)
+    {
+        m_strUp.clear();
+        m_strDown.clear();
+    }
     update();
 }
 
@@ -265,6 +277,11 @@ void KeyboardButton::setKeyPressRt(float up, float down, bool bRtOn)
     m_bRtOn = bRtOn;
     m_strRtUp = QString::asprintf("%.3f",up);
     m_strRtDown = QString::asprintf("%.3f",down);
+    if(down + up == 24)
+    {
+        m_strRtUp.clear();
+        m_strRtDown.clear();
+    }
     update();
 }
 

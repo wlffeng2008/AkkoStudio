@@ -1289,7 +1289,7 @@ void MainWindow::enumDevice()
             USA = pEDev->usage;
             PATH= pEDev->path;
 
-            if((PID >= 0x0B && PID <= 0x50) || (PID == 0x5151 || PID == 0x5152 || PID == 0x22B4 || PID == 0x22B5))
+            // if((PID >= 0x0B && PID <= 0x50) || (PID == 0x5151 || PID == 0x5152 || PID == 0x22B4 || PID == 0x22B5))
             {
                 //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X %s",VID,PID,UPG,USA,PATH);
                 if(USA == 0x0092 && UPG == 0xFF1C)
@@ -1297,123 +1297,33 @@ void MainWindow::enumDevice()
                     hid_device *pDev = hid_open_path(PATH);
                     if(pDev)
                     {
-                        quint8 szBuf[128] = {0};
-                        QByteArray cmd = QByteArray::fromHex(strCmd2.toLatin1());
-
                         int len1 = 0;
+                        quint8  device = 0;
+                        quint8  connectType = 0;
+                        quint8    nTryCount = 0;
+                        quint8 szBuf[128] = {0};
+                        QByteArray cmd = QByteArray::fromHex(strCmd1.toLatin1());
                         for(int i=0; i<10; i++)
                         {
-                            cmd = QByteArray::fromHex(strCmd1.toLatin1());
                             hid_write(pDev,(quint8*)cmd.data(),cmd.size());
                             QThread::msleep(20);
-                            len1 = hid_read_timeout(pDev,szBuf,16,50);
-
-                            if(szBuf[3] == 0x30 && szBuf[4] == 0x06) break;
-                            QThread::msleep(10);
+                            len1 = hid_read_timeout(pDev,szBuf,16,30);
+                            device = szBuf[11];
+                            if(szBuf[3] == 0x30 && szBuf[4] == 0x06)
+                            {
+                                if(device == 0)
+                                {
+                                    if(nTryCount >= 3)
+                                        break;
+                                    nTryCount ++;
+                                    continue;
+                                }
+                                break;
+                            }
                         }
 
                         if(len1 >= 12)
                         {
-                            quint8  device = szBuf[11];
-                            quint32 driverId = 0;
-                            quint8  connectType = 0;
-
-                            /*
-                            switch(PID)
-                            {
-                            case 0x0013: connectType = 1;
-                            case 0x0012:
-                                if(device == 0) driverId = 25;
-                                break;
-
-                            case 0x000C: connectType = 1;
-                            case 0x000B:
-                                driverId = 4;
-                                if(device != 0) driverId =  6;
-                                if(device == 2) driverId = 12;
-                                if(device == 3) driverId = 18;
-                                if(device == 4) driverId = 23;
-                                if(device == 5) driverId = 24;
-                                if(device == 6) driverId = 26;
-                                break;
-
-                            case 0x0011:
-                            case 0x000F: connectType = 1;
-                            case 0x0010:
-                            case 0x000D:
-                                if(device == 1) driverId =  7;
-                                if(device == 3) driverId =  8;
-                                if(device == 0) driverId =  9;
-                                if(device == 4) driverId = 10;
-                                if(device == 5) driverId = 15;
-                                if(device == 6) driverId = 16;
-                                if(device == 7) driverId = 19;
-                                if(device == 8) driverId = 20;
-                                if(device == 9) driverId = 21;
-                                if(device ==10) driverId = 28;
-                                if(PID == 0x000D || PID == 0x000F)
-                                if(device == 1) driverId = 17;
-                                break;
-
-                            case 0x0024: connectType = 1;
-                            case 0x0023:
-                                driverId = 14;
-                                if(device == 5) driverId = 13;
-                                if(device == 1) driverId = 21;
-                                if(device == 2) driverId = 27;
-                                break;
-
-                            case 0x0026: connectType = 1;
-                            case 0x0025:
-                                driverId = 9;
-                                if(device == 1) driverId = 10;
-                                break;
-
-                            case 0x0028: connectType = 1;
-                            case 0x0027:
-                                driverId = 9;
-                                if(device == 1) driverId = 10;
-                                break;
-
-                            case 0x0030: connectType = 1;
-                            case 0x0029:
-                                driverId = 15;
-                                if(device == 1) driverId = 16;
-                                if(device == 5) driverId = 15;
-                                if(device == 6) driverId = 16;
-                                break;
-
-                            case 0x0032: connectType = 1;
-                            case 0x0031:
-                                driverId = 15;
-                                if(device == 1) driverId = 16;
-                                break;
-
-                            case 0x5152: connectType = 1;
-                            case 0x5151:
-                                driverId = 5;
-                                break;
-
-                            case 0x0008: connectType = 1;
-                            case 0x0007:
-                                driverId = 11;
-                                break;
-
-                            case 0x22b5: connectType = 1;
-                            case 0x22b4:
-                                driverId = 12;
-                                break;
-                            }
-
-                            if(PID == 0x22B4) driverId = 6;
-                            if(PID == 0x000F) connectType = 1;
-
-                            if(VID == 0x3311)
-                            {
-                                if(device == 0) driverId = 15;
-                                if(device == 1) driverId = 16;
-                            }*/
-
                             //QByteArray Log((char *)szBuf,len1);
                             //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << device << "Device ID:" << device;
 
@@ -1679,15 +1589,10 @@ bool MainWindow::event(QEvent *event)
 {
     if (event->type() == QEvent::NonClientAreaMouseMove)
     {
-        show();
-        setFocus();
-        activateWindow();
         raise();
 
         QMouseEvent *me = static_cast<QMouseEvent*>(event);
         qDebug() << "非客户区鼠标移动：" << me->globalPos();
-        event->accept();
-        return true;
     }
 
     if(event->type() == QEvent::Leave)
