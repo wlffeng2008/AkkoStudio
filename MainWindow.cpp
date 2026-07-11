@@ -467,8 +467,8 @@ MainWindow::MainWindow(QWidget *parent)
 
         if(this->isVisible())
         {
-            if(s_hWndEmb[1]){ ::ShowWindow(s_hWndEmb[1],SW_HIDE); }
-            if(s_hWndEmb[3]){ ::ShowWindow(s_hWndEmb[3],SW_HIDE); }
+            //if(s_hWndEmb[1]){ ::ShowWindow(s_hWndEmb[1],SW_HIDE); }
+            //if(s_hWndEmb[3]){ ::ShowWindow(s_hWndEmb[3],SW_HIDE); }
         }
 
         if(!isRunning(m_strWsName) && s_hWndEmb[1])

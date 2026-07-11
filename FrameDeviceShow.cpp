@@ -277,7 +277,7 @@ bool FrameDeviceShow::event(QEvent *event)
         setSelect(false);
     }
 
-    if (event->type() == QEvent::MouseButtonPress)
+    if (event->type() == QEvent::MouseButtonRelease)
     {
         QMouseEvent *pME = static_cast<QMouseEvent*>(event);
         if(pME->button() == Qt::LeftButton)
