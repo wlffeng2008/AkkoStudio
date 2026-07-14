@@ -249,7 +249,7 @@ void KeyboardButton::setDeathZone(float top,float bottom)
     m_strTop.clear();
     m_strBtm.clear();
 
-    if(top>0 || bottom>0)
+    if(top != 0 && bottom != 0.3f)
     {
         m_strTop = QString::asprintf("%.2f",top);
         m_strBtm = QString::asprintf("%.3f",bottom);
@@ -263,7 +263,7 @@ void KeyboardButton::setKeyPress(float up,float down)
     m_strUp = QString::asprintf("%.3f",up);
     m_strDown = QString::asprintf("%.3f",down);
 
-    if(down + up == 24)
+    if(down + up == 4)
     {
         m_strUp.clear();
         m_strDown.clear();
@@ -277,7 +277,7 @@ void KeyboardButton::setKeyPressRt(float up, float down, bool bRtOn)
     m_bRtOn = bRtOn;
     m_strRtUp = QString::asprintf("%.3f",up);
     m_strRtDown = QString::asprintf("%.3f",down);
-    if(down + up == 24)
+    if(down + up == 4)
     {
         m_strRtUp.clear();
         m_strRtDown.clear();

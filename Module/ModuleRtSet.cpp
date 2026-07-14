@@ -68,7 +68,7 @@ void ModuleRtSet::setValue(float value)
 
     ui->lineEdit->setText(QString::asprintf("%.3f mm",tmp));
 
-    emit onSetValue(tmp);
+    emit setGlobalRtValue(tmp);
 
     update();
 }

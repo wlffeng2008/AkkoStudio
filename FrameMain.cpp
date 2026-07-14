@@ -54,15 +54,13 @@ FrameMain::FrameMain(QWidget *parent)
             ui->frameLEDColor->updateData(data);
         }
     });
-    connect(ui->frameRTSetting,&ModuleRtSet::onSetValue,this,[=](float value,int type){
-        //qDebug() << value << type;
-        pCnn->send65Cmd(0x00,0xFF,value*200,true);
-        pCnn->send65Cmd(0x01,0xFF,value*200,true);
+
+    connect(ui->frameRTSetting,&ModuleRtSet::setGlobalRtValue,this,[=](float value,int type){
+        pCnn->setAllRtValue(value);
     });
-    connect(ui->frameLinearSet,&ModuleLinear::onSetValue,this,[=](float value,int type){
-        //qDebug() << value << type;
-        if(type == 0) pCnn->send65Cmd(0x02,0xFF,value*200,true);
-        if(type == 1) pCnn->send65Cmd(0x03,0xFF,value*200,true);
+
+    connect(ui->frameLinearSet,&ModuleLinear::setGlobalLnValue,this,[=](float valueUp,float valueDown){
+        pCnn->setAllLnValue(valueUp, valueDown);
     });
 
     ui->labelPic->hide();

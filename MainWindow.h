@@ -76,7 +76,7 @@ protected:
     bool event(QEvent *event) final;
 
 signals:
-    void oEnumDeiceDone();
+    void enumDeiceDone();
 
 private slots:
     void on_pushButtonExit_clicked();

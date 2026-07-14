@@ -20,14 +20,16 @@ public:
     void enablePannel(bool left=true,bool enable=true);
     void setValue(float value, bool left=true);
     float getValue(bool left=true);
+
 signals:
-    void onSetValue(float value,int type=0);
+    void setGlobalLnValue(float valueUp,float valueDown);
 
 protected:
     bool eventFilter(QObject*watched, QEvent*event) override;
 
 private:
     Ui::ModuleLinear *ui;
+    void updateValue();
 };
 
 #endif // MODULELINEAR_H

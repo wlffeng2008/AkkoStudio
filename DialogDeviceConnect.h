@@ -157,6 +157,9 @@ public:
     quint32 get65Value(quint8 option,quint8 index);
     void set65Value(quint8 option,quint8 index,quint32 value);
 
+    void setAllRtValue(float value);
+    void setAllLnValue(float valueUp,float valueDown);
+
     bool isRtOn(quint8 hid);
     void setRtOn(quint8 hid,bool bRtOn);
 
@@ -176,6 +179,8 @@ public:
     bool isLoading();
 
     float getPressDeep();
+
+    float getMultiple();
 
 signals:
     void onConnect();
@@ -265,7 +270,7 @@ private:
 
     bool m_isSupportAxis = false;
     bool m_isSupportTopDeadZone=false;
-    quint16 m_multiple = 10;
+    float m_multiple = 10;
     quint32 m_deviceId = 0;
     quint16 m_version  = 0;
 

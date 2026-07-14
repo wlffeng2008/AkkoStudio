@@ -197,7 +197,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         pCnn->changeKey(m_DKSHid,&m_DKS4,3,true);
 
         pCnn->send65Cmd(0x07,m_DKSHid,0x02,false);
-        pCnn->send65Cmd(0x04,m_DKSHid,m_DKSLen*200,false);
+        pCnn->send65Cmd(0x04,m_DKSHid,m_DKSLen*pCnn->getMultiple(),false);
         pCnn->send65Cmd(0x08,m_DKSHid,0x55565B6F,true);
         refresh();
     });
@@ -315,7 +315,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 pCnn->getKeydata(&m_DKS2,index,1);
                 pCnn->getKeydata(&m_DKS3,index,2);
                 pCnn->getKeydata(&m_DKS4,index,3);
-                m_DKSLen = pCnn->get65Value(0x04,index)/200.0;
+                m_DKSLen = pCnn->get65Value(0x04,index)/pCnn->getMultiple();
                 ui->labelPress1->setText(QString::asprintf("%.2f mm", m_DKSLen));
                 ui->labelRelease2->setText(QString::asprintf("%.2f mm", m_DKSLen));
             }

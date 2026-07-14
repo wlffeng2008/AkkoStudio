@@ -20,7 +20,7 @@ protected:
     bool eventFilter(QObject*,QEvent*) override;
 
 signals:
-    void onSetValue(float value,int type=0);
+    void setGlobalRtValue(float value,int type=0);
 
 private:
     Ui::ModuleRtSet *ui;

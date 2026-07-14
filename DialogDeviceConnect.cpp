@@ -331,7 +331,6 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
             m_isSupportAxis = false;
             m_isSupportTopDeadZone=false;
-            m_multiple = 10;
             m_deviceId = 0;
             m_version  = 0;
             addReadCmd(CMD_GET_INFOR,true);
@@ -370,7 +369,6 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 addReadCmd("1B 01", true);
                 m_isSupportAxis = false;
                 m_isSupportTopDeadZone=false;
-                m_multiple = 10;
                 m_deviceId = 0;
                 m_version  = 0;
                 addReadCmd(CMD_GET_INFOR,true);
@@ -449,6 +447,10 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                     m_multiple = 100;
                 else if(m_version >= 0x500)
                     m_multiple = 200;
+
+                if(m_deviceId == 3779)
+                    m_multiple = 1000;
+                qDebug() << "CMD_GET_INFOR" << strInfo << m_multiple;
 
                 addReadCmd(CMD_GET_KBOPTION,true);
                 break;
@@ -634,7 +636,6 @@ void DialogDeviceConnect::readAllData()
     m_bReadAll=true;
     m_bSendMusic=false;
     m_cmdList.clear();
-    m_multiple = 10;
     m_version = 0;
 
     for(int i=0; i<8; i++)
@@ -951,13 +952,76 @@ void DialogDeviceConnect::send65Cmd(quint8 option, quint8 hid, quint32 data, boo
 void DialogDeviceConnect::send65Cmd(quint8 option, quint8 hid, char *data, quint8 len, bool save)
 {
     if(m_bReadAll) return;
-    quint8 index=getIndex(hid);
+    quint8 index = getIndex(hid);
     quint8 pack[8] = {0x65, option, 0, index, save, 0, 0, 0};
     QByteArray snd((char*)pack,8);
     snd.append(data,len);
     addReadCmd(snd,true);
 
     set65Value(option,index,*(quint32 *)data);
+}
+
+void DialogDeviceConnect::setAllRtValue(float value)
+{
+    if(m_bReadAll) return;
+    quint32 setValue = value * m_multiple;
+    QByteArray val((char*)&setValue,4);
+    QByteArray pack;
+    for(int i=0; i<14; i++)
+        pack.append(val);
+    for(quint8 index = '\0'; index < 5; index ++)
+    {
+        quint8 pack2[8] = {0x65, 2, 1, index, 0, 0, 0, 0};
+        quint8 pack3[8] = {0x65, 3, 1, index, 1, 0, 0, 0};
+
+        QByteArray snd2((char*)pack2,8);
+        snd2.append(pack);
+        addReadCmd(snd2,true);
+
+        QByteArray snd3((char*)pack3,8);
+        snd3.append(pack);
+        addReadCmd(snd3,true);
+    }
+    for(quint8 i=0; i<128; i++)
+    {
+        set65Value(2,i,setValue);
+        set65Value(3,i,setValue);
+    }
+}
+
+void DialogDeviceConnect::setAllLnValue(float valueUp,float valueDown)
+{
+    if(m_bReadAll) return;
+
+    quint32 setValue0 = valueUp * m_multiple;
+    quint32 setValue1 = valueDown * m_multiple;
+    QByteArray val0((char*)&setValue0,4);
+    QByteArray val1((char*)&setValue1,4);
+    QByteArray data0;
+    QByteArray data1;
+    for(int i=0; i<14; i++)
+    {
+        data0.append(val0);
+        data1.append(val1);
+    }
+    for(quint8 index = '\0'; index < 5; index ++)
+    {
+        quint8 pack0[8] = {0x65, 0, 1, index, 0, 0, 0, 0};
+        quint8 pack1[8] = {0x65, 1, 1, index, 1, 0, 0, 0};
+
+        QByteArray snd0((char*)pack0,8);
+        snd0.append(data0);
+        addReadCmd(snd0,true);
+
+        QByteArray snd1((char*)pack1,8);
+        snd1.append(data1);
+        addReadCmd(snd1,true);
+    }
+    for(quint8 i=0; i<128; i++)
+    {
+        set65Value(0,i,valueUp);
+        set65Value(1,i,valueDown);
+    }
 }
 
 void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, quint8 save)
@@ -1378,5 +1442,9 @@ void DialogDeviceConnect::getPicture(quint8 index)
         QByteArray tmp((char*)cmd, 8);
         addReadCmd(tmp);
     }
+}
 
+float DialogDeviceConnect::getMultiple()
+{
+    return m_multiple;
 }

@@ -268,7 +268,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
             <string notr="true">#page4,#page3,#page2,#page1,#page0{background-color: #F6F6F6;border-radius:32px;}</string>
            </property>
            <property name="currentIndex">
-            <number>3</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="page0">
             <property name="styleSheet">
@@ -1978,8 +1978,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>18</width>
-                    <height>18</height>
+                    <width>571</width>
+                    <height>60</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_16"/>
@@ -2009,8 +2009,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>16</width>
-                    <height>16</height>
+                    <width>571</width>
+                    <height>168</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -2074,7 +2074,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupStab"/>
   <buttongroup name="buttonGroupMT"/>
+  <buttongroup name="buttonGroupStab"/>
  </buttongroups>
 </ui>

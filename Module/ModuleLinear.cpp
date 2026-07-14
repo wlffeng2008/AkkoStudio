@@ -48,24 +48,18 @@ ModuleLinear::ModuleLinear(QWidget *parent)
     ui->verticalSlider2->setFixedWidth(40);
 
     connect(ui->verticalSlider1,&QSlider::valueChanged,this,[=](int value){
-        ui->lineEditValue1->blockSignals(true);
         value = (4000 - value/100*100);
-        ui->lineEditValue1->setText(QString::asprintf("%.02f",value/1000.0));
+        ui->lineEditValue1->blockSignals(true);
+        ui->lineEditValue1->setText(QString::asprintf("%.02f",(value/10*10)/1000.0));
         ui->lineEditValue1->blockSignals(false);
-        emit onSetValue(value/1000.0,0);
+        updateValue();
     });
     connect(ui->verticalSlider2,&QSlider::valueChanged,this,[=](int value){
         ui->lineEditValue2->blockSignals(true);
         ui->lineEditValue2->setText(QString::asprintf("%.03f",(value/5*5)/1000.0));
         ui->lineEditValue2->blockSignals(true);
-        emit onSetValue((value/5*5)/1000.0,1);
+        updateValue();
     });
-
-    ui->verticalSlider1->setValue(3700);
-    ui->verticalSlider2->setValue(400);
-
-    ui->pushButtonM1->setAutoRepeat(true);
-    ui->pushButtonM1->setAutoRepeatInterval(100);
 
     connect(ui->pushButtonM1,&QPushButton::pressed,this,[=]{
         int value = ui->verticalSlider1->value() - 100;
@@ -138,11 +132,20 @@ ModuleLinear::ModuleLinear(QWidget *parent)
 
     ui->verticalSlider1->installEventFilter(this);
     ui->verticalSlider2->installEventFilter(this);
+
+    ui->verticalSlider1->setValue(0);
+    ui->verticalSlider2->setValue(0);
+    ui->verticalSlider1->setValue(2000);
+    ui->verticalSlider2->setValue(2000);
 }
 
 ModuleLinear::~ModuleLinear()
 {
     delete ui;
+}
+void ModuleLinear::updateValue()
+{
+    emit setGlobalLnValue(ui->verticalSlider1->value()/1000.0,ui->verticalSlider2->value()/1000.0);
 }
 
 bool ModuleLinear::eventFilter(QObject*watched,QEvent*event)

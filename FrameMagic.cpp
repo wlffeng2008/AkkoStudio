@@ -67,22 +67,25 @@ FrameMagic::FrameMagic(QWidget *parent)
         static QStringList names = {tr("高特"),tr("磁玉"),tr("磁玉pro"),tr("磁玉gaming"),tr("天王"),tr("万磁王"),tr("机械轴"),tr("凯华轴"),tr("星引力"),tr("炫光"),tr("闪电"),tr("星耀"),tr("矮磁轴","冠泰轴"),tr("星芒磁轴"),tr("白泽轴"),tr("自定义")};
 
         connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
+            if(!this->isVisible()) return;
             ui->stackedWidget->setCurrentIndex(id);
             ui->frameKeyboard->selectAll(false);
             ui->frameKeyboard->setEnabled( !(id == 3 || id == 4) );
 
             ui->frameKeyboard->showMtFlag(false);
+            float fMultiple = pCnn->getMultiple();
+            qDebug() << "pCnn->getMultiple:" <<fMultiple;
 
             if(id == 0)
             {
                 ui->frameKeyboard->showRTFlag(true);
                 for(int i=0; i<128; i++)
                 {
-                    quint8 hid = ::getHid(i);
-                    float up0 = pCnn->get65Value(0x00,i)/200.0;
-                    float down0 = pCnn->get65Value(0x01,i)/200.0;
-                    float up1 = pCnn->get65Value(0x02,i)/200.0;
-                    float down1 = pCnn->get65Value(0x02,i)/200.0;
+                    quint8 hid  = ::getHid(i);
+                    float up0   = pCnn->get65Value(0x00,i)/fMultiple;
+                    float down0 = pCnn->get65Value(0x01,i)/fMultiple;
+                    float up1   = pCnn->get65Value(0x02,i)/fMultiple;
+                    float down1 = pCnn->get65Value(0x02,i)/fMultiple;
                     bool  bRtOn = pCnn->isRtOn(hid);
                     ui->frameKeyboard->setUpdown(hid,up0,down0);
                     ui->frameKeyboard->setUpdownRt(hid,up1,down1,bRtOn);
@@ -95,8 +98,8 @@ FrameMagic::FrameMagic(QWidget *parent)
                 for(int i=0; i<128; i++)
                 {
                     quint8 hid = ::getHid(i);
-                    float top = pCnn->get65Value(0xFB,i)/200.0;
-                    float btm = pCnn->get65Value(0x06,i)/200.0;
+                    float top = pCnn->get65Value(0xFB,i)/fMultiple;
+                    float btm = pCnn->get65Value(0x06,i)/fMultiple;
 
                     ui->frameKeyboard->setDeathZone(hid,top,btm);
                 }
@@ -321,12 +324,13 @@ FrameMagic::FrameMagic(QWidget *parent)
             QList<quint8>hids;
             ui->frameKeyboard->getSelected(hids);
             int count = hids.count();
+            float fMultiple = pCnn->getMultiple();
             if(count)
             {
                 float top = ui->frameLinear->getValue(true);
                 float btm = ui->frameLinear->getValue(false);
-                quint32 v0 = top * 200;
-                quint32 v1 = btm * 200;
+                quint32 v0 = top * fMultiple;
+                quint32 v1 = btm * fMultiple;
                 for(int i=0; i<count; i++)
                 {
                     pCnn->send65Cmd(0x06,hids[i],v0,false);
@@ -341,6 +345,7 @@ FrameMagic::FrameMagic(QWidget *parent)
             QList<quint8>hids;
             ui->frameKeyboard->getSelected(hids);
             int count = hids.count();
+            float fMultiple = pCnn->getMultiple();
             if(count)
             {
                 float t0 = ui->frameLinear->getValue(true);
@@ -349,10 +354,10 @@ FrameMagic::FrameMagic(QWidget *parent)
                 float d1 = ui->lineEditValue2->text().toFloat();
                 if(!ui->checkBoxUnpress->isChecked()) d0 = t0;
                 if(!ui->checkBoxRTPress->isChecked()) d1 = t1;
-                quint32 v0 = t0 * 200;
-                quint32 v1 = d0 * 200;
-                quint32 v2 = t1 * 200;
-                quint32 v3 = d1 * 200;
+                quint32 v0 = t0 * fMultiple;
+                quint32 v1 = d0 * fMultiple;
+                quint32 v2 = t1 * fMultiple;
+                quint32 v3 = d1 * fMultiple;
                 bool v5 = ui->checkBoxFullRT->isChecked();
                 for(int i=0; i<count; i++)
                 {
@@ -391,6 +396,8 @@ FrameMagic::FrameMagic(QWidget *parent)
     ui->labelPress->installEventFilter(this);
     ui->frameKeyboard->setFnKeyEnable(true);
 
+    ui->frameDead->setValue(0,true);
+    ui->frameDead->setValue(0,0);
     ui->frameKeyboard->showMtFlag();
     srand(time(nullptr));
 }
