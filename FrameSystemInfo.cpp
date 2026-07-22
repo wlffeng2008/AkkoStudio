@@ -6,7 +6,7 @@
 #include <QDateTime>
 #include <Windows.h>
 
-QString g_strVer("1.7.1");
+QString g_strVer("1.7.2");
 
 QString currentVersion()
 {
@@ -70,7 +70,7 @@ void FrameSystemInfo::changeEvent(QEvent *pEvt)
     {
         ui->retranslateUi(this);
         ui->labelVersion->setText(tr("当前版本") + QString(":  ") + g_strVer);
-        ui->labelBuild->setText(tr("编译时间")   +QString(":  ") + getCompileTimeText());
+        ui->labelBuild->setText(tr("编译时间")   + QString(":  ") + getCompileTimeText());
     }
     QFrame::changeEvent(pEvt);
 }

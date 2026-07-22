@@ -115,8 +115,8 @@ static bool isRunning(const QString&processName)
 
 static void HideStartProcess(const QString&strExePath)
 {
-    ::WinExec(strExePath.toStdString().c_str(),SW_HIDE);
-    return;
+    //::WinExec(strExePath.toUtf8(),SW_HIDE);
+    //return;
 
     STARTUPINFOW si = { sizeof(si) };
     PROCESS_INFORMATION pi = {0};
@@ -185,7 +185,7 @@ static bool m_bForMGK = false;
 
 QString getUserDataPath()
 {
-    QString strPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + QString("/AppData/Local/") + (m_bForMGK ? "MgkStudio" : "AkkoStudio");
+    QString strPath = (QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + QString("/AppData/Local/") + (m_bForMGK ? "MgkStudio" : "AkkoStudio")).toUtf8();
     QDir DData(strPath);
     if(!DData.exists())
         DData.mkdir(strPath);
@@ -932,7 +932,7 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                 {
                     m_pSet->setValue("WsWndShow", 1);
                 }
-                else
+                //else
                 {
                     ::BringWindowToTop(hWnd);
                     ::ShowWindow(hWnd,SW_SHOW);
@@ -1365,7 +1365,7 @@ void MainWindow::enumDevice()
             USA = pEDev->usage;
             PATH= pEDev->path;
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
-            if(pEDev->usage_page == 65376) // 65280
+            if(USA == 65376) // 65280
             {
                 hid_device* pDev = hid_open_path(PATH);
                 if (pDev)
