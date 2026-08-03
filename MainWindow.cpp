@@ -560,7 +560,7 @@ MainWindow::MainWindow(QWidget *parent)
                     this->raise();
                     this->showNormal();
                     this->setFocus();
-                    this->activateWindow();
+                    //this->activateWindow();
                 }
                 else
                 {
@@ -591,7 +591,7 @@ MainWindow::MainWindow(QWidget *parent)
             this->raise();
             this->showNormal();
             this->setFocus();
-            this->activateWindow();
+            //this->activateWindow();
         });
         connect(hideAction, &QAction::triggered, this, [=]{
             this->hide();
@@ -740,8 +740,10 @@ MainWindow::MainWindow(QWidget *parent)
         QTimer *pTMEsc = new QTimer(this);
         pTMEsc->start(30);
         connect(pTMEsc,&QTimer::timeout,this,[=]{
-            if((::GetKeyState(VK_ESCAPE)&0x8000) != 0 && !m_KeyTesting /*&& m_bActive && isVisible() && !isMinimized()*/)
+            if((::GetKeyState(VK_ESCAPE)&0x8000) != 0 && !m_KeyTesting && m_bActive && isVisible() && !isMinimized())
             {
+                if(m_creator == 1 || m_creator == 3)
+                    return;
                 m_pSet->setValue("AkkoReturn", 1);
             }
         });
@@ -852,7 +854,7 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
         if(m_creator == 0)
         {
             QList<quint16>IdList={2807,3779}; //,2743,3131,3800
-            if(IdList.contains(dev->driverId) || dev->strName.contains("5075"))
+            if(IdList.contains(dev->driverId) || (dev->strName.contains("5075") && !dev->strName.contains("V3")))
             {
                 bool bleMode = (dev->connectType == 2);
                 DialogDeviceConnect::instance()->DoConnectDevice(dev->VID,dev->PID,bleMode,dev->strPath1,dev->strPath2);
@@ -1108,11 +1110,13 @@ void MainWindow::enumDevice()
         hid_device_info *pEDev = pRoot;
         while (pEDev)
         {
-            VID = pEDev->vendor_id;
-            PID = pEDev->product_id;
-            UPG = pEDev->usage_page;
-            USA = pEDev->usage;
-            PATH= pEDev->path;
+            hid_device_info *pCurDev = pEDev;
+            pEDev = pEDev->next;
+            VID = pCurDev->vendor_id;
+            PID = pCurDev->product_id;
+            UPG = pCurDev->usage_page;
+            USA = pCurDev->usage;
+            PATH= pCurDev->path;
 
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
 
@@ -1158,16 +1162,16 @@ void MainWindow::enumDevice()
                 {
                     if(USA == 2)
                     {
-                        path1 = pEDev->path;
-                        path2 = pEDev->path;
+                        path1 = PATH;
+                        path2 = PATH;
                     }
-                    if(USA == 1) path1 = pEDev->path;
+                    if(USA == 1) path1 = PATH;
                 }
 
                 if(UPG == 0xFF01 && USA == 1 && VID == 0x3151 && PID == 0x504A)
                 {
                     path1 = "HitScreen";
-                    path2 = pEDev->path;
+                    path2 = PATH;
                 }
 
                 if(!path1.isEmpty() && !path2.isEmpty())
@@ -1281,7 +1285,6 @@ void MainWindow::enumDevice()
                 }
             }
 
-            pEDev = pEDev->next;
         }
         if(pRoot) hid_free_enumeration(pRoot);
     }
@@ -1297,55 +1300,59 @@ void MainWindow::enumDevice()
         hid_device_info *pEDev = pRoot;
         while (pEDev && !m_bForMGK)
         {
-            VID = pEDev->vendor_id;
-            PID = pEDev->product_id;
-            UPG = pEDev->usage_page;
-            USA = pEDev->usage;
-            PATH= pEDev->path;
+            hid_device_info *pCurDev = pEDev;
+            pEDev = pEDev->next;
+            VID = pCurDev->vendor_id;
+            PID = pCurDev->product_id;
+            UPG = pCurDev->usage_page;
+            USA = pCurDev->usage;
+            PATH= pCurDev->path;
+
+            if(!(USA == 0x0092 && UPG == 0xFF1C))
+                continue;
 
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X %s",VID,PID,UPG,USA,PATH);
-            if(USA == 0x0092 && UPG == 0xFF1C)
+            hid_device *pDev = hid_open_path(PATH);
+            if(pDev)
             {
-                hid_device *pDev = hid_open_path(PATH);
-                if(pDev)
+                int len1 = 0;
+                quint8 deviceType = 0;
+                quint8 connectType = 0;
+                quint8 nTryCount = 0;
+                quint8 szBuf[128] = {0};
+                QByteArray cmd = QByteArray::fromHex(strCmd1.toLatin1());
+                bool bFound = false;
+                for(int i=0; i<10; i++)
                 {
-                    int len1 = 0;
-                    quint8  device = 0;
-                    quint8  connectType = 0;
-                    quint8    nTryCount = 0;
-                    quint8 szBuf[128] = {0};
-                    QByteArray cmd = QByteArray::fromHex(strCmd1.toLatin1());
-                    for(int i=0; i<10; i++)
+                    hid_write(pDev,(quint8*)cmd.data(),cmd.size());
+                    QThread::msleep(20);
+                    len1 = hid_read_timeout(pDev,szBuf,16,30);
+                    deviceType = szBuf[11];
+                    if(szBuf[3] == 0x30 && szBuf[4] == 0x06)
                     {
-                        hid_write(pDev,(quint8*)cmd.data(),cmd.size());
-                        QThread::msleep(20);
-                        len1 = hid_read_timeout(pDev,szBuf,16,30);
-                        device = szBuf[11];
-                        if(szBuf[3] == 0x30 && szBuf[4] == 0x06)
-                        {
-                            if(device == 0)
-                            {
-                                if(nTryCount >= 3)
-                                    break;
-                                nTryCount ++;
-                                continue;
-                            }
-                            break;
-                        }
-                    }
-
-                    if(len1 >= 12)
-                    {
-                        //QByteArray Log((char *)szBuf,len1);
-                        //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << device << "Device ID:" << device;
-
-                        addDevice(VID,PID,device,"null",PATH,connectType,1);
-                        allPaths.push_back(PATH);
+                        bFound = true;
+                        QByteArray Log((char *)szBuf,len1);
+                        qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Device ID:" << deviceType;
+                        // if(deviceType == 0)
+                        // {
+                        //     if(nTryCount >= 3)
+                        //         break;
+                        //     nTryCount ++;
+                        //     continue;
+                        // }
+                        break;
                     }
                 }
-            }
 
-            pEDev = pEDev->next;
+                if(len1 >= 12 && bFound)
+                {
+                    //QByteArray Log((char *)szBuf,len1);
+                    //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Device ID:" << deviceType;
+
+                    addDevice(VID,PID,deviceType,"null",PATH,connectType,1);
+                    allPaths.push_back(PATH);
+                }
+            }
         }
         if(pRoot) hid_free_enumeration(pRoot);
     }
@@ -1359,11 +1366,13 @@ void MainWindow::enumDevice()
         hid_device_info* pEDev = pRoot;
         while (pEDev)
         {
-            VID = pEDev->vendor_id;
-            PID = pEDev->product_id;
-            UPG = pEDev->usage_page;
-            USA = pEDev->usage;
-            PATH= pEDev->path;
+            hid_device_info *pCurDev = pEDev;
+            pEDev = pEDev->next;
+            VID = pCurDev->vendor_id;
+            PID = pCurDev->product_id;
+            UPG = pCurDev->usage_page;
+            USA = pCurDev->usage;
+            PATH= pCurDev->path;
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
             if(USA == 65376) // 65280
             {
@@ -1395,8 +1404,6 @@ void MainWindow::enumDevice()
                     hid_close(pDev);
                 }
             }
-
-            pEDev = pEDev->next;
         }
         if(pRoot) hid_free_enumeration(pRoot);
     }
@@ -1406,11 +1413,13 @@ void MainWindow::enumDevice()
         hid_device_info* pEDev = pRoot;
         while (pEDev && !m_bForMGK)
         {
-            VID = pEDev->vendor_id;
-            PID = pEDev->product_id;
-            UPG = pEDev->usage_page;
-            USA = pEDev->usage;
-            PATH= pEDev->path;
+            hid_device_info *pCurDev = pEDev;
+            pEDev = pEDev->next;
+            VID = pCurDev->vendor_id;
+            PID = pCurDev->product_id;
+            UPG = pCurDev->usage_page;
+            USA = pCurDev->usage;
+            PATH= pCurDev->path;
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
             //qDebug() << QString::asprintf("0x%04X %04d",pEDev->usage_page, pEDev->usage) << pEDev->path;
             if(UPG == 0xFF02 && USA == 0x02)
@@ -1423,8 +1432,6 @@ void MainWindow::enumDevice()
 
                 allPaths.push_back(PATH);
             }
-
-            pEDev = pEDev->next;
         }
         if(pRoot) hid_free_enumeration(pRoot);
     }
@@ -1458,6 +1465,10 @@ void MainWindow::changeEvent(QEvent *pEvt)
     {
         ui->retranslateUi(this);
         updateDeviceInfo();
+
+        QString text = ui->pushButtonScan->text().trimmed();
+        text.insert(0," ");
+        ui->pushButtonScan->setText(text);
     }
     QMainWindow::changeEvent(pEvt);
 }
@@ -1470,6 +1481,16 @@ void MainWindow::showEvent(QShowEvent *event)
     HWND hWnd = (HWND)this->winId();
     ::BringWindowToTop(hWnd);
     ::SetForegroundWindow(hWnd);
+
+    this->setFocus();
+
+    QTimer::singleShot(200,this,[=]{
+        ::SetWindowPos(hWnd,HWND_TOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
+
+        QTimer::singleShot(2000,this,[=]{
+            ::SetWindowPos(hWnd,HWND_NOTOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
+        });
+    });
 
     if(m_bManHide)
         m_pSet->setValue("AkkoReturn",1);
@@ -1605,6 +1626,7 @@ bool MainWindow::event(QEvent *event)
     if (event->type() == QEvent::NonClientAreaMouseMove)
     {
         raise();
+        setFocus();
 
         QMouseEvent *me = static_cast<QMouseEvent*>(event);
         qDebug() << "非客户区鼠标移动：" << me->globalPos();
@@ -1645,6 +1667,10 @@ bool MainWindow::event(QEvent *event)
     if(event->type() == QEvent::WindowActivate)
     {
         m_bActive = true;
+        raise();
+        HWND hWnd = (HWND)this->winId();
+        ::BringWindowToTop(hWnd);
+        ::SetForegroundWindow(hWnd);
     }
 
     return QMainWindow::event(event);

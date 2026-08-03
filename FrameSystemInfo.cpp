@@ -6,7 +6,7 @@
 #include <QDateTime>
 #include <Windows.h>
 
-QString g_strVer("1.7.2");
+QString g_strVer("1.7.3");
 
 QString currentVersion()
 {
@@ -21,7 +21,7 @@ inline QDateTime getCompileTime()
     QDateTime dt = enUs.toDateTime(tsStr, "ddd MMM dd HH:mm:ss yyyy");
     if(!dt.isValid())
         dt = enUs.toDateTime(tsStr, "ddd MMM  d HH:mm:ss yyyy");
-    //qDebug() <<  dt;
+
     return dt;
 }
 

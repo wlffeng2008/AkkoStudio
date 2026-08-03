@@ -360,7 +360,7 @@
              <enum>Qt::FocusPolicy::NoFocus</enum>
             </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton::pressed{border:none; background:transparent;}</string>
+             <string notr="true">QPushButton::pressed{border:none;  background:transparent; icon: url(:/images/m-reset.png);  spacing: 8px;}</string>
             </property>
             <property name="text">
              <string>刷新设备</string>
