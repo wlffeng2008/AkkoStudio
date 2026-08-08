@@ -2,6 +2,7 @@
 #define MODULERTSET_H
 
 #include <QFrame>
+#include <QTimer>
 
 namespace Ui {
 class ModuleRtSet;
@@ -27,6 +28,8 @@ private:
     void setValue(float value);
     float getValue();
     bool m_dragging = false;
+
+    QTimer *m_pSetTM = nullptr;
 };
 
 #endif // MODULERTSET_H

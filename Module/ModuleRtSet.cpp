@@ -9,9 +9,9 @@
 
 
 static QRect s_Rect ;
-static float value = 0.5 ;
-static float valueMin = 0.2 ;
-static float valueMax = 2.5 ;
+static int g_value = 500 ;
+static int valueMin = 100 ;
+static int valueMax = 3000 ;
 
 ModuleRtSet::ModuleRtSet(QWidget *parent)
     : QFrame(parent)
@@ -23,33 +23,40 @@ ModuleRtSet::ModuleRtSet(QWidget *parent)
         ui->pushButtonMinus->setEnabled(checked);
         ui->pushButtonPlug->setEnabled(checked);
         ui->lineEdit->setEnabled(checked);
-        update() ;
+        update();
     }) ;
 
     ui->checkBoxRTMode->setChecked(true);
 
     connect(ui->lineEdit,&QLineEdit::textEdited,this,[=](const QString &text){
-        value = getValue();
+        getValue();
         update();
+        m_pSetTM->stop();
+        m_pSetTM->start(300);
     });
 
     ui->pushButtonMinus->setAutoRepeat(true);
     ui->pushButtonMinus->setAutoRepeatInterval(100) ;
     connect(ui->pushButtonMinus,&QPushButton::pressed,this,[=]{
-        value = getValue() - 0.005;
-        setValue(value);
+        setValue(g_value-5);
     });
 
     ui->pushButtonPlug->setAutoRepeat(true);
     ui->pushButtonPlug->setAutoRepeatInterval(100) ;
     connect(ui->pushButtonPlug,&QPushButton::pressed,this,[=]{
-        value = getValue() + 0.005;
-        setValue(value);
+        setValue(g_value+5);
         update();
     }) ;
 
     installEventFilter(this);
     setMouseTracking(true);
+
+    m_pSetTM = new QTimer(this);
+    connect(m_pSetTM,&QTimer::timeout,this,[=]{
+        m_pSetTM->stop();
+        getValue();
+        emit setGlobalRtValue(g_value);
+    });
 }
 
 ModuleRtSet::~ModuleRtSet()
@@ -59,16 +66,16 @@ ModuleRtSet::~ModuleRtSet()
 
 void ModuleRtSet::setValue(float value)
 {
-    float tmp = value;
-
-    tmp = (((int)(tmp * 1000))/5 * 5) / 1000.0;
+    double tmp = value;
 
     if(tmp<valueMin) tmp=valueMin;
     if(tmp>valueMax) tmp=valueMax;
 
-    ui->lineEdit->setText(QString::asprintf("%.3f mm",tmp));
+    ui->lineEdit->setText(QString::asprintf("%.3f mm",tmp/1000.0));
 
-    emit setGlobalRtValue(tmp);
+    g_value = tmp;
+    m_pSetTM->stop();
+    m_pSetTM->start(300);
 
     update();
 }
@@ -76,18 +83,9 @@ void ModuleRtSet::setValue(float value)
 float ModuleRtSet::getValue()
 {
     QString text = ui->lineEdit->text();
-    char szText[100]={0};
-    strcpy_s(szText,text.toStdString().c_str());
-    for(int i=0; i<strlen(szText); i++)
-    {
-        if(szText[i] == '.' || (szText[i] >= '0' && szText[i] <= '9'))
-            continue;
-        szText[i] = 0;
-        break;
-    }
-    text = szText;
+    text = text.replace("mm","").trimmed();
 
-    float tmp = text.toFloat();
+    float tmp = text.toFloat() * 1000;
 
     if(tmp < valueMin)
     {
@@ -99,6 +97,9 @@ float ModuleRtSet::getValue()
         tmp = valueMax;
         setValue(tmp);
     }
+
+    g_value = tmp;
+
     return tmp;
 }
 
@@ -111,8 +112,8 @@ bool ModuleRtSet::eventFilter(QObject*watched,QEvent*event)
         if(tmp.contains(pEV->pos()))
         {
             m_dragging = true;
-            value = (pEV->pos().x() - s_Rect.left()) * (valueMax-valueMin) / s_Rect.width() + valueMin;
-            setValue(value);
+            int value = (pEV->pos().x() - s_Rect.left()) * (valueMax-valueMin) / s_Rect.width() + valueMin;
+            setValue(value/5*5);
         }
     }
 
@@ -130,8 +131,8 @@ bool ModuleRtSet::eventFilter(QObject*watched,QEvent*event)
             if(tmp.contains(pEV->pos()))
             {
                 m_dragging = true;
-                value = (pEV->pos().x() - s_Rect.left()) * (valueMax-valueMin) / s_Rect.width() + valueMin;
-                setValue(value);
+                int value = (pEV->pos().x() - s_Rect.left()) * (valueMax-valueMin) / s_Rect.width() + valueMin;
+                setValue(value/5*5);
             }
         }
     }

@@ -2,6 +2,7 @@
 #define MODULELINEAR_H
 
 #include <QFrame>
+#include <QTimer>
 
 namespace Ui {
 class ModuleLinear;
@@ -30,6 +31,8 @@ protected:
 private:
     Ui::ModuleLinear *ui;
     void updateValue();
+
+    QTimer *m_pSetTM = nullptr;
 };
 
 #endif // MODULELINEAR_H

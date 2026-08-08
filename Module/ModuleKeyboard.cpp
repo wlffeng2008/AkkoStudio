@@ -257,7 +257,6 @@ void ModuleKeyboard::setUpdown(quint8 hid,float up,float down)
 
 void ModuleKeyboard::setUpdownRt(quint8 hid,float up,float down,bool bRtOn)
 {
-
     QString strName = QString::asprintf("pushButton_Hid%03d",hid);
     QPushButton *btn = findChild<QPushButton*>(strName);
     if(btn)
@@ -365,7 +364,8 @@ void ModuleKeyboard::setKeyEnable(const QString&objname, bool bEnable, bool bToD
 void ModuleKeyboard::setkeyHited(int id)
 {
     int nCode = id ;
-    if(nCode == 0) nCode = 0x81;
+    if(nCode == 0)
+        nCode = 0x81;
 
     QString strName = QString::asprintf("pushButton_Hid%03d",nCode);
     QPushButton *btn = findChild<QPushButton*>(strName);
@@ -411,7 +411,7 @@ bool ModuleKeyboard::event(QEvent *event)
 {
     if(event->type() == QEvent::MouseButtonRelease)
     {
-        m_draging=false;
+        m_draging = false;
         QMouseEvent *pME = static_cast<QMouseEvent *>(event);
         if(pME->button() == Qt::RightButton && m_Menu)
         {
@@ -432,7 +432,8 @@ bool ModuleKeyboard::event(QEvent *event)
         }
         update();
     }
-    return QFrame::event(event) ;
+
+    return QFrame::event(event);
 }
 
 bool ModuleKeyboard::eventFilter(QObject *watched,QEvent *event)
@@ -487,10 +488,10 @@ void ModuleKeyboard::mouseMoveEvent(QMouseEvent *event)
 
             QRect btnRc = btn->rect();
             btn->setChecked(
-                rect.contains( btn->mapToParent(btnRc.topLeft()    ) )||
-                rect.contains( btn->mapToParent(btnRc.topRight()   ) )||
-                rect.contains( btn->mapToParent(btnRc.bottomLeft() ) )||
-                rect.contains( btn->mapToParent(btnRc.bottomRight()) )
+                rect.contains( btn->mapToParent(btnRc.topLeft()    )) ||
+                rect.contains( btn->mapToParent(btnRc.topRight()   )) ||
+                rect.contains( btn->mapToParent(btnRc.bottomLeft() )) ||
+                rect.contains( btn->mapToParent(btnRc.bottomRight()))
                 );
         }
 
@@ -503,7 +504,7 @@ void ModuleKeyboard::mouseMoveEvent(QMouseEvent *event)
 
 void ModuleKeyboard::mouseReleaseEvent(QMouseEvent *event)
 {
-    m_draging=false;
+    m_draging = false;
     m_clkPt = event->pos();
     update();
 

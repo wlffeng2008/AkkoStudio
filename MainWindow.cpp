@@ -1331,8 +1331,8 @@ void MainWindow::enumDevice()
                     if(szBuf[3] == 0x30 && szBuf[4] == 0x06)
                     {
                         bFound = true;
-                        QByteArray Log((char *)szBuf,len1);
-                        qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Device ID:" << deviceType;
+                        //QByteArray Log((char *)szBuf,len1);
+                        //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Device ID:" << deviceType;
                         // if(deviceType == 0)
                         // {
                         //     if(nTryCount >= 3)
@@ -1475,26 +1475,29 @@ void MainWindow::changeEvent(QEvent *pEvt)
 
 void MainWindow::showEvent(QShowEvent *event)
 {
-    setAttribute(Qt::WA_Mapped);
+    if(!m_closeShow)
+    {
+        setAttribute(Qt::WA_Mapped);
 
-    this->raise();
-    HWND hWnd = (HWND)this->winId();
-    ::BringWindowToTop(hWnd);
-    ::SetForegroundWindow(hWnd);
+        this->raise();
+        HWND hWnd = (HWND)this->winId();
+        ::BringWindowToTop(hWnd);
+        ::SetForegroundWindow(hWnd);
 
-    this->setFocus();
+        this->setFocus();
 
-    QTimer::singleShot(200,this,[=]{
-        ::SetWindowPos(hWnd,HWND_TOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
+        QTimer::singleShot(200,this,[=]{
+            ::SetWindowPos(hWnd,HWND_TOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
 
-        QTimer::singleShot(2000,this,[=]{
-            ::SetWindowPos(hWnd,HWND_NOTOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
+            QTimer::singleShot(2000,this,[=]{
+                ::SetWindowPos(hWnd,HWND_NOTOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
+            });
         });
-    });
 
-    if(m_bManHide)
-        m_pSet->setValue("AkkoReturn",1);
-    m_bManHide = false;
+        if(m_bManHide)
+            m_pSet->setValue("AkkoReturn",1);
+        m_bManHide = false;
+    }
 
     QMainWindow::showEvent(event);
 }
@@ -1664,7 +1667,7 @@ bool MainWindow::event(QEvent *event)
         }
     }
 
-    if(event->type() == QEvent::WindowActivate)
+    if(event->type() == QEvent::WindowActivate && !m_closeShow)
     {
         m_bActive = true;
         raise();

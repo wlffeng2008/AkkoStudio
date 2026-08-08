@@ -60,6 +60,7 @@ FrameMain::FrameMain(QWidget *parent)
     });
 
     connect(ui->frameLinearSet,&ModuleLinear::setGlobalLnValue,this,[=](float valueUp,float valueDown){
+        qDebug() << "ModuleRtSet::setGlobalLnValue" << valueUp << valueDown;
         pCnn->setAllLnValue(valueUp, valueDown);
     });
 

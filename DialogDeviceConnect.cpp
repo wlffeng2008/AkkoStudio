@@ -964,7 +964,7 @@ void DialogDeviceConnect::send65Cmd(quint8 option, quint8 hid, char *data, quint
 void DialogDeviceConnect::setAllRtValue(float value)
 {
     if(m_bReadAll) return;
-    quint32 setValue = value * m_multiple;
+    quint32 setValue = (value/1000.0) * m_multiple;
     QByteArray val((char*)&setValue,4);
     QByteArray pack;
     for(int i=0; i<14; i++)

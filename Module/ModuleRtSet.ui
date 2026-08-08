@@ -132,7 +132,7 @@
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>0.570 mm</string>
+         <string>0.500 mm</string>
         </property>
         <property name="maxLength">
          <number>10</number>

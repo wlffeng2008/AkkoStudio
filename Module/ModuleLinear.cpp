@@ -61,6 +61,8 @@ ModuleLinear::ModuleLinear(QWidget *parent)
         updateValue();
     });
 
+    ui->pushButtonM1->setAutoRepeat(true);
+    ui->pushButtonM1->setAutoRepeatInterval(100);
     connect(ui->pushButtonM1,&QPushButton::pressed,this,[=]{
         int value = ui->verticalSlider1->value() - 100;
         ui->verticalSlider1->setValue(value);
@@ -74,23 +76,14 @@ ModuleLinear::ModuleLinear(QWidget *parent)
     });
 
     connect(ui->lineEditValue1,&QLineEdit::textChanged,this,[=](const QString&text){
-        QString strTmp = ui->lineEditValue1->text().trimmed();
-        char szText[100]={0};
-        strcpy_s(szText, strTmp.toStdString().c_str());
-        for(int i=0; i<strlen(szText); i++)
-        {
-            if(szText[i] == '.' || (szText[i] >= '0' && szText[i] <= '9'))
-                continue;
-            szText[i] = 0;
-            break;
-        }
-        strTmp = szText;
+        QString strTmp = ui->lineEditValue1->text().replace("mm","").trimmed();
         int value = strTmp.toFloat() * 1000;
         if(value>4000) value = 4000;
         if(value<0)    value = 0;
         ui->verticalSlider1->blockSignals(true);
         ui->verticalSlider1->setValue(4000-value);
         ui->verticalSlider1->blockSignals(false);
+        updateValue();
     });
 
     ui->pushButtonM2->setAutoRepeat(true);
@@ -98,36 +91,24 @@ ModuleLinear::ModuleLinear(QWidget *parent)
     connect(ui->pushButtonM2,&QPushButton::pressed,this,[=]{
         int value = ui->verticalSlider2->value() - 5;
         ui->verticalSlider2->setValue(value);
-    }) ;
+    });
 
     ui->pushButtonP2->setAutoRepeat(true);
     ui->pushButtonP2->setAutoRepeatInterval(100);
     connect(ui->pushButtonP2,&QPushButton::pressed,this,[=]{
         int value = ui->verticalSlider2->value() + 5;
         ui->verticalSlider2->setValue(value);
-    }) ;
+    });
 
-    connect(ui->lineEditValue2,&QLineEdit::textChanged,this,[=](const QString&text){
-        QString strTmp = ui->lineEditValue2->text().trimmed();
-        char szText[100]={0};
-        strcpy_s(szText,strTmp.toStdString().c_str());
-
-        for(int i=0; i<strlen(szText); i++)
-        {
-            if(szText[i] == '.' || (szText[i] >= '0' && szText[i] <= '9'))
-                continue;
-            szText[i] = 0;
-            break;
-        }
-        strTmp = szText;
-
+    connect(ui->lineEditValue2,&QLineEdit::textChanged,this,[=](const QString&text){        
+        QString strTmp = ui->lineEditValue1->text().replace("mm","").trimmed();
         int value = strTmp.toFloat() * 1000;
-        if(value>4000) value = 4000;
-        if(value<0) value = 0;
-
+        if(value > 4000) value = 4000;
+        if(value < 0   ) value = 0;
         ui->verticalSlider2->blockSignals(true);
         ui->verticalSlider2->setValue(value);
         ui->verticalSlider2->blockSignals(true);
+        updateValue();
     });
 
     ui->verticalSlider1->installEventFilter(this);
@@ -137,15 +118,28 @@ ModuleLinear::ModuleLinear(QWidget *parent)
     ui->verticalSlider2->setValue(0);
     ui->verticalSlider1->setValue(2000);
     ui->verticalSlider2->setValue(2000);
+
+    m_pSetTM = new QTimer(this);
+    connect(m_pSetTM,&QTimer::timeout,this,[=]{
+        m_pSetTM->stop();
+        float value1 = ui->lineEditValue1->text().replace("mm","").trimmed().toFloat() ;
+        float value2 = ui->lineEditValue2->text().replace("mm","").trimmed().toFloat() ;
+        emit setGlobalLnValue(value1,value2);
+    });
 }
 
 ModuleLinear::~ModuleLinear()
 {
     delete ui;
 }
+
 void ModuleLinear::updateValue()
 {
-    emit setGlobalLnValue(ui->verticalSlider1->value()/1000.0,ui->verticalSlider2->value()/1000.0);
+    if(m_pSetTM)
+    {
+        m_pSetTM->stop();
+        m_pSetTM->start(300);
+    }
 }
 
 bool ModuleLinear::eventFilter(QObject*watched,QEvent*event)
