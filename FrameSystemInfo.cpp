@@ -6,7 +6,7 @@
 #include <QDateTime>
 #include <Windows.h>
 
-QString g_strVer("1.7.4");
+QString g_strVer("1.7.5");
 
 QString currentVersion()
 {
@@ -18,9 +18,8 @@ inline QDateTime getCompileTime()
     const QString tsStr = QString::fromLatin1(__TIMESTAMP__);
     QLocale enUs(QLocale::English, QLocale::UnitedStates);
 
-    QDateTime dt = enUs.toDateTime(tsStr, "ddd MMM dd HH:mm:ss yyyy");
-    if(!dt.isValid())
-        dt = enUs.toDateTime(tsStr, "ddd MMM  d HH:mm:ss yyyy");
+    QDateTime         dt = enUs.toDateTime(tsStr, "ddd MMM dd HH:mm:ss yyyy");
+    if(!dt.isValid()) dt = enUs.toDateTime(tsStr, "ddd MMM  d HH:mm:ss yyyy");
 
     return dt;
 }
