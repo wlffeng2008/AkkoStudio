@@ -278,19 +278,19 @@
     <rect>
      <x>872</x>
      <y>10</y>
-     <width>20</width>
+     <width>14</width>
      <height>48</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>20</width>
+     <width>0</width>
      <height>48</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>20</width>
+     <width>542</width>
      <height>48</height>
     </size>
    </property>
@@ -304,12 +304,10 @@
     <string notr="true"/>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{ border:none;border-radius:11px;   border-top-left-radius: 20px !important;
-    border-top-right-radius: 0px !important;
-    border-bottom-left-radius: 20px !important;
-    border-bottom-right-radius: 0px !important;
-	max-width:20px !important;
-	min-width:20px !important;
+    <string notr="true">QPushButton{ border:none; border-top-left-radius: 12px !important;
+ border-top-right-radius: 0px !important;
+ border-bottom-left-radius: 12px !important;
+ border-bottom-right-radius: 0px !important;
  background-color:white;}</string>
    </property>
    <property name="text">
@@ -2888,21 +2886,21 @@
   <widget class="KeyboardButton" name="pushButton_Hid233">
    <property name="geometry">
     <rect>
-     <x>897</x>
+     <x>902</x>
      <y>10</y>
-     <width>20</width>
+     <width>14</width>
      <height>48</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>20</width>
+     <width>0</width>
      <height>48</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>20</width>
+     <width>542</width>
      <height>48</height>
     </size>
    </property>
@@ -2917,15 +2915,47 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{ border:none;  border-top-left-radius: 0px !important;
-    border-top-right-radius: 20px !important;
+    border-top-right-radius: 12px !important;
     border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 20px !important;
-	max-width:20px !important;
-	min-width:20px !important;
+    border-bottom-right-radius: 12px !important;
  background-color:white;}</string>
    </property>
    <property name="text">
     <string notr="true">+</string>
+   </property>
+  </widget>
+  <widget class="KeyboardButton" name="pushButton_Hid235">
+   <property name="geometry">
+    <rect>
+     <x>887</x>
+     <y>10</y>
+     <width>14</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>544</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>MiSans</family>
+     <fontweight>DemiBold</fontweight>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true"/>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

@@ -2,6 +2,7 @@
 #include "ui_MainWindow.h"
 
 #include "hidapi.h"
+#include "EasyToast.h"
 
 #include "ModuleLangMenu.h"
 #include "FrameDeviceShow.h"
@@ -616,9 +617,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(pCnn,&DialogDeviceConnect::onReadAll,this,[=]{
         m_bReadAll=true;
+
+        EasyToast::information(tr("正在读取数据，请耐心等候..."),0);
     });
     connect(pCnn,&DialogDeviceConnect::onReadDone,this,[=]{
         m_bReadAll=false;
+
+        //EasyToast::close();
+        EasyToast::information(tr("读取数据完成!"));
     });
     connect(pCnn,&DialogDeviceConnect::onKeyTesting,this,[=](bool testing){
         m_KeyTesting = testing;
@@ -1112,11 +1118,22 @@ void MainWindow::enumDevice()
         {
             hid_device_info *pCurDev = pEDev;
             pEDev = pEDev->next;
+
             VID = pCurDev->vendor_id;
             PID = pCurDev->product_id;
             UPG = pCurDev->usage_page;
             USA = pCurDev->usage;
             PATH= pCurDev->path;
+
+            {
+                QString prodName = QString::fromWCharArray(pCurDev->product_string);
+                QString mfrName  = QString::fromWCharArray(pCurDev->manufacturer_string);
+                QString sn       = QString::fromWCharArray(pCurDev->serial_number);
+
+                qDebug()<<"Manufacturer:"<<mfrName;
+                qDebug()<<"ProductName:"<<prodName;
+                qDebug()<<"Serial:"<<pCurDev->release_number  << pCurDev->bus_type;
+            }
 
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
 
@@ -1273,7 +1290,7 @@ void MainWindow::enumDevice()
                         }
                     }
 
-                    //qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("devId: %04d VID:0x%04X, PID:0x%04X",devId,VID,PID);
+                    // qDebug().noquote() << "get_:" << data.left(16).toHex(' ').toUpper() << QString::asprintf("devId: %04d VID:0x%04X, PID:0x%04X",devId,VID,PID);
 
                     if(PID == 1 &&  VID==0x38EE && devId == 0) {devId = 4177;connectType=0;}
                     addDevice(VID,PID,devId,path1,path2,connectType,0);
@@ -1300,6 +1317,7 @@ void MainWindow::enumDevice()
         {
             hid_device_info *pCurDev = pEDev;
             pEDev = pEDev->next;
+
             VID = pCurDev->vendor_id;
             PID = pCurDev->product_id;
             UPG = pCurDev->usage_page;
@@ -1356,13 +1374,14 @@ void MainWindow::enumDevice()
         {
             hid_device_info *pCurDev = pEDev;
             pEDev = pEDev->next;
+
             VID = pCurDev->vendor_id;
             PID = pCurDev->product_id;
             UPG = pCurDev->usage_page;
             USA = pCurDev->usage;
             PATH= pCurDev->path;
             //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
-            if(USA == 65376) // 65280
+            if(UPG == 0xFF60) //0xFF60 == 65376    65280
             {
                 hid_device* pDev = hid_open_path(PATH);
                 if (pDev)
@@ -1403,6 +1422,7 @@ void MainWindow::enumDevice()
         {
             hid_device_info *pCurDev = pEDev;
             pEDev = pEDev->next;
+
             VID = pCurDev->vendor_id;
             PID = pCurDev->product_id;
             UPG = pCurDev->usage_page;
@@ -1430,12 +1450,13 @@ void MainWindow::enumDevice()
         {
             hid_device_info *pCurDev = pEDev;
             pEDev = pEDev->next;
+
             VID = pCurDev->vendor_id;
             PID = pCurDev->product_id;
             UPG = pCurDev->usage_page;
             USA = pCurDev->usage;
             PATH= pCurDev->path;
-            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA) << PATH;
+            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA) << PATH;
             if(UPG == 0x000C && USA == 0x01)
             {
                 addDevice(VID,PID,0,"null",PATH,1,4);
@@ -1444,6 +1465,7 @@ void MainWindow::enumDevice()
         }
         if(pRoot) hid_free_enumeration(pRoot);
     }
+
     int count = m_tmp.count();
     for(int i=count-1; i>=0; i--)
     {

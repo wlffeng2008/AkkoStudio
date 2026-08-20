@@ -37,6 +37,7 @@ INCLUDEPATH += ./Module
 SOURCES += \
     AkkoDeviceBase.cpp \
     Downloader.cpp \
+    EasyToast.cpp \
     FrameDeviceHolder.cpp \
     FrameDeviceShow.cpp \
     FrameSystemInfo.cpp \
@@ -86,6 +87,7 @@ SOURCES += \
 HEADERS += \
     AkkoDeviceBase.h \
     Downloader.h \
+    EasyToast.h \
     FrameDeviceHolder.h \
     FrameDeviceShow.h \
     FrameSystemInfo.h \
@@ -134,6 +136,7 @@ HEADERS += \
 
 FORMS += \
     DialogDeviceConnect.ui \
+    EasyToast.ui \
     FrameAbout.ui \
     FrameDeviceHolder.ui \
     FrameDeviceShow.ui \

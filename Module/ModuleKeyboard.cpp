@@ -31,7 +31,7 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
         btn->setCursor(Qt::PointingHandCursor);
         ui->buttonGroup->removeButton(btn);
         ui->buttonGroup->addButton(btn,i);
-        if(i == 234 ||i == 233)
+        if(i == 234 ||i == 233 || i == 235)
         {
             continue;
         }
@@ -139,15 +139,18 @@ void ModuleKeyboard::keepSpeacial()
     // return;
     KeyboardButton *btn1 = ui->pushButton_Hid234;
     KeyboardButton *btn2 = ui->pushButton_Hid233;
+    KeyboardButton *btn3 = ui->pushButton_Hid235;
     if(m_bSetLightMode || m_bSetMtMode || m_bFixMode)
     {
         btn1->hide();
         btn2->hide();
+        btn3->hide();
     }
     else
     {
         btn1->show();
         btn2->show();
+        btn3->show();
     }
 }
 
