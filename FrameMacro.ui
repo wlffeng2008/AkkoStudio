@@ -144,6 +144,9 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
            </item>
            <item>
             <widget class="QPushButton" name="pushButtonAddMacro">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="toolTip">
               <string>新建宏</string>
              </property>
@@ -167,6 +170,9 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
            </item>
            <item>
             <widget class="QPushButton" name="pushButtonMoveDown">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="text">
               <string/>
              </property>
@@ -187,6 +193,9 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
            </item>
            <item>
             <widget class="QPushButton" name="pushButtonMoveUp">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="text">
               <string/>
              </property>
@@ -299,6 +308,9 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
             </property>
             <item alignment="Qt::AlignmentFlag::AlignVCenter">
              <widget class="QPushButton" name="pushButtonRecord">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="styleSheet">
                <string notr="true">QPushButton{width: 130px;
 height: 36px;
@@ -354,6 +366,9 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                 <height>30</height>
                </size>
               </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
@@ -393,6 +408,9 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
             </item>
             <item>
              <widget class="QPushButton" name="pushButtonSetDelay">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="text">
                <string>设置固定延迟(ms):</string>
               </property>
@@ -442,6 +460,9 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                 <height>30</height>
                </size>
               </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="text">
                <string>删除</string>
               </property>
@@ -470,6 +491,9 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                 <width>156</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="text">
                <string>清空</string>
@@ -518,6 +542,9 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                 <width>156</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="text">
                <string>保存</string>

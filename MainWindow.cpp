@@ -859,7 +859,7 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
 
         if(m_creator == 0)
         {
-            QList<quint16>IdList={2807,3779}; //,2743,3131,3800
+            QList<quint16>IdList={2807,3779,4177}; //,2743,3131,3800
             if(IdList.contains(dev->driverId) || (dev->strName.contains("5075") && !dev->strName.contains("V3")))
             {
                 bool bleMode = (dev->connectType == 2);
@@ -1078,17 +1078,6 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint64 driverId, const QSt
     }
 }
 
-static void stringToInt(const QString&value,QList<quint64>&retList)
-{
-    retList.clear();
-    QStringList vals = value.split(',');
-    int count = vals.count();
-    for(int i=0; i<count; i++)
-    {
-        retList.push_back(getIntVal(vals[i]));
-    }
-}
-
 void MainWindow::enumDevice()
 {
     if(m_bEnuming) return;
@@ -1106,13 +1095,8 @@ void MainWindow::enumDevice()
     char *PATH = nullptr;
     QString path1,path2;
 
-    QSettings enumSet(QApplication::applicationDirPath() + "/config/enumsetting.ini",QSettings::IniFormat);
-
-    QList<quint64> VidList;
-    stringToInt(enumSet.value("VIDset0","0x3151, 0x38EE, 0x25A7, 0x05AC, 0x0461").toString(),VidList);
-    foreach (quint16 Vid, VidList)
     {
-        hid_device_info *pRoot = hid_enumerate(Vid, 0);
+        hid_device_info *pRoot = hid_enumerate(0, 0);
         hid_device_info *pEDev = pRoot;
         while (pEDev)
         {
@@ -1125,17 +1109,7 @@ void MainWindow::enumDevice()
             USA = pCurDev->usage;
             PATH= pCurDev->path;
 
-            {
-                QString prodName = QString::fromWCharArray(pCurDev->product_string);
-                QString mfrName  = QString::fromWCharArray(pCurDev->manufacturer_string);
-                QString sn       = QString::fromWCharArray(pCurDev->serial_number);
-
-                qDebug()<<"Manufacturer:"<<mfrName;
-                qDebug()<<"ProductName:"<<prodName;
-                qDebug()<<"Serial:"<<pCurDev->release_number  << pCurDev->bus_type;
-            }
-
-            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
 
             if(UPG == 0xFF55 && USA == 0x0202) // BLE
             {
@@ -1227,7 +1201,7 @@ void MainWindow::enumDevice()
                         QThread::msleep(50);
                     }while(true);
 
-                    if(devId == 0 || devId > 0x8000)
+                    if(devId == 0 || devId > 10000)
                     {
                         devId = 0;
                         quint8 tmp[120]={0};
@@ -1300,89 +1274,51 @@ void MainWindow::enumDevice()
                     hid_close(pDev);
                 }
             }
-        }
-        if(pRoot) hid_free_enumeration(pRoot);
-    }
 
-    QString strCmd0("04 00 00 1a 06 00 00 00"); // 电量
-    QString strCmd1("04 00 00 30 06 00 00 00"); // 机型ID
-    QString strCmd2("04 AA 00 AA 00 00 00 00"); // 连接状态
+            if(m_bForMGK) continue;
 
-    stringToInt(enumSet.value("VIDset1","0x38EE, 0x320F").toString(),VidList);
-    foreach (quint16 Vid, VidList)
-    {
-        hid_device_info *pRoot = hid_enumerate(Vid, 0);
-        hid_device_info *pEDev = pRoot;
-        while (pEDev && !m_bForMGK)
-        {
-            hid_device_info *pCurDev = pEDev;
-            pEDev = pEDev->next;
-
-            VID = pCurDev->vendor_id;
-            PID = pCurDev->product_id;
-            UPG = pCurDev->usage_page;
-            USA = pCurDev->usage;
-            PATH= pCurDev->path;
-
-            if(!(USA == 0x0092 && UPG == 0xFF1C))
-                continue;
-
-            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X %s",VID,PID,UPG,USA,PATH);
-            hid_device *pDev = hid_open_path(PATH);
-            if(pDev)
+            if((USA == 0x0092 && UPG == 0xFF1C))
             {
-                int len1 = 0;
-                quint8 deviceType = 0;
-                quint8 connectType = 0;
-                quint8 szBuf[128] = {0};
-                QByteArray cmd = QByteArray::fromHex(strCmd1.toLatin1());
-                bool bFound = false;
-                for(int i=0; i<10; i++)
+                QString strCmd1("04 00 00 30 06 00 00 00"); // 机型ID
+                hid_device *pDev = hid_open_path(PATH);
+                if(pDev)
                 {
-                    hid_write(pDev,(quint8*)cmd.data(),cmd.size());
-                    QThread::msleep(20);
-                    len1 = hid_read_timeout(pDev,szBuf,16,30);
-                    deviceType = szBuf[11];
-                    if(szBuf[3] == 0x30 && szBuf[4] == 0x06)
+                    int len1 = 0;
+                    quint8 deviceType = 0;
+                    quint8 connectType = 0;
+                    quint8 szBuf[128] = {0};
+                    QByteArray cmd = QByteArray::fromHex(strCmd1.toLatin1());
+                    bool bFound = false;
+                    for(int i=0; i<10; i++)
                     {
-                        bFound = true;
-                        break;
+                        hid_write(pDev,(quint8*)cmd.data(),cmd.size());
+                        QThread::msleep(20);
+                        len1 = hid_read_timeout(pDev,szBuf,16,30);
+                        deviceType = szBuf[11];
+                        if(szBuf[3] == 0x30 && szBuf[4] == 0x06)
+                        {
+                            bFound = true;
+                            break;
+                        }
+                    }
+
+                    if(len1 >= 12 && bFound)
+                    {
+                        //QByteArray Log((char *)szBuf,len1);
+                        //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Device ID:" << deviceType;
+
+                        addDevice(VID,PID,deviceType,"null",PATH,connectType,1);
+                        allPaths.push_back(PATH);
                     }
                 }
-
-                if(len1 >= 12 && bFound)
-                {
-                    //QByteArray Log((char *)szBuf,len1);
-                    //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Device ID:" << deviceType;
-
-                    addDevice(VID,PID,deviceType,"null",PATH,connectType,1);
-                    allPaths.push_back(PATH);
-                }
             }
-        }
-        if(pRoot) hid_free_enumeration(pRoot);
-    }
 
-    {
-        quint8 kReadBufferHead = 0x82;
-        quint8 kReadCodeSubCmd = 0x01;
-        quint8 kReportId = 0x09;
 
-        hid_device_info* pRoot = hid_enumerate(0x38ee, 0x0016);
-        hid_device_info* pEDev = pRoot;
-        while (pEDev)
-        {
-            hid_device_info *pCurDev = pEDev;
-            pEDev = pEDev->next;
-
-            VID = pCurDev->vendor_id;
-            PID = pCurDev->product_id;
-            UPG = pCurDev->usage_page;
-            USA = pCurDev->usage;
-            PATH= pCurDev->path;
-            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
             if(UPG == 0xFF60) //0xFF60 == 65376    65280
             {
+                quint8 kReadBufferHead = 0x82;
+                quint8 kReadCodeSubCmd = 0x01;
+                quint8 kReportId = 0x09;
                 hid_device* pDev = hid_open_path(PATH);
                 if (pDev)
                 {
@@ -1411,25 +1347,8 @@ void MainWindow::enumDevice()
                     hid_close(pDev);
                 }
             }
-        }
-        if(pRoot) hid_free_enumeration(pRoot);
-    }
 
-    {
-        hid_device_info* pRoot = hid_enumerate(0x3554, 0);
-        hid_device_info* pEDev = pRoot;
-        while (pEDev && !m_bForMGK)
-        {
-            hid_device_info *pCurDev = pEDev;
-            pEDev = pEDev->next;
-
-            VID = pCurDev->vendor_id;
-            PID = pCurDev->product_id;
-            UPG = pCurDev->usage_page;
-            USA = pCurDev->usage;
-            PATH= pCurDev->path;
-            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
-            if(UPG == 0xFF02 && USA == 0x02)
+            if(UPG == 0xFF02 && USA == 0x02 && 0x3554 == VID)
             {
                 //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X %s",VID,PID,UPG,USA,PATH);
                 if(PID == 0xFB29)
@@ -1439,25 +1358,8 @@ void MainWindow::enumDevice()
 
                 allPaths.push_back(PATH);
             }
-        }
-        if(pRoot) hid_free_enumeration(pRoot);
-    }
 
-    {
-        hid_device_info* pRoot = hid_enumerate(0x36EB, 0);
-        hid_device_info* pEDev = pRoot;
-        while (pEDev && !m_bForMGK)
-        {
-            hid_device_info *pCurDev = pEDev;
-            pEDev = pEDev->next;
-
-            VID = pCurDev->vendor_id;
-            PID = pCurDev->product_id;
-            UPG = pCurDev->usage_page;
-            USA = pCurDev->usage;
-            PATH= pCurDev->path;
-            //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA) << PATH;
-            if(UPG == 0x000C && USA == 0x01)
+            if(UPG == 0x000C && USA == 0x01 && 0x36EB == VID)
             {
                 addDevice(VID,PID,0,"null",PATH,1,4);
                 allPaths.push_back(PATH);
@@ -1487,6 +1389,8 @@ void MainWindow::enumDevice()
 
     emit enumDeiceDone();
     m_bEnuming = false;
+
+    qDebug() << "enumDeiceDonej";
 }
 
 void MainWindow::changeEvent(QEvent *pEvt)

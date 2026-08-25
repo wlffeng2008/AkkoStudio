@@ -2933,10 +2933,16 @@
      <height>48</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>14</width>
+     <height>48</height>
+    </size>
+   </property>
    <property name="maximumSize">
     <size>
-     <width>544</width>
-     <height>16777215</height>
+     <width>14</width>
+     <height>48</height>
     </size>
    </property>
    <property name="font">

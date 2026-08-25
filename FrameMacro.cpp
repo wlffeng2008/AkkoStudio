@@ -62,6 +62,9 @@ FrameMacro::FrameMacro(QWidget *parent)
             updateView();
         });
 
+        ui->pushButtonMoveDown->hide();
+        ui->pushButtonMoveUp->hide();
+
         connect(ui->pushButtonSave,&QPushButton::clicked,this,[=]{ saveEvents(); });
 
         connect(ui->pushButtonInsert,&QPushButton::clicked,this,[=]{

@@ -171,6 +171,9 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
          </property>
          <item>
           <widget class="QPushButton" name="pushButtonSet0">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>行程设置</string>
            </property>
@@ -184,6 +187,9 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
          </item>
          <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="pushButtonSet1">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>死区设置</string>
            </property>
@@ -197,6 +203,9 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
          </item>
          <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="pushButtonSet2">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>轴体设置</string>
            </property>
@@ -204,6 +213,9 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonSet3">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>增稳算法</string>
            </property>
@@ -211,6 +223,9 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
          </item>
          <item alignment="Qt::AlignmentFlag::AlignTop">
           <widget class="QPushButton" name="pushButtonSet4">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>模拟测试</string>
            </property>
@@ -2074,7 +2089,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupMT"/>
   <buttongroup name="buttonGroupStab"/>
+  <buttongroup name="buttonGroupMT"/>
  </buttongroups>
 </ui>

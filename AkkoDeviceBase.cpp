@@ -33,6 +33,16 @@ quint64 getIntVal(const QString&val)
     return value;
 }
 
+void stringToInt(const QString&value,QList<quint64>&retList)
+{
+    retList.clear();
+    QStringList vals = value.split(',');
+    int count = vals.count();
+    for(int i=0; i<count; i++)
+    {
+        retList.push_back(getIntVal(vals[i]));
+    }
+}
 
 quint32 getExtrasDevice(quint32 VID, quint32 PID, quint64 MOD,QString & deviceName, quint16 & deviceType, quint16&deviceCnnt)
 {
