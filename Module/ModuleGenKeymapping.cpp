@@ -162,7 +162,7 @@ keyData* ModuleGenKeymapping::getFnData(quint8 index)
     return &m_fnList[index]->data;
 }
 
-static quint8 defaultMatrix_id2807[] =
+static quint8 defaultKeyMatrix_id2807[] =
 {
     0,0,41,0,
     0,0,53,0,
@@ -306,7 +306,7 @@ static quint8 defaultMatrix_id2807[] =
     0,0,0,0   // 127 line
 };
 
-static quint8 defaultFn_Matrix_id2807[] = {
+static quint8 defaultFunMatrix_id2807[] = {
     0,    0,    0,    0,
     10,   2,    0,    0,
     0,    0,    0,    0,
@@ -437,27 +437,27 @@ static quint8 defaultFn_Matrix_id2807[] = {
     0,    0,    0,    0
 };
 
-static QByteArray matrixData((char *)defaultMatrix_id2807,512);
-static QByteArray matrixDataFn((char *)defaultFn_Matrix_id2807,512);
+static QByteArray matrixKeyData((char *)defaultKeyMatrix_id2807,512);
+static QByteArray matrixFunData((char *)defaultFunMatrix_id2807,512);
 
-QByteArray getDefaultMatrix()
+QByteArray getDefaultKeyMatrix()
 {
-    return matrixData;
+    return matrixKeyData;
 }
 
-void setDefaultMatrix(const QByteArray&data)
+void setDefaultKeyMatrix(const QByteArray&data)
 {
-    matrixData = data;
+    matrixKeyData = data;
 }
 
-QByteArray getDefaultFnMatrix()
+QByteArray getDefaultFunMatrix()
 {
-    return matrixDataFn;
+    return matrixFunData;
 }
 
-void setDefaultMatrixFn(const QByteArray&data)
+void setDefaultFunMatrix(const QByteArray&data)
 {
-    matrixDataFn = data;
+    matrixFunData = data;
 }
 
 quint8 getIndex(quint8 hid)
@@ -472,7 +472,7 @@ quint8 getIndex(quint8 hid)
 
     for(int i=0; i<512; i += 4)
     {
-        if(hid == (quint8)matrixData[i+2])
+        if(hid == (quint8)matrixKeyData[i+2])
         {
             return i/4;
         }
@@ -491,7 +491,7 @@ quint8 getHid(quint8 index)
     }
 
     if(index<128)
-        return matrixData[index*4 + 2];
+        return matrixKeyData[index*4 + 2];
     return 0;
 }
 
@@ -762,10 +762,10 @@ keyData* getMatData(quint8 index)
 {
     static keyData kd;
 
-    kd.b0 = matrixData[index * 4 + 0];
-    kd.b1 = matrixData[index * 4 + 1];
-    kd.b2 = matrixData[index * 4 + 2];
-    kd.b3 = matrixData[index * 4 + 3];
+    kd.b0 = matrixKeyData[index * 4 + 0];
+    kd.b1 = matrixKeyData[index * 4 + 1];
+    kd.b2 = matrixKeyData[index * 4 + 2];
+    kd.b3 = matrixKeyData[index * 4 + 3];
 
     return &kd;
 }

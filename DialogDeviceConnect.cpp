@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QWindow>
+#include <QFile>
 
 #define  MINIAUDIO_IMPLEMENTATION
 #include "miniaudio.h"
@@ -106,8 +107,8 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint );
 
-    m_KeyMatrix[0] = ::getDefaultMatrix();
-    m_FunMatrix[0] = ::getDefaultFnMatrix();
+    m_KeyMatrix[0] = ::getDefaultKeyMatrix();
+    m_FunMatrix[0] = ::getDefaultFunMatrix();
 
     {
         static ma_device_config config = ma_device_config_init(ma_device_type_loopback);
@@ -168,11 +169,39 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     ui->lineEditPID->setText(m_pCntSet->value("lastPID","502F").toString());
 
     connect(ui->pushButtonSaveMatrix,&QPushButton::clicked,this,[=]{
-        setDefaultMatrix(m_KeyMatrix[0]);
-        quint8 *data = (quint8 *)m_KeyMatrix[0].data();
-        for(int i=0; i<512; i+=4)
+        setDefaultKeyMatrix(m_KeyMatrix[0]);
+        setDefaultFunMatrix(m_FunMatrix[0]);
+
         {
-            qDebug().noquote() << QString::asprintf("%3d,%3d,%3d,%3d,  // %3d  0x%08X", data[i+0], data[i+1], data[i+2], data[i+3], i/4, qToBigEndian(*(quint32*)(data + i)) );
+            QString strFile = QApplication::applicationDirPath() + QString::asprintf("/config/defaultKeyMatrix-%4d.txt",m_deviceId);
+            QFile MF(strFile);
+            if(MF.open(QIODevice::WriteOnly))
+            {
+                quint8 *data = (quint8 *)m_KeyMatrix[0].data();
+                for(int i=0; i<512; i+=4)
+                {
+                    QString line = QString::asprintf("%3d,%3d,%3d,%3d,  // %3d  0x%08X", data[i+0], data[i+1], data[i+2], data[i+3], i/4, qToBigEndian(*(quint32*)(data + i)) );
+                    qDebug().noquote() << line;
+                    MF.write((line + "\n").toLocal8Bit());
+                }
+                MF.close();
+            }
+        }
+
+        {
+            QString strFile = QApplication::applicationDirPath() + QString::asprintf("/config/defaultFunMatrix-%4d.txt",m_deviceId);
+            QFile MF(strFile);
+            if(MF.open(QIODevice::WriteOnly))
+            {
+                quint8 *data = (quint8 *)m_FunMatrix[0].data();
+                for(int i=0; i<512; i+=4)
+                {
+                    QString line = QString::asprintf("%3d,%3d,%3d,%3d,  // %3d  0x%08X", data[i+0], data[i+1], data[i+2], data[i+3], i/4, qToBigEndian(*(quint32*)(data + i)) );
+                    qDebug().noquote() << line;
+                    MF.write((line + "\n").toLocal8Bit());
+                }
+                MF.close();
+            }
         }
     });
 
@@ -726,16 +755,6 @@ void DialogDeviceConnect::readAllData()
     }
 }
 
-bool DialogDeviceConnect::isLoading()
-{
-    return (m_cmdList.count() > 0);
-}
-
-DialogDeviceConnect::~DialogDeviceConnect()
-{
-    delete ui;
-}
-
 void DialogDeviceConnect::executeCmd()
 {
     if(m_cmdList.count() <= 0)
@@ -793,6 +812,17 @@ void DialogDeviceConnect::executeCmd()
 
     //qDebug() << "send:" << cmd.left(16).toHex(' ').toUpper();
 }
+
+bool DialogDeviceConnect::isLoading()
+{
+    return (m_cmdList.count() > 0);
+}
+
+DialogDeviceConnect::~DialogDeviceConnect()
+{
+    delete ui;
+}
+
 
 void DialogDeviceConnect::setProfile(int layer)
 {
@@ -1201,8 +1231,8 @@ void DialogDeviceConnect::makeCmd(int row, bool autoSend)
 
 void DialogDeviceConnect::reset()
 {
-    m_KeyMatrix[0] = ::getDefaultMatrix();
-    m_FunMatrix[0] = ::getDefaultFnMatrix();
+    m_KeyMatrix[0] = ::getDefaultKeyMatrix();
+    m_FunMatrix[0] = ::getDefaultFunMatrix();
     makeCmd(getRow(CMD_SET_RESET),true);
     readAllData();
 }

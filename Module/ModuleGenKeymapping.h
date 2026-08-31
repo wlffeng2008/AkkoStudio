@@ -37,10 +37,10 @@ QString getKeyByCode(quint16 code);
 quint16 getKeyHid(quint16 nCode);
 quint16 getKeyNCode(quint16 hid);
 
-QByteArray getDefaultMatrix();
-void setDefaultMatrix(const QByteArray&data);
-QByteArray getDefaultFnMatrix();
-void setDefaultMatrixFn(const QByteArray&data);
+QByteArray getDefaultKeyMatrix();
+void setDefaultKeyMatrix(const QByteArray&data);
+QByteArray getDefaultFunMatrix();
+void setDefaultFunMatrix(const QByteArray&data);
 
 class ModuleGenKeymapping:public QWidget
 {

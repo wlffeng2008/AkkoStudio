@@ -31,10 +31,6 @@ ModuleKeyboard::ModuleKeyboard(QWidget *parent)
         btn->setCursor(Qt::PointingHandCursor);
         ui->buttonGroup->removeButton(btn);
         ui->buttonGroup->addButton(btn,i);
-        if(i == 234 ||i == 233 || i == 235)
-        {
-            continue;
-        }
     }
 
     ui->buttonGroup->setExclusive(false);

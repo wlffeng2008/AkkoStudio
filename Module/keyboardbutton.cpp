@@ -120,25 +120,26 @@ static QString strSetTip(R"(
 )");
 
 static QString strVolP(R"(
-
-    min-width:20px !important;
-    max-width:20px !important;
+    min-width:14px;
+    max-width:14px;
     border-radius: 0px;
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
-
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
 )");
 
 static QString strVolM(R"(
-
-    min-width:20px !important;
-    max-width:20px !important;
+    min-width:14px;
+    max-width:14px;
     border-radius: 0px;
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
 )");
 
+static QString strVolF(R"(
+    min-width:14px;
+    max-width:14px;
+    border-radius: 0px;
+)");
 
 bool KeyboardButton::hasTip()
 {
@@ -150,10 +151,10 @@ void KeyboardButton::setTipText(const QString&strText1,const QString&strText2)
     QString strStyle = strBasic;
     QString strName=objectName();
     QString strSet("");
-    if(strName.contains("_Hid234"))
-        strSet = strVolP;
-    if(strName.contains("_Hid233"))
-        strSet = strVolM;
+
+    if(strName.contains("_Hid234")) strSet = strVolP;
+    if(strName.contains("_Hid233")) strSet = strVolM;
+    if(strName.contains("_Hid235")) strSet = strVolF;
 
     if(strText1.isEmpty() || strText2.isEmpty())
     {

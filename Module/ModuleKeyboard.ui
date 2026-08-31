@@ -304,9 +304,9 @@
     <string notr="true"/>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{ border:none; border-top-left-radius: 12px !important;
+    <string notr="true">QPushButton{ border:none; border-top-left-radius: 14px !important;
  border-top-right-radius: 0px !important;
- border-bottom-left-radius: 12px !important;
+ border-bottom-left-radius: 14px !important;
  border-bottom-right-radius: 0px !important;
  background-color:white;}</string>
    </property>
@@ -2886,7 +2886,7 @@
   <widget class="KeyboardButton" name="pushButton_Hid233">
    <property name="geometry">
     <rect>
-     <x>902</x>
+     <x>900</x>
      <y>10</y>
      <width>14</width>
      <height>48</height>
@@ -2915,9 +2915,9 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{ border:none;  border-top-left-radius: 0px !important;
-    border-top-right-radius: 12px !important;
+    border-top-right-radius: 14px !important;
     border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 12px !important;
+    border-bottom-right-radius: 14px !important;
  background-color:white;}</string>
    </property>
    <property name="text">
@@ -2927,7 +2927,7 @@
   <widget class="KeyboardButton" name="pushButton_Hid235">
    <property name="geometry">
     <rect>
-     <x>887</x>
+     <x>886</x>
      <y>10</y>
      <width>14</width>
      <height>48</height>
@@ -2941,7 +2941,7 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>14</width>
+     <width>544</width>
      <height>48</height>
     </size>
    </property>

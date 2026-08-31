@@ -1109,7 +1109,7 @@ void MainWindow::enumDevice()
             USA = pCurDev->usage;
             PATH= pCurDev->path;
 
-            qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
+            // qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
 
             if(UPG == 0xFF55 && USA == 0x0202) // BLE
             {
@@ -1313,7 +1313,6 @@ void MainWindow::enumDevice()
                 }
             }
 
-
             if(UPG == 0xFF60) //0xFF60 == 65376    65280
             {
                 quint8 kReadBufferHead = 0x82;
@@ -1389,8 +1388,6 @@ void MainWindow::enumDevice()
 
     emit enumDeiceDone();
     m_bEnuming = false;
-
-    qDebug() << "enumDeiceDonej";
 }
 
 void MainWindow::changeEvent(QEvent *pEvt)
@@ -1726,6 +1723,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     m_pLangMenu->hide();
     if (event->button() == Qt::LeftButton)
     {
+        QFile CKF("D:/akkodebug.txt");
         if(QRect(30,25,136,40).contains(event->pos()))
         {
             static int nCount = 0;
@@ -1734,7 +1732,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             pCntTM->stop();
             pCntTM->start(300);
             connect(pCntTM,&QTimer::timeout,this,[=]{ nCount=0; });
-            if(nCount >= 2 && (::GetKeyState(VK_CONTROL)&0x800) && (::GetKeyState('D')&0x800) )
+            if((nCount >= 2 && (::GetKeyState(VK_CONTROL)&0x800) && (::GetKeyState('D')&0x800)) || CKF.exists())
                 DialogDeviceConnect::instance()->show();
         }
         if (event->pos().y() < 60)

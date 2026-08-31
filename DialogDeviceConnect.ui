@@ -41,6 +41,9 @@
      <height>24</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="text">
     <string>Read</string>
    </property>
@@ -63,6 +66,9 @@
      <width>75</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="text">
     <string>Write</string>
@@ -92,6 +98,9 @@
      <width>59</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="text">
     <string>Refresh</string>
@@ -265,6 +274,9 @@
      <height>26</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="text">
     <string>Connect</string>
    </property>
@@ -277,6 +289,9 @@
      <width>79</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="text">
     <string>Save Matrix</string>
