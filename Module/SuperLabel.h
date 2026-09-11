@@ -13,6 +13,7 @@ class CustomTooltip : public QWidget
 public:
     explicit CustomTooltip(QWidget *parent = nullptr);
     void setText(const QString&text);
+    QString text();
 
     void setTextStyle(const QString& stryle);
     void setAutohide(bool bSet=true){m_bAutohide = bSet;}
@@ -53,6 +54,9 @@ public:
 
 protected:
     bool event(QEvent *event) override;
+
+signals:
+    void clicked();
 
 private:
     CustomTooltip *tooltip;

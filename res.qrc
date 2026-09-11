@@ -216,5 +216,22 @@
         <file>images/press/press07.png</file>
         <file>images/press/press08.png</file>
         <file>images/press/press09.png</file>
+        <file>images/mouse/mouse.png</file>
+        <file>images/mouse/button-bk.png</file>
+        <file>images/mouse/close.png</file>
+        <file>images/mouse/minimize.png</file>
+        <file>images/mouse/about.png</file>
+        <file>images/mouse/changekey.png</file>
+        <file>images/mouse/config.png</file>
+        <file>images/mouse/dpisetting.png</file>
+        <file>images/mouse/macro.png</file>
+        <file>images/mouse/performent.png</file>
+        <file>images/mouse/edit-bk-red.png</file>
+        <file>images/mouse/lingth.png</file>
+        <file>images/minus-disabled.png</file>
+        <file>images/minus-normal.png</file>
+        <file>images/plug-disabled.png</file>
+        <file>images/plug-normal.png</file>
+        <file>images/mouse/mouse2.png</file>
     </qresource>
 </RCC>

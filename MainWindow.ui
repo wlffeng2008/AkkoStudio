@@ -288,7 +288,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page00">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -564,6 +564,20 @@ background:transparent;</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="page03">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="FrameMouse" name="frameMouse">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -574,6 +588,12 @@ background:transparent;</string>
    <class>FrameDeviceHolder</class>
    <extends>QFrame</extends>
    <header>framedeviceholder.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FrameMouse</class>
+   <extends>QFrame</extends>
+   <header>framemouse.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -96,6 +96,11 @@ void CustomTooltip::setText(const QString&text)
     content->update(); 
 }
 
+QString CustomTooltip::text()
+{
+    return content->text();
+}
+
 void CustomTooltip::setTextStyle(const QString& stryle)
 {
     content->setStyleSheet(stryle);
@@ -108,7 +113,7 @@ SuperLabel::SuperLabel(QWidget *parent) : QLabel{parent}
 {
     if(!s_group[parent]) s_group[parent] = this;
 
-    QTimer::singleShot(100,this,[=]{
+    QTimer::singleShot(40,this,[=]{
         tooltip = new CustomTooltip(this);
         tooltip->setText(this->toolTip());
 
@@ -118,20 +123,25 @@ SuperLabel::SuperLabel(QWidget *parent) : QLabel{parent}
         setToolTipDuration(2000000);
 
         connect(timer, &QTimer::timeout, this, [=]() {
-
-            QPoint pos = mapToGlobal(QPoint(width()+5,(height() - tooltip->height())/2));
-            tooltip->move(pos);
-            tooltip->show();
+            if(!tooltip->text().isEmpty())
+            {
+                QPoint pos = mapToGlobal(QPoint(width()+5,(height() - tooltip->height())/2));
+                tooltip->move(pos);
+                tooltip->show();
+            }
         });
     });
+
     setAlignment(Qt::AlignCenter);
+    setScaledContents(true);
 }
 
 void SuperLabel::updateToolTip(const QString&text)
 {
     setText("");
     setToolTip("");
-    tooltip->setText(text);
+
+    if(tooltip) tooltip->setText(text);
 }
 
 bool SuperLabel::event(QEvent *event)
@@ -149,6 +159,9 @@ bool SuperLabel::event(QEvent *event)
 
     case QEvent::MouseButtonPress:
         tooltip->hide();
+        break;
+    case QEvent::MouseButtonRelease:
+        emit clicked();
         break;
 
     case QEvent::LanguageChange:

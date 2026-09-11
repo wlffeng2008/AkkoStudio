@@ -12,6 +12,7 @@
 #include "ModuleGeneralMasker.h"
 #include "FrameSystemInfo.h"
 #include "AkkoDeviceEnum.h"
+#include "DialogMouse.h"
 
 #include "Downloader.h"
 
@@ -199,6 +200,11 @@ static QSettings settings1("HKEY_CURRENT_USER\\Software\\MonsGeek",QSettings::Na
 QSettings *getUserSetting()
 {
     return (m_bForMGK ? &settings1 : &settings0);
+}
+
+int getCurrentLang()
+{
+   return getUserSetting()->value("lastlang").toInt();
 }
 
 // https://www.akkogear.com/akkoupdate.txt
@@ -393,6 +399,8 @@ MainWindow::MainWindow(QWidget *parent)
         last = toHide;
     });
     pCheck->start(100);
+
+    m_pMouse = new DialogMouse(this);
 
     m_pFloatLeft = new QDialog(this);
     m_pFloatRight = new QDialog(this);
@@ -605,6 +613,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->stackedWidget->setCurrentIndex(0);
     connect(ui->frameHold,&FrameDeviceHolder::onReturn,this,[=]{
+        ui->stackedWidget->setCurrentIndex(0);
+    });
+    ui->stackedWidget->setCurrentIndex(0);
+    connect(ui->frameMouse,&FrameMouse::onReturn,this,[=]{
         ui->stackedWidget->setCurrentIndex(0);
     });
 
@@ -855,6 +867,15 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
                     continue;
                 ::SetWindowPos(s_hWndEmb[i], HWND_BOTTOM,0,0,0,0,SWP_NOMOVE|SWP_HIDEWINDOW);
             }
+        }
+
+        if(dev->driverId == 80 || dev->driverId == 81 || dev->driverId == 82)
+        {
+            //ui->stackedWidget->setCurrentIndex(3);
+            //ui->frameMouse->updateName(dev->strName);
+            m_pMouse->show();
+            m_pMouse->updateName(dev->strName);
+            return;
         }
 
         if(m_creator == 0)
@@ -1361,6 +1382,12 @@ void MainWindow::enumDevice()
             if(UPG == 0x000C && USA == 0x01 && 0x36EB == VID)
             {
                 addDevice(VID,PID,0,"null",PATH,1,4);
+                allPaths.push_back(PATH);
+            }
+
+            if(UPG == 0xFF70 && USA == 0x0071 && 0x38EE == VID && (PID == 0x0021 || PID == 0x0047 || PID == 0x0048))
+            {
+                addDevice(VID,PID,80,"null",PATH,0,5);
                 allPaths.push_back(PATH);
             }
         }

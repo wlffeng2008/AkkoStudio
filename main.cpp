@@ -379,7 +379,8 @@ int main(int argc, char *argv[])
         background-color: #aaa;
     }
 
-    QSpinBox {
+
+    /*QSpinBox {
         border: 1px solid #D0D0D0;
         border-radius: 4px;
         padding: 2px 2px 2px 2px;
@@ -419,7 +420,7 @@ int main(int argc, char *argv[])
         background-color: #F5F5F5;
         color: #666666;
         border-color: #EEEEEE;
-    }
+    }*/
 
     )");
 

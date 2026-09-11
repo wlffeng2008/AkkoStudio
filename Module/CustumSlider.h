@@ -10,6 +10,14 @@ class CustumSlider : public QSlider
 
 public:
     CustumSlider(QWidget *parent=nullptr);
+    void setClipStep(int step){m_clipStep=step;};
+    int  clipStep(){ return m_clipStep; }
+
+    void setValue(int value);
+    void setValue(const QString&value);
+    QString getValue();
+
+    void setShowMark(bool show=true){m_showMark=show;}
 
     void setRedrawMode(bool set=true){ m_set = set; };
     bool getRedrawMode(){ return m_set; } ;
@@ -21,7 +29,10 @@ protected:
 private:
     bool m_set = false ;
     bool m_draging = false ;
-    void updateValue() ;
+
+    bool m_showMark=false;
+    int  m_clipStep=1;
+    void updateValue();
 };
 
 #endif // CUSTUMSLIDER_H

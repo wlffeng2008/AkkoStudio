@@ -36,12 +36,15 @@ INCLUDEPATH += ./Module
 
 SOURCES += \
     AkkoDeviceBase.cpp \
+    DialogMouse.cpp \
     Downloader.cpp \
     EasyToast.cpp \
     FrameDeviceHolder.cpp \
     FrameDeviceShow.cpp \
+    FrameMouse.cpp \
     FrameSystemInfo.cpp \
     Module/ColorLabel.cpp \
+    Module/ColorPicker.cpp \
     Module/ColorSquare.cpp \
     Module/CustumSlider.cpp \
     DialogDeviceConnect.cpp \
@@ -86,12 +89,15 @@ SOURCES += \
 
 HEADERS += \
     AkkoDeviceBase.h \
+    DialogMouse.h \
     Downloader.h \
     EasyToast.h \
     FrameDeviceHolder.h \
     FrameDeviceShow.h \
+    FrameMouse.h \
     FrameSystemInfo.h \
     Module/ColorLabel.h \
+    Module/ColorPicker.h \
     Module/ColorSquare.h \
     Module/CustumSlider.h \
     DialogDeviceConnect.h \
@@ -136,6 +142,7 @@ HEADERS += \
 
 FORMS += \
     DialogDeviceConnect.ui \
+    DialogMouse.ui \
     EasyToast.ui \
     FrameAbout.ui \
     FrameDeviceHolder.ui \
@@ -145,6 +152,7 @@ FORMS += \
     FrameMacro.ui \
     FrameMagic.ui \
     FrameMain.ui \
+    FrameMouse.ui \
     FrameSystemInfo.ui \
     MainWindow.ui \
     Module/DialogColorPicker.ui \

@@ -13,6 +13,7 @@
 #include <QFile>
 #include <QApplication>
 #include <QMessageBox>
+#include <MainWindow.h>
 
 static FrameDeviceShow *s_active = nullptr;
 static FrameDeviceShow *pGroup[256] = {0};
@@ -153,6 +154,34 @@ void FrameDeviceShow::updateBattery()
     emit onReport(m_pDevEI,strBatt,m_typeImage,strTip,qss);
 }
 
+QString FrameDeviceShow::getEngishName()
+{
+    QString name = m_pDevEI->strName;
+    name.replace("泰坦","Framer ");
+    name.replace("灵动","Dash ");
+    name.replace("疾风","GO ");
+    name.replace("空影","Echo ");
+    name.replace("无名","Model X ");
+    name.replace("虫巢","Nest ");
+    return name.trimmed();
+}
+
+QString FrameDeviceShow::getImageName()
+{
+    QString name = getEngishName();
+    name.replace("TAN7","");
+    name.replace("TAN8","");
+    name.replace("TAN9","");
+
+    name.replace("Ultra","");
+    name.replace("Master","");
+    name.replace("Pro","");
+
+    QString strRoot = QApplication::applicationDirPath() + "/images/";
+
+    return name.trimmed();
+}
+
 void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
 {
     m_pDevEI = pDI;
@@ -173,6 +202,25 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
     m_typeImage = QString(":/images/dev/") + imgTypes[pDI->connectType];
     ui->labelType->setPixmap(QPixmap(m_typeImage));
     update();
+
+    updateLangName();
+}
+
+void FrameDeviceShow::updateLangName()
+{
+    QString name = m_pDevEI->strName;
+
+    if(getCurrentLang() != 0)
+    {
+        name.replace("泰坦","Framer ");
+        name.replace("灵动","Dash ");
+        name.replace("疾风","GO ");
+        name.replace("空影","Echo ");
+        name.replace("无名","Model X ");
+        name.replace("虫巢","Nest ");
+    }
+
+    ui->labelDeviceName->setText(name);
 }
 
 void FrameDeviceShow::setImage(const QString &image,int type)
@@ -289,6 +337,10 @@ bool FrameDeviceShow::event(QEvent *event)
         }
     }
 
+    if(event->type() == QEvent::LanguageChange)
+    {
+        updateLangName();
+    }
     return QFrame::event(event);
 }
 

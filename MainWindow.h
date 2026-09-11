@@ -20,6 +20,8 @@ QT_END_NAMESPACE
 
 class ModuleGeneralMasker;
 class AkkoDeviceEnum;
+class DialogMouse;
+
 
 class DeviceEnumInfo
 {
@@ -44,6 +46,7 @@ public:
     QString strPath2;
 };
 
+int getCurrentLang();
 QString getUserDataPath();
 QSettings *getUserSetting();
 
@@ -87,6 +90,7 @@ private:
 
     ModuleLangMenu *m_pLangMenu = nullptr;
     AkkoDeviceEnum *m_Enum = nullptr;
+    DialogMouse *m_pMouse = nullptr;
 
     bool m_bManHide = false;
 
