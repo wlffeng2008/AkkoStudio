@@ -92,7 +92,7 @@ QSpinBox::down-button:disabled{
     <number>20</number>
    </property>
    <property name="rightMargin">
-    <number>30</number>
+    <number>20</number>
    </property>
    <property name="bottomMargin">
     <number>20</number>
@@ -637,7 +637,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                <widget class="QLabel" name="labelMouse">
                 <property name="geometry">
                  <rect>
-                  <x>168</x>
+                  <x>176</x>
                   <y>60</y>
                   <width>160</width>
                   <height>314</height>
@@ -656,23 +656,11 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                <widget class="QPushButton" name="pushButtonMkey3">
                 <property name="geometry">
                  <rect>
-                  <x>14</x>
+                  <x>12</x>
                   <y>172</y>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>110</width>
-                  <height>34</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>110</width>
-                  <height>32</height>
-                 </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
@@ -690,21 +678,21 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                <widget class="QPushButton" name="pushButtonMkey1">
                 <property name="geometry">
                  <rect>
-                  <x>328</x>
+                  <x>302</x>
                   <y>30</y>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>110</width>
+                  <width>150</width>
                   <height>32</height>
                  </size>
                 </property>
@@ -724,21 +712,21 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                <widget class="QPushButton" name="pushButtonMkey2">
                 <property name="geometry">
                  <rect>
-                  <x>368</x>
+                  <x>342</x>
                   <y>102</y>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>110</width>
+                  <width>150</width>
                   <height>32</height>
                  </size>
                 </property>
@@ -758,23 +746,11 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                <widget class="QPushButton" name="pushButtonMkey4">
                 <property name="geometry">
                  <rect>
-                  <x>12</x>
+                  <x>10</x>
                   <y>234</y>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>110</width>
-                  <height>34</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>110</width>
-                  <height>32</height>
-                 </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
@@ -789,26 +765,14 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                  <string notr="true">buttonGroupKeySet</string>
                 </attribute>
                </widget>
-               <widget class="QPushButton" name="pushButtonMeky0">
+               <widget class="QPushButton" name="pushButtonMkey0">
                 <property name="geometry">
                  <rect>
-                  <x>52</x>
+                  <x>46</x>
                   <y>30</y>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>110</width>
-                  <height>34</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>110</width>
-                  <height>32</height>
-                 </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
@@ -829,21 +793,21 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                <widget class="QPushButton" name="pushButtonMkey5">
                 <property name="geometry">
                  <rect>
-                  <x>372</x>
+                  <x>346</x>
                   <y>196</y>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>110</width>
+                  <width>150</width>
                   <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>110</width>
+                  <width>150</width>
                   <height>32</height>
                  </size>
                 </property>
@@ -1082,7 +1046,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidgetPickKey">
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>3</number>
                     </property>
                     <widget class="QWidget" name="page00">
                      <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -4075,9 +4039,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                      </layout>
                     </widget>
                     <widget class="QWidget" name="page03">
-                     <layout class="QVBoxLayout" name="verticalLayout_30">
+                     <layout class="QVBoxLayout" name="verticalLayout_31">
                       <property name="spacing">
-                       <number>20</number>
+                       <number>15</number>
                       </property>
                       <item>
                        <layout class="QVBoxLayout" name="verticalLayout_29">
@@ -4242,7 +4206,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                        </layout>
                       </item>
                       <item>
-                       <layout class="QVBoxLayout" name="verticalLayout_27">
+                       <layout class="QVBoxLayout" name="verticalLayout_30">
                         <item>
                          <widget class="QLabel" name="label_55">
                           <property name="text">
@@ -4251,10 +4215,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                          </widget>
                         </item>
                         <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_41" stretch="0,0,0,0,1">
-                          <property name="spacing">
-                           <number>15</number>
-                          </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_27">
                           <property name="leftMargin">
                            <number>40</number>
                           </property>
@@ -4262,6 +4223,13 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                            <widget class="QRadioButton" name="radioButtonMLoop1">
                             <property name="text">
                              <string>正常播放</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QRadioButton" name="radioButtonMLoop5">
+                            <property name="text">
+                             <string>按任意键停止</string>
                             </property>
                            </widget>
                           </item>
@@ -4290,108 +4258,101 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="QRadioButton" name="radioButtonMLoop5">
-                            <property name="text">
-                             <string>按任意键停止</string>
+                           <layout class="QHBoxLayout" name="horizontalLayout_42" stretch="0,1,0">
+                            <property name="leftMargin">
+                             <number>0</number>
                             </property>
-                           </widget>
+                            <item>
+                             <widget class="QRadioButton" name="radioButtonMLoop0">
+                              <property name="text">
+                               <string>点击配置键循环</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QSpinBox" name="spinBox_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>112</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="suffix">
+                               <string> 次</string>
+                              </property>
+                              <property name="minimum">
+                               <number>1</number>
+                              </property>
+                              <property name="maximum">
+                               <number>2000</number>
+                              </property>
+                              <property name="singleStep">
+                               <number>1</number>
+                              </property>
+                              <property name="value">
+                               <number>20</number>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <spacer name="horizontalSpacer_12">
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>40</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                           </layout>
                           </item>
                          </layout>
                         </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_43" stretch="0,1,0,0">
+                        <property name="spacing">
+                         <number>15</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>40</number>
+                        </property>
                         <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_42" stretch="0,1,0">
-                          <property name="leftMargin">
-                           <number>40</number>
+                         <widget class="QLabel" name="label_56">
+                          <property name="text">
+                           <string>已录制的宏:</string>
                           </property>
-                          <item>
-                           <widget class="QRadioButton" name="radioButtonMLoop0">
-                            <property name="text">
-                             <string>点击配置键循环</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QSpinBox" name="spinBox_2">
-                            <property name="maximumSize">
-                             <size>
-                              <width>112</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="alignment">
-                             <set>Qt::AlignmentFlag::AlignCenter</set>
-                            </property>
-                            <property name="suffix">
-                             <string> 次</string>
-                            </property>
-                            <property name="minimum">
-                             <number>1</number>
-                            </property>
-                            <property name="maximum">
-                             <number>2000</number>
-                            </property>
-                            <property name="singleStep">
-                             <number>1</number>
-                            </property>
-                            <property name="value">
-                             <number>20</number>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <spacer name="horizontalSpacer_12">
-                            <property name="orientation">
-                             <enum>Qt::Orientation::Horizontal</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>40</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
-                         </layout>
+                         </widget>
                         </item>
                         <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_43" stretch="0,1,0,0">
-                          <property name="spacing">
-                           <number>15</number>
+                         <widget class="QComboBox" name="comboBoxMacro"/>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="pushButton_106">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>34</height>
+                           </size>
                           </property>
-                          <property name="leftMargin">
-                           <number>40</number>
+                          <property name="text">
+                           <string>录制新宏</string>
                           </property>
-                          <item>
-                           <widget class="QLabel" name="label_56">
-                            <property name="text">
-                             <string>已录制的宏:</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QComboBox" name="comboBox"/>
-                          </item>
-                          <item>
-                           <widget class="QPushButton" name="pushButton_106">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>34</height>
-                             </size>
-                            </property>
-                            <property name="text">
-                             <string>录制新宏</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QPushButton" name="pushButtonSetMcro">
-                            <property name="text">
-                             <string>保存并使用</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="pushButtonSetMcro">
+                          <property name="text">
+                           <string>保存并使用</string>
+                          </property>
+                         </widget>
                         </item>
                        </layout>
                       </item>
@@ -6746,6 +6707,9 @@ border-radius:6px;
           </layout>
          </widget>
          <widget class="QWidget" name="page4">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{border:none}</string>
+          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_20">
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="2,5">
@@ -6813,7 +6777,7 @@ border-radius:6px;
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
-                      <height>34</height>
+                      <height>32</height>
                      </size>
                     </property>
                     <property name="cursor">
@@ -6827,12 +6791,12 @@ border-radius:6px;
                     </property>
                     <property name="icon">
                      <iconset resource="res.qrc">
-                      <normaloff>:/images/macro/xinzeng 1@2x.png</normaloff>:/images/macro/xinzeng 1@2x.png</iconset>
+                      <normaloff>:/images/mouse/addnew-0.png</normaloff>:/images/mouse/addnew-0.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
-                      <width>20</width>
-                      <height>20</height>
+                      <width>24</width>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="flat">
@@ -6845,7 +6809,7 @@ border-radius:6px;
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
-                      <height>34</height>
+                      <height>32</height>
                      </size>
                     </property>
                     <property name="cursor">
@@ -6856,12 +6820,12 @@ border-radius:6px;
                     </property>
                     <property name="icon">
                      <iconset resource="res.qrc">
-                      <normaloff>:/images/macro/print 1@2x.png</normaloff>:/images/macro/print 1@2x.png</iconset>
+                      <normaloff>:/images/mouse/upload-0.png</normaloff>:/images/mouse/upload-0.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
-                      <width>20</width>
-                      <height>20</height>
+                      <width>24</width>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="flat">
@@ -6874,7 +6838,7 @@ border-radius:6px;
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
-                      <height>34</height>
+                      <height>32</height>
                      </size>
                     </property>
                     <property name="cursor">
@@ -6885,12 +6849,12 @@ border-radius:6px;
                     </property>
                     <property name="icon">
                      <iconset resource="res.qrc">
-                      <normaloff>:/images/macro/print 2@2x.png</normaloff>:/images/macro/print 2@2x.png</iconset>
+                      <normaloff>:/images/mouse/download-0.png</normaloff>:/images/mouse/download-0.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
-                      <width>20</width>
-                      <height>20</height>
+                      <width>24</width>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="flat">
@@ -6937,7 +6901,11 @@ border-radius:6px;
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QTableView" name="tableViewMList"/>
+                     <widget class="QTableView" name="tableViewMList">
+                      <property name="styleSheet">
+                       <string notr="true">background-color: rgb(0, 0, 0);</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -7070,7 +7038,7 @@ border-radius:6px;
                         <property name="minimumSize">
                          <size>
                           <width>30</width>
-                          <height>34</height>
+                          <height>32</height>
                          </size>
                         </property>
                         <property name="cursor">
@@ -7081,7 +7049,7 @@ border-radius:6px;
                         </property>
                         <property name="icon">
                          <iconset resource="res.qrc">
-                          <normaloff>:/images/macro/shanchu 1@2x.png</normaloff>:/images/macro/shanchu 1@2x.png</iconset>
+                          <normaloff>:/images/mouse/delete-0.png</normaloff>:/images/mouse/delete-0.png</iconset>
                         </property>
                         <property name="iconSize">
                          <size>
@@ -7096,7 +7064,7 @@ border-radius:6px;
                         <property name="minimumSize">
                          <size>
                           <width>30</width>
-                          <height>34</height>
+                          <height>32</height>
                          </size>
                         </property>
                         <property name="maximumSize">
@@ -7113,7 +7081,7 @@ border-radius:6px;
                         </property>
                         <property name="icon">
                          <iconset resource="res.qrc">
-                          <normaloff>:/images/macro/macro-clear.png</normaloff>:/images/macro/macro-clear.png</iconset>
+                          <normaloff>:/images/mouse/clearall-0.png</normaloff>:/images/mouse/clearall-0.png</iconset>
                         </property>
                         <property name="iconSize">
                          <size>
@@ -7228,24 +7196,35 @@ border-radius:6px;
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton{width: 130px;
+                      <string notr="true">QPushButton{
+width: 130px;
 height: 36px;
 color:white;
-background: #6329B6;
-border:1px solid #6329B6;
-border-radius: 16px 16px 16px 16px;
+background: transparent;
+border: none;
+border-radius: 16px;
 font-weight: 600;
 font-size: 14px;
 }
 
-QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string>
+QPushButton:checked{
+color: #6329B6; 
+
+icon: url(:/images/Correct.png);
+}</string>
                      </property>
                      <property name="text">
                       <string>开始录制</string>
                      </property>
                      <property name="icon">
                       <iconset resource="res.qrc">
-                       <normaloff>:/images/play-white.png</normaloff>:/images/play-white.png</iconset>
+                       <normaloff>:/images/mouse/recording.png</normaloff>:/images/mouse/recording.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>24</width>
+                       <height>24</height>
+                      </size>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -7273,7 +7252,7 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                      <property name="minimumSize">
                       <size>
                        <width>30</width>
-                       <height>34</height>
+                       <height>32</height>
                       </size>
                      </property>
                      <property name="maximumSize">
@@ -7293,7 +7272,7 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                      </property>
                      <property name="icon">
                       <iconset resource="res.qrc">
-                       <normaloff>:/images/macro/macro-add.png</normaloff>:/images/macro/macro-add.png</iconset>
+                       <normaloff>:/images/mouse/insert-0.png</normaloff>:/images/mouse/insert-0.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -7367,7 +7346,13 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                      </property>
                      <property name="icon">
                       <iconset resource="res.qrc">
-                       <normaloff>:/images/m/m-reset.png</normaloff>:/images/m/m-reset.png</iconset>
+                       <normaloff>:/images/mouse/applyto-0.png</normaloff>:/images/mouse/applyto-0.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>24</width>
+                       <height>24</height>
+                      </size>
                      </property>
                     </widget>
                    </item>

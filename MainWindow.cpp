@@ -1589,6 +1589,9 @@ bool MainWindow::event(QEvent *event)
         raise();
         setFocus();
 
+        this->showMinimized();
+        QTimer::singleShot(100,this,[=]{this->showNormal();});
+
         QMouseEvent *me = static_cast<QMouseEvent*>(event);
         qDebug() << "非客户区鼠标移动：" << me->globalPos();
     }

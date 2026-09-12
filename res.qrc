@@ -233,5 +233,22 @@
         <file>images/plug-disabled.png</file>
         <file>images/plug-normal.png</file>
         <file>images/mouse/mouse2.png</file>
+        <file>images/mouse/addnew-0.png</file>
+        <file>images/mouse/addnew-1.png</file>
+        <file>images/mouse/applyto-0.png</file>
+        <file>images/mouse/applyto-1.png</file>
+        <file>images/mouse/clearall-0.png</file>
+        <file>images/mouse/cleearall-1.png</file>
+        <file>images/mouse/download-0.png</file>
+        <file>images/mouse/download-1.png</file>
+        <file>images/mouse/recording.png</file>
+        <file>images/mouse/upload-0.png</file>
+        <file>images/mouse/upload-1.png</file>
+        <file>images/mouse/cancel-0.png</file>
+        <file>images/mouse/cancel-1.png</file>
+        <file>images/mouse/delete-0.png</file>
+        <file>images/mouse/edit-0.png</file>
+        <file>images/mouse/insert-0.png</file>
+        <file>images/mouse/insert-1.png</file>
     </qresource>
 </RCC>

@@ -6,7 +6,9 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QMouseEvent>
-#include "ColorPicker.h"
+#include <QModelIndex>
+#include "colorpicker.h"
+
 
 void SetLineEditTipColor(QLineEdit *edit,const QColor&color){
     QImage image(edit->size(),QImage::Format_ARGB32);
@@ -50,11 +52,12 @@ void SetButtonTipColor(QPushButton *button,const QColor&color){
     image.fill(Qt::transparent);
 
     QPainter painter(&image);
+    painter.setRenderHint(QPainter::Antialiasing);
 
     QRect rect(0,0,image.rect().height(),image.rect().height());
     painter.setPen(Qt::NoPen);
     painter.setBrush(color);
-    painter.drawRoundedRect(rect.adjusted(4,4,-4,-4),8,8);
+    painter.drawRoundedRect(rect.adjusted(4,4,-6,-6),8,8);
 
     QString strFile = QApplication::applicationDirPath() + "/images/" + button->objectName() + ".png";
     image.save(strFile);
@@ -64,7 +67,7 @@ void SetButtonTipColor(QPushButton *button,const QColor&color){
         padding-left: %1px;
 
         border:1px solid transparent;
-        border-radius:6px;
+        border-radius:8px;
         background-image: url(%2);
         background-repeat: no-repeat;
         background-color: transparent;
@@ -82,6 +85,154 @@ void SetButtonTipColor(QPushButton *button,const QColor&color){
     button->setStyleSheet(strSheet);
 }
 
+void SetButtonBackground(QPushButton *button,bool left=true,const QColor&color=QColor("#6329B6")){
+    QImage image(button->size(),QImage::Format_ARGB32);
+    image.fill(Qt::transparent);
+
+    QPainter painter(&image);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setFont(button->font());
+    QRect rect(0,0,image.rect().height(),image.rect().height());
+
+    QString text = button->text() ;
+    QRect destRc0 = rect.adjusted(4,4,-4,-4);
+    QRect textRc = image.rect().adjusted(rect.height()+10,1,-2,-2);
+
+    if(!left)
+    {
+        int w = destRc0.width();
+        int p = image.width() - w - 2;
+        destRc0.setLeft(p);
+        destRc0.setWidth(w);
+
+        textRc = image.rect().adjusted(3,1,-rect.height()-10,-2);
+    }
+    QRect destRc1 = destRc0.adjusted(4,4,-4,-4);
+    QString strFile0 = QApplication::applicationDirPath() + QString("/images/back0-") + button->objectName() + QString(".png");
+    QString strFile1 = QApplication::applicationDirPath() + QString("/images/back1-") + button->objectName() + QString(".png");
+
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(color);
+    painter.drawRoundedRect(destRc1,destRc1.width()/2,destRc1.width()/2);
+    painter.setPen(QPen(color,3));
+    painter.setBrush(Qt::NoBrush);
+    painter.drawArc(destRc0,0,360*16);
+
+    painter.setPen(Qt::white);
+    painter.setBrush(color);
+    painter.drawRoundedRect(textRc,12,12);
+    painter.drawText(textRc,text,QTextOption(Qt::AlignCenter));
+    image.save(strFile1);
+
+    image.fill(Qt::transparent);
+
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(Qt::gray);
+    painter.drawRoundedRect(destRc1,destRc1.width()/2,destRc1.width()/2);
+    painter.setPen(QPen(Qt::gray,3));
+    painter.setBrush(Qt::NoBrush);
+    painter.drawArc(destRc0,0,360*16);
+
+    painter.setPen(Qt::white);
+    painter.setBrush(Qt::NoBrush);
+    painter.drawRoundedRect(textRc,12,12);
+    painter.drawText(textRc,text,QTextOption(Qt::AlignCenter));
+
+    image.save(strFile0);
+
+    QString strSheet = QString(R"(
+    QPushButton {
+        border:1px solid transparent;
+        background-color: transparent;
+        background-image: url(%3);
+        background-repeat: no-repeat;
+        min-height:32px;
+        min-width:120px;
+    }
+
+    QPushButton:hover { background-image: url(%4); }
+    QPushButton:checked { background-image: url(%5); }
+
+)").arg(strFile0).arg(strFile1).arg(strFile1);
+
+    button->setText(" ");
+    button->setStyleSheet(strSheet);
+}
+
+
+
+#include "infortechDevice.h"
+#pragma comment(lib,"infortechSdk.lib")
+
+// SDK 单例
+InfortechDevice* serviceDevice = nullptr;
+
+// 回调函数
+auto deviceStateChange(const InfortechDef::DevMsg& msg) {
+    switch (msg.type) {
+    case InfortechDef::MsgType::DeviceDisconnect:
+        std::cout << "DeviceDisconnect" << std::endl;
+        break;
+
+    // 鼠标配对
+    case InfortechDef::MsgType::PairFailed:
+        std::cout << "PairFailed" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::PairTimeout:
+        std::cout << "PairTimeout" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::PairSucceed:
+        std::cout << "PairSucceed" << std::endl;
+        break;
+
+    // 固件升级
+    case InfortechDef::MsgType::fwUpgradeFailed:
+        std::cout << "fwUpgradeFailed" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::fwUpgradeProgress:
+        std::cout << "fwUpgradeProgress: " << (int)msg.inf->getFwUpProgress()->progress << std::endl;
+        break;
+
+    case InfortechDef::MsgType::fwUpgradeSucceed:
+        std::cout << "fwUpgradeSucceed" << std::endl;
+        break;
+
+    // 设备状态上报
+    case InfortechDef::MsgType::DpiChange:
+        std::cout << "DpiChange" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::RateChange:
+        std::cout << "RateChange" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::ConfChange:
+        std::cout << "ConfChange" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::BatteryChange:
+        std::cout << "BatteryChange" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::ConnectStateChange:
+        std::cout << "ConnectStateChange" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::TriggerPosChange:
+        std::cout << "TriggerPosChange" << std::endl;
+        break;
+
+    case InfortechDef::MsgType::CalibrateChange:
+        std::cout << "CalibrateChange" << std::endl;
+        break;
+
+    default:
+        break;
+    }
+};
 
 DialogMouse::DialogMouse(QWidget *parent)
     : QDialog(parent)
@@ -91,6 +242,34 @@ DialogMouse::DialogMouse(QWidget *parent)
     setWindowFlags(Qt::Dialog | Qt::Tool | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint | Qt::WindowStaysOnTopHint);
 
     ui->stackedWidget->setCurrentIndex(0);
+    {
+        serviceDevice = InfortechDevice::getInstance();
+        serviceDevice->openLog(false);
+
+
+        // 设置设备信息
+        //serviceDevice->addMouseInf(0x1A86, 0x8501);
+        //serviceDevice->addDongleInf(0x1A86, 0xD810);
+        //serviceDevice->addMouseBootInf(0x1A86, 0x85F1);
+        //serviceDevice->addDongleBootInf(0x1A86, 0xD8E0);
+
+        std::vector<InfortechDef::DeviceItem> allDevices = {
+
+            { 0x38EE, 0x0021, 0, 0, 0 },
+            { 0x38EE, 0x0047, 0, 0, 0 },
+            { 0x38EE, 0x0048, 0, 0, 0 },
+            { 0x1A86, 0x8501, 0x85F1, 0xD810, 0xD8E0 },
+            { 0x1A86, 0x8502, 0x85F2, 0xD811, 0xD8E1 },
+            { 0x1A86, 0x1100, 0x11F0, 0xD100, 0xD1F0 }
+        };
+        serviceDevice->setSupportDeviceSet(allDevices);
+
+        // 注册通知函数
+        serviceDevice->regDevChangeCall(deviceStateChange);
+
+        auto deviceSet = serviceDevice->getDevices();
+        qDebug() << deviceSet.size();
+    }
 
     connect(ui->buttonGroup,&QButtonGroup::idClicked,this,[=](int id){
         ui->labelSubTitle->setText(ui->buttonGroup->button(id)->text());
@@ -100,18 +279,16 @@ DialogMouse::DialogMouse(QWidget *parent)
     connect(ui->pushButtonClose,&QPushButton::clicked,this,[=]{ this->hide(); });
     connect(ui->pushButtonBack,&QPushButton::clicked,this,[=]{ this->hide(); });
 
-    //SetLineEditTipColor(ui->lineEditTest,Qt::green);
-    //SetLineEditTipColor(ui->lineEdit01,Qt::red);
     {
         ui->frameKeyShow->hide();
-        ui->frameMouseHold->setFixedWidth(500);
+        ui->frameMouseHold->setFixedWidth(540);
 
         connect(ui->buttonGroupKeySet,&QButtonGroup::idClicked,this,[=](int id){
             bool bToHide = !ui->frameKeyShow->isHidden();
             ui->frameKeyShow->setHidden(bToHide);
             ui->frameLeft->setHidden(!bToHide);
             QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupKeySet->button(id));
-            qDebug() << pBtn;
+            //qDebug() << pBtn;
         });
 
         ui->stackedWidgetPickKey->setCurrentIndex(0);
@@ -119,7 +296,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             int index = abs(id)-2;
             ui->stackedWidgetPickKey->setCurrentIndex(index);
             QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupKeyType->button(id));
-            qDebug() << pBtn;
+            //qDebug() << pBtn;
         });
 
         QList<QAbstractButton *> btns  = ui->buttonGroupSuper->buttons();
@@ -131,7 +308,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         connect(ui->buttonGroupSuper,&QButtonGroup::idClicked,this,[=](int id){
             int index = abs(id)-2;
             QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupSuper->button(id));
-            qDebug() << pBtn << pBtn->text();
+            //qDebug() << pBtn << pBtn->text();
         });
     }
 
@@ -334,6 +511,65 @@ DialogMouse::DialogMouse(QWidget *parent)
             }
             m_pModel->appendRow(test);
         }
+
+        //------------------------------------
+
+        m_pMList = new QStandardItemModel(this);
+        m_pMList->setHorizontalHeaderLabels(QString("名称,类型,名称").split(','));
+
+        ui->tableViewMList->setModel(m_pMList);
+
+        ui->tableViewMList->setShowGrid(false);
+        ui->tableViewMList->verticalHeader()->hide();
+
+        pHeader = ui->tableViewMList->horizontalHeader();
+        pHeader->setSectionResizeMode(QHeaderView::Stretch);
+        pHeader->setSectionResizeMode(1,QHeaderView::Fixed);
+        pHeader->setSectionResizeMode(2,QHeaderView::Fixed);
+        pHeader->resizeSection(1,36);
+        pHeader->resizeSection(2,36);
+        pHeader->hide();
+
+        m_MLDele1 = new ImageDelegate(":/images/mouse/edit-0.png",this);
+        m_MLDele2 = new ImageDelegate(":/images/mouse/delete-0.png",this);
+
+        QFont font = ui->tableViewMList->font();
+        font.setBold(true);
+        font.setPixelSize(16);
+
+        ui->tableViewMList->setItemDelegateForColumn(1, m_MLDele1);
+        ui->tableViewMList->setItemDelegateForColumn(2, m_MLDele2);
+
+        connect(m_MLDele1,&ImageDelegate::clicked,this,[=](const QModelIndex&index){
+            QModelIndex test =m_pMList->index(index.row(),0);
+            ui->tableViewMList->edit(test);
+        });
+
+        connect(m_MLDele2,&ImageDelegate::clicked,this,[=](const QModelIndex&index){
+            m_pMList->removeRows(index.row(),1);
+        });
+
+        m_MLDele1->installEventFilter(this);
+        m_MLDele2->installEventFilter(this);
+        for(int m=0;m<10;m++)
+        {
+            QList<QStandardItem*>test;
+            for(int i=0; i<3; i++)
+            {
+                QStandardItem *item = new QStandardItem("");
+                test.push_back(item);
+            }
+            test[0]->setText("新宏008");
+            test[0]->setFont(font);
+
+            test[1]->setEditable(false);
+            test[2]->setEditable(false);
+
+            test[1]->setSelectable(false);
+            test[2]->setSelectable(false);
+            m_pMList->appendRow(test);
+            ui->tableViewMList->setRowHeight(m,36);
+        }
     }
     QTimer::singleShot(1000,this,[=]{
         setFixedSize(1200,768);
@@ -377,7 +613,6 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
         if(event->type() == QEvent::MouseButtonRelease)
         {
             QMouseEvent *pMEvt = static_cast<QMouseEvent *>(event);
-            //qDebug() << pMEvt->pos();
 
             double dx = pMEvt->pos().x() - nCX;
             double dy = pMEvt->pos().y() - nCX;
@@ -385,8 +620,6 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
             double deg = fmod(360 - qRadiansToDegrees(rad),360);
 
             m_nowAngle = 30 - fmod((360 + deg - start),360) / fStep;
-
-            // qDebug() << start <<  full << fStep << deg << m_nowAngle;
             ui->labelAngleShow->update();
         }
 
@@ -395,9 +628,6 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
             QPainter paniter(ui->labelAngleShow);
             paniter.setRenderHint(QPainter::Antialiasing);
             paniter.fillRect(rect,Qt::transparent);
-
-            //paniter.setBrush(Qt::green);
-            //paniter.drawRoundedRect(QRect(0,0,nW,nW),nW/2,nW/2);
 
             paniter.setPen(QPen(QColor("#373737"),4));
             for(int i=0; i<=60; i++)
@@ -421,9 +651,9 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
             paniter.drawLine(p0,p1);
         }
     }
+
     return QDialog::eventFilter(watched, event);
 }
-
 
 void DialogMouse::updateName(const QString&name)
 {
@@ -434,7 +664,15 @@ void DialogMouse::changeEvent(QEvent *pEvt)
 {
     if(pEvt->type() == QEvent::LanguageChange)
     {
-        ui->retranslateUi(this);
+       ui->retranslateUi(this);
+
+        SetButtonBackground(ui->pushButtonMkey0,false);
+        SetButtonBackground(ui->pushButtonMkey3,false);
+        SetButtonBackground(ui->pushButtonMkey4,false);
+
+        SetButtonBackground(ui->pushButtonMkey1);
+        SetButtonBackground(ui->pushButtonMkey2);
+        SetButtonBackground(ui->pushButtonMkey5);
     }
 
     QDialog::changeEvent(pEvt);
