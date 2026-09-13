@@ -23,12 +23,18 @@ public:
     {
         m_strImage = image;
         //installEventFilter(this);
+
+    }
+    void setTableView(QTableView *pView){
+        m_pView = pView;
+        m_pView->viewport()->setMouseTracking(true);
+        m_pView->viewport()->installEventFilter(this);
     }
 
 protected:
     QString m_strImage = ":/images/mouse/edit-0.png" ;
 
-    QTableView *m_pView = nullptr ;
+    QTableView *m_pView = nullptr;
 
 signals:
     void clicked(const QModelIndex &index);
@@ -40,17 +46,17 @@ protected:
         //QStyledItemDelegate::paint(painter,option,index) ;
         painter->save() ;
         QRect rect = option.rect;
-        rect.adjust(4,4,-4,-4);
+        rect.adjust(6,6,-6,-6);
 
         painter->setRenderHint(QPainter::Antialiasing);
         painter->drawImage(rect,QImage(m_strImage));
 
-        painter->restore() ;
+        painter->restore();
     }
 
     bool editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index) override
-    {
-
+    {        
+        //qDebug() << event->type() ;
         if(event->type() == QEvent::MouseButtonPress)
         {
         }
@@ -67,34 +73,13 @@ protected:
             }
         }
 
-        if(event->type() == QEvent::MouseMove)
-        {
-            QApplication::setOverrideCursor(Qt::PointingHandCursor);
-        }
-        else
-        {
-            QApplication::restoreOverrideCursor();
-            QApplication::setOverrideCursor(Qt::ArrowCursor);
-        }
         return QStyledItemDelegate::editorEvent(event, model, option, index);
     }
 
     bool eventFilter(QObject *object, QEvent *event) override
     {
         qDebug() << event->type() ;
-        if(event->type() == QEvent::MouseButtonPress)
-        {
-        }
-        else if(event->type() == QEvent::MouseButtonRelease)
-        {
-            auto mouseEv = static_cast<QMouseEvent*>(event);
-            if (mouseEv->button() == Qt::LeftButton) // 只响应左键
-            {
-                //emit clicked(index.row(),index.column());
-                return true;
-            }
-        }
-        else if(event->type() == QEvent::HoverEnter)
+        if(event->type() == QEvent::HoverEnter)
         {
             QApplication::setOverrideCursor(Qt::PointingHandCursor);
         }

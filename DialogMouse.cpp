@@ -254,13 +254,9 @@ DialogMouse::DialogMouse(QWidget *parent)
         //serviceDevice->addDongleBootInf(0x1A86, 0xD8E0);
 
         std::vector<InfortechDef::DeviceItem> allDevices = {
-
             { 0x38EE, 0x0021, 0, 0, 0 },
             { 0x38EE, 0x0047, 0, 0, 0 },
-            { 0x38EE, 0x0048, 0, 0, 0 },
-            { 0x1A86, 0x8501, 0x85F1, 0xD810, 0xD8E0 },
-            { 0x1A86, 0x8502, 0x85F2, 0xD811, 0xD8E1 },
-            { 0x1A86, 0x1100, 0x11F0, 0xD100, 0xD1F0 }
+            { 0x38EE, 0x0048, 0, 0, 0 }
         };
         serviceDevice->setSupportDeviceSet(allDevices);
 
@@ -385,11 +381,9 @@ DialogMouse::DialogMouse(QWidget *parent)
             ui->horizontalSliderX->setValue(text.toInt());
         });
 
-
         connect(ui->lineEditValueY,&QLineEdit::textChanged,this,[=](const QString&text){
             ui->horizontalSliderY->setValue(text.toInt());
         });
-
 
         connect(ui->buttonGroupX,&QButtonGroup::idClicked,this,[=](int id){
             selectA = abs(id)-2;
@@ -417,10 +411,13 @@ DialogMouse::DialogMouse(QWidget *parent)
             valueY[selectY] = value;
             btnsY[selectY]->setText(QString("%1").arg(value));
         });
-
     }
 
     {
+        connect(ui->horizontalSlider00,&QSlider::valueChanged,this,[=](int value){
+        });
+        connect(ui->horizontalSlider01,&QSlider::valueChanged,this,[=](int value){
+        });
         connect(ui->horizontalSlider02,&QSlider::valueChanged,this,[=](int value){
         });
 
@@ -444,7 +441,6 @@ DialogMouse::DialogMouse(QWidget *parent)
     ui->labelAngleShow->setStyleSheet("QLabel{background-color:transparent;}");
     ui->labelAngleShow->installEventFilter(this);
 
-
     {
         connect(ui->horizontalSliderLumi,&QSlider::valueChanged,this,[=](int value){
             ui->spinBoxLumi->setValue(value);
@@ -454,24 +450,26 @@ DialogMouse::DialogMouse(QWidget *parent)
             ui->horizontalSliderLumi->setValue(value);
         });
 
-        QStringList colors = {"#73F2FD","#E9381D","#71FB48","#FDFF4E","#EA36B0","#C6FD4B","#51A4F9","#D1307D","#6A8B28","#BC92BC"};
-        QList<QAbstractButton*> btns = ui->buttonGroupClr->buttons();
-        for(int i=0; i<10; i++)
-        {
-            btns[i]->setStyleSheet(
-                QString(R"(
-                QPushButton{
-                    border-radius:6px;
-                    height:32px;
-                    width:32px;
-                    background-color: %1;
-                    border: 2px solid transparent;
-                }
-                QPushButton:checked{border: 2px solid red;}
-            )").arg(colors[i]));
+        QTimer::singleShot(500,this,[=]{
+            QStringList colors = {"#73F2FD","#E9381D","#71FB48","#FDFF4E","#EA36B0","#C6FD4B","#51A4F9","#D1307D","#6A8B28","#BC92BC"};
+            QList<QAbstractButton*> btns = ui->buttonGroupClr->buttons();
+            for(int i=0; i<10; i++)
+            {
+                btns[i]->setStyleSheet(
+                    QString(R"(
+                        QPushButton{
+                            border-radius:6px;
+                            background-color: %1;
+                            border: 2px solid transparent;
+                            max-width:40px;
+                            max-height:40px;
+                        }
+                        QPushButton:checked{border-color: white;}
+                    )").arg(colors[i]));
 
-            btns[i]->setFixedSize(32,32);
-        }
+                btns[i]->setFixedSize(40,40);
+            }
+        });
 
         static QPushButton *pColorBrn = nullptr; // ui->pushButtonC0;
         connect(ui->buttonGroupClr,&QButtonGroup::idClicked,this,[=](int id){
@@ -479,7 +477,8 @@ DialogMouse::DialogMouse(QWidget *parent)
         });
         connect(ui->widgetColor,&ColorPicker::colorChanged,this,[=](const QColor&color){
             if(!pColorBrn) return;
-            pColorBrn->setStyleSheet(QString(R"(  QPushButton{ background-color: %1; } )").arg(color.name()));
+            pColorBrn->setStyleSheet(QString(R"( QPushButton{ background-color: %1;} )").arg(color.name()));
+            pColorBrn->setFixedSize(40,40);
         });
 
         connect(ui->buttonGroupLMode,&QButtonGroup::idClicked,this,[=](int id){
@@ -501,7 +500,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         QHeaderView *pHeader = ui->tableViewMContent->horizontalHeader();
         pHeader->setSectionResizeMode(QHeaderView::Stretch);
 
-        for(int m=0;m<20;m++)
+        for(int m=0;m<10;m++)
         {
             QList<QStandardItem*>test;
             for(int i=0; i<8; i++)
@@ -510,6 +509,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 test.push_back(item);
             }
             m_pModel->appendRow(test);
+            ui->tableViewMContent->setRowHeight(m,36);
         }
 
         //------------------------------------
@@ -532,6 +532,8 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         m_MLDele1 = new ImageDelegate(":/images/mouse/edit-0.png",this);
         m_MLDele2 = new ImageDelegate(":/images/mouse/delete-0.png",this);
+        m_MLDele1->setTableView(ui->tableViewMList);
+        m_MLDele2->setTableView(ui->tableViewMList);
 
         QFont font = ui->tableViewMList->font();
         font.setBold(true);

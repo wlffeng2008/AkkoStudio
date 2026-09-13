@@ -1363,14 +1363,12 @@ void MainWindow::enumDevice()
 
                     allPaths.push_back(Uuid);
 
-                    //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X",VID,PID,UPG,USA);
                     hid_close(pDev);
                 }
             }
 
             if(UPG == 0xFF02 && USA == 0x02 && 0x3554 == VID)
             {
-                //qDebug().noquote() << QString::asprintf("VID=0x%04X PID=0x%04X usage_page=0x%04X usage=0x%04X %s",VID,PID,UPG,USA,PATH);
                 if(PID == 0xFB29)
                     addDevice(VID,PID,0,"null",PATH,0,3);
                 if(PID == 0xFB2A)
