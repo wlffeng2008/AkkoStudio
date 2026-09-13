@@ -19,13 +19,15 @@ class DialogMouse;
 class ImageDelegate : public QStyledItemDelegate {
     Q_OBJECT
 public:
-    ImageDelegate(const QString&image,QObject *parent = nullptr) : QStyledItemDelegate(parent)
+    ImageDelegate(const QString&image,QTableView *pView,int forColumn,QObject *parent = nullptr) : QStyledItemDelegate(parent)
     {
         m_strImage = image;
-        //installEventFilter(this);
-
+        _nForColumn = forColumn;
+        pView->setItemDelegateForColumn(forColumn,this);
+        setTableView(pView);
     }
-    void setTableView(QTableView *pView){
+    void setTableView(QTableView *pView)
+    {
         m_pView = pView;
         m_pView->viewport()->setMouseTracking(true);
         m_pView->viewport()->installEventFilter(this);
@@ -33,7 +35,8 @@ public:
 
 protected:
     QString m_strImage = ":/images/mouse/edit-0.png" ;
-
+    bool  _setCursor = false;
+    int _nForColumn = -1;
     QTableView *m_pView = nullptr;
 
 signals:
@@ -54,38 +57,46 @@ protected:
         painter->restore();
     }
 
-    bool editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index) override
-    {        
-        //qDebug() << event->type() ;
-        if(event->type() == QEvent::MouseButtonPress)
+    bool eventFilter(QObject *object, QEvent *event) override
+    {
+        QModelIndex index = m_pView->indexAt(m_pView->viewport()->mapFromGlobal(QCursor::pos()));
+        if(event->type() == QEvent::MouseMove)
         {
+            bool bToSet = false;
+            if(index.column() >= 1)
+            {
+                bToSet = true;
+            }
+
+            if(bToSet)
+            {
+                if(!_setCursor)
+                {
+                    _setCursor = true;
+                    QApplication::setOverrideCursor(Qt::PointingHandCursor);
+                }
+            }
+            else
+            {
+                _setCursor = false;
+                QApplication::restoreOverrideCursor();
+            }
+        }
+        else if(event->type() == QEvent::Leave || QEvent::WindowDeactivate == event->type())
+        {
+            _setCursor = false;
+            QApplication::restoreOverrideCursor();
         }
         else if(event->type() == QEvent::MouseButtonRelease)
         {
             auto mouseEv = static_cast<QMouseEvent*>(event);
-            if (mouseEv->button() == Qt::LeftButton) // 只响应左键
+            if (mouseEv->button() == Qt::LeftButton && index.column() == _nForColumn) // 只响应左键
             {
                 emit clicked(index);
-                //qDebug() << "QStyledItemDelegate" << index;
+                _setCursor = false;
                 QApplication::restoreOverrideCursor();
-                QApplication::setOverrideCursor(Qt::ArrowCursor);
                 return true;
             }
-        }
-
-        return QStyledItemDelegate::editorEvent(event, model, option, index);
-    }
-
-    bool eventFilter(QObject *object, QEvent *event) override
-    {
-        qDebug() << event->type() ;
-        if(event->type() == QEvent::HoverEnter)
-        {
-            QApplication::setOverrideCursor(Qt::PointingHandCursor);
-        }
-        else if(event->type() == QEvent::HoverLeave)
-        {
-            QApplication::restoreOverrideCursor();
         }
         return QStyledItemDelegate::eventFilter(object,event);
     }

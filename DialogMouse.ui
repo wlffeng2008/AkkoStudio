@@ -4497,7 +4497,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <property name="minimumSize">
                    <size>
                     <width>70</width>
-                    <height>32</height>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -4902,7 +4902,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <property name="minimumSize">
                    <size>
                     <width>70</width>
-                    <height>32</height>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -5508,13 +5508,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5536,13 +5536,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5564,13 +5564,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5592,13 +5592,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5620,13 +5620,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5648,13 +5648,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5676,13 +5676,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5704,13 +5704,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5732,13 +5732,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -5760,13 +5760,13 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <property name="minimumSize">
                     <size>
                      <width>40</width>
-                     <height>40</height>
+                     <height>36</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
-                     <height>40</height>
+                     <width>52</width>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="text">
@@ -6787,13 +6787,13 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
               <widget class="QFrame" name="frameMList">
                <property name="minimumSize">
                 <size>
-                 <width>360</width>
+                 <width>320</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>360</width>
+                 <width>320</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -6956,7 +6956,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>356</width>
+                     <width>316</width>
                      <height>593</height>
                     </rect>
                    </property>
@@ -7189,7 +7189,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>587</width>
+                        <width>627</width>
                         <height>539</height>
                        </rect>
                       </property>
@@ -7213,9 +7213,15 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                         <layout class="QGridLayout" name="gridLayout_macro">
                          <item row="0" column="0">
                           <widget class="QTableView" name="tableViewMContent">
+                           <property name="selectionMode">
+                            <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+                           </property>
                            <property name="showGrid">
                             <bool>false</bool>
                            </property>
+                           <attribute name="horizontalHeaderHighlightSections">
+                            <bool>false</bool>
+                           </attribute>
                            <attribute name="verticalHeaderVisible">
                             <bool>false</bool>
                            </attribute>
@@ -7241,7 +7247,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>64</height>
+                    <height>48</height>
                    </size>
                   </property>
                   <property name="styleSheet">
@@ -7303,22 +7309,6 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
                      </property>
                     </widget>
                    </item>
-                   <item>
-                    <spacer name="horizontalSpacer_4">
-                     <property name="orientation">
-                      <enum>Qt::Orientation::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Policy::Fixed</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>13</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
                    <item alignment="Qt::AlignmentFlag::AlignVCenter">
                     <widget class="QPushButton" name="pushButtonInsert">
                      <property name="minimumSize">
@@ -7356,22 +7346,6 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
                       <bool>true</bool>
                      </property>
                     </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_7">
-                     <property name="orientation">
-                      <enum>Qt::Orientation::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Policy::Fixed</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
                    </item>
                    <item>
                     <widget class="QLabel" name="label_44">
@@ -7710,15 +7684,15 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupY"/>
-  <buttongroup name="buttonGroupConfig"/>
-  <buttongroup name="buttonGroupLSpeed"/>
-  <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroupX"/>
-  <buttongroup name="buttonGroupClr"/>
-  <buttongroup name="buttonGroupLMode"/>
   <buttongroup name="buttonGroupSuper"/>
+  <buttongroup name="buttonGroupLMode"/>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupLSpeed"/>
   <buttongroup name="buttonGroupKeyType"/>
+  <buttongroup name="buttonGroupConfig"/>
+  <buttongroup name="buttonGroupX"/>
   <buttongroup name="buttonGroupKeySet"/>
+  <buttongroup name="buttonGroupClr"/>
  </buttongroups>
 </ui>

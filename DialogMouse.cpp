@@ -509,7 +509,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 test.push_back(item);
             }
             m_pModel->appendRow(test);
-            ui->tableViewMContent->setRowHeight(m,36);
+            ui->tableViewMContent->setRowHeight(m,64);
         }
 
         //------------------------------------
@@ -530,17 +530,17 @@ DialogMouse::DialogMouse(QWidget *parent)
         pHeader->resizeSection(2,36);
         pHeader->hide();
 
-        m_MLDele1 = new ImageDelegate(":/images/mouse/edit-0.png",this);
-        m_MLDele2 = new ImageDelegate(":/images/mouse/delete-0.png",this);
-        m_MLDele1->setTableView(ui->tableViewMList);
-        m_MLDele2->setTableView(ui->tableViewMList);
+        m_MLDele1 = new ImageDelegate(":/images/mouse/edit-0.png",ui->tableViewMList,1,this);
+        m_MLDele2 = new ImageDelegate(":/images/mouse/delete-0.png",ui->tableViewMList,2,this);
+        // m_MLDele1->setTableView(ui->tableViewMList);
+        // m_MLDele2->setTableView(ui->tableViewMList);
 
         QFont font = ui->tableViewMList->font();
-        font.setBold(true);
+        //font.setBold(true);
         font.setPixelSize(16);
 
-        ui->tableViewMList->setItemDelegateForColumn(1, m_MLDele1);
-        ui->tableViewMList->setItemDelegateForColumn(2, m_MLDele2);
+        //ui->tableViewMList->setItemDelegateForColumn(1, m_MLDele1);
+        //ui->tableViewMList->setItemDelegateForColumn(2, m_MLDele2);
 
         connect(m_MLDele1,&ImageDelegate::clicked,this,[=](const QModelIndex&index){
             QModelIndex test =m_pMList->index(index.row(),0);
@@ -553,7 +553,7 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         m_MLDele1->installEventFilter(this);
         m_MLDele2->installEventFilter(this);
-        for(int m=0;m<10;m++)
+        for(int m=0;m<15;m++)
         {
             QList<QStandardItem*>test;
             for(int i=0; i<3; i++)
@@ -561,7 +561,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 QStandardItem *item = new QStandardItem("");
                 test.push_back(item);
             }
-            test[0]->setText("新宏008");
+            test[0]->setText(QString("新宏%1").arg(m+1));
             test[0]->setFont(font);
 
             test[1]->setEditable(false);
