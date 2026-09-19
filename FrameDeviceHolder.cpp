@@ -80,8 +80,10 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     m_pLBtns[7]->setImages(QString(":/images/btn-return.png"),QString(":/images/btn-return.png"));
 
     connect(ui->pushButtonFixline,&QPushButton::clicked,this,[=]{
+        m_calibrating = true;
         LinearFixing1 T("","",this->parentWidget()->parentWidget()->parentWidget()->parentWidget());
         T.exec();
+        m_calibrating = false;
     });
 
     connect(ui->pushButtonReset,&QPushButton::clicked,this,[=]{

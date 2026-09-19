@@ -280,6 +280,7 @@ void FrameDeviceShow::setImage(const QString &image,int type)
         setFixedWidth(nSetW);
     }
 
+    m_pDevEI->strImage = m_image;
     ui->labelImage->setScaledContents(true);
     ui->labelImage->setPixmap(Img);
 

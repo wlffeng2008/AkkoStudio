@@ -24,6 +24,8 @@ public:
     void updateBattery(void *device,const QString&battImg,const QString&typeImg,const QString&tip,const QString&qss);
     void updateLayer(int layer);
 
+    bool m_calibrating = false;
+
 protected:
     bool eventFilter(QObject *watch, QEvent *event) final;
     void changeEvent(QEvent *pEvt) final;

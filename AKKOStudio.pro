@@ -137,6 +137,7 @@ HEADERS += \
     Module/SuperLabel.h \
     Module/ToggleButton.h \
     ModuleAddMacroSquare.h \
+    MyEasyApp.h \
     akkodeviceenum.h \
     miniaudio.h
 

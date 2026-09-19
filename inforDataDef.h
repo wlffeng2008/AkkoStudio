@@ -163,14 +163,16 @@ namespace InfortechDef {
 
 	// 额外配置信息
 	struct ExtCfgInfo {
-		uint16_t mouseVid;
-		uint16_t mousePid;
-		uint8_t sensorType;
-		uint16_t maxDpi;
-		uint16_t maxDpiUi;
-		uint16_t maxRpt;
-		std::unordered_set<uint32_t> indAxisBtns;
-		std::unordered_set<uint32_t> silenceHeightRange;
+		uint16_t mouseVid;								    // 鼠标VID，如：0x1A86
+		uint16_t mousePid;								    // 鼠标PID，如：0x1100
+		uint8_t sensorType;								    // 传感器型号（1、2、3、4、32）
+		uint16_t maxDpiUi;								    // UI支持的最大DPI，如：32000
+		uint16_t dpiStep;									// DPI 步进，例如：50
+		uint16_t maxRpt;								    // 传感支持的最大上报率，如：8000
+		bool isSupportBleBtn;							    // 当前设备是否支持设置蓝牙通道切换按键
+		std::unordered_set<uint32_t> indAxisBtns;		    // 支持电感轴的鼠标按钮列表，例如：[1701, 1702]
+		std::unordered_set<uint32_t> silenceHeightRange;    // 静默高度支持的设定值列表，例如：[700, 1000, 2000]，单位(um)
+		std::unordered_set<uint32_t> allMacroTypes;			// 当前设备支持的所有宏类型，例如：[0, 1, 2, 3, 4]
 	};
 
 	// 基础按键

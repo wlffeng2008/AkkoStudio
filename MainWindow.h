@@ -47,7 +47,7 @@ public:
 };
 
 int getCurrentLang();
-QString getUserDataPath();
+QString getUserDataPath(const QString &strSubPath="");
 QSettings *getUserSetting();
 
 class MainWindow : public QMainWindow

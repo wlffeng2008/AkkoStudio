@@ -288,7 +288,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page00">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -413,8 +413,8 @@ background:transparent;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>1170</width>
-               <height>465</height>
+               <width>100</width>
+               <height>30</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">

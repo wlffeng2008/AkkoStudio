@@ -7,6 +7,7 @@
 #include <QFontDatabase>
 #include <QDir>
 #include <locale.h>
+#include <MyEasyApp.h>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -26,7 +27,8 @@ int main(int argc, char *argv[])
     setlocale(LC_ALL, "");
 #endif
 
-    QApplication a(argc, argv);
+    //QApplication a(argc, argv);
+    MyEasyApp a(argc, argv);
 
     QTranslator translatorM;
     const QStringList uiLanguages = QLocale::system().uiLanguages();

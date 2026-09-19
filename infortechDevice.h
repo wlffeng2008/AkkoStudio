@@ -51,7 +51,7 @@ public:
 	// 初始化设备
 	bool initDevice();
 
-	// 查询接收器固件版本号，返回值：成功:[次版本号，主版本号]，失败:[0,0]
+	// 查询接收器固件版本号，返回值：成功:"主版本号.次版本号"，失败: ""
 	std::string getDongleVersion();
 	// 获取设备完整信息，包含 MAC 地址、固件版本、电池状态等核心数据
 	std::unique_ptr<InfortechDef::DevInf> getDeviceInf();
@@ -81,13 +81,13 @@ public:
 	std::unique_ptr<InfortechDef::AllBtnCfg> setMacroKeyInf(uint32_t keyId, InfortechDef::MacroKeyInf macroKeyData);
 
 
-	// 设置轮询率，rate 范围：[125、250、500、1000、2000、4000、8000]
+	// 设置轮询率，rate 范围：{125, 250, 500, 1000, 2000, 4000, 8000}
 	std::unique_ptr<InfortechDef::MouseCfg> setReportRate(uint32_t rate);
-	// 设置休眠时间，time 范围：[10、30、60、120、180、900、1800]，单位：s
+	// 设置休眠时间，time 范围：{10, 30, 60, 120, 180, 900, 1800}，单位：s
 	std::unique_ptr<InfortechDef::MouseCfg> setSleepTime(uint32_t time);
-	// 设置防抖延迟, time 范围：[1、2、4、8、15、20]，单位：ms
+	// 设置防抖延迟, time 范围：{1, 2, 4, 8, 15, 20}，单位：ms
 	std::unique_ptr<InfortechDef::MouseCfg> setShakeDelayTime(uint8_t time);
-	// 设置静默高度，height范围：[700、1000、2000]，单位：um
+	// 设置静默高度，height范围：{700, 1000, 2000}，单位：um
 	std::unique_ptr<InfortechDef::MouseCfg> setSilenceHeight(uint32_t height);
 
 
@@ -105,35 +105,35 @@ public:
 
 	// 开启/关闭 BHOP 模式
 	std::unique_ptr<InfortechDef::MouseCfg> setBHOPMode(bool enable);
-	// 设置 BHOP 灵敏度值，value范围：[100、200、300 ... 900、1000]
+	// 设置 BHOP 灵敏度值，value范围：{100, 200, 300, 400. 500, 600, 700, 800, 900, 1000}
 	std::unique_ptr<InfortechDef::MouseCfg> setBHOPValue(uint32_t value);
 
 
-	// 设置 DPI 总挡位数量，size 范围：[1-8]
+	// 设置 DPI 总挡位数量，size 范围：{1, 2, 3, 4, 5, 6, 7, 8}
 	std::unique_ptr<InfortechDef::MouseCfg> setDpiGroupSize(uint8_t size);
-	// 设置当前 DPI 挡位
+	// 设置当前 DPI 挡位, index 范围：{0, 1, 2, 3, 4, 5, 6, 7}
 	std::unique_ptr<InfortechDef::MouseCfg> setDpiIndex(uint8_t index);
-	// 设置指定DPI挡位的指示灯颜色
+	// 设置指定DPI挡位的指示灯颜色，color: 十六进制格式，如："#FF0000"
 	std::unique_ptr<InfortechDef::MouseCfg> setDpiColor(uint8_t index, std::string color);
-	// 设置指定 DPI 挡位的X/Y轴灵敏度
+	// 设置指定 DPI 挡位的X/Y轴灵敏度，通过 getMouseExtraInfo() 获取 value 取值范围
 	std::unique_ptr<InfortechDef::MouseCfg> setDpiX(uint8_t index, uint32_t value);
 	std::unique_ptr<InfortechDef::MouseCfg> setDpiY(uint8_t index, uint32_t value);
 	std::unique_ptr<InfortechDef::MouseCfg> setDpiXY(uint8_t index, uint32_t value);
 
 
-	// 设置正面 RGB 灯的显示效果，支持关灯、常亮、呼吸三种模式，0（关灯）、1（常亮）、2（呼吸）
+	// 设置正面 RGB 灯的显示效果：【 0关灯、1常亮、2呼吸 】
 	std::unique_ptr<InfortechDef::MouseCfg> setRgbEffect(uint8_t effectType);
-	// 设置正面 RGB 灯的亮度，brightness 范围：[1 - 254]
+	// 设置正面 RGB 灯的亮度，brightness 范围：【1 - 100】
 	std::unique_ptr<InfortechDef::MouseCfg> setRgbBrightness(uint8_t brightness);
-	// 设置正面 RGB 灯的动态效果的速度，speedLevel 范围：[1、2、3、4、5]
+	// 设置正面 RGB 灯的动态效果的速度，speedLevel 范围：{1, 2, 3, 4, 5}
 	std::unique_ptr<InfortechDef::MouseCfg> setRgbSpeed(uint8_t speedLevel);
 
 
 	// 设置鼠标氛围灯的灯效：【 1关灯 2长亮 3闪烁 4呼吸 5光谱 6波浪 】
 	std::unique_ptr<InfortechDef::MouseCfg> setAmbientEffect(uint8_t ambientEffect);
-	// 设置鼠标氛围灯亮度 【01 - FF】
-	std::unique_ptr<InfortechDef::MouseCfg> setAmbientBrightness(uint8_t ambientBrightness);
-	// 设置鼠标氛围灯效速度 【01 - 05】
+	// 设置鼠标氛围灯亮度，brightness 范围：【1 - 100】
+	std::unique_ptr<InfortechDef::MouseCfg> setAmbientBrightness(uint8_t brightness);
+	// 设置鼠标氛围灯效速度，speedLevel 范围：{1, 2, 3, 4, 5}
 	std::unique_ptr<InfortechDef::MouseCfg> setAmbientSpeed(uint8_t ambientSpeed);
 	// 设置鼠标氛围灯颜色
 	std::unique_ptr<InfortechDef::MouseCfg> setAmbientColor(std::string ambientColor);
@@ -141,9 +141,9 @@ public:
 
 	// 设置接收器氛围灯的灯效：【 1关灯 2长亮 3闪烁 4呼吸 5光谱 6波浪 】
 	std::unique_ptr<InfortechDef::DGAmbientCfg> setDGAmbientEffect(uint8_t ambientEffect);
-	// 设置接收器氛围灯亮度 【01 - FF】
-	std::unique_ptr<InfortechDef::DGAmbientCfg> setDGAmbientBrightness(uint8_t ambientBrightness);
-	// 设置接收器氛围灯效速度 【01 - 05】
+	// 设置接收器氛围灯亮度，brightness 范围：【1 - 100】
+	std::unique_ptr<InfortechDef::DGAmbientCfg> setDGAmbientBrightness(uint8_t brightness);
+	// 设置接收器氛围灯效速度，speedLevel 范围：{1, 2, 3, 4, 5}
 	std::unique_ptr<InfortechDef::DGAmbientCfg> setDGAmbientSpeed(uint8_t ambientSpeed);
 	// 设置接收器氛围灯颜色
 	std::unique_ptr<InfortechDef::DGAmbientCfg> setDGAmbientColor(std::string ambientColor);
@@ -163,15 +163,15 @@ public:
 	std::unique_ptr<InfortechDef::SensorCfg> setSensorAngle(uint8_t angle);
 
 
-	// 设置当前触发点
+	// 设置当前触发点，value范围：【0 - maxTrigger，maxTrigger 从 getAxisCfgInfo() 获取】
 	std::unique_ptr<InfortechDef::AxisCfg> setAxisTriggerValue(uint32_t keyId, uint8_t value);
 	// 设置快速触发开关
 	std::unique_ptr<InfortechDef::AxisCfg> setAxisRapidSwitch(uint32_t keyId, bool enable);
-	// 设置快速触发设定值
+	// 设置快速触发设定值，value范围：【0 - maxRapid，maxRapid 从 getAxisCfgInfo() 获取】
 	std::unique_ptr<InfortechDef::AxisCfg> setAxisRapidValue(uint32_t keyId, uint8_t value);
 	// 设置触发反馈开关
 	std::unique_ptr<InfortechDef::AxisCfg> setAxisFeedbackSwitch(uint32_t keyId, bool enable);
-	// 设置触发反馈强度
+	// 设置触发反馈强度，value范围：【0 - maxFeedback，maxFeedback 从 getAxisCfgInfo() 获取】
 	std::unique_ptr<InfortechDef::AxisCfg> setAxisFeedbackValue(uint32_t keyId, uint8_t value);
 	// 打开触觉行程上报
 	bool openAxisReport();
@@ -195,7 +195,7 @@ public:
 
 	// 恢复出厂设置
 	bool restoreDefaultConfig();
-	// 切换鼠标配置文件，id范围：[0-4]，返回值：成功:配置Id，失败:-1
+	// 切换鼠标配置文件，id范围：{0, 1, 2, 3, 4}，返回值：成功:配置Id，失败:-1
 	int switchProfile(uint8_t id);
 	// 导出配置文件
 	bool exportConfigFile(std::string fileName);

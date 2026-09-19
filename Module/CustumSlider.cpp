@@ -81,17 +81,18 @@ void CustumSlider::paintEvent(QPaintEvent *ev)
         int count = maximum() - minimum() + 1;
         if(count<2)
             return;
-        float step = width()*1.0/(count-1);
+        float step = (width()-24)*1.0/(count-1);
         if(count>100 || step<5)
             return;
 
         QPainter painter(this);
         painter.setPen(Qt::NoPen);
         painter.setBrush(QBrush(QColor("#6E6E6E")));
-        for(int i=0; i<=count; i++)
+        for(int i=0; i<count; i++)
         {
-            float x = i*step-i;
-            if(x>width()) x = width()-6;
+            float x = i*step-i + 12;
+            if(i==0) x = 12;
+            if(i==count-1) x = width() - 18;
             QRect rect(x,height()/2-3,6,6);
             painter.drawRoundedRect(rect,3,3);
         }

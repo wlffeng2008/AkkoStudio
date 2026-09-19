@@ -15,10 +15,7 @@ ModuleMacroManager::ModuleMacroManager(QObject *parent)
 {
     if(!s_instance) s_instance = this;
 
-    m_strPath = getUserDataPath() + "/macro/" ;
-    QDir A(m_strPath);
-    if(!A.exists())
-        A.mkdir(m_strPath);
+    m_strPath = getUserDataPath("macro");
 
     saveLoadHeader(false);
 }

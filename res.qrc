@@ -250,5 +250,9 @@
         <file>images/mouse/edit-0.png</file>
         <file>images/mouse/insert-0.png</file>
         <file>images/mouse/insert-1.png</file>
+        <file>images/arrow-down.png</file>
+        <file>images/arrow-left.png</file>
+        <file>images/arrow-right.png</file>
+        <file>images/arrow-up.png</file>
     </qresource>
 </RCC>

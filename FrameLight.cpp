@@ -39,9 +39,7 @@ FrameLight::FrameLight(QWidget *parent)
 {
     ui->setupUi(this);
 
-    m_strWork = getUserDataPath() + "/work";
-    QDir CD(m_strWork);
-    if(!CD.exists()) CD.mkdir(m_strWork);
+    m_strWork = getUserDataPath("/work");
 
     ui->frameKeyboard->showFlag(false);
 

@@ -18,8 +18,9 @@ keySetTooltip::keySetTooltip(QWidget *parent):QWidget(parent)
     label1->setAlignment(Qt::AlignCenter);
     label2->setAlignment(Qt::AlignCenter);
     label1->setStyleSheet("QLabel{color:black;background-color:transparent;}");
-    label2->setStyleSheet("QLabel{color:black;background-color:transparent;}");
+    label2->setStyleSheet("QLabel{color:black;background-color:transparent; text-align:left;}");
     midLine->setStyleSheet("QFrame{color:black;background-color:black;}");
+    label2->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
 
     QVBoxLayout *pBox = new QVBoxLayout(this);
     pBox->addWidget(label1);

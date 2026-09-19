@@ -185,12 +185,19 @@ DWORD GetSystemIdle()
 
 static bool m_bForMGK = false;
 
-QString getUserDataPath()
+QString getUserDataPath(const QString&strSubPath)
 {
     QString strPath = (QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + QString("/AppData/Local/") + (m_bForMGK ? "MgkStudio" : "AkkoStudio")).toUtf8();
     QDir DData(strPath);
-    if(!DData.exists())
-        DData.mkdir(strPath);
+    if(!DData.exists()) DData.mkdir(strPath);
+
+    if(!strSubPath.trimmed().isEmpty())
+    {
+        strPath += QString("/") + strSubPath + "/";
+        QDir DData(strPath);
+        if(!DData.exists()) DData.mkdir(strPath);
+    }
+
     return strPath;
 }
 
@@ -400,7 +407,10 @@ MainWindow::MainWindow(QWidget *parent)
     });
     pCheck->start(100);
 
-    m_pMouse = new DialogMouse(this);
+    m_pMouse = new DialogMouse();
+    connect(m_pMouse,&DialogMouse::hideAction,this,[=]{
+        this->show();
+    });
 
     m_pFloatLeft = new QDialog(this);
     m_pFloatRight = new QDialog(this);
@@ -873,8 +883,12 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
         {
             //ui->stackedWidget->setCurrentIndex(3);
             //ui->frameMouse->updateName(dev->strName);
+
             m_pMouse->show();
+            m_pMouse->startConnect();
             m_pMouse->updateName(dev->strName);
+            m_pMouse->updateImage(dev->strImage);
+            this->hide();
             return;
         }
 
@@ -1103,6 +1117,7 @@ void MainWindow::enumDevice()
 {
     if(m_bEnuming) return;
     if(m_bReadAll) return;
+    if(ui->frameHold->m_calibrating) return;
 
     if((isMinimized() || isHidden()) && !m_hCurHwnd) return;
 
@@ -1383,7 +1398,7 @@ void MainWindow::enumDevice()
                 allPaths.push_back(PATH);
             }
 
-            if(UPG == 0xFF70 && USA == 0x0071 && 0x38EE == VID && (PID == 0x0021 || PID == 0x0047 || PID == 0x0048))
+            if(UPG == 0xFF70 && USA == 0x0071 && 0x38EE == VID && (PID == 0x0021 || PID == 0x0022 || PID == 0x0047 || PID == 0x0048))
             {
                 addDevice(VID,PID,80,"null",PATH,0,5);
                 allPaths.push_back(PATH);
