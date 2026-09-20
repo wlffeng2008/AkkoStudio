@@ -4,6 +4,7 @@
 #include <MainWindow.h>
 
 #include "hidapi.h"
+#include "infortechDevice.h"
 
 #include <QScrollBar>
 #include <QWheelEvent>
@@ -77,7 +78,6 @@ void FrameDeviceShow::updateBattery()
 
         hid_device *pDev = hid_open_path(strPath.toStdString().c_str());
         if(!pDev) return;
-        //hid_set_nonblocking(pDev,1);
 
         QByteArray tmp(120, 0);
 
@@ -88,7 +88,7 @@ void FrameDeviceShow::updateBattery()
             tmp[2] = 0x00;
             tmp[8] = 0xFF - tmp[1] - tmp[2];
             hid_send_feature_report(pDev, (quint8 *)tmp.data(), 65);
-            QThread::msleep(100);
+            QThread::msleep(50);
             nlen = hid_get_feature_report(pDev, (quint8 *)buf, 65);
             if(buf[6] == 1)
                 break;
@@ -122,6 +122,16 @@ void FrameDeviceShow::updateBattery()
             if(batt<=100) break;
         }
         hid_close(pDev);
+    }
+
+    if(m_pDevEI->creator == 5)
+    {
+        auto serviceDevice = InfortechDevice::getInstance();
+        if(serviceDevice)
+        {
+            auto tmp = serviceDevice->getDeviceInf();
+            batt =tmp->mouseBatterylevel;
+        }
     }
 
     static QStringList imgPowers = {"batt-low.png","batt-25.png","batt-50.png","batt-75.png","batt-full.png"};

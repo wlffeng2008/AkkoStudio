@@ -884,11 +884,11 @@ void MainWindow::addToHub(DeviceEnumInfo *pDevInfo, int index)
             //ui->stackedWidget->setCurrentIndex(3);
             //ui->frameMouse->updateName(dev->strName);
 
-            m_pMouse->show();
             m_pMouse->startConnect();
             m_pMouse->updateName(dev->strName);
             m_pMouse->updateImage(dev->strImage);
             this->hide();
+            m_pMouse->show();
             return;
         }
 

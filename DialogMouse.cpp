@@ -172,7 +172,6 @@ void SetButtonBackground(QPushButton *button,bool left=true,const QString&newTex
     button->setStyleSheet(strSheet);
 }
 
-
 // SDK 单例
 static InfortechDevice* serviceDevice = nullptr;
 static bool mouseChanged = false;
@@ -629,7 +628,10 @@ void DialogMouse::startConnect()
     {
         serviceDevice->connectDevice(deviceSet[0]);
         serviceDevice->initDevice();
+
+        getAllCfg();
     }
+
     QTimer *pMonitorTM = new QTimer(this);
     pMonitorTM->start(100);
     connect(pMonitorTM,&QTimer::timeout,this,[=]{
@@ -651,6 +653,7 @@ DialogMouse::DialogMouse(QWidget *parent)
     m_strPath = getUserDataPath("huaximouse");
 
     {
+        startConnect();
     }
 
     ui->stackedWidget->setCurrentIndex(0);
@@ -2082,7 +2085,6 @@ void DialogMouse::printMouseCfg(const InfortechDef::MouseCfg* mouseCfg) {
                   << ", color: " << item.color << " }" << std::endl;
     }
     std::cout << "}" << std::endl;
-
 }
 
 // 打印额外配置
@@ -2157,6 +2159,7 @@ void DialogMouse::printDGAmbientCfg(const InfortechDef::DGAmbientCfg* dgAmbientC
 // 获取所有配置
 void DialogMouse::getAllCfg()
 {
+    if(!serviceDevice) return;
     // 接收器版本
     std::cout << std::endl;
     auto dongleVersion = serviceDevice->getDongleVersion();
