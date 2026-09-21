@@ -39,9 +39,8 @@
 QLabel{color:white;font-size:16px;}
 QCheckBox,QRadioButton{color:white;font-size:16px;}
 QSpinBox{color:white;font-size:16px;}
-QComboBox{color:white;font-size:16px;background-color:transparent;}
 QDoubleSpinBox{color:white;font-size:16px;}
-#stackWidget{margin-left:20px;}
+#stackWidget{margin-left:20px;margin-bottom:20px;}
 QPushButton{font: 16px 'MiSans' bold; color:white; border: 1px solid white; background: none; min-height:32px;border-radius:16px; padding: 0 4px;}
 
         QSlider { border-radius: 12px; height: 24px; }
@@ -57,11 +56,23 @@ QPushButton{font: 16px 'MiSans' bold; color:white; border: 1px solid white; back
             background: white;
             border: none; }
 
+ QMessageBox {min-width: 400px; min-height: 240px;}
+ QMessageBox QPushButton {
+                border: 1px solid #6C9F50;
+                background-color: #6329B6;
+                color: white;
+                border-radius: 8px;
+                padding: 2px 2px;
+                min-width: 120px;
+                min-height: 24px; }
+QMessageBox QLabel#qt_msgbox_label{  color: black ; font-size:14px; min-width:340px; qproperty-alignment: AlignLeft ;}
+
+QComboBox{color:white;font-size:16px;background-color:transparent;}
 /* 右侧下拉按钮区域 */
 QComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: top right;
-    width:18px;
+    width:24px;
     border-left:1px solid #666;
 }
 
@@ -92,8 +103,8 @@ QComboBox QAbstractItemView::item:selected {
 QSpinBox {
     padding-left: 10px;
     padding-right: 10px;
-	color:black;
-	background-color:gray;
+	color:white;
+	background-color:transparent;
 	border:2px solid #a1a1a1;
     text-align:center;
 	border-radius:8px;
@@ -108,7 +119,7 @@ QSpinBox::up-button {
 
     border: none;
     background-color: transparent;
-    background-image: url(:/images/plug-normal.png);
+    background-image: url(:/images/plug-disabled.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -121,7 +132,7 @@ QSpinBox::down-button {
 
     border: none;
     background-color: transparent;
-    background-image: url(:/images/minus-normal.png);
+    background-image: url(:/images/minus-disabled.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -130,7 +141,94 @@ QSpinBox::up-button:disabled{
 }
 QSpinBox::down-button:disabled{
     background-image: url(:/images/minus-disabled.png);
-}</string>
+}
+
+/* 整个QCheckBox */
+QCheckBox {
+    color: #fff;
+    spacing: 8px; /* 方框和文字之间距离 */
+}
+
+/* 未选中 - 方框 */
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid gray;
+    background-color: transparent;
+}
+
+/* 鼠标悬浮未选中 */
+QCheckBox::indicator:hover {
+    border-color: #409eff;
+}
+
+/* 选中状态 */
+QCheckBox::indicator:checked {
+    background-color: #6329B6;
+    border-color: #6329B6;
+    /* 对勾图标，用border画对勾，不用图片 */
+    image: none;
+}
+
+
+/* 禁用状态 */
+QCheckBox::indicator:disabled {
+    border-color: #cccccc;
+    background: #f5f5f5;
+}
+QCheckBox:disabled {
+    color: #aaaaaa;
+}
+
+/* 单选框整体：文字颜色、字体、圆圈和文字间距 */
+QRadioButton {
+    color: #fff;
+    spacing: 8px; /* 圆圈与文字之间距离，只能写在QRadioButton{} */
+}
+
+/* 未选中的圆形指示器 */
+QRadioButton::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 10px; /* 宽高一半，做成正圆 */
+    border: 1px solid gray;
+    background-color:  transparent;
+    background: qradialgradient(
+        cx:0.52, cy:0.52, radius:0.5,
+        stop:0 transparent,
+        stop:0.99 transparent,
+        stop:1 gray
+    );
+}
+
+/* 鼠标悬浮（未选中） */
+QRadioButton::indicator:hover {
+    border-color: gray;
+}
+
+/* 选中状态：外圈蓝色 + 内部小圆点 */
+QRadioButton::indicator:checked {
+    border: 0px solid #6329B6;
+
+    background: qradialgradient(
+        cx:0.52, cy:0.52, radius:0.5,
+        stop:0 #6329B6,
+        stop:0.99 #6329B6,
+        stop:1 transparent
+    );
+}
+
+/* 禁用状态 */
+QRadioButton::indicator:disabled {
+    border-color: #cccccc;
+    background: #f5f5f5;
+}
+QRadioButton:disabled {
+    color: #aaaaaa;
+}
+
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
@@ -216,7 +314,7 @@ QSpinBox::down-button:disabled{
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="pushButtonMin">
         <property name="minimumSize">
          <size>
           <width>40</width>
@@ -710,7 +808,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -984,6 +1082,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                    <property name="text">
                     <string>左右键互换</string>
                    </property>
+                   <property name="checked">
+                    <bool>false</bool>
+                   </property>
                   </widget>
                  </item>
                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -1116,6 +1217,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                          <height>34</height>
                         </size>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="text">
                         <string>鼠标/多媒体</string>
                        </property>
@@ -1138,6 +1242,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                          <height>34</height>
                         </size>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="text">
                         <string>键盘</string>
                        </property>
@@ -1157,6 +1264,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                          <height>34</height>
                         </size>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="text">
                         <string>控制键</string>
                        </property>
@@ -1175,6 +1285,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                          <width>0</width>
                          <height>34</height>
                         </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="text">
                         <string>组合/火力/宏</string>
@@ -4362,6 +4475,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                           </item>
                           <item>
                            <widget class="QPushButton" name="pushButtonSetCombine">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="text">
                              <string>保存</string>
                             </property>
@@ -4524,6 +4640,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                               <height>34</height>
                              </size>
                             </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="text">
                              <string>保存</string>
                             </property>
@@ -4563,22 +4682,31 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                           <property name="leftMargin">
                            <number>40</number>
                           </property>
-                          <item>
+                          <item alignment="Qt::AlignmentFlag::AlignLeft">
                            <widget class="QRadioButton" name="radioButtonMLoop1">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="text">
                              <string>正常播放</string>
                             </property>
                            </widget>
                           </item>
-                          <item>
+                          <item alignment="Qt::AlignmentFlag::AlignLeft">
                            <widget class="QRadioButton" name="radioButtonMLoop2">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="text">
                              <string>释放停止</string>
                             </property>
                            </widget>
                           </item>
-                          <item>
+                          <item alignment="Qt::AlignmentFlag::AlignLeft">
                            <widget class="QRadioButton" name="radioButtonMLoop3">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="text">
                              <string>释放立即停止</string>
                             </property>
@@ -4587,15 +4715,21 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                             </property>
                            </widget>
                           </item>
-                          <item>
+                          <item alignment="Qt::AlignmentFlag::AlignLeft">
                            <widget class="QRadioButton" name="radioButtonMLoop4">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="text">
                              <string>触发停止</string>
                             </property>
                            </widget>
                           </item>
-                          <item>
+                          <item alignment="Qt::AlignmentFlag::AlignLeft">
                            <widget class="QRadioButton" name="radioButtonMLoop5">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="text">
                              <string>按任意键停止</string>
                             </property>
@@ -4611,6 +4745,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                             </property>
                             <item>
                              <widget class="QRadioButton" name="radioButtonMLoop0">
+                              <property name="cursor">
+                               <cursorShape>PointingHandCursor</cursorShape>
+                              </property>
                               <property name="text">
                                <string>固定循环次数</string>
                               </property>
@@ -4689,6 +4826,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                             <height>34</height>
                            </size>
                           </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
                           <property name="text">
                            <string>录制新宏</string>
                           </property>
@@ -4696,6 +4836,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                         </item>
                         <item>
                          <widget class="QPushButton" name="pushButtonSetMacro">
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
                           <property name="text">
                            <string>保存</string>
                           </property>
@@ -5766,10 +5909,13 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
              <item row="1" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_14">
                <property name="spacing">
-                <number>30</number>
+                <number>42</number>
                </property>
                <item>
                 <widget class="QRadioButton" name="radioButtonS0">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string>5X</string>
                  </property>
@@ -5780,6 +5926,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
                <item>
                 <widget class="QRadioButton" name="radioButtonS1">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string>4X</string>
                  </property>
@@ -5790,6 +5939,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
                <item>
                 <widget class="QRadioButton" name="radioButtonS2">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string>3X</string>
                  </property>
@@ -5803,6 +5955,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
                <item>
                 <widget class="QRadioButton" name="radioButtonS3">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string>2X</string>
                  </property>
@@ -5813,6 +5968,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
                <item>
                 <widget class="QRadioButton" name="radioButtonS4">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string>1X</string>
                  </property>
@@ -5870,56 +6028,338 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <number>0</number>
                   </property>
                   <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="0,0,0,0">
+                   <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="0,0,0,0,0,0,0,0,0,0">
                     <property name="spacing">
-                     <number>20</number>
+                     <number>10</number>
                     </property>
                     <item alignment="Qt::AlignmentFlag::AlignLeft">
                      <widget class="QLabel" name="label_49">
                       <property name="text">
-                       <string>目标DPI编号：</string>
+                       <string>DPI：</string>
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignmentFlag::AlignLeft">
-                     <widget class="QSpinBox" name="spinBoxDpiColor">
-                      <property name="minimumSize">
-                       <size>
-                        <width>100</width>
-                        <height>32</height>
-                       </size>
+                    <item>
+                     <widget class="QPushButton" name="pushButtonDpiSelect0">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
                       </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                      <property name="minimum">
-                       <number>1</number>
-                      </property>
-                      <property name="maximum">
-                       <number>8</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item alignment="Qt::AlignmentFlag::AlignLeft">
-                     <widget class="QLabel" name="labelDpiColor">
                       <property name="minimumSize">
                        <size>
                         <width>40</width>
-                        <height>40</height>
+                        <height>36</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>40</width>
-                        <height>40</height>
+                        <width>52</width>
+                        <height>44</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel{background-color:blue; border-radius:20px;border:none;}</string>
+                       <string notr="true">QPushButton{border-radius:20px;}</string>
                       </property>
                       <property name="text">
-                       <string/>
+                       <string>1</string>
                       </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">buttonGroupDpiSelect</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButtonDpiSelect1">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>36</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>52</width>
+                        <height>44</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{border-radius:20px;}</string>
+                      </property>
+                      <property name="text">
+                       <string>2</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">buttonGroupDpiSelect</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButtonDpiSelect2">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>36</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>52</width>
+                        <height>44</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{border-radius:20px;}</string>
+                      </property>
+                      <property name="text">
+                       <string>3</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">buttonGroupDpiSelect</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButtonDpiSelect3">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>36</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>52</width>
+                        <height>44</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{border-radius:20px;}</string>
+                      </property>
+                      <property name="text">
+                       <string>4</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">buttonGroupDpiSelect</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButtonDpiSelect4">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>36</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>52</width>
+                        <height>44</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{border-radius:20px;}</string>
+                      </property>
+                      <property name="text">
+                       <string>5</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">buttonGroupDpiSelect</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButtonDpiSelect5">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>36</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>52</width>
+                        <height>44</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{border-radius:20px;}</string>
+                      </property>
+                      <property name="text">
+                       <string>6</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">buttonGroupDpiSelect</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButtonDpiSelect6">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>36</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>52</width>
+                        <height>44</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{border-radius:20px;}</string>
+                      </property>
+                      <property name="text">
+                       <string>7</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">buttonGroupDpiSelect</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButtonDpiSelect7">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>36</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>52</width>
+                        <height>44</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{border-radius:20px;}</string>
+                      </property>
+                      <property name="text">
+                       <string>8</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">buttonGroupDpiSelect</string>
+                      </attribute>
                      </widget>
                     </item>
                     <item>
@@ -5963,6 +6403,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <height>44</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -5990,6 +6433,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <width>52</width>
                         <height>44</height>
                        </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string/>
@@ -6019,6 +6465,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <height>44</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -6046,6 +6495,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <width>52</width>
                         <height>44</height>
                        </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string/>
@@ -6075,6 +6527,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <height>44</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -6102,6 +6557,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <width>52</width>
                         <height>44</height>
                        </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string/>
@@ -6131,6 +6589,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <height>44</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -6158,6 +6619,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <width>52</width>
                         <height>44</height>
                        </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string/>
@@ -6187,6 +6651,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <height>44</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -6214,6 +6681,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                         <width>52</width>
                         <height>44</height>
                        </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string/>
@@ -6267,6 +6737,9 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <height>260</height>
                   </size>
                  </property>
+                 <property name="cursor">
+                  <cursorShape>CrossCursor</cursorShape>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">border-radius:18px;
 background-color: rgb(199, 199, 199);</string>
@@ -6282,6 +6755,9 @@ background-color: rgb(199, 199, 199);</string>
                </property>
                <item>
                 <widget class="QRadioButton" name="radioButtonE0">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string>关闭</string>
                  </property>
@@ -6292,6 +6768,9 @@ background-color: rgb(199, 199, 199);</string>
                </item>
                <item>
                 <widget class="QRadioButton" name="radioButtonE1">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string>常亮</string>
                  </property>
@@ -6302,6 +6781,9 @@ background-color: rgb(199, 199, 199);</string>
                </item>
                <item>
                 <widget class="QRadioButton" name="radioButtonE2">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string>呼吸</string>
                  </property>
@@ -8351,7 +8833,7 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </customwidgets>
  <tabstops>
   <tabstop>pushButtonBack</tabstop>
-  <tabstop>pushButton_7</tabstop>
+  <tabstop>pushButtonMin</tabstop>
   <tabstop>pushButtonClose</tabstop>
   <tabstop>pushButtonMain0</tabstop>
   <tabstop>pushButtonMain1</tabstop>
@@ -8587,16 +9069,17 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupY"/>
-  <buttongroup name="buttonGroupClr"/>
-  <buttongroup name="buttonGroupMain"/>
-  <buttongroup name="buttonGroupConfig"/>
-  <buttongroup name="buttonGroupRgbEffect"/>
-  <buttongroup name="buttonGroupShortcut"/>
-  <buttongroup name="buttonGroupKeyType"/>
-  <buttongroup name="buttonGroupX"/>
-  <buttongroup name="buttonGroupRgbSpeed"/>
   <buttongroup name="buttonGroupKeySet"/>
   <buttongroup name="buttonGroupSuper"/>
+  <buttongroup name="buttonGroupRgbEffect"/>
+  <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupClr"/>
+  <buttongroup name="buttonGroupDpiSelect"/>
+  <buttongroup name="buttonGroupX"/>
+  <buttongroup name="buttonGroupMain"/>
+  <buttongroup name="buttonGroupKeyType"/>
+  <buttongroup name="buttonGroupConfig"/>
+  <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupShortcut"/>
  </buttongroups>
 </ui>

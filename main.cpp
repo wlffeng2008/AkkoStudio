@@ -155,7 +155,7 @@ int main(int argc, char *argv[])
                 min-width: 80px;
                 min-height: 24px; }
 
-        QMessageBox {min-width: 400px; min-height: 150px;}
+        QMessageBox {min-width: 500px; min-height: 240px;}
         QMessageBox QLabel#qt_msgbox_label{min-width: 320px; min-height: 60px; max-width: 450px; max-height: 520px; qproperty-alignment: AlignLeft; white-space: pre-wrap;font: bold 12px 微软雅黑;}
         QMessageBox QLabel#qt_msgboxex_icon_label{ min-width: 32px; min-height: 32px; max-width: 32px; max-height: 32px;qproperty-alignment: AlignTop;}
 
