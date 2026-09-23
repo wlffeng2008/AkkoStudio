@@ -6,7 +6,7 @@
 #include <QDateTime>
 #include <Windows.h>
 
-QString g_strVer("1.7.7");
+static QString g_strVer("1.7.8");
 
 QString currentVersion()
 {
@@ -39,17 +39,17 @@ FrameSystemInfo::FrameSystemInfo(QWidget *parent)
     static QSettings regSet0("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
     regSet0.remove("AkkoHub");
 
-    static QSettings regSet("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-    ui->checkBox->setChecked(!regSet.value("AkkoHub").toString().isEmpty());
+    static QSettings regSet1("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+    ui->checkBox->setChecked(!regSet1.value("AkkoHub").toString().isEmpty());
 
     connect(ui->pushButtonOK,&QPushButton::clicked,this,[=]{
         ModuleGeneralMasker *pTop = static_cast<ModuleGeneralMasker *>(this->parent());
         pTop->setFlag(QDialog::Accepted);
-        regSet.remove("AkkoHub");
+        regSet1.remove("AkkoHub");
         if(ui->checkBox->isChecked())
         {
             QString strFile = QString("\"%1\"").arg(QApplication::applicationFilePath().replace("/","\\"));
-            regSet.setValue("AkkoHub",strFile);
+            regSet1.setValue("AkkoHub",strFile);
         }
 
         hide();

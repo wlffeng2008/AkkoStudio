@@ -18,9 +18,10 @@ keySetTooltip::keySetTooltip(QWidget *parent):QWidget(parent)
     label1->setAlignment(Qt::AlignCenter);
     label2->setAlignment(Qt::AlignCenter);
     label1->setStyleSheet("QLabel{color:black;background-color:transparent;}");
-    label2->setStyleSheet("QLabel{color:black;background-color:transparent; text-align:left;}");
+    label2->setStyleSheet("QLabel{color:black;background-color:transparent; text-align:left; font: 'Consolas' 14px bold;}");
     midLine->setStyleSheet("QFrame{color:black;background-color:black;}");
     label2->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+
 
     QVBoxLayout *pBox = new QVBoxLayout(this);
     pBox->addWidget(label1);
@@ -43,8 +44,12 @@ void keySetTooltip::setText2(const QString&text)
 {
     if(label2)
     {
+        QFont mono("Consolas",18);
+        mono.setStyleHint(QFont::Monospace);
+        mono.setBold(true);
+        label2->setFont(mono);
         label2->setText(text);
-        label2->adjustSize();
+        label2->adjustSize();        
     }
 }
 
@@ -55,7 +60,7 @@ void keySetTooltip::paintEvent(QPaintEvent *event)
     QRect rect = this->rect();
 
     painter.setPen(0xD8BDFF);
-    painter.setBrush(0xFAF7FF);
+    painter.setBrush(QColor("#A0D0D0D0"));
     painter.drawRoundedRect(rect.adjusted(0,0,0,-10),12,12);
 
     QRect triRC = this->rect();
@@ -63,9 +68,9 @@ void keySetTooltip::paintEvent(QPaintEvent *event)
     int nImgX = rect.center().x();
     int nTriLen = 14;
     QPolygonF triangle;
-    triangle<<QPoint(nImgX,triRC.top()) ;
-    triangle<<QPoint(nImgX+nTriLen,triRC.top()) ;
-    triangle<<QPoint(nImgX+nTriLen/2,triRC.top() + nTriLen/2 * sqrt(3)) ;
+    triangle<<QPoint(nImgX,triRC.top());
+    triangle<<QPoint(nImgX+nTriLen,triRC.top());
+    triangle<<QPoint(nImgX+nTriLen/2,triRC.top() + nTriLen/2 * sqrt(3));
     painter.drawPolygon(triangle);
 
     painter.setBrush(0xFAF7FF);
@@ -82,8 +87,7 @@ void keySetTooltip::paintEvent(QPaintEvent *event)
 
 KeyboardButton::KeyboardButton(QWidget *parent):QPushButton(parent)
 {
-    QTimer::singleShot(100,this,[=]{ setTipText(); });
-
+    QTimer::singleShot(300,this,[=]{ setTipText(); });
 }
 
 static QString strBasic(R"(

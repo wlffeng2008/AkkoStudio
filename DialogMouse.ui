@@ -36,25 +36,26 @@
 *:disabled{color:darkgray; }
 #DialogMouse,#pag0{ background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 #1F1F1F , stop:1 #191919);}
 
+QToolTip{color:black;}
 QLabel{color:white;font-size:16px;}
-QCheckBox,QRadioButton{color:white;font-size:16px;}
+QCheckBox,QRadioButton{color:white;font-size:16px;min-height:32px;}
 QSpinBox{color:white;font-size:16px;}
 QDoubleSpinBox{color:white;font-size:16px;}
 #stackWidget{margin-left:20px;margin-bottom:20px;}
 QPushButton{font: 16px 'MiSans' bold; color:white; border: 1px solid white; background: none; min-height:32px;border-radius:16px; padding: 0 4px;}
 
-        QSlider { border-radius: 12px; height: 24px; }
+        QSlider { border-radius: 12px; height: 26px; }
         QSlider::groove:horizontal { height: 10px; background: #393939; border-radius: 5px; }
         QSlider::sub-page:horizontal { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #5C2CAE, stop:1 #5C2CAE);  border-radius: 5px; }
         QSlider::sub-page:horizontal:disabled { background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 white, stop:1 #B3B3B3);  border-radius: 5px; }
         QSlider::handle:horizontal:disabled { border: 2px solid #B3B3B3; }
         QSlider::handle:horizontal {
-            width: 30px;
-            height: 12px;
-            margin: -3px 0;
-            border-radius: 4px;
+            width: 22px;
+            height:24px;
+            margin: -8px 0;
+            border-radius: 13px;
             background: white;
-            border: none; }
+            border: 3px solid #5C2CAE ; }
 
  QMessageBox {min-width: 400px; min-height: 240px;}
  QMessageBox QPushButton {
@@ -234,6 +235,15 @@ QRadioButton:disabled {
    <property name="spacing">
     <number>20</number>
    </property>
+   <property name="leftMargin">
+    <number>15</number>
+   </property>
+   <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
    <item>
     <widget class="QFrame" name="frameTitle">
      <property name="styleSheet">
@@ -377,7 +387,7 @@ QRadioButton:disabled {
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <property name="rightMargin">
-      <number>10</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QFrame" name="frameLeft">
@@ -426,6 +436,9 @@ QPushButton:hover { border: 1px solid #6329B6; }
          <number>20</number>
         </property>
         <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <item>
@@ -808,7 +821,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -1306,7 +1319,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidgetPickKey">
                     <property name="currentIndex">
-                     <number>3</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page00">
                      <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -4498,7 +4511,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                         <property name="sizeHint" stdset="0">
                          <size>
                           <width>20</width>
-                          <height>40</height>
+                          <height>30</height>
                          </size>
                         </property>
                        </spacer>
@@ -4663,7 +4676,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                         <property name="sizeHint" stdset="0">
                          <size>
                           <width>20</width>
-                          <height>40</height>
+                          <height>30</height>
                          </size>
                         </property>
                        </spacer>
@@ -4901,7 +4914,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string/>
+                <string notr="true"/>
                </property>
               </widget>
              </item>
@@ -4921,7 +4934,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string/>
+                <string notr="true"/>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -5047,7 +5060,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                  <number>50</number>
                 </property>
                 <property name="maximum">
-                 <number>30000</number>
+                 <number>42000</number>
                 </property>
                 <property name="singleStep">
                  <number>50</number>
@@ -5340,7 +5353,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                  <item>
                   <widget class="QLabel" name="label_XMax">
                    <property name="text">
-                    <string notr="true">30000 DPI</string>
+                    <string notr="true">42000 DPI</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -5495,7 +5508,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                  <number>50</number>
                 </property>
                 <property name="maximum">
-                 <number>30000</number>
+                 <number>42000</number>
                 </property>
                 <property name="singleStep">
                  <number>50</number>
@@ -5797,7 +5810,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                  <item>
                   <widget class="QLabel" name="label_YMax">
                    <property name="text">
-                    <string notr="true">30000 DPI</string>
+                    <string notr="true">42000 DPI</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -5831,11 +5844,172 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
            <property name="spacing">
-            <number>40</number>
+            <number>30</number>
            </property>
-           <property name="leftMargin">
-            <number>20</number>
-           </property>
+           <item>
+            <widget class="QFrame" name="frameBHOP">
+             <layout class="QGridLayout" name="gridLayout_11" columnstretch="0,1">
+              <property name="spacing">
+               <number>20</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_65">
+                <property name="text">
+                 <string>BHOP开关</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="ToggleButton" name="checkBoxBHOP">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_49">
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP0">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>100</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP1">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>200</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP2">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>300</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP3">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>400</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP4">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>500</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP5">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>600</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP6">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>700</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP7">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>800</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP8">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>900</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonBHOP9">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>1000</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroupBHOP</string>
+                  </attribute>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_64">
+                <property name="text">
+                 <string>BHOP灵敏度</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item>
             <layout class="QGridLayout" name="gridLayout_5">
              <property name="bottomMargin">
@@ -5847,66 +6021,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
              <property name="verticalSpacing">
               <number>50</number>
              </property>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_43">
-               <property name="text">
-                <string>灯光亮度</string>
-               </property>
-              </widget>
-             </item>
              <item row="2" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_21">
-               <property name="spacing">
-                <number>20</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="CustumSlider" name="horizontalSliderBrightness">
-                 <property name="minimum">
-                  <number>1</number>
-                 </property>
-                 <property name="maximum">
-                  <number>100</number>
-                 </property>
-                 <property name="value">
-                  <number>50</number>
-                 </property>
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QSpinBox" name="spinBoxLumi">
-                 <property name="minimumSize">
-                  <size>
-                   <width>100</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                 </property>
-                 <property name="maximum">
-                  <number>100</number>
-                 </property>
-                 <property name="value">
-                  <number>50</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_41">
-               <property name="text">
-                <string>呼吸速度</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_14">
                <property name="spacing">
                 <number>42</number>
@@ -5994,8 +6109,87 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
               </layout>
              </item>
-             <item row="3" column="1">
+             <item row="1" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_13">
+               <property name="spacing">
+                <number>30</number>
+               </property>
+               <item>
+                <widget class="QRadioButton" name="radioButtonE0">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>关闭</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">buttonGroupRgbEffect</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="radioButtonE1">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>常亮</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">buttonGroupRgbEffect</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="radioButtonE2">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>呼吸</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">buttonGroupRgbEffect</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_43">
+               <property name="text">
+                <string>灯光亮度</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0" alignment="Qt::AlignmentFlag::AlignTop">
+              <widget class="QLabel" name="label_45">
+               <property name="text">
+                <string>灯光颜色</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_22">
+               <property name="spacing">
+                <number>20</number>
+               </property>
                <item>
                 <widget class="QFrame" name="frameColorPack">
                  <property name="styleSheet">
@@ -6028,17 +6222,10 @@ QPushButton:checked{border: 2px solid white;}</string>
                    <number>0</number>
                   </property>
                   <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="0,0,0,0,0,0,0,0,0,0">
+                   <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="0,0,0,0,0,0,0,0">
                     <property name="spacing">
                      <number>10</number>
                     </property>
-                    <item alignment="Qt::AlignmentFlag::AlignLeft">
-                     <widget class="QLabel" name="label_49">
-                      <property name="text">
-                       <string>DPI：</string>
-                      </property>
-                     </widget>
-                    </item>
                     <item>
                      <widget class="QPushButton" name="pushButtonDpiSelect0">
                       <property name="sizePolicy">
@@ -6361,19 +6548,6 @@ QPushButton:checked{border: 2px solid white;}</string>
                        <string notr="true">buttonGroupDpiSelect</string>
                       </attribute>
                      </widget>
-                    </item>
-                    <item>
-                     <spacer name="horizontalSpacer_7">
-                      <property name="orientation">
-                       <enum>Qt::Orientation::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
                     </item>
                    </layout>
                   </item>
@@ -6748,79 +6922,62 @@ background-color: rgb(199, 199, 199);</string>
                </item>
               </layout>
              </item>
-             <item row="0" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_13">
+             <item row="3" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_21">
                <property name="spacing">
-                <number>30</number>
+                <number>20</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
                </property>
                <item>
-                <widget class="QRadioButton" name="radioButtonE0">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
+                <widget class="CustumSlider" name="horizontalSliderBrightness">
+                 <property name="minimum">
+                  <number>1</number>
                  </property>
-                 <property name="text">
-                  <string>关闭</string>
+                 <property name="maximum">
+                  <number>100</number>
                  </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">buttonGroupRgbEffect</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item>
-                <widget class="QRadioButton" name="radioButtonE1">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
+                 <property name="value">
+                  <number>50</number>
                  </property>
-                 <property name="text">
-                  <string>常亮</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">buttonGroupRgbEffect</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item>
-                <widget class="QRadioButton" name="radioButtonE2">
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="text">
-                  <string>呼吸</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">buttonGroupRgbEffect</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_8">
                  <property name="orientation">
                   <enum>Qt::Orientation::Horizontal</enum>
                  </property>
-                 <property name="sizeHint" stdset="0">
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxLumi">
+                 <property name="minimumSize">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>100</width>
+                   <height>32</height>
                   </size>
                  </property>
-                </spacer>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>50</number>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_14">
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_41">
                <property name="text">
-                <string>灯光效果</string>
+                <string>呼吸速度</string>
                </property>
               </widget>
              </item>
-             <item row="3" column="0" alignment="Qt::AlignmentFlag::AlignTop">
-              <widget class="QLabel" name="label_45">
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_14">
                <property name="text">
-                <string>灯光颜色</string>
+                <string>灯光效果</string>
                </property>
               </widget>
              </item>
@@ -6871,7 +7028,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <property name="spacing">
-                <number>20</number>
+                <number>10</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_2">
@@ -6882,6 +7039,12 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
                <item>
                 <widget class="ToggleButton" name="checkBoxLine">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize">
                   <size>
                    <width>64</width>
@@ -6894,8 +7057,11 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                    <height>32</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
-                  <string/>
+                  <string notr="true"/>
                  </property>
                 </widget>
                </item>
@@ -6921,6 +7087,12 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
                <item>
                 <widget class="ToggleButton" name="checkBoxSyncMove">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize">
                   <size>
                    <width>64</width>
@@ -6933,8 +7105,11 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                    <height>32</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
-                  <string/>
+                  <string notr="true"/>
                  </property>
                 </widget>
                </item>
@@ -6960,6 +7135,12 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
                <item>
                 <widget class="ToggleButton" name="checkBoxWaveCtrl">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize">
                   <size>
                    <width>64</width>
@@ -6972,8 +7153,11 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                    <height>32</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
-                  <string/>
+                  <string notr="true"/>
                  </property>
                 </widget>
                </item>
@@ -6999,6 +7183,12 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                </item>
                <item>
                 <widget class="ToggleButton" name="checkBox20000FPS">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize">
                   <size>
                    <width>64</width>
@@ -7011,8 +7201,59 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                    <height>32</height>
                   </size>
                  </property>
+                 <property name="toolTip">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
-                  <string/>
+                  <string notr="true"/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_15">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_63">
+                 <property name="text">
+                  <string>移动关闭LED</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ToggleButton" name="checkBoxMoveOffLed">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>64</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>64</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string notr="true"/>
                  </property>
                 </widget>
                </item>
@@ -7035,7 +7276,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
               </spacer>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_4">
+              <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1,0">
                <item>
                 <widget class="QLabel" name="label_8">
                  <property name="text">
@@ -7069,7 +7310,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="1,2,2,2,2,2,1">
                  <item>
                   <widget class="QLabel" name="label_22">
                    <property name="styleSheet">
@@ -7182,7 +7423,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
               </spacer>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_5">
+              <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1,0">
                <item>
                 <widget class="QLabel" name="label_9">
                  <property name="text">
@@ -7216,8 +7457,8 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_11">
-                 <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1,2,2,2,2,1">
+                 <item alignment="Qt::AlignmentFlag::AlignLeft">
                   <widget class="QLabel" name="label_29">
                    <property name="styleSheet">
                     <string notr="true">QLabel{font-size:14px;}</string>
@@ -7282,7 +7523,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                    </property>
                   </widget>
                  </item>
-                 <item>
+                 <item alignment="Qt::AlignmentFlag::AlignRight">
                   <widget class="QLabel" name="label_34">
                    <property name="styleSheet">
                     <string notr="true">QLabel{font-size:14px;}</string>
@@ -7316,7 +7557,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
               </spacer>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,0">
+              <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,1,0">
                <item>
                 <widget class="QLabel" name="label_11">
                  <property name="text">
@@ -7359,7 +7600,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="1,2,2,2,2,2,1">
                  <item>
                   <widget class="QLabel" name="label_36">
                    <property name="styleSheet">
@@ -7515,12 +7756,12 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_17" stretch="0,0,1">
                 <property name="spacing">
-                 <number>0</number>
+                 <number>2</number>
                 </property>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_41" stretch="0,0,0,1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_41" stretch="0,0,0,0,1">
                   <property name="spacing">
-                   <number>40</number>
+                   <number>10</number>
                   </property>
                   <item alignment="Qt::AlignmentFlag::AlignLeft">
                    <widget class="QLabel" name="label_12">
@@ -7533,7 +7774,26 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                    </widget>
                   </item>
                   <item>
+                   <spacer name="horizontalSpacer_7">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>60</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_45">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
                     <item alignment="Qt::AlignmentFlag::AlignLeft">
                      <widget class="QLabel" name="label_58">
                       <property name="text">
@@ -7829,11 +8089,11 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
         QSlider::sub-page:vertical:disabled { background: lightgray; }
         QSlider::handle:vertical {
             width: 64px;
-            height: 6px;
+            height: 12px;
             margin: -2px -6px;
-            border-radius: 3px;
+            border-radius: 6px;
             background: white ;
-            border: 2px solid white; }</string>
+            border: 3px solid #5C2CAE; }</string>
                     </property>
                     <property name="minimum">
                      <number>0</number>
@@ -7870,6 +8130,9 @@ background-color:transparent;
 border-radius:6px;
 }</string>
                     </property>
+                    <property name="readOnly">
+                     <bool>false</bool>
+                    </property>
                     <property name="suffix">
                      <string> mm</string>
                     </property>
@@ -7883,7 +8146,7 @@ border-radius:6px;
                      <double>2.000000000000000</double>
                     </property>
                     <property name="value">
-                     <double>1.100000000000000</double>
+                     <double>1.000000000000000</double>
                     </property>
                    </widget>
                   </item>
@@ -8084,8 +8347,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>279</width>
-                     <height>71</height>
+                     <width>296</width>
+                     <height>699</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -8197,7 +8460,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <number>0</number>
                       </property>
                       <item>
-                       <widget class="QLabel" name="labelTitle1">
+                       <widget class="QLabel" name="labelCurrentMacro">
                         <property name="font">
                          <font>
                           <family>MiSans</family>
@@ -8317,8 +8580,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>79</width>
-                        <height>73</height>
+                        <width>1029</width>
+                        <height>645</height>
                        </rect>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -8565,6 +8828,9 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_27" stretch="1,0">
+               <property name="rightMargin">
+                <number>50</number>
+               </property>
                <item>
                 <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,1">
                  <property name="horizontalSpacing">
@@ -9071,6 +9337,7 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  <buttongroups>
   <buttongroup name="buttonGroupKeySet"/>
   <buttongroup name="buttonGroupSuper"/>
+  <buttongroup name="buttonGroupBHOP"/>
   <buttongroup name="buttonGroupRgbEffect"/>
   <buttongroup name="buttonGroupY"/>
   <buttongroup name="buttonGroupClr"/>

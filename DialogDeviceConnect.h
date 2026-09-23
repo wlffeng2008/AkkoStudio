@@ -95,7 +95,7 @@ protected:
         MSG* msg = reinterpret_cast<MSG*>(message);
         if (msg->message == WM_DEVICECHANGE)
         {
-            qDebug() << "USBNotifier::nativeEventFilter: " << msg->wParam << msg->lParam;
+            //qDebug() << "USBNotifier::nativeEventFilter: " << msg->wParam << msg->lParam;
             //if(msg->wParam == DBT_DEVICEARRIVAL       )  emit devicePluggined(true);
             //if(msg->wParam == DBT_DEVICEREMOVECOMPLETE)  emit devicePluggined(false);
             emit devicePluggined(true);

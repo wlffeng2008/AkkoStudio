@@ -28,7 +28,7 @@ void SetLineEditTipColor(QLineEdit *edit,const QColor&color){
     QRect rect(0,0,image.rect().height(),image.rect().height());
     painter.setPen(Qt::NoPen);
     painter.setBrush(color);
-    painter.drawRoundedRect(rect.adjusted(2,2,-2,-2),8,8);
+    painter.drawRoundedRect(rect.adjusted(2,1,-2,-3),8,8);
 
     QString strFile = QApplication::applicationDirPath() + "/images/" + edit->objectName() + ".png";
     image.save(strFile);
@@ -64,7 +64,7 @@ void SetButtonTipColor(QPushButton *button,const QColor&color){
     QRect rect(0,0,image.rect().height(),image.rect().height());
     painter.setPen(Qt::NoPen);
     painter.setBrush(color);
-    painter.drawRoundedRect(rect.adjusted(4,4,-6,-6),8,8);
+    painter.drawRoundedRect(rect.adjusted(4,4,-6,-8),8,8);
 
     QString strFile = QApplication::applicationDirPath() + "/images/" + button->objectName() + ".png";
     image.save(strFile);
@@ -73,7 +73,7 @@ void SetButtonTipColor(QPushButton *button,const QColor&color){
     QPushButton {
         padding-left: %1px;
 
-        border:1px solid transparent;
+        border:2px solid transparent;
         border-radius:8px;
         background-image: url(%2);
         background-repeat: no-repeat;
@@ -85,14 +85,15 @@ void SetButtonTipColor(QPushButton *button,const QColor&color){
         text-align:left;
     }
 
-    QPushButton:checked { border:1px solid %3; }
+    QPushButton:checked { border:2px solid %3; }
 
 )").arg(rect.height() + 8).arg(strFile).arg(color.name());
 
     button->setStyleSheet(strSheet);
 }
 
-void SetButtonBackground(QPushButton *button,bool left=true,const QString&newText="",const QColor&colorChecked=QColor("#6329B6"),const QColor&colorBG=QColor("gray")){
+void SetButtonBackground(QPushButton *button,bool left=true,const QString&newText="",const QColor&colorChecked=QColor("#6329B6"),const QColor&colorBG=QColor("gray"))
+{
     QImage image(button->size(),QImage::Format_ARGB32);
     image.fill(Qt::transparent);
 
@@ -127,9 +128,26 @@ void SetButtonBackground(QPushButton *button,bool left=true,const QString&newTex
     painter.setBrush(Qt::NoBrush);
     painter.drawArc(destRc0,0,360*16);
 
-    painter.setPen(Qt::white);
+    int ior = 1;
+    QLinearGradient lg(0, 0, ior, 1-ior);
+    lg.setCoordinateMode(QGradient::StretchToDeviceMode);
+    if(!left)
+    {
+        lg.setColorAt(0,QColor("#40FFFFFF"));
+        lg.setColorAt(1,QColor("#FFFFFFFF"));
+    }
+    else
+    {
+        lg.setColorAt(0,QColor("#FFFFFFFF"));
+        lg.setColorAt(1,QColor("#40FFFFFF"));
+    }
+
+    painter.setPen(QPen(QBrush(lg),2.0));
+
     painter.setBrush(colorChecked);
     painter.drawRoundedRect(textRc,12,12);
+
+    painter.setPen(Qt::white);
     painter.drawText(textRc,text,QTextOption(Qt::AlignCenter));
     if(!image.save(strFile1))
     {
@@ -144,9 +162,11 @@ void SetButtonBackground(QPushButton *button,bool left=true,const QString&newTex
     painter.setBrush(Qt::NoBrush);
     painter.drawArc(destRc0,0,360*16);
 
-    painter.setPen(Qt::white);
+    painter.setPen(QPen(QBrush(lg),2.0));
     painter.setBrush(Qt::NoBrush);
     painter.drawRoundedRect(textRc,12,12);
+
+    painter.setPen(Qt::white);
     painter.drawText(textRc,text,QTextOption(Qt::AlignCenter));
 
     if(!image.save(strFile0))
@@ -155,20 +175,20 @@ void SetButtonBackground(QPushButton *button,bool left=true,const QString&newTex
     }
 
     QString strSheet = QString(R"(
-    QPushButton {
-        border:1px solid transparent;
-        background-color: transparent;
-        background-image: url(%1);
-        background-repeat: no-repeat;
-        min-height:32px;
-        min-width:120px;
-        color:transparent;
-    }
+        QPushButton {
+            border:1px solid transparent;
+            background-color: transparent;
+            background-image: url(%1);
+            background-repeat: no-repeat;
+            min-height:32px;
+            min-width:120px;
+            color:transparent;
+        }
 
-    QPushButton:hover { background-image: url(%2); }
-    QPushButton:checked { background-image: url(%3); }
+        QPushButton:hover { background-image: url(%2); }
+        QPushButton:checked { background-image: url(%3); }
 
-)").arg(strFile0).arg(strFile1).arg(strFile1);
+    )").arg(strFile0).arg(strFile1).arg(strFile1);
 
     button->setStyleSheet(strSheet);
 }
@@ -176,6 +196,7 @@ void SetButtonBackground(QPushButton *button,bool left=true,const QString&newTex
 // SDK 单例
 static InfortechDevice* serviceDevice = nullptr;
 static bool mouseChanged = false;
+static bool connected = false;
 
 // 回调函数
 auto deviceStateChange(const InfortechDef::DevMsg& msg)
@@ -417,7 +438,7 @@ void refreshMacroItem(QStandardItem *item)
 {
     if(!item) return;
     macroItem *macro = reinterpret_cast<macroItem *>(item->data().toULongLong());
-    QString text=QString("%1: %2\n延迟：%3ms").arg(keyMapset[macro->defId], macro->down?"按下":"松开").arg(macro->delay);
+    QString text=QString("%1 %2\n%3 ms").arg(keyMapset[macro->defId], macro->down?"↓":"↑").arg(macro->delay);
     item->setText(text);
 }
 
@@ -427,8 +448,8 @@ void DialogMouse::addMacroItem(int defId,int delay,int type,bool down)
     if(count >= 70) return;
     if(!m_recording) return;
 
-    static bool lastFlag = 0 ;
-    static int lastDefId= 0 ;
+    static bool lastFlag = 0;
+    static int lastDefId = 0;
     if(down == lastFlag && lastDefId == defId)
         return;
 
@@ -455,7 +476,12 @@ void DialogMouse::addMacroItem(int defId,int delay,int type,bool down)
 
     if(item)
     {
+        QModelIndex index = m_pModel->index(row, col);
         item->setData((quint64)m_lastItem);
+        ui->tableViewMContent->selectionModel()->select(index,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+        ui->tableViewMContent->selectionModel()->setCurrentIndex(index,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+        ui->tableViewMContent->scrollTo(index, QAbstractItemView::PositionAtCenter);
+
         refreshMacroItem(item);
         macroGroup.push_back(m_lastItem);
     }
@@ -604,8 +630,12 @@ void DialogMouse::saveLoadMacroContent(int macroId, QList<macroItem*>&macroConte
 
 void DialogMouse::startConnect()
 {
+    QElapsedTimer tm;
+    tm.start();
     serviceDevice = InfortechDevice::getInstance();
     serviceDevice->openLog(false);
+    qDebug() << tm.elapsed();
+    tm.restart();
 
     // 设置设备信息
     //serviceDevice->addMouseInf(0x1A86, 0x8501);
@@ -624,17 +654,21 @@ void DialogMouse::startConnect()
     // 注册通知函数
     serviceDevice->regDevChangeCall(deviceStateChange);
 
+    qDebug() << tm.elapsed();
+    tm.restart();
     auto deviceSet = serviceDevice->getDevices();
+
+    qDebug() << tm.elapsed() << deviceSet.size();
+    tm.restart();
     if(deviceSet.size())
     {
-        serviceDevice->connectDevice(deviceSet[0]);
+        connected = serviceDevice->connectDevice(deviceSet[0]);
         serviceDevice->initDevice();
-
         getAllCfg();
     }
 
     QTimer *pMonitorTM = new QTimer(this);
-    pMonitorTM->start(100);
+    pMonitorTM->start(500);
     connect(pMonitorTM,&QTimer::timeout,this,[=]{
         if(mouseChanged)
         {
@@ -793,9 +827,10 @@ DialogMouse::DialogMouse(QWidget *parent)
         connect(ui->buttonGroupKeySet,&QButtonGroup::idClicked,this,[=](int id){
             QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupKeySet->button(id));
             seletetKey = pBtn->objectName().replace("pushButtonMkey","").toInt();
-            if(seletetKey == 1701 || seletetKey == 1702)
+
+            if((seletetKey == 1701 && !ui->checkBoxExchange->isChecked()) || (seletetKey == 1702 && ui->checkBoxExchange->isChecked()))
             {
-                QMessageBox::warning(this,"提示","鼠标的 左键和右键 功能不能被改动！");
+                QMessageBox::warning(this,"提示","鼠标的左按键和右按键 必须保留一个有左键功能！");
                 return;
             }
 
@@ -1085,10 +1120,8 @@ DialogMouse::DialogMouse(QWidget *parent)
                 dpiColors[dpiIndex] = color.name();
                 preColors[dpiIndex] = color.name();
 
-                pDpiSelBrn->setFixedSize(44,44);
-                pDpiSelBrn->setStyleSheet(QString("QPushButton{background-color: %1; border-radius:20px;}").arg(color.name()));
+                pDpiSelBrn->setStyleSheet(QString("QPushButton{background-color: %1; border-radius:10px;}").arg(color.name()));
                 serviceDevice->setDpiColor(dpiIndex,color.name().toStdString().c_str());
-                qDebug()<<pDpiSelBrn->size();
 
                 SetButtonTipColor(btnsX[dpiIndex],color.name());
                 SetButtonTipColor(btnsY[dpiIndex],color.name());
@@ -1126,12 +1159,12 @@ DialogMouse::DialogMouse(QWidget *parent)
                 SetButtonTipColor(btnsX[i],dpiColors[i]);
                 SetButtonTipColor(btnsY[i],dpiColors[i]);
 
-                btnsSelect[i]->setFixedSize(44,44);
+                btnsSelect[i]->setFixedSize(40,40);
                 btnsSelect[i]->setStyleSheet(QString(R"(
                     QPushButton{
-                        border-radius: 20px;
+                        border-radius: 10px;
                         background-color: %1;
-                        color: transparent;
+                        color: white;
                         border:2px solid transparent;
                         qproperty-flat:true;
                     }
@@ -1250,6 +1283,19 @@ DialogMouse::DialogMouse(QWidget *parent)
         static QList<int> sleepTimes={10,30,60,120,180,900,1800};
         static QList<int> shakeDelays={1,2,4,8,15,20};
         static QList<int> slientHeights={700,1000,2000};
+        static QList<int> bhopValues={100,200,300,400,500,600,700,800,900,1000};
+        static QRadioButton *btnBHOPs[]={
+            ui->radioButtonBHOP0,
+            ui->radioButtonBHOP1,
+            ui->radioButtonBHOP2,
+            ui->radioButtonBHOP3,
+            ui->radioButtonBHOP4,
+            ui->radioButtonBHOP5,
+            ui->radioButtonBHOP6,
+            ui->radioButtonBHOP7,
+            ui->radioButtonBHOP8,
+            ui->radioButtonBHOP9
+        };
 
         connect(ui->horizontalSlider00,&QSlider::valueChanged,this,[=](int value){
             serviceDevice->setReportRate(reportRates[value]);
@@ -1264,6 +1310,28 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         connect(ui->verticalSlider00,&QSlider::valueChanged,this,[=](int value){
             serviceDevice->setSilenceHeight(slientHeights[value]);
+
+            ui->doubleSpinBox->blockSignals(true);
+            ui->doubleSpinBox->setValue(slientHeights[value]/1000.0);
+            ui->doubleSpinBox->blockSignals(false);
+        });
+
+        connect(ui->doubleSpinBox,&QDoubleSpinBox::valueChanged,[=](double value){
+            if(value < 1.00)
+            {
+                ui->verticalSlider00->setValue(0);
+                return;
+            }
+
+            if(value <= 1.70)
+            {
+                ui->verticalSlider00->setValue(1);
+                return;
+            }
+
+            {
+                ui->verticalSlider00->setValue(2);
+            }
         });
 
         connect(ui->checkBoxAngle,&QCheckBox::clicked,this,[=](bool checked){
@@ -1277,9 +1345,16 @@ DialogMouse::DialogMouse(QWidget *parent)
         connect(ui->checkBox20000FPS,&QCheckBox::clicked,this,[=](bool checked){
             serviceDevice->setCompetitiveMode(checked);
         });
+        connect(ui->checkBoxMoveOffLed,&QCheckBox::clicked,this,[=](bool checked){
+            serviceDevice->setMoveOffLed(checked);
+        });
 
         connect(ui->checkBoxSyncMove,&QCheckBox::clicked,this,[=](bool checked){
             serviceDevice->setMotionSync(checked);
+        });
+
+        connect(ui->checkBoxWaveCtrl,&QCheckBox::clicked,this,[=](bool checked){
+            serviceDevice->setRippleControl(checked);
         });
         connect(ui->checkBoxWaveCtrl,&QCheckBox::clicked,this,[=](bool checked){
             serviceDevice->setRippleControl(checked);
@@ -1303,12 +1378,20 @@ DialogMouse::DialogMouse(QWidget *parent)
         ui->horizontalSlider01->setShowMark();
         ui->horizontalSlider02->setShowMark();
 
+        connect(ui->checkBoxBHOP,&QCheckBox::clicked,this,[=](bool checked){
+            serviceDevice->setBHOPMode(checked);
+        });
+        connect(ui->buttonGroupBHOP,&QButtonGroup::buttonClicked,this,[=](QAbstractButton *btn){
+            QString name = btn->objectName();
+            int index = name.replace("radioButtonBHOP","").trimmed().toInt();
+            serviceDevice->setBHOPValue(bhopValues[index]);
+        });
+
+        ui->frameBHOP->hide();
         connect(this,&DialogMouse::genUpdate,this,[=]{
             auto mouseCfg = serviceDevice->getMouseCfg();
 
             // std::cout
-            //     << "isSupportMoveOffLed: " << (mouseCfg->isSupportMoveOffLed ? "true" : "false") << "\n"
-            //     << "moveOffLed: " << (mouseCfg->moveOffLed ? "true" : "false") << "\n"
             //     << "isSupportDpiLight: " << (mouseCfg->isSupportDpiLight ? "true" : "false") << "\n"
 
             //     << "ambientEffect: " << (int)mouseCfg->ambientEffect << "\n"
@@ -1320,11 +1403,22 @@ DialogMouse::DialogMouse(QWidget *parent)
             ui->horizontalSlider02->setValue(sleepTimes.indexOf((int)mouseCfg->sleepTime));
             ui->verticalSlider00->setValue(slientHeights.indexOf((int)mouseCfg->silenceHeight));
 
+            ui->frameBHOP->setVisible(mouseCfg->isSupportBhop);
+            if(mouseCfg->isSupportBhop)
+            {
+                qDebug() << bhopValues.indexOf(mouseCfg->bhopValue) << mouseCfg->bhopValue;
+                btnBHOPs[bhopValues.indexOf(mouseCfg->bhopValue)]->setChecked(true);
+                ui->checkBoxBHOP->setChecked(mouseCfg->bhopEnable);
+            }
+
+
             ui->checkBoxLine->setChecked(mouseCfg->straight);
             ui->checkBox20000FPS->setChecked(mouseCfg->competitiveMode);
+            ui->checkBoxMoveOffLed->setChecked(mouseCfg->moveOffLed);
             ui->checkBoxSyncMove->setChecked(mouseCfg->motinSync);
             ui->checkBoxWaveCtrl->setChecked(mouseCfg->rippleControl);
         });
+
     }
 
     ui->labelAngleShow->setStyleSheet("QLabel{background-color:transparent;}");
@@ -1391,29 +1485,25 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         m_MLDele1 = new ImageDelegate(":/images/mouse/edit-0.png",ui->tableViewMList,1,this);
         m_MLDele2 = new ImageDelegate(":/images/mouse/delete-0.png",ui->tableViewMList,2,this);
-        QFont font = ui->tableViewMList->font();
-        //font.setBold(true);
-        font.setPixelSize(16);
 
         saveLoadMacroHeader(false);
 
         connect(ui->tableViewMList,&QTableView::clicked,this,[=](const QModelIndex &index){
             QStandardItem *item = m_pMList->itemFromIndex(index);
-
             m_currentId = item->data().toInt();
-            QList<macroItem*>mEvts;
-            saveLoadMacroContent(m_currentId,mEvts,false);
-
             ui->pushButtonClear->click();
 
-            int count = mEvts.count();
+            saveLoadMacroContent(m_currentId,macroGroup,false);
+
+            int count = macroGroup.count();
             for(int i=0; i<count; i++)
             {
                 QStandardItem *item = m_pModel->item(i/6,i%6);
-                if(item) item->setData((quint64)mEvts[i]);
+                if(item) item->setData((quint64)macroGroup[i]);
                 refreshMacroItem(item);
             }
-            ui->labelTitle4->setText(QString("%1 / 70").arg(count));
+            ui->labelTitle4->setText(QString("占用: %1 / 70").arg(count));
+            ui->labelCurrentMacro->setText(m_pMList->item(item->row())->text());
         });
 
         connect(m_pMList,&QStandardItemModel::itemChanged,this,[=](QStandardItem *item){
@@ -1463,6 +1553,11 @@ DialogMouse::DialogMouse(QWidget *parent)
             QTimer::singleShot(200,this,[=]{
                 m_recording = ui->pushButtonRecord->isChecked();
                 saveLoadMacroContent(m_currentId,macroGroup,true);
+                ui->pushButtonRecord->setText(m_recording?"正在录制...":"开始录制");
+                if(!m_recording)
+                {
+                    ui->pushButtonDelete->click();
+                }
             });
 
             setFocusPolicy(Qt::StrongFocus);
@@ -1472,7 +1567,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         connect(ui->pushButtonClear,&QPushButton::clicked,this,[=]{
             m_lastItem = nullptr;
             macroGroup.clear();
-            ui->labelTitle4->setText("0 / 70");
+            ui->labelTitle4->setText("占用: 0 / 70");
             for(int m=0;m<12;m++)
             {
                 for(int n=0; n<6; n++)
@@ -1486,7 +1581,6 @@ DialogMouse::DialogMouse(QWidget *parent)
                 this, [=](const QItemSelection &selected, const QItemSelection &deselected){
                     for(auto idx : selected.indexes())
                     {
-                        QStandardItem* item = m_pModel->itemFromIndex(idx);
                     }
                 });
 
@@ -1494,45 +1588,49 @@ DialogMouse::DialogMouse(QWidget *parent)
             m_lastItem = nullptr;
             QStandardItem* item = nullptr;
             QModelIndexList selecteds = ui->tableViewMContent->selectionModel()->selectedIndexes();
+            qDebug() << selecteds;
             if(selecteds.count())
-                item = m_pModel->itemFromIndex(selecteds.at(0)) ;
+                item = m_pModel->itemFromIndex(selecteds.at(0));
             int count = macroGroup.count();
             if(count>0 && item)
             {
                 int index = item->row() * 6 + item->column();
+                qDebug() << "delete Item: " <<index << count;
+                if(index >= count)
+                    return;
+                bool delDouble = (count%2  == 0);
 
-                if(index<count)
+                if(index%2 == 0)
                 {
-                    if(index%2 == 0)
+                    macroGroup.removeAt(index);
+                    if(delDouble && (index < macroGroup.count()))
+                    macroGroup.removeAt(index);
+                }
+                else
+                {
+                    macroGroup.removeAt(index-1);
+                    if(delDouble && (index-1 < macroGroup.count()))
+                    macroGroup.removeAt(index-1);
+                }
+
+                for(int m=0;m<12;m++)
+                {
+                    for(int n=0; n<6; n++)
                     {
-                        macroGroup.removeAt(index);
-                        macroGroup.removeAt(index);
-                    }
-                    else
-                    {
-                        macroGroup.removeAt(index-1);
-                        macroGroup.removeAt(index-1);
+                        m_pModel->item(m,n)->setText("");
                     }
                 }
-            }
 
-            for(int m=0;m<12;m++)
-            {
-                for(int n=0; n<6; n++)
+                count = macroGroup.count();
+                for(int i=0; i<count; i++)
                 {
-                    m_pModel->item(m,n)->setText("");
+                    QStandardItem *item = m_pModel->item(i/6,i%6);
+                    if(item) item->setData((quint64)macroGroup[i]);
+                    refreshMacroItem(item);
                 }
+                ui->labelTitle4->setText(QString("占用: %1 / 70").arg(count));
+                saveLoadMacroContent(m_currentId,macroGroup,true);
             }
-
-            count = macroGroup.count();
-            for(int i=0; i<count; i++)
-            {
-                QStandardItem *item = m_pModel->item(i/6,i%6);
-                if(item) item->setData((quint64)macroGroup[i]);
-                refreshMacroItem(item);
-            }
-            ui->labelTitle4->setText(QString("%1 / 70").arg(count));
-            saveLoadMacroContent(m_currentId,macroGroup,true);
         });
 
         connect(ui->pushButtonSetDelay,&QPushButton::clicked,this,[=]{
@@ -1624,12 +1722,16 @@ void DialogMouse::updateButtonInfo()
             auto macroKeyData = item.cfg->getMacroKeyInf();
             if (macroKeyData != nullptr)
             {
-                strChangedText = QString::asprintf("宏设置: ID: %d, 类型: %d, 数据量: %d\n",macroKeyData->macroId,macroKeyData->macroType,macroKeyData->cycleNumber);
+                strChangedText = QString::asprintf("宏设置: ID: %d, 类型: %d, 动作数量: %d\n",macroKeyData->macroId,macroKeyData->macroType,macroKeyData->data.size());
 
+                int gets = 0;
                 for (auto item : macroKeyData->data) {
-                    strChangedText += QString("动作: ")  + (item.action == InfortechDef::Action::Press ? "按下" : "松开");
-                    strChangedText += QString(",按键: ") + (getKeyNameByDF(item.keyId));
-                    strChangedText += QString(",延迟: %1\n").arg(item.delayTime);
+                    strChangedText += QString("") + (getKeyNameByDF(item.keyId));
+                    strChangedText += QString(" ") + (item.action == InfortechDef::Action::Press ? "↓":"↑");
+                    strChangedText += QString::asprintf(" %4dms, ",item.delayTime);
+                    gets++;
+                    if(gets%6 == 0)
+                        strChangedText+="\n";
                 }
             }
             break;
@@ -1675,8 +1777,6 @@ void DialogMouse::keyPressEvent(QKeyEvent *event)
 {
     auto key = event->key();
 
-    //qDebug() << "DialogMouse::keyPressEvent" << key << event->nativeVirtualKey() << event->nativeScanCode() << event->text();
-
     if(key == Qt::Key_Escape)
     {
         if(ui->frameLeft->isVisible())
@@ -1702,17 +1802,15 @@ void DialogMouse::keyPressEvent(QKeyEvent *event)
 
 void DialogMouse::keyReleaseEvent(QKeyEvent *event)
 {
-    //qDebug() << "DialogMouse::keyReleaseEvent" << event->nativeVirtualKey() << event->nativeScanCode() << event->text();
     QDialog::keyReleaseEvent(event);
 }
 
 
 void DialogMouse::mousePressEvent(QMouseEvent *event)
 {
-    //qDebug() << "DialogMouse::mousePressEvent";
     if (event->button() == Qt::LeftButton)
     {
-        if (event->pos().y() < 60)
+        if (event->pos().y() < 80)
         {
             m_dragPosition = event->globalPosition() - frameGeometry().topLeft();
             m_dragging = true;
@@ -1735,7 +1833,6 @@ void DialogMouse::mouseMoveEvent(QMouseEvent *event)
 
 void DialogMouse::mouseReleaseEvent(QMouseEvent *event)
 {
-    //qDebug() << "DialogMouse::mouseReleaseEvent";
     m_dragging = false;
 
     QDialog::mouseReleaseEvent(event);
@@ -1743,106 +1840,11 @@ void DialogMouse::mouseReleaseEvent(QMouseEvent *event)
 
 bool DialogMouse::event(QEvent *event)
 {
-    if (event->type() == QEvent::ShortcutOverride)
-    {
-        //event->accept();
-    }
-    if(event->type() == QEvent::MouseButtonDblClick)
-    {
-        // m_loading = false;
-        // m_lastDelay = m_tcount.elapsed();
-        // if(m_delay) m_delay->setDelay(m_lastDelay);
-        m_tcount.restart();
-
-        QMouseEvent *pME = static_cast<QMouseEvent *>(event);
-        quint8 btn = pME->button();
-        // addMacroSquare("",1,btn,true);
-        // addMacroSquare("",1,btn,false);
-        // addMacroSquare("",1,btn,true);
-        // addMacroSquare("",1,btn,false);
-        // updateView();
-
-        return true;
-    }
-
-    if(event->type() == QEvent::MouseButtonPress)
-    {
-        //qDebug() << "event::MouseButtonPress";
-        // m_loading = false;
-        // MacroSquare::LostFocus();
-        // m_lastDelay = m_tcount.elapsed();
-        // if(m_delay) m_delay->setDelay(m_lastDelay);
-        m_tcount.restart();
-
-        QMouseEvent *pME = static_cast<QMouseEvent *>(event);
-        quint8 btn = pME->button();
-        //addMacroSquare("",1,btn,true);
-    }
-
-    if(event->type() == QEvent::MouseButtonRelease)
-    {
-        //qDebug() << "event::MouseButtonRelease" << m_tcount.elapsed();
-        m_tcount.restart();
-        // m_loading = false;
-
-        // m_lastDelay = m_tcount.elapsed();
-        // if(m_delay) m_delay->setDelay(m_lastDelay);
-
-        QMouseEvent *pME = static_cast<QMouseEvent *>(event);
-        quint8 btn = pME->button();
-        // addMacroSquare("",1,btn,false);
-    }
-    if(event->type() == QEvent::Wheel)
-    {
-        //qDebug() << "event::Wheel";
-        m_tcount.restart();
-        // m_loading = false;
-
-        // m_lastDelay = m_tcount.elapsed();
-        // if(m_delay) m_delay->setDelay(m_lastDelay);
-
-        QWheelEvent *pWE = static_cast<QWheelEvent *>(event);
-        //quint8 btn = pME->button();
-        // addMacroSquare("",1,btn,false);
-    }
-
-    if(event->type() == QEvent::KeyPress)
-    {
-        m_tcount.restart();
-
-        QKeyEvent *pKE = static_cast<QKeyEvent *>(event);
-        //qDebug() << "event::KeyPress   ------ " << pKE->key() << pKE->nativeVirtualKey() << pKE->nativeScanCode() << getKeyDefineVK(pKE->nativeVirtualKey());
-
-    }
-
-    if(event->type() == QEvent::KeyRelease)
-    {
-        //qDebug().nospace() << "event::KeyRelease ++++++  " << m_tcount.elapsed() << "ms";
-        m_tcount.restart();
-        // m_loading = false;
-
-        // m_lastDelay = m_tcount.elapsed();
-        // if(m_delay) m_delay->setDelay(m_lastDelay);
-
-        QKeyEvent *pKE = static_cast<QKeyEvent *>(event);
-        //quint8 btn = pME->button();
-        // addMacroSquare("",1,btn,false);
-    }
     return QDialog::event(event);
 }
 
-
 bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
 {
-    if(event->type() == QEvent::KeyPress)
-    {
-        m_tcount.restart();
-
-        QKeyEvent *pKE = static_cast<QKeyEvent *>(event);
-        qDebug() << "eventFilter::KeyPress" << pKE->key() << pKE->nativeVirtualKey() << getKeyDefineVK(pKE->nativeVirtualKey());
-
-    }
-
     if(QEvent::Show == event->type())
     {
         if(watched == ui->frameKeyShow)
@@ -1892,7 +1894,7 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
         int nW = rect.width();
         int nCX = nW/2;
         int ra0 = nCX-1;
-        int ra1 = nCX-35;
+        int ra1 = nCX-25;
 
         float start = 270;
 
@@ -1920,7 +1922,7 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
 
             int index = fmod((360 + deg - start),360) / fStep;
 
-            if(index > 90)index = 0;
+            if(index > 80)index = 0;
             if(index > 60) index = 60;
 
             m_nowAngle = 30 - index;
@@ -1952,7 +1954,7 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
             float curAngle = (start + (30 - nAngle) * fStep) * 3.1415936/180;
             paniter.setPen(QPen(Qt::white,4));
             QPoint p0(nCX+ra0*cos(curAngle),nCX-ra0*sin(curAngle));
-            QPoint p1(nCX+(ra1-8)*cos(curAngle),nCX-(ra1-8)*sin(curAngle));
+            QPoint p1(nCX+(ra1-15)*cos(curAngle),nCX-(ra1-15)*sin(curAngle));
             paniter.drawLine(p0,p1);
             ui->labelAngleValue->setText(QString("%1°").arg(nAngle));
         }
@@ -2013,10 +2015,18 @@ void DialogMouse::updateImage(const QString&image)
     ui->labelMouse->setPixmap(Img);
     ui->labelDeviceImage->setPixmap(Img);
 
-    int nw = 260;
-    float factor=nw*1.0/Img.width();
-    int nh = Img.height()*factor;
-    ui->labelMouse->setFixedSize(nw,nh);
+    {
+        int nw = 260;
+        float factor=nw*1.0/Img.width();
+        int nh = Img.height()*factor;
+        ui->labelMouse->setFixedSize(nw,nh);
+    }
+    {
+        int nh = 346;
+        float factor=nh*1.0/Img.height();
+        int nw = Img.width()*factor;
+        ui->labelDeviceImage->setFixedSize(nw,nh);
+    }
 }
 
 void DialogMouse::changeEvent(QEvent *pEvt)
@@ -2139,6 +2149,9 @@ void DialogMouse::printMouseCfg(const InfortechDef::MouseCfg* mouseCfg) {
         << "isSupportMoveOffLed: " << (mouseCfg->isSupportMoveOffLed ? "true" : "false") << "\n"
         << "moveOffLed: " << (mouseCfg->moveOffLed ? "true" : "false") << "\n"
         << "isSupportDpiLight: " << (mouseCfg->isSupportDpiLight ? "true" : "false") << "\n"
+        << "isSupportBhop: " << (mouseCfg->isSupportBhop ? "true" : "false") << "\n"
+        << "bhopEnable: " << (mouseCfg->bhopEnable ? "true" : "false") << "\n"
+        << "bhopValue: " << (int)mouseCfg->bhopValue << "\n"
 
         << "rgbBrightness: " << (int)mouseCfg->rgbBrightness << "\n"
         << "rgbEffect: " << (int)mouseCfg->rgbEffect << "\n"
@@ -2231,7 +2244,9 @@ void DialogMouse::printDGAmbientCfg(const InfortechDef::DGAmbientCfg* dgAmbientC
 // 获取所有配置
 void DialogMouse::getAllCfg()
 {
+    if(!connected) return;
     if(!serviceDevice) return;
+
     // 接收器版本
     std::cout << std::endl;
     auto dongleVersion = serviceDevice->getDongleVersion();
@@ -2248,7 +2263,7 @@ void DialogMouse::getAllCfg()
     std::cout << std::endl;
     auto btnInfo = serviceDevice->getButtonCfg();
     if (btnInfo != nullptr) {
-        std::cout << "Successfully obtained the key configuration." << std::endl;
+        std::cout << "Successfully obtained the key c44r44ronfiguration." << std::endl;
         printButtonInf(btnInfo.get());
     }
 

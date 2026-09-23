@@ -113,6 +113,7 @@ int main(int argc, char *argv[])
                  gridline-color: gray;
                  font-size: 12px ;
                  font-weight: 500;
+                 border:none;
             }
         QTableView::item{padding-left:2px;  border-top: 0px solid gray; border-bottom: 1px solid transparent;border-right: 0px solid gray;}
         QTableView::item::selected{ background-color: #a0bb9e; color:white; }
@@ -127,24 +128,27 @@ int main(int argc, char *argv[])
         QHeaderView::section:horizontal{ padding-left: 2px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-right: 1px solid gray;}
         QHeaderView::section:vertical{ padding-left: 2px; min-width: 36px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-left: 0px solid gray; border-right: 1px solid gray;}
         QHeaderView::section:vertical{ text-align: right;}
+
+        /*
         QPushButton {  background:none; }
-        /*QPushButton {
-                background-color: #2D7FDD;
-                border-radius: 8px;
-                color: white;
-                border: 1px solid #6C9F50;
-                padding: 1px;
-                min-width: 16px;
-                min-height: 8px;
-                max-width: 800px;
-                max-height: 200px;
-                font-size: 14px ;
-                font-weight: 400;
-            }
+        QPushButton {
+            background-color: #2D7FDD;
+            border-radius: 8px;
+            color: white;
+            border: 1px solid #6C9F50;
+            padding: 1px;
+            min-width: 16px;
+            min-height: 8px;
+            max-width: 800px;
+            max-height: 200px;
+            font-size: 14px ;
+            font-weight: 400;
+        }
         QPushButton:hover { background-color: #87ceeb; }
         QPushButton:pressed { background-color: #1e90af; }
         QPushButton:checked { background-color: #1e90ff; }
-        QPushButton:disabled { background-color: gray; color: #cccccc;}*/
+        QPushButton:disabled { background-color: gray; color: #cccccc;}
+        */
 
         QMessageBox QPushButton {
                 border: 1px solid #6C9F50;

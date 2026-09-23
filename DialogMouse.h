@@ -189,7 +189,6 @@ private:
     bool m_loading=false;
     bool m_recording=false;
     int m_currentId=-1;
-    QElapsedTimer m_tcount;
     macroItem*m_lastItem = nullptr;
     QList<macroItem*> macroGroup;
     void addMacroItem(int defId,int delay,int type,bool down=true);

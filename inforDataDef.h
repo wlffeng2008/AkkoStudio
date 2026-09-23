@@ -269,23 +269,27 @@ namespace InfortechDef {
 		bool moveOffLed;						// 移动关灯开关
 		bool isSupportDpiLight;					// 是否支持 DPI 灯光控制
 
-		uint8_t rgbBrightness;					// 正面 RGB 灯亮度 [1 - 254]
+		uint8_t rgbBrightness;					// 正面 RGB 灯亮度 [1 - 100]
 		uint8_t rgbEffect;						// 正面 RGB 灯效 [0:关灯，1:常亮，2:呼吸]
 		uint8_t rgbSpeed;						// 正面 RGB 灯效速度 [1 - 5]
 
 		uint8_t ambientEffect;					// 氛围灯的灯效：【 0不支持 1关灯 2长亮 3闪烁 4呼吸 5光谱 6波浪 】
-		uint8_t ambientBrightness;				// 氛围灯亮度 【01 - FF】
-		uint8_t ambientSpeed;					// 氛围灯效速度 【01 - 05】
+		uint8_t ambientBrightness;				// 氛围灯亮度 [1 - 100]
+		uint8_t ambientSpeed;					// 氛围灯效速度 [1 - 5]
 		std::string ambientColor;				// 氛围灯颜色
 
 		DpiStruct dpiData;						// DPI 配置
+
+		bool isSupportBhop;						// 是否支持 BHOP 设置
+		bool bhopEnable;						// BHOP 开关
+		uint32_t bhopValue;						// BHOP 值
 	};
 
 	// 接收器灯光
 	struct DGAmbientCfg {
 		uint8_t ambientEffect;				// 氛围灯的灯效：【 0不支持 1关灯 2长亮 3闪烁 4呼吸 5光谱 6波浪 】
-		uint8_t ambientBrightness;			// 氛围灯亮度 【01 - FF】
-		uint8_t ambientSpeed;				// 氛围灯效速度 【01 - 05】
+		uint8_t ambientBrightness;			// 氛围灯亮度 [1 - 100]
+		uint8_t ambientSpeed;				// 氛围灯效速度 [1 - 5]
 		std::string ambientColor;			// 氛围灯颜色
 	};
 
