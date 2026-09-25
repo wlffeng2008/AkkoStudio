@@ -61,7 +61,7 @@ void keySetTooltip::paintEvent(QPaintEvent *event)
 
     painter.setPen(0xD8BDFF);
     painter.setBrush(QColor("#A0D0D0D0"));
-    painter.drawRoundedRect(rect.adjusted(0,0,0,-10),12,12);
+    painter.drawRoundedRect(rect.adjusted(0,0,0,-12),12,12);
 
     QRect triRC = this->rect();
     triRC.setTop(triRC.bottom()-10);
@@ -73,10 +73,10 @@ void keySetTooltip::paintEvent(QPaintEvent *event)
     triangle<<QPoint(nImgX+nTriLen/2,triRC.top() + nTriLen/2 * sqrt(3));
     painter.drawPolygon(triangle);
 
-    painter.setBrush(0xFAF7FF);
-    painter.setPen(0xFAF7FF);
+    painter.setBrush(0xA0FAF7FF);
+    painter.setPen(0xA0FAF7FF);
     painter.drawLine(QPoint(nImgX,triRC.top()),QPoint(nImgX+nTriLen,triRC.top()));
-    painter.fillRect(nImgX,triRC.top()-2,nTriLen,3,0xFAF7FF);
+    painter.fillRect(nImgX,triRC.top()-2,nTriLen,3,0xA0FAF7FF);
 
     painter.setBrush(Qt::black);
     painter.setPen(Qt::black);

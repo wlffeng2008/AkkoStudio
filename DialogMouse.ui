@@ -32,7 +32,7 @@
    <string>鼠标驱动程序</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">*{color:white; }
+   <string notr="true">*{color:white;font-size:14px; }
 *:disabled{color:darkgray; }
 #DialogMouse,#pag0{ background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 #1F1F1F , stop:1 #191919);}
 
