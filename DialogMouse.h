@@ -189,6 +189,7 @@ private:
     bool m_loading=false;
     bool m_recording=false;
     int m_currentId=-1;
+    int m_insertAt = -1;
     macroItem*m_lastItem = nullptr;
     QList<macroItem*> macroGroup;
     void addMacroItem(int defId,int delay,int type,bool down=true);

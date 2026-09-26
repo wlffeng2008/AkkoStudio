@@ -68,45 +68,53 @@ FrameMacro::FrameMacro(QWidget *parent)
         connect(ui->pushButtonSave,&QPushButton::clicked,this,[=]{ saveEvents(); });
 
         connect(ui->pushButtonInsert,&QPushButton::clicked,this,[=]{
-            static ModuleAddMacroSquare *pEvt = new ModuleAddMacroSquare(this);
+            static ModuleAddMacroSquare *pEvt = nullptr;
+            if(pEvt == nullptr)
+            {
+                pEvt = new ModuleAddMacroSquare(true,this);
+                connect(pEvt,&ModuleAddMacroSquare::insert,this,[=]{
+                    //m_loading = true;
+                    m_recording = true;
+
+                    if(pEvt->type() == 0)
+                    {
+                        quint8 hid = pEvt->bKey();
+                        if(hid)
+                        {
+                            addMacroSquare(::getKeyValue(hid),0,hid,true);
+                            addMacroSquare(::getKeyValue(hid),0,hid,false);
+                        }
+                    }
+                    else if(pEvt->type() == 1)
+                    {
+                        addMacroSquare(tr("鼠标"),1,pEvt->mKey(),true);
+                        addMacroSquare(tr("鼠标"),1,pEvt->mKey(),false);
+                    }
+                    else
+                    {
+                        quint16 value = ((pEvt->xPos()<<8) | pEvt->yPos());
+                        addMacroSquare(tr("位置"),2,value,false);
+                    }
+
+                    m_loading = false;
+                    m_recording = false;
+                    m_delay = nullptr;
+                    m_insert = nullptr;
+
+                    QTimer::singleShot(20,this,[=]{
+                        saveEvents();
+                    });
+                });
+            }
+
             ModuleGeneralMasker gMask(pEvt,ui->frameRight);
             pEvt->show();
             pEvt->update();
             gMask.setStyleSheet("QDialog { background-color: rgba(200, 200, 200, 0.9); border: none; border-radius: 32px; }");
+
             auto res = gMask.exec();
             if(res == QDialog::Accepted)
             {
-                //m_loading = true;
-                m_recording = true;
-
-                if(pEvt->type() == 0)
-                {
-                    quint8 hid = pEvt->bKey();
-                    if(hid)
-                    {
-                        addMacroSquare(::getKeyValue(hid),0,hid,true);
-                        addMacroSquare(::getKeyValue(hid),0,hid,false);
-                    }
-                }
-                else if(pEvt->type() == 1)
-                {
-                    addMacroSquare(tr("鼠标"),1,pEvt->mKey(),true);
-                    addMacroSquare(tr("鼠标"),1,pEvt->mKey(),false);
-                }
-                else
-                {
-                    quint16 value = ((pEvt->xPos()<<8) | pEvt->yPos());
-                    addMacroSquare(tr("位置"),2,value,false);
-                }
-
-                m_loading = false;
-                m_recording = false;
-                m_delay = nullptr;
-                m_insert = nullptr;
-
-                QTimer::singleShot(20,this,[=]{
-                    saveEvents();
-                });
             }
         });
 

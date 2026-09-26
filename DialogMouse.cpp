@@ -5,6 +5,8 @@
 #include "MyEasyApp.h"
 #include "MainWindow.h"
 #include "EasyToast.h"
+#include "ModuleAddMacroSquare.h"
+#include "ModuleGeneralMasker.h"
 
 #include <QLineEdit>
 #include <QPushButton>
@@ -476,17 +478,35 @@ void DialogMouse::addMacroItem(int defId,int delay,int type,bool down)
 
     if(item)
     {
-        QModelIndex index = m_pModel->index(row, col);
-        item->setData((quint64)m_lastItem);
-        ui->tableViewMContent->selectionModel()->select(index,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
-        ui->tableViewMContent->selectionModel()->setCurrentIndex(index,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
-        ui->tableViewMContent->scrollTo(index, QAbstractItemView::PositionAtCenter);
+        if(m_insertAt == -1)
+        {
+            QModelIndex index = m_pModel->index(row, col);
+            item->setData((quint64)m_lastItem);
+            ui->tableViewMContent->selectionModel()->select(index,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+            ui->tableViewMContent->selectionModel()->setCurrentIndex(index,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+            ui->tableViewMContent->scrollTo(index, QAbstractItemView::PositionAtCenter);
 
-        refreshMacroItem(item);
-        macroGroup.push_back(m_lastItem);
+            refreshMacroItem(item);
+
+            macroGroup.push_back(m_lastItem);
+        }
+        else
+        {
+            int index = m_insertAt;
+            qDebug() << "insert at: " << index ;
+            macroGroup.insert(index+1,m_lastItem);
+            int count = macroGroup.count();
+            for(int i=0; i<count; i++)
+            {
+                QStandardItem *item = m_pModel->item(i/6,i%6);
+                if(item) item->setData((quint64)macroGroup[i]);
+                refreshMacroItem(item);
+            }
+            m_insertAt++;
+        }
     }
 
-    ui->labelTitle4->setText(QString("%1 / 70").arg(macroGroup.count()));
+    ui->labelTitle4->setText(QString(tr("占用")) +QString(":%1 / 70").arg(macroGroup.count()));
 }
 
 void DialogMouse::addMacroHeed(int id,const QString&name)
@@ -499,7 +519,7 @@ void DialogMouse::addMacroHeed(int id,const QString&name)
     }
     int addId = id;
     if(id==0) addId = m_pMList->rowCount()+1;
-    QString addName=QString("新宏%1").arg(addId);
+    QString addName=QString(tr("新宏")) + QString("%1").arg(addId);
     if(!name.isEmpty())addName=name;
 
     QFont font = this->font();
@@ -727,7 +747,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 if(ui->pushButtonRecord == widget) return;
                 if(nDelay>nLimit)
                 {
-                    qDebug() << "Global::MouseButtonPress     ------ " ;
+                    qDebug() << "Global::MouseButtonPress     ------- " ;
                     int btn = mEvent->button();
                     int defId = 1701;
                     if(btn == Qt::MouseButton::RightButton)  defId = 1702;
@@ -772,6 +792,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             {
                 if(kEvent->isAutoRepeat())
                     return;
+
                 int defId = getKeyDefineVK(kEvent->nativeVirtualKey());
                 if(defId == 0) defId = getKeyDefineVK(kEvent->key());
                 m_pressDf = defId;
@@ -788,6 +809,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             {
                 if(kEvent->isAutoRepeat())
                     return;
+
                 int defId = getKeyDefineVK(kEvent->nativeVirtualKey());
                 if(defId == 0) defId = getKeyDefineVK(kEvent->key());
                 if(nDelay>nLimit)
@@ -812,6 +834,63 @@ DialogMouse::DialogMouse(QWidget *parent)
                 // ignTm.restart();
             }
 
+        });
+
+        connect(ui->pushButtonInsert,&QPushButton::clicked,this,[=]{            
+            if(m_currentId == -1)
+            {
+                QMessageBox::warning(this,tr("提示"),tr("首先选择或者新建一个宏！"));
+                return;
+            }
+
+            static ModuleAddMacroSquare *pEvt = nullptr;
+            if(pEvt == nullptr)
+            {
+                pEvt = new ModuleAddMacroSquare(false,this);
+                connect(pEvt,&ModuleAddMacroSquare::insert,this,[=]{
+                    //m_loading = true;
+                    m_recording = true;
+
+                    if(pEvt->type() == 0)
+                    {
+                        int defId = getKeyDefineVK(pEvt->kNativeVK());
+                        if(defId == 0) defId = getKeyDefineVK(pEvt->kRawKey());
+                        if(defId == 0) return;
+                        addMacroItem(defId,50,1);
+                        addMacroItem(defId,50,1,false);
+                    }
+                    else if(pEvt->type() == 1)
+                    {
+                        int btn = pEvt->mKey();
+                        int defId = 1701;
+                        if(btn == Qt::MouseButton::RightButton) defId = 1702;
+                        if(btn == Qt::MouseButton::MiddleButton) defId = 1703;
+
+                        addMacroItem(defId,50,0,true);
+                        addMacroItem(defId,50,0,false);
+                    }
+                    else
+                    {
+                        //quint16 value = ((pEvt->xPos()<<8) | pEvt->yPos());
+                        //addMacroSquare(tr("位置"),2,value,false);
+                    }
+
+                    m_loading = false;
+                    m_recording = false;
+
+                    QTimer::singleShot(50,this,[=]{ saveLoadMacroContent(m_currentId,macroGroup); });
+                });
+            }
+
+            ModuleGeneralMasker gMask(pEvt,ui->frameRight);
+            pEvt->show();
+            pEvt->update();
+            gMask.setStyleSheet("QDialog { background-color: rgba(200, 200, 200, 0.9); border: none; border-radius: 32px; }");
+
+            auto res = gMask.exec();
+            if(res == QDialog::Accepted)
+            {
+            }
         });
     }
 
@@ -1418,7 +1497,6 @@ DialogMouse::DialogMouse(QWidget *parent)
             ui->checkBoxSyncMove->setChecked(mouseCfg->motinSync);
             ui->checkBoxWaveCtrl->setChecked(mouseCfg->rippleControl);
         });
-
     }
 
     ui->labelAngleShow->setStyleSheet("QLabel{background-color:transparent;}");
@@ -1461,6 +1539,10 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         connect(ui->tableViewMContent,&QTableView::clicked,this,[=](const QModelIndex &index){
             //pClkItem = m_pModel->itemFromIndex(index);
+            int item = index.row() * 6 + index.column();
+            if(item%2 == 0) item++;
+            m_insertAt = item;
+            qDebug() << "clicked item:" << item;
         });
     }
         {
@@ -1541,19 +1623,20 @@ DialogMouse::DialogMouse(QWidget *parent)
         connect(ui->pushButtonRecord,&QPushButton::clicked,this,[=]{
             if(m_currentId == -1)
             {
-                QMessageBox::warning(this,"提示","首先选择或者新建一个宏才能进行录制，请重试！");
+                QMessageBox::warning(this,tr("提示"),tr("首先选择或者新建一个宏，请重试！"));
                 return;
             }
 
+            m_insertAt = -1;
             if(!m_recording)
             {
-                ui->pushButtonClear->click();
+                //ui->pushButtonClear->click();
             }
 
             QTimer::singleShot(200,this,[=]{
                 m_recording = ui->pushButtonRecord->isChecked();
                 saveLoadMacroContent(m_currentId,macroGroup,true);
-                ui->pushButtonRecord->setText(m_recording?"正在录制...":"开始录制");
+                ui->pushButtonRecord->setText(m_recording?tr("正在录制..."):tr("开始录制"));
                 if(!m_recording)
                 {
                     ui->pushButtonDelete->click();
@@ -1567,7 +1650,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         connect(ui->pushButtonClear,&QPushButton::clicked,this,[=]{
             m_lastItem = nullptr;
             macroGroup.clear();
-            ui->labelTitle4->setText("占用: 0 / 70");
+            ui->labelTitle4->setText(tr("占用") + QString(": 0 / 70"));
             for(int m=0;m<12;m++)
             {
                 for(int n=0; n<6; n++)
@@ -1592,9 +1675,9 @@ DialogMouse::DialogMouse(QWidget *parent)
             if(selecteds.count())
                 item = m_pModel->itemFromIndex(selecteds.at(0));
             int count = macroGroup.count();
-            if(count>0 && item)
+            if(count>0 && m_insertAt != -1)
             {
-                int index = item->row() * 6 + item->column();
+                int index = m_insertAt;//item->row() * 6 + item->column();
                 qDebug() << "delete Item: " <<index << count;
                 if(index >= count)
                     return;
@@ -1628,7 +1711,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                     if(item) item->setData((quint64)macroGroup[i]);
                     refreshMacroItem(item);
                 }
-                ui->labelTitle4->setText(QString("占用: %1 / 70").arg(count));
+                ui->labelTitle4->setText(tr("占用") + QString(": %1 / 70").arg(count));
                 saveLoadMacroContent(m_currentId,macroGroup,true);
             }
         });

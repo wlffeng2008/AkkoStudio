@@ -145,7 +145,6 @@ bool DialogColorPicker::event(QEvent *event)
 
 bool DialogColorPicker::eventFilter(QObject *watched,QEvent *event)
 {
-
     if (event->type() == QEvent::MouseButtonPress)
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
@@ -158,17 +157,10 @@ bool DialogColorPicker::eventFilter(QObject *watched,QEvent *event)
 
                 QTimer::singleShot(100,this,[=]{
                     static QPixmap pix(":/images/pickup2.png");  // 资源文件 或 路径都可以
-
-                    // 2. 缩放（可选）
                     pix = pix.scaled(32, 32);
-
-                    // 3. 创建自定义光标，第二个参数是热点（点击点）
                     static QCursor customCursor(pix, 0, 0);
-
-                    // 4. 设置给整个窗口
                     m_picker->setCursor(customCursor);
                 });
-
             }
 
             if(watched == m_picker)

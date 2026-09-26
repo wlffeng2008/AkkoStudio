@@ -226,9 +226,9 @@ int main(int argc, char *argv[])
 
         QRadioButton::indicator:checked { image: url(:/images/macro/radio-checked.png); }
 
-        QRadioButton:disabled { color: #cccccc; }
-        QRadioButton:checked {  color: #0085FF; }
-        QRadioButton::indicator:disabled { border: 2px solid #dddddd; background: white; }
+        QRadioButton:disabled { color: #cccccc; background: transparent;}
+        QRadioButton:checked {  color: #0085FF; background: transparent;}
+        QRadioButton::indicator:disabled { border: 2px solid #dddddd; background: transparent; }
 
         QCheckBox { spacing: 5px; color: #333; }
         QCheckBox::indicator { width: 14px; height: 14px; }

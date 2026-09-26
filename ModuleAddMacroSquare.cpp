@@ -5,11 +5,14 @@
 #include "ModuleGenKeymapping.h"
 #include "ModuleGeneralMasker.h"
 
-ModuleAddMacroSquare::ModuleAddMacroSquare(QWidget *parent)
+ModuleAddMacroSquare::ModuleAddMacroSquare(bool enablePostion, QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::ModuleAddMacroSquare)
 {
     ui->setupUi(this);
+
+    if(!enablePostion)
+        ui->framePosition->setDisabled(true);
 
     connect(ui->pushButtonOK,&QPushButton::clicked,this,[=]{
         ModuleGeneralMasker *pTop = static_cast<ModuleGeneralMasker *>(this->parent());
@@ -17,10 +20,11 @@ ModuleAddMacroSquare::ModuleAddMacroSquare(QWidget *parent)
         hide();
     });
 
-    connect(ui->pushButtonCancel,&QPushButton::clicked,this,[=]{
-        ModuleGeneralMasker *pTop = static_cast<ModuleGeneralMasker *>(this->parent());
-        pTop->setFlag(QDialog::Rejected);
-        hide();
+    connect(ui->pushButtonInsert,&QPushButton::clicked,this,[=]{
+        //ModuleGeneralMasker *pTop = static_cast<ModuleGeneralMasker *>(this->parent());
+        //pTop->setFlag(QDialog::Rejected);
+        //hide();
+        emit insert();
     });
 }
 
@@ -36,6 +40,11 @@ void ModuleAddMacroSquare::keyPressEvent(QKeyEvent *event)
     m_hid = hid;
     QString text = event->text();
     ui->lineEditKey->setText(text.toUpper());
+
+    m_nativeVK = event->nativeVirtualKey();
+    m_rawKey = event->key();
+
+    QFrame::keyPressEvent(event);
 }
 
 quint8 ModuleAddMacroSquare::type()
@@ -45,6 +54,10 @@ quint8 ModuleAddMacroSquare::type()
     if(ui->radioButton3->isChecked()) return 2; // position
     return 0;
 }
+
+quint16 ModuleAddMacroSquare::kNativeVK(){ return m_nativeVK;}
+
+quint16 ModuleAddMacroSquare::kRawKey(){return m_rawKey;}
 
 quint8 ModuleAddMacroSquare::mKey()
 {

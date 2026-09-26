@@ -821,7 +821,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
