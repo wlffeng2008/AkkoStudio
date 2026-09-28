@@ -7,28 +7,32 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>360</height>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
     <width>300</width>
-    <height>360</height>
+    <height>400</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>300</width>
-    <height>360</height>
+    <height>400</height>
    </size>
   </property>
   <property name="windowTitle">
    <string notr="true">Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(230, 230, 230);
-border-radius:32px;
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1,1,1,0">
    <property name="spacing">
@@ -37,7 +41,13 @@ border-radius:32px;
    <property name="leftMargin">
     <number>20</number>
    </property>
+   <property name="topMargin">
+    <number>20</number>
+   </property>
    <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
     <number>20</number>
    </property>
    <item>
@@ -183,6 +193,12 @@ border-radius:32px;
    </item>
    <item>
     <widget class="QFrame" name="framePosition">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>100</height>
+      </size>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="leftMargin">
        <number>0</number>
@@ -218,7 +234,10 @@ border-radius:32px;
          <number>20</number>
         </property>
         <property name="rightMargin">
-         <number>100</number>
+         <number>70</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>10</number>
         </property>
         <item row="0" column="0">
          <widget class="QLabel" name="label1">
@@ -240,15 +259,18 @@ border-radius:32px;
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>120</width>
             <height>24</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>120</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="maximum">
            <number>127</number>
@@ -275,15 +297,18 @@ border-radius:32px;
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>120</width>
             <height>24</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>120</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="maximum">
            <number>127</number>
@@ -299,12 +324,6 @@ border-radius:32px;
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="pushButtonInsert">
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>16777215</height>
-        </size>
-       </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
@@ -335,6 +354,9 @@ border-radius:32px;
        <property name="orientation">
         <enum>Qt::Orientation::Horizontal</enum>
        </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Policy::Fixed</enum>
+       </property>
        <property name="sizeHint" stdset="0">
         <size>
          <width>40</width>
@@ -345,12 +367,6 @@ border-radius:32px;
      </item>
      <item>
       <widget class="QPushButton" name="pushButtonOK">
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>16777215</height>
-        </size>
-       </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>

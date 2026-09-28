@@ -130,6 +130,7 @@ void FrameDeviceShow::updateBattery()
         if(serviceDevice)
         {
             auto tmp = serviceDevice->getDeviceInf();
+            if(tmp != nullptr)
             batt =tmp->mouseBatterylevel;
         }
     }

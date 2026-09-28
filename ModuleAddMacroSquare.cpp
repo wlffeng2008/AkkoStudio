@@ -15,8 +15,12 @@ ModuleAddMacroSquare::ModuleAddMacroSquare(bool enablePostion, QWidget *parent)
         ui->framePosition->setDisabled(true);
 
     connect(ui->pushButtonOK,&QPushButton::clicked,this,[=]{
-        ModuleGeneralMasker *pTop = static_cast<ModuleGeneralMasker *>(this->parent());
-        pTop->setFlag(QDialog::Accepted);
+        //ModuleGeneralMasker *pTop = static_cast<ModuleGeneralMasker *>(this->parent());
+        //pTop->setFlag(QDialog::Accepted);
+
+
+        QDialog *pTop = static_cast<QDialog *>(this->parent());
+        pTop->accept();
         hide();
     });
 

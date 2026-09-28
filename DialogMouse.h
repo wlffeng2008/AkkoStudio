@@ -17,9 +17,9 @@
 
 #include "infortechDevice.h"
 #ifdef _DEBUG
-#pragma comment(lib, "infortechSdkd.lib")
+    #pragma comment(lib, "infortechSdkd.lib")
 #else
-#pragma comment(lib, "infortechSdk.lib")
+    #pragma comment(lib, "infortechSdk.lib")
 #endif
 
 namespace Ui {
@@ -75,6 +75,7 @@ protected:
         if(event->type() == QEvent::MouseMove)
         {
             bool bToSet = false;
+            //qDebug() << index.column() << _nForColumn;
             if(index.column() >= 1)
             {
                 bToSet = true;

@@ -18,6 +18,10 @@
 #include <QFile>
 #include <QJsonArray>
 #include <QMessageBox>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QProgressBar>
+#include <QFileDialog>
 
 
 void SetLineEditTipColor(QLineEdit *edit,const QColor&color){
@@ -199,16 +203,17 @@ void SetButtonBackground(QPushButton *button,bool left=true,const QString&newTex
 static InfortechDevice* serviceDevice = nullptr;
 static bool mouseChanged = false;
 static bool connected = false;
+static bool fwUpdating = false;
+static int  fwUpdateProgress=0;
 
 // 回调函数
 auto deviceStateChange(const InfortechDef::DevMsg& msg)
 {
-    mouseChanged = true;
-
     switch (msg.type)
     {
     case InfortechDef::MsgType::DeviceDisconnect:
         std::cout << "DeviceDisconnect" << std::endl;
+        connected=false;
         break;
 
     // 鼠标配对
@@ -227,15 +232,21 @@ auto deviceStateChange(const InfortechDef::DevMsg& msg)
     // 固件升级
     case InfortechDef::MsgType::fwUpgradeFailed:
         std::cout << "fwUpgradeFailed" << std::endl;
-        break;
+        mouseChanged=false;
+        fwUpdateProgress = -1;
+        return;
 
     case InfortechDef::MsgType::fwUpgradeProgress:
-        std::cout << "fwUpgradeProgress: " << (int)msg.inf->getFwUpProgress()->progress << std::endl;
-        break;
+        fwUpdateProgress = (int)msg.inf->getFwUpProgress()->progress;
+        mouseChanged=false;
+        //std::cout << "fwUpgradeProgress: " << fwUpdateProgress << std::endl;
+        return;
 
     case InfortechDef::MsgType::fwUpgradeSucceed:
         std::cout << "fwUpgradeSucceed" << std::endl;
-        break;
+        mouseChanged=false;
+        fwUpdateProgress=100;
+        return;
 
     // 设备状态上报
     case InfortechDef::MsgType::DpiChange:
@@ -269,6 +280,7 @@ auto deviceStateChange(const InfortechDef::DevMsg& msg)
     default:
         break;
     }
+    mouseChanged = true;
 };
 
 QMap<int,QString> keyMapset=
@@ -425,7 +437,6 @@ QString getKeyNameByDF(uint16_t dfCode)
 
 const char *get_keyname_df(uint16_t df_code);
 
-
 QMap<int,QString> keyChangeset=
 {
     {1701,""},
@@ -478,31 +489,29 @@ void DialogMouse::addMacroItem(int defId,int delay,int type,bool down)
 
     if(item)
     {
-        if(m_insertAt == -1)
+        if(m_insertAt == -1 || m_insertAt >= count)
         {
-            QModelIndex index = m_pModel->index(row, col);
             item->setData((quint64)m_lastItem);
-            ui->tableViewMContent->selectionModel()->select(index,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
-            ui->tableViewMContent->selectionModel()->setCurrentIndex(index,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
-            ui->tableViewMContent->scrollTo(index, QAbstractItemView::PositionAtCenter);
-
             refreshMacroItem(item);
 
             macroGroup.push_back(m_lastItem);
+            m_insertAt = -1;
         }
         else
         {
             int index = m_insertAt;
-            qDebug() << "insert at: " << index ;
             macroGroup.insert(index+1,m_lastItem);
-            int count = macroGroup.count();
-            for(int i=0; i<count; i++)
-            {
-                QStandardItem *item = m_pModel->item(i/6,i%6);
-                if(item) item->setData((quint64)macroGroup[i]);
-                refreshMacroItem(item);
-            }
             m_insertAt++;
+        }
+    }
+
+    {
+        int count = macroGroup.count();
+        for(int i=0; i<count; i++)
+        {
+            QStandardItem *item = m_pModel->item(i/6,i%6);
+            if(item) item->setData((quint64)macroGroup[i]);
+            refreshMacroItem(item);
         }
     }
 
@@ -747,7 +756,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 if(ui->pushButtonRecord == widget) return;
                 if(nDelay>nLimit)
                 {
-                    qDebug() << "Global::MouseButtonPress     ------- " ;
+                    //qDebug() << "Global::MouseButtonPress     ------- " ;
                     int btn = mEvent->button();
                     int defId = 1701;
                     if(btn == Qt::MouseButton::RightButton)  defId = 1702;
@@ -763,7 +772,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 if(ui->pushButtonRecord == widget) return;
                 if(nDelay>nLimit)
                 {
-                    qDebug() << "Global::MouseButtonRelease   +++++++ " << nDelay <<"ms";
+                    //qDebug() << "Global::MouseButtonRelease   +++++++ " << nDelay <<"ms";
                     int btn = mEvent->button();
                     int defId = 1701;
                     if(btn == Qt::MouseButton::RightButton) defId = 1702;
@@ -777,14 +786,14 @@ DialogMouse::DialogMouse(QWidget *parent)
             if(event->type() == QEvent::MouseMove)
             {
                 //if(nDelay>nLimit)
-                //    qDebug() << "Global::MouseMove   ------ " << nDelay <<"ms";
+                //    qDebug() << "Global::MouseMove   ------- " << nDelay <<"ms";
                 //ignTm.restart();
             }
 
             if(event->type() == QEvent::Wheel)
             {
                 //if(nDelay>nLimit)
-                //    qDebug() << "Global::Wheel   ------ " << nDelay <<"ms" << wEvent->angleDelta();
+                //    qDebug() << "Global::Wheel   ------- " << nDelay <<"ms" << wEvent->angleDelta();
                 //ignTm.restart();
             }
 
@@ -798,7 +807,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 m_pressDf = defId;
                 if(nDelay>nLimit)
                 {
-                    qDebug() << "Global::KeyPress   ------ " << kEvent->key() << kEvent->nativeVirtualKey() << kEvent->nativeScanCode() << defId << keyMapset[defId];
+                    //qDebug() << "Global::KeyPress   ------- " << kEvent->key() << kEvent->nativeVirtualKey() << kEvent->nativeScanCode() << defId << keyMapset[defId];
                     addMacroItem(defId,nDelay,1);
                 }
 
@@ -814,7 +823,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 if(defId == 0) defId = getKeyDefineVK(kEvent->key());
                 if(nDelay>nLimit)
                 {
-                    qDebug() << "Global::KeyRelease +++++++ " << kEvent->key() << kEvent->nativeVirtualKey() << kEvent->nativeScanCode() <<  defId << keyMapset[defId];
+                    //qDebug() << "Global::KeyRelease +++++++ " << kEvent->key() << kEvent->nativeVirtualKey() << kEvent->nativeScanCode() <<  defId << keyMapset[defId];
                     addMacroItem(defId,nDelay,1,false);
                 }
                 ignTm.restart();
@@ -848,39 +857,58 @@ DialogMouse::DialogMouse(QWidget *parent)
             {
                 pEvt = new ModuleAddMacroSquare(false,this);
                 connect(pEvt,&ModuleAddMacroSquare::insert,this,[=]{
-                    //m_loading = true;
-                    m_recording = true;
 
-                    if(pEvt->type() == 0)
-                    {
-                        int defId = getKeyDefineVK(pEvt->kNativeVK());
-                        if(defId == 0) defId = getKeyDefineVK(pEvt->kRawKey());
-                        if(defId == 0) return;
-                        addMacroItem(defId,50,1);
-                        addMacroItem(defId,50,1,false);
-                    }
-                    else if(pEvt->type() == 1)
-                    {
-                        int btn = pEvt->mKey();
-                        int defId = 1701;
-                        if(btn == Qt::MouseButton::RightButton) defId = 1702;
-                        if(btn == Qt::MouseButton::MiddleButton) defId = 1703;
+                    QTimer::singleShot(50,this,[=]{
+                        //m_loading = true;
+                        m_recording = true;
 
-                        addMacroItem(defId,50,0,true);
-                        addMacroItem(defId,50,0,false);
-                    }
-                    else
-                    {
-                        //quint16 value = ((pEvt->xPos()<<8) | pEvt->yPos());
-                        //addMacroSquare(tr("位置"),2,value,false);
-                    }
+                        if(pEvt->type() == 0)
+                        {
+                            int defId = getKeyDefineVK(pEvt->kNativeVK());
+                            if(defId == 0) defId = getKeyDefineVK(pEvt->kRawKey());
+                            if(defId == 0) return;
+                            addMacroItem(defId,50,1);
+                            addMacroItem(defId,50,1,false);
+                        }
+                        else if(pEvt->type() == 1)
+                        {
+                            int btn = pEvt->mKey();
+                            int defId = 1701;
+                            if(btn == Qt::MouseButton::RightButton)  defId = 1702;
+                            if(btn == Qt::MouseButton::MiddleButton) defId = 1703;
 
-                    m_loading = false;
-                    m_recording = false;
+                            addMacroItem(defId,50,0,true);
+                            addMacroItem(defId,50,0,false);
+                        }
 
-                    QTimer::singleShot(50,this,[=]{ saveLoadMacroContent(m_currentId,macroGroup); });
+                        m_loading = false;
+                        m_recording = false;
+                        saveLoadMacroContent(m_currentId,macroGroup);
+                    });
                 });
             }
+
+            static QDialog *pDlg = nullptr;
+
+            if(pDlg == nullptr)
+            {
+                pDlg = new QDialog(this);
+                QVBoxLayout *pBox = new QVBoxLayout(pDlg);
+                pDlg->setLayout(pBox);
+                pDlg->layout()->addWidget(pEvt);
+
+                pEvt->setFixedHeight(460);
+                //pDlg->setMinimumHeight(500);
+                //pDlg->adjustSize();
+
+                //pEvt->setStyleSheet("Frame { background-color: rgba(40, 40, 40, 0.9); border: none; border-radius: 0px; }");
+                //pDlg->setStyleSheet("QDialog { background-color: rgba(40, 40, 40, 0.9); border: none; border-radius: 0px; }");
+            }
+
+            pEvt->show();
+            pEvt->setParent(pDlg);
+            pDlg->exec();
+            return;
 
             ModuleGeneralMasker gMask(pEvt,ui->frameRight);
             pEvt->show();
@@ -892,6 +920,131 @@ DialogMouse::DialogMouse(QWidget *parent)
             {
             }
         });
+
+        //-----------------------------
+        static int nAction = 0;
+        QDialog *pFwDlg = new QDialog(this);
+
+        pFwDlg->setFixedSize(600,280);
+
+        QVBoxLayout *pVBox = new QVBoxLayout(pFwDlg);
+        QHBoxLayout *pHBox0 = new QHBoxLayout();
+        QHBoxLayout *pHBox1 = new QHBoxLayout();
+        QHBoxLayout *pHBox2 = new QHBoxLayout();
+        pHBox0->setSpacing(20);
+        pHBox1->setSpacing(20);
+        pHBox2->setSpacing(20);
+        pVBox->setSpacing(20);
+        pVBox->setContentsMargins(20,20,20,20);
+
+        QLabel *pTip = new QLabel(tr("请选择升级文件:"),pFwDlg);
+        pVBox->addWidget(pTip,0);
+        pVBox->addItem(pHBox0);
+        pVBox->addItem(pHBox1);
+        pVBox->addSpacerItem(new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding));
+        pVBox->addItem(pHBox2);
+        // pVBox->setStretch(0,0);
+        // pVBox->setStretch(1,1);
+        // pVBox->setStretch(2,1);
+        // pVBox->setStretch(3,1);
+
+        QLineEdit *pPath = new QLineEdit(pFwDlg);
+        pPath->setPlaceholderText(tr("请选择一个Bin文件..."));
+        pPath->setReadOnly(true);
+        QPushButton *pBrowBtn = new QPushButton(tr("..."),pFwDlg);
+        pBrowBtn->setFixedSize(100,32);
+        pBrowBtn->setCursor(Qt::PointingHandCursor);
+
+        connect(pBrowBtn,&QPushButton::clicked,this,[=]
+        {
+            QString filter = tr("固件文件 (*.bin *.hex *.fw);;所有文件 (*.*)");
+            QString strFile = QFileDialog::getOpenFileName(pFwDlg,tr("选择固件文件"),"",filter);
+            if(strFile.isEmpty())
+                return;
+            auto fwBuffer = serviceDevice->loadFwFile(strFile.toStdString().c_str());
+            auto fwInfo = serviceDevice->readFwInfo(fwBuffer);
+            if (fwBuffer.empty() || fwInfo == nullptr || fwInfo->fwType == InfortechDef::FwDeviceType::Undefined)
+            {
+                QMessageBox::critical(this,tr("提示"),tr("固件文件无法识别！"));
+                return;
+            }
+            qDebug() << fwInfo->version << fwInfo->fileSize ;
+            pPath->setText(strFile);
+        });
+
+        pHBox0->addWidget(pPath,1);
+        pHBox0->addWidget(pBrowBtn,0);
+
+        QProgressBar *pProg = new QProgressBar(pFwDlg);
+        pProg->setTextVisible(true);
+        pProg->setStyleSheet("QProgressBar{text-align:center;background-color:transparent;border: 2px solid #DDDDDD;border-radius:4px;}"
+                             "QProgressBar::chunk{background-color:#D0D0D0; border-radius: 4px;}");
+
+        QTimer *pTMProg = new QTimer(pFwDlg);
+        connect(pTMProg,&QTimer::timeout,this,[=]{
+            if(fwUpdateProgress == -1)
+            {
+                pTMProg->stop();
+                pProg->setValue(0);
+                QMessageBox::critical(this,tr("提示"),tr("固件升级失败！"));
+                fwUpdating = false;
+                return;
+            }
+
+            if(fwUpdateProgress >= 100)
+            {
+                pTMProg->stop();
+                pProg->setValue(100);
+                QMessageBox::information(this,tr("提示"),tr("固件升级成功！"));
+                fwUpdating=false;
+                connected = false;
+                pFwDlg->hide();
+                startConnect();
+                return;
+            }
+
+            pProg->setValue(fwUpdateProgress);
+        });
+
+        QPushButton *pUpBtn = new QPushButton(tr("开始更新"),pFwDlg);
+        pUpBtn->setFixedSize(100,32);
+        pUpBtn->setCursor(Qt::PointingHandCursor);
+        connect(pUpBtn,&QPushButton::clicked,this,[=]{
+            QString strFile = pPath->text();
+            auto fwBuffer = serviceDevice->loadFwFile(strFile.toStdString().c_str());
+            if (fwBuffer.empty()) {
+                return;
+            }
+
+            fwUpdating=true;
+            fwUpdateProgress=0;
+            serviceDevice->deviceFwUpgrade(fwBuffer);
+            pTMProg->start(1000);
+        });
+        pHBox1->addWidget(pProg,1);
+        pHBox1->addWidget(pUpBtn,0);
+
+        QPushButton *pOkBtn = new QPushButton(tr("完成"),pFwDlg);
+        pOkBtn->setFixedSize(150,32);
+        pOkBtn->setCursor(Qt::PointingHandCursor);
+        connect(pOkBtn,&QPushButton::clicked,this,[=]{ pFwDlg->hide();});
+
+        pHBox2->addWidget(pOkBtn);
+
+        pFwDlg->setLayout(pVBox);
+        connect(ui->pushButtonUpgradeMouse,&QPushButton::clicked,this,[=]{
+            nAction = 0;
+            pProg->setValue(0);
+            pFwDlg->setWindowTitle(ui->pushButtonUpgradeMouse->text());
+            pFwDlg->exec();
+        });
+        connect(ui->pushButtonUpgradeDonggle,&QPushButton::clicked,this,[=]{
+            nAction = 1;
+            pProg->setValue(0);
+            pFwDlg->setWindowTitle(ui->pushButtonUpgradeDonggle->text());
+            pFwDlg->exec();
+        });
+
     }
 
     {
@@ -1219,6 +1372,7 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         connect(this,&DialogMouse::genUpdate,this,[=]{
             auto mouseCfg = serviceDevice->getMouseCfg();
+            if(mouseCfg == nullptr) return;
 
             int i = 0;
             for (const auto &item : mouseCfg->dpiData.data)
@@ -1469,6 +1623,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         ui->frameBHOP->hide();
         connect(this,&DialogMouse::genUpdate,this,[=]{
             auto mouseCfg = serviceDevice->getMouseCfg();
+            if(mouseCfg == nullptr) return;
 
             // std::cout
             //     << "isSupportDpiLight: " << (mouseCfg->isSupportDpiLight ? "true" : "false") << "\n"
@@ -1498,14 +1653,6 @@ DialogMouse::DialogMouse(QWidget *parent)
             ui->checkBoxWaveCtrl->setChecked(mouseCfg->rippleControl);
         });
     }
-
-    ui->labelAngleShow->setStyleSheet("QLabel{background-color:transparent;}");
-    ui->labelAngleShow->installEventFilter(this);
-    ui->labelGoBack->installEventFilter(this);
-    ui->lineEditShortcut->installEventFilter(this);
-    ui->labelBattery->installEventFilter(this);
-    ui->frameLeft->installEventFilter(this);
-    ui->frameKeyShow->installEventFilter(this);
 
     {
         m_pModel = new QStandardItemModel(this);
@@ -1545,7 +1692,8 @@ DialogMouse::DialogMouse(QWidget *parent)
             qDebug() << "clicked item:" << item;
         });
     }
-        {
+
+    {
 
         //------------------------------------
 
@@ -1730,6 +1878,15 @@ DialogMouse::DialogMouse(QWidget *parent)
         serviceDevice->restoreDefaultConfig();
     });
 
+    ui->labelAngleShow->setStyleSheet("QLabel{background-color:transparent;}");
+    ui->labelAngleShow->installEventFilter(this);
+    ui->labelAngleShow->setMouseTracking(true);
+    ui->labelGoBack->installEventFilter(this);
+    ui->lineEditShortcut->installEventFilter(this);
+    ui->labelBattery->installEventFilter(this);
+    ui->frameLeft->installEventFilter(this);
+    ui->frameKeyShow->installEventFilter(this);
+
     QTimer::singleShot(1000,this,[=]{
         setFixedSize(1280,900);
         ui->label_12->setFixedHeight(20);
@@ -1746,12 +1903,11 @@ DialogMouse::DialogMouse(QWidget *parent)
 void DialogMouse::updateButtonInfo()
 {
     auto btnInfo = serviceDevice->getButtonCfg();
-    if (btnInfo == nullptr) {
-        return;
-    }
+    if (btnInfo == nullptr) return;
 
     ui->checkBoxExchange->setChecked(false);
-    for (const auto &item : *btnInfo) {
+    for (const auto &item : *btnInfo)
+    {
         QString strName=QString("pushButtonMkey%1").arg(item.keyId);
         QPushButton *btn = findChild<QPushButton*>(strName);
         QString strChangedText;
@@ -1770,36 +1926,44 @@ void DialogMouse::updateButtonInfo()
                     }
                     else
                     {
-                        strChangedText = QString("普通按键: ") + getKeyNameByDF(baseKeyData->funKeyId);
+                        strChangedText = QString(tr("普通按键: ")) + getKeyNameByDF(baseKeyData->funKeyId);
                     }
                 }
             }
             break;
         }
+
         case InfortechDef::KeyType::ComboKey:
         {
             auto comboKeyData = item.cfg->getComboKeyInf();
-            if (comboKeyData != nullptr) {
+            if (comboKeyData != nullptr)
+            {
                 QString strSys = getKeyNameByDF(comboKeyData->sysKey[0]) + " + ";
                 if (comboKeyData->sysKey.size() == 2)
                 {
-                    strSys+= getKeyNameByDF(comboKeyData->sysKey[1]) + " + ";
+                    strSys += getKeyNameByDF(comboKeyData->sysKey[1]) + " + ";
                 }
-                strSys+= getKeyNameByDF(comboKeyData->customKey);
-                strChangedText = QString("组合键: ") + strSys;
+                strSys += getKeyNameByDF(comboKeyData->customKey);
+                strChangedText = QString(tr("组合键")) + QString(": ") + strSys;
             }
 
             break;
         }
+
         case InfortechDef::KeyType::FireKey:
         {
             auto fireKeyData = item.cfg->getFireKeyInf();
-            if (fireKeyData != nullptr) {
-                strChangedText = QString("火力键: ") + QString::asprintf("点击次数: %d, 点击间隔: %d, 保持点击: ",(int)fireKeyData->clickNum,(int)fireKeyData->interval) + QString(fireKeyData->keepClick?"是":"否");
+            if (fireKeyData != nullptr)
+            {
+                strChangedText  = QString(tr("火力键")) + QString(": ");
+                strChangedText += QString(tr("点击次数"))+QString(": %1;").arg((int)fireKeyData->clickNum);
+                strChangedText += QString(tr("点击间隔"))+QString(": %1;").arg((int)fireKeyData->interval);
+                strChangedText += QString(fireKeyData->keepClick ? tr("是") : tr("否"));
             }
 
             break;
         }
+
         case InfortechDef::KeyType::MacroKey:
         {
             auto macroKeyData = item.cfg->getMacroKeyInf();
@@ -1808,7 +1972,8 @@ void DialogMouse::updateButtonInfo()
                 strChangedText = QString::asprintf("宏设置: ID: %d, 类型: %d, 动作数量: %d\n",macroKeyData->macroId,macroKeyData->macroType,macroKeyData->data.size());
 
                 int gets = 0;
-                for (auto item : macroKeyData->data) {
+                for (auto item : macroKeyData->data)
+                {
                     strChangedText += QString("") + (getKeyNameByDF(item.keyId));
                     strChangedText += QString(" ") + (item.action == InfortechDef::Action::Press ? "↓":"↑");
                     strChangedText += QString::asprintf(" %4dms, ",item.delayTime);
@@ -1994,7 +2159,9 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
         float full = 180 + (360 - start) * 2.0;
         float fStep = full * 1.0 / 60;
 
-        if(event->type() == QEvent::MouseButtonRelease)
+        static int hitIndex = 100;
+
+        if(event->type() == QEvent::MouseButtonRelease || event->type() == QEvent::MouseMove)
         {
             QMouseEvent *pMEvt = static_cast<QMouseEvent *>(event);
 
@@ -2008,9 +2175,21 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
             if(index > 80)index = 0;
             if(index > 60) index = 60;
 
-            m_nowAngle = 30 - index;
-            ui->labelAngleShow->update();            
-            serviceDevice->setSensorAngle(m_nowAngle);
+            hitIndex = index;
+
+            if(event->type() == QEvent::MouseButtonRelease)
+            {
+                m_nowAngle = 30 - index;
+                serviceDevice->setSensorAngle(m_nowAngle);
+            }
+
+            ui->labelAngleShow->update();
+        }
+
+        if(event->type() == QEvent::Leave)
+        {
+            hitIndex = 100;
+            ui->labelAngleShow->update();
         }
 
         if(event->type() == QEvent::Paint)
@@ -2019,9 +2198,12 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
             paniter.setRenderHint(QPainter::Antialiasing);
             paniter.fillRect(rect,Qt::transparent);
 
-            paniter.setPen(QPen(QColor("#373737"),4));
             for(int i=0; i<=60; i++)
             {
+                paniter.setPen(QPen(QColor("#373737"),4));
+                if(i == hitIndex)
+                    paniter.setPen(QPen(QColor("#C73737"),4));
+
                 float curAngle = (start + i * fStep) * 3.1415936/180;
                 QPoint p0(nCX+ra0*cos(curAngle),nCX-ra0*sin(curAngle));
                 QPoint p1(nCX+ra1*cos(curAngle),nCX-ra1*sin(curAngle));
@@ -2196,14 +2378,7 @@ void DialogMouse::printButtonInf(const InfortechDef::AllBtnCfg *btnInf) {
                 std::cout << "btnId: " << item.keyId << ", type: MacroKey" << ", cfg: "
                           << "macroId: " << (int)macroKeyData->macroId
                           << ", macroType: " << (int)macroKeyData->macroType
-                          << ", macroCycleNumber: " << (int)macroKeyData->cycleNumber
-                          << ", data: {" << std::endl;
-
-                for (auto item : macroKeyData->data) {
-                    std::cout << "    { action: " << (item.action == InfortechDef::Action::Press ? "Press" : "Release")
-                    << ", keyId: " << item.keyId << ", delayTime: " << item.delayTime << " }" << std::endl;
-                }
-                std::cout << "}" << std::endl;
+                          << ", macroCycleNumber: " << (int)macroKeyData->cycleNumber << std::endl;
             }
             break;
         }
@@ -2329,21 +2504,23 @@ void DialogMouse::getAllCfg()
 {
     if(!connected) return;
     if(!serviceDevice) return;
+    if(fwUpdating) return;
 
     // 接收器版本
-    std::cout << std::endl;
+    std::cout << 0 << std::endl;
     auto dongleVersion = serviceDevice->getDongleVersion();
-    if (dongleVersion[0] != 0 && dongleVersion[1] != 0) {
+    if (dongleVersion != "" && dongleVersion[0] != 0 && dongleVersion[1] != 0) {
         std::cout << "Successfully obtained the receiver version." << std::endl;
         std::cout << (int)dongleVersion[1] << "." << (int)dongleVersion[0] << std::endl;
     }
 
     // 设备信息
     auto deviceInf = serviceDevice->getDeviceInf();
+    if(deviceInf != nullptr)
     printDeviceInf(deviceInf.get());
 
     // 按键配置
-    std::cout << std::endl;
+    std::cout << 1  << std::endl;
     auto btnInfo = serviceDevice->getButtonCfg();
     if (btnInfo != nullptr) {
         std::cout << "Successfully obtained the key c44r44ronfiguration." << std::endl;
@@ -2351,7 +2528,7 @@ void DialogMouse::getAllCfg()
     }
 
     // 鼠标配置
-    std::cout << std::endl;
+    std::cout<< 2  << std::endl;
     auto mouseCfg = serviceDevice->getMouseCfg();
     if (mouseCfg != nullptr) {
         std::cout << "Successfully obtained the mouse configuration." << std::endl;
@@ -2359,7 +2536,7 @@ void DialogMouse::getAllCfg()
     }
 
     // 鼠标额外配置
-    std::cout << std::endl;
+    std::cout << 3 << std::endl;
     auto extraCfg = serviceDevice->getMouseExtraInfo();
     if (extraCfg != nullptr) {
         std::cout << "Successfully obtained the mouse extra information." << std::endl;
@@ -2367,7 +2544,7 @@ void DialogMouse::getAllCfg()
     }
 
     // 传感器配置
-    std::cout << std::endl;
+    std::cout << 4 << std::endl;
     auto sensorCfg = serviceDevice->getSensorCfg();
     if (sensorCfg != nullptr) {
         std::cout << "Successfully obtained the sensor configuration." << std::endl;
@@ -2375,23 +2552,32 @@ void DialogMouse::getAllCfg()
     }
 
     // 接收器氛围灯配置
-    std::cout << std::endl;
+    std::cout << 5 << std::endl;
     auto dgAmbientCfg = serviceDevice->getDGAmbientCfg();
     if (dgAmbientCfg != nullptr) {
         std::cout << "Successfully obtained the receiver ambient configuration." << std::endl;
         printDGAmbientCfg(dgAmbientCfg.get());
     }
 
-    if(deviceInf)
+    if(deviceInf != nullptr)
     {
-        ui->buttonGroupConfig->buttons().at((int)deviceInf->confId)->setChecked(true);
-        ui->labelFirmwareVer->setText(deviceInf->getMouseFwVerStr().c_str());
-        ui->labelReceiverVer->setText(deviceInf->getReceiverFwVerStr().c_str());
-        m_nowAngle = sensorCfg->angle;
-        ui->checkBoxAngle->setChecked(sensorCfg->angleSwitch);
-        update();
+        int config =(int)deviceInf->confId ;
 
-        emit genUpdate();
+        std::cout << 6 << " -------------- " << config << std::endl;
+        if(config >= 0)
+        {
+            ui->buttonGroupConfig->buttons().at(config)->setChecked(true);
+            ui->labelFirmwareVer->setText(deviceInf->getMouseFwVerStr().c_str());
+            ui->labelReceiverVer->setText(deviceInf->getReceiverFwVerStr().c_str());
+            if(sensorCfg != nullptr)
+            {
+                m_nowAngle = sensorCfg->angle;
+                ui->checkBoxAngle->setChecked(sensorCfg->angleSwitch);
+                update();
+            }
+
+            emit genUpdate();
+        }
     }
 }
 

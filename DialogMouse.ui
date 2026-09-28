@@ -40,8 +40,9 @@ QToolTip{color:black;}
 QLabel{color:white;font-size:16px;}
 QCheckBox,QRadioButton{color:white;font-size:16px;min-height:32px;}
 QSpinBox{color:white;font-size:16px;}
-QDoubleSpinBox{color:white;font-size:16px;}
-#stackWidget{margin-left:20px;margin-bottom:20px;}
+QDoubleSpinBox{color:white;font-size:16px;min-height:24px;}
+QDialog { background-color: rgba(40, 40, 40, 0.9); border: none; border-radius: 0px; }
+#stackWidget{margin-left:20px;margin-bottom:20px;min-height:24px;}
 QPushButton{font: 16px 'MiSans' bold; color:white; border: 1px solid white; background: none; min-height:32px;border-radius:16px; padding: 0 4px;}
 
         QSlider { border-radius: 12px; height: 26px; }
@@ -57,15 +58,16 @@ QPushButton{font: 16px 'MiSans' bold; color:white; border: 1px solid white; back
             background: white;
             border: 3px solid #5C2CAE ; }
 
- QMessageBox {min-width: 400px; min-height: 240px;}
+ QMessageBox {min-width: 400px; min-height: 280px;background-color: rgba(240, 240, 240, 0.9); border: 1px solid gray; }
  QMessageBox QPushButton {
-                border: 1px solid #6C9F50;
+                border: 2px solid #6C9F50;
                 background-color: #6329B6;
                 color: white;
                 border-radius: 8px;
                 padding: 2px 2px;
                 min-width: 120px;
                 min-height: 24px; }
+
 QMessageBox QLabel#qt_msgbox_label{  color: black ; font-size:14px; min-width:340px; qproperty-alignment: AlignLeft ;}
 
 QComboBox{color:white;font-size:16px;background-color:transparent;}
@@ -101,6 +103,14 @@ QComboBox QAbstractItemView::item:selected {
     background-color: #404040;
 }
 
+QLineEdit {
+	color:white;
+	background-color:transparent;
+	border:2px solid #a1a1a1;
+	border-radius:8px;
+	min-height:20px;
+}
+
 QSpinBox {
     padding-left: 10px;
     padding-right: 10px;
@@ -109,6 +119,7 @@ QSpinBox {
 	border:2px solid #a1a1a1;
     text-align:center;
 	border-radius:8px;
+	min-height:24px;
 }
 QSpinBox::up-button {
     subcontrol-position: right;
@@ -821,7 +832,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -6951,7 +6962,7 @@ background-color: rgb(199, 199, 199);</string>
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
-                   <height>32</height>
+                   <height>28</height>
                   </size>
                  </property>
                  <property name="alignment">
@@ -8120,7 +8131,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>32</height>
+                      <height>28</height>
                      </size>
                     </property>
                     <property name="styleSheet">
@@ -8347,8 +8358,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>296</width>
-                     <height>699</height>
+                     <width>279</width>
+                     <height>71</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -8580,8 +8591,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>1029</width>
-                        <height>645</height>
+                        <width>79</width>
+                        <height>73</height>
                        </rect>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -8759,7 +8770,7 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>32</height>
+                       <height>28</height>
                       </size>
                      </property>
                      <property name="alignment">
@@ -8987,7 +8998,7 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
                 <number>60</number>
                </property>
                <item>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="pushButtonUpgradeMouse">
                  <property name="minimumSize">
                   <size>
                    <width>200</width>
@@ -9003,7 +9014,7 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_2">
+                <widget class="QPushButton" name="pushButtonUpgradeDonggle">
                  <property name="minimumSize">
                   <size>
                    <width>200</width>
@@ -9326,8 +9337,8 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
   <tabstop>pushButtonInsert</tabstop>
   <tabstop>spinBoxDelay</tabstop>
   <tabstop>pushButtonSetDelay</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButtonUpgradeMouse</tabstop>
+  <tabstop>pushButtonUpgradeDonggle</tabstop>
   <tabstop>pushButtonResetDevice</tabstop>
  </tabstops>
  <resources>
@@ -9335,18 +9346,18 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupKeySet"/>
-  <buttongroup name="buttonGroupSuper"/>
-  <buttongroup name="buttonGroupBHOP"/>
+  <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupDpiSelect"/>
   <buttongroup name="buttonGroupRgbEffect"/>
   <buttongroup name="buttonGroupY"/>
-  <buttongroup name="buttonGroupClr"/>
-  <buttongroup name="buttonGroupDpiSelect"/>
   <buttongroup name="buttonGroupX"/>
-  <buttongroup name="buttonGroupMain"/>
-  <buttongroup name="buttonGroupKeyType"/>
   <buttongroup name="buttonGroupConfig"/>
-  <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupKeyType"/>
   <buttongroup name="buttonGroupShortcut"/>
+  <buttongroup name="buttonGroupKeySet"/>
+  <buttongroup name="buttonGroupBHOP"/>
+  <buttongroup name="buttonGroupMain"/>
+  <buttongroup name="buttonGroupSuper"/>
+  <buttongroup name="buttonGroupClr"/>
  </buttongroups>
 </ui>
