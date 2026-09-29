@@ -832,7 +832,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -899,7 +899,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>16</x>
-                  <y>284</y>
+                  <y>272</y>
                   <width>180</width>
                   <height>34</height>
                  </rect>
@@ -921,7 +921,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>438</x>
-                  <y>54</y>
+                  <y>42</y>
                   <width>180</width>
                   <height>34</height>
                  </rect>
@@ -955,7 +955,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>490</x>
-                  <y>172</y>
+                  <y>160</y>
                   <width>180</width>
                   <height>34</height>
                  </rect>
@@ -989,7 +989,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>14</x>
-                  <y>370</y>
+                  <y>358</y>
                   <width>180</width>
                   <height>34</height>
                  </rect>
@@ -1011,7 +1011,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>54</x>
-                  <y>54</y>
+                  <y>42</y>
                   <width>180</width>
                   <height>34</height>
                  </rect>
@@ -1036,7 +1036,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>494</x>
-                  <y>266</y>
+                  <y>254</y>
                   <width>180</width>
                   <height>34</height>
                  </rect>
@@ -1070,7 +1070,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>206</x>
-                  <y>88</y>
+                  <y>76</y>
                   <width>276</width>
                   <height>650</height>
                  </rect>
@@ -4606,7 +4606,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                                <number>1</number>
                               </property>
                               <property name="maximum">
-                               <number>2000</number>
+                               <number>255</number>
                               </property>
                               <property name="singleStep">
                                <number>1</number>
@@ -4634,7 +4634,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                                <number>1</number>
                               </property>
                               <property name="maximum">
-                               <number>2000</number>
+                               <number>255</number>
                               </property>
                               <property name="singleStep">
                                <number>1</number>
@@ -4795,7 +4795,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                                <number>1</number>
                               </property>
                               <property name="maximum">
-                               <number>2000</number>
+                               <number>255</number>
                               </property>
                               <property name="singleStep">
                                <number>1</number>
@@ -4907,7 +4907,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
            <item>
             <layout class="QGridLayout" name="gridLayout_6" columnstretch="1,0">
              <item row="0" column="0">
-              <widget class="QLabel" name="label">
+              <widget class="QLabel" name="labelQuickDpi">
                <property name="toolTip">
                 <string>开启后通过 左中右 键快捷切换DPI</string>
                </property>
@@ -4920,7 +4920,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="ToggleButton" name="checkBoxQuick">
+              <widget class="ToggleButton" name="checkBoxQuickDpi">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
@@ -7234,7 +7234,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 </spacer>
                </item>
                <item>
-                <widget class="QLabel" name="label_63">
+                <widget class="QLabel" name="labelMoveOffLed">
                  <property name="text">
                   <string>移动关闭LED</string>
                  </property>
@@ -8283,7 +8283,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButtonMoveDown">
+                   <widget class="QPushButton" name="pushButtonMoveOut">
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -8312,7 +8312,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButtonMoveUp">
+                   <widget class="QPushButton" name="pushButtonMoveIn">
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -8358,7 +8358,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>279</width>
+                     <width>81</width>
                      <height>71</height>
                     </rect>
                    </property>
@@ -8591,7 +8591,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>79</width>
+                        <width>81</width>
                         <height>73</height>
                        </rect>
                       </property>
@@ -9272,7 +9272,7 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
   <tabstop>comboBoxMacro</tabstop>
   <tabstop>pushButtonGotoMacro</tabstop>
   <tabstop>pushButtonSetMacro</tabstop>
-  <tabstop>checkBoxQuick</tabstop>
+  <tabstop>checkBoxQuickDpi</tabstop>
   <tabstop>checkBoxDoubleSet</tabstop>
   <tabstop>lineEditValueX</tabstop>
   <tabstop>horizontalSliderX</tabstop>
@@ -9327,8 +9327,8 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
   <tabstop>verticalSlider00</tabstop>
   <tabstop>doubleSpinBox</tabstop>
   <tabstop>pushButtonAddMacro</tabstop>
-  <tabstop>pushButtonMoveDown</tabstop>
-  <tabstop>pushButtonMoveUp</tabstop>
+  <tabstop>pushButtonMoveOut</tabstop>
+  <tabstop>pushButtonMoveIn</tabstop>
   <tabstop>tableViewMList</tabstop>
   <tabstop>pushButtonDelete</tabstop>
   <tabstop>pushButtonClear</tabstop>
@@ -9346,18 +9346,18 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupRgbSpeed"/>
-  <buttongroup name="buttonGroupDpiSelect"/>
-  <buttongroup name="buttonGroupRgbEffect"/>
-  <buttongroup name="buttonGroupY"/>
-  <buttongroup name="buttonGroupX"/>
-  <buttongroup name="buttonGroupConfig"/>
   <buttongroup name="buttonGroupKeyType"/>
-  <buttongroup name="buttonGroupShortcut"/>
-  <buttongroup name="buttonGroupKeySet"/>
   <buttongroup name="buttonGroupBHOP"/>
+  <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupKeySet"/>
   <buttongroup name="buttonGroupMain"/>
-  <buttongroup name="buttonGroupSuper"/>
   <buttongroup name="buttonGroupClr"/>
+  <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupConfig"/>
+  <buttongroup name="buttonGroupRgbEffect"/>
+  <buttongroup name="buttonGroupShortcut"/>
+  <buttongroup name="buttonGroupSuper"/>
+  <buttongroup name="buttonGroupDpiSelect"/>
+  <buttongroup name="buttonGroupX"/>
  </buttongroups>
 </ui>

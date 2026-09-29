@@ -6,7 +6,7 @@
 #include <QDateTime>
 #include <Windows.h>
 
-static QString g_strVer("1.7.8");
+static QString g_strVer("1.7.9");
 
 QString currentVersion()
 {

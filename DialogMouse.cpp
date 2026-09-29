@@ -285,17 +285,17 @@ auto deviceStateChange(const InfortechDef::DevMsg& msg)
 
 QMap<int,QString> keyMapset=
 {
-    {1707,"左滚"},
-    {1702,"右键"},
-    {1710,"下滚"},
-    {1705,"前进"},
     {1701,"左键"},
-    {1709,"上滚"},
+    {1702,"右键"},
+    {1703,"中键"},
     {1704,"后退"},
+    {1705,"前进"},
+    {1707,"左滚"},
+    {1708,"右滚"},
+    {1709,"上滚"},
+    {1710,"下滚"},
     {1711,"DPI循环"},
     {1712,"DPI+"},
-    {1708,"右滚"},
-    {1703,"中键"},
     {1713,"DPI-"},
     {1731,"BLE循环"},
     {1732,"BLE+"},
@@ -304,15 +304,17 @@ QMap<int,QString> keyMapset=
     {1901,"火力按钮"},
     {1801,"亮度+"},
     {1802,"亮度-"},
+    {1803,"音量+"},
+    {1804,"音量-"},
+    {1805,"静音"},
+    {1806,"计算器"},
+    {1807,"我的电脑"},
+    {1808,"邮件"},
     {1809,"播放器"},
     {1810,"停止"},
     {1811,"暂停"},
     {1812,"上一首"},
     {1813,"下一首"},
-    {1805,"静音"},
-    {1803,"音量+"},
-    {1804,"音量-"},
-    {1808,"邮件"},
     {1814,"主页"},
     {1815,"搜索"},
     {1816,"刷新"},
@@ -320,8 +322,6 @@ QMap<int,QString> keyMapset=
     {1818,"网页停止"},
     {1819,"网页前进"},
     {1820,"网页后退"},
-    {1806,"计算器"},
-    {1807,"我的电脑"},
     {1201,"F1"},
     {1202,"F2"},
     {1203,"F3"},
@@ -412,8 +412,8 @@ QMap<int,QString> keyMapset=
     {1517,"Left Shift"},
     {1521,"Right Shift"},
     {1601,"Up"},
-    {1603,"Left"},
     {1602,"Down"},
+    {1603,"Left"},
     {1604,"Right"},
     {1507,"Print Screen"},
     {1508,"Scroll Lock"},
@@ -451,7 +451,12 @@ void refreshMacroItem(QStandardItem *item)
 {
     if(!item) return;
     macroItem *macro = reinterpret_cast<macroItem *>(item->data().toULongLong());
-    QString text=QString("%1 %2\n%3 ms").arg(keyMapset[macro->defId], macro->down?"↓":"↑").arg(macro->delay);
+    if(macro == nullptr)
+    {
+        item->setText("");
+        return;
+    }
+    QString text = QString("%1 %2\n%3 ms").arg(keyMapset[macro->defId], macro->down?"↓":"↑").arg(macro->delay);
     item->setText(text);
 }
 
@@ -599,7 +604,6 @@ void DialogMouse::saveLoadMacroHeader(bool save)
 
                 checker.push_back(It["id"].toInt());
             }
-
         }
     }
     m_loading = false;
@@ -608,7 +612,8 @@ void DialogMouse::saveLoadMacroHeader(bool save)
 void DialogMouse::saveLoadMacroContent(int macroId, QList<macroItem*>&macroContent, bool save)
 {
     m_loading = true;
-    QFile jF(m_strPath+QString::asprintf("/macroEvent-%02d.txt",macroId));
+    QString strMacorFile = m_strPath+QString::asprintf("/macroEvent-%02d.txt",macroId) ;
+    QFile jF(strMacorFile);
     if(save)
     {
         if (jF.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate))
@@ -694,6 +699,7 @@ void DialogMouse::startConnect()
         connected = serviceDevice->connectDevice(deviceSet[0]);
         serviceDevice->initDevice();
         getAllCfg();
+        ui->pushButtonMain3->setVisible((deviceSet[0].productId == 0x22));
     }
 
     QTimer *pMonitorTM = new QTimer(this);
@@ -702,7 +708,9 @@ void DialogMouse::startConnect()
         if(mouseChanged)
         {
             mouseChanged=false;
+            if(!connected) this->hide();
             getAllCfg();
+
         }
     });
 }
@@ -715,6 +723,13 @@ DialogMouse::DialogMouse(QWidget *parent)
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint ); // | Qt::WindowStaysOnTopHint
 
     m_strPath = getUserDataPath("huaximouse");
+
+    ui->pushButtonMoveOut->hide();
+    ui->pushButtonMoveIn->hide();
+    ui->labelQuickDpi->hide();
+    ui->checkBoxQuickDpi->hide();
+    ui->labelMoveOffLed->hide();
+    ui->checkBoxMoveOffLed->hide();
 
     {
         startConnect();
@@ -859,7 +874,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 connect(pEvt,&ModuleAddMacroSquare::insert,this,[=]{
 
                     QTimer::singleShot(50,this,[=]{
-                        //m_loading = true;
+                        m_loading   = true;
                         m_recording = true;
 
                         if(pEvt->type() == 0)
@@ -881,7 +896,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                             addMacroItem(defId,50,0,false);
                         }
 
-                        m_loading = false;
+                        m_loading   = false;
                         m_recording = false;
                         saveLoadMacroContent(m_currentId,macroGroup);
                     });
@@ -898,27 +913,11 @@ DialogMouse::DialogMouse(QWidget *parent)
                 pDlg->layout()->addWidget(pEvt);
 
                 pEvt->setFixedHeight(460);
-                //pDlg->setMinimumHeight(500);
-                //pDlg->adjustSize();
-
-                //pEvt->setStyleSheet("Frame { background-color: rgba(40, 40, 40, 0.9); border: none; border-radius: 0px; }");
-                //pDlg->setStyleSheet("QDialog { background-color: rgba(40, 40, 40, 0.9); border: none; border-radius: 0px; }");
             }
 
             pEvt->show();
             pEvt->setParent(pDlg);
             pDlg->exec();
-            return;
-
-            ModuleGeneralMasker gMask(pEvt,ui->frameRight);
-            pEvt->show();
-            pEvt->update();
-            gMask.setStyleSheet("QDialog { background-color: rgba(200, 200, 200, 0.9); border: none; border-radius: 32px; }");
-
-            auto res = gMask.exec();
-            if(res == QDialog::Accepted)
-            {
-            }
         });
 
         //-----------------------------
@@ -943,10 +942,6 @@ DialogMouse::DialogMouse(QWidget *parent)
         pVBox->addItem(pHBox1);
         pVBox->addSpacerItem(new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding));
         pVBox->addItem(pHBox2);
-        // pVBox->setStretch(0,0);
-        // pVBox->setStretch(1,1);
-        // pVBox->setStretch(2,1);
-        // pVBox->setStretch(3,1);
 
         QLineEdit *pPath = new QLineEdit(pFwDlg);
         pPath->setPlaceholderText(tr("请选择一个Bin文件..."));
@@ -959,8 +954,8 @@ DialogMouse::DialogMouse(QWidget *parent)
         {
             QString filter = tr("固件文件 (*.bin *.hex *.fw);;所有文件 (*.*)");
             QString strFile = QFileDialog::getOpenFileName(pFwDlg,tr("选择固件文件"),"",filter);
-            if(strFile.isEmpty())
-                return;
+            if(strFile.isEmpty()) return;
+
             auto fwBuffer = serviceDevice->loadFwFile(strFile.toStdString().c_str());
             auto fwInfo = serviceDevice->readFwInfo(fwBuffer);
             if (fwBuffer.empty() || fwInfo == nullptr || fwInfo->fwType == InfortechDef::FwDeviceType::Undefined)
@@ -968,7 +963,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 QMessageBox::critical(this,tr("提示"),tr("固件文件无法识别！"));
                 return;
             }
-            qDebug() << fwInfo->version << fwInfo->fileSize ;
+
             pPath->setText(strFile);
         });
 
@@ -996,7 +991,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 pTMProg->stop();
                 pProg->setValue(100);
                 QMessageBox::information(this,tr("提示"),tr("固件升级成功！"));
-                fwUpdating=false;
+                fwUpdating= false;
                 connected = false;
                 pFwDlg->hide();
                 startConnect();
@@ -1044,7 +1039,6 @@ DialogMouse::DialogMouse(QWidget *parent)
             pFwDlg->setWindowTitle(ui->pushButtonUpgradeDonggle->text());
             pFwDlg->exec();
         });
-
     }
 
     {
@@ -1162,6 +1156,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         });
 
         connect(ui->pushButtonSetMacro,&QPushButton::clicked,this,[=]{
+
             int keyId = seletetKey;
             int index = ui->comboBoxMacro->currentIndex();
             if(index == -1) return;
@@ -1179,32 +1174,26 @@ DialogMouse::DialogMouse(QWidget *parent)
             if(ui->radioButtonMLoop4->isChecked()) loopType = 4;
             if(ui->radioButtonMLoop5->isChecked()) loopType = 5;
 
-            macroKeyData.macroId = 2;						// 宏 ID
+            macroKeyData.macroId = 8;						// 宏 ID
             macroKeyData.macroType = (InfortechDef::MacroType)loopType;
             macroKeyData.cycleNumber = ui->spinBoxMacroLoop->value();				// 宏循环次数
 
             // 最大支持 70 组数据
-            // macroKeyData.data.push_back({ InfortechDef::Action::Press, 1101, 78 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Release, 1101, 290 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Press, 1001, 131 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Release, 1001, 26 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Press, 1101, 148 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Release, 1516, 377 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Press, 1516, 128 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Release, 1701, 271 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Press, 1701, 78 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Release, 1002, 79 });
-            // macroKeyData.data.push_back({ InfortechDef::Action::Release, 1002, 104 });
-
             for(int i=0; i<mEvts.size(); i++)
             {
+                if(i >= 70) break;
                 macroItem*item = mEvts[i];
                 macroKeyData.data.push_back({ item->down?InfortechDef::Action::Press:InfortechDef::Action::Release, (uint16_t)item->defId, (uint16_t)item->delay });
             }
 
-            serviceDevice->setMacroKeyInf(keyId, macroKeyData);
-            updateButtonInfo();
+            m_loading = true;
+            QTimer::singleShot(1000,this,[=]{
+                m_loading = false;
+                getAllCfg();
+                updateButtonInfo();
+            });
 
+            serviceDevice->setMacroKeyInf(keyId, macroKeyData);
             EasyToast::information("宏 设置成功！");
         });
 
@@ -1361,7 +1350,6 @@ DialogMouse::DialogMouse(QWidget *parent)
                 if(!pColorBrn) return;
                 pColorBrn->setStyleSheet(QString(R"( QPushButton{ background-color: %1;border-radius:20px;} )").arg(color.name()));
                 pColorBrn->setFixedSize(40,40);
-
             });
         }
 
@@ -1645,7 +1633,6 @@ DialogMouse::DialogMouse(QWidget *parent)
                 ui->checkBoxBHOP->setChecked(mouseCfg->bhopEnable);
             }
 
-
             ui->checkBoxLine->setChecked(mouseCfg->straight);
             ui->checkBox20000FPS->setChecked(mouseCfg->competitiveMode);
             ui->checkBoxMoveOffLed->setChecked(mouseCfg->moveOffLed);
@@ -1689,7 +1676,6 @@ DialogMouse::DialogMouse(QWidget *parent)
             int item = index.row() * 6 + index.column();
             if(item%2 == 0) item++;
             m_insertAt = item;
-            qDebug() << "clicked item:" << item;
         });
     }
 
@@ -1720,20 +1706,26 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         connect(ui->tableViewMList,&QTableView::clicked,this,[=](const QModelIndex &index){
             QStandardItem *item = m_pMList->itemFromIndex(index);
+            ui->labelCurrentMacro->setText(m_pMList->item(item->row())->text());
             m_currentId = item->data().toInt();
-            ui->pushButtonClear->click();
 
             saveLoadMacroContent(m_currentId,macroGroup,false);
 
+            m_loading = true;
+
             int count = macroGroup.count();
-            for(int i=0; i<count; i++)
+            for(int i=0; i<255; i++)
             {
                 QStandardItem *item = m_pModel->item(i/6,i%6);
-                if(item) item->setData((quint64)macroGroup[i]);
+                if(!item) break;
+                item->setData(0);
+                if(i < count)
+                    item->setData((quint64)macroGroup[i]);
                 refreshMacroItem(item);
             }
-            ui->labelTitle4->setText(QString("占用: %1 / 70").arg(count));
-            ui->labelCurrentMacro->setText(m_pMList->item(item->row())->text());
+            ui->labelTitle4->setText(QString(tr("占用") + QString(": %1 / 70").arg(count)));
+
+            m_loading = false;
         });
 
         connect(m_pMList,&QStandardItemModel::itemChanged,this,[=](QStandardItem *item){
@@ -1755,6 +1747,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 if(ui->comboBoxMacro->itemData(i).toInt() == id)
                 {
                     ui->comboBoxMacro->removeItem(i);
+                    QFile::remove(m_strPath+QString::asprintf("/macroEvent-%02d.txt",id));
                     break;
                 }
             }
@@ -1776,19 +1769,33 @@ DialogMouse::DialogMouse(QWidget *parent)
             }
 
             m_insertAt = -1;
-            if(!m_recording)
-            {
-                //ui->pushButtonClear->click();
-            }
-
-            QTimer::singleShot(200,this,[=]{
-                m_recording = ui->pushButtonRecord->isChecked();
-                saveLoadMacroContent(m_currentId,macroGroup,true);
-                ui->pushButtonRecord->setText(m_recording?tr("正在录制..."):tr("开始录制"));
-                if(!m_recording)
+            QTimer::singleShot(50,this,[=]{
+                if(m_recording)
                 {
-                    ui->pushButtonDelete->click();
+                    int count = macroGroup.count();
+                    macroGroup.remove(count-2,2);
+                    saveLoadMacroContent(m_currentId,macroGroup,true);
+                    {
+                        m_loading = true;
+
+                        int count = macroGroup.count();
+                        for(int i=0; i<255; i++)
+                        {
+                            QStandardItem *item = m_pModel->item(i/6,i%6);
+                            if(!item) break;
+                            item->setData(0);
+                            if(i < count)
+                                item->setData((quint64)macroGroup[i]);
+                            refreshMacroItem(item);
+                        }
+                        ui->labelTitle4->setText(QString(tr("占用") + QString(": %1 / 70").arg(count)));
+
+                        m_loading = false;
+                    }
                 }
+
+                m_recording = ui->pushButtonRecord->isChecked();
+                ui->pushButtonRecord->setText(m_recording?tr(" 正在录制"):tr(" 开始录制"));
             });
 
             setFocusPolicy(Qt::StrongFocus);
@@ -1796,6 +1803,13 @@ DialogMouse::DialogMouse(QWidget *parent)
         });
 
         connect(ui->pushButtonClear,&QPushButton::clicked,this,[=]{
+            if(m_currentId == -1)
+            {
+                QMessageBox::warning(this,tr("提示"),tr("没有选中 宏，请重试！"));
+                return;
+            }
+            QFile::remove(m_strPath+QString::asprintf("/macroEvent-%02d.txt",m_currentId));
+
             m_lastItem = nullptr;
             macroGroup.clear();
             ui->labelTitle4->setText(tr("占用") + QString(": 0 / 70"));
@@ -1808,40 +1822,42 @@ DialogMouse::DialogMouse(QWidget *parent)
             }
         });
 
-        connect(ui->tableViewMContent->selectionModel(), &QItemSelectionModel::selectionChanged,
-                this, [=](const QItemSelection &selected, const QItemSelection &deselected){
-                    for(auto idx : selected.indexes())
-                    {
-                    }
-                });
+        connect(ui->tableViewMContent->selectionModel(), &QItemSelectionModel::selectionChanged, this, [=](const QItemSelection &selected, const QItemSelection &deselected){
+                for(auto idx : selected.indexes())
+                {
+                    //qDebug() << idx;
+                }
+            });
 
         connect(ui->pushButtonDelete,&QPushButton::clicked,this,[=]{
-            m_lastItem = nullptr;
-            QStandardItem* item = nullptr;
-            QModelIndexList selecteds = ui->tableViewMContent->selectionModel()->selectedIndexes();
-            qDebug() << selecteds;
-            if(selecteds.count())
-                item = m_pModel->itemFromIndex(selecteds.at(0));
             int count = macroGroup.count();
+            if(count == 0 || m_insertAt == -1 || m_insertAt >= count)
+            {
+                QMessageBox::warning(this,tr("提示"),tr("没有选中的宏动作，请重试！"));
+                return;
+            }
+
+            m_lastItem = nullptr;
             if(count>0 && m_insertAt != -1)
             {
-                int index = m_insertAt;//item->row() * 6 + item->column();
-                qDebug() << "delete Item: " <<index << count;
+                int index = m_insertAt;
+
                 if(index >= count)
                     return;
+
                 bool delDouble = (count%2  == 0);
 
                 if(index%2 == 0)
                 {
                     macroGroup.removeAt(index);
                     if(delDouble && (index < macroGroup.count()))
-                    macroGroup.removeAt(index);
+                        macroGroup.removeAt(index);
                 }
                 else
                 {
                     macroGroup.removeAt(index-1);
                     if(delDouble && (index-1 < macroGroup.count()))
-                    macroGroup.removeAt(index-1);
+                        macroGroup.removeAt(index-1);
                 }
 
                 for(int m=0;m<12;m++)
@@ -1861,6 +1877,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 }
                 ui->labelTitle4->setText(tr("占用") + QString(": %1 / 70").arg(count));
                 saveLoadMacroContent(m_currentId,macroGroup,true);
+                m_insertAt = -1 ;
             }
         });
 
@@ -1875,10 +1892,14 @@ DialogMouse::DialogMouse(QWidget *parent)
     }
 
     connect(ui->pushButtonResetDevice,&QPushButton::clicked,this,[=]{
-        serviceDevice->restoreDefaultConfig();
+        if(QMessageBox::question(this,tr("提示"),tr("确定要恢复出厂设置吗？")) == QMessageBox::Yes)
+        {
+            serviceDevice->restoreDefaultConfig();
+            QTimer::singleShot(2000,this,[=]{ startConnect(); });
+        }
     });
 
-    ui->labelAngleShow->setStyleSheet("QLabel{background-color:transparent;}");
+    ui->labelAngleShow->setStyleSheet("QLabel{ background-color:transparent; }");
     ui->labelAngleShow->installEventFilter(this);
     ui->labelAngleShow->setMouseTracking(true);
     ui->labelGoBack->installEventFilter(this);
@@ -2502,6 +2523,7 @@ void DialogMouse::printDGAmbientCfg(const InfortechDef::DGAmbientCfg* dgAmbientC
 // 获取所有配置
 void DialogMouse::getAllCfg()
 {
+    if(m_loading) return;
     if(!connected) return;
     if(!serviceDevice) return;
     if(fwUpdating) return;
