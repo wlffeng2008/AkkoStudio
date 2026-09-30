@@ -4,6 +4,7 @@
 #include <QSettings>
 #include <QApplication>
 #include <QDateTime>
+
 #include <Windows.h>
 
 static QString g_strVer("1.7.9");
@@ -60,7 +61,6 @@ FrameSystemInfo::FrameSystemInfo(QWidget *parent)
         pTop->setFlag(QDialog::Rejected);
         hide();
     });
-
 }
 
 void FrameSystemInfo::changeEvent(QEvent *pEvt)

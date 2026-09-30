@@ -6,7 +6,6 @@
 #include "MainWindow.h"
 #include "EasyToast.h"
 #include "ModuleAddMacroSquare.h"
-#include "ModuleGeneralMasker.h"
 
 #include <QLineEdit>
 #include <QPushButton>
@@ -290,10 +289,10 @@ QMap<int,QString> keyMapset=
     {1703,"中键"},
     {1704,"后退"},
     {1705,"前进"},
-    {1707,"左滚"},
+    {1707,"下滚"},
     {1708,"右滚"},
-    {1709,"上滚"},
-    {1710,"下滚"},
+    {1709,"左滚"},
+    {1710,"上滚"},
     {1711,"DPI循环"},
     {1712,"DPI+"},
     {1713,"DPI-"},
@@ -436,16 +435,6 @@ QString getKeyNameByDF(uint16_t dfCode)
 }
 
 const char *get_keyname_df(uint16_t df_code);
-
-QMap<int,QString> keyChangeset=
-{
-    {1701,""},
-    {1702,""},
-    {1703,""},
-    {1704,""},
-    {1705,""},
-    {1706,""}
-};
 
 void refreshMacroItem(QStandardItem *item)
 {
@@ -611,8 +600,10 @@ void DialogMouse::saveLoadMacroHeader(bool save)
 
 void DialogMouse::saveLoadMacroContent(int macroId, QList<macroItem*>&macroContent, bool save)
 {
+    if(macroId == -1) return;
+
     m_loading = true;
-    QString strMacorFile = m_strPath+QString::asprintf("/macroEvent-%02d.txt",macroId) ;
+    QString strMacorFile = m_strPath+QString::asprintf("/macroEvent-%02d.txt",macroId);
     QFile jF(strMacorFile);
     if(save)
     {
@@ -664,12 +655,8 @@ void DialogMouse::saveLoadMacroContent(int macroId, QList<macroItem*>&macroConte
 
 void DialogMouse::startConnect()
 {
-    QElapsedTimer tm;
-    tm.start();
     serviceDevice = InfortechDevice::getInstance();
     serviceDevice->openLog(false);
-    qDebug() << tm.elapsed();
-    tm.restart();
 
     // 设置设备信息
     //serviceDevice->addMouseInf(0x1A86, 0x8501);
@@ -688,12 +675,8 @@ void DialogMouse::startConnect()
     // 注册通知函数
     serviceDevice->regDevChangeCall(deviceStateChange);
 
-    qDebug() << tm.elapsed();
-    tm.restart();
     auto deviceSet = serviceDevice->getDevices();
 
-    qDebug() << tm.elapsed() << deviceSet.size();
-    tm.restart();
     if(deviceSet.size())
     {
         connected = serviceDevice->connectDevice(deviceSet[0]);
@@ -730,6 +713,7 @@ DialogMouse::DialogMouse(QWidget *parent)
     ui->checkBoxQuickDpi->hide();
     ui->labelMoveOffLed->hide();
     ui->checkBoxMoveOffLed->hide();
+    ui->doubleSpinBox->hide();
 
     {
         startConnect();
@@ -1054,22 +1038,39 @@ DialogMouse::DialogMouse(QWidget *parent)
             QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupKeySet->button(id));
             seletetKey = pBtn->objectName().replace("pushButtonMkey","").toInt();
 
-            if((seletetKey == 1701 && !ui->checkBoxExchange->isChecked()) || (seletetKey == 1702 && ui->checkBoxExchange->isChecked()))
+            if(seletetKey == 1701)
             {
-                QMessageBox::warning(this,"提示","鼠标的左按键和右按键 必须保留一个有左键功能！");
-                return;
+                bool setLeft = false;
+                auto btnInfo = serviceDevice->getButtonCfg();
+                if (btnInfo == nullptr) return;
+                for (const auto &item : *btnInfo)
+                {
+                    if(item.keyType == InfortechDef::KeyType::BaseKey)
+                    {
+                        auto baseKeyData = item.cfg->getBaseKeyInf();
+                        if (baseKeyData != nullptr && baseKeyData->funKeyId == 1701 && item.keyId != 1701)
+                        {
+                            setLeft = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(!setLeft)
+                {
+                    QMessageBox::warning(this,tr("提示"),tr("鼠标必须保留一个按键有左键功能！"));
+                    return;
+                }
             }
 
             ui->frameKeyShow->show();
-
-            qDebug() << seletetKey << pBtn->objectName();
         });
 
         ui->stackedWidgetPickKey->setCurrentIndex(0);
         connect(ui->buttonGroupKeyType,&QButtonGroup::idClicked,this,[=](int id){
             int index = abs(id)-2;
             ui->stackedWidgetPickKey->setCurrentIndex(index);
-            QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupKeyType->button(id));
+            //QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupKeyType->button(id));
         });
 
         connect(ui->buttonGroupConfig,&QButtonGroup::idClicked,this,[=](int id){
@@ -1078,8 +1079,8 @@ DialogMouse::DialogMouse(QWidget *parent)
             getAllCfg();
         });
 
-        QTimer::singleShot(500,this,[=]{
-            //ui->radioButtonConfig0->click();
+        connect(ui->checkBoxKeepClick,&QCheckBox::clicked,this,[=](bool checked){
+            ui->spinBoxFireCount->setEnabled(!checked);
         });
 
         ui->buttonGroupShortcut->setExclusive(false);
@@ -1092,7 +1093,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                     count++;
             }
 
-            if(count==2)
+            if(count == 2)
             {
                 foreach(auto btn,btns)
                 {
@@ -1102,7 +1103,6 @@ DialogMouse::DialogMouse(QWidget *parent)
             }
             else
             {
-
                 foreach(auto btn,btns)
                 {
                     btn->setEnabled(true);
@@ -1269,12 +1269,9 @@ DialogMouse::DialogMouse(QWidget *parent)
             btnsSelect[i]->setFixedSize(40,40);
         }
 
-        static int valueA[]={400,800,1200,1600,3200,6400,10000,30000};
         static int valueX[]={400,800,1200,1600,3200,6400,10000,30000};
         static int valueY[]={400,800,1200,1600,3200,6400,10000,30000};
-        static int selectA = 0 ;
-        static int selectX = 0 ;
-        static int selectY = 0 ;
+        static int selectDpiId = 0 ;
         static int selectDpiX = 0;
         static int selectDpiY = 0;
 
@@ -1365,7 +1362,6 @@ DialogMouse::DialogMouse(QWidget *parent)
             int i = 0;
             for (const auto &item : mouseCfg->dpiData.data)
             {
-                valueA[i] = item.xDpi;
                 valueX[i] = item.xDpi;
                 valueY[i] = item.yDpi;
                 dpiColors[i] = item.color.c_str();
@@ -1374,7 +1370,7 @@ DialogMouse::DialogMouse(QWidget *parent)
 
             for(int i=0; i<8; i++)
             {
-                btnsX[i]->setText(QString("%1").arg(ui->checkBoxDoubleSet->isChecked()?valueX[i]:valueA[i]));
+                btnsX[i]->setText(QString("%1").arg(valueX[i]));
                 btnsY[i]->setText(QString("%1").arg(valueY[i]));
 
                 SetButtonTipColor(btnsX[i],dpiColors[i]);
@@ -1420,11 +1416,11 @@ DialogMouse::DialogMouse(QWidget *parent)
 
             for(int i=0; i<8; i++)
             {
-                btnsX[i]->setText(QString("%1").arg(ui->checkBoxDoubleSet->isChecked()?valueX[i]:valueA[i]));
+                btnsX[i]->setText(QString("%1").arg(valueX[i]));
                 btnsY[i]->setText(QString("%1").arg(valueY[i]));
             }
-            ui->horizontalSliderX->setValue(ui->checkBoxDoubleSet->isChecked()?valueX[selectX]:valueA[selectA]);
-            ui->horizontalSliderY->setValue(valueY[selectY]);
+            ui->horizontalSliderX->setValue(valueX[selectDpiId]);
+            ui->horizontalSliderY->setValue(valueY[selectDpiId]);
 
             btnsX[selectDpiX]->click();
             btnsY[selectDpiX]->click();
@@ -1444,8 +1440,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         });
 
         connect(ui->buttonGroupX,&QButtonGroup::idClicked,this,[=](int id){
-            selectA = abs(id)-2;
-            selectX = abs(id)-2;
+            selectDpiId = abs(id)-2;
 
             QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupX->button(id));
             selectDpiX = pBtn->objectName().replace("pushButtonX","").toInt();
@@ -1453,7 +1448,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             serviceDevice->setDpiIndex(selectDpiX);
             btnsY[selectDpiX]->setChecked(true);
             ui->lineEditValueY->setText(QString("%1").arg(valueY[selectDpiX]));
-            ui->horizontalSliderX->setValue(ui->checkBoxDoubleSet->isChecked()?valueX[selectX]:valueA[selectA]);
+            ui->horizontalSliderX->setValue(valueX[selectDpiId]);
         });
 
         connect(ui->horizontalSliderX,&QSlider::valueChanged,this,[=](int value){
@@ -1461,8 +1456,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 ui->lineEditValueX->setText(QString("%1").arg(value));
             editXchanged=false;
 
-            valueA[selectX] = value;
-            valueX[selectX] = value;
+            valueX[selectDpiId] = value;
             if(ui->checkBoxDoubleSet->isChecked())
             {
                 serviceDevice->setDpiX(selectDpiX,value);
@@ -1474,17 +1468,17 @@ DialogMouse::DialogMouse(QWidget *parent)
             }
 
             serviceDevice->setDpiIndex(selectDpiX);
-            btnsX[selectX]->setText(QString("%1").arg(value));
+            btnsX[selectDpiId]->setText(QString("%1").arg(value));
         });
 
         connect(ui->buttonGroupY,&QButtonGroup::idClicked,this,[=](int id){
-            selectY = abs(id)-2;
+            selectDpiId = abs(id)-2;
 
             QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupY->button(id));
             selectDpiY = pBtn->objectName().replace("pushButtonY","").toInt();
             btnsX[selectDpiY]->setChecked(true);
             ui->lineEditValueX->setText(QString("%1").arg(valueX[selectDpiY]));
-            ui->horizontalSliderY->setValue(valueY[selectY]);
+            ui->horizontalSliderY->setValue(valueY[selectDpiId]);
         });
 
         connect(ui->horizontalSliderY,&QSlider::valueChanged,this,[=](int value){
@@ -1492,10 +1486,10 @@ DialogMouse::DialogMouse(QWidget *parent)
                 ui->lineEditValueY->setText(QString("%1").arg(value));
             editYchanged=false;
 
-            valueY[selectY] = value;
+            valueY[selectDpiId] = value;
             serviceDevice->setDpiY(selectDpiY,value);
 
-            btnsY[selectY]->setText(QString("%1").arg(value));
+            btnsY[selectDpiId]->setText(QString("%1").arg(value));
         });
     }
 
@@ -1628,7 +1622,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             ui->frameBHOP->setVisible(mouseCfg->isSupportBhop);
             if(mouseCfg->isSupportBhop)
             {
-                qDebug() << bhopValues.indexOf(mouseCfg->bhopValue) << mouseCfg->bhopValue;
+                //qDebug() << bhopValues.indexOf(mouseCfg->bhopValue) << mouseCfg->bhopValue;
                 btnBHOPs[bhopValues.indexOf(mouseCfg->bhopValue)]->setChecked(true);
                 ui->checkBoxBHOP->setChecked(mouseCfg->bhopEnable);
             }
@@ -1822,6 +1816,17 @@ DialogMouse::DialogMouse(QWidget *parent)
             }
         });
 
+        connect(ui->pushButtonSave,&QPushButton::clicked,this,[=]{
+            if(m_currentId == -1)
+            {
+                QMessageBox::warning(this,tr("提示"),tr("没有选中 宏，请重试！"));
+                return;
+            }
+
+            saveLoadMacroContent(m_currentId,macroGroup,true);
+            EasyToast::information("宏数据已保存！",600);
+        });
+
         connect(ui->tableViewMContent->selectionModel(), &QItemSelectionModel::selectionChanged, this, [=](const QItemSelection &selected, const QItemSelection &deselected){
                 for(auto idx : selected.indexes())
                 {
@@ -1888,6 +1893,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 macroGroup[i]->delay = ui->spinBoxDelay->value();
                 refreshMacroItem(m_pModel->item(i/6,i%6));
             }
+            saveLoadMacroContent(m_currentId,macroGroup);
         });
     }
 
@@ -1929,8 +1935,6 @@ void DialogMouse::updateButtonInfo()
     ui->checkBoxExchange->setChecked(false);
     for (const auto &item : *btnInfo)
     {
-        QString strName=QString("pushButtonMkey%1").arg(item.keyId);
-        QPushButton *btn = findChild<QPushButton*>(strName);
         QString strChangedText;
         switch (item.keyType)
         {
@@ -2005,17 +2009,19 @@ void DialogMouse::updateButtonInfo()
             }
             break;
         }
+
         default:
             break;
         }
-
-        keyChangeset[item.keyId] = strChangedText;
 
         bool left = false;
         if(item.keyId == 1702 || item.keyId == 1703 || item.keyId == 1706)
             left = true;
 
+        QString strName=QString("pushButtonMkey%1").arg(item.keyId);
+        QPushButton *btn = findChild<QPushButton*>(strName);
         KeyboardButton *pBtn = static_cast<KeyboardButton *>(btn);
+        if(pBtn == nullptr) return;
 
         if(strChangedText.isEmpty())
         {
@@ -2028,7 +2034,6 @@ void DialogMouse::updateButtonInfo()
             SetButtonBackground(btn,left,"",QColor("red"),QColor("red"));
         }
     }
-
 }
 
 DialogMouse::~DialogMouse()
@@ -2045,6 +2050,8 @@ void DialogMouse::hideEvent(QHideEvent *event)
 void DialogMouse::keyPressEvent(QKeyEvent *event)
 {
     auto key = event->key();
+
+    //qDebug() << key << event->nativeVirtualKey() << event->nativeScanCode() ;
 
     if(key == Qt::Key_Escape)
     {
@@ -2699,17 +2706,17 @@ const KeyMap KEYBOARD_MAP[] = {
     {0x56, 86,0x6D,109,1315,   0,   0,   0,"Num - (Minus)"},
     {0x57, 87,0x6B,107,1316,   0,   0,   0,"Num + (Plus)"},
     {0x58, 88,0x1C, 28,1317,   0,   0,   0,"Num Enter"},
-    {0x63, 99,0x6E,110,1301,   0,   0,   0,"Num . (Dot)"},
-    {0x62, 98,0x60, 96,1302,   0,   0,   0,"Num 0"},
-    {0x59, 89,0x61, 97,1303,   0,   0,   0,"Num 1"},
-    {0x5A, 90,0x62, 98,1304,   0,   0,   0,"Num 2"},
-    {0x5B, 91,0x63, 99,1305,   0,   0,   0,"Num 3"},
-    {0x5C, 92,0x64,100,1306,   0,   0,   0,"Num 4"},
-    {0x5D, 93,0x65,101,1307,   0,   0,   0,"Num 5"},
-    {0x5E, 94,0x66,102,1308,   0,   0,   0,"Num 6"},
-    {0x5F, 95,0x67,103,1309,   0,   0,   0,"Num 7"},
-    {0x60, 96,0x68,104,1310,   0,   0,   0,"Num 8"},
-    {0x61, 97,0x69,105,1311,   0,   0,   0,"Num 9"},
+    {0x63, 99,0x6E,110,1311,   0,   0,   0,"Num . (Dot)"},
+    {0x62, 98,0x60, 96,1310,   0,   0,   0,"Num 0"},
+    {0x59, 89,0x61, 97,1301,   0,   0,   0,"Num 1"},
+    {0x5A, 90,0x62, 98,1302,   0,   0,   0,"Num 2"},
+    {0x5B, 91,0x63, 99,1303,   0,   0,   0,"Num 3"},
+    {0x5C, 92,0x64,100,1304,   0,   0,   0,"Num 4"},
+    {0x5D, 93,0x65,101,1305,   0,   0,   0,"Num 5"},
+    {0x5E, 94,0x66,102,1306,   0,   0,   0,"Num 6"},
+    {0x5F, 95,0x67,103,1307,   0,   0,   0,"Num 7"},
+    {0x60, 96,0x68,104,1308,   0,   0,   0,"Num 8"},
+    {0x61, 97,0x69,105,1309,   0,   0,   0,"Num 9"},
     {0x35, 53,0x60,192,1401,   0,   0,   0,"` ~ (Back quote)"},
     {0x2D, 45,0xBD,189,1402,   0,   0,   0," -_ (Minus)"},
     {0x2E, 46,0xBB,187,1403,   0,   0,   0,"+ = (Plus)"},
@@ -2781,7 +2788,7 @@ uint16_t getKeyDefineVK(uint16_t vk_code)
 const char *get_keyname_df(uint16_t df_code)
 {
     for (size_t i = 0; i < MAP_SIZE; i++) {
-        if (KEYBOARD_MAP[i].df0 == df_code) {
+        if (KEYBOARD_MAP[i].df1 == df_code) {
             return KEYBOARD_MAP[i].name;
         }
     }
