@@ -832,7 +832,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -1021,9 +1021,6 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 </property>
                 <property name="text">
                  <string>左键</string>
-                </property>
-                <property name="icon">
-                 <iconset theme="QIcon::ThemeIcon::AddressBookNew"/>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>

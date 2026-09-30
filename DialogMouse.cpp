@@ -2607,7 +2607,10 @@ void DialogMouse::getAllCfg()
 
             emit genUpdate();
         }
+        return;
     }
+
+    this->hide();
 }
 
 // 1. 定义按键映射结构体

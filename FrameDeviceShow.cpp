@@ -197,6 +197,19 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
 {
     m_pDevEI = pDI;
 
+    if(pDI->creator == 5)
+    {
+        auto serviceDevice = InfortechDevice::getInstance();
+        auto extraCfg = serviceDevice->getMouseExtraInfo();
+        if (extraCfg != nullptr)
+        {
+            pDI->strName = "疾风TAN7 Ultra";
+            if(extraCfg->mousePid == 0x48) pDI->strName = "空影TAN8 Ultra";
+            if(extraCfg->mousePid == 0x47) pDI->strName = "灵动V9 Ultra";
+            qDebug() << "Reset Device Name:" << pDI->strName  << extraCfg->mousePid;
+        }
+    }
+
     ui->labelDeviceName->setText(pDI->strName);
 
     QString strRoot = QApplication::applicationDirPath() + "/images/";

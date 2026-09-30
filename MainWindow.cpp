@@ -452,6 +452,7 @@ MainWindow::MainWindow(QWidget *parent)
     QCoreApplication::instance()->installNativeEventFilter(pUsb);
     connect(pUsb, &USBNotifier::devicePluggined,this,[=](bool in) {
         Q_UNUSED(in)
+        qDebug() << "USBNotifier::devicePluggined";
         m_Enum->DoEnum();
     });
 
