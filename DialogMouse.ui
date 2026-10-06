@@ -1343,7 +1343,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidgetPickKey">
                     <property name="currentIndex">
-                     <number>3</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page00">
                      <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -9416,15 +9416,15 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
   <buttongroup name="buttonGroupKeyType"/>
   <buttongroup name="buttonGroupBHOP"/>
   <buttongroup name="buttonGroupRgbSpeed"/>
-  <buttongroup name="buttonGroupKeySet"/>
   <buttongroup name="buttonGroupMain"/>
   <buttongroup name="buttonGroupClr"/>
-  <buttongroup name="buttonGroupY"/>
-  <buttongroup name="buttonGroupConfig"/>
+  <buttongroup name="buttonGroupKeySet"/>
   <buttongroup name="buttonGroupRgbEffect"/>
   <buttongroup name="buttonGroupShortcut"/>
+  <buttongroup name="buttonGroupX"/>
   <buttongroup name="buttonGroupSuper"/>
   <buttongroup name="buttonGroupDpiSelect"/>
-  <buttongroup name="buttonGroupX"/>
+  <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupConfig"/>
  </buttongroups>
 </ui>
