@@ -658,12 +658,6 @@ void DialogMouse::startConnect()
     serviceDevice = InfortechDevice::getInstance();
     serviceDevice->openLog(false);
 
-    // 设置设备信息
-    //serviceDevice->addMouseInf(0x1A86, 0x8501);
-    //serviceDevice->addDongleInf(0x1A86, 0xD810);
-    //serviceDevice->addMouseBootInf(0x1A86, 0x85F1);
-    //serviceDevice->addDongleBootInf(0x1A86, 0xD8E0);
-
     std::vector<InfortechDef::DeviceItem> allDevices = {
         { 0x38EE, 0x0021, 0, 0, 0 },
         { 0x38EE, 0x0022, 0, 0, 0 },
@@ -1224,6 +1218,10 @@ DialogMouse::DialogMouse(QWidget *parent)
         ui->frameConfig->hide();
         connect(ui->pushButtonMenu,&QPushButton::clicked,this,[=](bool checked){
             ui->frameConfig->setVisible(checked);
+        });
+        connect(ui->pushButtonMain6,&QPushButton::clicked,this,[=](){
+            ui->pushButtonMenu->clicked(!ui->frameConfig->isVisible());
+            ui->pushButtonMenu->setChecked(ui->frameConfig->isVisible());
         });
     }
 
@@ -1920,7 +1918,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         ui->label_15->setFixedHeight(20);
         ui->label_13->setFixedHeight(20);
         ui->label_48->setFixedHeight(20);
-        ui->labelGoBack->setFixedWidth(20);
+        ui->labelGoBack->setFixedWidth(30);
 
         ui->lineEditValueX->setFixedHeight(32);
         ui->lineEditValueY->setFixedHeight(32);
