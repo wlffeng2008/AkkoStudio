@@ -51,14 +51,15 @@ public:
 	// 初始化设备
 	bool initDevice();
 
+
 	// 查询接收器固件版本号，返回值：成功:"主版本号.次版本号"，失败: ""
 	std::string getDongleVersion();
 	// 获取设备完整信息，包含 MAC 地址、固件版本、电池状态等核心数据
 	std::unique_ptr<InfortechDef::DevInf> getDeviceInf();
 	// 获取鼠标配置信息（DPI、轮询率、休眠时间等）
 	std::unique_ptr<InfortechDef::MouseCfg> getMouseCfg();
-	// 查询鼠标额外配置
-	std::unique_ptr<InfortechDef::ExtCfgInfo> getMouseExtraInfo();
+	// 查询鼠标额外配置，devicePath：设备路径，非空时自动连接设备并获取信息
+	std::unique_ptr<InfortechDef::ExtCfgInfo> getMouseExtraInfo(const std::string& devicePath = "");
 	// 获取鼠标所有按键的配置信息
 	std::unique_ptr<InfortechDef::AllBtnCfg> getButtonCfg();
 	// 获取鼠标传感器配置信息

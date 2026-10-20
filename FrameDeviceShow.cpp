@@ -131,7 +131,7 @@ void FrameDeviceShow::updateBattery()
         {
             auto tmp = serviceDevice->getDeviceInf();
             if(tmp != nullptr)
-            batt =tmp->mouseBatterylevel;
+            batt = tmp->mouseBatterylevel;
         }
     }
 
@@ -200,13 +200,13 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
     if(pDI->creator == 5)
     {
         auto serviceDevice = InfortechDevice::getInstance();
-        auto extraCfg = serviceDevice->getMouseExtraInfo();
+        auto extraCfg = serviceDevice->getMouseExtraInfo(pDI->strPath2.toStdString());
         if (extraCfg != nullptr)
         {
             pDI->strName = "疾风TAN7 Ultra";
             if(extraCfg->mousePid == 0x48) pDI->strName = "空影TAN8 Ultra";
             if(extraCfg->mousePid == 0x47) pDI->strName = "灵动V9 Ultra";
-            qDebug() << "Reset Device Name:" << pDI->strName  << extraCfg->mousePid;
+            qDebug() << "Reset Device Name:"  << extraCfg->mousePid << pDI->strName ;
         }
     }
 

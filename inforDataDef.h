@@ -249,6 +249,7 @@ namespace InfortechDef {
 	};
 	struct DpiStruct
 	{
+		bool dpiSyncMode;						// XY 轴是否同步模式
 		uint8_t curDpiId;						// 当前 DPI 挡位
 		std::vector<DpiItem> data;				// DPI 数据
 	};
