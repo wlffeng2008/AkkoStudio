@@ -849,7 +849,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -1087,9 +1087,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>206</x>
-                  <y>76</y>
+                  <y>54</y>
                   <width>276</width>
-                  <height>650</height>
+                  <height>659</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_34">
@@ -1275,7 +1275,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="text">
-                        <string>鼠标/多媒体</string>
+                        <string>系统</string>
                        </property>
                        <property name="checkable">
                         <bool>true</bool>
@@ -1322,7 +1322,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="text">
-                        <string>控制键</string>
+                        <string>控制</string>
                        </property>
                        <property name="checkable">
                         <bool>true</bool>
@@ -1344,7 +1344,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="text">
-                        <string>组合/火力/宏</string>
+                        <string>特殊</string>
                        </property>
                        <property name="checkable">
                         <bool>true</bool>
@@ -1360,7 +1360,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidgetPickKey">
                     <property name="currentIndex">
-                     <number>3</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page00">
                      <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -1664,7 +1664,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                         <property name="sizeHint" stdset="0">
                          <size>
                           <width>20</width>
-                          <height>50</height>
+                          <height>40</height>
                          </size>
                         </property>
                        </spacer>
@@ -4466,8 +4466,14 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                           </property>
                           <item>
                            <widget class="QCheckBox" name="checkBox_Ctrl">
+                            <property name="toolTip">
+                             <string notr="true"/>
+                            </property>
+                            <property name="statusTip">
+                             <string notr="true"/>
+                            </property>
                             <property name="text">
-                             <string>Ctrl</string>
+                             <string notr="true">Ctrl</string>
                             </property>
                             <attribute name="buttonGroup">
                              <string notr="true">buttonGroupShortcut</string>
@@ -4476,8 +4482,14 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="checkBox_Shift">
+                            <property name="toolTip">
+                             <string notr="true"/>
+                            </property>
+                            <property name="statusTip">
+                             <string notr="true"/>
+                            </property>
                             <property name="text">
-                             <string>Shift</string>
+                             <string notr="true">Shift</string>
                             </property>
                             <attribute name="buttonGroup">
                              <string notr="true">buttonGroupShortcut</string>
@@ -4486,8 +4498,14 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="checkBox_Alt">
+                            <property name="toolTip">
+                             <string notr="true"/>
+                            </property>
+                            <property name="statusTip">
+                             <string notr="true"/>
+                            </property>
                             <property name="text">
-                             <string>Alt</string>
+                             <string notr="true">Alt</string>
                             </property>
                             <attribute name="buttonGroup">
                              <string notr="true">buttonGroupShortcut</string>
@@ -4496,8 +4514,14 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="checkBox_Win">
+                            <property name="toolTip">
+                             <string notr="true"/>
+                            </property>
+                            <property name="statusTip">
+                             <string notr="true"/>
+                            </property>
                             <property name="text">
-                             <string>Win</string>
+                             <string notr="true">Win</string>
                             </property>
                             <attribute name="buttonGroup">
                              <string notr="true">buttonGroupShortcut</string>
@@ -7036,7 +7060,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb
 
 QPushButton:hover { border: 1px solid #6329B6; }</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_18" stretch="2,0,0">
+          <layout class="QVBoxLayout" name="verticalLayout_18" stretch="0,1">
            <property name="spacing">
             <number>20</number>
            </property>
@@ -7044,7 +7068,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
             <number>20</number>
            </property>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,0,1,0,1,0,1">
+            <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,1,1,1">
              <property name="spacing">
               <number>10</number>
              </property>
@@ -7283,22 +7307,6 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
               </layout>
              </item>
              <item>
-              <spacer name="verticalSpacer_12">
-               <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
-               </property>
-               <property name="sizeType">
-                <enum>QSizePolicy::Policy::Fixed</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
               <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1,0">
                <item>
                 <widget class="QLabel" name="label_8">
@@ -7326,6 +7334,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                  </property>
                  <property name="pageStep">
                   <number>1</number>
+                 </property>
+                 <property name="value">
+                  <number>3</number>
                  </property>
                  <property name="orientation">
                   <enum>Qt::Orientation::Horizontal</enum>
@@ -7430,22 +7441,6 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
               </layout>
              </item>
              <item>
-              <spacer name="verticalSpacer_11">
-               <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
-               </property>
-               <property name="sizeType">
-                <enum>QSizePolicy::Policy::Fixed</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
               <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1,0">
                <item>
                 <widget class="QLabel" name="label_9">
@@ -7473,6 +7468,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                  </property>
                  <property name="pageStep">
                   <number>1</number>
+                 </property>
+                 <property name="value">
+                  <number>3</number>
                  </property>
                  <property name="orientation">
                   <enum>Qt::Orientation::Horizontal</enum>
@@ -7562,22 +7560,6 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 </layout>
                </item>
               </layout>
-             </item>
-             <item>
-              <spacer name="verticalSpacer_10">
-               <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
-               </property>
-               <property name="sizeType">
-                <enum>QSizePolicy::Policy::Fixed</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
              </item>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,1,0">
@@ -7722,22 +7704,6 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
             </layout>
            </item>
            <item>
-            <spacer name="verticalSpacer_13">
-             <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Policy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
             <widget class="QFrame" name="frameBottom">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -7754,7 +7720,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
              <property name="maximumSize">
               <size>
                <width>1200</width>
-               <height>256</height>
+               <height>360</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -7803,7 +7769,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>60</width>
+                      <width>200</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -7880,7 +7846,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="0,1,0">
                   <property name="spacing">
-                   <number>50</number>
+                   <number>10</number>
                   </property>
                   <property name="leftMargin">
                    <number>50</number>
@@ -7902,6 +7868,22 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                        <set>Qt::AlignmentFlag::AlignCenter</set>
                       </property>
                      </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_22">
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Policy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>60</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
                      <widget class="QPushButton" name="pushButtonAngleM">
@@ -7925,7 +7907,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignBottom">
+                    <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignBottom">
                      <widget class="QLabel" name="label_18">
                       <property name="styleSheet">
                        <string notr="true">QLabel{font-size:14px;}</string>
@@ -7950,14 +7932,14 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>300</width>
-                      <height>200</height>
+                      <width>500</width>
+                      <height>300</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>300</width>
-                      <height>200</height>
+                      <width>500</width>
+                      <height>300</height>
                      </size>
                     </property>
                     <property name="cursor">
@@ -7986,6 +7968,22 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                       </property>
                      </widget>
                     </item>
+                    <item>
+                     <spacer name="horizontalSpacer_23">
+                      <property name="orientation">
+                       <enum>Qt::Orientation::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Policy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>60</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
                      <widget class="QPushButton" name="pushButtonAngleP">
                       <property name="minimumSize">
@@ -8002,7 +8000,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignBottom">
+                    <item alignment="Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignBottom">
                      <widget class="QLabel" name="label_17">
                       <property name="styleSheet">
                        <string notr="true">QLabel{font-size:14px;}</string>
@@ -8060,10 +8058,60 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_23" stretch="0,1,0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_23" stretch="0,0,0">
                   <property name="spacing">
                    <number>10</number>
                   </property>
+                  <item>
+                   <widget class="QSlider" name="verticalSlider00">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>64</width>
+                      <height>300</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">        QSlider { border-radius: 12px; height: 24px; }
+
+        QSlider::groove:vertical { width: 48px; background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #5C2CAE, stop:1 #5C2CAE); border-radius: 12px;}
+        QSlider::groove:vertical:disabled { background: lightgray; }
+        QSlider::handle:vertical:disabled { background: white; border: 2px solid #B3B3B3; }
+        QSlider::sub-page:vertical { background:  #282828;;  border-radius: 12px; }
+        QSlider::sub-page:vertical:disabled { background: lightgray; }
+        QSlider::handle:vertical {
+            width: 64px;
+            height: 12px;
+            margin: -2px -6px;
+            border-radius: 6px;
+            background: white ;
+            border: 3px solid #5C2CAE; }</string>
+                    </property>
+                    <property name="minimum">
+                     <number>0</number>
+                    </property>
+                    <property name="maximum">
+                     <number>2</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>1</number>
+                    </property>
+                    <property name="pageStep">
+                     <number>1</number>
+                    </property>
+                    <property name="value">
+                     <number>1</number>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
                   <item>
                    <layout class="QVBoxLayout" name="verticalLayout_13">
                     <item alignment="Qt::AlignmentFlag::AlignTop">
@@ -8106,56 +8154,6 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                      </widget>
                     </item>
                    </layout>
-                  </item>
-                  <item>
-                   <widget class="QSlider" name="verticalSlider00">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>64</width>
-                      <height>200</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">        QSlider { border-radius: 12px; height: 24px; }
-
-        QSlider::groove:vertical { width: 48px; background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #5C2CAE, stop:1 #5C2CAE); border-radius: 12px;}
-        QSlider::groove:vertical:disabled { background: lightgray; }
-        QSlider::handle:vertical:disabled { background: white; border: 2px solid #B3B3B3; }
-        QSlider::sub-page:vertical { background:  #282828;;  border-radius: 12px; }
-        QSlider::sub-page:vertical:disabled { background: lightgray; }
-        QSlider::handle:vertical {
-            width: 64px;
-            height: 12px;
-            margin: -2px -6px;
-            border-radius: 6px;
-            background: white ;
-            border: 3px solid #5C2CAE; }</string>
-                    </property>
-                    <property name="minimum">
-                     <number>0</number>
-                    </property>
-                    <property name="maximum">
-                     <number>2</number>
-                    </property>
-                    <property name="singleStep">
-                     <number>1</number>
-                    </property>
-                    <property name="pageStep">
-                     <number>1</number>
-                    </property>
-                    <property name="value">
-                     <number>1</number>
-                    </property>
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Vertical</enum>
-                    </property>
-                   </widget>
                   </item>
                   <item>
                    <widget class="QDoubleSpinBox" name="doubleSpinBox">
@@ -9159,6 +9157,11 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>KeyboardButton</class>
    <extends>QPushButton</extends>
    <header>keyboardbutton.h</header>
@@ -9168,11 +9171,6 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
    <extends>QWidget</extends>
    <header location="global">colorpicker.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ToggleButton</class>
-   <extends>QCheckBox</extends>
-   <header>togglebutton.h</header>
   </customwidget>
   <customwidget>
    <class>CustumSlider</class>
@@ -9386,7 +9384,6 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
   <tabstop>checkBoxAngle</tabstop>
   <tabstop>pushButtonAngleM</tabstop>
   <tabstop>pushButtonAngleP</tabstop>
-  <tabstop>verticalSlider00</tabstop>
   <tabstop>doubleSpinBox</tabstop>
   <tabstop>pushButtonAddMacro</tabstop>
   <tabstop>pushButtonMoveOut</tabstop>
@@ -9408,18 +9405,18 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupKeySet"/>
-  <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupSuper"/>
   <buttongroup name="buttonGroupConfig"/>
-  <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupKeySet"/>
+  <buttongroup name="buttonGroupClr"/>
   <buttongroup name="buttonGroupBHOP"/>
+  <buttongroup name="buttonGroupMain"/>
+  <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupKeyType"/>
+  <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupX"/>
   <buttongroup name="buttonGroupShortcut"/>
   <buttongroup name="buttonGroupRgbEffect"/>
-  <buttongroup name="buttonGroupKeyType"/>
-  <buttongroup name="buttonGroupMain"/>
   <buttongroup name="buttonGroupDpiSelect"/>
-  <buttongroup name="buttonGroupSuper"/>
-  <buttongroup name="buttonGroupClr"/>
-  <buttongroup name="buttonGroupX"/>
  </buttongroups>
 </ui>

@@ -49,6 +49,8 @@
 #include <windows.h>
 #endif
 
+#include "infortechDevice.h"
+
 static HWND s_hWndEmb[10]={nullptr};
 
 #include<tlhelp32.h>
@@ -410,6 +412,9 @@ MainWindow::MainWindow(QWidget *parent)
     m_pMouse = new DialogMouse();
     connect(m_pMouse,&DialogMouse::hideAction,this,[=]{
         this->show();
+    });
+    connect(m_pMouse,&DialogMouse::ConnectStateChange,this,[=]{
+        ui->pushButtonScan->click();
     });
 
     m_pFloatLeft = new QDialog(this);
@@ -1060,6 +1065,25 @@ void MainWindow::addDevice(quint16 VID, quint16 PID, quint64 driverId, const QSt
             m_tmp[i]->toShow = true;
             m_tmp[i]->lastTime = time(nullptr);
             return;
+        }
+    }
+
+    if(PID == 0x22)
+    {
+        qDebug() << "getMouseConnectState1";
+        auto serviceDevice = InfortechDevice::getInstance();
+        if(!serviceDevice->getMouseConnectState())
+            return;
+        qDebug() << "getMouseConnectState2";
+
+        // auto extraCfg = serviceDevice->getMouseExtraInfo();
+        // if (extraCfg == nullptr)
+        //     return;
+        {
+            // pDI->strName = "疾风TAN7 Ultra";
+            // if(extraCfg->mousePid == 0x48) pDI->strName = "空影TAN8 Ultra";
+            // if(extraCfg->mousePid == 0x47) pDI->strName = "灵动V9 Ultra";
+            // qDebug() << "Reset Device Name:"  << extraCfg->mousePid << pDI->strName ;
         }
     }
 

@@ -78,8 +78,8 @@ public:
 	std::unique_ptr<InfortechDef::AllBtnCfg> setFireKeyInf(uint32_t keyId, InfortechDef::FireKeyInf fireKeyData);
 	// 设置快捷键
 	std::unique_ptr<InfortechDef::AllBtnCfg> setShortcutKeyInf(uint32_t keyId, InfortechDef::ComboKeyInf shortcutKeyData);
-	// 设置宏按键
-	std::unique_ptr<InfortechDef::AllBtnCfg> setMacroKeyInf(uint32_t keyId, InfortechDef::MacroKeyInf macroKeyData);
+	// 设置宏按键，autoMacroId：自动生成宏 ID
+	std::unique_ptr<InfortechDef::AllBtnCfg> setMacroKeyInf(uint32_t keyId, InfortechDef::MacroKeyInf macroKeyData, bool autoMacroId = false);
 
 
 	// 设置轮询率，rate 范围：{125, 250, 500, 1000, 2000, 4000, 8000}
@@ -191,7 +191,7 @@ public:
 	// 读取固件信息
 	std::unique_ptr<InfortechDef::FwInfo> readFwInfo(const std::vector<uint8_t>& fwBuffer);
 	// 固件升级
-	void deviceFwUpgrade(const std::vector<uint8_t>& fwBuffer);
+	void deviceFwUpgrade(const std::vector<uint8_t>& fwBuffer, bool isVerifyPid = true);
 
 
 	// 恢复出厂设置

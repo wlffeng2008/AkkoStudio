@@ -7,7 +7,7 @@
 
 #include <Windows.h>
 
-static QString g_strVer("1.8.0");
+static QString g_strVer("1.8.2");
 
 QString currentVersion()
 {

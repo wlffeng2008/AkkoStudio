@@ -200,13 +200,13 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
     if(pDI->creator == 5)
     {
         auto serviceDevice = InfortechDevice::getInstance();
-        auto extraCfg = serviceDevice->getMouseExtraInfo(pDI->strPath2.toStdString());
+        auto extraCfg = serviceDevice->getMouseExtraInfo();
         if (extraCfg != nullptr)
         {
             pDI->strName = "疾风TAN7 Ultra";
             if(extraCfg->mousePid == 0x48) pDI->strName = "空影TAN8 Ultra";
             if(extraCfg->mousePid == 0x47) pDI->strName = "灵动V9 Ultra";
-            qDebug() << "Reset Device Name:"  << extraCfg->mousePid << pDI->strName ;
+            //qDebug() << "Reset Device Name:"  << extraCfg->mousePid << pDI->strName ;
         }
     }
 
@@ -217,6 +217,7 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
     QFile FImg(strRoot + strImg);
     if(!FImg.exists())
         strImg.replace(' ','-');
+
     setImage(strRoot + strImg, pDI->deeviceType);
 
     ui->labelPower->setHidden(pDI->connectType == 0);

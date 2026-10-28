@@ -167,11 +167,13 @@ protected:
 signals:
     void genUpdate();
     void hideAction();
+    void ConnectStateChange();
 
 private:
     Ui::DialogMouse *ui;
     QPointF m_dragPosition;
     bool m_dragging = false;
+    QPixmap m_devImage;
 
     int m_nowAngle=0;
 

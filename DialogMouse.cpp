@@ -203,6 +203,7 @@ static InfortechDevice* serviceDevice = nullptr;
 static bool mouseChanged = false;
 static bool connected = false;
 static bool fwUpdating = false;
+static bool connectState = false;
 static int  fwUpdateProgress=0;
 
 // 回调函数
@@ -266,6 +267,7 @@ auto deviceStateChange(const InfortechDef::DevMsg& msg)
 
     case InfortechDef::MsgType::ConnectStateChange:
         std::cout << "ConnectStateChange" << std::endl;
+        connectState = true;
         break;
 
     case InfortechDef::MsgType::TriggerPosChange:
@@ -458,7 +460,10 @@ void DialogMouse::addMacroItem(int defId,int delay,int type,bool down)
     static bool lastFlag = 0;
     static int lastDefId = 0;
     if(down == lastFlag && lastDefId == defId)
-        return;
+    {
+        if(!(defId >= 1707 && defId <= 1710))
+            return;
+    }
 
     lastFlag = down;
     lastDefId= defId;
@@ -687,7 +692,12 @@ void DialogMouse::startConnect()
             mouseChanged=false;
             if(!connected) this->hide();
             getAllCfg();
+        }
 
+        if(connectState)
+        {
+            connectState = false;
+            emit ConnectStateChange();
         }
     });
 }
@@ -768,7 +778,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                     //qDebug() << "Global::MouseButtonRelease   +++++++ " << nDelay <<"ms";
                     int btn = mEvent->button();
                     int defId = 1701;
-                    if(btn == Qt::MouseButton::RightButton) defId = 1702;
+                    if(btn == Qt::MouseButton::RightButton)  defId = 1702;
                     if(btn == Qt::MouseButton::MiddleButton) defId = 1703;
 
                     addMacroItem(defId,nDelay,0,false);
@@ -787,7 +797,18 @@ DialogMouse::DialogMouse(QWidget *parent)
             {
                 //if(nDelay>nLimit)
                 //    qDebug() << "Global::Wheel   ------- " << nDelay <<"ms" << wEvent->angleDelta();
-                //ignTm.restart();
+                int deltaX = wEvent->angleDelta().x();
+                int deltaY = wEvent->angleDelta().y();
+                //qDebug() << "deltaX" << deltaX << "deltaY" << deltaY;
+                int defId = 1707;
+                bool press = true;
+                if(deltaY < -10) {defId = 1708;press = false;}
+                if(deltaX >  10) {defId = 1709;              }
+                if(deltaX < -10) {defId = 1710;press = false;}
+
+                addMacroItem(defId,nDelay,0,press);
+
+                ignTm.restart();
             }
 
             if(event->type() == QEvent::KeyPress)
@@ -821,6 +842,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 }
                 ignTm.restart();
             }
+
 
             if(event->type() == QEvent::Enter)
             {
@@ -1135,7 +1157,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             m_pressDf = 0;
             ui->lineEditShortcut->clear();
             updateButtonInfo();
-            EasyToast::information("快捷键 设置成功！");
+            EasyToast::information(tr("快捷键 设置成功！"));
         });
 
         connect(ui->pushButtonSetFireKey,&QPushButton::clicked,this,[=]{
@@ -1146,7 +1168,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             serviceDevice->setFireKeyInf(seletetKey,fireKeyData);
             updateButtonInfo();
 
-            EasyToast::information("火力键 设置成功！");
+            EasyToast::information(tr("火力键 设置成功！"));
         });
 
         connect(ui->pushButtonSetMacro,&QPushButton::clicked,this,[=]{
@@ -1188,7 +1210,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             });
 
             serviceDevice->setMacroKeyInf(keyId, macroKeyData);
-            EasyToast::information("宏 设置成功！");
+            EasyToast::information(tr("宏 设置成功！"));
         });
 
         connect(ui->pushButtonGotoMacro,&QPushButton::clicked,this,[=]{
@@ -1200,7 +1222,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             int nKeyId = seletetKey ;
             serviceDevice->setBaseKeyInf(nKeyId,nKeyId);
             updateButtonInfo();
-            EasyToast::information("按键重置 成功！");
+            EasyToast::information(tr("按键重置 成功！"));
         });
 
         connect(ui->buttonGroupSuper,&QButtonGroup::idClicked,this,[=](int id){
@@ -1212,7 +1234,7 @@ DialogMouse::DialogMouse(QWidget *parent)
 
             serviceDevice->setBaseKeyInf(nKeyId,nDestID);
             updateButtonInfo();
-            EasyToast::information("改键成功！");
+            EasyToast::information(tr("改键成功！"));
         });
 
         ui->frameConfig->hide();
@@ -1992,7 +2014,9 @@ void DialogMouse::updateButtonInfo()
             auto macroKeyData = item.cfg->getMacroKeyInf();
             if (macroKeyData != nullptr)
             {
-                strChangedText = QString::asprintf("宏设置: ID: %d, 类型: %d, 动作数量: %d\n",macroKeyData->macroId,macroKeyData->macroType,macroKeyData->data.size());
+                strChangedText = QString(tr("宏设置:"))  + QString("ID: %1").arg(macroKeyData->macroId) +
+                                 QString(tr("类型:"))    + QString("%1").arg((int)macroKeyData->macroType) +
+                                 QString(tr("动作数量:")) + QString("%1\n").arg(macroKeyData->data.size());
 
                 int gets = 0;
                 for (auto item : macroKeyData->data)
@@ -2198,7 +2222,7 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
 
             int index = fmod((360 + deg - start),360) / fStep;
 
-            if(index > 80)index = 0;
+            if(index > 80) index = 0;
             if(index > 60) index = 60;
 
             hitIndex = index;
@@ -2220,15 +2244,18 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
 
         if(event->type() == QEvent::Paint)
         {
-            QPainter paniter(ui->labelAngleShow);
-            paniter.setRenderHint(QPainter::Antialiasing);
-            paniter.fillRect(rect,Qt::transparent);
+            QPainter painter(ui->labelAngleShow);
+            painter.setRenderHint(QPainter::Antialiasing);
+            painter.fillRect(rect,Qt::transparent);
 
             for(int i=0; i<=60; i++)
             {
-                paniter.setPen(QPen(QColor("#373737"),4));
+                painter.setPen(QPen(QColor("#373737"),4));
+                if(i%10 == 0)
+                    painter.setPen(QPen(QColor("#676767"),4));
                 if(i == hitIndex)
-                    paniter.setPen(QPen(QColor("#C73737"),4));
+                    painter.setPen(QPen(QColor("#C73737"),4));
+
 
                 float curAngle = (start + i * fStep) * 3.1415936/180;
                 QPoint p0(nCX+ra0*cos(curAngle),nCX-ra0*sin(curAngle));
@@ -2236,18 +2263,34 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
                 if(!rect.contains(p0))
                     break;
 
-                paniter.drawLine(p0,p1);
+                painter.drawLine(p0,p1);
             }
 
             int nAngle = m_nowAngle;
             if(nAngle<-30) nAngle = -30;
             if(nAngle>30)  nAngle = 30;
             float curAngle = (start + (30 - nAngle) * fStep) * 3.1415936/180;
-            paniter.setPen(QPen(Qt::white,4));
+            painter.setPen(QPen(Qt::white,4));
             QPoint p0(nCX+ra0*cos(curAngle),nCX-ra0*sin(curAngle));
             QPoint p1(nCX+(ra1-15)*cos(curAngle),nCX-(ra1-15)*sin(curAngle));
-            paniter.drawLine(p0,p1);
+            painter.drawLine(p0,p1);
             ui->labelAngleValue->setText(QString("%1°").arg(nAngle));
+
+            painter.setRenderHint(QPainter::Antialiasing, true);
+            painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+            QRect imgRect = rect.adjusted(180,55,-180,10);
+
+            painter.save();                       // ① 保护状态
+            painter.translate(imgRect.center());     // ② 原点搬到目标矩形中心
+            painter.rotate(nAngle);                // ③ 旋转
+            painter.drawPixmap(QRect(-imgRect.width()  / 2,
+                                     -imgRect.height() / 2,
+                                     imgRect.width(),
+                                     imgRect.height()),
+                               m_devImage);
+            painter.restore();
+
+            //painter.drawPixmap(imgRect,m_devImage);
         }
     }
 
@@ -2305,6 +2348,8 @@ void DialogMouse::updateImage(const QString&image)
 
     ui->labelMouse->setPixmap(Img);
     ui->labelDeviceImage->setPixmap(Img);
+
+    m_devImage = Img.copy();
 
     {
         int nw = 260;
