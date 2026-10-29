@@ -254,5 +254,7 @@
         <file>images/arrow-left.png</file>
         <file>images/arrow-right.png</file>
         <file>images/arrow-up.png</file>
+        <file>images/RadioChecked.png</file>
+        <file>images/RadioUnchecked.png</file>
     </qresource>
 </RCC>

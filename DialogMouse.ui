@@ -155,89 +155,6 @@ QSpinBox::down-button:disabled{
     background-image: url(:/images/minus-disabled.png);
 }
 
-/* 整个QCheckBox */
-QCheckBox {
-    color: #fff;
-    spacing: 8px; /* 方框和文字之间距离 */
-}
-
-/* 未选中 - 方框 */
-QCheckBox::indicator {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    border: 2px solid gray;
-    background-color: transparent;
-}
-
-/* 鼠标悬浮未选中 */
-QCheckBox::indicator:hover {
-    border-color: #409eff;
-}
-
-/* 选中状态 */
-QCheckBox::indicator:checked {
-    background-color: #6329B6;
-    border-color: #6329B6;
-    /* 对勾图标，用border画对勾，不用图片 */
-    image: none;
-}
-
-/* 禁用状态 */
-QCheckBox::indicator:disabled {
-    border-color: #cccccc;
-    background: #f5f5f5;
-}
-QCheckBox:disabled {
-    color: #aaaaaa;
-}
-
-/* 单选框整体：文字颜色、字体、圆圈和文字间距 */
-QRadioButton {
-    color: #fff;
-    spacing: 8px; /* 圆圈与文字之间距离，只能写在QRadioButton{} */
-}
-
-/* 未选中的圆形指示器 */
-QRadioButton::indicator {
-    width: 20px;
-    height: 20px;
-    border-radius: 10px; /* 宽高一半，做成正圆 */
-    border: 1px solid gray;
-    background-color:  transparent;
-    background: qradialgradient(
-        cx:0.52, cy:0.52, radius:0.5,
-        stop:0 transparent,
-        stop:0.99 transparent,
-        stop:1 gray
-    );
-}
-
-/* 鼠标悬浮（未选中） */
-QRadioButton::indicator:hover {
-    border-color: gray;
-}
-
-/* 选中状态：外圈蓝色 + 内部小圆点 */
-QRadioButton::indicator:checked {
-    border: 0px solid #6329B6;
-
-    background: qradialgradient(
-        cx:0.50, cy:0.50, radius:0.5,
-        stop:0 #6329B6,
-        stop:0.99 #6329B6,
-        stop:1 transparent
-    );
-}
-
-/* 禁用状态 */
-QRadioButton::indicator:disabled {
-    border-color: #cccccc;
-    background: #f5f5f5;
-}
-QRadioButton:disabled {
-    color: #aaaaaa;
-}
 
 </string>
   </property>
@@ -721,6 +638,9 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
           </item>
           <item alignment="Qt::AlignmentFlag::AlignTop">
            <widget class="QFrame" name="frameConfig">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <layout class="QVBoxLayout" name="verticalLayout_33">
              <property name="spacing">
               <number>15</number>
@@ -849,7 +769,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -5114,6 +5034,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="spacing">
                  <number>15</number>
                 </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
                 <item>
                  <widget class="QPushButton" name="pushButtonX0">
                   <property name="minimumSize">
@@ -8387,8 +8310,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>279</width>
-                     <height>71</height>
+                     <width>296</width>
+                     <height>699</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -8655,8 +8578,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>79</width>
-                        <height>73</height>
+                        <width>1029</width>
+                        <height>645</height>
                        </rect>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -9405,18 +9328,18 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroupBHOP"/>
+  <buttongroup name="buttonGroupKeyType"/>
   <buttongroup name="buttonGroupSuper"/>
   <buttongroup name="buttonGroupConfig"/>
-  <buttongroup name="buttonGroupKeySet"/>
-  <buttongroup name="buttonGroupClr"/>
-  <buttongroup name="buttonGroupBHOP"/>
-  <buttongroup name="buttonGroupMain"/>
-  <buttongroup name="buttonGroupY"/>
-  <buttongroup name="buttonGroupKeyType"/>
-  <buttongroup name="buttonGroupRgbSpeed"/>
-  <buttongroup name="buttonGroupX"/>
-  <buttongroup name="buttonGroupShortcut"/>
-  <buttongroup name="buttonGroupRgbEffect"/>
   <buttongroup name="buttonGroupDpiSelect"/>
+  <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupShortcut"/>
+  <buttongroup name="buttonGroupMain"/>
+  <buttongroup name="buttonGroupClr"/>
+  <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupRgbEffect"/>
+  <buttongroup name="buttonGroupX"/>
+  <buttongroup name="buttonGroupKeySet"/>
  </buttongroups>
 </ui>

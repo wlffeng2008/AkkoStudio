@@ -215,7 +215,7 @@ int main(int argc, char *argv[])
         #horiCyanSlider::handle:hover { background: #F0F0F0;}
         #horiCyanSlider::handle:pressed { background: #E0E0E0; border-color: #2D7FDD;}
 
-        QRadioButton { spacing: 5px; color: #333333; font-size: 14px; font-weight: 500 ;}
+        /*QRadioButton { spacing: 5px; color: #333333; font-size: 14px; font-weight: 500 ;}
         QRadioButton::indicator {
             background: transparent;
             border-color: transparent;
@@ -230,6 +230,10 @@ int main(int argc, char *argv[])
         QRadioButton:checked {  color: #0085FF; background: transparent;}
         QRadioButton::indicator:disabled { border: 2px solid #dddddd; background: transparent; }
 
+        QCheckBox::indicator{width:20px;height:20px;}
+        QCheckBox::indicator:checked { image: url(:/images/BoxChecked.png); }
+        QCheckBox::indicator:unchecked { image: url(:/images/BoxUncheck.png); }
+
         QCheckBox { spacing: 5px; color: #333; }
         QCheckBox::indicator { width: 14px; height: 14px; }
         QCheckBox::indicator:unchecked { background: white; border: 2px solid #999; }
@@ -242,7 +246,66 @@ int main(int argc, char *argv[])
 
         QCheckBox::indicator:hover { border-color: #666; }
         QCheckBox:disabled { color: #AAA; }
-        QCheckBox::indicator:disabled { background: #EEE; }
+        QCheckBox::indicator:disabled { background: #EEE; }*/
+
+
+        QCheckBox {
+            color: #fff;
+            spacing: 8px; /* 方框和文字之间距离 */
+        }
+
+        QCheckBox::indicator {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid gray;
+            background-color: transparent;
+        }
+
+        QCheckBox::indicator:hover {
+            border-color: #409eff;
+        }
+
+        QCheckBox::indicator:checked {
+        border-color: none;
+        image: url(:/images/BoxChecked.png);
+        }
+
+        QCheckBox::indicator:disabled {
+            border-color: #cccccc;
+            background: #f5f5f5;
+
+        border-color: none;
+        image: url(:/images/BoxUncheck.png);
+        }
+        QCheckBox:disabled {
+            color: #aaaaaa;
+        }
+
+        QRadioButton {
+            min-height:24px;
+            spacing: 10px;
+            background: transparent;
+        }
+
+        QRadioButton::indicator {
+            width: 20px;
+            height: 20px;
+            image: url(:/images/RadioUnchecked.png);
+        }
+
+        QRadioButton::indicator:hover {
+            /* 可选：hover单独图片，没有就删掉这一段 */
+            /* image: url(:/images/RadioHover.png); */
+            color: #409eff;
+        }
+
+        QRadioButton::indicator:checked {
+            image: url(:/images/RadioChecked.png);
+        }
+
+
+
 
         QComboBox {
             border: 1px solid gray;
@@ -430,6 +493,8 @@ int main(int argc, char *argv[])
 
     )");
 
+    //a.setStyle("Fusion");
+    //a.setStyle(new CustomStyle);
     MainWindow w;
     w.m_pMainTrM = &translatorM;
     w.m_pMainTrA = &translatorB;

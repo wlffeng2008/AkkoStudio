@@ -46,6 +46,84 @@ public:
     QString strPath2;
 };
 
+
+
+#include <QProxyStyle>
+#include <QPainter>
+#include <QPainterPath>
+#include <QStyleOptionButton>
+
+class CustomStyle : public QProxyStyle {
+public:
+    CustomStyle(int borderWith=2,QColor color = QColor("#6329B6")):QProxyStyle(nullptr){
+        m_borderWidth = borderWith;
+        m_ringColor = color;
+    }
+    void drawControl(ControlElement element, const QStyleOption* option,
+                     QPainter* painter, const QWidget* widget) const override
+    {
+        if (element == CE_RadioButton)
+        {
+            painter->save();
+            painter->setRenderHint(QPainter::Antialiasing, true);
+
+            const QStyleOptionButton *opt = qstyleoption_cast<const QStyleOptionButton*>(option);
+            if (!opt)
+            {
+                QProxyStyle::drawControl(element, option, painter, widget);
+                painter->restore();
+                return;
+            }
+
+            QRect rc = opt->rect;
+            QRect textRect = rc.adjusted(rc.height() + 10, 0, 0, 0);
+
+            bool isChecked = opt->state & QStyle::State_On;
+            bool isHover = opt->state & QStyle::State_MouseOver;
+            QColor ringColor = m_ringColor;
+            if(isHover)
+            {
+                ringColor = QColor("#766463");
+            }
+
+            QRect iRect = rc;
+            iRect.setWidth(rc.height());
+            \
+                QPen pen(ringColor,m_borderWidth);
+            painter->setPen(pen);
+
+            painter->setBrush(Qt::NoBrush);
+            painter->drawEllipse(iRect.adjusted(2, 2, -2, -2));
+            //painter->drawArc(iRect.adjusted(2, 2, -2, -2),0,360*16);
+
+            // ========== 选中：绘制中心实心圆点 ==========
+            if(isChecked)
+            {
+                painter->setPen(Qt::NoPen);
+                painter->setBrush(ringColor);
+                painter->drawEllipse(iRect.adjusted(6, 6, -6, -6));
+            }
+
+            // ========== 绘制文字 ==========
+            painter->setPen(opt->palette.color(QPalette::WindowText));
+            QTextOption textOpt;
+            textOpt.setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+            painter->drawText(textRect, opt->text, textOpt);
+
+            painter->restore();
+            return; // 拦截原生绘制，不要调用基类
+        }
+        QProxyStyle::drawControl(element, option, painter, widget);
+    }
+
+private:
+    QColor m_ringColor = QColor("#6329B6");
+    int m_borderWidth = 2;
+};
+
+
+
+
 int getCurrentLang();
 QString getUserDataPath(const QString &strSubPath="");
 QSettings *getUserSetting();

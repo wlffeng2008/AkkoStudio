@@ -539,6 +539,9 @@ void DialogMouse::addMacroHeed(int id,const QString&name)
     int count = ui->comboBoxMacro->count();
     ui->comboBoxMacro->setItemData(count-1,addId);
 
+
+    qDebug() << "comboBoxMacro setItemData" << count << addId;
+
     test[1]->setEditable(false);
     test[2]->setEditable(false);
 
@@ -918,6 +921,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             pEvt->show();
             pEvt->setParent(pDlg);
             pDlg->exec();
+            m_recording = false;
         });
 
         //-----------------------------
@@ -1752,16 +1756,16 @@ DialogMouse::DialogMouse(QWidget *parent)
             ui->tableViewMList->edit(test);
         });
 
-        connect(m_MLDele2,&ImageDelegate::clicked,this,[=](const QModelIndex&index){            
-            QStandardItem *item = m_pMList->itemFromIndex(index);
-            int id = item->data().toInt();
+        connect(m_MLDele2,&ImageDelegate::clicked,this,[=](const QModelIndex&index){
+            QStandardItem *item = m_pMList->item(index.row(),0);
+            int toRemoveId = item->data().toInt();
             int count = ui->comboBoxMacro->count();
             for(int i=0; i<count; i++)
             {
-                if(ui->comboBoxMacro->itemData(i).toInt() == id)
+                if(ui->comboBoxMacro->itemData(i).toInt() == toRemoveId)
                 {
                     ui->comboBoxMacro->removeItem(i);
-                    QFile::remove(m_strPath+QString::asprintf("/macroEvent-%02d.txt",id));
+                    QFile::remove(m_strPath+QString::asprintf("/macroEvent-%02d.txt",toRemoveId));
                     break;
                 }
             }
