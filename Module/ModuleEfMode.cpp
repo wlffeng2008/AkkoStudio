@@ -3,86 +3,88 @@
 
 #include <QButtonGroup>
 
-typedef struct{
-    QString name ;
-    quint8 mode ;
-}EfMode;
+void ModuleEfMode::updateButtonText()
+{
+    EfModeList={
+        {tr("常亮")    ,0x01},
+        {tr("呼吸")    ,0x02},
+        {tr("流星")    ,0x12},
+        {tr("涟漪")    ,0x05},
+        {tr("极光")    ,0x17},
+        {tr("雨滴")    ,0x11},
+        {tr("聚合")    ,0x09},
+        {tr("川流不息"),0x07},
+        {tr("霓虹")    ,0x03},
+        {tr("光波")    ,0x04},
+        {tr("繁星点点"),0x06},
+        {tr("如影随形"),0x08},
+        {tr("正弦光波"),0x0A},
+        {tr("彩泉涌动"),0x0B},
+        {tr("百花争艳"),0x0C},
+        {tr("一石二鸟"),0x0E},
+        {tr("峰回路转"),0x0F},  // 自定义色彩
+        {tr("斜风细雨"),0x10},
+        {tr("踏雪无痕"),0x13},
+        {tr("层出不穷"),0x18},
+        {tr("光影")    ,0x15},  // 持续发送音律 0E --------
+        {tr("音乐律动"),0x16},  // 持续发送音律 0D --------  炫彩 0
+        {tr("自定义")  ,0x0D}   // 选图案
+    };
 
-static QList<EfMode> EfModeList={
-
-    {"常亮",0x01},
-    {"呼吸",0x2},
-    {"流星",0x12},
-    {"涟漪",0x05},
-    {"极光",0x17},
-    {"雨滴",0x11},
-    {"聚合",0x09},
-    {"川流不息",0x07},
-    {"霓虹",0x03},
-    {"光波",0x04},
-    {"繁星点点",0x06},
-    {"如影随形",0x08},
-    {"正弦光波",0x0A},
-    {"彩泉涌动",0x0B},
-    {"百花争艳",0x0C},
-    {"一石二鸟",0x0E},
-    {"峰回路转",0x0F},  // 自定义色彩
-    {"斜风细雨",0x10},
-    {"踏雪无痕",0x13},
-    {"层出不穷",0x18},
-    {"光影",0x15},     // 持续发送音律 0E --------
-    {"音乐律动",0x16}, // 持续发送音律 0D --------  炫彩 0
-    {"自定义",0x0D}    // 选图案
-};
-
+    if(pBtnGrp)
+    {
+        for(int i=0; i<EfModeList.count(); i++)
+        {
+            pBtnGrp->buttons().at(i)->setText(EfModeList[i].name);
+        }
+    }
+}
 
 ModuleEfMode::ModuleEfMode(QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::ModuleEfMode)
 {
     ui->setupUi(this);
+    updateButtonText();
 
+    QString strStyle(R"(
+        QPushButton {
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight:500;
+
+            color: #333;
+            border: 1px solid #ECECEC;
+            background: #ECECEC; }
+
+        QPushButton:checked {
+            color: white;
+            border: 1px solid #6329B6;
+            background: #6329B6; }
+        QPushButton:hover { border: 1px solid #6329B6; }
+        )");
+
+    pBtnGrp = new QButtonGroup(this) ;
+    QLayout *pLayout = ui->scrollAreaWidgetContents->layout();
+    pLayout->setSpacing(8);
+    pLayout->setContentsMargins(0,0,0,0);
+
+    for(int i=0; i<EfModeList.count(); i++)
     {
-        QString strStyle(R"(
+        QString strName= "";//QString::asprintf("%s (%02X)",EfModeList[i].name.toStdString().c_str(),EfModeList[i].mode) ;
+        QPushButton *btn = new QPushButton(strName,this);
+        btn->setFixedSize(250,28);
+        btn->setCheckable(true);
+        btn->setStyleSheet(strStyle);
+        btn->setCursor(Qt::PointingHandCursor);
 
-            QPushButton {
-                border-radius: 14px;
-                font-size: 14px;
-                font-weight:500;
-                outline: none;
+        pBtnGrp->addButton(btn,EfModeList[i].mode);
+        pLayout->addWidget(btn);
 
-                color: #333;
-                border: 1px solid #ECECEC;
-                background: #ECECEC; }
+        btn->setFocusPolicy(Qt::NoFocus);
+    }
 
-            QPushButton:checked {
-                color: white;
-                border: 1px solid #6329B6;
-                background: #6329B6; }
-            QPushButton:hover { border: 1px solid #6329B6; }
-            )");
-        pBtnGrp = new QButtonGroup(this) ;
-        QLayout *pLayout = ui->scrollAreaWidgetContents->layout();
-        pLayout->setSpacing(8);
-        pLayout->setContentsMargins(0,0,0,0);
-
-        for(int i=0; i<EfModeList.count(); i++)
-        {
-            QString strName=QString::asprintf("%s (%02X)",EfModeList[i].name.toStdString().c_str(),EfModeList[i].mode) ;
-            QPushButton *btn = new QPushButton(strName,this);
-            btn->setFixedSize(250,28);
-            btn->setCheckable(true);
-            btn->setStyleSheet(strStyle);
-            btn->setCursor(Qt::PointingHandCursor);
-
-            pBtnGrp->addButton(btn,EfModeList[i].mode);
-            pLayout->addWidget(btn);
-            if(i==0)
-                btn->click();
-            btn->setFocusPolicy(Qt::NoFocus);
-        }
-
-        connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
+    connect(pBtnGrp,&QButtonGroup::idClicked,this,[=](int id){
 
 // LED Param Table:
 // Effect                   Speed	Brightness	Color (Option Low 4bit) 	Type (Option High4bit)
@@ -123,67 +125,68 @@ ModuleEfMode::ModuleEfMode(QWidget *parent)
 // 7 = AP color: define by AP (Default 0xFF,0xFF,0xFF).
 // 8 = Full color: RGB Mode
 
-            if(!m_bOutSet) emit onModeChanged(id,0);
-            m_mode = id;
-            m_bOutSet  = false;
-            bool hide = true;
-            ui->comboBoxPic->blockSignals(true);
-            QStringList addOption;
-            switch(id)
-            {
-            case 0x04:
-                addOption.push_back(tr("左"));
-                addOption.push_back(tr("右"));
-                addOption.push_back(tr("上"));
-                addOption.push_back(tr("下"));
-                hide = false;
-                break;
+        if(!m_bOutSet)
+            emit onModeChanged(id,0);
+        m_mode = id;
+        m_bOutSet  = false;
+        bool hide = true;
+        ui->comboBoxPic->blockSignals(true);
+        QStringList addOption;
+        switch(id)
+        {
+        case 0x04:
+            addOption.push_back(tr("左"));
+            addOption.push_back(tr("右"));
+            addOption.push_back(tr("上"));
+            addOption.push_back(tr("下"));
+            hide = false;
+            break;
 
-            case 0x07:
-                addOption.push_back(tr("Z形"));
-                addOption.push_back(tr("回形"));
-                hide = false;
-                break;
+        case 0x07:
+            addOption.push_back(tr("Z形"));
+            addOption.push_back(tr("回形"));
+            hide = false;
+            break;
 
-            case 0x0B:
-                addOption.push_back(tr("向内"));
-                addOption.push_back(tr("向外"));
-                hide = false;
-                break;
+        case 0x0B:
+            addOption.push_back(tr("向内"));
+            addOption.push_back(tr("向外"));
+            hide = false;
+            break;
 
-            case 0x0C:
-                addOption.push_back(tr("向右"));
-                addOption.push_back(tr("向左"));
-                hide = false;
-                break;
+        case 0x0C:
+            addOption.push_back(tr("向右"));
+            addOption.push_back(tr("向左"));
+            hide = false;
+            break;
 
-            case 0x0D:
-                addOption.push_back(tr("图案1"));
-                addOption.push_back(tr("图案2"));
-                addOption.push_back(tr("图案3"));
-                addOption.push_back(tr("图案4"));
-                addOption.push_back(tr("图案5"));
-                hide = false;
-                break;
+        case 0x0D:
+            addOption.push_back(tr("图案1"));
+            addOption.push_back(tr("图案2"));
+            addOption.push_back(tr("图案3"));
+            addOption.push_back(tr("图案4"));
+            addOption.push_back(tr("图案5"));
+            hide = false;
+            break;
 
-            case 0x0F:
-                addOption.push_back(tr("顺时针"));
-                addOption.push_back(tr("逆时针"));
-                hide = false;
-                break;
-            }
+        case 0x0F:
+            addOption.push_back(tr("顺时针"));
+            addOption.push_back(tr("逆时针"));
+            hide = false;
+            break;
+        }
 
-            if(hide) addOption.push_back(tr("无"));
-            ui->comboBoxPic->clear();
-            ui->comboBoxPic->addItems(addOption);
-            ui->comboBoxPic->setDisabled(hide);
+        if(hide) addOption.push_back(tr("无"));
+        ui->comboBoxPic->clear();
+        ui->comboBoxPic->addItems(addOption);
+        ui->comboBoxPic->setDisabled(hide);
 
-            ui->comboBoxPic->blockSignals(false);
-        });
+        ui->comboBoxPic->blockSignals(false);
+    });
+    pBtnGrp->buttons().at(0)->click();
 
-        connect(ui->checkBoxEFMode,&QCheckBox::clicked,this,[=](bool checked){ emit onModeChanged(-1,checked); });
-        connect(ui->comboBoxPic,&QComboBox::currentIndexChanged,this,[=](int index){ emit onModeChanged(m_mode,index); });
-    }
+    connect(ui->checkBoxEFMode,&QCheckBox::clicked,this,[=](bool checked){ emit onModeChanged(-1,checked); });
+    connect(ui->comboBoxPic,&QComboBox::currentIndexChanged,this,[=](int index){ emit onModeChanged(m_mode,index); });
 }
 
 ModuleEfMode::~ModuleEfMode()
@@ -196,4 +199,15 @@ void ModuleEfMode::setEfMode(int mode)
     m_bOutSet = true;
     if(pBtnGrp->button(mode))
         pBtnGrp->button(mode)->click();
+}
+
+void ModuleEfMode::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+        updateButtonText();
+    }
+
+    QFrame::changeEvent(pEvt);
 }

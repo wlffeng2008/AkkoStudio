@@ -62,6 +62,8 @@ public:
 
 protected:
     bool eventFilter(QObject *watched,QEvent *event) override;
+    void changeEvent(QEvent *pEvt) final;
+
 
 private:
     Ui::FrameLight *ui;

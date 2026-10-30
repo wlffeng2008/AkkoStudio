@@ -309,5 +309,14 @@ void FrameLight::saveLoadWork(bool save)
             }
         }
     }
+}
 
+void FrameLight::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
 }

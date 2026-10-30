@@ -19,6 +19,9 @@ public:
 signals:
     void onValueSave(const QString&text) ;
 
+protected:
+    void changeEvent(QEvent *pEvt) override;
+
 private:
     Ui::ModuleDKSAdjust *ui;
 };

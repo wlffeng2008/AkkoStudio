@@ -44,6 +44,8 @@ signals:
 protected:
     bool event(QEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
+    void changeEvent(QEvent *pEvt) override;
+
     QString getEngishName();
     QString getImageName();
     void updateLangName();

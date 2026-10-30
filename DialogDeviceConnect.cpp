@@ -1478,3 +1478,13 @@ float DialogDeviceConnect::getMultiple()
 {
     return m_multiple;
 }
+
+void DialogDeviceConnect::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QDialog::changeEvent(pEvt);
+}

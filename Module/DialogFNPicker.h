@@ -22,7 +22,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) override;
     bool eventFilter(QObject *watched,QEvent *event) override;
-
+    void changeEvent(QEvent *pEvt) override;
 private:
     Ui::DialogFNPicker *ui;
 };

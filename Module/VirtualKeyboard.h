@@ -15,6 +15,9 @@ public:
     explicit VirtualKeyboard(QWidget *parent = nullptr);
     ~VirtualKeyboard();
 
+protected:
+    void changeEvent(QEvent *pEvt);
+
 private:
     Ui::VirtualKeyboard *ui;
 };

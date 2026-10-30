@@ -4,10 +4,11 @@
 #include <QSettings>
 #include <QApplication>
 #include <QDateTime>
+#include <QDesktopServices>
 
-#include <Windows.h>
+//#include <Windows.h>
 
-static QString g_strVer("1.8.2");
+static QString g_strVer("1.8.3");
 
 QString currentVersion()
 {
@@ -82,6 +83,7 @@ FrameSystemInfo::~FrameSystemInfo()
 void FrameSystemInfo::on_pushButtonWeb_clicked()
 {
     QString strUrl("https://www.akkogear.com/download/");
-    ::ShellExecute(NULL, L"open", (LPCWSTR)strUrl.toStdU16String().c_str(), NULL, NULL, SW_SHOWNORMAL);
+    QDesktopServices::openUrl(QUrl(strUrl));
+    //::ShellExecute(NULL, L"open", (LPCWSTR)strUrl.toStdU16String().c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 

@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 
     a.setStyleSheet(R"(
 
-        * { font-family: MiSans,MiSans; border:none;}
+        * { font-family: MiSans,MiSans; border:none; color:#202020;}
         QLabel { font-size: 14px; font-weight: 400; color: #202020;}
 
         QLabel:disabled { color: #B3B3B3;}
@@ -132,10 +132,10 @@ int main(int argc, char *argv[])
         /*
         QPushButton {  background:none; }
         QPushButton {
-            background-color: #2D7FDD;
+            background-color: #6329B6;
             border-radius: 8px;
             color: white;
-            border: 1px solid #6C9F50;
+            border: 1px solid #6329B6;
             padding: 1px;
             min-width: 16px;
             min-height: 8px;
@@ -295,7 +295,6 @@ int main(int argc, char *argv[])
         }
 
         QRadioButton::indicator:hover {
-            /* 可选：hover单独图片，没有就删掉这一段 */
             /* image: url(:/images/RadioHover.png); */
             color: #409eff;
         }

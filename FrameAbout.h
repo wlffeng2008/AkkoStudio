@@ -15,6 +15,9 @@ public:
     explicit FrameAbout(QWidget *parent = nullptr);
     ~FrameAbout();
 
+protected:
+    void changeEvent(QEvent *pEvt) override;
+
 private:
     Ui::FrameAbout *ui;
 };

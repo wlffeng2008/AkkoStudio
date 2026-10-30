@@ -23,7 +23,13 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -54,7 +60,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab1">
       <attribute name="title">
@@ -183,7 +189,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>C0</string>
+                <string notr="true">C0</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -208,7 +214,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>C0</string>
+                <string notr="true">C0</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -233,7 +239,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>C0</string>
+                <string notr="true">C0</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -258,7 +264,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>C0</string>
+                <string notr="true">C0</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -283,7 +289,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>C0</string>
+                <string notr="true">C0</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -308,7 +314,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>C0</string>
+                <string notr="true">C0</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -333,7 +339,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>C0</string>
+                <string notr="true">C0</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -358,7 +364,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>C0</string>
+                <string notr="true">C0</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -383,7 +389,7 @@
               <item>
                <widget class="ToggleButton" name="checkBoxSingle">
                 <property name="text">
-                 <string>ON</string>
+                 <string notr="true">ON</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
@@ -432,7 +438,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>0</string>
+           <string notr="true">0</string>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -451,7 +457,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>1</string>
+           <string notr="true">1</string>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -470,7 +476,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>2</string>
+           <string notr="true">2</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -492,7 +498,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>3</string>
+           <string notr="true">3</string>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -511,7 +517,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>4</string>
+           <string notr="true">4</string>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -549,7 +555,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>0</string>
+           <string notr="true">0</string>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -568,7 +574,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>1</string>
+           <string notr="true">1</string>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -587,7 +593,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>2</string>
+           <string notr="true">2</string>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -606,7 +612,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>3</string>
+           <string notr="true">3</string>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -625,7 +631,7 @@
            <enum>Qt::FocusPolicy::ClickFocus</enum>
           </property>
           <property name="text">
-           <string>4</string>
+           <string notr="true">4</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -933,15 +939,15 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>NewTabWidget</class>
    <extends>QTabWidget</extends>
    <header location="global">newtabwidget.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ToggleButton</class>
-   <extends>QCheckBox</extends>
-   <header>togglebutton.h</header>
   </customwidget>
   <customwidget>
    <class>ColorLabel</class>
@@ -954,9 +960,9 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupL"/>
   <buttongroup name="buttonGroupE"/>
   <buttongroup name="buttonGroupC"/>
   <buttongroup name="buttonGroupS"/>
+  <buttongroup name="buttonGroupL"/>
  </buttongroups>
 </ui>

@@ -28,6 +28,7 @@ signals:
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+    void changeEvent(QEvent *pEvt) final;
 private:
     Ui::ModuleAddMacroSquare *ui;
     quint8 m_hid = 0;

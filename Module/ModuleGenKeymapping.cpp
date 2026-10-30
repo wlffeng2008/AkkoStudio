@@ -2,6 +2,7 @@
 #include "qcontainerfwd.h"
 #include "qtypes.h"
 #include <QDebug>
+#include <QEvent>
 
 static ModuleGenKeymapping *s_map = nullptr;
 
@@ -161,6 +162,18 @@ keyData* ModuleGenKeymapping::getFnData(quint8 index)
         return nullptr;
     return &m_fnList[index]->data;
 }
+
+void ModuleGenKeymapping::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        //ui->retranslateUi(this);
+        initList();
+    }
+
+    QWidget::changeEvent(pEvt);
+}
+
 
 static quint8 defaultKeyMatrix_id2807[] =
 {

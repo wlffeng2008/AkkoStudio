@@ -613,3 +613,13 @@ void FrameKeySetting::refreshFn()
     ui->lineEditV2->setText(QString("%1").arg(pCnn->getSleepTime()->timeDBt/60));
     ui->lineEditV3->setText(QString("%1").arg(pCnn->getDebounce()));
 }
+
+void FrameKeySetting::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

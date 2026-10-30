@@ -11,7 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -111,7 +117,7 @@ QPushButton:hover { border: 1px solid #6329B6; }
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
-         <string>按键设定</string>
+         <string notr="true">按键设定</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -136,7 +142,7 @@ QPushButton:hover { border: 1px solid #6329B6; }
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
-         <string>DPI设定</string>
+         <string notr="true">DPI设定</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -158,7 +164,7 @@ QPushButton:hover { border: 1px solid #6329B6; }
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
-         <string>性能设定</string>
+         <string notr="true">性能设定</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -180,7 +186,7 @@ QPushButton:hover { border: 1px solid #6329B6; }
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
-         <string>宏管理</string>
+         <string notr="true">宏管理</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -202,7 +208,7 @@ QPushButton:hover { border: 1px solid #6329B6; }
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
-         <string>我的配置</string>
+         <string notr="true">我的配置</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -224,7 +230,7 @@ QPushButton:hover { border: 1px solid #6329B6; }
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
-         <string>关于</string>
+         <string notr="true">关于</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -260,7 +266,7 @@ QPushButton:hover { border: 1px solid #6329B6; }
         </font>
        </property>
        <property name="text">
-        <string>MOUSE SHOW</string>
+        <string notr="true">MOUSE SHOW</string>
        </property>
       </widget>
      </item>
@@ -277,7 +283,7 @@ QPushButton:hover { border: 1px solid #6329B6; }
           </rect>
          </property>
          <property name="text">
-          <string>0</string>
+          <string notr="true">0</string>
          </property>
         </widget>
        </widget>

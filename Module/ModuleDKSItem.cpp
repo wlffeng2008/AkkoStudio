@@ -182,3 +182,13 @@ void ModuleDKSItem::paintEvent(QPaintEvent*event)
     painter.drawRoundedRect(rect,12,12);
     painter.drawPixmap(rect.right()-20,10,QPixmap(":/images/k/ic_selected.png"));
 }
+
+void ModuleDKSItem::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

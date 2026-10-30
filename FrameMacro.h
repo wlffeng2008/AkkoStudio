@@ -25,6 +25,7 @@ protected:
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
     bool event(QEvent *event) override;
+    void changeEvent(QEvent *pEvt) final;
 
 private:
     Ui::FrameMacro *ui;

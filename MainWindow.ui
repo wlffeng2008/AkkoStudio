@@ -19,6 +19,9 @@
   <property name="toolTip">
    <string notr="true"/>
   </property>
+  <property name="statusTip">
+   <string notr="true"/>
+  </property>
   <property name="styleSheet">
    <string notr="true">border-radius:20px;</string>
   </property>
@@ -75,7 +78,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/images/AkkoFlag.png</pixmap>
+          <pixmap resource="res.qrc">:/images/AkkoFlag.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -151,7 +154,7 @@
              <string> 语种选择</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="res.qrc">
               <normaloff>:/images/m-lang.png</normaloff>:/images/m-lang.png</iconset>
             </property>
             <property name="iconSize">
@@ -189,7 +192,7 @@
              <string notr="true"/>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="res.qrc">
               <normaloff>:/images/btn-setting.png</normaloff>:/images/btn-setting.png</iconset>
             </property>
             <property name="iconSize">
@@ -224,7 +227,7 @@
              <string notr="true"/>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="res.qrc">
               <normaloff>:/images/btn-min.png</normaloff>:/images/btn-min.png</iconset>
             </property>
             <property name="iconSize">
@@ -259,7 +262,7 @@
              <string notr="true"/>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="res.qrc">
               <normaloff>:/images/btn-close.png</normaloff>:/images/btn-close.png</iconset>
             </property>
             <property name="iconSize">
@@ -366,7 +369,7 @@
              <string>刷新设备</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="res.qrc">
               <normaloff>:/images/m-reset.png</normaloff>:/images/m-reset.png</iconset>
             </property>
             <property name="iconSize">
@@ -467,7 +470,7 @@ background:transparent;</string>
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap>:/images/a-left.png</pixmap>
+               <pixmap resource="res.qrc">:/images/a-left.png</pixmap>
               </property>
              </widget>
             </item>
@@ -480,7 +483,7 @@ background:transparent;</string>
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap>:/images/a-right.png</pixmap>
+               <pixmap resource="res.qrc">:/images/a-right.png</pixmap>
               </property>
              </widget>
             </item>
@@ -597,6 +600,8 @@ background:transparent;</string>
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -22,6 +22,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) override;
     void showEvent(QShowEvent *event) override;
+    void changeEvent(QEvent *pEvt) override;
 
 signals:
     void onLangChanged(int langId,const QString&lang) ;

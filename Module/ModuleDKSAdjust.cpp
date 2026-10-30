@@ -114,3 +114,13 @@ void ModuleDKSAdjust::setOriginValue(const QString&strValue)
 {
     ui->lineEditValue1->setText(strValue) ;
 }
+
+void ModuleDKSAdjust::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

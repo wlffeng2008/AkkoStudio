@@ -165,6 +165,16 @@ void FrameDeviceShow::updateBattery()
     emit onReport(m_pDevEI,strBatt,m_typeImage,strTip,qss);
 }
 
+void FrameDeviceShow::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}
+
 QString FrameDeviceShow::getEngishName()
 {
     QString name = m_pDevEI->strName;

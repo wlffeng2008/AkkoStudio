@@ -330,3 +330,13 @@ bool MacroSquare::event(QEvent *event)
 
     return QFrame::event(event);
 }
+
+void MacroSquare::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

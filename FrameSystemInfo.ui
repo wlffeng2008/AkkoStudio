@@ -17,7 +17,13 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <property name="styleSheet">
    <string notr="true">#FrameSystemInfo{background-color: rgb(240, 240, 240);border-radius: 20px;}
@@ -47,19 +53,19 @@ QLabel{ font-size:16px;}
      <x>178</x>
      <y>388</y>
      <width>210</width>
-     <height>36</height>
+     <height>34</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
      <width>0</width>
-     <height>36</height>
+     <height>34</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>16777215</width>
-     <height>36</height>
+     <height>34</height>
     </size>
    </property>
    <property name="cursor">
@@ -85,7 +91,7 @@ QLabel{ font-size:16px;}
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size:16px;</string>
+    <string notr="true">font-size:16px;color:black;</string>
    </property>
    <property name="text">
     <string>开机时自动开启本程序</string>
@@ -97,19 +103,19 @@ QLabel{ font-size:16px;}
      <x>178</x>
      <y>288</y>
      <width>210</width>
-     <height>36</height>
+     <height>34</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
      <width>0</width>
-     <height>36</height>
+     <height>34</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>16777215</width>
-     <height>36</height>
+     <height>34</height>
     </size>
    </property>
    <property name="cursor">
@@ -145,7 +151,7 @@ QLabel{ font-size:16px;}
     <string>编译时间</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>

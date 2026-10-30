@@ -11,9 +11,12 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
   </property>
   <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
    <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -73,7 +76,7 @@
         </size>
        </property>
        <property name="text">
-        <string>ON</string>
+        <string notr="true">ON</string>
        </property>
       </widget>
      </item>
@@ -132,7 +135,7 @@
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>0.500 mm</string>
+         <string notr="true">0.500 mm</string>
         </property>
         <property name="maxLength">
          <number>10</number>

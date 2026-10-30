@@ -16,6 +16,7 @@ public:
     void setDeviceImage(const QString&strImage);
 protected:
     bool eventFilter(QObject*watched, QEvent*event) override;
+    void changeEvent(QEvent *pEvt) final;
 
 private:
     Ui::FrameMain *ui;

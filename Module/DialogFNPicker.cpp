@@ -271,3 +271,13 @@ void DialogFNPicker::paintEvent(QPaintEvent *event)
 
     QDialog::paintEvent(event);
 }
+
+void DialogFNPicker::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QDialog::changeEvent(pEvt);
+}

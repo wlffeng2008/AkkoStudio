@@ -82,3 +82,13 @@ bool FrameMain::eventFilter(QObject*watched,QEvent*event)
 {
     return QFrame::eventFilter(watched,event);
 }
+
+void FrameMain::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

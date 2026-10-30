@@ -174,3 +174,13 @@ void ModuleRtSet::paintEvent(QPaintEvent *event)
 
     event->accept();
 }
+
+void ModuleRtSet::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

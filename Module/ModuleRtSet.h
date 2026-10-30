@@ -19,6 +19,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) override;
     bool eventFilter(QObject*,QEvent*) override;
+    void changeEvent(QEvent *pEvt) override;
 
 signals:
     void setGlobalRtValue(float value,int type=0);

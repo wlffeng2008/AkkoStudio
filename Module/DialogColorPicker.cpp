@@ -218,3 +218,13 @@ void DialogColorPicker::paintEvent(QPaintEvent *event)
 
     QDialog::paintEvent(event);
 }
+
+void DialogColorPicker::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QDialog::changeEvent(pEvt);
+}

@@ -17,7 +17,8 @@ public:
 
 protected:
     bool event(QEvent*event) override;
-    bool eventFilter(QObject*watched, QEvent*event) override;    
+    bool eventFilter(QObject*watched, QEvent*event) override;
+    void changeEvent(QEvent *pEvt) final;
 
 private:
     Ui::FrameMagic *ui;

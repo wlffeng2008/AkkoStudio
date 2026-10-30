@@ -104,5 +104,15 @@ bool ModuleScrollValue::event(QEvent*event)
         return true;
     }
 
-    return QFrame::event(event) ;
+    return QFrame::event(event);
+}
+
+void ModuleScrollValue::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
 }

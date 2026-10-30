@@ -196,6 +196,7 @@ signals:
 
 protected:
     bool nativeEvent(const QByteArray &eventType, void *message, qintptr *result) override;
+    void changeEvent(QEvent *pEvt) override;
 
 private:
     Ui::DialogDeviceConnect *ui;

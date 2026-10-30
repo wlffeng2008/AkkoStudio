@@ -16,6 +16,12 @@
   <property name="windowTitle">
    <string notr="true">Frame</string>
   </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
+  </property>
   <property name="styleSheet">
    <string notr="true">QFrame#frameTop{background-color: #F6F6F6;border-radius:32px;}
 QFrame#frameBLeft{background-color: #F6F6F6;border-radius:32px;}
@@ -283,7 +289,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
             <string notr="true">#page4,#page3,#page2,#page1,#page0{background-color: #F6F6F6;border-radius:32px;}</string>
            </property>
            <property name="currentIndex">
-            <number>4</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="page0">
             <property name="styleSheet">
@@ -382,7 +388,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_18" stretch="0,1">
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_20">
+                  <layout class="QHBoxLayout" name="horizontalLayout_20" stretch="1,0">
                    <item alignment="Qt::AlignmentFlag::AlignLeft">
                     <widget class="QLabel" name="label_10">
                      <property name="font">
@@ -395,6 +401,9 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -545,6 +554,9 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                       <property name="alignment">
                        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                       </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
@@ -606,6 +618,9 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                       <property name="alignment">
                        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                       </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
@@ -635,7 +650,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                        <item>
                         <widget class="QLabel" name="label_8">
                          <property name="text">
-                          <string>0.005</string>
+                          <string notr="true">0.005</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -664,7 +679,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                        <item>
                         <widget class="QLabel" name="label_9">
                          <property name="text">
-                          <string>2.000</string>
+                          <string notr="true">2.000</string>
                          </property>
                         </widget>
                        </item>
@@ -822,7 +837,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                        <item>
                         <widget class="QLabel" name="label_13">
                          <property name="text">
-                          <string>0.005</string>
+                          <string notr="true">0.005</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -851,7 +866,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                        <item>
                         <widget class="QLabel" name="label_14">
                          <property name="text">
-                          <string>2.000</string>
+                          <string notr="true">2.000</string>
                          </property>
                         </widget>
                        </item>
@@ -1639,7 +1654,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                      </size>
                     </property>
                     <property name="text">
-                     <string>25%</string>
+                     <string notr="true">25%</string>
                     </property>
                     <property name="checked">
                      <bool>false</bool>
@@ -1658,7 +1673,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                      </size>
                     </property>
                     <property name="text">
-                     <string>50%</string>
+                     <string notr="true">50%</string>
                     </property>
                     <attribute name="buttonGroup">
                      <string notr="true">buttonGroupStab</string>
@@ -1674,7 +1689,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                      </size>
                     </property>
                     <property name="text">
-                     <string>75%</string>
+                     <string notr="true">75%</string>
                     </property>
                     <attribute name="buttonGroup">
                      <string notr="true">buttonGroupStab</string>
@@ -1690,7 +1705,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                      </size>
                     </property>
                     <property name="text">
-                     <string>100%</string>
+                     <string notr="true">100%</string>
                     </property>
                     <attribute name="buttonGroup">
                      <string notr="true">buttonGroupStab</string>
@@ -1993,8 +2008,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>571</width>
-                    <height>60</height>
+                    <width>100</width>
+                    <height>30</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_16"/>
@@ -2024,8 +2039,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>571</width>
-                    <height>168</height>
+                    <width>100</width>
+                    <height>30</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -2067,15 +2082,15 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ToggleButton</class>
+   <extends>QCheckBox</extends>
+   <header>togglebutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>ModuleKeyboard</class>
    <extends>QFrame</extends>
    <header>modulekeyboard.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ToggleButton</class>
-   <extends>QCheckBox</extends>
-   <header>togglebutton.h</header>
   </customwidget>
   <customwidget>
    <class>ModuleLinear</class>
@@ -2089,7 +2104,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupStab"/>
   <buttongroup name="buttonGroupMT"/>
+  <buttongroup name="buttonGroupStab"/>
  </buttongroups>
 </ui>

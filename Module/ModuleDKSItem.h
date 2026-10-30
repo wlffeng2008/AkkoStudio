@@ -27,7 +27,7 @@ protected:
     bool eventFilter(QObject*watched, QEvent*event) override;
     bool event(QEvent*event) override;
     void paintEvent(QPaintEvent*event) override;
-
+    void changeEvent(QEvent *pEvt) override;
 private:
     Ui::ModuleDKSItem *ui;
 

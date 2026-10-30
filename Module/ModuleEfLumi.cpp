@@ -24,3 +24,13 @@ void ModuleEfLumi::setBright(quint8 bright)
     m_bOutSet = true;
     ui->horizontalSlider->setValue(bright);
 }
+
+void ModuleEfLumi::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

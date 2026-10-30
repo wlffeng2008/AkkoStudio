@@ -12,3 +12,13 @@ ModuleVideoItem::~ModuleVideoItem()
 {
     delete ui;
 }
+
+void ModuleVideoItem::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

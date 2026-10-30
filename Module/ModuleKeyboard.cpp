@@ -509,3 +509,13 @@ void ModuleKeyboard::mouseReleaseEvent(QMouseEvent *event)
 
     QFrame::mouseReleaseEvent(event);
 }
+
+void ModuleKeyboard::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

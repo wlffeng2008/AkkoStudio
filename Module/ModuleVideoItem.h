@@ -15,6 +15,9 @@ public:
     explicit ModuleVideoItem(QWidget *parent = nullptr);
     ~ModuleVideoItem();
 
+protected:
+    void changeEvent(QEvent *pEvt) override;
+
 private:
     Ui::ModuleVideoItem *ui;
 };

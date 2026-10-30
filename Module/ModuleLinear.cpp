@@ -203,3 +203,13 @@ void ModuleLinear::enablePannel(bool left,bool enable)
     }
 }
 
+void ModuleLinear::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}
+

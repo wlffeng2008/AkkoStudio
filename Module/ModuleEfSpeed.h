@@ -15,6 +15,10 @@ public:
     explicit ModuleEfSpeed(QWidget *parent = nullptr);
     ~ModuleEfSpeed();
     void setSpeed(quint8 speed);
+
+protected:
+    void changeEvent(QEvent *pEvt);
+
 signals:
     void onSpeedChanged(quint8 speed);
 

@@ -25,6 +25,7 @@ public:
 protected:
     bool eventFilter(QObject*watched,QEvent*event) override;
     void showEvent(QShowEvent *event) override;
+    void changeEvent(QEvent *pEvt) final;
 
 private:
     Ui::FrameKeySetting *ui;

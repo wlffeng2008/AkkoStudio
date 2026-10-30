@@ -40,6 +40,9 @@ public:
     static void unackMacroPack(MacroProject *prj,QByteArray&data);
     static ModuleMacroManager* instance();
 
+protected:
+    void changeEvent(QEvent *pEvt) ;
+
 signals:
     void nothing();
 private:

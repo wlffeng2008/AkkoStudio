@@ -18,6 +18,12 @@
   <property name="windowTitle">
    <string>Frame</string>
   </property>
+  <property name="toolTip">
+   <string/>
+  </property>
+  <property name="statusTip">
+   <string/>
+  </property>
   <property name="styleSheet">
    <string notr="true">#FrameKeySetting{background-color: white;}
 QPushButton {
@@ -267,7 +273,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             <string notr="true"/>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="page1">
             <property name="styleSheet">
@@ -278,7 +284,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               <rect>
                <x>20</x>
                <y>20</y>
-               <width>211</width>
+               <width>581</width>
                <height>27</height>
               </rect>
              </property>
@@ -295,7 +301,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                <x>40</x>
                <y>60</y>
                <width>849</width>
-               <height>33</height>
+               <height>47</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -303,6 +309,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
              </property>
              <property name="text">
               <string>*首先点击选择上方按键，在弹出的对话框中可选择组合键、宏设置、系统功能、鼠标功能进行改建设置</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
              </property>
             </widget>
            </widget>
@@ -445,7 +454,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <string notr="true">color:#6329B6</string>
                    </property>
                    <property name="text">
-                    <string>0.7 mm</string>
+                    <string notr="true">0.7 mm</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -465,7 +474,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <cursorShape>ArrowCursor</cursorShape>
                    </property>
                    <property name="text">
-                    <string>3.2 mm</string>
+                    <string notr="true">3.2 mm</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -485,7 +494,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <cursorShape>ArrowCursor</cursorShape>
                    </property>
                    <property name="text">
-                    <string>3.2 mm</string>
+                    <string notr="true">3.2 mm</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -509,7 +518,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <string notr="true">color:#6329B6</string>
                    </property>
                    <property name="text">
-                    <string>0.7 mm</string>
+                    <string notr="true">0.7 mm</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -1735,8 +1744,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupSnap"/>
   <buttongroup name="buttonGroupMT"/>
+  <buttongroup name="buttonGroupSnap"/>
   <buttongroup name="buttonGroupTGL"/>
  </buttongroups>
 </ui>

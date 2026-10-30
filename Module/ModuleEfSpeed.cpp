@@ -24,3 +24,13 @@ void ModuleEfSpeed::setSpeed(quint8 speed)
     m_bOutSet = true;
     ui->horiCyanSlider->setValue(speed);
 }
+
+void ModuleEfSpeed::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

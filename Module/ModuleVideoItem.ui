@@ -23,7 +23,13 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);border-radius:24px;</string>
@@ -58,7 +64,7 @@
       <string notr="true">background:gray;border-radius:17px;color:red;font-size:100px;</string>
      </property>
      <property name="text">
-      <string>Movie</string>
+      <string notr="true">Movie</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -68,7 +74,7 @@
    <item>
     <widget class="QLabel" name="labelTitle1">
      <property name="text">
-      <string>AKKO 5075 操作指南-宏设置</string>
+      <string notr="true">AKKO 5075 操作指南-宏设置</string>
      </property>
     </widget>
    </item>
@@ -80,7 +86,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>AKKO 2025-10-20</string>
+        <string notr="true">AKKO 2025-10-20</string>
        </property>
       </widget>
      </item>
@@ -103,7 +109,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>5:20</string>
+        <string notr="true">5:20</string>
        </property>
       </widget>
      </item>

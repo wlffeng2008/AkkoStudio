@@ -20,6 +20,9 @@ public:
     void setIndex(quint32 index);
     quint32 getIndex();
 
+protected:
+    void changeEvent(QEvent *pEvt);
+
 signals:
     void onIndexChanged(int index);
 

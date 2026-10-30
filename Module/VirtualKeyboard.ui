@@ -11,7 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -71,6 +77,9 @@
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Print
 Screen</string>
@@ -100,8 +109,11 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>H</string>
+           <string notr="true">H</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -134,6 +146,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F6</string>
           </property>
@@ -162,8 +177,11 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>I</string>
+           <string notr="true">I</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -190,8 +208,11 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>C</string>
+           <string notr="true">C</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -218,8 +239,11 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>E</string>
+           <string notr="true">E</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -250,6 +274,9 @@ Screen</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -286,6 +313,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Tab</string>
           </property>
@@ -320,6 +350,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">|\</string>
           </property>
@@ -348,8 +381,11 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>J</string>
+           <string notr="true">J</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -380,6 +416,9 @@ Screen</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -416,6 +455,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">-_</string>
           </property>
@@ -450,6 +492,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">]}</string>
           </property>
@@ -478,8 +523,11 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>Y</string>
+           <string notr="true">Y</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -510,6 +558,9 @@ Screen</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -556,6 +607,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Num
 -</string>
@@ -591,6 +645,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">WIN</string>
           </property>
@@ -623,6 +680,9 @@ Screen</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -660,6 +720,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Enter</string>
           </property>
@@ -694,6 +757,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Num
 8</string>
@@ -723,8 +789,11 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>K</string>
+           <string notr="true">K</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -755,6 +824,9 @@ Screen</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -791,6 +863,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F12</string>
           </property>
@@ -823,6 +898,9 @@ Screen</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -860,6 +938,9 @@ Screen</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">R-
 ALT</string>
@@ -895,6 +976,9 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F10</string>
           </property>
@@ -927,6 +1011,9 @@ ALT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -964,6 +1051,9 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">L-
 SHIFT</string>
@@ -993,8 +1083,11 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>D</string>
+           <string notr="true">D</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1025,6 +1118,9 @@ SHIFT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1062,6 +1158,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Back
 space</string>
@@ -1097,6 +1196,9 @@ space</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">PgDn</string>
           </property>
@@ -1125,8 +1227,11 @@ space</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>G</string>
+           <string notr="true">G</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1157,6 +1262,9 @@ space</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1194,6 +1302,9 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">6^</string>
           </property>
@@ -1228,6 +1339,9 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">5%</string>
           </property>
@@ -1256,8 +1370,11 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>U</string>
+           <string notr="true">U</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1288,6 +1405,9 @@ SHIFT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1324,6 +1444,9 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Menu</string>
           </property>
@@ -1356,6 +1479,9 @@ SHIFT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1402,6 +1528,9 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F3</string>
           </property>
@@ -1434,6 +1563,9 @@ SHIFT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1471,6 +1603,9 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">1!</string>
           </property>
@@ -1499,8 +1634,11 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>Z</string>
+           <string notr="true">Z</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1531,6 +1669,9 @@ SHIFT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1565,6 +1706,9 @@ SHIFT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1602,6 +1746,9 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">SPACE</string>
           </property>
@@ -1630,8 +1777,11 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>S</string>
+           <string notr="true">S</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1662,6 +1812,9 @@ SHIFT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1702,8 +1855,11 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>M</string>
+           <string notr="true">M</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1736,6 +1892,9 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F1</string>
           </property>
@@ -1764,8 +1923,11 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>X</string>
+           <string notr="true">X</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1798,6 +1960,9 @@ SHIFT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Caps
 Lock</string>
@@ -1827,8 +1992,11 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>A</string>
+           <string notr="true">A</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1861,6 +2029,9 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Num
 6</string>
@@ -1890,8 +2061,11 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>F</string>
+           <string notr="true">F</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -1922,6 +2096,9 @@ Lock</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -1958,6 +2135,9 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">9(</string>
           </property>
@@ -1992,6 +2172,9 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Num
 2</string>
@@ -2021,8 +2204,11 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>O</string>
+           <string notr="true">O</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2053,6 +2239,9 @@ Lock</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2090,6 +2279,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">=+</string>
           </property>
@@ -2122,6 +2314,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="autoFillBackground">
@@ -2162,6 +2357,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2208,6 +2406,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">' &quot;</string>
           </property>
@@ -2236,8 +2437,11 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>P</string>
+           <string notr="true">P</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2268,6 +2472,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2304,6 +2511,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">;:</string>
           </property>
@@ -2338,6 +2548,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F7</string>
           </property>
@@ -2370,6 +2583,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2407,6 +2623,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F4</string>
           </property>
@@ -2439,6 +2658,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2475,6 +2697,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F11</string>
           </property>
@@ -2509,6 +2734,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F2</string>
           </property>
@@ -2541,6 +2769,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2578,6 +2809,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Num
 4</string>
@@ -2607,8 +2841,11 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>R</string>
+           <string notr="true">R</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2635,8 +2872,11 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>L</string>
+           <string notr="true">L</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2667,6 +2907,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2703,6 +2946,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">F9</string>
           </property>
@@ -2735,6 +2981,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2771,6 +3020,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Insert</string>
           </property>
@@ -2799,8 +3051,11 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>V</string>
+           <string notr="true">V</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2831,6 +3086,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2868,6 +3126,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">4$</string>
           </property>
@@ -2900,6 +3161,9 @@ CTRL</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -2936,6 +3200,9 @@ CTRL</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">L-
 ALT</string>
@@ -2965,8 +3232,11 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>N</string>
+           <string notr="true">N</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -2999,6 +3269,9 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">Num
 7</string>
@@ -3028,8 +3301,11 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>T</string>
+           <string notr="true">T</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -3056,8 +3332,11 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>B</string>
+           <string notr="true">B</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -3090,6 +3369,9 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">PgUp</string>
           </property>
@@ -3118,8 +3400,11 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>Q</string>
+           <string notr="true">Q</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -3146,8 +3431,11 @@ ALT</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>W</string>
+           <string notr="true">W</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -3178,6 +3466,9 @@ ALT</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -3215,6 +3506,9 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">END</string>
           </property>
@@ -3247,6 +3541,9 @@ Lock</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -3283,6 +3580,9 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">3#</string>
           </property>
@@ -3315,6 +3615,9 @@ Lock</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -3352,6 +3655,9 @@ Lock</string>
           <property name="toolTip">
            <string notr="true"/>
           </property>
+          <property name="statusTip">
+           <string notr="true"/>
+          </property>
           <property name="text">
            <string notr="true">`~</string>
           </property>
@@ -3384,6 +3690,9 @@ Lock</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">
@@ -3419,6 +3728,9 @@ Lock</string>
            </font>
           </property>
           <property name="toolTip">
+           <string notr="true"/>
+          </property>
+          <property name="statusTip">
            <string notr="true"/>
           </property>
           <property name="text">

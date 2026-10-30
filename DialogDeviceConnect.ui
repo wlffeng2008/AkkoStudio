@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Akko Studio 设备调试</string>
+   <string notr="true">Akko Studio 设备调试</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -29,7 +29,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>8F 00 00 00 00 00 00 70</string>
+    <string notr="true">8F 00 00 00 00 00 00 70</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonRead">
@@ -44,8 +44,11 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>Read</string>
+    <string notr="true">Read</string>
    </property>
   </widget>
   <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -56,6 +59,9 @@
      <width>424</width>
      <height>615</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonWrite">
@@ -70,8 +76,11 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>Write</string>
+    <string notr="true">Write</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditVID">
@@ -87,7 +96,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>3151</string>
+    <string notr="true">3151</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonRefresh">
@@ -102,8 +111,11 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>Refresh</string>
+    <string notr="true">Refresh</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -119,7 +131,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>VID:</string>
+    <string notr="true">VID:</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -133,6 +145,9 @@
      <width>20</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -153,6 +168,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -172,8 +190,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>Status:</string>
+    <string notr="true">Status:</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -192,7 +213,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>502F</string>
+    <string notr="true">502F</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -208,7 +229,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>PID:</string>
+    <string notr="true">PID:</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -223,8 +244,11 @@
      <height>19</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>ON TOP</string>
+    <string notr="true">ON TOP</string>
    </property>
   </widget>
   <widget class="QTableView" name="tableView">
@@ -261,6 +285,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="maxVisibleItems">
     <number>20</number>
    </property>
@@ -277,8 +304,11 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>Connect</string>
+    <string notr="true">Connect</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonSaveMatrix">
@@ -293,8 +323,11 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>Save Matrix</string>
+    <string notr="true">Save Matrix</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelVersion">
@@ -306,8 +339,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>0x000</string>
+    <string notr="true">0x000</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>

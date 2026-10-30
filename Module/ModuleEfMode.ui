@@ -11,7 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <property name="styleSheet">
    <string notr="true">border:none;</string>
@@ -74,6 +80,9 @@
          <width>40</width>
          <height>20</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>ON</string>

@@ -29,6 +29,7 @@ protected:
     bool eventFilter(QObject *watched,QEvent *event) override;
     void showEvent(QShowEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
+    void changeEvent(QEvent *pEvt) override;
 
 private:
     Ui::DialogColorPicker *ui;

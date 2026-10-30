@@ -35,6 +35,7 @@ protected:
     bool eventFilter(QObject*object,QEvent *event) override;
     void paintEvent(QPaintEvent*event) override;
     bool event(QEvent *event) override;
+    void changeEvent(QEvent *pEvt) override;
 
 signals:
     void onAction(MacroSquare *from, quint8 action);

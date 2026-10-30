@@ -11,7 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -34,11 +40,14 @@
      <property name="toolTip">
       <string notr="true"/>
      </property>
+     <property name="statusTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">color:#B6B6B6</string>
      </property>
      <property name="text">
-      <string>1</string>
+      <string notr="true">1</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -59,11 +68,14 @@
      <property name="toolTip">
       <string notr="true"/>
      </property>
+     <property name="statusTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">color:#A6A6A6</string>
      </property>
      <property name="text">
-      <string>2</string>
+      <string notr="true">2</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -81,6 +93,9 @@
      <property name="toolTip">
       <string notr="true"/>
      </property>
+     <property name="statusTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: qlineargradient(
     spread: pad,
@@ -92,7 +107,7 @@
 );</string>
      </property>
      <property name="text">
-      <string/>
+      <string notr="true"/>
      </property>
     </widget>
    </item>
@@ -110,11 +125,14 @@
      <property name="toolTip">
       <string notr="true"/>
      </property>
+     <property name="statusTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">QLabel:hover{color:#6329B6;}</string>
      </property>
      <property name="text">
-      <string>3</string>
+      <string notr="true">3</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -132,6 +150,9 @@
      <property name="toolTip">
       <string notr="true"/>
      </property>
+     <property name="statusTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: qlineargradient(
     spread: pad,
@@ -143,7 +164,7 @@
 );</string>
      </property>
      <property name="text">
-      <string/>
+      <string notr="true"/>
      </property>
     </widget>
    </item>
@@ -161,11 +182,14 @@
      <property name="toolTip">
       <string notr="true"/>
      </property>
+     <property name="statusTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">color:#A6A6A6</string>
      </property>
      <property name="text">
-      <string>4</string>
+      <string notr="true">4</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -186,11 +210,14 @@
      <property name="toolTip">
       <string notr="true"/>
      </property>
+     <property name="statusTip">
+      <string notr="true"/>
+     </property>
      <property name="styleSheet">
       <string notr="true">color:#B6B6B6</string>
      </property>
      <property name="text">
-      <string>5</string>
+      <string notr="true">5</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>

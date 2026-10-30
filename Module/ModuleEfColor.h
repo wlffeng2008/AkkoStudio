@@ -91,7 +91,7 @@ signals:
 protected:
     bool eventFilter(QObject* watched, QEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
-
+    void changeEvent(QEvent *pEvt) override;
 private:
     Ui::ModuleEfColor *ui;
     QStandardItemModel *m_pModel = nullptr;

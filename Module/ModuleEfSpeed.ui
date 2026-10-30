@@ -11,7 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -60,7 +66,7 @@
         <string notr="true">color: #2DC3BE;</string>
        </property>
        <property name="text">
-        <string>25%</string>
+        <string notr="true">25%</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -104,7 +110,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>0%</string>
+        <string notr="true">0%</string>
        </property>
       </widget>
      </item>
@@ -130,7 +136,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>100%</string>
+        <string notr="true">100%</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>

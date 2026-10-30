@@ -59,6 +59,7 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void showEvent(QShowEvent *event) override;
+    void changeEvent(QEvent *pEvt) override;
 
 private:
     Ui::ModuleKeyboard *ui;

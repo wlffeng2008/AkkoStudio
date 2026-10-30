@@ -19,6 +19,9 @@ public:
 signals:
     void onBrightChanged(int bright);
 
+protected:
+    void changeEvent(QEvent *pEvt);
+
 private:
     Ui::ModuleEfLumi *ui;
     bool m_bOutSet = false;

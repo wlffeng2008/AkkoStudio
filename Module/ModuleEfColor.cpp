@@ -276,3 +276,13 @@ bool ModuleEfColor::eventFilter(QObject*watched ,QEvent *event)
     // }
     return QFrame::eventFilter(watched,event);
 }
+
+void ModuleEfColor::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

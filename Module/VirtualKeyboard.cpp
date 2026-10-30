@@ -12,3 +12,13 @@ VirtualKeyboard::~VirtualKeyboard()
 {
     delete ui;
 }
+
+void VirtualKeyboard::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

@@ -23,7 +23,13 @@
    <enum>Qt::FocusPolicy::ClickFocus</enum>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <property name="styleSheet">
    <string notr="true">border-radius:32px;</string>
@@ -113,7 +119,7 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>Image</string>
+      <string notr="true">Image</string>
      </property>
     </widget>
    </item>

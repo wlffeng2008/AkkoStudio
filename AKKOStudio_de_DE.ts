@@ -4,1132 +4,1775 @@
 <context>
     <name>DialogColorPicker</name>
     <message>
-        <location filename="Module/DialogColorPicker.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/DialogColorPicker.ui" line="165"/>
-        <source>R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/DialogColorPicker.ui" line="175"/>
-        <source>G</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/DialogColorPicker.ui" line="185"/>
-        <source>B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/DialogColorPicker.ui" line="220"/>
+        <location filename="Module/DialogColorPicker.ui" line="238"/>
         <source>完成</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DialogDeviceConnect</name>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="14"/>
-        <source>Akko Studio 设备调试</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="32"/>
-        <source>8F 00 00 00 00 00 00 70</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="45"/>
-        <source>Read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="68"/>
-        <source>Write</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="84"/>
-        <source>3151</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="97"/>
-        <source>Refresh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="113"/>
-        <source>VID:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="167"/>
-        <source>Status:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="282"/>
-        <source>Save Matrix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="295"/>
-        <source>0x000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="186"/>
-        <source>502F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="202"/>
-        <source>PID:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="218"/>
-        <source>ON TOP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DialogDeviceConnect.ui" line="269"/>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Fertig</translation>
     </message>
 </context>
 <context>
     <name>DialogFNPicker</name>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="3906"/>
+        <location filename="Module/DialogFNPicker.ui" line="4215"/>
         <source>循环次数</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiederholungsanzahl</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="3970"/>
-        <location filename="Module/DialogFNPicker.ui" line="3988"/>
+        <location filename="Module/DialogFNPicker.ui" line="4279"/>
+        <location filename="Module/DialogFNPicker.ui" line="4297"/>
         <source>系统功能</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemfunktion</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4482"/>
-        <location filename="Module/DialogFNPicker.ui" line="4500"/>
+        <location filename="Module/DialogFNPicker.ui" line="4854"/>
+        <location filename="Module/DialogFNPicker.ui" line="4872"/>
         <source>鼠标功能</source>
-        <translation type="unfinished"></translation>
+        <translation>Mausfunktion</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4515"/>
+        <location filename="Module/DialogFNPicker.ui" line="4887"/>
         <source>左键</source>
-        <translation type="unfinished"></translation>
+        <translation>Linke Maustaste</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4531"/>
+        <location filename="Module/DialogFNPicker.ui" line="4903"/>
         <source>右键</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechte Maustaste</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4547"/>
+        <location filename="Module/DialogFNPicker.ui" line="4919"/>
         <source>中键</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittlere Maustaste</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4563"/>
+        <location filename="Module/DialogFNPicker.ui" line="4935"/>
         <source>前移</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorwärts</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4579"/>
+        <location filename="Module/DialogFNPicker.ui" line="4951"/>
         <source>后移</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurück</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4595"/>
+        <location filename="Module/DialogFNPicker.ui" line="4967"/>
         <source>左滚</source>
-        <translation type="unfinished"></translation>
+        <translation>Links scrollen</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4611"/>
+        <location filename="Module/DialogFNPicker.ui" line="4983"/>
         <source>右滚</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechts scrollen</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4627"/>
+        <location filename="Module/DialogFNPicker.ui" line="4999"/>
         <source>上滚</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach oben scrollen</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4643"/>
+        <location filename="Module/DialogFNPicker.ui" line="5015"/>
         <source>下滚</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach unten scrollen</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4659"/>
+        <location filename="Module/DialogFNPicker.ui" line="5031"/>
         <source>向上滚屏</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild nach oben scrollen</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4675"/>
+        <location filename="Module/DialogFNPicker.ui" line="5047"/>
         <source>向下滚屏</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild nach unten scrollen</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4738"/>
+        <location filename="Module/DialogFNPicker.ui" line="5110"/>
         <source>设置功能为:</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktion festlegen als:</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="3866"/>
-        <location filename="Module/DialogFNPicker.ui" line="3884"/>
+        <location filename="Module/DialogFNPicker.ui" line="4175"/>
+        <location filename="Module/DialogFNPicker.ui" line="4193"/>
         <source>宏设置</source>
-        <translation type="unfinished">Makroeinstellungen</translation>
+        <translation>Makroeinstellungen</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="57"/>
         <source>组合键</source>
-        <translation type="unfinished"></translation>
+        <translation>Tastenkombination</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="75"/>
         <source>基本字符</source>
-        <translation type="unfinished"></translation>
+        <translation>Grundzeichen</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="1688"/>
+        <location filename="Module/DialogFNPicker.ui" line="1829"/>
         <source>拓展字符(按键)</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweiterte Zeichen (Tasten)</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="3899"/>
+        <location filename="Module/DialogFNPicker.ui" line="4208"/>
         <source>播放方式:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausführungsmodus:</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="3926"/>
+        <location filename="Module/DialogFNPicker.ui" line="4235"/>
         <source>自动</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="3933"/>
+        <location filename="Module/DialogFNPicker.ui" line="4242"/>
         <source>按下</source>
-        <translation type="unfinished"></translation>
+        <translation>Beim Drücken</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4765"/>
-        <location filename="Module/DialogFNPicker.ui" line="4795"/>
-        <location filename="Module/DialogFNPicker.ui" line="4825"/>
-        <source>--</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/DialogFNPicker.ui" line="4866"/>
+        <location filename="Module/DialogFNPicker.ui" line="5256"/>
         <source>确定</source>
-        <translation type="unfinished">Okay</translation>
+        <translation>Okay</translation>
     </message>
     <message>
-        <location filename="Module/DialogFNPicker.ui" line="4891"/>
+        <location filename="Module/DialogFNPicker.ui" line="5281"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.cpp" line="130"/>
         <source>未录制的宏</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht aufgenommenes Makro</translation>
+    </message>
+</context>
+<context>
+    <name>DialogMouse</name>
+    <message>
+        <location filename="DialogMouse.ui" line="32"/>
+        <source>鼠标驱动程序</source>
+        <translation>Maus Treiber</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="223"/>
+        <source>MOUSE SHOW</source>
+        <translation>Mausanzeige</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="236"/>
+        <source>Battery</source>
+        <translation>Akku</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="383"/>
+        <location filename="DialogMouse.ui" line="760"/>
+        <source>按键设定</source>
+        <translation>Tastenzuordnung</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="418"/>
+        <source>DPI设定</source>
+        <translation>DPI Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="450"/>
+        <source>灯光设置</source>
+        <translation>Lichtsetup</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="482"/>
+        <source>性能设定</source>
+        <translation>Leistungseinstellungen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="514"/>
+        <source>宏管理&#x3000;</source>
+        <translation>Makroverwaltung</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="546"/>
+        <source>关于&#x3000;&#x3000;</source>
+        <translation>Über</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="588"/>
+        <source>我的配置</source>
+        <translation>Meine Profile</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="848"/>
+        <source>前进键</source>
+        <translation>Vorwärtstaste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="882"/>
+        <location filename="DialogMouse.ui" line="1327"/>
+        <source>右键</source>
+        <translation>Rechte Maustaste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="916"/>
+        <location filename="DialogMouse.ui" line="1471"/>
+        <source>中键</source>
+        <translation>Mittlere Maustaste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="938"/>
+        <source>后退键</source>
+        <translation>Zurücktaste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="960"/>
+        <location filename="DialogMouse.ui" line="1375"/>
+        <source>左键</source>
+        <translation>Linke Maustaste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="997"/>
+        <source>DPI键</source>
+        <translation>DPI-Taste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1044"/>
+        <source>左右键互换</source>
+        <translation>Links/Rechts vertauschen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1069"/>
+        <source>重置按键</source>
+        <translation>Tasten zurücksetzen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1198"/>
+        <source>系统</source>
+        <translation>System</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1223"/>
+        <source>键盘</source>
+        <translation>Tastatur</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1245"/>
+        <source>控制</source>
+        <translation>Steuerung</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1267"/>
+        <source>特殊</source>
+        <translation>Spezial</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1293"/>
+        <source>鼠标按键：</source>
+        <translation>Maus-Tasten:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1311"/>
+        <source>上滚</source>
+        <translation>Nach oben scrollen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1343"/>
+        <source>右滚</source>
+        <translation>Rechts scrollen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1359"/>
+        <source>前进</source>
+        <translation>Vorwärts</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1391"/>
+        <source>左滚</source>
+        <translation>Links scrollen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1407"/>
+        <source>后退</source>
+        <translation>Zurück</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1423"/>
+        <source>DPI循环</source>
+        <translation>DPI durchschalten</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1439"/>
+        <source>DPI+</source>
+        <translation>DPI+</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1455"/>
+        <source>下滚</source>
+        <translation>Nach unten scrollen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1487"/>
+        <source>DPI-</source>
+        <translation>DPI-</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1503"/>
+        <source>BLE循环</source>
+        <translation>BLE durchschalten</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1519"/>
+        <source>BLE+</source>
+        <translation>BLE+</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1535"/>
+        <source>BLE-</source>
+        <translation>BLE-</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1551"/>
+        <source>底部按钮</source>
+        <translation>Untertaste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1567"/>
+        <source>火力按钮</source>
+        <translation>Feuertaste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1595"/>
+        <source>多媒体按键：</source>
+        <translation>Multimedia-Tasten:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1613"/>
+        <source>停止</source>
+        <translation>Stopp</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1629"/>
+        <source>网页停止</source>
+        <translation>Webseite stoppen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1645"/>
+        <source>网页后退</source>
+        <translation>Webseite zurück</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1661"/>
+        <source>收藏夹</source>
+        <translation>Lesezeichen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1677"/>
+        <source>我的电脑</source>
+        <translation>Dieser PC</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1693"/>
+        <source>音量+</source>
+        <translation>Lautstärke +</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1709"/>
+        <source>主页</source>
+        <translation>Startseite</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1725"/>
+        <source>亮度-</source>
+        <translation>Helligkeit -</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1741"/>
+        <source>暂停</source>
+        <translation>Pause</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1757"/>
+        <source>上一首</source>
+        <translation>Vorheriger Titel</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1773"/>
+        <source>下一首</source>
+        <translation>Nächster Titel</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1789"/>
+        <source>音量-</source>
+        <translation>Lautstärke -</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1805"/>
+        <source>搜索</source>
+        <translation>Suchen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1821"/>
+        <source>计算器</source>
+        <translation>Taschenrechner</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1837"/>
+        <source>网页前进</source>
+        <translation>Webseite vorwärts</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1853"/>
+        <source>刷新</source>
+        <translation>Aktualisieren</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1869"/>
+        <source>静音</source>
+        <translation>Stummschalten</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1885"/>
+        <source>播放器</source>
+        <translation>Player</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1901"/>
+        <source>亮度+</source>
+        <translation>Helligkeit +</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="1917"/>
+        <source>邮件</source>
+        <translation>E-Mail</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8643"/>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8747"/>
+        <source>-</source>
+        <translation>-</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5003"/>
+        <location filename="DialogMouse.ui" line="8858"/>
+        <source>+</source>
+        <translation>+</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="4924"/>
+        <source>组合键:</source>
+        <translation>Tastenkombination:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5019"/>
+        <source>按任意键</source>
+        <translation>Beliebige Taste drücken</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5029"/>
+        <location filename="DialogMouse.ui" line="5178"/>
+        <location filename="DialogMouse.ui" line="5356"/>
+        <location filename="DialogMouse.ui" line="9517"/>
+        <source>保存</source>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5042"/>
+        <source>火力键:</source>
+        <translation>Feuertaste:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5074"/>
+        <source>保持点击:</source>
+        <translation>Dauerklick:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5091"/>
+        <source>点击间隔:</source>
+        <translation>Klickintervall:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5110"/>
+        <source> ms</source>
+        <translation> ms</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5157"/>
+        <source>点击次数:</source>
+        <translation>Klickanzahl:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5191"/>
+        <source>宏循环方式:</source>
+        <translation>Makro-Wiederholmodus:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5206"/>
+        <source>正常播放</source>
+        <translation>Normal abspielen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5216"/>
+        <source>释放停止</source>
+        <translation>Beim Loslassen stoppen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5226"/>
+        <source>释放立即停止</source>
+        <translation>Sofort stoppen beim Loslassen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5239"/>
+        <source>触发停止</source>
+        <translation>Bei Auslöser stoppen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5249"/>
+        <source>按任意键停止</source>
+        <translation>Stopp bei beliebiger Taste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5267"/>
+        <source>固定循环次数</source>
+        <translation>Feste Wiederholungsanzahl</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5327"/>
+        <source>宏列表:</source>
+        <translation>Makroliste:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5346"/>
+        <source>录制新宏</source>
+        <translation>Neues Makro aufnehmen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5403"/>
+        <source>开启后通过 左中右 键快捷切换DPI</source>
+        <translation>Nach Aktivierung DPI per Links/Mitte/Rechts-Taste schnell wechseln</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5406"/>
+        <source>快捷切换DPI</source>
+        <translation>Schneller DPI-Wechsel</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5426"/>
+        <source>X轴/Y轴独立设定</source>
+        <translation>Unabhängige Einstellung X-/Y-Achse</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5451"/>
+        <source>X轴DPI设定</source>
+        <translation>DPI X-Achse</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5941"/>
+        <source>Y轴DPI设定</source>
+        <translation>DPI Y-Achse</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="6414"/>
+        <source>BHOP开关</source>
+        <translation>BHOP Ein/Aus</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="6622"/>
+        <source>BHOP灵敏度</source>
+        <translation>BHOP-Empfindlichkeit</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="6640"/>
+        <source>灯光亮度</source>
+        <translation>Lichthelligkeit</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7079"/>
+        <source>灯光效果</source>
+        <translation>Lichteffekt</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7207"/>
+        <source>预设颜色</source>
+        <translation>Voreingestellte Farben</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7271"/>
+        <source>DPI档位</source>
+        <translation>DPI-Stufe</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7286"/>
+        <source>关闭</source>
+        <translation>Aus</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7299"/>
+        <source>常亮</source>
+        <translation>Dauerleuchten</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7312"/>
+        <source>呼吸</source>
+        <translation>Atmen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7340"/>
+        <source>呼吸速度</source>
+        <translation>Atemgeschwindigkeit</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7816"/>
+        <source>直线校准</source>
+        <translation>Geradeaus-Kalibrierung</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7864"/>
+        <source>移动同步</source>
+        <translation>Bewegungssynchronisation</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7912"/>
+        <source>波纹控制</source>
+        <translation>Wellensteuerung</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="7960"/>
+        <source>20000FPS</source>
+        <translation>20000 FPS</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8008"/>
+        <source>移动关闭LED</source>
+        <translation>LED bei Bewegung ausschalten</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8047"/>
+        <source>轮询率</source>
+        <translation>Abfragerate</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8202"/>
+        <source>按键延迟</source>
+        <translation>Tastenverzögerung</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8359"/>
+        <source>休眠设置</source>
+        <translation>Ruhemodus-Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8590"/>
+        <source>角度传感器</source>
+        <translation>Winkelsensor</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8618"/>
+        <source>启用：</source>
+        <translation>Aktivieren:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8636"/>
+        <source>当前角度:</source>
+        <translation>Aktueller Winkel:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8671"/>
+        <source>0°</source>
+        <translation>0°</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="8911"/>
+        <source>静默高度</source>
+        <translation>Abhebehöhe</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9160"/>
+        <source>宏列表</source>
+        <translation>Makroliste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9189"/>
+        <source>新建宏</source>
+        <translation>Neues Makro</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9407"/>
+        <source>宏名称</source>
+        <translation>Makroname</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9421"/>
+        <source>占用: 0 / 70</source>
+        <translation>Belegt: 0 / 70</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9450"/>
+        <source>删除</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9482"/>
+        <source>清空</source>
+        <translation>Leeren</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9662"/>
+        <source>开始录制</source>
+        <translation>Aufnahme starten</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9700"/>
+        <source>插入按键</source>
+        <translation>Taste einfügen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9720"/>
+        <source>延迟时长:</source>
+        <translation>Verzögerung:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9767"/>
+        <source>应用</source>
+        <translation>Anwenden</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9804"/>
+        <source>设备规格</source>
+        <translation>Gerätespezifikation</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9824"/>
+        <source>设备名称:</source>
+        <translation>Gerätename:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9850"/>
+        <source>鼠标固件版本:</source>
+        <translation>Maus-Firmware-Version:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9876"/>
+        <source>无线连接器固件版本:</source>
+        <translation>Dongle-Firmware-Version:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9902"/>
+        <source>当前软件版本:</source>
+        <translation>Aktuelle Softwareversion:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9980"/>
+        <source>鼠标固件更新</source>
+        <translation>Maus-Firmware aktualisieren</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="9996"/>
+        <source>无线连接器固件更新</source>
+        <translation>Dongle-Firmware aktualisieren</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="10012"/>
+        <source>恢复出厂设置</source>
+        <translation>Werkseinstellungen wiederherstellen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="517"/>
+        <location filename="DialogMouse.cpp" line="1744"/>
+        <location filename="DialogMouse.cpp" line="1809"/>
+        <location filename="DialogMouse.cpp" line="1833"/>
+        <location filename="DialogMouse.cpp" line="1907"/>
+        <source>占用</source>
+        <translation>Belegt</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="530"/>
+        <source>新宏</source>
+        <translation>Neues Makro</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="869"/>
+        <location filename="DialogMouse.cpp" line="967"/>
+        <location filename="DialogMouse.cpp" line="988"/>
+        <location filename="DialogMouse.cpp" line="997"/>
+        <location filename="DialogMouse.cpp" line="1081"/>
+        <location filename="DialogMouse.cpp" line="1785"/>
+        <location filename="DialogMouse.cpp" line="1826"/>
+        <location filename="DialogMouse.cpp" line="1846"/>
+        <location filename="DialogMouse.cpp" line="1865"/>
+        <location filename="DialogMouse.cpp" line="1925"/>
+        <source>提示</source>
+        <translation>Hinweis</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="869"/>
+        <source>首先选择或者新建一个宏！</source>
+        <translation>Zuerst ein Makro auswählen oder erstellen!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="943"/>
+        <source>请选择升级文件:</source>
+        <translation>Upgrade-Datei auswählen:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="951"/>
+        <source>请选择一个Bin文件...</source>
+        <translation>Bin-Datei auswählen...</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="953"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="959"/>
+        <source>固件文件 (*.bin *.hex *.fw);;所有文件 (*.*)</source>
+        <translation>Firmware-Datei (*.bin *.hex *.fw);;Alle Dateien (*.*)</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="960"/>
+        <source>选择固件文件</source>
+        <translation>Firmware-Datei wählen</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="967"/>
+        <source>固件文件无法识别！</source>
+        <translation>Firmware-Datei nicht erkannt!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="988"/>
+        <source>固件升级失败！</source>
+        <translation>Firmware-Update fehlgeschlagen!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="997"/>
+        <source>固件升级成功！</source>
+        <translation>Firmware-Update erfolgreich!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1008"/>
+        <source>开始更新</source>
+        <translation>Update starten</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1026"/>
+        <source>完成</source>
+        <translation>Fertig</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1081"/>
+        <source>鼠标必须保留一个按键有左键功能！</source>
+        <translation>Es muss mindestens eine Taste als linke Maustaste zugewiesen bleiben!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1164"/>
+        <source>快捷键 设置成功！</source>
+        <translation>Tastenkürzel erfolgreich gesetzt!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1175"/>
+        <source>火力键 设置成功！</source>
+        <translation>Feuertaste erfolgreich gesetzt!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1217"/>
+        <source>宏 设置成功！</source>
+        <translation>Makro erfolgreich gesetzt!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1229"/>
+        <source>按键重置 成功！</source>
+        <translation>Tasten zurückgesetzt!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1241"/>
+        <source>改键成功！</source>
+        <translation>Tastenzuordnung geändert!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1785"/>
+        <source>首先选择或者新建一个宏，请重试！</source>
+        <translation>Zuerst ein Makro auswählen oder erstellen, bitte erneut versuchen!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1816"/>
+        <source> 正在录制</source>
+        <translation> Aufnahme läuft</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1816"/>
+        <source> 开始录制</source>
+        <translation> Aufnahme starten</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1826"/>
+        <location filename="DialogMouse.cpp" line="1846"/>
+        <source>没有选中 宏，请重试！</source>
+        <translation>Kein Makro ausgewählt, bitte erneut versuchen!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1865"/>
+        <source>没有选中的宏动作，请重试！</source>
+        <translation>Kein Makro-Schritt ausgewählt, bitte erneut versuchen!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1925"/>
+        <source>确定要恢复出厂设置吗？</source>
+        <translation>Werkseinstellungen wirklich wiederherstellen?</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1978"/>
+        <source>普通按键: </source>
+        <translation>Normale Taste: </translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1996"/>
+        <source>组合键</source>
+        <translation>Tastenkombination</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="2007"/>
+        <source>火力键</source>
+        <translation>Feuertaste</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="2008"/>
+        <source>点击次数</source>
+        <translation>Klickanzahl</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="2009"/>
+        <source>点击间隔</source>
+        <translation>Klickintervall</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="2010"/>
+        <source>是</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="2010"/>
+        <source>否</source>
+        <translation>Nein</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="2021"/>
+        <source>宏设置:</source>
+        <translation>Makroeinstellungen:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="2022"/>
+        <source>类型:</source>
+        <translation>Typ:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="2023"/>
+        <source>动作数量:</source>
+        <translation>Aktionsanzahl:</translation>
     </message>
 </context>
 <context>
     <name>DialogVKPicker</name>
     <message>
-        <location filename="Module/DialogVKPicker.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/DialogVKPicker.ui" line="62"/>
+        <location filename="Module/DialogVKPicker.ui" line="68"/>
         <source>基本字符</source>
-        <translation type="unfinished"></translation>
+        <translation>Grundzeichen</translation>
     </message>
     <message>
-        <location filename="Module/DialogVKPicker.ui" line="1672"/>
+        <location filename="Module/DialogVKPicker.ui" line="1819"/>
         <source>拓展字符</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweiterte Zeichen</translation>
     </message>
     <message>
-        <location filename="Module/DialogVKPicker.ui" line="3844"/>
+        <location filename="Module/DialogVKPicker.ui" line="4159"/>
         <source>组合键：</source>
-        <translation type="unfinished"></translation>
+        <translation>Tastenkombination:</translation>
     </message>
     <message>
-        <location filename="Module/DialogVKPicker.ui" line="3981"/>
+        <location filename="Module/DialogVKPicker.ui" line="4296"/>
         <source>确认</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestätigen</translation>
     </message>
     <message>
-        <location filename="Module/DialogVKPicker.ui" line="4006"/>
+        <location filename="Module/DialogVKPicker.ui" line="4321"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbrechen</translation>
     </message>
 </context>
 <context>
     <name>FrameAbout</name>
     <message>
-        <location filename="FrameAbout.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameAbout.ui" line="107"/>
+        <location filename="FrameAbout.ui" line="113"/>
         <source>关于</source>
-        <translation type="unfinished">Um</translation>
+        <translation>Über</translation>
     </message>
     <message>
-        <location filename="FrameAbout.ui" line="120"/>
+        <location filename="FrameAbout.ui" line="126"/>
         <source>检查键盘固件更新</source>
-        <translation type="unfinished"></translation>
+        <translation>Tastatur-Firmware prüfen</translation>
     </message>
     <message>
-        <location filename="FrameAbout.ui" line="133"/>
+        <location filename="FrameAbout.ui" line="139"/>
         <source>检查无线连接器固件更新</source>
-        <translation type="unfinished"></translation>
+        <translation>Dongle-Firmware prüfen</translation>
     </message>
     <message>
-        <location filename="FrameAbout.ui" line="146"/>
-        <source>设备名称：AKKO 5075</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameAbout.ui" line="159"/>
-        <source>键盘固件版本：V1.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameAbout.ui" line="172"/>
-        <source>无线连接器固件版本：V1.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameAbout.ui" line="185"/>
-        <source>当前版本：V1.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameAbout.ui" line="226"/>
+        <location filename="FrameAbout.ui" line="232"/>
         <source>操作教学</source>
-        <translation type="unfinished"></translation>
+        <translation>Anleitung</translation>
     </message>
     <message>
-        <location filename="FrameAbout.ui" line="292"/>
+        <location filename="FrameAbout.ui" line="298"/>
         <source>关于AKKO</source>
-        <translation type="unfinished"></translation>
+        <translation>Über AKKO</translation>
     </message>
 </context>
 <context>
     <name>FrameDeviceHolder</name>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameDeviceHolder.ui" line="441"/>
+        <location filename="FrameDeviceHolder.ui" line="444"/>
         <source>板载 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Onboard 1</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="477"/>
+        <location filename="FrameDeviceHolder.ui" line="480"/>
         <source>板载 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Onboard 2</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="510"/>
+        <location filename="FrameDeviceHolder.ui" line="513"/>
         <source>板载 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Onboard 3</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="543"/>
+        <location filename="FrameDeviceHolder.ui" line="546"/>
         <source>板载 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Onboard 4</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="589"/>
+        <location filename="FrameDeviceHolder.ui" line="592"/>
         <source>对码</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopplung</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="623"/>
+        <location filename="FrameDeviceHolder.ui" line="626"/>
         <source>恢复默认</source>
-        <translation type="unfinished">Standardeinstellungen wiederherstellen</translation>
+        <translation>Standardeinstellungen wiederherstellen</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="657"/>
+        <location filename="FrameDeviceHolder.ui" line="660"/>
         <source>行程校准</source>
-        <translation type="unfinished">Reisekalibrierung</translation>
+        <translation>Hub-Kalibrierung</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="102"/>
-        <location filename="FrameDeviceHolder.cpp" line="189"/>
-        <source>首页</source>
-        <translation type="unfinished">Titelseite</translation>
-    </message>
-    <message>
-        <location filename="FrameDeviceHolder.ui" line="133"/>
-        <location filename="FrameDeviceHolder.cpp" line="190"/>
-        <source>键盘设置</source>
-        <translation type="unfinished">Tasteneinstellungen</translation>
-    </message>
-    <message>
-        <location filename="FrameDeviceHolder.ui" line="164"/>
+        <location filename="FrameDeviceHolder.ui" line="105"/>
         <location filename="FrameDeviceHolder.cpp" line="191"/>
-        <source>磁轴设置</source>
-        <translation type="unfinished">Einstellungen der Magnetachse</translation>
+        <source>首页</source>
+        <translation>Startseite</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="195"/>
+        <location filename="FrameDeviceHolder.ui" line="136"/>
         <location filename="FrameDeviceHolder.cpp" line="192"/>
-        <source>宏设置</source>
-        <translation type="unfinished">Makroeinstellungen</translation>
+        <source>键盘设置</source>
+        <translation>Tasteneinstellungen</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.ui" line="226"/>
-        <source>灯效设置</source>
-        <translation type="unfinished">Beleuchtungseinstellungen</translation>
-    </message>
-    <message>
-        <location filename="FrameDeviceHolder.ui" line="257"/>
-        <location filename="FrameDeviceHolder.cpp" line="194"/>
-        <source>关于</source>
-        <translation type="unfinished">Um</translation>
-    </message>
-    <message>
+        <location filename="FrameDeviceHolder.ui" line="167"/>
         <location filename="FrameDeviceHolder.cpp" line="193"/>
-        <source>灯光设置</source>
-        <translation type="unfinished">Lichtsetup</translation>
+        <source>磁轴设置</source>
+        <translation>Magnetswitch-Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="FrameDeviceHolder.ui" line="198"/>
+        <location filename="FrameDeviceHolder.cpp" line="194"/>
+        <source>宏设置</source>
+        <translation>Makroeinstellungen</translation>
+    </message>
+    <message>
+        <location filename="FrameDeviceHolder.ui" line="229"/>
+        <source>灯效设置</source>
+        <translation>Beleuchtungseffekte</translation>
+    </message>
+    <message>
+        <location filename="FrameDeviceHolder.ui" line="260"/>
+        <location filename="FrameDeviceHolder.cpp" line="196"/>
+        <source>关于</source>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.cpp" line="195"/>
-        <source>用户</source>
-        <translation type="unfinished"></translation>
+        <source>灯光设置</source>
+        <translation>Beleuchtungseinstellungen</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.cpp" line="196"/>
+        <location filename="FrameDeviceHolder.cpp" line="197"/>
+        <source>用户</source>
+        <translation>Benutzer</translation>
+    </message>
+    <message>
+        <location filename="FrameDeviceHolder.cpp" line="198"/>
         <source>返回</source>
-        <translation type="unfinished">Startseite</translation>
+        <translation>Zurück</translation>
     </message>
 </context>
 <context>
     <name>FrameDeviceShow</name>
     <message>
-        <location filename="FrameDeviceShow.ui" line="26"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameDeviceShow.ui" line="113"/>
-        <source>Image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameDeviceShow.cpp" line="133"/>
+        <location filename="FrameDeviceShow.cpp" line="146"/>
         <source>剩余电量</source>
-        <translation type="unfinished">Verbleibender Akku</translation>
+        <translation>Verbleibender Akkustand</translation>
     </message>
 </context>
 <context>
     <name>FrameKeySetting</name>
     <message>
-        <location filename="FrameKeySetting.ui" line="19"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="FrameKeySetting.cpp" line="77"/>
         <source>Fn层按键设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Fn-Ebenen Tastenzuordnung</translation>
     </message>
     <message>
         <location filename="FrameKeySetting.cpp" line="82"/>
         <source>自定义按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierte Tasten</translation>
     </message>
     <message>
         <location filename="FrameKeySetting.cpp" line="515"/>
         <source>动态键程</source>
-        <translation type="unfinished"></translation>
+        <translation>Dynamischer Hub</translation>
     </message>
     <message>
         <location filename="FrameKeySetting.cpp" line="524"/>
         <source>按住单击</source>
-        <translation type="unfinished"></translation>
+        <translation>Halten / Einfachklick</translation>
     </message>
     <message>
         <location filename="FrameKeySetting.cpp" line="531"/>
         <source>切换开关</source>
-        <translation type="unfinished"></translation>
+        <translation>Toggle-Schalter</translation>
     </message>
     <message>
         <location filename="FrameKeySetting.cpp" line="598"/>
         <source>系统按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemtasten</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="203"/>
+        <location filename="FrameKeySetting.ui" line="209"/>
         <source>高级键</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweiterte Tasten</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="210"/>
+        <location filename="FrameKeySetting.ui" line="216"/>
         <source>其他设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Weitere Einstellungen</translation>
     </message>
     <message>
         <location filename="FrameKeySetting.cpp" line="546"/>
         <source>宏设置</source>
-        <translation type="unfinished">Makroeinstellungen</translation>
+        <translation>Makroeinstellungen</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="346"/>
+        <location filename="FrameKeySetting.ui" line="355"/>
         <source>动态键程(DKS)</source>
-        <translation type="unfinished"></translation>
+        <translation>Dynamischer Hub (DKS)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="448"/>
-        <location filename="FrameKeySetting.ui" line="512"/>
-        <source>0.7 mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameKeySetting.ui" line="468"/>
-        <location filename="FrameKeySetting.ui" line="488"/>
-        <source>3.2 mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameKeySetting.ui" line="418"/>
-        <location filename="FrameKeySetting.ui" line="893"/>
-        <location filename="FrameKeySetting.ui" line="968"/>
-        <location filename="FrameKeySetting.ui" line="1131"/>
+        <location filename="FrameKeySetting.ui" line="427"/>
+        <location filename="FrameKeySetting.ui" line="902"/>
+        <location filename="FrameKeySetting.ui" line="977"/>
+        <location filename="FrameKeySetting.ui" line="1140"/>
         <source>确定</source>
-        <translation type="unfinished">Okay</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="189"/>
+        <location filename="FrameKeySetting.ui" line="195"/>
         <source>自定义</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefiniert</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="196"/>
+        <location filename="FrameKeySetting.ui" line="19"/>
+        <source>Frame</source>
+        <translation type="unfinished">Frame</translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="202"/>
         <source>Fn层设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Fn-Ebene Einstellungen</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="289"/>
+        <location filename="FrameKeySetting.ui" line="295"/>
         <source>自定义/Fn层设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefiniert / Fn-Ebene</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="305"/>
+        <location filename="FrameKeySetting.ui" line="311"/>
         <source>*首先点击选择上方按键，在弹出的对话框中可选择组合键、宏设置、系统功能、鼠标功能进行改建设置</source>
-        <translation type="unfinished"></translation>
+        <translation>*Wähle zuerst eine Taste oben aus. Im Dialog kannst du Tastenkombinationen, Makros, System- oder Mausfunktionen zuweisen.</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="643"/>
+        <location filename="FrameKeySetting.ui" line="652"/>
         <source>按住/单击(MT)</source>
-        <translation type="unfinished"></translation>
+        <translation>Halten / Einfachklick (MT)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="670"/>
+        <location filename="FrameKeySetting.ui" line="679"/>
         <source>单击</source>
-        <translation type="unfinished"></translation>
+        <translation>Einfachklick</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="707"/>
+        <location filename="FrameKeySetting.ui" line="716"/>
         <source>按住</source>
-        <translation type="unfinished"></translation>
+        <translation>Halten</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="726"/>
+        <location filename="FrameKeySetting.ui" line="735"/>
         <source>选定上方键位，可通过选择单击及长按两种触发模式，设置两个功能（支持组合键）</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle eine Taste aus. Du kannst zwei Funktionen für Einfachklick und Halten festlegen (Tastenkombinationen unterstützt).</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="755"/>
+        <location filename="FrameKeySetting.ui" line="764"/>
         <source>调整触发“按住&quot;键所需的时间</source>
-        <translation type="unfinished"></translation>
+        <translation>Haltezeit bis zur Auslösung einstellen</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="851"/>
+        <location filename="FrameKeySetting.ui" line="860"/>
         <source>20 ms</source>
-        <translation type="unfinished"></translation>
+        <translation>20 ms</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="933"/>
+        <location filename="FrameKeySetting.ui" line="942"/>
         <source>切换开关(TGL)</source>
-        <translation type="unfinished"></translation>
+        <translation>Toggle-Schalter (TGL)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="999"/>
+        <location filename="FrameKeySetting.ui" line="1008"/>
         <source>未设置功能</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Funktion zugewiesen</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1018"/>
+        <location filename="FrameKeySetting.ui" line="1027"/>
         <source>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle eine Taste aus. Zwei Funktionen für Schnellklick und Halten einstellbar.</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1080"/>
+        <location filename="FrameKeySetting.ui" line="1089"/>
         <source>连点</source>
-        <translation type="unfinished"></translation>
+        <translation>Schnellklick</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1096"/>
+        <location filename="FrameKeySetting.ui" line="1105"/>
         <source>长按</source>
-        <translation type="unfinished"></translation>
+        <translation>Langer Druck</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1102"/>
+        <location filename="FrameKeySetting.ui" line="1111"/>
         <location filename="FrameKeySetting.cpp" line="537"/>
         <source>SnapKey</source>
-        <translation type="unfinished"></translation>
+        <translation>SnapKey</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1233"/>
+        <location filename="FrameKeySetting.ui" line="1242"/>
         <source>绑定2个选定按键(分别从上面选择)，当两个按键被同时按下时，以最后按下的按键为准</source>
-        <translation type="unfinished"></translation>
+        <translation>Zwei Tasten binden. Bei gleichzeitigem Drücken zählt die zuletzt gedrückte Taste.</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1252"/>
+        <location filename="FrameKeySetting.ui" line="1261"/>
         <source>选择A键</source>
-        <translation type="unfinished"></translation>
+        <translation>Taste A wählen</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1268"/>
+        <location filename="FrameKeySetting.ui" line="1277"/>
         <source>选择B键</source>
-        <translation type="unfinished"></translation>
+        <translation>Taste B wählen</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1327"/>
+        <location filename="FrameKeySetting.ui" line="1336"/>
         <source>键盘回报率</source>
-        <translation type="unfinished"></translation>
+        <translation>Polling-Rate</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1379"/>
+        <location filename="FrameKeySetting.ui" line="1388"/>
         <source>2.4G关闭背光</source>
-        <translation type="unfinished"></translation>
+        <translation>Beleuchtung bei 2.4G ausschalten</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1431"/>
+        <location filename="FrameKeySetting.ui" line="1440"/>
         <source>蓝牙关闭背光</source>
-        <translation type="unfinished"></translation>
+        <translation>Beleuchtung bei Bluetooth ausschalten</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1489"/>
+        <location filename="FrameKeySetting.ui" line="1498"/>
         <source>2.4G深度睡眠时间</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiefschlafzeit (2.4G)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1569"/>
+        <location filename="FrameKeySetting.ui" line="1578"/>
         <source>蓝牙深度睡眠时间</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiefschlafzeit (Bluetooth)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1649"/>
+        <location filename="FrameKeySetting.ui" line="1658"/>
         <source>按键防抖等级设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Entprellstufe einstellen</translation>
     </message>
 </context>
 <context>
     <name>FrameLight</name>
     <message>
-        <location filename="FrameLight.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameLight.ui" line="258"/>
-        <location filename="FrameLight.ui" line="706"/>
+        <location filename="FrameLight.ui" line="264"/>
+        <location filename="FrameLight.ui" line="642"/>
         <source>我的作品</source>
-        <translation type="unfinished"></translation>
+        <translation>Meine Projekte</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="311"/>
+        <location filename="FrameLight.ui" line="317"/>
         <source>颜色:</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbe:</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="362"/>
-        <source>取色器：</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameLight.ui" line="416"/>
+        <location filename="FrameLight.ui" line="352"/>
         <source>随机颜色：</source>
-        <translation type="unfinished"></translation>
+        <translation>Zufallsfarbe:</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="476"/>
+        <location filename="FrameLight.ui" line="412"/>
         <source>清除设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen löschen</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="502"/>
+        <location filename="FrameLight.ui" line="438"/>
         <source>写入层(图):</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreib-Ebene (Bild):</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="515"/>
-        <location filename="FrameLight.ui" line="609"/>
+        <location filename="FrameLight.ui" line="451"/>
+        <location filename="FrameLight.ui" line="545"/>
         <source>图1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild 1</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="528"/>
-        <location filename="FrameLight.ui" line="622"/>
+        <location filename="FrameLight.ui" line="464"/>
+        <location filename="FrameLight.ui" line="558"/>
         <source>图2</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild 2</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="541"/>
-        <location filename="FrameLight.ui" line="635"/>
+        <location filename="FrameLight.ui" line="477"/>
+        <location filename="FrameLight.ui" line="571"/>
         <source>图3</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild 3</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="554"/>
-        <location filename="FrameLight.ui" line="648"/>
+        <location filename="FrameLight.ui" line="490"/>
+        <location filename="FrameLight.ui" line="584"/>
         <source>图4</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild 4</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="567"/>
-        <location filename="FrameLight.ui" line="661"/>
+        <location filename="FrameLight.ui" line="503"/>
+        <location filename="FrameLight.ui" line="597"/>
         <source>图5</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild 5</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="596"/>
+        <location filename="FrameLight.ui" line="532"/>
         <source>读取层(图):</source>
-        <translation type="unfinished"></translation>
+        <translation>Lese-Ebene (Bild):</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="690"/>
+        <location filename="FrameLight.ui" line="626"/>
         <source>作品名称:</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektname:</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="728"/>
+        <location filename="FrameLight.ui" line="664"/>
         <source>更新</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="750"/>
+        <location filename="FrameLight.ui" line="686"/>
         <source>保存</source>
-        <translation type="unfinished"></translation>
+        <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="FrameLight.cpp" line="253"/>
+        <location filename="FrameLight.cpp" line="251"/>
         <source>删除</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
 </context>
 <context>
     <name>FrameMacro</name>
     <message>
-        <location filename="FrameMacro.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMacro.ui" line="128"/>
+        <location filename="FrameMacro.ui" line="134"/>
         <source>宏列表</source>
-        <translation type="unfinished"></translation>
+        <translation>Makroliste</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="313"/>
-        <location filename="FrameMacro.cpp" line="113"/>
+        <location filename="FrameMacro.ui" line="634"/>
+        <location filename="FrameMacro.cpp" line="124"/>
         <source>开始录制</source>
-        <translation type="unfinished"></translation>
+        <translation>Aufnahme starten</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="358"/>
-        <source>插入</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMacro.ui" line="394"/>
-        <source>设置固定延迟(ms):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMacro.ui" line="443"/>
+        <location filename="FrameMacro.ui" line="776"/>
         <source>删除</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="472"/>
+        <location filename="FrameMacro.ui" line="808"/>
         <source>清空</source>
-        <translation type="unfinished"></translation>
+        <translation>Leeren</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="520"/>
+        <location filename="FrameMacro.ui" line="859"/>
         <source>保存</source>
-        <translation type="unfinished"></translation>
+        <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="607"/>
+        <location filename="FrameMacro.ui" line="346"/>
         <source>宏名称</source>
-        <translation type="unfinished"></translation>
+        <translation>Makroname</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="637"/>
+        <location filename="FrameMacro.ui" line="157"/>
+        <source>新建宏</source>
+        <translation>Neues Makro</translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.ui" line="376"/>
         <source>占用: 0 / 256</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwendet: 0 / 256</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="685"/>
+        <location filename="FrameMacro.ui" line="424"/>
         <source>按下</source>
-        <translation type="unfinished"></translation>
+        <translation>Drücken</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="736"/>
+        <location filename="FrameMacro.ui" line="475"/>
         <source>释放</source>
-        <translation type="unfinished"></translation>
+        <translation>Loslassen</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="787"/>
-        <location filename="FrameMacro.cpp" line="198"/>
+        <location filename="FrameMacro.ui" line="526"/>
+        <location filename="FrameMacro.cpp" line="209"/>
         <source>延迟</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzögerung</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="113"/>
+        <location filename="FrameMacro.ui" line="682"/>
+        <source>插入按键</source>
+        <translation>Taste einfügen</translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.ui" line="721"/>
+        <source>延迟时长:</source>
+        <translation>Verzögerungsdauer:</translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.ui" line="738"/>
+        <source> ms</source>
+        <translation> ms</translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.cpp" line="90"/>
+        <location filename="FrameMacro.cpp" line="91"/>
+        <source>鼠标</source>
+        <translation>Maus</translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.cpp" line="96"/>
+        <source>位置</source>
+        <translation>Position</translation>
+    </message>
+    <message>
+        <location filename="FrameMacro.cpp" line="124"/>
         <source>停止录制</source>
-        <translation type="unfinished"></translation>
+        <translation>Aufnahme stoppen</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="158"/>
+        <location filename="FrameMacro.cpp" line="169"/>
         <source>左键</source>
-        <translation type="unfinished"></translation>
+        <translation>Linke Maustaste</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="159"/>
+        <location filename="FrameMacro.cpp" line="170"/>
         <source>右键</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechte Maustaste</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="160"/>
+        <location filename="FrameMacro.cpp" line="171"/>
         <source>中键</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittlere Maustaste</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="311"/>
+        <location filename="FrameMacro.cpp" line="328"/>
         <source>占用</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwendet</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="311"/>
+        <location filename="FrameMacro.cpp" line="328"/>
         <source>字节</source>
-        <translation type="unfinished"></translation>
+        <translation>Byte</translation>
     </message>
 </context>
 <context>
     <name>FrameMagic</name>
     <message>
-        <location filename="FrameMagic.ui" line="175"/>
+        <location filename="FrameMagic.ui" line="184"/>
         <source>行程设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Hub-Einstellungen</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="201"/>
-        <location filename="FrameMagic.ui" line="1098"/>
+        <location filename="FrameMagic.ui" line="216"/>
+        <location filename="FrameMagic.ui" line="1119"/>
         <source>轴体设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Switch-Einstellungen</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="528"/>
+        <location filename="FrameMagic.ui" line="549"/>
         <source>单独设置按键再次按下触发和松开重置行程</source>
-        <translation type="unfinished"></translation>
+        <translation>Separate Einstellung für Wiederauslösung und Reset-Hub beim Loslassen</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="589"/>
+        <location filename="FrameMagic.ui" line="610"/>
         <source>再次按下按键触发所需的行程(mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hub für Wiederauslösung (mm)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="776"/>
+        <location filename="FrameMagic.ui" line="797"/>
         <source>松开按键重置所需的行程(mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset-Hub beim Loslassen (mm)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1729"/>
+        <location filename="FrameMagic.ui" line="1756"/>
         <source>防误触模式</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehlauslöseschutz</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="455"/>
+        <location filename="FrameMagic.ui" line="476"/>
         <source>全程连续快速触发（RT）</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontinuierliche Schnellauslösung (RT)</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>星引力</source>
-        <translation type="unfinished"></translation>
+        <translation>Xingyinli</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>星耀</source>
-        <translation type="unfinished"></translation>
+        <translation>Xingyao</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>高特</source>
-        <translation type="unfinished"></translation>
+        <translation>Gateron</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>磁玉pro</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciyu Pro</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>磁玉gaming</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciyu Gaming</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>机械轴</source>
-        <translation type="unfinished"></translation>
+        <translation>Mechanischer Switch</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>凯华轴</source>
-        <translation type="unfinished"></translation>
+        <translation>Kailh</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>矮磁轴</source>
         <comment>冠泰轴</comment>
-        <translation type="unfinished"></translation>
+        <translation>Niedriger Magnetswitch</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>白泽轴</source>
-        <translation type="unfinished"></translation>
+        <translation>Baize</translation>
     </message>
     <message>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>自定义</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefiniert</translation>
     </message>
     <message>
-        <location filename="FrameMagic.cpp" line="286"/>
-        <location filename="FrameMagic.cpp" line="304"/>
+        <location filename="FrameMagic.cpp" line="289"/>
+        <location filename="FrameMagic.cpp" line="307"/>
         <source>已开启</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiviert</translation>
     </message>
     <message>
-        <location filename="FrameMagic.cpp" line="286"/>
-        <location filename="FrameMagic.cpp" line="304"/>
+        <location filename="FrameMagic.cpp" line="289"/>
+        <location filename="FrameMagic.cpp" line="307"/>
         <source>已关闭</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktiviert</translation>
     </message>
     <message>
-        <location filename="FrameMagic.cpp" line="315"/>
+        <location filename="FrameMagic.cpp" line="318"/>
         <source>已选中按键的数量</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgewählte Tastenanzahl</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="188"/>
+        <location filename="FrameMagic.ui" line="200"/>
         <source>死区设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Totzone</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="208"/>
+        <location filename="FrameMagic.ui" line="226"/>
         <source>增稳算法</source>
-        <translation type="unfinished"></translation>
+        <translation>Stabilisierungsalgorithmus</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="215"/>
+        <location filename="FrameMagic.ui" line="236"/>
         <source>模拟测试</source>
-        <translation type="unfinished"></translation>
+        <translation>Simulationstest</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="301"/>
+        <location filename="FrameMagic.ui" line="322"/>
         <source>设置按键触发行程</source>
-        <translation type="unfinished"></translation>
+        <translation>Auslösehub einstellen</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="324"/>
+        <location filename="FrameMagic.ui" line="345"/>
         <source>当前选中的按键数量: 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgewählte Tasten: 0</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="340"/>
-        <location filename="FrameMagic.ui" line="1065"/>
+        <location filename="FrameMagic.ui" line="361"/>
+        <location filename="FrameMagic.ui" line="1086"/>
         <source>设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellen</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="379"/>
+        <location filename="FrameMagic.ui" line="400"/>
         <source>单独设置按下抬起触发行程：</source>
-        <translation type="unfinished"></translation>
+        <translation>Separate Einstellung für Drücken / Loslassen:</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="494"/>
+        <location filename="FrameMagic.ui" line="515"/>
         <source>启用时，快速触发在您完全松开按键时才会终止。
 禁用时，松开按键到轴体触发行程后终止快速触发</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiviert: Schnellauslösung endet erst bei vollständigem Loslassen.
+Deaktiviert: Endet sobald der Auslösehub beim Loslassen überschritten wird.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="623"/>
-        <location filename="FrameMagic.ui" line="810"/>
-        <source>0.005</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMagic.ui" line="652"/>
-        <location filename="FrameMagic.ui" line="839"/>
-        <source>2.000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMagic.ui" line="966"/>
+        <location filename="FrameMagic.ui" line="987"/>
         <source>按键死区设定</source>
-        <translation type="unfinished"></translation>
+        <translation>Totzone einstellen</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1033"/>
+        <location filename="FrameMagic.ui" line="1054"/>
         <source>触底到抬起前的距离俗称“死区”。死区可减少磁轴因环境干扰带来的断触问题，磁轴的底部可自定义，您可根据个人需求自定义死区，设定之后，此段行程不会触发。</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Strecke zwischen Anschlag und Auslösepunkt beim Hochfahren ist die Totzone. Sie verhindert Aussetzer durch Störungen. Dieser Hub-Bereich löst keine Aktion aus.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1043"/>
+        <location filename="FrameMagic.ui" line="1064"/>
         <source>当前选择按键数量:0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgewählte Tasten: 0</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1111"/>
+        <location filename="FrameMagic.ui" line="1132"/>
         <source>更换键盘轴体后，选择对应轴体的按键，点击下方对应的轴体选项进行设置来区分不同轴体</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach Switch-Tausch Tasten auswählen und unten den passenden Switch-Typ auswählen.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1177"/>
+        <location filename="FrameMagic.ui" line="1198"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>炫光</source>
-        <translation type="unfinished"></translation>
+        <translation>Xuanguang</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1224"/>
+        <location filename="FrameMagic.ui" line="1245"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>闪电</source>
-        <translation type="unfinished"></translation>
+        <translation>Shandian</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1271"/>
+        <location filename="FrameMagic.ui" line="1292"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>星芒磁轴</source>
-        <translation type="unfinished"></translation>
+        <translation>Xingmang Magnet</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1318"/>
+        <location filename="FrameMagic.ui" line="1339"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>磁玉</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciyu</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1365"/>
+        <location filename="FrameMagic.ui" line="1386"/>
         <source>磁玉Pro</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciyu Pro</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1412"/>
+        <location filename="FrameMagic.ui" line="1433"/>
         <source>磁玉Gaming</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciyu Gaming</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1459"/>
+        <location filename="FrameMagic.ui" line="1480"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>天王</source>
-        <translation type="unfinished"></translation>
+        <translation>Tianwang</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1506"/>
+        <location filename="FrameMagic.ui" line="1527"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>万磁王</source>
-        <translation type="unfinished"></translation>
+        <translation>Wanciwang</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1563"/>
+        <location filename="FrameMagic.ui" line="1584"/>
         <source>RT Stab(RT 增稳算法)</source>
-        <translation type="unfinished"></translation>
+        <translation>RT Stab (RT-Stabilisierung)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1602"/>
+        <location filename="FrameMagic.ui" line="1629"/>
         <source>0%(关闭)</source>
-        <translation type="unfinished"></translation>
+        <translation>0% (Aus)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1621"/>
-        <source>25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMagic.ui" line="1640"/>
-        <source>50%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMagic.ui" line="1656"/>
-        <source>75%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMagic.ui" line="1672"/>
-        <source>100%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameMagic.ui" line="1701"/>
+        <location filename="FrameMagic.ui" line="1728"/>
         <source>RT Stab打开后，算法会介入增强轴体底部的稳定性。介入百分比越大，稳定性越强，延迟也会有所增加。</source>
-        <translation type="unfinished"></translation>
+        <translation>RT Stab stabilisiert den unteren Hub-Bereich. Höherer Wert = mehr Stabilität, aber leicht erhöhte Latenz.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1774"/>
+        <location filename="FrameMagic.ui" line="1807"/>
         <source>(已关闭)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Deaktiviert)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1786"/>
+        <location filename="FrameMagic.ui" line="1819"/>
         <source>防止极限性能下桌面抖动误触发或轴体公差可能造成还有0.1mm的行程公差。开启后优化底部按键算法补足行程差值提高键盘稳定性。</source>
-        <translation type="unfinished"></translation>
+        <translation>Schutz vor Fehlauslösung durch Vibrationen und Switch-Toleranzen. Optimiert den unteren Hub für mehr Stabilität.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1833"/>
+        <location filename="FrameMagic.ui" line="1866"/>
         <source>行程测试</source>
-        <translation type="unfinished"></translation>
+        <translation>Hub-Test</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1922"/>
+        <location filename="FrameMagic.ui" line="1955"/>
         <source>按键测试</source>
-        <translation type="unfinished"></translation>
+        <translation>Tastentest</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1980"/>
+        <location filename="FrameMagic.ui" line="2013"/>
         <source>输入值</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabewert</translation>
     </message>
     <message>
-        <location filename="FrameMagic.cpp" line="152"/>
+        <location filename="FrameMagic.cpp" line="155"/>
         <source>顶部死区</source>
-        <translation type="unfinished"></translation>
+        <translation>Obere Totzone</translation>
     </message>
     <message>
-        <location filename="FrameMagic.cpp" line="152"/>
+        <location filename="FrameMagic.cpp" line="155"/>
         <source>底部死区</source>
-        <translation type="unfinished"></translation>
+        <translation>Untere Totzone</translation>
     </message>
 </context>
 <context>
@@ -1137,45 +1780,59 @@
     <message>
         <location filename="FrameMain.ui" line="246"/>
         <source>键程设置(全局)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hub-Einstellungen (Global)</translation>
+    </message>
+</context>
+<context>
+    <name>FrameMouse</name>
+    <message>
+        <source>关于</source>
+        <translation type="vanished">Über</translation>
+    </message>
+    <message>
+        <location filename="FrameMouse.ui" line="305"/>
+        <source>5</source>
+        <translation>5</translation>
+    </message>
+    <message>
+        <location filename="FrameMouse.cpp" line="22"/>
+        <source>返回首页</source>
+        <translation>Zur Startseite</translation>
     </message>
 </context>
 <context>
     <name>FrameSystemInfo</name>
     <message>
-        <location filename="FrameSystemInfo.ui" line="20"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="FrameSystemInfo.ui" line="72"/>
+        <location filename="FrameSystemInfo.ui" line="78"/>
         <source>确定</source>
-        <translation type="unfinished">Okay</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="91"/>
+        <location filename="FrameSystemInfo.ui" line="97"/>
         <source>开机时自动开启本程序</source>
-        <translation type="unfinished">Starten mit Windows</translation>
+        <translation>Programm beim Systemstart ausführen</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="119"/>
+        <location filename="FrameSystemInfo.ui" line="125"/>
         <source>前往驱动程序网站</source>
-        <translation type="unfinished">Zur Startseite gehen</translation>
+        <translation>Zur Treiber-Webseite</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="132"/>
+        <location filename="FrameSystemInfo.ui" line="138"/>
+        <location filename="FrameSystemInfo.cpp" line="72"/>
         <source>当前版本</source>
-        <translation type="unfinished">Aktuelle Version</translation>
+        <translation>Aktuelle Version</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="145"/>
+        <location filename="FrameSystemInfo.ui" line="151"/>
+        <location filename="FrameSystemInfo.cpp" line="73"/>
         <source>编译时间</source>
-        <translation type="unfinished">Bauzeit</translation>
+        <translation>Build-Zeit</translation>
     </message>
     <message>
-        <location filename="FrameSystemInfo.ui" line="164"/>
+        <location filename="FrameSystemInfo.ui" line="170"/>
         <source>系统设置</source>
-        <translation type="unfinished">Systemeinstellungen</translation>
+        <translation>Systemeinstellungen</translation>
     </message>
 </context>
 <context>
@@ -1183,22 +1840,22 @@
     <message>
         <location filename="LinearFixing1.cpp" line="29"/>
         <source>行程校准操作指南</source>
-        <translation type="unfinished"></translation>
+        <translation>Anleitung Hub-Kalibrierung</translation>
     </message>
     <message>
         <location filename="LinearFixing1.cpp" line="34"/>
         <source>请依次将每个按键轻按到底并停留至少1秒钟，直到按键变为橙色（表示该按键校准成功），请勿遗漏，可重复按按键。无线下不支持按键校准个数提示。校准过程中请勿拔出数据线。</source>
-        <translation type="unfinished"></translation>
+        <translation>Drücke jede Taste nacheinander bis zum Anschlag und halte mindestens 1 Sekunde, bis sie orange wird (erfolgreich kalibriert). Keine Taste überspringen, Wiederholung möglich. Kabellos wird die Zählanzeige nicht unterstützt. USB-Kabel während Kalibrierung nicht trennen.</translation>
     </message>
     <message>
         <location filename="LinearFixing1.cpp" line="39"/>
         <source>开始校准</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalibrierung starten</translation>
     </message>
     <message>
         <location filename="LinearFixing1.cpp" line="69"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbrechen</translation>
     </message>
 </context>
 <context>
@@ -1206,40 +1863,35 @@
     <message>
         <location filename="LinearFixing2.cpp" line="32"/>
         <source>请依次将每个按键轻按到底并停留至少1秒钟，直到按键变为橙色（表示该按键校准成功），请勿遗漏，可重复按按键。无线下不支持按键校准个数提示。校准过程中请勿拔出数据线。</source>
-        <translation type="unfinished"></translation>
+        <translation>Drücke jede Taste nacheinander bis zum Anschlag und halte mindestens 1 Sekunde, bis sie orange wird (erfolgreich kalibriert). Keine Taste überspringen, Wiederholung möglich. Kabellos wird die Zählanzeige nicht unterstützt. USB-Kabel während Kalibrierung nicht trennen.</translation>
     </message>
     <message>
         <location filename="LinearFixing2.cpp" line="54"/>
         <source>完成校准</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalibrierung abschließen</translation>
     </message>
     <message>
         <location filename="LinearFixing2.cpp" line="73"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbrechen</translation>
     </message>
 </context>
 <context>
     <name>MacroItem</name>
     <message>
-        <location filename="Module/MacroItem.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/MacroItem.ui" line="41"/>
+        <location filename="Module/MacroItem.ui" line="47"/>
         <source>M1</source>
-        <translation type="unfinished"></translation>
+        <translation>M1</translation>
     </message>
     <message>
-        <location filename="Module/MacroItem.ui" line="80"/>
+        <location filename="Module/MacroItem.ui" line="89"/>
         <source>编辑/修改</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="Module/MacroItem.ui" line="100"/>
+        <location filename="Module/MacroItem.ui" line="109"/>
         <source>删除</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
 </context>
 <context>
@@ -1247,1448 +1899,1228 @@
     <message>
         <location filename="Module/MacroSquare.cpp" line="86"/>
         <source>插入按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Taste einfügen</translation>
     </message>
     <message>
         <location filename="Module/MacroSquare.cpp" line="87"/>
         <source>修改</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
         <location filename="Module/MacroSquare.cpp" line="88"/>
         <source>删除</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/MacroSquare.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/MacroSquare.ui" line="71"/>
-        <source>T1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/MacroSquare.ui" line="106"/>
-        <source>T2</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="MainWindow.ui" line="183"/>
+        <location filename="MainWindow.ui" line="186"/>
         <source>系统设置</source>
-        <translation type="unfinished">Systemeinstellungen</translation>
+        <translation>Systemeinstellungen</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="218"/>
+        <location filename="MainWindow.ui" line="221"/>
         <source>最小化</source>
-        <translation type="unfinished">Minimieren</translation>
+        <translation>Minimieren</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="253"/>
+        <location filename="MainWindow.ui" line="256"/>
         <source>关闭</source>
-        <translation type="unfinished">Beenden</translation>
+        <translation>Schließen</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="323"/>
-        <location filename="MainWindow.cpp" line="1553"/>
+        <location filename="MainWindow.ui" line="335"/>
+        <location filename="MainWindow.cpp" line="1499"/>
         <source>我的设备</source>
-        <translation type="unfinished">Mein Gerät</translation>
+        <translation>Meine Geräte</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="357"/>
+        <location filename="MainWindow.ui" line="369"/>
         <source>刷新设备</source>
-        <translation type="unfinished">Aktualisieren</translation>
+        <translation>Geräte neu suchen</translation>
     </message>
     <message>
         <source>添加设备</source>
-        <translation type="obsolete">Gerät hinzufügen</translation>
+        <translation type="vanished">Gerät hinzufügen</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="151"/>
+        <location filename="MainWindow.ui" line="154"/>
         <source> 语种选择</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprache wählen</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1556"/>
+        <location filename="MainWindow.cpp" line="649"/>
+        <source>正在读取数据，请耐心等候...</source>
+        <translation>Daten werden gelesen, bitte warten...</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="655"/>
+        <source>读取数据完成!</source>
+        <translation>Daten gelesen!</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="1502"/>
         <source>显示窗口</source>
-        <translation type="unfinished">Anzeigefenster</translation>
+        <translation>Fenster anzeigen</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1557"/>
+        <location filename="MainWindow.cpp" line="1503"/>
         <source>隐藏窗口</source>
-        <translation type="unfinished">Fenster ausblenden</translation>
+        <translation>Fenster verstecken</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1558"/>
+        <location filename="MainWindow.cpp" line="1504"/>
         <source>退出程序</source>
-        <translation type="unfinished">Fenster ausblenden</translation>
+        <translation>Programm beenden</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1755"/>
+        <location filename="MainWindow.cpp" line="1696"/>
         <source>正在搜索设备</source>
-        <translation type="unfinished">Gerät wird gesucht</translation>
+        <translation>Geräte werden gesucht</translation>
     </message>
     <message>
         <source>请插入设备</source>
-        <translation type="obsolete">Bitte legen Sie das Gerät ein</translation>
+        <translation type="vanished">Bitte Gerät anschließen</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="780"/>
-        <location filename="MainWindow.cpp" line="1778"/>
+        <location filename="MainWindow.cpp" line="832"/>
+        <location filename="MainWindow.cpp" line="1721"/>
         <source>提示</source>
-        <translation type="unfinished">Hinweis</translation>
+        <translation>Hinweis</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="780"/>
+        <location filename="MainWindow.cpp" line="832"/>
         <source>发现新版本，现在要立即更新吗？</source>
-        <translation type="unfinished">Es wurde eine neue Version gefunden, möchtest du jetzt sofort aktualisieren?</translation>
+        <translation>Neue Version gefunden. Jetzt aktualisieren?</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1778"/>
+        <location filename="MainWindow.cpp" line="1721"/>
         <source>确定要退出 AKKO 驱动程序？</source>
-        <translation type="unfinished">Möchten Sie den AKKO-Treiber wirklich beenden?</translation>
+        <translation>AKKO-Treiber wirklich beenden?</translation>
     </message>
 </context>
 <context>
     <name>ModuleAddMacroSquare</name>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="49"/>
+        <location filename="ModuleAddMacroSquare.ui" line="65"/>
         <source>键盘按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Tastaturtaste</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="74"/>
+        <location filename="ModuleAddMacroSquare.ui" line="127"/>
         <source>鼠标按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Maustaste</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="96"/>
+        <location filename="ModuleAddMacroSquare.ui" line="212"/>
+        <source>下滚</source>
+        <translation>Scrollen nach unten</translation>
+    </message>
+    <message>
+        <location filename="ModuleAddMacroSquare.ui" line="228"/>
+        <source>左滚</source>
+        <translation>Scrollen nach links</translation>
+    </message>
+    <message>
+        <location filename="ModuleAddMacroSquare.ui" line="244"/>
+        <source>右滚</source>
+        <translation>Scrollen nach rechts</translation>
+    </message>
+    <message>
+        <location filename="ModuleAddMacroSquare.ui" line="288"/>
         <source>鼠标位置</source>
-        <translation type="unfinished"></translation>
+        <translation>Mausposition</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="112"/>
+        <location filename="ModuleAddMacroSquare.ui" line="412"/>
+        <source>插入</source>
+        <translation>Einfügen</translation>
+    </message>
+    <message>
+        <location filename="ModuleAddMacroSquare.ui" line="455"/>
+        <source>完成</source>
+        <translation>Fertig</translation>
+    </message>
+    <message>
+        <location filename="ModuleAddMacroSquare.ui" line="50"/>
         <source>请选择添加宏事件类型</source>
-        <translation type="unfinished"></translation>
+        <translation>Makro-Ereignistyp auswählen</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="337"/>
         <source>确定</source>
-        <translation type="unfinished">Okay</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="291"/>
-        <source>取消</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ModuleAddMacroSquare.ui" line="125"/>
-        <source>X(0 ~ 127):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ModuleAddMacroSquare.ui" line="141"/>
-        <source>Y(0 ~ 127):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ModuleAddMacroSquare.ui" line="160"/>
+        <location filename="ModuleAddMacroSquare.ui" line="145"/>
         <source>左键</source>
-        <translation type="unfinished"></translation>
+        <translation>Linke Maustaste</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="185"/>
+        <location filename="ModuleAddMacroSquare.ui" line="164"/>
         <source>中键</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittlere Maustaste</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="207"/>
+        <location filename="ModuleAddMacroSquare.ui" line="180"/>
         <source>右键</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechte Maustaste</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="229"/>
+        <location filename="ModuleAddMacroSquare.ui" line="95"/>
         <source>请按下按键......</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte Taste drücken......</translation>
     </message>
 </context>
 <context>
     <name>ModuleDKSAdjust</name>
     <message>
-        <location filename="Module/ModuleDKSAdjust.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Module/ModuleDKSAdjust.ui" line="47"/>
         <source>按下(mm) </source>
-        <translation type="unfinished"></translation>
+        <translation>Actuation (mm)</translation>
     </message>
     <message>
         <location filename="Module/ModuleDKSAdjust.ui" line="186"/>
         <source>保存</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
 </context>
 <context>
     <name>ModuleDKSItem</name>
     <message>
-        <location filename="Module/ModuleDKSItem.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleDKSItem.ui" line="32"/>
+        <location filename="Module/ModuleDKSItem.ui" line="38"/>
         <location filename="Module/ModuleDKSItem.cpp" line="55"/>
         <source>未设置功能</source>
-        <translation type="unfinished"></translation>
+        <translation>No Function Assigned</translation>
     </message>
 </context>
 <context>
     <name>ModuleEfColor</name>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="26"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="61"/>
+        <location filename="Module/ModuleEfColor.ui" line="67"/>
         <source>系统默认</source>
-        <translation type="unfinished"></translation>
+        <translation>System Default</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="137"/>
-        <location filename="Module/ModuleEfColor.ui" line="697"/>
+        <location filename="Module/ModuleEfColor.ui" line="143"/>
+        <location filename="Module/ModuleEfColor.ui" line="703"/>
         <source>自定义</source>
-        <translation type="unfinished"></translation>
+        <translation>Custom</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="376"/>
+        <location filename="Module/ModuleEfColor.ui" line="382"/>
         <source>单键</source>
-        <translation type="unfinished"></translation>
+        <translation>Single Key</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="386"/>
-        <source>ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="407"/>
+        <location filename="Module/ModuleEfColor.ui" line="413"/>
         <source>灯带灯效设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Strip Light Effect Settings</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="422"/>
+        <location filename="Module/ModuleEfColor.ui" line="428"/>
         <source>速度：</source>
-        <translation type="unfinished"></translation>
+        <translation>Speed:</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="435"/>
-        <location filename="Module/ModuleEfColor.ui" line="552"/>
-        <source>0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="454"/>
-        <location filename="Module/ModuleEfColor.ui" line="571"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="473"/>
-        <location filename="Module/ModuleEfColor.ui" line="590"/>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="495"/>
-        <location filename="Module/ModuleEfColor.ui" line="609"/>
-        <source>3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="514"/>
-        <location filename="Module/ModuleEfColor.ui" line="628"/>
-        <source>4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="539"/>
+        <location filename="Module/ModuleEfColor.ui" line="545"/>
         <source>亮度：</source>
-        <translation type="unfinished"></translation>
+        <translation>Brightness:</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="656"/>
+        <location filename="Module/ModuleEfColor.ui" line="662"/>
         <source>色彩：</source>
-        <translation type="unfinished"></translation>
+        <translation>Color:</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="669"/>
+        <location filename="Module/ModuleEfColor.ui" line="675"/>
         <source>炫彩</source>
-        <translation type="unfinished"></translation>
+        <translation>Rainbow</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="728"/>
+        <location filename="Module/ModuleEfColor.ui" line="734"/>
         <source>灯效：</source>
-        <translation type="unfinished"></translation>
+        <translation>Effect:</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="743"/>
+        <location filename="Module/ModuleEfColor.ui" line="749"/>
         <source>关闭</source>
-        <translation type="unfinished">Beenden</translation>
+        <translation>Off</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="768"/>
+        <location filename="Module/ModuleEfColor.ui" line="774"/>
         <source>常亮</source>
-        <translation type="unfinished"></translation>
+        <translation>Solid</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="793"/>
+        <location filename="Module/ModuleEfColor.ui" line="799"/>
         <source>呼吸</source>
-        <translation type="unfinished"></translation>
+        <translation>Breathing</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="818"/>
+        <location filename="Module/ModuleEfColor.ui" line="824"/>
         <source>川流不息</source>
-        <translation type="unfinished"></translation>
+        <translation>Stream</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="843"/>
+        <location filename="Module/ModuleEfColor.ui" line="849"/>
         <source>霓虹</source>
-        <translation type="unfinished"></translation>
+        <translation>Neon</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfColor.ui" line="868"/>
+        <location filename="Module/ModuleEfColor.ui" line="874"/>
         <source>光波</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfColor.ui" line="186"/>
-        <location filename="Module/ModuleEfColor.ui" line="211"/>
-        <location filename="Module/ModuleEfColor.ui" line="236"/>
-        <location filename="Module/ModuleEfColor.ui" line="261"/>
-        <location filename="Module/ModuleEfColor.ui" line="286"/>
-        <location filename="Module/ModuleEfColor.ui" line="311"/>
-        <location filename="Module/ModuleEfColor.ui" line="336"/>
-        <location filename="Module/ModuleEfColor.ui" line="361"/>
-        <source>C0</source>
-        <translation type="unfinished"></translation>
+        <translation>Wave</translation>
     </message>
 </context>
 <context>
     <name>ModuleEfLumi</name>
     <message>
-        <location filename="Module/ModuleEfLumi.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfLumi.ui" line="41"/>
+        <location filename="Module/ModuleEfLumi.ui" line="47"/>
         <source>灯光亮度</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfLumi.ui" line="74"/>
-        <source>25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfLumi.ui" line="133"/>
-        <source>100%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfLumi.ui" line="110"/>
-        <source>0%</source>
-        <translation type="unfinished"></translation>
+        <translation>Light Brightness</translation>
     </message>
 </context>
 <context>
     <name>ModuleEfMode</name>
     <message>
-        <location filename="Module/ModuleEfMode.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfMode.ui" line="47"/>
+        <location filename="Module/ModuleEfMode.ui" line="53"/>
         <source>灯效模式</source>
-        <translation type="unfinished"></translation>
+        <translation>Light Effect Mode</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.ui" line="79"/>
+        <location filename="Module/ModuleEfMode.ui" line="88"/>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>ON</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.ui" line="147"/>
+        <location filename="Module/ModuleEfMode.ui" line="156"/>
         <source>灯光播放模式:</source>
-        <translation type="unfinished"></translation>
+        <translation>Light Play Mode:</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.ui" line="155"/>
-        <location filename="Module/ModuleEfMode.cpp" line="161"/>
-        <source>图案1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfMode.ui" line="160"/>
-        <location filename="Module/ModuleEfMode.cpp" line="162"/>
-        <source>图案2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfMode.ui" line="165"/>
-        <location filename="Module/ModuleEfMode.cpp" line="163"/>
-        <source>图案3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfMode.ui" line="170"/>
+        <location filename="Module/ModuleEfMode.ui" line="164"/>
         <location filename="Module/ModuleEfMode.cpp" line="164"/>
-        <source>图案4</source>
-        <translation type="unfinished"></translation>
+        <source>图案1</source>
+        <translation>Pattern 1</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.ui" line="175"/>
+        <location filename="Module/ModuleEfMode.ui" line="169"/>
         <location filename="Module/ModuleEfMode.cpp" line="165"/>
+        <source>图案2</source>
+        <translation>Pattern 2</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.ui" line="174"/>
+        <location filename="Module/ModuleEfMode.cpp" line="166"/>
+        <source>图案3</source>
+        <translation>Pattern 3</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.ui" line="179"/>
+        <location filename="Module/ModuleEfMode.cpp" line="167"/>
+        <source>图案4</source>
+        <translation>Pattern 4</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.ui" line="184"/>
+        <location filename="Module/ModuleEfMode.cpp" line="168"/>
         <source>图案5</source>
-        <translation type="unfinished"></translation>
+        <translation>Pattern 5</translation>
+    </message><message>
+        <location filename="Module/ModuleEfMode.cpp" line="9"/>
+        <source>常亮</source>
+        <translation>Solid</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="135"/>
-        <source>左</source>
-        <translation type="unfinished"></translation>
+        <location filename="Module/ModuleEfMode.cpp" line="10"/>
+        <source>呼吸</source>
+        <translation>Breath</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="136"/>
-        <source>右</source>
-        <translation type="unfinished"></translation>
+        <location filename="Module/ModuleEfMode.cpp" line="11"/>
+        <source>流星</source>
+        <translation>Trail</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="137"/>
-        <source>上</source>
-        <translation type="unfinished"></translation>
+        <location filename="Module/ModuleEfMode.cpp" line="12"/>
+        <source>涟漪</source>
+        <translation>Ripple</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="13"/>
+        <source>极光</source>
+        <translation>Aurora</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="14"/>
+        <source>雨滴</source>
+        <translation>Raindrop</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="15"/>
+        <source>聚合</source>
+        <translation>Converge</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="16"/>
+        <source>川流不息</source>
+        <translation>Flow</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="17"/>
+        <source>霓虹</source>
+        <translation>Neon</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="18"/>
+        <source>光波</source>
+        <translation>Wave</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="19"/>
+        <source>繁星点点</source>
+        <translation>Stars</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="20"/>
+        <source>如影随形</source>
+        <translation>Follow</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="21"/>
+        <source>正弦光波</source>
+        <translation>Sine Wave</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="22"/>
+        <source>彩泉涌动</source>
+        <translation>Color Spring</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="23"/>
+        <source>百花争艳</source>
+        <translation>Bloom</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="24"/>
+        <source>一石二鸟</source>
+        <translation>Split Flash</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="25"/>
+        <source>峰回路转</source>
+        <translation>Turnabout</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="26"/>
+        <source>斜风细雨</source>
+        <translation>Drizzle</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="27"/>
+        <source>踏雪无痕</source>
+        <translation>Snow Trail</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="28"/>
+        <source>层出不穷</source>
+        <translation>Emerge</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="29"/>
+        <source>光影</source>
+        <translation>Light Shade</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="30"/>
+        <source>音乐律动</source>
+        <translation>Audio Sync</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="31"/>
+        <source>自定义</source>
+        <translation>Custom</translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="138"/>
+        <source>左</source>
+        <translation>Left</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="139"/>
+        <source>右</source>
+        <translation>Right</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="140"/>
+        <source>上</source>
+        <translation>Up</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleEfMode.cpp" line="141"/>
         <source>下</source>
-        <translation type="unfinished"></translation>
+        <translation>Down</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="143"/>
+        <location filename="Module/ModuleEfMode.cpp" line="146"/>
         <source>Z形</source>
-        <translation type="unfinished"></translation>
+        <translation>Zigzag</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="144"/>
+        <location filename="Module/ModuleEfMode.cpp" line="147"/>
         <source>回形</source>
-        <translation type="unfinished"></translation>
+        <translation>Loop</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="149"/>
+        <location filename="Module/ModuleEfMode.cpp" line="152"/>
         <source>向内</source>
-        <translation type="unfinished"></translation>
+        <translation>Inward</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="150"/>
+        <location filename="Module/ModuleEfMode.cpp" line="153"/>
         <source>向外</source>
-        <translation type="unfinished"></translation>
+        <translation>Outward</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="155"/>
+        <location filename="Module/ModuleEfMode.cpp" line="158"/>
         <source>向右</source>
-        <translation type="unfinished"></translation>
+        <translation>Rightward</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="156"/>
+        <location filename="Module/ModuleEfMode.cpp" line="159"/>
         <source>向左</source>
-        <translation type="unfinished"></translation>
+        <translation>Leftward</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="170"/>
+        <location filename="Module/ModuleEfMode.cpp" line="173"/>
         <source>顺时针</source>
-        <translation type="unfinished"></translation>
+        <translation>Clockwise</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="171"/>
+        <location filename="Module/ModuleEfMode.cpp" line="174"/>
         <source>逆时针</source>
-        <translation type="unfinished"></translation>
+        <translation>Counter-Clockwise</translation>
     </message>
     <message>
-        <location filename="Module/ModuleEfMode.cpp" line="176"/>
+        <location filename="Module/ModuleEfMode.cpp" line="179"/>
         <source>无</source>
-        <translation type="unfinished"></translation>
+        <translation>None</translation>
     </message>
 </context>
 <context>
     <name>ModuleEfSpeed</name>
     <message>
-        <location filename="Module/ModuleEfSpeed.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfSpeed.ui" line="63"/>
-        <source>25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfSpeed.ui" line="133"/>
-        <source>100%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfSpeed.ui" line="37"/>
+        <location filename="Module/ModuleEfSpeed.ui" line="43"/>
         <source>灯光速度</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleEfSpeed.ui" line="107"/>
-        <source>0%</source>
-        <translation type="unfinished"></translation>
+        <translation>Light Speed</translation>
     </message>
 </context>
 <context>
     <name>ModuleGenKeymapping</name>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="68"/>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="69"/>
         <source>L-Fn键</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="20"/>
-        <source>上一曲</source>
-        <translation type="unfinished"></translation>
+        <translation>L-Fn</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="21"/>
-        <source>下一曲</source>
-        <translation type="unfinished"></translation>
+        <source>上一曲</source>
+        <translation>Previous Track</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="22"/>
-        <source>播放/暂停</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="24"/>
-        <source>静音</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="25"/>
-        <source>音量+</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="26"/>
-        <source>音量-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="27"/>
-        <source>播放器</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="28"/>
-        <source>计算器</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="30"/>
-        <source>邮件</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="31"/>
-        <source>我的电脑</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="32"/>
-        <source>搜索</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="33"/>
-        <source>主页</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="37"/>
-        <source>刷新</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="39"/>
-        <source>亮度+</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="40"/>
-        <source>亮度-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="41"/>
-        <source>放大</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="42"/>
-        <source>缩小</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="43"/>
-        <source>呼出Siri</source>
-        <translation type="unfinished"></translation>
+        <source>下一曲</source>
+        <translation>Next Track</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="23"/>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="36"/>
-        <source>停止</source>
-        <translation type="unfinished"></translation>
+        <source>播放/暂停</source>
+        <translation>Play/Pause</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="25"/>
+        <source>静音</source>
+        <translation>Mute</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="26"/>
+        <source>音量+</source>
+        <translation>Volume +</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="27"/>
+        <source>音量-</source>
+        <translation>Volume -</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="28"/>
+        <source>播放器</source>
+        <translation>Media Player</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="29"/>
+        <source>计算器</source>
+        <translation>Calculator</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="31"/>
+        <source>邮件</source>
+        <translation>Mail</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="32"/>
+        <source>我的电脑</source>
+        <translation>My Computer</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="33"/>
+        <source>搜索</source>
+        <translation>Search</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="34"/>
-        <source>后退</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="35"/>
-        <source>前进</source>
-        <translation type="unfinished"></translation>
+        <source>主页</source>
+        <translation>Home</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="38"/>
-        <source>收藏</source>
-        <translation type="unfinished"></translation>
+        <source>刷新</source>
+        <translation>Refresh</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="45"/>
-        <source>切换输入法</source>
-        <translation type="unfinished"></translation>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="40"/>
+        <source>亮度+</source>
+        <translation>Brightness +</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="41"/>
+        <source>亮度-</source>
+        <translation>Brightness -</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="42"/>
+        <source>放大</source>
+        <translation>Zoom In</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="43"/>
+        <source>缩小</source>
+        <translation>Zoom Out</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="44"/>
+        <source>呼出Siri</source>
+        <translation>Launch Siri</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="24"/>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="37"/>
+        <source>停止</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="35"/>
+        <source>后退</source>
+        <translation>Back</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="36"/>
+        <source>前进</source>
+        <translation>Forward</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="39"/>
+        <source>收藏</source>
+        <translation>Favorite</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="46"/>
-        <source>返回</source>
-        <translation type="unfinished">Startseite</translation>
+        <source>切换输入法</source>
+        <translation>Input Method Switch</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="47"/>
-        <source>Fn键锁屏</source>
-        <translation type="unfinished"></translation>
+        <source>返回</source>
+        <translation>Return</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="48"/>
-        <source>锁屏</source>
-        <translation type="unfinished"></translation>
+        <source>Fn键锁屏</source>
+        <translation>Fn Lock</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="49"/>
-        <source>R-Fn键</source>
-        <translation type="unfinished"></translation>
+        <source>锁屏</source>
+        <translation>Lock Screen</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="50"/>
-        <source>DPI-Loop</source>
-        <translation type="unfinished"></translation>
+        <source>R-Fn键</source>
+        <translation>R-Fn</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="51"/>
-        <source>DPI+</source>
-        <translation type="unfinished"></translation>
+        <source>DPI-Loop</source>
+        <translation>DPI Cycle</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="52"/>
-        <source>DPI-</source>
-        <translation type="unfinished"></translation>
+        <source>DPI+</source>
+        <translation>DPI +</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="53"/>
-        <source>DPI-Shift</source>
-        <translation type="unfinished"></translation>
+        <source>DPI-</source>
+        <translation>DPI -</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="54"/>
-        <source>电源</source>
-        <translation type="unfinished"></translation>
+        <source>DPI-Shift</source>
+        <translation>DPI Shift</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="55"/>
-        <source>睡眠</source>
-        <translation type="unfinished"></translation>
+        <source>电源</source>
+        <translation>Power</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="56"/>
-        <source>唤醒</source>
-        <translation type="unfinished"></translation>
+        <source>睡眠</source>
+        <translation>Sleep</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="58"/>
-        <source>Profile-Value</source>
-        <translation type="unfinished"></translation>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="57"/>
+        <source>唤醒</source>
+        <translation>Wake</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="59"/>
-        <source>Profile+</source>
-        <translation type="unfinished"></translation>
+        <source>Profile-Value</source>
+        <translation>Profile Value</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="60"/>
-        <source>Profile-</source>
-        <translation type="unfinished"></translation>
+        <source>Profile+</source>
+        <translation>Profile +</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="61"/>
-        <source>Profile-Loop</source>
-        <translation type="unfinished"></translation>
+        <source>Profile-</source>
+        <translation>Profile -</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="62"/>
-        <source>Profile-1</source>
-        <translation type="unfinished"></translation>
+        <source>Profile-Loop</source>
+        <translation>Profile Cycle</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="63"/>
-        <source>Profile-2</source>
-        <translation type="unfinished"></translation>
+        <source>Profile-1</source>
+        <translation>Profile 1</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="64"/>
-        <source>Profile-3</source>
-        <translation type="unfinished"></translation>
+        <source>Profile-2</source>
+        <translation>Profile 2</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="65"/>
-        <source>Profile-4</source>
-        <translation type="unfinished"></translation>
+        <source>Profile-3</source>
+        <translation>Profile 3</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="66"/>
-        <source>Profile-5</source>
-        <translation type="unfinished"></translation>
+        <source>Profile-4</source>
+        <translation>Profile 4</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="71"/>
-        <source>切换Win</source>
-        <translation type="unfinished"></translation>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="67"/>
+        <source>Profile-5</source>
+        <translation>Profile 5</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="72"/>
-        <source>切换Mac</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="74"/>
-        <source>Check Battery</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="75"/>
-        <source>WASD切换</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="76"/>
-        <source>Fn层切换</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="77"/>
-        <source>设备节能</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="78"/>
-        <source>APP CTRL切换</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="80"/>
-        <source>背光开/关</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="81"/>
-        <source>背光灯效循环</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="82"/>
-        <source>背光灯效+</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="83"/>
-        <source>背光灯效-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="84"/>
-        <source>背光亮度循环</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="87"/>
-        <source>背光速度循环</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="88"/>
-        <source>背光速度-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="89"/>
-        <source>背光速度+</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="85"/>
-        <source>背光亮度+</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="86"/>
-        <source>背光亮度-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="69"/>
-        <source>恢复出厂设置</source>
-        <oldsource>背光颜色切换</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="70"/>
-        <source>锁Win</source>
-        <oldsource>关闭背光</oldsource>
-        <translation type="unfinished"></translation>
+        <source>切换Win</source>
+        <translation>Switch to Win</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="73"/>
-        <source>系统切换</source>
-        <translation type="unfinished"></translation>
+        <source>切换Mac</source>
+        <translation>Switch to Mac</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="75"/>
+        <source>Check Battery</source>
+        <translation>Check Battery</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="76"/>
+        <source>WASD切换</source>
+        <translation>WASD Swap</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="77"/>
+        <source>Fn层切换</source>
+        <translation>Fn Layer Toggle</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="78"/>
+        <source>设备节能</source>
+        <translation>Device Power Save</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="79"/>
+        <source>APP CTRL切换</source>
+        <translation>App Ctrl Toggle</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="81"/>
+        <source>背光开/关</source>
+        <translation>Backlight On/Off</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="82"/>
+        <source>背光灯效循环</source>
+        <translation>Cycle Backlight Effect</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="83"/>
+        <source>背光灯效+</source>
+        <translation>Backlight Effect +</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="84"/>
+        <source>背光灯效-</source>
+        <translation>Backlight Effect -</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="85"/>
+        <source>背光亮度循环</source>
+        <translation>Cycle Backlight Brightness</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="88"/>
+        <source>背光速度循环</source>
+        <translation>Cycle Backlight Speed</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="89"/>
+        <source>背光速度-</source>
+        <translation>Backlight Speed -</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="90"/>
-        <source>背光方向循环</source>
-        <translation type="unfinished"></translation>
+        <source>背光速度+</source>
+        <translation>Backlight Speed +</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="86"/>
+        <source>背光亮度+</source>
+        <translation>Backlight Brightness +</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="87"/>
+        <source>背光亮度-</source>
+        <translation>Backlight Brightness -</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="70"/>
+        <source>恢复出厂设置</source>
+        <translation>Factory Reset</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="71"/>
+        <source>锁Win</source>
+        <translation>Win Lock</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="74"/>
+        <source>系统切换</source>
+        <translation>System Switch</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="91"/>
-        <source>背光向左</source>
-        <translation type="unfinished"></translation>
+        <source>背光方向循环</source>
+        <translation>Cycle Backlight Direction</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="92"/>
-        <source>背光向右</source>
-        <translation type="unfinished"></translation>
+        <source>背光向左</source>
+        <translation>Backlight Left</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="93"/>
-        <source>背光颜色循环</source>
-        <translation type="unfinished"></translation>
+        <source>背光向右</source>
+        <translation>Backlight Right</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="94"/>
-        <source>背光颜色+</source>
-        <translation type="unfinished"></translation>
+        <source>背光颜色循环</source>
+        <translation>Cycle Backlight Color</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="95"/>
-        <source>背光颜色-</source>
-        <translation type="unfinished"></translation>
+        <source>背光颜色+</source>
+        <translation>Backlight Color +</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="96"/>
-        <source>Use Pic 0</source>
-        <translation type="unfinished"></translation>
+        <source>背光颜色-</source>
+        <translation>Backlight Color -</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="97"/>
-        <source>Use Pic 1</source>
-        <translation type="unfinished"></translation>
+        <source>Use Pic 0</source>
+        <translation>Use Pic 0</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="98"/>
-        <source>Use Pic 2</source>
-        <translation type="unfinished"></translation>
+        <source>Use Pic 1</source>
+        <translation>Use Pic 1</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="99"/>
-        <source>Use Pic 3</source>
-        <translation type="unfinished"></translation>
+        <source>Use Pic 2</source>
+        <translation>Use Pic 2</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="100"/>
-        <source>Use Pic 4</source>
-        <translation type="unfinished"></translation>
+        <source>Use Pic 3</source>
+        <translation>Use Pic 3</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="101"/>
-        <source>Use Pic</source>
-        <translation type="unfinished"></translation>
+        <source>Use Pic 4</source>
+        <translation>Use Pic 4</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="103"/>
-        <source>侧光开/关</source>
-        <translation type="unfinished"></translation>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="102"/>
+        <source>Use Pic</source>
+        <translation>Use Pic</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="104"/>
-        <source>侧光亮度循环</source>
-        <translation type="unfinished"></translation>
+        <source>侧光开/关</source>
+        <translation>Side Light On/Off</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="105"/>
-        <source>侧光速度循环</source>
-        <translation type="unfinished"></translation>
+        <source>侧光亮度循环</source>
+        <translation>Cycle Side Light Brightness</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="106"/>
-        <source>侧光速度+</source>
-        <translation type="unfinished"></translation>
+        <source>侧光速度循环</source>
+        <translation>Cycle Side Light Speed</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="107"/>
-        <source>侧光速度-</source>
-        <translation type="unfinished"></translation>
+        <source>侧光速度+</source>
+        <translation>Side Light Speed +</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="108"/>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="111"/>
-        <source>侧光颜色循环</source>
-        <translation type="unfinished"></translation>
+        <source>侧光速度-</source>
+        <translation>Side Light Speed -</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="109"/>
         <location filename="Module/ModuleGenKeymapping.cpp" line="112"/>
-        <source>侧光颜色+</source>
-        <translation type="unfinished"></translation>
+        <source>侧光颜色循环</source>
+        <translation>Cycle Side Light Color</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="110"/>
         <location filename="Module/ModuleGenKeymapping.cpp" line="113"/>
-        <source>侧光颜色-</source>
-        <translation type="unfinished"></translation>
+        <source>侧光颜色+</source>
+        <translation>Side Light Color +</translation>
     </message>
     <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="111"/>
         <location filename="Module/ModuleGenKeymapping.cpp" line="114"/>
-        <source>2.4G</source>
-        <translation type="unfinished"></translation>
+        <source>侧光颜色-</source>
+        <translation>Side Light Color -</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="115"/>
-        <source>蓝牙1</source>
-        <translation type="unfinished"></translation>
+        <source>2.4G</source>
+        <translation>2.4G</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="116"/>
-        <source>蓝牙2</source>
-        <translation type="unfinished"></translation>
+        <source>蓝牙1</source>
+        <translation>BT 1</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="117"/>
-        <source>蓝牙3</source>
-        <translation type="unfinished"></translation>
+        <source>蓝牙2</source>
+        <translation>BT 2</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="118"/>
-        <source>有线</source>
-        <translation type="unfinished"></translation>
+        <source>蓝牙3</source>
+        <translation>BT 3</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="119"/>
-        <source>有线-蓝牙-2.4G</source>
-        <translation type="unfinished"></translation>
+        <source>有线</source>
+        <translation>Wired</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="120"/>
-        <source>2.4G配对</source>
-        <translation type="unfinished"></translation>
+        <source>有线-蓝牙-2.4G</source>
+        <translation>Wired-BT-2.4G</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="121"/>
-        <source>蓝牙配对</source>
-        <translation type="unfinished"></translation>
+        <source>2.4G配对</source>
+        <translation>2.4G Pairing</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="122"/>
-        <source>Insert键</source>
-        <translation type="unfinished"></translation>
+        <source>蓝牙配对</source>
+        <translation>BT Pairing</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="123"/>
-        <source>Print Screen键</source>
-        <translation type="unfinished"></translation>
+        <source>Insert键</source>
+        <translation>Insert</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="129"/>
-        <source>左键单击</source>
-        <translation type="unfinished"></translation>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="124"/>
+        <source>Print Screen键</source>
+        <translation>Print Screen</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="130"/>
-        <source>右键单击</source>
-        <translation type="unfinished"></translation>
+        <source>左键单击</source>
+        <translation>Left Click</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="131"/>
-        <source>中键按下</source>
-        <translation type="unfinished"></translation>
+        <source>右键单击</source>
+        <translation>Right Click</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="132"/>
-        <source>光标前进</source>
-        <translation type="unfinished"></translation>
+        <source>中键按下</source>
+        <translation>Middle Click</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="133"/>
-        <source>光标后退</source>
-        <translation type="unfinished"></translation>
+        <source>光标前进</source>
+        <translation>Cursor Forward</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="134"/>
-        <source>滚轮-向左</source>
-        <translation type="unfinished"></translation>
+        <source>光标后退</source>
+        <translation>Cursor Backward</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="135"/>
-        <source>滚轮-向右</source>
-        <translation type="unfinished"></translation>
+        <source>滚轮-向左</source>
+        <translation>Scroll Left</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="136"/>
-        <source>滚轮-向上</source>
-        <translation type="unfinished"></translation>
+        <source>滚轮-向右</source>
+        <translation>Scroll Right</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="137"/>
-        <source>滚轮-向下</source>
-        <translation type="unfinished"></translation>
+        <source>滚轮-向上</source>
+        <translation>Scroll Up</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="138"/>
-        <source>向上滚屏</source>
-        <translation type="unfinished"></translation>
+        <source>滚轮-向下</source>
+        <translation>Scroll Down</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="139"/>
-        <source>向下滚屏</source>
-        <translation type="unfinished"></translation>
+        <source>向上滚屏</source>
+        <translation>Page Up Scroll</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="140"/>
-        <source>XUP</source>
-        <translation type="unfinished"></translation>
+        <source>向下滚屏</source>
+        <translation>Page Down Scroll</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="141"/>
-        <source>XDOWN</source>
-        <translation type="unfinished"></translation>
+        <source>XUP</source>
+        <translation>X+</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="142"/>
-        <source>YUP</source>
-        <translation type="unfinished"></translation>
+        <source>XDOWN</source>
+        <translation>X-</translation>
     </message>
     <message>
         <location filename="Module/ModuleGenKeymapping.cpp" line="143"/>
+        <source>YUP</source>
+        <translation>Y+</translation>
+    </message>
+    <message>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="144"/>
         <source>YDOWN</source>
-        <translation type="unfinished"></translation>
+        <translation>Y-</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="695"/>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="708"/>
         <source>宏设置</source>
-        <translation type="unfinished">Makroeinstellungen</translation>
+        <translation>Macro Settings</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="702"/>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="715"/>
         <source>功能</source>
-        <translation type="unfinished"></translation>
+        <translation>Function</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="710"/>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="723"/>
         <source>鼠标</source>
-        <translation type="unfinished"></translation>
+        <translation>Mouse</translation>
     </message>
     <message>
-        <location filename="Module/ModuleGenKeymapping.cpp" line="720"/>
+        <location filename="Module/ModuleGenKeymapping.cpp" line="733"/>
         <source>组合</source>
-        <translation type="unfinished"></translation>
+        <translation>Combo</translation>
     </message>
 </context>
 <context>
     <name>ModuleKeyboard</name>
     <message>
-        <location filename="Module/ModuleKeyboard.ui" line="34"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleKeyboard.ui" line="128"/>
+        <location filename="Module/ModuleKeyboard.ui" line="134"/>
         <source>已选中按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Selected Key</translation>
     </message>
     <message>
-        <location filename="Module/ModuleKeyboard.ui" line="177"/>
+        <location filename="Module/ModuleKeyboard.ui" line="183"/>
         <source>已修改按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Modified Key</translation>
     </message>
     <message>
-        <location filename="Module/ModuleKeyboard.ui" line="226"/>
+        <location filename="Module/ModuleKeyboard.ui" line="232"/>
         <source>已禁用按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Disabled Key</translation>
     </message>
     <message>
-        <location filename="Module/ModuleKeyboard.cpp" line="425"/>
+        <location filename="Module/ModuleKeyboard.cpp" line="424"/>
         <source>清除设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Clear Settings</translation>
     </message>
     <message>
-        <location filename="Module/ModuleKeyboard.cpp" line="425"/>
+        <location filename="Module/ModuleKeyboard.cpp" line="424"/>
         <source>禁用按键</source>
-        <translation type="unfinished"></translation>
+        <translation>Disable Key</translation>
     </message>
     <message>
         <location filename="Module/ModuleKeyboard.cpp" line="450"/>
         <source>取消禁用</source>
-        <translation type="unfinished"></translation>
+        <translation>Enable Key</translation>
     </message>
 </context>
 <context>
     <name>ModuleLangMenu</name>
     <message>
-        <location filename="Module/ModuleLangMenu.ui" line="17"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Module/ModuleLangMenu.cpp" line="20"/>
         <source>中文简体</source>
-        <translation type="unfinished"></translation>
+        <translation>Simplified Chinese</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="21"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>English</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="22"/>
         <source>中文繁体</source>
-        <translation type="unfinished"></translation>
+        <translation>Traditional Chinese</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="23"/>
         <source>日本語</source>
-        <translation type="unfinished"></translation>
+        <translation>日本語</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="24"/>
         <source>한국어</source>
-        <translation type="unfinished"></translation>
+        <translation>한국어</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="25"/>
         <source>Русский</source>
-        <translation type="unfinished"></translation>
+        <translation>Русский</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="26"/>
         <source>Tiếng Việt</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiếng Việt</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="27"/>
         <source>Português</source>
-        <translation type="unfinished"></translation>
+        <translation>Português</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="28"/>
         <source>ภาษาไทย</source>
-        <translation type="unfinished"></translation>
+        <translation>ภาษาไทย</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="29"/>
         <source>Deutsch</source>
-        <translation type="unfinished"></translation>
+        <translation>Deutsch</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="30"/>
         <source>Français</source>
-        <translation type="unfinished"></translation>
+        <translation>Français</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="31"/>
         <source>Svenska</source>
-        <translation type="unfinished"></translation>
+        <translation>Svenska</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="32"/>
         <source>Italiano</source>
-        <translation type="unfinished"></translation>
+        <translation>Italiano</translation>
     </message>
     <message>
         <location filename="Module/ModuleLangMenu.cpp" line="33"/>
         <source>Türkçe</source>
-        <translation type="unfinished"></translation>
+        <translation>Türkçe</translation>
     </message>
 </context>
 <context>
     <name>ModuleLinear</name>
     <message>
-        <location filename="Module/ModuleLinear.ui" line="17"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleLinear.ui" line="62"/>
+        <location filename="Module/ModuleLinear.ui" line="65"/>
         <source>按下(mm) </source>
-        <translation type="unfinished"></translation>
+        <translation>Actuation (mm)</translation>
     </message>
     <message>
-        <location filename="Module/ModuleLinear.ui" line="185"/>
+        <location filename="Module/ModuleLinear.ui" line="188"/>
         <source>抬起(mm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Release (mm)</translation>
     </message>
 </context>
 <context>
     <name>ModuleMacroManager</name>
     <message>
-        <location filename="Module/modulemacromanager.cpp" line="44"/>
+        <location filename="Module/modulemacromanager.cpp" line="41"/>
         <source>新建宏</source>
-        <translation type="unfinished"></translation>
+        <translation>New Macro</translation>
     </message>
 </context>
 <context>
     <name>ModuleRtSet</name>
     <message>
-        <location filename="Module/ModuleRtSet.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleRtSet.ui" line="44"/>
+        <location filename="Module/ModuleRtSet.ui" line="47"/>
         <source>RT行程设置(全局)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleRtSet.ui" line="76"/>
-        <source>ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleRtSet.ui" line="135"/>
-        <source>0.570 mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ModuleScrollValue</name>
-    <message>
-        <location filename="Module/ModuleScrollValue.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleScrollValue.ui" line="41"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleScrollValue.ui" line="66"/>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleScrollValue.ui" line="117"/>
-        <source>3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleScrollValue.ui" line="168"/>
-        <source>4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleScrollValue.ui" line="193"/>
-        <source>5</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ModuleVideoItem</name>
-    <message>
-        <location filename="Module/ModuleVideoItem.ui" line="26"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleVideoItem.ui" line="61"/>
-        <source>Movie</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleVideoItem.ui" line="71"/>
-        <source>AKKO 5075 操作指南-宏设置</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleVideoItem.ui" line="83"/>
-        <source>AKKO 2025-10-20</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/ModuleVideoItem.ui" line="106"/>
-        <source>5:20</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>VirtualKeyboard</name>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="14"/>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="104"/>
-        <source>H</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="166"/>
-        <source>I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="194"/>
-        <source>C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="222"/>
-        <source>E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="352"/>
-        <source>J</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="482"/>
-        <source>Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="727"/>
-        <source>K</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="997"/>
-        <source>D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1129"/>
-        <source>G</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1260"/>
-        <source>U</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1503"/>
-        <source>Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1634"/>
-        <source>S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1706"/>
-        <source>M</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1768"/>
-        <source>X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1831"/>
-        <source>A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="1894"/>
-        <source>F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="2025"/>
-        <source>O</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="2240"/>
-        <source>P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="2611"/>
-        <source>R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="2639"/>
-        <source>L</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="2803"/>
-        <source>V</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="2969"/>
-        <source>N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="3032"/>
-        <source>T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="3060"/>
-        <source>B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="3122"/>
-        <source>Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Module/VirtualKeyboard.ui" line="3150"/>
-        <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>RT Setting (Global)</translation>
     </message>
 </context>
 </TS>

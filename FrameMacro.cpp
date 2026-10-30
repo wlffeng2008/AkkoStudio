@@ -476,3 +476,13 @@ void FrameMacro::saveEvents()
 
     m_loading = false;
 }
+
+void FrameMacro::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

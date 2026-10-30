@@ -119,7 +119,6 @@ bool DialogVKPicker::eventFilter(QObject *watched,QEvent *event)
     return QDialog::eventFilter(watched,event);
 }
 
-
 void DialogVKPicker::paintEvent(QPaintEvent *event)
 {
     QStyleOption opt;
@@ -128,4 +127,14 @@ void DialogVKPicker::paintEvent(QPaintEvent *event)
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 
     QDialog::paintEvent(event);
+}
+
+void DialogVKPicker::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QDialog::changeEvent(pEvt);
 }

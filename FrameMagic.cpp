@@ -532,3 +532,13 @@ FrameMagic::~FrameMagic()
 {
     delete ui;
 }
+
+void FrameMagic::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QFrame::changeEvent(pEvt);
+}

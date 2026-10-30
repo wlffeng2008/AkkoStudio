@@ -27,6 +27,7 @@ signals:
 
 protected:
     bool eventFilter(QObject*watched, QEvent*event) override;
+    void changeEvent(QEvent *pEvt) override;
 
 private:
     Ui::ModuleLinear *ui;

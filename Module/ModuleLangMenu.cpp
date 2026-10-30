@@ -104,3 +104,13 @@ void ModuleLangMenu::paintEvent(QPaintEvent *event)
 
     QDialog::paintEvent(event);
 }
+
+void ModuleLangMenu::changeEvent(QEvent *pEvt)
+{
+    if(pEvt->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+
+    QDialog::changeEvent(pEvt);
+}

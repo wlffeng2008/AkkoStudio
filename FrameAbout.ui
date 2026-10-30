@@ -11,7 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -143,7 +149,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>设备名称：AKKO 5075</string>
+         <string notr="true">设备名称：AKKO 5075</string>
         </property>
        </widget>
        <widget class="QLabel" name="labelTitleL2">
@@ -156,7 +162,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>键盘固件版本：V1.0</string>
+         <string notr="true">键盘固件版本：V1.0</string>
         </property>
        </widget>
        <widget class="QLabel" name="labelTitleL3">
@@ -169,7 +175,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>无线连接器固件版本：V1.0</string>
+         <string notr="true">无线连接器固件版本：V1.0</string>
         </property>
        </widget>
        <widget class="QLabel" name="labelTitleL4">
@@ -182,7 +188,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>当前版本：V1.0</string>
+         <string notr="true">当前版本：V1.0</string>
         </property>
        </widget>
       </widget>
@@ -303,7 +309,7 @@
   <customwidget>
    <class>NewTabWidget</class>
    <extends>QTabWidget</extends>
-   <header>newtabwidget.h</header>
+   <header location="global">newtabwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

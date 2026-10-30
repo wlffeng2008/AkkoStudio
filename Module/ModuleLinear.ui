@@ -14,7 +14,10 @@
    <enum>Qt::FocusPolicy::StrongFocus</enum>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">Frame</string>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
    <property name="spacing">
@@ -105,7 +108,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string/>
+           <string notr="true"/>
           </property>
           <property name="icon">
            <iconset resource="../res.qrc">
@@ -139,7 +142,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string/>
+           <string notr="true"/>
           </property>
           <property name="icon">
            <iconset resource="../res.qrc">
@@ -231,7 +234,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string/>
+           <string notr="true"/>
           </property>
           <property name="icon">
            <iconset resource="../res.qrc">
@@ -264,7 +267,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string/>
+           <string notr="true"/>
           </property>
           <property name="icon">
            <iconset resource="../res.qrc">

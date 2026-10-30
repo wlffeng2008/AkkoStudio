@@ -50,7 +50,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab11">
       <attribute name="title">
@@ -104,6 +104,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">H</string>
             </property>
@@ -133,6 +136,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -166,6 +172,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">M</string>
             </property>
@@ -195,6 +204,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -228,6 +240,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">A</string>
             </property>
@@ -257,6 +272,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -290,6 +308,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">G</string>
             </property>
@@ -319,6 +340,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -352,6 +376,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">L</string>
             </property>
@@ -381,6 +408,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -414,6 +444,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">I</string>
             </property>
@@ -443,6 +476,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -476,6 +512,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F</string>
             </property>
@@ -505,6 +544,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -538,6 +580,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Y</string>
             </property>
@@ -567,6 +612,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -600,6 +648,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">W</string>
             </property>
@@ -626,6 +677,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -659,6 +713,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">U</string>
             </property>
@@ -688,6 +745,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -721,6 +781,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">S</string>
             </property>
@@ -750,6 +813,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -783,6 +849,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Q</string>
             </property>
@@ -812,6 +881,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -845,6 +917,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">N</string>
             </property>
@@ -874,6 +949,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -913,6 +991,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">`~</string>
             </property>
@@ -948,6 +1029,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -987,6 +1071,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">2@</string>
             </property>
@@ -1022,6 +1109,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1061,6 +1151,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">4$</string>
             </property>
@@ -1096,6 +1189,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1135,6 +1231,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">6^</string>
             </property>
@@ -1170,6 +1269,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1209,6 +1311,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">8*</string>
             </property>
@@ -1244,6 +1349,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1283,6 +1391,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">0)</string>
             </property>
@@ -1318,6 +1429,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1357,6 +1471,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">-_</string>
             </property>
@@ -1392,6 +1509,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1431,6 +1551,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">]}</string>
             </property>
@@ -1466,6 +1589,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1505,6 +1631,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">;:</string>
             </property>
@@ -1540,6 +1669,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1579,6 +1711,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">,&lt;</string>
             </property>
@@ -1616,6 +1751,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">. &gt;</string>
             </property>
@@ -1651,6 +1789,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1723,6 +1864,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Insert</string>
             </property>
@@ -1758,6 +1902,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1797,6 +1944,9 @@
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Enter</string>
             </property>
@@ -1832,6 +1982,9 @@
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1872,6 +2025,9 @@ Screen</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Pause</string>
             </property>
@@ -1907,6 +2063,9 @@ Screen</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -1947,6 +2106,9 @@ WIN</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">HOME</string>
             </property>
@@ -1982,6 +2144,9 @@ WIN</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2031,6 +2196,9 @@ WIN</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Back
 Space</string>
@@ -2067,6 +2235,9 @@ Space</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2107,6 +2278,9 @@ Space</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">END</string>
             </property>
@@ -2142,6 +2316,9 @@ Space</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2181,6 +2358,9 @@ Space</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F12</string>
             </property>
@@ -2216,6 +2396,9 @@ Space</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2255,6 +2438,9 @@ Space</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F6</string>
             </property>
@@ -2290,6 +2476,9 @@ Space</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2329,6 +2518,9 @@ Space</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Space</string>
             </property>
@@ -2366,6 +2558,9 @@ Space</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F4</string>
             </property>
@@ -2401,6 +2596,9 @@ Space</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2441,6 +2639,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">R-
 ALT</string>
@@ -2477,6 +2678,9 @@ ALT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2517,6 +2721,9 @@ WIN</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">L-
 ALT</string>
@@ -2553,6 +2760,9 @@ ALT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2602,6 +2812,9 @@ ALT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">PgDn</string>
             </property>
@@ -2637,6 +2850,9 @@ ALT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2675,6 +2891,9 @@ CTRL</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="autoFillBackground">
@@ -2720,6 +2939,9 @@ CTRL</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">R-
 SHIFT</string>
@@ -2756,6 +2978,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2796,6 +3021,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F11</string>
             </property>
@@ -2833,6 +3061,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">PgUp</string>
             </property>
@@ -2868,6 +3099,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2908,6 +3142,9 @@ CTRL</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F8</string>
             </property>
@@ -2943,6 +3180,9 @@ CTRL</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -2992,6 +3232,9 @@ CTRL</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Num
 Lock</string>
@@ -3028,6 +3271,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3068,6 +3314,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F5</string>
             </property>
@@ -3105,6 +3354,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F7</string>
             </property>
@@ -3140,6 +3392,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3189,6 +3444,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">L-
 SHIFT</string>
@@ -3225,6 +3483,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3264,6 +3525,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F1</string>
             </property>
@@ -3301,6 +3565,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F3</string>
             </property>
@@ -3336,6 +3603,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3376,6 +3646,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Num
 1</string>
@@ -3412,6 +3685,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3452,6 +3728,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Num
 3</string>
@@ -3488,6 +3767,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3528,6 +3810,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Num
 5</string>
@@ -3564,6 +3849,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3604,6 +3892,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Num
 .</string>
@@ -3640,6 +3931,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3680,6 +3974,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Num
 -</string>
@@ -3716,6 +4013,9 @@ SHIFT</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -3756,6 +4056,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Num
 /</string>
@@ -3794,6 +4097,9 @@ SHIFT</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">Caps
 Lock</string>
@@ -3830,6 +4136,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4005,6 +4314,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F1</string>
             </property>
@@ -4025,6 +4337,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4049,6 +4364,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F3</string>
             </property>
@@ -4069,6 +4387,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4093,6 +4414,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F5</string>
             </property>
@@ -4113,6 +4437,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4137,6 +4464,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F7</string>
             </property>
@@ -4157,6 +4487,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4181,6 +4514,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F9</string>
             </property>
@@ -4201,6 +4537,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4225,6 +4564,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F11</string>
             </property>
@@ -4245,6 +4587,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4269,6 +4614,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F13</string>
             </property>
@@ -4289,6 +4637,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4313,6 +4664,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F15</string>
             </property>
@@ -4333,6 +4687,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4357,6 +4714,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F17</string>
             </property>
@@ -4377,6 +4737,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4401,6 +4764,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">F19</string>
             </property>
@@ -4423,6 +4789,9 @@ Lock</string>
             <property name="toolTip">
              <string notr="true"/>
             </property>
+            <property name="statusTip">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string notr="true">IME On</string>
             </property>
@@ -4443,6 +4812,9 @@ Lock</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
+             <string notr="true"/>
+            </property>
+            <property name="statusTip">
              <string notr="true"/>
             </property>
             <property name="text">
@@ -4753,6 +5125,12 @@ Lock</string>
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="statusTip">
+        <string notr="true"/>
+       </property>
        <property name="styleSheet">
         <string notr="true">                    border: 1px solid #EAEAEA;
                     border-radius: 14px;
@@ -4762,7 +5140,7 @@ Lock</string>
                     width: 80px;</string>
        </property>
        <property name="text">
-        <string>--</string>
+        <string notr="true">--</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -4783,6 +5161,12 @@ Lock</string>
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="statusTip">
+        <string notr="true"/>
+       </property>
        <property name="styleSheet">
         <string notr="true">                    border: 1px solid #EAEAEA;
                     border-radius: 14px;
@@ -4792,7 +5176,7 @@ Lock</string>
                     width: 80px;</string>
        </property>
        <property name="text">
-        <string>--</string>
+        <string notr="true">--</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -4813,6 +5197,12 @@ Lock</string>
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="statusTip">
+        <string notr="true"/>
+       </property>
        <property name="styleSheet">
         <string notr="true">                    border: 1px solid #EAEAEA;
                     border-radius: 14px;
@@ -4822,7 +5212,7 @@ Lock</string>
                     width: 80px;</string>
        </property>
        <property name="text">
-        <string>--</string>
+        <string notr="true">--</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -4909,7 +5299,7 @@ Lock</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupFN"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroupFN"/>
  </buttongroups>
 </ui>

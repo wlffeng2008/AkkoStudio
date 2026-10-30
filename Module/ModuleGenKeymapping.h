@@ -54,6 +54,8 @@ public:
 
     keyData* getMuData(quint8 index);
     keyData* getFnData(quint8 index);
+protected:
+    void changeEvent(QEvent *pEvt) override;
 
 private:
     void initList() ;
