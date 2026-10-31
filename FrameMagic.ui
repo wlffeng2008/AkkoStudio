@@ -136,13 +136,13 @@ QFrame#frameBRight{background-color: #F6F6F6;border-radius:32px;}
        <widget class="QFrame" name="frameBLeft">
         <property name="minimumSize">
          <size>
-          <width>180</width>
+          <width>260</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>180</width>
+          <width>250</width>
           <height>16777215</height>
          </size>
         </property>
@@ -393,6 +393,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                     <widget class="QLabel" name="label_10">
                      <property name="font">
                       <font>
+                       <pointsize>8</pointsize>
                        <bold>true</bold>
                       </font>
                      </property>
@@ -545,6 +546,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                      <widget class="QLabel" name="label_5">
                       <property name="font">
                        <font>
+                        <pointsize>8</pointsize>
                         <bold>true</bold>
                        </font>
                       </property>
@@ -609,6 +611,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                      <widget class="QLabel" name="label_6">
                       <property name="font">
                        <font>
+                        <pointsize>8</pointsize>
                         <bold>true</bold>
                        </font>
                       </property>
@@ -799,6 +802,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                      <widget class="QLabel" name="labelRelease">
                       <property name="font">
                        <font>
+                        <pointsize>8</pointsize>
                         <bold>true</bold>
                        </font>
                       </property>
@@ -2008,8 +2012,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>100</width>
-                    <height>30</height>
+                    <width>571</width>
+                    <height>60</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_16"/>
@@ -2039,8 +2043,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>100</width>
-                    <height>30</height>
+                    <width>571</width>
+                    <height>168</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_17">

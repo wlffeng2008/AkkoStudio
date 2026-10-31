@@ -838,8 +838,20 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <x>16</x>
                   <y>272</y>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>40</height>
+                 </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
@@ -860,19 +872,19 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <x>438</x>
                   <y>42</y>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
                  <size>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>180</width>
-                  <height>32</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="cursor">
@@ -894,19 +906,19 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <x>490</x>
                   <y>160</y>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
                  <size>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>180</width>
-                  <height>32</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="cursor">
@@ -926,10 +938,22 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="geometry">
                  <rect>
                   <x>14</x>
-                  <y>358</y>
+                  <y>356</y>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>40</height>
+                 </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
@@ -950,8 +974,20 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <x>54</x>
                   <y>42</y>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>40</height>
+                 </size>
                 </property>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
@@ -975,19 +1011,19 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <x>494</x>
                   <y>254</y>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
                  <size>
                   <width>180</width>
-                  <height>34</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>180</width>
-                  <height>32</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="cursor">
@@ -1052,14 +1088,14 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <widget class="QPushButton" name="pushButtonMKeyReset">
                    <property name="minimumSize">
                     <size>
-                     <width>150</width>
-                     <height>34</height>
+                     <width>180</width>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
                      <width>150</width>
-                     <height>32</height>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="cursor">
@@ -9282,8 +9318,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>296</width>
-                     <height>699</height>
+                     <width>98</width>
+                     <height>71</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -9550,8 +9586,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>1029</width>
-                        <height>645</height>
+                        <width>98</width>
+                        <height>73</height>
                        </rect>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_17">

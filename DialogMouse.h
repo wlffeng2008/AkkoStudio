@@ -153,6 +153,8 @@ public:
     void updateImage(const QString&image);
     void startConnect();
 
+    void changeName();
+
 protected:
     bool eventFilter(QObject *watched, QEvent *event) final;
     void changeEvent(QEvent *pEvt) final;
@@ -174,6 +176,7 @@ private:
     QPointF m_dragPosition;
     bool m_dragging = false;
     QPixmap m_devImage;
+    QString m_devName;
 
     int m_nowAngle=0;
 

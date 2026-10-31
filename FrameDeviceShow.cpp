@@ -216,11 +216,10 @@ void FrameDeviceShow::setDevieInfo(DeviceEnumInfo *pDI)
             pDI->strName = "疾风TAN7 Ultra";
             if(extraCfg->mousePid == 0x48) pDI->strName = "空影TAN8 Ultra";
             if(extraCfg->mousePid == 0x47) pDI->strName = "灵动V9 Ultra";
-            //qDebug() << "Reset Device Name:"  << extraCfg->mousePid << pDI->strName ;
         }
     }
 
-    ui->labelDeviceName->setText(pDI->strName);
+    // ui->labelDeviceName->setText(pDI->strName);
 
     QString strRoot = QApplication::applicationDirPath() + "/images/";
     QString strImg  = QString("%1.png").arg(pDI->strName);
@@ -247,6 +246,7 @@ void FrameDeviceShow::updateLangName()
 
     if(getCurrentLang() != 0)
     {
+        name.replace("灵动Key","Ding Macro Keycap");
         name.replace("泰坦","Framer ");
         name.replace("灵动","Dash ");
         name.replace("疾风","GO ");

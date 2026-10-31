@@ -27,7 +27,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
         QString strStyle(R"(
 
             QPushButton {
-                width: 120px;
+                width: 200px;
                 max-height: 32px;
                 min-height: 32px;
                 border-radius: 17px;

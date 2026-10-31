@@ -91,6 +91,12 @@ QPushButton::hover{background-color: #E0E0E0;color:#6329B6;}
       </property>
       <item>
        <widget class="QFrame" name="frameMList">
+        <property name="minimumSize">
+         <size>
+          <width>281</width>
+          <height>604</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>304</width>
@@ -732,6 +738,12 @@ QPushButton:checked{background: black; icon: url(:/images/Correct.png);}</string
                <size>
                 <width>0</width>
                 <height>32</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>70</width>
+                <height>16777215</height>
                </size>
               </property>
               <property name="suffix">

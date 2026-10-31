@@ -2184,6 +2184,10 @@ Deaktiviert: Endet sobald der Auslösehub beim Loslassen überschritten wird.</t
 <context>
     <name>ModuleEfMode</name>
     <message>
+        <source>Frame</source>
+        <translation type="vanished">Frame</translation>
+    </message>
+    <message>
         <location filename="Module/ModuleEfMode.ui" line="53"/>
         <source>灯效模式</source>
         <translation>Light Effect Mode</translation>
@@ -2227,120 +2231,121 @@ Deaktiviert: Endet sobald der Auslösehub beim Loslassen überschritten wird.</t
         <location filename="Module/ModuleEfMode.cpp" line="168"/>
         <source>图案5</source>
         <translation>Pattern 5</translation>
-    </message><message>
+    </message>
+    <message>
         <location filename="Module/ModuleEfMode.cpp" line="9"/>
         <source>常亮</source>
-        <translation>Solid</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="10"/>
         <source>呼吸</source>
-        <translation>Breath</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="11"/>
         <source>流星</source>
-        <translation>Trail</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="12"/>
         <source>涟漪</source>
-        <translation>Ripple</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="13"/>
         <source>极光</source>
-        <translation>Aurora</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="14"/>
         <source>雨滴</source>
-        <translation>Raindrop</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="15"/>
         <source>聚合</source>
-        <translation>Converge</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="16"/>
         <source>川流不息</source>
-        <translation>Flow</translation>
+        <translation type="unfinished">Stream</translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="17"/>
         <source>霓虹</source>
-        <translation>Neon</translation>
+        <translation type="unfinished">Neon</translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="18"/>
         <source>光波</source>
-        <translation>Wave</translation>
+        <translation type="unfinished">Wave</translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="19"/>
         <source>繁星点点</source>
-        <translation>Stars</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="20"/>
         <source>如影随形</source>
-        <translation>Follow</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="21"/>
         <source>正弦光波</source>
-        <translation>Sine Wave</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="22"/>
         <source>彩泉涌动</source>
-        <translation>Color Spring</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="23"/>
         <source>百花争艳</source>
-        <translation>Bloom</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="24"/>
         <source>一石二鸟</source>
-        <translation>Split Flash</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="25"/>
         <source>峰回路转</source>
-        <translation>Turnabout</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="26"/>
         <source>斜风细雨</source>
-        <translation>Drizzle</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="27"/>
         <source>踏雪无痕</source>
-        <translation>Snow Trail</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="28"/>
         <source>层出不穷</source>
-        <translation>Emerge</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="29"/>
         <source>光影</source>
-        <translation>Light Shade</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="30"/>
         <source>音乐律动</source>
-        <translation>Audio Sync</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="31"/>
         <source>自定义</source>
-        <translation>Custom</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="138"/>

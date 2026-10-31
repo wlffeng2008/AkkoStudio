@@ -2340,10 +2340,26 @@ bool DialogMouse::eventFilter(QObject *watched, QEvent *event)
 
 void DialogMouse::updateName(const QString&name)
 {
+    m_devName = name;
+    changeName();
+}
+
+void DialogMouse::changeName()
+{
+    QString name = m_devName;
+    if(getCurrentLang() != 0)
+    {
+        name.replace("灵动Key","Ding Macro Keycap");
+        name.replace("泰坦","Framer ");
+        name.replace("灵动","Dash ");
+        name.replace("疾风","GO ");
+        name.replace("空影","Echo ");
+        name.replace("无名","Model X ");
+        name.replace("虫巢","Nest ");
+    }
     ui->labelName->setText(name);
     ui->labelDeviceName->setText(name);
 }
-
 
 void DialogMouse::updateImage(const QString&image)
 {
@@ -2581,6 +2597,8 @@ void DialogMouse::getAllCfg()
     if(!connected) return;
     if(!serviceDevice) return;
     if(fwUpdating) return;
+
+    changeName();
 
     // 接收器版本
     std::cout << 0 << std::endl;
