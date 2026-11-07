@@ -663,7 +663,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string notr="true">配置1</string>
+                <string>配置1</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -679,7 +679,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string notr="true">配置2</string>
+                <string>配置2</string>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupConfig</string>
@@ -692,7 +692,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string notr="true">配置3</string>
+                <string>配置3</string>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupConfig</string>
@@ -705,7 +705,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string notr="true">配置4</string>
+                <string>配置4</string>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupConfig</string>
@@ -718,7 +718,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string notr="true">配置5</string>
+                <string>配置5</string>
                </property>
                <attribute name="buttonGroup">
                 <string notr="true">buttonGroupConfig</string>
@@ -769,7 +769,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -844,7 +844,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>40</height>
+                  <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -878,7 +878,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="minimumSize">
                  <size>
                   <width>180</width>
-                  <height>40</height>
+                  <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -912,7 +912,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="minimumSize">
                  <size>
                   <width>180</width>
-                  <height>40</height>
+                  <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -946,7 +946,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>40</height>
+                  <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -980,7 +980,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>40</height>
+                  <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -1017,7 +1017,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                 <property name="minimumSize">
                  <size>
                   <width>180</width>
-                  <height>40</height>
+                  <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -1089,7 +1089,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                    <property name="minimumSize">
                     <size>
                      <width>180</width>
-                     <height>40</height>
+                     <height>34</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -1472,7 +1472,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                            </size>
                           </property>
                           <property name="text">
-                           <string>DPI+</string>
+                           <string notr="true">DPI+</string>
                           </property>
                           <attribute name="buttonGroup">
                            <string notr="true">buttonGroupSuper</string>
@@ -1520,7 +1520,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                            </size>
                           </property>
                           <property name="text">
-                           <string>DPI-</string>
+                           <string notr="true">DPI-</string>
                           </property>
                           <attribute name="buttonGroup">
                            <string notr="true">buttonGroupSuper</string>
@@ -1552,7 +1552,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                            </size>
                           </property>
                           <property name="text">
-                           <string>BLE+</string>
+                           <string notr="true">BLE+</string>
                           </property>
                           <attribute name="buttonGroup">
                            <string notr="true">buttonGroupSuper</string>
@@ -1568,7 +1568,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                            </size>
                           </property>
                           <property name="text">
-                           <string>BLE-</string>
+                           <string notr="true">BLE-</string>
                           </property>
                           <attribute name="buttonGroup">
                            <string notr="true">buttonGroupSuper</string>
@@ -4950,7 +4950,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                     <widget class="QWidget" name="page03">
                      <layout class="QVBoxLayout" name="verticalLayout_31">
                       <property name="spacing">
-                       <number>40</number>
+                       <number>20</number>
                       </property>
                       <item>
                        <layout class="QVBoxLayout" name="verticalLayout_29">
@@ -5143,7 +5143,10 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                                <set>Qt::AlignmentFlag::AlignCenter</set>
                               </property>
                               <property name="suffix">
-                               <string> ms</string>
+                               <string notr="true"> ms</string>
+                              </property>
+                              <property name="prefix">
+                               <string notr="true"/>
                               </property>
                               <property name="minimum">
                                <number>1</number>
@@ -5172,6 +5175,9 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                               </property>
                               <property name="suffix">
                                <string/>
+                              </property>
+                              <property name="prefix">
+                               <string notr="true"/>
                               </property>
                               <property name="minimum">
                                <number>1</number>
@@ -5316,7 +5322,10 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                                <set>Qt::AlignmentFlag::AlignCenter</set>
                               </property>
                               <property name="suffix">
-                               <string/>
+                               <string notr="true"/>
+                              </property>
+                              <property name="prefix">
+                               <string notr="true"/>
                               </property>
                               <property name="minimum">
                                <number>1</number>
@@ -9318,7 +9327,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>98</width>
+                     <width>81</width>
                      <height>71</height>
                     </rect>
                    </property>
@@ -9586,7 +9595,7 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>98</width>
+                        <width>81</width>
                         <height>73</height>
                        </rect>
                       </property>
@@ -10339,18 +10348,18 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupBHOP"/>
-  <buttongroup name="buttonGroupKeyType"/>
-  <buttongroup name="buttonGroupSuper"/>
-  <buttongroup name="buttonGroupConfig"/>
-  <buttongroup name="buttonGroupDpiSelect"/>
-  <buttongroup name="buttonGroupRgbSpeed"/>
-  <buttongroup name="buttonGroupShortcut"/>
-  <buttongroup name="buttonGroupMain"/>
-  <buttongroup name="buttonGroupClr"/>
-  <buttongroup name="buttonGroupY"/>
   <buttongroup name="buttonGroupRgbEffect"/>
   <buttongroup name="buttonGroupX"/>
+  <buttongroup name="buttonGroupShortcut"/>
   <buttongroup name="buttonGroupKeySet"/>
+  <buttongroup name="buttonGroupConfig"/>
+  <buttongroup name="buttonGroupMain"/>
+  <buttongroup name="buttonGroupBHOP"/>
+  <buttongroup name="buttonGroupKeyType"/>
+  <buttongroup name="buttonGroupDpiSelect"/>
+  <buttongroup name="buttonGroupClr"/>
+  <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupSuper"/>
  </buttongroups>
 </ui>

@@ -290,7 +290,7 @@
           </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0">
            <property name="spacing">
             <number>15</number>
            </property>
@@ -357,14 +357,14 @@
               <widget class="ToggleButton" name="checkBoxRam">
                <property name="minimumSize">
                 <size>
-                 <width>48</width>
-                 <height>0</height>
+                 <width>52</width>
+                 <height>24</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>48</width>
-                 <height>16777215</height>
+                 <width>52</width>
+                 <height>24</height>
                 </size>
                </property>
                <property name="cursor">

@@ -253,6 +253,7 @@ void FrameDeviceShow::updateLangName()
         name.replace("空影","Echo ");
         name.replace("无名","Model X ");
         name.replace("虫巢","Nest ");
+        name.replace("破晓S9","Akko Headset S9");
     }
 
     ui->labelDeviceName->setText(name);

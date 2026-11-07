@@ -54,7 +54,7 @@ void ModuleGeneralMasker::setContent(QWidget *cotnent, QWidget *pDest)
         if(pDest)
         {
             geoMetry = pDest->frameGeometry(); // parent->mapToGlobal(parent->pos());
-            QPoint globalPos = getGlobalPos(pDest);
+            QPoint globalPos = pDest->mapToGlobal(QPoint(0,0));// getGlobalPos(pDest);
             geoMetry = QRect(globalPos.x(),globalPos.y(),geoMetry.width(),geoMetry.height()).adjusted(1,1,-1,-1);
         }
         setGeometry(geoMetry);
@@ -90,6 +90,7 @@ void ModuleGeneralMasker::paintEvent(QPaintEvent *event)
 void ModuleGeneralMasker::showEvent(QShowEvent *event)
 {
     raise();
+    setFocus();
     QDialog::showEvent(event);
 }
 

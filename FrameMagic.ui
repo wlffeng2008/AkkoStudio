@@ -289,7 +289,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
             <string notr="true">#page4,#page3,#page2,#page1,#page0{background-color: #F6F6F6;border-radius:32px;}</string>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="page0">
             <property name="styleSheet">
@@ -1210,6 +1210,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                     <property name="text">
                      <string>炫光</string>
                     </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -1256,6 +1259,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <widget class="QLabel" name="labelName1">
                     <property name="text">
                      <string>闪电</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1304,6 +1310,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                     <property name="text">
                      <string>星芒磁轴</string>
                     </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -1350,6 +1359,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <widget class="QLabel" name="labelName3">
                     <property name="text">
                      <string>磁玉</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1398,6 +1410,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                     <property name="text">
                      <string>磁玉Pro</string>
                     </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -1444,6 +1459,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <widget class="QLabel" name="labelName5">
                     <property name="text">
                      <string>磁玉Gaming</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1492,6 +1510,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                     <property name="text">
                      <string>天王</string>
                     </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -1538,6 +1559,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <widget class="QLabel" name="labelName7">
                     <property name="text">
                      <string>万磁王</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -2012,8 +2036,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>491</width>
-                    <height>60</height>
+                    <width>18</width>
+                    <height>18</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_16"/>
@@ -2043,8 +2067,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>491</width>
-                    <height>168</height>
+                    <width>16</width>
+                    <height>16</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -2108,7 +2132,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupMT"/>
   <buttongroup name="buttonGroupStab"/>
+  <buttongroup name="buttonGroupMT"/>
  </buttongroups>
 </ui>

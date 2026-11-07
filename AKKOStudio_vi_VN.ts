@@ -194,773 +194,854 @@
         <translation>Cấu hình của tôi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="848"/>
+        <location filename="DialogMouse.ui" line="666"/>
+        <source>配置1</source>
+        <translation>Cấu hình 1</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="682"/>
+        <source>配置2</source>
+        <translation>Cấu hình 2</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="695"/>
+        <source>配置3</source>
+        <translation>Cấu hình 3</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="708"/>
+        <source>配置4</source>
+        <translation>Cấu hình 4</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="721"/>
+        <source>配置5</source>
+        <translation>Cấu hình 5</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="860"/>
         <source>前进键</source>
         <translation>Nút tiến</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="882"/>
-        <location filename="DialogMouse.ui" line="1327"/>
+        <location filename="DialogMouse.ui" line="894"/>
+        <location filename="DialogMouse.ui" line="1363"/>
+        <location filename="DialogMouse.cpp" line="2312"/>
         <source>右键</source>
         <translation>Nút phải</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="916"/>
-        <location filename="DialogMouse.ui" line="1471"/>
+        <location filename="DialogMouse.ui" line="928"/>
+        <location filename="DialogMouse.ui" line="1507"/>
+        <location filename="DialogMouse.cpp" line="2313"/>
         <source>中键</source>
         <translation>Nút giữa</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="938"/>
+        <location filename="DialogMouse.ui" line="962"/>
         <source>后退键</source>
         <translation>Nút lùi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="960"/>
-        <location filename="DialogMouse.ui" line="1375"/>
+        <location filename="DialogMouse.ui" line="996"/>
+        <location filename="DialogMouse.ui" line="1411"/>
+        <location filename="DialogMouse.cpp" line="2311"/>
         <source>左键</source>
         <translation>Nút trái</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="997"/>
+        <location filename="DialogMouse.ui" line="1033"/>
         <source>DPI键</source>
         <translation>Nút DPI</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1044"/>
+        <location filename="DialogMouse.ui" line="1080"/>
         <source>左右键互换</source>
         <translation>Đổi nút trái và phải</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1069"/>
+        <location filename="DialogMouse.ui" line="1105"/>
         <source>重置按键</source>
         <translation>Đặt lại phím</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1198"/>
+        <location filename="DialogMouse.ui" line="1234"/>
         <source>系统</source>
         <translation>Hệ thống</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1223"/>
+        <location filename="DialogMouse.ui" line="1259"/>
         <source>键盘</source>
         <translation>Bàn phím</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1245"/>
+        <location filename="DialogMouse.ui" line="1281"/>
         <source>控制</source>
         <translation>Điều khiển</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1267"/>
+        <location filename="DialogMouse.ui" line="1303"/>
         <source>特殊</source>
         <translation>Đặc biệt</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1293"/>
+        <location filename="DialogMouse.ui" line="1329"/>
         <source>鼠标按键：</source>
         <translation>Phím chuột:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1311"/>
+        <location filename="DialogMouse.ui" line="1347"/>
+        <location filename="DialogMouse.cpp" line="2317"/>
         <source>上滚</source>
         <translation>Lăn lên</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1343"/>
+        <location filename="DialogMouse.ui" line="1379"/>
+        <location filename="DialogMouse.cpp" line="2320"/>
         <source>右滚</source>
         <translation>Lăn phải</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1359"/>
+        <location filename="DialogMouse.ui" line="1395"/>
+        <location filename="DialogMouse.cpp" line="2315"/>
         <source>前进</source>
         <translation>Tiến</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1391"/>
+        <location filename="DialogMouse.ui" line="1427"/>
+        <location filename="DialogMouse.cpp" line="2319"/>
         <source>左滚</source>
         <translation>Lăn trái</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1407"/>
+        <location filename="DialogMouse.ui" line="1443"/>
+        <location filename="DialogMouse.cpp" line="2314"/>
         <source>后退</source>
         <translation>Lùi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1423"/>
+        <location filename="DialogMouse.ui" line="1459"/>
+        <location filename="DialogMouse.cpp" line="2322"/>
         <source>DPI循环</source>
         <translation>Lặp DPI</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1439"/>
+        <location filename="DialogMouse.cpp" line="2323"/>
         <source>DPI+</source>
         <translation>DPI +</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1455"/>
+        <location filename="DialogMouse.ui" line="1491"/>
+        <location filename="DialogMouse.cpp" line="2318"/>
         <source>下滚</source>
         <translation>Lăn xuống</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1487"/>
+        <location filename="DialogMouse.cpp" line="2324"/>
         <source>DPI-</source>
         <translation>DPI -</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1503"/>
+        <location filename="DialogMouse.ui" line="1539"/>
+        <location filename="DialogMouse.cpp" line="2325"/>
         <source>BLE循环</source>
         <translation>Lặp BLE</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1519"/>
+        <location filename="DialogMouse.cpp" line="2326"/>
         <source>BLE+</source>
         <translation>BLE +</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1535"/>
+        <location filename="DialogMouse.cpp" line="2327"/>
         <source>BLE-</source>
         <translation>BLE -</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1551"/>
+        <location filename="DialogMouse.ui" line="1587"/>
+        <location filename="DialogMouse.cpp" line="2316"/>
         <source>底部按钮</source>
         <translation>Nút phía dưới</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1567"/>
+        <location filename="DialogMouse.ui" line="1603"/>
+        <location filename="DialogMouse.cpp" line="2321"/>
         <source>火力按钮</source>
         <translation>Nút bắn nhanh</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1595"/>
+        <location filename="DialogMouse.ui" line="1631"/>
         <source>多媒体按键：</source>
         <translation>Phím đa phương tiện:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1613"/>
+        <location filename="DialogMouse.ui" line="1649"/>
+        <location filename="DialogMouse.cpp" line="2337"/>
         <source>停止</source>
         <translation>Dừng</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1629"/>
+        <location filename="DialogMouse.ui" line="1665"/>
+        <location filename="DialogMouse.cpp" line="2345"/>
         <source>网页停止</source>
         <translation>Dừng trang web</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1645"/>
+        <location filename="DialogMouse.ui" line="1681"/>
+        <location filename="DialogMouse.cpp" line="2347"/>
         <source>网页后退</source>
         <translation>Lùi trang</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1661"/>
+        <location filename="DialogMouse.ui" line="1697"/>
+        <location filename="DialogMouse.cpp" line="2344"/>
         <source>收藏夹</source>
         <translation>Dấu trang</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1677"/>
+        <location filename="DialogMouse.ui" line="1713"/>
+        <location filename="DialogMouse.cpp" line="2334"/>
         <source>我的电脑</source>
         <translation>Máy tính của tôi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1693"/>
+        <location filename="DialogMouse.ui" line="1729"/>
+        <location filename="DialogMouse.cpp" line="2330"/>
         <source>音量+</source>
         <translation>Âm lượng +</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1709"/>
+        <location filename="DialogMouse.ui" line="1745"/>
+        <location filename="DialogMouse.cpp" line="2341"/>
         <source>主页</source>
         <translation>Trang chủ</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1725"/>
+        <location filename="DialogMouse.ui" line="1761"/>
+        <location filename="DialogMouse.cpp" line="2329"/>
         <source>亮度-</source>
         <translation>Độ sáng -</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1741"/>
+        <location filename="DialogMouse.ui" line="1777"/>
+        <location filename="DialogMouse.cpp" line="2338"/>
         <source>暂停</source>
         <translation>Tạm dừng</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1757"/>
+        <location filename="DialogMouse.ui" line="1793"/>
+        <location filename="DialogMouse.cpp" line="2339"/>
         <source>上一首</source>
         <translation>Bài trước</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1773"/>
+        <location filename="DialogMouse.ui" line="1809"/>
+        <location filename="DialogMouse.cpp" line="2340"/>
         <source>下一首</source>
         <translation>Bài tiếp</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1789"/>
+        <location filename="DialogMouse.ui" line="1825"/>
+        <location filename="DialogMouse.cpp" line="2331"/>
         <source>音量-</source>
         <translation>Âm lượng -</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1805"/>
+        <location filename="DialogMouse.ui" line="1841"/>
+        <location filename="DialogMouse.cpp" line="2342"/>
         <source>搜索</source>
         <translation>Tìm kiếm</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1821"/>
+        <location filename="DialogMouse.ui" line="1857"/>
+        <location filename="DialogMouse.cpp" line="2333"/>
         <source>计算器</source>
         <translation>Máy tính</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1837"/>
+        <location filename="DialogMouse.ui" line="1873"/>
+        <location filename="DialogMouse.cpp" line="2346"/>
         <source>网页前进</source>
         <translation>Tiến trang</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1853"/>
+        <location filename="DialogMouse.ui" line="1889"/>
+        <location filename="DialogMouse.cpp" line="2343"/>
         <source>刷新</source>
         <translation>Làm mới</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1869"/>
+        <location filename="DialogMouse.ui" line="1905"/>
+        <location filename="DialogMouse.cpp" line="2332"/>
         <source>静音</source>
         <translation>Tắt tiếng</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1885"/>
+        <location filename="DialogMouse.ui" line="1921"/>
+        <location filename="DialogMouse.cpp" line="2336"/>
         <source>播放器</source>
         <translation>Trình phát</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1901"/>
+        <location filename="DialogMouse.ui" line="1937"/>
+        <location filename="DialogMouse.cpp" line="2328"/>
         <source>亮度+</source>
         <translation>Độ sáng +</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1917"/>
+        <location filename="DialogMouse.ui" line="1953"/>
+        <location filename="DialogMouse.cpp" line="2335"/>
         <source>邮件</source>
         <translation>Thư điện tử</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8643"/>
+        <location filename="DialogMouse.ui" line="8688"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8747"/>
+        <location filename="DialogMouse.ui" line="8792"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5003"/>
-        <location filename="DialogMouse.ui" line="8858"/>
+        <location filename="DialogMouse.ui" line="5039"/>
+        <location filename="DialogMouse.ui" line="8903"/>
         <source>+</source>
         <translation>+</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="4924"/>
+        <location filename="DialogMouse.ui" line="4960"/>
         <source>组合键:</source>
         <translation>Phím kết hợp:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5019"/>
+        <location filename="DialogMouse.ui" line="5055"/>
         <source>按任意键</source>
         <translation>Nhấn bất kỳ phím nào</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5029"/>
-        <location filename="DialogMouse.ui" line="5178"/>
-        <location filename="DialogMouse.ui" line="5356"/>
-        <location filename="DialogMouse.ui" line="9517"/>
+        <location filename="DialogMouse.ui" line="5065"/>
+        <location filename="DialogMouse.ui" line="5220"/>
+        <location filename="DialogMouse.ui" line="5401"/>
+        <location filename="DialogMouse.ui" line="9562"/>
         <source>保存</source>
         <translation>Lưu</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5042"/>
+        <location filename="DialogMouse.ui" line="5078"/>
         <source>火力键:</source>
         <translation>Nút bắn nhanh:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5074"/>
+        <location filename="DialogMouse.ui" line="5110"/>
         <source>保持点击:</source>
         <translation>Giữ nhấn:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5091"/>
+        <location filename="DialogMouse.ui" line="5127"/>
         <source>点击间隔:</source>
         <translation>Khoảng thời gian nhấn:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5110"/>
         <source> ms</source>
-        <translation> ms</translation>
+        <translation type="vanished"> ms</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5157"/>
+        <location filename="DialogMouse.ui" line="5199"/>
         <source>点击次数:</source>
         <translation>Số lần nhấn:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5191"/>
+        <location filename="DialogMouse.ui" line="5233"/>
         <source>宏循环方式:</source>
         <translation>Chế độ lặp macro:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5206"/>
+        <location filename="DialogMouse.ui" line="5248"/>
         <source>正常播放</source>
         <translation>Chạy bình thường</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5216"/>
+        <location filename="DialogMouse.ui" line="5258"/>
         <source>释放停止</source>
         <translation>Dừng khi nhả</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5226"/>
+        <location filename="DialogMouse.ui" line="5268"/>
         <source>释放立即停止</source>
         <translation>Dừng ngay khi nhả</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5239"/>
+        <location filename="DialogMouse.ui" line="5281"/>
         <source>触发停止</source>
         <translation>Dừng khi kích hoạt</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5249"/>
+        <location filename="DialogMouse.ui" line="5291"/>
         <source>按任意键停止</source>
         <translation>Dừng bằng phím bất kỳ</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5267"/>
+        <location filename="DialogMouse.ui" line="5309"/>
         <source>固定循环次数</source>
         <translation>Số lần lặp cố định</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5327"/>
+        <location filename="DialogMouse.ui" line="5372"/>
         <source>宏列表:</source>
         <translation>Danh sách macro:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5346"/>
+        <location filename="DialogMouse.ui" line="5391"/>
         <source>录制新宏</source>
         <translation>Ghi macro mới</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5403"/>
+        <location filename="DialogMouse.ui" line="5448"/>
         <source>开启后通过 左中右 键快捷切换DPI</source>
         <translation>Bật để chuyển DPI nhanh bằng nút trái, giữa, phải</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5406"/>
+        <location filename="DialogMouse.ui" line="5451"/>
         <source>快捷切换DPI</source>
         <translation>Chuyển DPI nhanh</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5426"/>
+        <location filename="DialogMouse.ui" line="5471"/>
         <source>X轴/Y轴独立设定</source>
         <translation>Cài đặt riêng trục X / Y</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5451"/>
+        <location filename="DialogMouse.ui" line="5496"/>
         <source>X轴DPI设定</source>
         <translation>Cài đặt DPI trục X</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5941"/>
+        <location filename="DialogMouse.ui" line="5986"/>
         <source>Y轴DPI设定</source>
         <translation>Cài đặt DPI trục Y</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="6414"/>
+        <location filename="DialogMouse.ui" line="6459"/>
         <source>BHOP开关</source>
         <translation>Bật/tắt BHOP</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="6622"/>
+        <location filename="DialogMouse.ui" line="6667"/>
         <source>BHOP灵敏度</source>
         <translation>Độ nhạy BHOP</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="6640"/>
+        <location filename="DialogMouse.ui" line="6685"/>
         <source>灯光亮度</source>
         <translation>Độ sáng đèn</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7079"/>
+        <location filename="DialogMouse.ui" line="7124"/>
         <source>灯光效果</source>
         <translation>Hiệu ứng đèn</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7207"/>
+        <location filename="DialogMouse.ui" line="7252"/>
         <source>预设颜色</source>
         <translation>Màu cài sẵn</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7271"/>
+        <location filename="DialogMouse.ui" line="7316"/>
         <source>DPI档位</source>
         <translation>Cấp DPI</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7286"/>
+        <location filename="DialogMouse.ui" line="7331"/>
         <source>关闭</source>
         <translation>Tắt</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7299"/>
+        <location filename="DialogMouse.ui" line="7344"/>
         <source>常亮</source>
         <translation>Sáng liên tục</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7312"/>
+        <location filename="DialogMouse.ui" line="7357"/>
         <source>呼吸</source>
         <translation>Nhịp thở</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7340"/>
+        <location filename="DialogMouse.ui" line="7385"/>
         <source>呼吸速度</source>
         <translation>Tốc độ nhịp thở</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7816"/>
+        <location filename="DialogMouse.ui" line="7861"/>
         <source>直线校准</source>
         <translation>Hiệu chuẩn đường thẳng</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7864"/>
+        <location filename="DialogMouse.ui" line="7909"/>
         <source>移动同步</source>
         <translation>Đồng bộ di chuyển</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7912"/>
+        <location filename="DialogMouse.ui" line="7957"/>
         <source>波纹控制</source>
         <translation>Điều khiển gợn sóng</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7960"/>
+        <location filename="DialogMouse.ui" line="8005"/>
         <source>20000FPS</source>
         <translation>20000FPS</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8008"/>
+        <location filename="DialogMouse.ui" line="8053"/>
         <source>移动关闭LED</source>
         <translation>Tắt LED khi di chuyển</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8047"/>
+        <location filename="DialogMouse.ui" line="8092"/>
         <source>轮询率</source>
         <translation>Tần suất truy vấn</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8202"/>
+        <location filename="DialogMouse.ui" line="8247"/>
         <source>按键延迟</source>
         <translation>Độ trễ phím</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8359"/>
+        <location filename="DialogMouse.ui" line="8404"/>
         <source>休眠设置</source>
         <translation>Cài đặt ngủ</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8590"/>
+        <location filename="DialogMouse.ui" line="8635"/>
         <source>角度传感器</source>
         <translation>Cảm biến góc</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8618"/>
+        <location filename="DialogMouse.ui" line="8663"/>
         <source>启用：</source>
         <translation>Bật:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8636"/>
+        <location filename="DialogMouse.ui" line="8681"/>
         <source>当前角度:</source>
         <translation>Góc hiện tại:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8671"/>
+        <location filename="DialogMouse.ui" line="8716"/>
         <source>0°</source>
         <translation>0°</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8911"/>
+        <location filename="DialogMouse.ui" line="8956"/>
         <source>静默高度</source>
         <translation>Chiều cao ngắt cảm</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9160"/>
+        <location filename="DialogMouse.ui" line="9205"/>
         <source>宏列表</source>
         <translation>Danh sách macro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9189"/>
+        <location filename="DialogMouse.ui" line="9234"/>
         <source>新建宏</source>
         <translation>Tạo macro mới</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9407"/>
+        <location filename="DialogMouse.ui" line="9452"/>
         <source>宏名称</source>
         <translation>Tên macro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9421"/>
+        <location filename="DialogMouse.ui" line="9466"/>
         <source>占用: 0 / 70</source>
         <translation>Đã dùng: 0 / 70</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9450"/>
+        <location filename="DialogMouse.ui" line="9495"/>
         <source>删除</source>
         <translation>Xóa</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9482"/>
+        <location filename="DialogMouse.ui" line="9527"/>
         <source>清空</source>
         <translation>Dọn sạch</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9662"/>
+        <location filename="DialogMouse.ui" line="9707"/>
         <source>开始录制</source>
         <translation>Bắt đầu ghi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9700"/>
+        <location filename="DialogMouse.ui" line="9745"/>
         <source>插入按键</source>
         <translation>Chèn phím</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9720"/>
+        <location filename="DialogMouse.ui" line="9765"/>
         <source>延迟时长:</source>
         <translation>Thời gian trễ:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9767"/>
+        <location filename="DialogMouse.ui" line="9812"/>
         <source>应用</source>
         <translation>Áp dụng</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9804"/>
+        <location filename="DialogMouse.ui" line="9849"/>
         <source>设备规格</source>
         <translation>Thông số thiết bị</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9824"/>
+        <location filename="DialogMouse.ui" line="9869"/>
         <source>设备名称:</source>
         <translation>Tên thiết bị:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9850"/>
+        <location filename="DialogMouse.ui" line="9895"/>
         <source>鼠标固件版本:</source>
         <translation>Phiên bản firmware chuột:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9876"/>
+        <location filename="DialogMouse.ui" line="9921"/>
         <source>无线连接器固件版本:</source>
         <translation>Phiên bản firmware thu không dây:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9902"/>
+        <location filename="DialogMouse.ui" line="9947"/>
         <source>当前软件版本:</source>
         <translation>Phiên bản phần mềm hiện tại:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9980"/>
+        <location filename="DialogMouse.ui" line="10025"/>
         <source>鼠标固件更新</source>
         <translation>Cập nhật firmware chuột</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9996"/>
+        <location filename="DialogMouse.ui" line="10041"/>
         <source>无线连接器固件更新</source>
         <translation>Cập nhật firmware thu không dây</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="10012"/>
+        <location filename="DialogMouse.ui" line="10057"/>
         <source>恢复出厂设置</source>
         <translation>Khôi phục cài đặt gốc</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="517"/>
-        <location filename="DialogMouse.cpp" line="1744"/>
-        <location filename="DialogMouse.cpp" line="1809"/>
-        <location filename="DialogMouse.cpp" line="1833"/>
-        <location filename="DialogMouse.cpp" line="1907"/>
+        <location filename="DialogMouse.cpp" line="376"/>
+        <location filename="DialogMouse.cpp" line="915"/>
+        <location filename="DialogMouse.cpp" line="993"/>
+        <location filename="DialogMouse.cpp" line="1008"/>
+        <location filename="DialogMouse.cpp" line="1082"/>
         <source>占用</source>
         <translation>Đã dùng</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="530"/>
+        <location filename="DialogMouse.cpp" line="391"/>
         <source>新宏</source>
         <translation>Macro mới</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="869"/>
-        <location filename="DialogMouse.cpp" line="967"/>
-        <location filename="DialogMouse.cpp" line="988"/>
-        <location filename="DialogMouse.cpp" line="997"/>
-        <location filename="DialogMouse.cpp" line="1081"/>
-        <location filename="DialogMouse.cpp" line="1785"/>
-        <location filename="DialogMouse.cpp" line="1826"/>
-        <location filename="DialogMouse.cpp" line="1846"/>
-        <location filename="DialogMouse.cpp" line="1865"/>
-        <location filename="DialogMouse.cpp" line="1925"/>
+        <location filename="DialogMouse.cpp" line="623"/>
+        <source>正在录制宏,请在此界面按下/松开鼠标按键或者键盘按键......</source>
+        <translation>Đang ghi macro. Trong cửa sổ này, hãy nhấn nút chuột hoặc phím bàn phím rồi thả ra…</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="627"/>
+        <source>停止录制</source>
+        <translation>Dừng ghi</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="645"/>
+        <source>按下</source>
+        <translation>Nhấn</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="645"/>
+        <source>松开</source>
+        <translation>Thả</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="781"/>
+        <location filename="DialogMouse.cpp" line="956"/>
+        <location filename="DialogMouse.cpp" line="1001"/>
+        <location filename="DialogMouse.cpp" line="1021"/>
+        <location filename="DialogMouse.cpp" line="1040"/>
+        <location filename="DialogMouse.cpp" line="1138"/>
+        <location filename="DialogMouse.cpp" line="1159"/>
+        <location filename="DialogMouse.cpp" line="1168"/>
+        <location filename="DialogMouse.cpp" line="1250"/>
+        <location filename="DialogMouse.cpp" line="1835"/>
         <source>提示</source>
         <translation>Thông báo</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="869"/>
+        <location filename="DialogMouse.cpp" line="781"/>
         <source>首先选择或者新建一个宏！</source>
         <translation>Vui lòng chọn hoặc tạo macro trước!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="943"/>
+        <location filename="DialogMouse.cpp" line="1114"/>
         <source>请选择升级文件:</source>
         <translation>Chọn tệp nâng cấp:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="951"/>
+        <location filename="DialogMouse.cpp" line="1122"/>
         <source>请选择一个Bin文件...</source>
         <translation>Chọn tệp Bin...</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="953"/>
+        <location filename="DialogMouse.cpp" line="1124"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="959"/>
+        <location filename="DialogMouse.cpp" line="1130"/>
         <source>固件文件 (*.bin *.hex *.fw);;所有文件 (*.*)</source>
         <translation>Tệp firmware (*.bin *.hex *.fw);;Tất cả tệp (*.*)</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="960"/>
+        <location filename="DialogMouse.cpp" line="1131"/>
         <source>选择固件文件</source>
         <translation>Chọn tệp firmware</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="967"/>
+        <location filename="DialogMouse.cpp" line="1138"/>
         <source>固件文件无法识别！</source>
         <translation>Không nhận dạng được tệp firmware!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="988"/>
+        <location filename="DialogMouse.cpp" line="1159"/>
         <source>固件升级失败！</source>
         <translation>Nâng cấp firmware thất bại!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="997"/>
+        <location filename="DialogMouse.cpp" line="1168"/>
         <source>固件升级成功！</source>
         <translation>Nâng cấp firmware thành công!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1008"/>
+        <location filename="DialogMouse.cpp" line="1179"/>
         <source>开始更新</source>
         <translation>Bắt đầu cập nhật</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1026"/>
+        <location filename="DialogMouse.cpp" line="1197"/>
         <source>完成</source>
         <translation>Hoàn thành</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1081"/>
+        <location filename="DialogMouse.cpp" line="1250"/>
         <source>鼠标必须保留一个按键有左键功能！</source>
         <translation>Chuột phải giữ lại một nút có chức năng nút trái!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1164"/>
+        <location filename="DialogMouse.cpp" line="1333"/>
         <source>快捷键 设置成功！</source>
         <translation>Cài đặt phím tắt thành công!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1175"/>
+        <location filename="DialogMouse.cpp" line="1344"/>
         <source>火力键 设置成功！</source>
         <translation>Cài đặt nút bắn nhanh thành công!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1217"/>
+        <location filename="DialogMouse.cpp" line="1386"/>
         <source>宏 设置成功！</source>
         <translation>Cài đặt macro thành công!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1229"/>
+        <location filename="DialogMouse.cpp" line="1398"/>
         <source>按键重置 成功！</source>
         <translation>Đặt lại phím thành công!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1241"/>
+        <location filename="DialogMouse.cpp" line="1410"/>
         <source>改键成功！</source>
         <translation>Thay đổi phím thành công!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1785"/>
+        <location filename="DialogMouse.cpp" line="956"/>
         <source>首先选择或者新建一个宏，请重试！</source>
         <translation>Vui lòng chọn hoặc tạo macro trước, thử lại!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1816"/>
         <source> 正在录制</source>
-        <translation> Đang ghi</translation>
+        <translation type="vanished"> Đang ghi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1816"/>
         <source> 开始录制</source>
-        <translation> Bắt đầu ghi</translation>
+        <translation type="vanished"> Bắt đầu ghi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1826"/>
-        <location filename="DialogMouse.cpp" line="1846"/>
+        <location filename="DialogMouse.cpp" line="1001"/>
+        <location filename="DialogMouse.cpp" line="1021"/>
         <source>没有选中 宏，请重试！</source>
         <translation>Chưa chọn macro, vui lòng thử lại!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1865"/>
+        <location filename="DialogMouse.cpp" line="1040"/>
         <source>没有选中的宏动作，请重试！</source>
         <translation>Chưa chọn hành động macro, vui lòng thử lại!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1925"/>
+        <location filename="DialogMouse.cpp" line="1835"/>
         <source>确定要恢复出厂设置吗？</source>
         <translation>Bạn có chắc muốn khôi phục cài đặt gốc?</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1978"/>
+        <location filename="DialogMouse.cpp" line="1890"/>
         <source>普通按键: </source>
         <translation>Phím thông thường: </translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1996"/>
+        <location filename="DialogMouse.cpp" line="1908"/>
         <source>组合键</source>
         <translation>Phím kết hợp</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2007"/>
+        <location filename="DialogMouse.cpp" line="1920"/>
+        <location filename="DialogMouse.cpp" line="1921"/>
         <source>火力键</source>
         <translation>Nút bắn nhanh</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2008"/>
+        <location filename="DialogMouse.cpp" line="1922"/>
         <source>点击次数</source>
         <translation>Số lần nhấn</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2009"/>
+        <location filename="DialogMouse.cpp" line="1923"/>
         <source>点击间隔</source>
         <translation>Khoảng nhấn</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2010"/>
+        <location filename="DialogMouse.cpp" line="1924"/>
         <source>是</source>
         <translation>Có</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2010"/>
+        <location filename="DialogMouse.cpp" line="1924"/>
         <source>否</source>
         <translation>Không</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2021"/>
+        <location filename="DialogMouse.cpp" line="1935"/>
+        <source>宏</source>
+        <translation>Macro</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1936"/>
         <source>宏设置:</source>
         <translation>Cài đặt macro:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2022"/>
+        <location filename="DialogMouse.cpp" line="1937"/>
         <source>类型:</source>
         <translation>Loại:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2023"/>
+        <location filename="DialogMouse.cpp" line="1938"/>
         <source>动作数量:</source>
         <translation>Số hành động:</translation>
     </message>
@@ -1165,7 +1246,7 @@
         <translation>Cài đặt macro</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="355"/>
+        <location filename="FrameKeySetting.ui" line="343"/>
         <source>动态键程(DKS)</source>
         <translation>Hành trình động (DKS)</translation>
     </message>
@@ -1195,113 +1276,120 @@
         <translation>*Trước tiên nhấn chọn phím ở trên, trong cửa sổ bật lên có thể chọn phím tổ hợp, macro, chức năng hệ thống, chức năng chuột để cấu hình lại</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="652"/>
+        <location filename="FrameKeySetting.ui" line="381"/>
+        <location filename="FrameKeySetting.ui" line="890"/>
+        <location filename="FrameKeySetting.ui" line="965"/>
+        <location filename="FrameKeySetting.ui" line="1128"/>
+        <source>确定</source>
+        <translation>Đồng ý</translation>
+    </message>
+    <message>
+        <location filename="FrameKeySetting.ui" line="640"/>
         <source>按住/单击(MT)</source>
         <translation>Nhấn giữ / Nhấn một lần (MT)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="679"/>
+        <location filename="FrameKeySetting.ui" line="667"/>
         <source>单击</source>
         <translation>Nhấn một lần</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="716"/>
+        <location filename="FrameKeySetting.ui" line="704"/>
         <source>按住</source>
         <translation>Nhấn giữ</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="735"/>
+        <location filename="FrameKeySetting.ui" line="723"/>
         <source>选定上方键位，可通过选择单击及长按两种触发模式，设置两个功能（支持组合键）</source>
         <translation>Chọn phím ở trên, có thể cài 2 chức năng với 2 chế độ kích hoạt: nhấn một lần và nhấn giữ (hỗ trợ phím tổ hợp)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="764"/>
+        <location filename="FrameKeySetting.ui" line="752"/>
         <source>调整触发“按住&quot;键所需的时间</source>
         <translation>Điều chỉnh thời gian nhận diện nhấn giữ</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="860"/>
+        <location filename="FrameKeySetting.ui" line="848"/>
         <source>20 ms</source>
         <translation>20 ms</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="942"/>
+        <location filename="FrameKeySetting.ui" line="930"/>
         <source>切换开关(TGL)</source>
         <translation>Chế độ bật/tắt (TGL)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1008"/>
+        <location filename="FrameKeySetting.ui" line="996"/>
         <source>未设置功能</source>
         <translation>Chưa cài chức năng</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1027"/>
+        <location filename="FrameKeySetting.ui" line="1015"/>
         <source>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</source>
         <translation>Chọn phím ở trên, có thể cài 2 chức năng với 2 chế độ kích hoạt: nhấn liên tục và nhấn giữ</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1089"/>
+        <location filename="FrameKeySetting.ui" line="1077"/>
         <source>连点</source>
         <translation>Nhấn liên tục</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1105"/>
+        <location filename="FrameKeySetting.ui" line="1093"/>
         <source>长按</source>
         <translation>Nhấn giữ</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1111"/>
+        <location filename="FrameKeySetting.ui" line="1099"/>
         <location filename="FrameKeySetting.cpp" line="537"/>
         <source>SnapKey</source>
         <translation>SnapKey</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1242"/>
+        <location filename="FrameKeySetting.ui" line="1230"/>
         <source>绑定2个选定按键(分别从上面选择)，当两个按键被同时按下时，以最后按下的按键为准</source>
         <translation>Liên kết 2 phím đã chọn (chọn ở trên), khi 2 phím được nhấn cùng lúc, sẽ ưu tiên phím được nhấn sau cùng</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1261"/>
+        <location filename="FrameKeySetting.ui" line="1249"/>
         <source>选择A键</source>
         <translation>Chọn phím A</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1277"/>
+        <location filename="FrameKeySetting.ui" line="1265"/>
         <source>选择B键</source>
         <translation>Chọn phím B</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1336"/>
+        <location filename="FrameKeySetting.ui" line="1328"/>
         <source>键盘回报率</source>
         <translation>Tốc độ báo cáo bàn phím</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1388"/>
+        <location filename="FrameKeySetting.ui" line="1380"/>
         <source>2.4G关闭背光</source>
         <translation>Tắt đèn nền ở chế độ 2.4G</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1440"/>
+        <location filename="FrameKeySetting.ui" line="1432"/>
         <source>蓝牙关闭背光</source>
         <translation>Tắt đèn nền ở chế độ Bluetooth</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1498"/>
+        <location filename="FrameKeySetting.ui" line="1490"/>
         <source>2.4G深度睡眠时间</source>
         <translation>Thời gian ngủ sâu chế độ 2.4G</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1578"/>
+        <location filename="FrameKeySetting.ui" line="1570"/>
         <source>蓝牙深度睡眠时间</source>
         <translation>Thời gian ngủ sâu chế độ Bluetooth</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1658"/>
+        <location filename="FrameKeySetting.ui" line="1650"/>
         <source>按键防抖等级设置</source>
         <translation>Cài đặt mức chống rung phím</translation>
     </message>
 </context>
-
 <context>
     <name>FrameLight</name>
     <message>
@@ -1386,78 +1474,77 @@
         <translation>Xóa</translation>
     </message>
 </context>
-
 <context>
     <name>FrameMacro</name>
     <message>
-        <location filename="FrameMacro.ui" line="134"/>
+        <location filename="FrameMacro.ui" line="140"/>
         <source>宏列表</source>
         <translation>Danh sách macro</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="634"/>
+        <location filename="FrameMacro.ui" line="640"/>
         <location filename="FrameMacro.cpp" line="124"/>
         <source>开始录制</source>
         <translation>Bắt đầu ghi</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="776"/>
+        <location filename="FrameMacro.ui" line="788"/>
         <source>删除</source>
         <translation>Xóa</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="808"/>
+        <location filename="FrameMacro.ui" line="820"/>
         <source>清空</source>
         <translation>Xóa tất cả</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="859"/>
+        <location filename="FrameMacro.ui" line="871"/>
         <source>保存</source>
         <translation>Lưu</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="346"/>
+        <location filename="FrameMacro.ui" line="352"/>
         <source>宏名称</source>
         <translation>Tên macro</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="157"/>
+        <location filename="FrameMacro.ui" line="163"/>
         <source>新建宏</source>
         <translation>Tạo macro mới</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="376"/>
+        <location filename="FrameMacro.ui" line="382"/>
         <source>占用: 0 / 256</source>
         <translation>Đã dùng: 0 / 256</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="424"/>
+        <location filename="FrameMacro.ui" line="430"/>
         <source>按下</source>
         <translation>Nhấn xuống</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="475"/>
+        <location filename="FrameMacro.ui" line="481"/>
         <source>释放</source>
         <translation>Nhả ra</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="526"/>
+        <location filename="FrameMacro.ui" line="532"/>
         <location filename="FrameMacro.cpp" line="209"/>
         <source>延迟</source>
         <translation>Độ trễ</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="682"/>
+        <location filename="FrameMacro.ui" line="688"/>
         <source>插入按键</source>
         <translation>Chèn phím</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="721"/>
+        <location filename="FrameMacro.ui" line="727"/>
         <source>延迟时长:</source>
         <translation>Thời gian trễ:</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="738"/>
+        <location filename="FrameMacro.ui" line="750"/>
         <source> ms</source>
         <translation> ms</translation>
     </message>
@@ -1503,7 +1590,6 @@
         <translation>Byte</translation>
     </message>
 </context>
-
 <context>
     <name>FrameMagic</name>
     <message>
@@ -1513,32 +1599,32 @@
     </message>
     <message>
         <location filename="FrameMagic.ui" line="216"/>
-        <location filename="FrameMagic.ui" line="1119"/>
+        <location filename="FrameMagic.ui" line="1132"/>
         <source>轴体设置</source>
         <translation>Cài đặt switch</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="549"/>
+        <location filename="FrameMagic.ui" line="556"/>
         <source>单独设置按键再次按下触发和松开重置行程</source>
         <translation>Cài riêng hành trình kích hoạt khi nhấn lại và hành trình đặt lại khi nhả phím</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="610"/>
+        <location filename="FrameMagic.ui" line="620"/>
         <source>再次按下按键触发所需的行程(mm)</source>
         <translation>Hành trình cần thiết để kích hoạt khi nhấn lại (mm)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="797"/>
+        <location filename="FrameMagic.ui" line="810"/>
         <source>松开按键重置所需的行程(mm)</source>
         <translation>Hành trình đặt lại khi nhả phím (mm)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1756"/>
+        <location filename="FrameMagic.ui" line="1793"/>
         <source>防误触模式</source>
         <translation>Chế độ chống nhấn nhầm</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="476"/>
+        <location filename="FrameMagic.ui" line="483"/>
         <source>全程连续快速触发（RT）</source>
         <translation>Kích hoạt nhanh liên tục toàn hành trình (RT)</translation>
     </message>
@@ -1637,125 +1723,125 @@
     </message>
     <message>
         <location filename="FrameMagic.ui" line="361"/>
-        <location filename="FrameMagic.ui" line="1086"/>
+        <location filename="FrameMagic.ui" line="1099"/>
         <source>设置</source>
         <translation>Cài đặt</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="400"/>
+        <location filename="FrameMagic.ui" line="387"/>
         <source>单独设置按下抬起触发行程：</source>
         <translation>Cài riêng hành trình kích hoạt nhấn xuống / nhả ra:</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="515"/>
+        <location filename="FrameMagic.ui" line="522"/>
         <source>启用时，快速触发在您完全松开按键时才会终止。
 禁用时，松开按键到轴体触发行程后终止快速触发</source>
         <translation>Khi bật: kích hoạt nhanh chỉ dừng khi bạn nhả hoàn toàn phím.
 Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích hoạt của switch</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="987"/>
+        <location filename="FrameMagic.ui" line="1000"/>
         <source>按键死区设定</source>
         <translation>Cài đặt vùng chết phím</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1054"/>
+        <location filename="FrameMagic.ui" line="1067"/>
         <source>触底到抬起前的距离俗称“死区”。死区可减少磁轴因环境干扰带来的断触问题，磁轴的底部可自定义，您可根据个人需求自定义死区，设定之后，此段行程不会触发。</source>
         <translation>Khoảng cách từ điểm chạm đáy đến trước khi nhả ra gọi là “vùng chết”. Vùng chết giúp giảm hiện tượng mất tín hiệu do nhiễu môi trường ở switch từ. Bạn có thể tùy chỉnh vùng chết ở đáy switch, đoạn hành trình này sẽ không kích hoạt tín hiệu.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1064"/>
+        <location filename="FrameMagic.ui" line="1077"/>
         <source>当前选择按键数量:0</source>
         <translation>Số phím đang chọn: 0</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1132"/>
+        <location filename="FrameMagic.ui" line="1145"/>
         <source>更换键盘轴体后，选择对应轴体的按键，点击下方对应的轴体选项进行设置来区分不同轴体</source>
         <translation>Sau khi thay switch bàn phím, chọn các phím tương ứng và nhấn loại switch bên dưới để cài đặt riêng</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1198"/>
+        <location filename="FrameMagic.ui" line="1211"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>炫光</source>
         <translation>Huyền Quang</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1245"/>
+        <location filename="FrameMagic.ui" line="1261"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>闪电</source>
         <translation>Thiểm Điện</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1292"/>
+        <location filename="FrameMagic.ui" line="1311"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>星芒磁轴</source>
         <translation>Switch Tinh Mãng</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1339"/>
+        <location filename="FrameMagic.ui" line="1361"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>磁玉</source>
         <translation>Từ Ngọc</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1386"/>
+        <location filename="FrameMagic.ui" line="1411"/>
         <source>磁玉Pro</source>
         <translation>Từ Ngọc Pro</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1433"/>
+        <location filename="FrameMagic.ui" line="1461"/>
         <source>磁玉Gaming</source>
         <translation>Từ Ngọc Gaming</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1480"/>
+        <location filename="FrameMagic.ui" line="1511"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>天王</source>
         <translation>Thiên Vương</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1527"/>
+        <location filename="FrameMagic.ui" line="1561"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>万磁王</source>
         <translation>Vạn Từ Vương</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1584"/>
+        <location filename="FrameMagic.ui" line="1621"/>
         <source>RT Stab(RT 增稳算法)</source>
         <translation>RT Stab (Thuật toán ổn định RT)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1629"/>
+        <location filename="FrameMagic.ui" line="1666"/>
         <source>0%(关闭)</source>
         <translation>0% (Tắt)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1728"/>
+        <location filename="FrameMagic.ui" line="1765"/>
         <source>RT Stab打开后，算法会介入增强轴体底部的稳定性。介入百分比越大，稳定性越强，延迟也会有所增加。</source>
         <translation>Khi bật RT Stab, thuật toán sẽ can thiệp để tăng độ ổn định ở đáy switch. Tỷ lệ can thiệp càng cao, ổn định càng tốt nhưng độ trễ cũng tăng nhẹ.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1807"/>
+        <location filename="FrameMagic.ui" line="1844"/>
         <source>(已关闭)</source>
         <translation>(Đã tắt)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1819"/>
+        <location filename="FrameMagic.ui" line="1856"/>
         <source>防止极限性能下桌面抖动误触发或轴体公差可能造成还有0.1mm的行程公差。开启后优化底部按键算法补足行程差值提高键盘稳定性。</source>
         <translation>Tránh nhấn nhầm do rung bàn hoặc sai số 0.1mm của switch ở chế độ hiệu năng cao. Bật để tối ưu thuật toán đáy phím, bù sai số hành trình và tăng độ ổn định bàn phím.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1866"/>
+        <location filename="FrameMagic.ui" line="1903"/>
         <source>行程测试</source>
         <translation>Kiểm tra hành trình</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1955"/>
+        <location filename="FrameMagic.ui" line="1992"/>
         <source>按键测试</source>
         <translation>Kiểm tra phím</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="2013"/>
+        <location filename="FrameMagic.ui" line="2050"/>
         <source>输入值</source>
         <translation>Giá trị đọc được</translation>
     </message>
@@ -1770,7 +1856,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Vùng chết dưới</translation>
     </message>
 </context>
-
 <context>
     <name>FrameMain</name>
     <message>
@@ -1779,7 +1864,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Cài đặt hành trình (toàn cục)</translation>
     </message>
 </context>
-
 <context>
     <name>FrameMouse</name>
     <message>
@@ -1793,7 +1877,41 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Quay về trang chính</translation>
     </message>
 </context>
-
+<context>
+    <name>FrameSystemInfo</name>
+    <message>
+        <location filename="FrameSystemInfo.ui" line="78"/>
+        <source>确定</source>
+        <translation>Đồng ý</translation>
+    </message>
+    <message>
+        <location filename="FrameSystemInfo.ui" line="97"/>
+        <source>开机时自动开启本程序</source>
+        <translation>Tự động chạy chương trình khi khởi động</translation>
+    </message>
+    <message>
+        <location filename="FrameSystemInfo.ui" line="125"/>
+        <source>前往驱动程序网站</source>
+        <translation>Truy cập trang web trình điều khiển</translation>
+    </message>
+    <message>
+        <location filename="FrameSystemInfo.ui" line="138"/>
+        <location filename="FrameSystemInfo.cpp" line="72"/>
+        <source>当前版本</source>
+        <translation>Phiên bản hiện tại</translation>
+    </message>
+    <message>
+        <location filename="FrameSystemInfo.ui" line="151"/>
+        <location filename="FrameSystemInfo.cpp" line="73"/>
+        <source>编译时间</source>
+        <translation>Thời gian biên dịch</translation>
+    </message>
+    <message>
+        <location filename="FrameSystemInfo.ui" line="170"/>
+        <source>系统设置</source>
+        <translation>Cài đặt hệ thống</translation>
+    </message>
+</context>
 <context>
     <name>LinearFixing1</name>
     <message>
@@ -1817,7 +1935,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Hủy</translation>
     </message>
 </context>
-
 <context>
     <name>LinearFixing2</name>
     <message>
@@ -1836,7 +1953,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Hủy</translation>
     </message>
 </context>
-
 <context>
     <name>MacroItem</name>
     <message>
@@ -1855,7 +1971,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Xóa</translation>
     </message>
 </context>
-
 <context>
     <name>MacroSquare</name>
     <message>
@@ -1874,7 +1989,86 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Xóa</translation>
     </message>
 </context>
-
+<context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="MainWindow.ui" line="154"/>
+        <source> 语种选择</source>
+        <translation>  Chọn ngôn ngữ</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.ui" line="186"/>
+        <source>系统设置</source>
+        <translation>Cài đặt hệ thống</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.ui" line="221"/>
+        <source>最小化</source>
+        <translation>Thu nhỏ</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.ui" line="256"/>
+        <source>关闭</source>
+        <translation>Tắt</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.ui" line="335"/>
+        <location filename="MainWindow.cpp" line="1500"/>
+        <source>我的设备</source>
+        <translation>Thiết bị của tôi</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.ui" line="369"/>
+        <source>刷新设备</source>
+        <translation>Làm mới thiết bị</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="649"/>
+        <source>正在读取数据，请耐心等候...</source>
+        <translation>Đang đọc dữ liệu, vui lòng đợi...</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="655"/>
+        <source>读取数据完成!</source>
+        <translation>Đọc dữ liệu hoàn tất!</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="832"/>
+        <location filename="MainWindow.cpp" line="1722"/>
+        <source>提示</source>
+        <translation>Thông báo</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="832"/>
+        <source>发现新版本，现在要立即更新吗？</source>
+        <translation>Phát hiện phiên bản mới, bạn có muốn cập nhật ngay bây giờ không?</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="1503"/>
+        <source>显示窗口</source>
+        <translation>Hiển thị cửa sổ</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="1504"/>
+        <source>隐藏窗口</source>
+        <translation>Ẩn cửa sổ</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="1505"/>
+        <source>退出程序</source>
+        <translation>Thoát chương trình</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="1697"/>
+        <source>正在搜索设备</source>
+        <translation>Đang tìm kiếm thiết bị</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="1722"/>
+        <source>确定要退出 AKKO 驱动程序？</source>
+        <translation>Bạn có chắc muốn thoát trình điều khiển AKKO không?</translation>
+    </message>
+</context>
 <context>
     <name>ModuleAddMacroSquare</name>
     <message>
@@ -1943,7 +2137,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Phím phải</translation>
     </message>
 </context>
-
 <context>
     <name>ModuleDKSAdjust</name>
     <message>
@@ -1957,7 +2150,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Lưu</translation>
     </message>
 </context>
-
 <context>
     <name>ModuleDKSItem</name>
     <message>
@@ -1967,7 +2159,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Chưa cài chức năng</translation>
     </message>
 </context>
-
 <context>
     <name>ModuleEfColor</name>
     <message>
@@ -2047,7 +2238,6 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
         <translation>Sóng ánh sáng</translation>
     </message>
 </context>
-
 <context>
     <name>ModuleEfLumi</name>
     <message>
@@ -2975,12 +3165,12 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
     <message>
         <location filename="Module/ModuleLinear.ui" line="65"/>
         <source>按下(mm) </source>
-        <translation>Actuation (mm)</translation>
+        <translation>Điểm kích hoạt (mm) </translation>
     </message>
     <message>
         <location filename="Module/ModuleLinear.ui" line="188"/>
         <source>抬起(mm)</source>
-        <translation>Reset (mm)</translation>
+        <translation>Điểm nhả (mm)</translation>
     </message>
 </context>
 <context>
@@ -2988,7 +3178,7 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
     <message>
         <location filename="Module/modulemacromanager.cpp" line="41"/>
         <source>新建宏</source>
-        <translation>New Macro</translation>
+        <translation>Tạo macro mới</translation>
     </message>
 </context>
 <context>
@@ -2996,7 +3186,7 @@ Khi tắt: kích hoạt nhanh dừng khi nhả phím đến hành trình kích h
     <message>
         <location filename="Module/ModuleRtSet.ui" line="47"/>
         <source>RT行程设置(全局)</source>
-        <translation>RT Setting (Global)</translation>
+        <translation>Cài đặt hành trình RT (Toàn cục)</translation>
     </message>
 </context>
 </TS>

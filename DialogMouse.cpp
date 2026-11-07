@@ -21,6 +21,7 @@
 #include <QHBoxLayout>
 #include <QProgressBar>
 #include <QFileDialog>
+#include <ModuleGeneralMasker.h>
 
 
 void SetLineEditTipColor(QLineEdit *edit,const QColor&color){
@@ -284,149 +285,7 @@ auto deviceStateChange(const InfortechDef::DevMsg& msg)
     mouseChanged = true;
 };
 
-QMap<int,QString> keyMapset=
-{
-    {1701,"左键"},
-    {1702,"右键"},
-    {1703,"中键"},
-    {1704,"后退"},
-    {1705,"前进"},
-    {1706,"底部按钮"},
-    {1707,"上滚"},
-    {1708,"下滚"},
-    {1709,"左滚"},
-    {1710,"右滚"},
-    {1901,"火力按钮"},
-    {1711,"DPI循环"},
-    {1712,"DPI+"},
-    {1713,"DPI-"},
-    {1731,"BLE循环"},
-    {1732,"BLE+"},
-    {1733,"BLE-"},
-    {1801,"亮度+"},
-    {1802,"亮度-"},
-    {1803,"音量+"},
-    {1804,"音量-"},
-    {1805,"静音"},
-    {1806,"计算器"},
-    {1807,"我的电脑"},
-    {1808,"邮件"},
-    {1809,"播放器"},
-    {1810,"停止"},
-    {1811,"暂停"},
-    {1812,"上一首"},
-    {1813,"下一首"},
-    {1814,"主页"},
-    {1815,"搜索"},
-    {1816,"刷新"},
-    {1817,"收藏夹"},
-    {1818,"网页停止"},
-    {1819,"网页前进"},
-    {1820,"网页后退"},
-    {1201,"F1"},
-    {1202,"F2"},
-    {1203,"F3"},
-    {1204,"F4"},
-    {1205,"F5"},
-    {1206,"F6"},
-    {1207,"F7"},
-    {1208,"F8"},
-    {1209,"F9"},
-    {1210,"F10"},
-    {1211,"F11"},
-    {1212,"F12"},
-    {1101,"!1"},
-    {1102,"@2"},
-    {1103,"#3"},
-    {1104,"$4"},
-    {1105,"%5"},
-    {1106,"^6"},
-    {1107,"&&7"},
-    {1108,"*8"},
-    {1109,"(9"},
-    {1110,")0"},
-    {1401,"~`"},
-    {1402,"-_"},
-    {1403,"+="},
-    {1404,"{["},
-    {1405,"}]"},
-    {1406,"|\\"},
-    {1407,":;"},
-    {1408,"\"'"},
-    {1409,"<,"},
-    {1410,">."},
-    {1411,"?/"},
-    {1301,"1"},
-    {1302,"2"},
-    {1303,"3"},
-    {1304,"4"},
-    {1305,"5"},
-    {1306,"6"},
-    {1307,"7"},
-    {1308,"8"},
-    {1309,"9"},
-    {1310,"0"},
-    {1311,"."},
-    {1312,"Number Lock"},
-    {1313,"/"},
-    {1314,"*"},
-    {1315,"-"},
-    {1316,"+"},
-    {1317,"Return"},
-    {1001,"A"},
-    {1002,"B"},
-    {1003,"C"},
-    {1004,"D"},
-    {1005,"E"},
-    {1006,"F"},
-    {1007,"G"},
-    {1008,"H"},
-    {1009,"I"},
-    {1010,"J"},
-    {1011,"K"},
-    {1012,"L"},
-    {1013,"M"},
-    {1014,"N"},
-    {1015,"O"},
-    {1016,"P"},
-    {1017,"Q"},
-    {1018,"R"},
-    {1019,"S"},
-    {1020,"T"},
-    {1021,"U"},
-    {1022,"V"},
-    {1023,"W"},
-    {1024,"X"},
-    {1025,"Y"},
-    {1026,"Z"},
-    {1505,"Space"},
-    {1502,"Esc"},
-    {1504,"Tab"},
-    {1503,"Back Space"},
-    {1501,"Enter"},
-    {1519,"Left Win"},
-    {1523,"Right Win"},
-    {1516,"Left Ctrl"},
-    {1520,"Right Ctrl"},
-    {1518,"Left Alt"},
-    {1522,"Right Alt"},
-    {1517,"Left Shift"},
-    {1521,"Right Shift"},
-    {1601,"Up"},
-    {1602,"Down"},
-    {1603,"Left"},
-    {1604,"Right"},
-    {1507,"Print Screen"},
-    {1508,"Scroll Lock"},
-    {1509,"Pause"},
-    {1510,"Insert"},
-    {1511,"Home"},
-    {1514,"End"},
-    {1512,"Page Up"},
-    {1515,"Page Down"},
-    {1513,"Delete"},
-    {1506,"Caps Lock"},
-};
+QMap<int,QString> keyMapset={};
 
 QString getKeyNameByVK(uint16_t vkCode);
 uint16_t getKeyDefineVK(uint16_t vk_code);
@@ -515,9 +374,11 @@ void DialogMouse::addMacroItem(int defId,int delay,int type,bool down)
     }
 
     ui->labelTitle4->setText(QString(tr("占用")) +QString(":%1 / 70").arg(macroGroup.count()));
+
+    emit addNewItem(defId,down);
 }
 
-void DialogMouse::addMacroHeed(int id,const QString&name)
+void DialogMouse::addMacroHeader(int id,const QString&name)
 {
     QList<QStandardItem*>test;
     for(int i=0; i<3; i++)
@@ -538,9 +399,6 @@ void DialogMouse::addMacroHeed(int id,const QString&name)
     ui->comboBoxMacro->addItem(addName);
     int count = ui->comboBoxMacro->count();
     ui->comboBoxMacro->setItemData(count-1,addId);
-
-
-    qDebug() << "comboBoxMacro setItemData" << count << addId;
 
     test[1]->setEditable(false);
     test[2]->setEditable(false);
@@ -597,7 +455,7 @@ void DialogMouse::saveLoadMacroHeader(bool save)
                 QJsonObject It = Macro[i].toObject();
                 if(checker.contains(It["id"].toInt()))
                     continue;
-                addMacroHeed(It["id"].toInt(),It["name"].toString());
+                addMacroHeader(It["id"].toInt(),It["name"].toString());
 
                 checker.push_back(It["id"].toInt());
             }
@@ -744,6 +602,53 @@ DialogMouse::DialogMouse(QWidget *parent)
     });
 
     {
+        QFrame *pMacroRecord = new QFrame(nullptr);
+        pMacroRecord->setObjectName("MacroRecord");
+        pMacroRecord->setFocusPolicy(Qt::StrongFocus);
+
+        QVBoxLayout *pVBox = new QVBoxLayout(pMacroRecord);
+
+        QHBoxLayout *pHBox0 = new QHBoxLayout();
+        QHBoxLayout *pHBox1 = new QHBoxLayout();
+
+        pVBox->addItem(pHBox0);
+        pVBox->addItem(pHBox1);
+
+        pMacroRecord->setLayout(pVBox);
+
+        QLabel *labelRecord = new QLabel(pMacroRecord);
+        labelRecord->setAlignment(Qt::AlignCenter);
+        labelRecord->setWordWrap(true);
+        labelRecord->setFocusPolicy(Qt::StrongFocus);
+        labelRecord->setText(tr("正在录制宏,请在此界面按下/松开鼠标按键或者键盘按键......"));
+        labelRecord->setStyleSheet("QLabel{font-size: 24px; background: none; text-align: center;background-color: rgba(0, 220, 0, 0.3); } QLabel:focus{background-color:background-color: rgba(0, 220, 0, 0.5);}");
+        pHBox0->addWidget(labelRecord);
+
+        QPushButton *btnStop = new QPushButton(tr("停止录制"),pMacroRecord);
+        btnStop->setStyleSheet("QPushButton{font-size: 24px; border: 1px solid gray; background-color: #6329B6; color:white; border-radius:8px; }");
+        btnStop->setCursor(Qt::PointingHandCursor);
+        pHBox1->addWidget(btnStop);
+        connect(btnStop,&QPushButton::clicked,this,[=]{
+            qDebug() << "record ending ......";
+            ModuleGeneralMasker *pTop = static_cast<ModuleGeneralMasker *>(pMacroRecord->parent());
+            pTop->setFlag(QDialog::Accepted);
+            pMacroRecord->hide();
+        });
+
+        QLabel *labelInfo = new QLabel(pMacroRecord);
+        labelInfo->setText("A Pressed!");
+        labelInfo->setStyleSheet("QLabel{font-size: 24px;}");
+        pHBox1->addWidget(labelInfo);
+        pHBox1->setSpacing(60);
+
+        connect(this,&DialogMouse::addNewItem,this,[=](int defId,bool down){
+            QString strAction(down?tr("按下"):tr("松开"));
+            if(defId >= 1707 && defId <= 1710) strAction.clear();
+            labelInfo->setText(QString("%1 %2                %3 / 70").arg(keyMapset[defId]).arg(strAction).arg(macroGroup.count()));
+        });
+
+        pVBox->setStretch(0,1);
+
         MyEasyApp *app = dynamic_cast<MyEasyApp *>(qApp);
         static QElapsedTimer ignTm;
         ignTm.start();
@@ -756,6 +661,12 @@ DialogMouse::DialogMouse(QWidget *parent)
             QMouseEvent *mEvent = static_cast<QMouseEvent*>(event);
             QWheelEvent *wEvent = static_cast<QWheelEvent*>(event);
             QWidget *widget = static_cast<QWidget*>(receiver);
+
+            if(receiver != labelRecord && m_recording)
+            {
+                return ;
+               // qDebug() << "哇哈哈哈哈哈哈" << event->type();
+            }
 
             if(event->type() == QEvent::MouseButtonPress)
             {
@@ -794,6 +705,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 //if(nDelay>nLimit)
                 //    qDebug() << "Global::MouseMove   ------- " << nDelay <<"ms";
                 //ignTm.restart();
+                if(m_recording) labelRecord->setFocus();
             }
 
             if(event->type() == QEvent::Wheel)
@@ -924,8 +836,267 @@ DialogMouse::DialogMouse(QWidget *parent)
             m_recording = false;
         });
 
-        //-----------------------------
-        static int nAction = 0;
+
+        m_pModel = new QStandardItemModel(this);
+        m_pModel->setHorizontalHeaderLabels(QString("名称,类型,名称,类型,名称,类型").split(','));
+        ui->tableViewMContent->setModel(m_pModel);
+
+        QHeaderView *pHeader = ui->tableViewMContent->horizontalHeader();
+        pHeader->setSectionResizeMode(QHeaderView::Stretch);
+        pHeader->hide();
+
+        QFont font1 = ui->tableViewMContent->font();
+        //font1.setBold(true);
+        font1.setPixelSize(16);
+
+        for(int m=0;m<12;m++)
+        {
+            QList<QStandardItem*>test;
+            for(int i=0; i<6; i++)
+            {
+                QStandardItem *item = new QStandardItem(QString(""));
+                item->setTextAlignment(Qt::AlignCenter);
+                item->setEditable(false);
+                item->setFont(font1);
+                test.push_back(item);
+            }
+            m_pModel->appendRow(test);
+            ui->tableViewMContent->setRowHeight(m,64);
+        }
+        connect(m_pModel,&QStandardItemModel::itemChanged,this,[=](QStandardItem *item){
+        });
+
+        connect(ui->tableViewMContent,&QTableView::clicked,this,[=](const QModelIndex &index){
+            //pClkItem = m_pModel->itemFromIndex(index);
+            int item = index.row() * 6 + index.column();
+            if(item%2 == 0) item++;
+            m_insertAt = item;
+        });
+
+        m_pMList = new QStandardItemModel(this);
+        m_pMList->setHorizontalHeaderLabels(QString("名称,类型,名称").split(','));
+
+        ui->tableViewMList->setModel(m_pMList);
+
+        ui->tableViewMList->setShowGrid(false);
+        ui->tableViewMList->verticalHeader()->hide();
+
+        pHeader = ui->tableViewMList->horizontalHeader();
+        pHeader->setSectionResizeMode(QHeaderView::Stretch);
+        pHeader->setSectionResizeMode(1,QHeaderView::Fixed);
+        pHeader->setSectionResizeMode(2,QHeaderView::Fixed);
+        pHeader->resizeSection(1,36);
+        pHeader->resizeSection(2,36);
+        pHeader->hide();
+
+        m_MLDele1 = new ImageDelegate(":/images/mouse/edit-0.png",ui->tableViewMList,1,this);
+        m_MLDele2 = new ImageDelegate(":/images/mouse/delete-0.png",ui->tableViewMList,2,this);
+
+        saveLoadMacroHeader(false);
+
+        connect(ui->tableViewMList,&QTableView::clicked,this,[=](const QModelIndex &index){
+            QStandardItem *item = m_pMList->itemFromIndex(index);
+            ui->labelCurrentMacro->setText(m_pMList->item(item->row())->text());
+            m_currentId = item->data().toInt();
+
+            saveLoadMacroContent(m_currentId,macroGroup,false);
+            m_loading = true;
+
+            int count = macroGroup.count();
+            for(int i=0; i<255; i++)
+            {
+                QStandardItem *item = m_pModel->item(i/6,i%6);
+                if(!item) break;
+                item->setData(0);
+                if(i < count)
+                    item->setData((quint64)macroGroup[i]);
+                refreshMacroItem(item);
+            }
+            ui->labelTitle4->setText(QString(tr("占用") + QString(": %1 / 70").arg(count)));
+
+            m_loading = false;
+        });
+
+        connect(m_pMList,&QStandardItemModel::itemChanged,this,[=](QStandardItem *item){
+            if(m_loading) return;
+            saveLoadMacroHeader();
+        });
+
+        connect(m_MLDele1,&ImageDelegate::clicked,this,[=](const QModelIndex&index){
+            QModelIndex test =m_pMList->index(index.row(),0);
+            ui->tableViewMList->edit(test);
+        });
+
+        connect(m_MLDele2,&ImageDelegate::clicked,this,[=](const QModelIndex&index){
+            QStandardItem *item = m_pMList->item(index.row(),0);
+            int toRemoveId = item->data().toInt();
+            int count = ui->comboBoxMacro->count();
+            for(int i=0; i<count; i++)
+            {
+                if(ui->comboBoxMacro->itemData(i).toInt() == toRemoveId)
+                {
+                    ui->comboBoxMacro->removeItem(i);
+                    QFile::remove(m_strPath+QString::asprintf("/macroEvent-%02d.txt",toRemoveId));
+                    break;
+                }
+            }
+            m_pMList->removeRows(index.row(),1);
+            saveLoadMacroHeader();
+            m_currentId = -1;
+        });
+
+        connect(ui->pushButtonAddMacro,&QPushButton::clicked,this,[=]{
+            addMacroHeader(0,"");
+            saveLoadMacroHeader();
+        });
+
+        connect(ui->pushButtonRecord,&QPushButton::clicked,this,[=]{
+            if(m_currentId == -1)
+            {
+                QMessageBox::warning(this,tr("提示"),tr("首先选择或者新建一个宏，请重试！"));
+                return;
+            }
+            static ModuleGeneralMasker recMask(nullptr);
+
+            QRect maskRect = ui->stackedWidget->geometry();
+            recMask.setContent(pMacroRecord,ui->stackedWidget);
+            recMask.raise();
+
+            recMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.96); border: none; border-radius: 20px;}");
+            pMacroRecord->setStyleSheet("QFrame {border: none; border-radius: 20px;}");
+            pMacroRecord->setFixedSize(maskRect.width()-20,maskRect.height()-20);
+            pMacroRecord->show();
+
+            m_insertAt = -1;
+            m_recording = true;
+            QTimer::singleShot(100,this,[=]{
+                pMacroRecord->setFocus();
+                labelRecord->setFocus();
+                labelRecord->update();
+            });
+            recMask.exec();
+
+            m_recording = false;
+            saveLoadMacroContent(m_currentId,macroGroup,true);
+            m_loading = true;
+
+            int count = macroGroup.count();
+            for(int i=0; i<255; i++)
+            {
+                QStandardItem *item = m_pModel->item(i/6,i%6);
+                if(!item) break;
+                item->setData(0);
+                if(i < count)
+                    item->setData((quint64)macroGroup[i]);
+                refreshMacroItem(item);
+            }
+            ui->labelTitle4->setText(QString(tr("占用") + QString(": %1 / 70").arg(count)));
+
+            m_loading = false;
+        });
+
+        connect(ui->pushButtonClear,&QPushButton::clicked,this,[=]{
+            if(m_currentId == -1)
+            {
+                QMessageBox::warning(this,tr("提示"),tr("没有选中 宏，请重试！"));
+                return;
+            }
+            QFile::remove(m_strPath+QString::asprintf("/macroEvent-%02d.txt",m_currentId));
+
+            m_lastItem = nullptr;
+            macroGroup.clear();
+            ui->labelTitle4->setText(tr("占用") + QString(": 0 / 70"));
+            for(int m=0;m<12;m++)
+            {
+                for(int n=0; n<6; n++)
+                {
+                    m_pModel->item(m,n)->setText("");
+                }
+            }
+        });
+
+        connect(ui->pushButtonSave,&QPushButton::clicked,this,[=]{
+            if(m_currentId == -1)
+            {
+                QMessageBox::warning(this,tr("提示"),tr("没有选中 宏，请重试！"));
+                return;
+            }
+
+            saveLoadMacroContent(m_currentId,macroGroup,true);
+            EasyToast::information("宏数据已保存！",600);
+        });
+
+        connect(ui->tableViewMContent->selectionModel(), &QItemSelectionModel::selectionChanged, this, [=](const QItemSelection &selected, const QItemSelection &deselected){
+            for(auto idx : selected.indexes())
+            {
+                //qDebug() << idx;
+            }
+        });
+
+        connect(ui->pushButtonDelete,&QPushButton::clicked,this,[=]{
+            int count = macroGroup.count();
+            if(count == 0 || m_insertAt == -1 || m_insertAt >= count)
+            {
+                QMessageBox::warning(this,tr("提示"),tr("没有选中的宏动作，请重试！"));
+                return;
+            }
+
+            m_lastItem = nullptr;
+            if(count>0 && m_insertAt != -1)
+            {
+                int index = m_insertAt;
+
+                if(index >= count)
+                    return;
+
+                bool delDouble = (count%2  == 0);
+
+                if(index%2 == 0)
+                {
+                    macroGroup.removeAt(index);
+                    if(delDouble && (index < macroGroup.count()))
+                        macroGroup.removeAt(index);
+                }
+                else
+                {
+                    macroGroup.removeAt(index-1);
+                    if(delDouble && (index-1 < macroGroup.count()))
+                        macroGroup.removeAt(index-1);
+                }
+
+                for(int m=0;m<12;m++)
+                {
+                    for(int n=0; n<6; n++)
+                    {
+                        m_pModel->item(m,n)->setText("");
+                    }
+                }
+
+                count = macroGroup.count();
+                for(int i=0; i<count; i++)
+                {
+                    QStandardItem *item = m_pModel->item(i/6,i%6);
+                    if(item) item->setData((quint64)macroGroup[i]);
+                    refreshMacroItem(item);
+                }
+                ui->labelTitle4->setText(tr("占用") + QString(": %1 / 70").arg(count));
+                saveLoadMacroContent(m_currentId,macroGroup,true);
+                m_insertAt = -1 ;
+            }
+        });
+
+        connect(ui->pushButtonSetDelay,&QPushButton::clicked,this,[=]{
+            int count = macroGroup.count();
+            for(int i=0; i<count; i++)
+            {
+                macroGroup[i]->delay = ui->spinBoxDelay->value();
+                refreshMacroItem(m_pModel->item(i/6,i%6));
+            }
+            saveLoadMacroContent(m_currentId,macroGroup);
+        });
+    }
+
+    {
         QDialog *pFwDlg = new QDialog(this);
 
         pFwDlg->setFixedSize(600,280);
@@ -1032,13 +1203,11 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         pFwDlg->setLayout(pVBox);
         connect(ui->pushButtonUpgradeMouse,&QPushButton::clicked,this,[=]{
-            nAction = 0;
             pProg->setValue(0);
             pFwDlg->setWindowTitle(ui->pushButtonUpgradeMouse->text());
             pFwDlg->exec();
         });
         connect(ui->pushButtonUpgradeDonggle,&QPushButton::clicked,this,[=]{
-            nAction = 1;
             pProg->setValue(0);
             pFwDlg->setWindowTitle(ui->pushButtonUpgradeDonggle->text());
             pFwDlg->exec();
@@ -1053,7 +1222,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         ui->frameKeyShow->hide();
         ui->frameMouseHold->setFixedWidth(720);
 
-        static int seletetKey = 0 ;
+        static int seletetKey = 0;
         connect(ui->buttonGroupKeySet,&QButtonGroup::idClicked,this,[=](int id){
             QPushButton *pBtn = static_cast<QPushButton *>(ui->buttonGroupKeySet->button(id));
             seletetKey = pBtn->objectName().replace("pushButtonMkey","").toInt();
@@ -1417,7 +1586,7 @@ DialogMouse::DialogMouse(QWidget *parent)
 
             int index = (int)mouseCfg->dpiData.curDpiId;
 
-            if(index>7) index = 7;
+            if(index > 7) index = 7;
 
             selectDpiX = index;
             selectDpiY = index;
@@ -1660,265 +1829,6 @@ DialogMouse::DialogMouse(QWidget *parent)
     }
 
     {
-        m_pModel = new QStandardItemModel(this);
-        m_pModel->setHorizontalHeaderLabels(QString("名称,类型,名称,类型,名称,类型").split(','));
-        ui->tableViewMContent->setModel(m_pModel);
-
-        QHeaderView *pHeader = ui->tableViewMContent->horizontalHeader();
-        pHeader->setSectionResizeMode(QHeaderView::Stretch);
-        pHeader->hide();
-
-        QFont font1 = ui->tableViewMContent->font();
-        //font1.setBold(true);
-        font1.setPixelSize(16);
-
-        for(int m=0;m<12;m++)
-        {
-            QList<QStandardItem*>test;
-            for(int i=0; i<6; i++)
-            {
-                QStandardItem *item = new QStandardItem(QString(""));
-                item->setTextAlignment(Qt::AlignCenter);
-                item->setEditable(false);
-                item->setFont(font1);
-                test.push_back(item);
-            }
-            m_pModel->appendRow(test);
-            ui->tableViewMContent->setRowHeight(m,64);
-        }
-        connect(m_pModel,&QStandardItemModel::itemChanged,this,[=](QStandardItem *item){
-        });
-
-        connect(ui->tableViewMContent,&QTableView::clicked,this,[=](const QModelIndex &index){
-            //pClkItem = m_pModel->itemFromIndex(index);
-            int item = index.row() * 6 + index.column();
-            if(item%2 == 0) item++;
-            m_insertAt = item;
-        });
-    }
-
-    {
-
-        //------------------------------------
-
-        m_pMList = new QStandardItemModel(this);
-        m_pMList->setHorizontalHeaderLabels(QString("名称,类型,名称").split(','));
-
-        ui->tableViewMList->setModel(m_pMList);
-
-        ui->tableViewMList->setShowGrid(false);
-        ui->tableViewMList->verticalHeader()->hide();
-
-        QHeaderView *pHeader = ui->tableViewMList->horizontalHeader();
-        pHeader->setSectionResizeMode(QHeaderView::Stretch);
-        pHeader->setSectionResizeMode(1,QHeaderView::Fixed);
-        pHeader->setSectionResizeMode(2,QHeaderView::Fixed);
-        pHeader->resizeSection(1,36);
-        pHeader->resizeSection(2,36);
-        pHeader->hide();
-
-        m_MLDele1 = new ImageDelegate(":/images/mouse/edit-0.png",ui->tableViewMList,1,this);
-        m_MLDele2 = new ImageDelegate(":/images/mouse/delete-0.png",ui->tableViewMList,2,this);
-
-        saveLoadMacroHeader(false);
-
-        connect(ui->tableViewMList,&QTableView::clicked,this,[=](const QModelIndex &index){
-            QStandardItem *item = m_pMList->itemFromIndex(index);
-            ui->labelCurrentMacro->setText(m_pMList->item(item->row())->text());
-            m_currentId = item->data().toInt();
-
-            saveLoadMacroContent(m_currentId,macroGroup,false);
-
-            m_loading = true;
-
-            int count = macroGroup.count();
-            for(int i=0; i<255; i++)
-            {
-                QStandardItem *item = m_pModel->item(i/6,i%6);
-                if(!item) break;
-                item->setData(0);
-                if(i < count)
-                    item->setData((quint64)macroGroup[i]);
-                refreshMacroItem(item);
-            }
-            ui->labelTitle4->setText(QString(tr("占用") + QString(": %1 / 70").arg(count)));
-
-            m_loading = false;
-        });
-
-        connect(m_pMList,&QStandardItemModel::itemChanged,this,[=](QStandardItem *item){
-            if(m_loading) return;
-            saveLoadMacroHeader();
-        });
-
-        connect(m_MLDele1,&ImageDelegate::clicked,this,[=](const QModelIndex&index){
-            QModelIndex test =m_pMList->index(index.row(),0);
-            ui->tableViewMList->edit(test);
-        });
-
-        connect(m_MLDele2,&ImageDelegate::clicked,this,[=](const QModelIndex&index){
-            QStandardItem *item = m_pMList->item(index.row(),0);
-            int toRemoveId = item->data().toInt();
-            int count = ui->comboBoxMacro->count();
-            for(int i=0; i<count; i++)
-            {
-                if(ui->comboBoxMacro->itemData(i).toInt() == toRemoveId)
-                {
-                    ui->comboBoxMacro->removeItem(i);
-                    QFile::remove(m_strPath+QString::asprintf("/macroEvent-%02d.txt",toRemoveId));
-                    break;
-                }
-            }
-            m_pMList->removeRows(index.row(),1);
-            saveLoadMacroHeader();
-            m_currentId = -1;
-        });
-
-        connect(ui->pushButtonAddMacro,&QPushButton::clicked,this,[=]{
-            addMacroHeed(0,"");
-            saveLoadMacroHeader();
-        });
-
-        connect(ui->pushButtonRecord,&QPushButton::clicked,this,[=]{
-            if(m_currentId == -1)
-            {
-                QMessageBox::warning(this,tr("提示"),tr("首先选择或者新建一个宏，请重试！"));
-                return;
-            }
-
-            m_insertAt = -1;
-            QTimer::singleShot(50,this,[=]{
-                if(m_recording)
-                {
-                    int count = macroGroup.count();
-                    macroGroup.remove(count-2,2);
-                    saveLoadMacroContent(m_currentId,macroGroup,true);
-                    {
-                        m_loading = true;
-
-                        int count = macroGroup.count();
-                        for(int i=0; i<255; i++)
-                        {
-                            QStandardItem *item = m_pModel->item(i/6,i%6);
-                            if(!item) break;
-                            item->setData(0);
-                            if(i < count)
-                                item->setData((quint64)macroGroup[i]);
-                            refreshMacroItem(item);
-                        }
-                        ui->labelTitle4->setText(QString(tr("占用") + QString(": %1 / 70").arg(count)));
-
-                        m_loading = false;
-                    }
-                }
-
-                m_recording = ui->pushButtonRecord->isChecked();
-                ui->pushButtonRecord->setText(m_recording?tr(" 正在录制"):tr(" 开始录制"));
-            });
-
-            setFocusPolicy(Qt::StrongFocus);
-            this->setFocus();
-        });
-
-        connect(ui->pushButtonClear,&QPushButton::clicked,this,[=]{
-            if(m_currentId == -1)
-            {
-                QMessageBox::warning(this,tr("提示"),tr("没有选中 宏，请重试！"));
-                return;
-            }
-            QFile::remove(m_strPath+QString::asprintf("/macroEvent-%02d.txt",m_currentId));
-
-            m_lastItem = nullptr;
-            macroGroup.clear();
-            ui->labelTitle4->setText(tr("占用") + QString(": 0 / 70"));
-            for(int m=0;m<12;m++)
-            {
-                for(int n=0; n<6; n++)
-                {
-                    m_pModel->item(m,n)->setText("");
-                }
-            }
-        });
-
-        connect(ui->pushButtonSave,&QPushButton::clicked,this,[=]{
-            if(m_currentId == -1)
-            {
-                QMessageBox::warning(this,tr("提示"),tr("没有选中 宏，请重试！"));
-                return;
-            }
-
-            saveLoadMacroContent(m_currentId,macroGroup,true);
-            EasyToast::information("宏数据已保存！",600);
-        });
-
-        connect(ui->tableViewMContent->selectionModel(), &QItemSelectionModel::selectionChanged, this, [=](const QItemSelection &selected, const QItemSelection &deselected){
-                for(auto idx : selected.indexes())
-                {
-                    //qDebug() << idx;
-                }
-            });
-
-        connect(ui->pushButtonDelete,&QPushButton::clicked,this,[=]{
-            int count = macroGroup.count();
-            if(count == 0 || m_insertAt == -1 || m_insertAt >= count)
-            {
-                QMessageBox::warning(this,tr("提示"),tr("没有选中的宏动作，请重试！"));
-                return;
-            }
-
-            m_lastItem = nullptr;
-            if(count>0 && m_insertAt != -1)
-            {
-                int index = m_insertAt;
-
-                if(index >= count)
-                    return;
-
-                bool delDouble = (count%2  == 0);
-
-                if(index%2 == 0)
-                {
-                    macroGroup.removeAt(index);
-                    if(delDouble && (index < macroGroup.count()))
-                        macroGroup.removeAt(index);
-                }
-                else
-                {
-                    macroGroup.removeAt(index-1);
-                    if(delDouble && (index-1 < macroGroup.count()))
-                        macroGroup.removeAt(index-1);
-                }
-
-                for(int m=0;m<12;m++)
-                {
-                    for(int n=0; n<6; n++)
-                    {
-                        m_pModel->item(m,n)->setText("");
-                    }
-                }
-
-                count = macroGroup.count();
-                for(int i=0; i<count; i++)
-                {
-                    QStandardItem *item = m_pModel->item(i/6,i%6);
-                    if(item) item->setData((quint64)macroGroup[i]);
-                    refreshMacroItem(item);
-                }
-                ui->labelTitle4->setText(tr("占用") + QString(": %1 / 70").arg(count));
-                saveLoadMacroContent(m_currentId,macroGroup,true);
-                m_insertAt = -1 ;
-            }
-        });
-
-        connect(ui->pushButtonSetDelay,&QPushButton::clicked,this,[=]{
-            int count = macroGroup.count();
-            for(int i=0; i<count; i++)
-            {
-                macroGroup[i]->delay = ui->spinBoxDelay->value();
-                refreshMacroItem(m_pModel->item(i/6,i%6));
-            }
-            saveLoadMacroContent(m_currentId,macroGroup);
-        });
     }
 
     connect(ui->pushButtonResetDevice,&QPushButton::clicked,this,[=]{
@@ -1960,6 +1870,7 @@ void DialogMouse::updateButtonInfo()
     for (const auto &item : *btnInfo)
     {
         QString strChangedText;
+        QString strText=keyMapset[item.keyId];
         switch (item.keyType)
         {
         case InfortechDef::KeyType::BaseKey:
@@ -1975,7 +1886,8 @@ void DialogMouse::updateButtonInfo()
                     }
                     else
                     {
-                        strChangedText = QString(tr("普通按键: ")) + getKeyNameByDF(baseKeyData->funKeyId);
+                        strText = getKeyNameByDF(baseKeyData->funKeyId);
+                        strChangedText = QString(tr("普通按键: ")) + strText;
                     }
                 }
             }
@@ -1994,6 +1906,7 @@ void DialogMouse::updateButtonInfo()
                 }
                 strSys += getKeyNameByDF(comboKeyData->customKey);
                 strChangedText = QString(tr("组合键")) + QString(": ") + strSys;
+                strText = strSys ;
             }
 
             break;
@@ -2004,6 +1917,7 @@ void DialogMouse::updateButtonInfo()
             auto fireKeyData = item.cfg->getFireKeyInf();
             if (fireKeyData != nullptr)
             {
+                strText = tr("火力键");
                 strChangedText  = QString(tr("火力键")) + QString(": ");
                 strChangedText += QString(tr("点击次数"))+QString(": %1;").arg((int)fireKeyData->clickNum);
                 strChangedText += QString(tr("点击间隔"))+QString(": %1;").arg((int)fireKeyData->interval);
@@ -2018,6 +1932,7 @@ void DialogMouse::updateButtonInfo()
             auto macroKeyData = item.cfg->getMacroKeyInf();
             if (macroKeyData != nullptr)
             {
+                strText = tr("宏");
                 strChangedText = QString(tr("宏设置:"))  + QString("ID: %1").arg(macroKeyData->macroId) +
                                  QString(tr("类型:"))    + QString("%1").arg((int)macroKeyData->macroType) +
                                  QString(tr("动作数量:")) + QString("%1\n").arg(macroKeyData->data.size());
@@ -2044,11 +1959,12 @@ void DialogMouse::updateButtonInfo()
         if(item.keyId == 1702 || item.keyId == 1703 || item.keyId == 1706)
             left = true;
 
-        QString strName=QString("pushButtonMkey%1").arg(item.keyId);
+        QString strName = QString("pushButtonMkey%1").arg(item.keyId);
         QPushButton *btn = findChild<QPushButton*>(strName);
         KeyboardButton *pBtn = static_cast<KeyboardButton *>(btn);
         if(pBtn == nullptr) return;
 
+        btn->setText(strText);
         if(strChangedText.isEmpty())
         {
             pBtn->setTipText("","");
@@ -2057,7 +1973,7 @@ void DialogMouse::updateButtonInfo()
         else
         {
             pBtn->setTipText(getKeyNameByDF(item.keyId),strChangedText.trimmed());
-            SetButtonBackground(btn,left,"",QColor("red"),QColor("red"));
+            SetButtonBackground(btn,left,"",QColor("#6329B6"),QColor("#6329B6"));
         }
     }
 }
@@ -2390,6 +2306,152 @@ void DialogMouse::changeEvent(QEvent *pEvt)
     if(pEvt->type() == QEvent::LanguageChange)
     {
         ui->retranslateUi(this);
+
+        keyMapset= {
+            {1701, tr("左键")},
+            {1702, tr("右键")},
+            {1703, tr("中键")},
+            {1704, tr("后退")},
+            {1705, tr("前进")},
+            {1706, tr("底部按钮")},
+            {1707, tr("上滚")},
+            {1708, tr("下滚")},
+            {1709, tr("左滚")},
+            {1710, tr("右滚")},
+            {1901, tr("火力按钮")},
+            {1711, tr("DPI循环")},
+            {1712, tr("DPI+")},
+            {1713, tr("DPI-")},
+            {1731, tr("BLE循环")},
+            {1732, tr("BLE+")},
+            {1733, tr("BLE-")},
+            {1801, tr("亮度+")},
+            {1802, tr("亮度-")},
+            {1803, tr("音量+")},
+            {1804, tr("音量-")},
+            {1805, tr("静音")},
+            {1806, tr("计算器")},
+            {1807, tr("我的电脑")},
+            {1808, tr("邮件")},
+            {1809, tr("播放器")},
+            {1810, tr("停止")},
+            {1811, tr("暂停")},
+            {1812, tr("上一首")},
+            {1813, tr("下一首")},
+            {1814, tr("主页")},
+            {1815, tr("搜索")},
+            {1816, tr("刷新")},
+            {1817, tr("收藏夹")},
+            {1818, tr("网页停止")},
+            {1819, tr("网页前进")},
+            {1820, tr("网页后退")},
+            {1201,"F1"},
+            {1202,"F2"},
+            {1203,"F3"},
+            {1204,"F4"},
+            {1205,"F5"},
+            {1206,"F6"},
+            {1207,"F7"},
+            {1208,"F8"},
+            {1209,"F9"},
+            {1210,"F10"},
+            {1211,"F11"},
+            {1212,"F12"},
+            {1101,"!1"},
+            {1102,"@2"},
+            {1103,"#3"},
+            {1104,"$4"},
+            {1105,"%5"},
+            {1106,"^6"},
+            {1107,"&&7"},
+            {1108,"*8"},
+            {1109,"(9"},
+            {1110,")0"},
+            {1401,"~`"},
+            {1402,"-_"},
+            {1403,"+="},
+            {1404,"{["},
+            {1405,"}]"},
+            {1406,"|\\"},
+            {1407,":;"},
+            {1408,"\"'"},
+            {1409,"<,"},
+            {1410,">."},
+            {1411,"?/"},
+            {1301,"1"},
+            {1302,"2"},
+            {1303,"3"},
+            {1304,"4"},
+            {1305,"5"},
+            {1306,"6"},
+            {1307,"7"},
+            {1308,"8"},
+            {1309,"9"},
+            {1310,"0"},
+            {1311,"."},
+            {1312,"Number Lock"},
+            {1313,"/"},
+            {1314,"*"},
+            {1315,"-"},
+            {1316,"+"},
+            {1317,"Return"},
+            {1001,"A"},
+            {1002,"B"},
+            {1003,"C"},
+            {1004,"D"},
+            {1005,"E"},
+            {1006,"F"},
+            {1007,"G"},
+            {1008,"H"},
+            {1009,"I"},
+            {1010,"J"},
+            {1011,"K"},
+            {1012,"L"},
+            {1013,"M"},
+            {1014,"N"},
+            {1015,"O"},
+            {1016,"P"},
+            {1017,"Q"},
+            {1018,"R"},
+            {1019,"S"},
+            {1020,"T"},
+            {1021,"U"},
+            {1022,"V"},
+            {1023,"W"},
+            {1024,"X"},
+            {1025,"Y"},
+            {1026,"Z"},
+            {1505,"Space"},
+            {1502,"Esc"},
+            {1504,"Tab"},
+            {1503,"Back Space"},
+            {1501,"Enter"},
+            {1519,"Left Win"},
+            {1523,"Right Win"},
+            {1516,"Left Ctrl"},
+            {1520,"Right Ctrl"},
+            {1518,"Left Alt"},
+            {1522,"Right Alt"},
+            {1517,"Left Shift"},
+            {1521,"Right Shift"},
+            {1601,"Up"},
+            {1602,"Down"},
+            {1603,"Left"},
+            {1604,"Right"},
+            {1507,"Print Screen"},
+            {1508,"Scroll Lock"},
+            {1509,"Pause"},
+            {1510,"Insert"},
+            {1511,"Home"},
+            {1514,"End"},
+            {1512,"Page Up"},
+            {1515,"Page Down"},
+            {1513,"Delete"},
+            {1506,"Caps Lock"},
+        };
+
+
+
         getAllCfg();
     }
 
@@ -2411,10 +2473,6 @@ void DialogMouse::printDeviceInf(InfortechDef::DevInf *deviceInf) {
             << "mouseFirmwareVersion: " << deviceInf->getMouseFwVerStr() << "\n"
             << "receiverFirmwareVersion: " << deviceInf->getReceiverFwVerStr() << "\n"
             << "configId: " << (int)deviceInf->confId << std::endl;
-
-        m_battery =deviceInf->mouseBatterylevel;
-        m_charging=deviceInf->mouseBatteryCharging;
-        update();
     }
 }
 
@@ -2599,65 +2657,61 @@ void DialogMouse::getAllCfg()
     if(fwUpdating) return;
 
     changeName();
-
-    // 接收器版本
-    std::cout << 0 << std::endl;
     auto dongleVersion = serviceDevice->getDongleVersion();
+    auto deviceInf = serviceDevice->getDeviceInf();
+    auto btnInfo = serviceDevice->getButtonCfg();
+    auto mouseCfg = serviceDevice->getMouseCfg();
+    auto extraCfg = serviceDevice->getMouseExtraInfo();
+    auto sensorCfg = serviceDevice->getSensorCfg();
+    auto dgAmbientCfg = serviceDevice->getDGAmbientCfg();
+#if 0
+    // 接收器版本
     if (dongleVersion != "" && dongleVersion[0] != 0 && dongleVersion[1] != 0) {
         std::cout << "Successfully obtained the receiver version." << std::endl;
         std::cout << (int)dongleVersion[1] << "." << (int)dongleVersion[0] << std::endl;
     }
 
     // 设备信息
-    auto deviceInf = serviceDevice->getDeviceInf();
     if(deviceInf != nullptr)
     printDeviceInf(deviceInf.get());
 
     // 按键配置
-    std::cout << 1  << std::endl;
-    auto btnInfo = serviceDevice->getButtonCfg();
     if (btnInfo != nullptr) {
         std::cout << "Successfully obtained the key c44r44ronfiguration." << std::endl;
         printButtonInf(btnInfo.get());
     }
 
     // 鼠标配置
-    std::cout<< 2  << std::endl;
-    auto mouseCfg = serviceDevice->getMouseCfg();
     if (mouseCfg != nullptr) {
         std::cout << "Successfully obtained the mouse configuration." << std::endl;
         printMouseCfg(mouseCfg.get());
     }
 
     // 鼠标额外配置
-    std::cout << 3 << std::endl;
-    auto extraCfg = serviceDevice->getMouseExtraInfo();
     if (extraCfg != nullptr) {
         std::cout << "Successfully obtained the mouse extra information." << std::endl;
         printMouseExtraInfo(extraCfg.get());
     }
 
     // 传感器配置
-    std::cout << 4 << std::endl;
-    auto sensorCfg = serviceDevice->getSensorCfg();
     if (sensorCfg != nullptr) {
         std::cout << "Successfully obtained the sensor configuration." << std::endl;
         printSensorCfg(sensorCfg.get());
     }
 
     // 接收器氛围灯配置
-    std::cout << 5 << std::endl;
-    auto dgAmbientCfg = serviceDevice->getDGAmbientCfg();
     if (dgAmbientCfg != nullptr) {
         std::cout << "Successfully obtained the receiver ambient configuration." << std::endl;
         printDGAmbientCfg(dgAmbientCfg.get());
     }
-
+#endif
     if(deviceInf != nullptr)
     {
-        int config =(int)deviceInf->confId ;
+        int config = (int)deviceInf->confId ;
+        m_battery =deviceInf->mouseBatterylevel;
+        m_charging=deviceInf->mouseBatteryCharging;
+        update();
 
-        std::cout << 6 << " -------------- " << config << std::endl;
         if(config >= 0)
         {
             ui->buttonGroupConfig->buttons().at(config)->setChecked(true);

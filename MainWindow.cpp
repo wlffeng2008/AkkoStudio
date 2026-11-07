@@ -1326,12 +1326,13 @@ void MainWindow::enumDevice()
 
             if(m_bForMGK) continue;
 
-            if((USA == 0x0092 && UPG == 0xFF1C))
+            if((USA == 0x0092 && UPG == 0xFF1C) || (USA == 0x0000 && UPG == 0xFF01))
             {
                 QString strCmd1("04 00 00 30 06 00 00 00"); // 机型ID
                 hid_device *pDev = hid_open_path(PATH);
                 if(pDev)
                 {
+                    //qDebug().noquote() << "PATH:" << PATH;
                     int len1 = 0;
                     quint8 deviceType = 0;
                     quint8 connectType = 0;
@@ -1353,8 +1354,8 @@ void MainWindow::enumDevice()
 
                     if(len1 >= 12 && bFound)
                     {
-                        //QByteArray Log((char *)szBuf,len1);
-                        //qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Device ID:" << deviceType;
+                        QByteArray Log((char *)szBuf,len1);
+                        qDebug().noquote() << "read:" << Log.left(16).toHex(' ').toUpper() << QString::asprintf("PID: 0x%04X",PID) << "Device ID:" << deviceType  << QString::asprintf("0x%04X,0x%04X",UPG,USA);
 
                         addDevice(VID,PID,deviceType,"null",PATH,connectType,1);
                         allPaths.push_back(PATH);

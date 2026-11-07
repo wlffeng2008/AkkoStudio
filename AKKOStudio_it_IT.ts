@@ -6,7 +6,7 @@
     <message>
         <location filename="Module/DialogColorPicker.ui" line="238"/>
         <source>完成</source>
-        <translation type="unfinished">Fine</translation>
+        <translation>Fine</translation>
     </message>
 </context>
 <context>
@@ -14,130 +14,130 @@
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4215"/>
         <source>循环次数</source>
-        <translation type="unfinished">Numero di ripetizioni</translation>
+        <translation>Numero di ripetizioni</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4279"/>
         <location filename="Module/DialogFNPicker.ui" line="4297"/>
         <source>系统功能</source>
-        <translation type="unfinished">Funzioni di sistema</translation>
+        <translation>Funzioni di sistema</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4854"/>
         <location filename="Module/DialogFNPicker.ui" line="4872"/>
         <source>鼠标功能</source>
-        <translation type="unfinished">Funzioni del mouse</translation>
+        <translation>Funzioni del mouse</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4887"/>
         <source>左键</source>
-        <translation type="unfinished">Pulsante sinistro</translation>
+        <translation>Pulsante sinistro</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4903"/>
         <source>右键</source>
-        <translation type="unfinished">Pulsante destro</translation>
+        <translation>Pulsante destro</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4919"/>
         <source>中键</source>
-        <translation type="unfinished">Pulsante centrale</translation>
+        <translation>Pulsante centrale</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4935"/>
         <source>前移</source>
-        <translation type="unfinished">Avanti</translation>
+        <translation>Avanti</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4951"/>
         <source>后移</source>
-        <translation type="unfinished">Indietro</translation>
+        <translation>Indietro</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4967"/>
         <source>左滚</source>
-        <translation type="unfinished">Rotazione a sinistra</translation>
+        <translation>Rotazione a sinistra</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4983"/>
         <source>右滚</source>
-        <translation type="unfinished">Rotazione a destra</translation>
+        <translation>Rotazione a destra</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4999"/>
         <source>上滚</source>
-        <translation type="unfinished">Rotazione su</translation>
+        <translation>Rotazione su</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="5015"/>
         <source>下滚</source>
-        <translation type="unfinished">Rotazione giù</translation>
+        <translation>Rotazione giù</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="5031"/>
         <source>向上滚屏</source>
-        <translation type="unfinished">Scorri su</translation>
+        <translation>Scorri su</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="5047"/>
         <source>向下滚屏</source>
-        <translation type="unfinished">Scorri giù</translation>
+        <translation>Scorri giù</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="5110"/>
         <source>设置功能为:</source>
-        <translation type="unfinished">Imposta funzione come:</translation>
+        <translation>Imposta funzione come:</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4175"/>
         <location filename="Module/DialogFNPicker.ui" line="4193"/>
         <source>宏设置</source>
-        <translation type="unfinished">Impostazioni macro</translation>
+        <translation>Impostazioni macro</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="57"/>
         <source>组合键</source>
-        <translation type="unfinished">Tasto combinato</translation>
+        <translation>Tasto combinato</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="75"/>
         <source>基本字符</source>
-        <translation type="unfinished">Caratteri base</translation>
+        <translation>Caratteri base</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="1829"/>
         <source>拓展字符(按键)</source>
-        <translation type="unfinished">Caratteri estesi (tasti)</translation>
+        <translation>Caratteri estesi (tasti)</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4208"/>
         <source>播放方式:</source>
-        <translation type="unfinished">Modalità riproduzione:</translation>
+        <translation>Modalità riproduzione:</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4235"/>
         <source>自动</source>
-        <translation type="unfinished">Automatico</translation>
+        <translation>Automatico</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="4242"/>
         <source>按下</source>
-        <translation type="unfinished">Alla pressione</translation>
+        <translation>Alla pressione</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="5256"/>
         <source>确定</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.ui" line="5281"/>
         <source>取消</source>
-        <translation type="unfinished">Annulla</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <location filename="Module/DialogFNPicker.cpp" line="130"/>
         <source>未录制的宏</source>
-        <translation type="unfinished">Macro non registrata</translation>
+        <translation>Macro non registrata</translation>
     </message>
 </context>
 <context>
@@ -145,824 +145,905 @@
     <message>
         <location filename="DialogMouse.ui" line="32"/>
         <source>鼠标驱动程序</source>
-        <translation type="unfinished">Driver del mouse</translation>
+        <translation>Driver del mouse</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="223"/>
         <source>MOUSE SHOW</source>
-        <translation type="unfinished">Visualizzazione mouse</translation>
+        <translation>Visualizzazione mouse</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="236"/>
         <source>Battery</source>
-        <translation type="unfinished">Batteria</translation>
+        <translation>Batteria</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="383"/>
         <location filename="DialogMouse.ui" line="760"/>
         <source>按键设定</source>
-        <translation type="unfinished">Impostazioni tasti</translation>
+        <translation>Impostazioni tasti</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="418"/>
         <source>DPI设定</source>
-        <translation type="unfinished">Impostazioni DPI</translation>
+        <translation>Impostazioni DPI</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="450"/>
         <source>灯光设置</source>
-        <translation type="unfinished">Impostazioni della luce</translation>
+        <translation>Impostazioni illuminazione</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="482"/>
         <source>性能设定</source>
-        <translation type="unfinished">Impostazioni prestazioni</translation>
+        <translation>Impostazioni prestazioni</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="514"/>
         <source>宏管理&#x3000;</source>
-        <translation type="unfinished">Gestione macro</translation>
+        <translation>Gestione macro</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="546"/>
         <source>关于&#x3000;&#x3000;</source>
-        <translation type="unfinished">Informazioni</translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="588"/>
         <source>我的配置</source>
-        <translation type="unfinished">Mie configurazioni</translation>
+        <translation>Le mie configurazioni</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="848"/>
+        <location filename="DialogMouse.ui" line="666"/>
+        <source>配置1</source>
+        <translation>Configurazione 1</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="682"/>
+        <source>配置2</source>
+        <translation>Configurazione 2</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="695"/>
+        <source>配置3</source>
+        <translation>Configurazione 3</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="708"/>
+        <source>配置4</source>
+        <translation>Configurazione 4</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="721"/>
+        <source>配置5</source>
+        <translation>Configurazione 5</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="860"/>
         <source>前进键</source>
-        <translation type="unfinished">Tasto avanti</translation>
+        <translation>Tasto avanti</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="882"/>
-        <location filename="DialogMouse.ui" line="1327"/>
+        <location filename="DialogMouse.ui" line="894"/>
+        <location filename="DialogMouse.ui" line="1363"/>
+        <location filename="DialogMouse.cpp" line="2312"/>
         <source>右键</source>
-        <translation type="unfinished">Pulsante destro</translation>
+        <translation>Pulsante destro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="916"/>
-        <location filename="DialogMouse.ui" line="1471"/>
+        <location filename="DialogMouse.ui" line="928"/>
+        <location filename="DialogMouse.ui" line="1507"/>
+        <location filename="DialogMouse.cpp" line="2313"/>
         <source>中键</source>
-        <translation type="unfinished">Pulsante centrale</translation>
+        <translation>Pulsante centrale</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="938"/>
+        <location filename="DialogMouse.ui" line="962"/>
         <source>后退键</source>
-        <translation type="unfinished">Tasto indietro</translation>
+        <translation>Tasto indietro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="960"/>
-        <location filename="DialogMouse.ui" line="1375"/>
+        <location filename="DialogMouse.ui" line="996"/>
+        <location filename="DialogMouse.ui" line="1411"/>
+        <location filename="DialogMouse.cpp" line="2311"/>
         <source>左键</source>
-        <translation type="unfinished">Pulsante sinistro</translation>
+        <translation>Pulsante sinistro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="997"/>
+        <location filename="DialogMouse.ui" line="1033"/>
         <source>DPI键</source>
-        <translation type="unfinished">Tasto DPI</translation>
+        <translation>Tasto DPI</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1044"/>
+        <location filename="DialogMouse.ui" line="1080"/>
         <source>左右键互换</source>
-        <translation type="unfinished">Inverti tasti sinistro/destro</translation>
+        <translation>Inverti tasti sinistro/destro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1069"/>
+        <location filename="DialogMouse.ui" line="1105"/>
         <source>重置按键</source>
-        <translation type="unfinished">Ripristina tasti</translation>
+        <translation>Ripristina tasti</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1198"/>
+        <location filename="DialogMouse.ui" line="1234"/>
         <source>系统</source>
-        <translation type="unfinished">Sistema</translation>
+        <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1223"/>
+        <location filename="DialogMouse.ui" line="1259"/>
         <source>键盘</source>
-        <translation type="unfinished">Tastiera</translation>
+        <translation>Tastiera</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1245"/>
+        <location filename="DialogMouse.ui" line="1281"/>
         <source>控制</source>
-        <translation type="unfinished">Controllo</translation>
+        <translation>Controllo</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1267"/>
+        <location filename="DialogMouse.ui" line="1303"/>
         <source>特殊</source>
-        <translation type="unfinished">Speciali</translation>
+        <translation>Speciali</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1293"/>
+        <location filename="DialogMouse.ui" line="1329"/>
         <source>鼠标按键：</source>
-        <translation type="unfinished">Tasti del mouse:</translation>
+        <translation>Tasti del mouse:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1311"/>
+        <location filename="DialogMouse.ui" line="1347"/>
+        <location filename="DialogMouse.cpp" line="2317"/>
         <source>上滚</source>
-        <translation type="unfinished">Rotazione su</translation>
+        <translation>Scorrimento su</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1343"/>
+        <location filename="DialogMouse.ui" line="1379"/>
+        <location filename="DialogMouse.cpp" line="2320"/>
         <source>右滚</source>
-        <translation type="unfinished">Rotazione a destra</translation>
+        <translation>Scorrimento a destra</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1359"/>
+        <location filename="DialogMouse.ui" line="1395"/>
+        <location filename="DialogMouse.cpp" line="2315"/>
         <source>前进</source>
-        <translation type="unfinished">Avanti</translation>
+        <translation>Avanti</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1391"/>
+        <location filename="DialogMouse.ui" line="1427"/>
+        <location filename="DialogMouse.cpp" line="2319"/>
         <source>左滚</source>
-        <translation type="unfinished">Rotazione a sinistra</translation>
+        <translation>Scorrimento a sinistra</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1407"/>
+        <location filename="DialogMouse.ui" line="1443"/>
+        <location filename="DialogMouse.cpp" line="2314"/>
         <source>后退</source>
-        <translation type="unfinished">Indietro</translation>
+        <translation>Indietro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1423"/>
+        <location filename="DialogMouse.ui" line="1459"/>
+        <location filename="DialogMouse.cpp" line="2322"/>
         <source>DPI循环</source>
-        <translation type="unfinished">Ciclo DPI</translation>
+        <translation>Ciclo DPI</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1439"/>
+        <location filename="DialogMouse.cpp" line="2323"/>
         <source>DPI+</source>
-        <translation type="unfinished">DPI+</translation>
+        <translation>DPI+</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1455"/>
+        <location filename="DialogMouse.ui" line="1491"/>
+        <location filename="DialogMouse.cpp" line="2318"/>
         <source>下滚</source>
-        <translation type="unfinished">Rotazione giù</translation>
+        <translation>Scorrimento giù</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1487"/>
+        <location filename="DialogMouse.cpp" line="2324"/>
         <source>DPI-</source>
-        <translation type="unfinished">DPI-</translation>
+        <translation>DPI-</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1503"/>
+        <location filename="DialogMouse.ui" line="1539"/>
+        <location filename="DialogMouse.cpp" line="2325"/>
         <source>BLE循环</source>
-        <translation type="unfinished">Ciclo BLE</translation>
+        <translation>Ciclo BLE</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1519"/>
+        <location filename="DialogMouse.cpp" line="2326"/>
         <source>BLE+</source>
-        <translation type="unfinished">BLE+</translation>
+        <translation>BLE+</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1535"/>
+        <location filename="DialogMouse.cpp" line="2327"/>
         <source>BLE-</source>
-        <translation type="unfinished">BLE-</translation>
+        <translation>BLE-</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1551"/>
+        <location filename="DialogMouse.ui" line="1587"/>
+        <location filename="DialogMouse.cpp" line="2316"/>
         <source>底部按钮</source>
-        <translation type="unfinished">Pulsante inferiore</translation>
+        <translation>Pulsante inferiore</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1567"/>
+        <location filename="DialogMouse.ui" line="1603"/>
+        <location filename="DialogMouse.cpp" line="2321"/>
         <source>火力按钮</source>
-        <translation type="unfinished">Tasto rapid fire</translation>
+        <translation>Tasto rapid fire</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1595"/>
+        <location filename="DialogMouse.ui" line="1631"/>
         <source>多媒体按键：</source>
-        <translation type="unfinished">Tasti multimediali:</translation>
+        <translation>Tasti multimediali:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1613"/>
+        <location filename="DialogMouse.ui" line="1649"/>
+        <location filename="DialogMouse.cpp" line="2337"/>
         <source>停止</source>
-        <translation type="unfinished">Stop</translation>
+        <translation>Stop</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1629"/>
+        <location filename="DialogMouse.ui" line="1665"/>
+        <location filename="DialogMouse.cpp" line="2345"/>
         <source>网页停止</source>
-        <translation type="unfinished">Stop pagina web</translation>
+        <translation>Stop pagina web</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1645"/>
+        <location filename="DialogMouse.ui" line="1681"/>
+        <location filename="DialogMouse.cpp" line="2347"/>
         <source>网页后退</source>
-        <translation type="unfinished">Indietro pagina web</translation>
+        <translation>Indietro pagina web</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1661"/>
+        <location filename="DialogMouse.ui" line="1697"/>
+        <location filename="DialogMouse.cpp" line="2344"/>
         <source>收藏夹</source>
-        <translation type="unfinished">Preferiti</translation>
+        <translation>Preferiti</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1677"/>
+        <location filename="DialogMouse.ui" line="1713"/>
+        <location filename="DialogMouse.cpp" line="2334"/>
         <source>我的电脑</source>
-        <translation type="unfinished">Risorse del computer</translation>
+        <translation>Risorse del computer</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1693"/>
+        <location filename="DialogMouse.ui" line="1729"/>
+        <location filename="DialogMouse.cpp" line="2330"/>
         <source>音量+</source>
-        <translation type="unfinished">Volume+</translation>
+        <translation>Volume+</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1709"/>
+        <location filename="DialogMouse.ui" line="1745"/>
+        <location filename="DialogMouse.cpp" line="2341"/>
         <source>主页</source>
-        <translation type="unfinished">Home</translation>
+        <translation>Home</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1725"/>
+        <location filename="DialogMouse.ui" line="1761"/>
+        <location filename="DialogMouse.cpp" line="2329"/>
         <source>亮度-</source>
-        <translation type="unfinished">Luminosità-</translation>
+        <translation>Luminosità-</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1741"/>
+        <location filename="DialogMouse.ui" line="1777"/>
+        <location filename="DialogMouse.cpp" line="2338"/>
         <source>暂停</source>
-        <translation type="unfinished">Pausa</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1757"/>
+        <location filename="DialogMouse.ui" line="1793"/>
+        <location filename="DialogMouse.cpp" line="2339"/>
         <source>上一首</source>
-        <translation type="unfinished">Brano precedente</translation>
+        <translation>Brano precedente</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1773"/>
+        <location filename="DialogMouse.ui" line="1809"/>
+        <location filename="DialogMouse.cpp" line="2340"/>
         <source>下一首</source>
-        <translation type="unfinished">Brano successivo</translation>
+        <translation>Brano successivo</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1789"/>
+        <location filename="DialogMouse.ui" line="1825"/>
+        <location filename="DialogMouse.cpp" line="2331"/>
         <source>音量-</source>
-        <translation type="unfinished">Volume-</translation>
+        <translation>Volume-</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1805"/>
+        <location filename="DialogMouse.ui" line="1841"/>
+        <location filename="DialogMouse.cpp" line="2342"/>
         <source>搜索</source>
-        <translation type="unfinished">Cerca</translation>
+        <translation>Cerca</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1821"/>
+        <location filename="DialogMouse.ui" line="1857"/>
+        <location filename="DialogMouse.cpp" line="2333"/>
         <source>计算器</source>
-        <translation type="unfinished">Calcolatrice</translation>
+        <translation>Calcolatrice</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1837"/>
+        <location filename="DialogMouse.ui" line="1873"/>
+        <location filename="DialogMouse.cpp" line="2346"/>
         <source>网页前进</source>
-        <translation type="unfinished">Avanti pagina web</translation>
+        <translation>Avanti pagina web</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1853"/>
+        <location filename="DialogMouse.ui" line="1889"/>
+        <location filename="DialogMouse.cpp" line="2343"/>
         <source>刷新</source>
-        <translation type="unfinished">Aggiorna</translation>
+        <translation>Aggiorna</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1869"/>
+        <location filename="DialogMouse.ui" line="1905"/>
+        <location filename="DialogMouse.cpp" line="2332"/>
         <source>静音</source>
-        <translation type="unfinished">Muto</translation>
+        <translation>Muto</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1885"/>
+        <location filename="DialogMouse.ui" line="1921"/>
+        <location filename="DialogMouse.cpp" line="2336"/>
         <source>播放器</source>
-        <translation type="unfinished">Riproduttore</translation>
+        <translation>Riproduttore</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1901"/>
+        <location filename="DialogMouse.ui" line="1937"/>
+        <location filename="DialogMouse.cpp" line="2328"/>
         <source>亮度+</source>
-        <translation type="unfinished">Luminosità+</translation>
+        <translation>Luminosità+</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="1917"/>
+        <location filename="DialogMouse.ui" line="1953"/>
+        <location filename="DialogMouse.cpp" line="2335"/>
         <source>邮件</source>
-        <translation type="unfinished">Posta</translation>
+        <translation>Posta</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8643"/>
+        <location filename="DialogMouse.ui" line="8688"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8747"/>
+        <location filename="DialogMouse.ui" line="8792"/>
         <source>-</source>
-        <translation type="unfinished">-</translation>
+        <translation>-</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5003"/>
-        <location filename="DialogMouse.ui" line="8858"/>
+        <location filename="DialogMouse.ui" line="5039"/>
+        <location filename="DialogMouse.ui" line="8903"/>
         <source>+</source>
-        <translation type="unfinished">+</translation>
+        <translation>+</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="4924"/>
+        <location filename="DialogMouse.ui" line="4960"/>
         <source>组合键:</source>
-        <translation type="unfinished">Tasto combinato:</translation>
+        <translation>Combinazione tasti:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5019"/>
+        <location filename="DialogMouse.ui" line="5055"/>
         <source>按任意键</source>
-        <translation type="unfinished">Premi un tasto qualsiasi</translation>
+        <translation>Premi un tasto qualsiasi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5029"/>
-        <location filename="DialogMouse.ui" line="5178"/>
-        <location filename="DialogMouse.ui" line="5356"/>
-        <location filename="DialogMouse.ui" line="9517"/>
+        <location filename="DialogMouse.ui" line="5065"/>
+        <location filename="DialogMouse.ui" line="5220"/>
+        <location filename="DialogMouse.ui" line="5401"/>
+        <location filename="DialogMouse.ui" line="9562"/>
         <source>保存</source>
-        <translation type="unfinished">Salva</translation>
+        <translation>Salva</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5042"/>
+        <location filename="DialogMouse.ui" line="5078"/>
         <source>火力键:</source>
-        <translation type="unfinished">Tasto rapid fire:</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.ui" line="5074"/>
-        <source>保持点击:</source>
-        <translation type="unfinished">Mantieni clic:</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.ui" line="5091"/>
-        <source>点击间隔:</source>
-        <translation type="unfinished">Intervallo clic:</translation>
+        <translation>Tasto rapid fire:</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="5110"/>
+        <source>保持点击:</source>
+        <translation>Mantieni premuto:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5127"/>
+        <source>点击间隔:</source>
+        <translation>Intervallo tra clic:</translation>
+    </message>
+    <message>
         <source> ms</source>
-        <translation type="unfinished"> ms</translation>
+        <translation type="vanished"> ms</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5157"/>
+        <location filename="DialogMouse.ui" line="5199"/>
         <source>点击次数:</source>
-        <translation type="unfinished">Numero di clic:</translation>
+        <translation>Numero di clic:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5191"/>
+        <location filename="DialogMouse.ui" line="5233"/>
         <source>宏循环方式:</source>
-        <translation type="unfinished">Modalità ciclo macro:</translation>
+        <translation>Modalità di ripetizione macro:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5206"/>
+        <location filename="DialogMouse.ui" line="5248"/>
         <source>正常播放</source>
-        <translation type="unfinished">Riproduzione normale</translation>
+        <translation>Riproduzione normale</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5216"/>
+        <location filename="DialogMouse.ui" line="5258"/>
         <source>释放停止</source>
-        <translation type="unfinished">Ferma al rilascio</translation>
+        <translation>Ferma al rilascio</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5226"/>
+        <location filename="DialogMouse.ui" line="5268"/>
         <source>释放立即停止</source>
-        <translation type="unfinished">Ferma immediatamente al rilascio</translation>
+        <translation>Ferma immediatamente al rilascio</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5239"/>
+        <location filename="DialogMouse.ui" line="5281"/>
         <source>触发停止</source>
-        <translation type="unfinished">Ferma alla trigger</translation>
+        <translation>Ferma al trigger</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5249"/>
+        <location filename="DialogMouse.ui" line="5291"/>
         <source>按任意键停止</source>
-        <translation type="unfinished">Ferma con qualsiasi tasto</translation>
+        <translation>Ferma premendo un tasto qualsiasi</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5267"/>
+        <location filename="DialogMouse.ui" line="5309"/>
         <source>固定循环次数</source>
-        <translation type="unfinished">Numero fisso di ripetizioni</translation>
+        <translation>Numero fisso di ripetizioni</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5327"/>
+        <location filename="DialogMouse.ui" line="5372"/>
         <source>宏列表:</source>
-        <translation type="unfinished">Elenco macro:</translation>
+        <translation>Elenco macro:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5346"/>
+        <location filename="DialogMouse.ui" line="5391"/>
         <source>录制新宏</source>
-        <translation type="unfinished">Registra nuova macro</translation>
+        <translation>Registra nuova macro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5403"/>
+        <location filename="DialogMouse.ui" line="5448"/>
         <source>开启后通过 左中右 键快捷切换DPI</source>
-        <translation type="unfinished">Abilita per cambiare rapidamente DPI con tasti sinistro/centrale/destro</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.ui" line="5406"/>
-        <source>快捷切换DPI</source>
-        <translation type="unfinished">Cambio rapido DPI</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.ui" line="5426"/>
-        <source>X轴/Y轴独立设定</source>
-        <translation type="unfinished">Impostazioni indipendenti asse X/Y</translation>
+        <translation>Abilita per cambiare rapidamente DPI con i pulsanti sinistro/centrale/destro</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="5451"/>
+        <source>快捷切换DPI</source>
+        <translation>Cambio rapido DPI</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5471"/>
+        <source>X轴/Y轴独立设定</source>
+        <translation>Impostazioni indipendenti asse X/Y</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.ui" line="5496"/>
         <source>X轴DPI设定</source>
-        <translation type="unfinished">DPI asse X</translation>
+        <translation>DPI asse X</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="5941"/>
+        <location filename="DialogMouse.ui" line="5986"/>
         <source>Y轴DPI设定</source>
-        <translation type="unfinished">DPI asse Y</translation>
+        <translation>DPI asse Y</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="6414"/>
+        <location filename="DialogMouse.ui" line="6459"/>
         <source>BHOP开关</source>
-        <translation type="unfinished">BHOP abilita/disabilita</translation>
+        <translation>Abilita BHOP</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="6622"/>
+        <location filename="DialogMouse.ui" line="6667"/>
         <source>BHOP灵敏度</source>
-        <translation type="unfinished">Sensibilità BHOP</translation>
+        <translation>Sensibilità BHOP</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="6640"/>
+        <location filename="DialogMouse.ui" line="6685"/>
         <source>灯光亮度</source>
-        <translation type="unfinished">Luminosità luce</translation>
+        <translation>Luminosità illuminazione</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7079"/>
+        <location filename="DialogMouse.ui" line="7124"/>
         <source>灯光效果</source>
-        <translation type="unfinished">Effetto luminoso</translation>
+        <translation>Effetto luminoso</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7207"/>
+        <location filename="DialogMouse.ui" line="7252"/>
         <source>预设颜色</source>
-        <translation type="unfinished">Colori predefiniti</translation>
+        <translation>Colori predefiniti</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7271"/>
+        <location filename="DialogMouse.ui" line="7316"/>
         <source>DPI档位</source>
-        <translation type="unfinished">Livello DPI</translation>
+        <translation>Livello DPI</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7286"/>
+        <location filename="DialogMouse.ui" line="7331"/>
         <source>关闭</source>
-        <translation type="unfinished">Esci</translation>
+        <translation>Spento</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7299"/>
+        <location filename="DialogMouse.ui" line="7344"/>
         <source>常亮</source>
-        <translation type="unfinished">Sempre acceso</translation>
+        <translation>Sempre acceso</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7312"/>
+        <location filename="DialogMouse.ui" line="7357"/>
         <source>呼吸</source>
-        <translation type="unfinished">Respirazione</translation>
+        <translation>Respirazione</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7340"/>
+        <location filename="DialogMouse.ui" line="7385"/>
         <source>呼吸速度</source>
-        <translation type="unfinished">Velocità respirazione</translation>
+        <translation>Velocità di respirazione</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7816"/>
+        <location filename="DialogMouse.ui" line="7861"/>
         <source>直线校准</source>
-        <translation type="unfinished">Calibrazione linea retta</translation>
+        <translation>Calibrazione linea retta</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7864"/>
+        <location filename="DialogMouse.ui" line="7909"/>
         <source>移动同步</source>
-        <translation type="unfinished">Sincronizzazione movimento</translation>
+        <translation>Sincronizzazione del movimento</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7912"/>
+        <location filename="DialogMouse.ui" line="7957"/>
         <source>波纹控制</source>
-        <translation type="unfinished">Controllo onda</translation>
+        <translation>Controllo onda</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="7960"/>
+        <location filename="DialogMouse.ui" line="8005"/>
         <source>20000FPS</source>
-        <translation type="unfinished">20000 FPS</translation>
+        <translation>20000 FPS</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8008"/>
+        <location filename="DialogMouse.ui" line="8053"/>
         <source>移动关闭LED</source>
-        <translation type="unfinished">Spegni LED in movimento</translation>
+        <translation>Spegni LED durante il movimento</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8047"/>
+        <location filename="DialogMouse.ui" line="8092"/>
         <source>轮询率</source>
-        <translation type="unfinished">Frequenza di polling</translation>
+        <translation>Frequenza di polling</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8202"/>
+        <location filename="DialogMouse.ui" line="8247"/>
         <source>按键延迟</source>
-        <translation type="unfinished">Ritardo tasto</translation>
+        <translation>Ritardo dei tasti</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8359"/>
+        <location filename="DialogMouse.ui" line="8404"/>
         <source>休眠设置</source>
-        <translation type="unfinished">Impostazioni sospensione</translation>
+        <translation>Impostazioni sospensione</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8590"/>
+        <location filename="DialogMouse.ui" line="8635"/>
         <source>角度传感器</source>
-        <translation type="unfinished">Sensore angolare</translation>
+        <translation>Sensore angolare</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8618"/>
+        <location filename="DialogMouse.ui" line="8663"/>
         <source>启用：</source>
-        <translation type="unfinished">Abilita:</translation>
+        <translation>Abilita:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8636"/>
+        <location filename="DialogMouse.ui" line="8681"/>
         <source>当前角度:</source>
-        <translation type="unfinished">Angolo attuale:</translation>
+        <translation>Angolo attuale:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8671"/>
+        <location filename="DialogMouse.ui" line="8716"/>
         <source>0°</source>
-        <translation type="unfinished">0°</translation>
+        <translation>0°</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="8911"/>
+        <location filename="DialogMouse.ui" line="8956"/>
         <source>静默高度</source>
-        <translation type="unfinished">Altezza silenziosa</translation>
+        <translation>Distanza di sollevamento</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9160"/>
+        <location filename="DialogMouse.ui" line="9205"/>
         <source>宏列表</source>
-        <translation type="unfinished">Elenco macro</translation>
+        <translation>Elenco macro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9189"/>
+        <location filename="DialogMouse.ui" line="9234"/>
         <source>新建宏</source>
-        <translation type="unfinished">Nuova macro</translation>
+        <translation>Nuova macro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9407"/>
+        <location filename="DialogMouse.ui" line="9452"/>
         <source>宏名称</source>
-        <translation type="unfinished">Nome macro</translation>
+        <translation>Nome macro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9421"/>
+        <location filename="DialogMouse.ui" line="9466"/>
         <source>占用: 0 / 70</source>
-        <translation type="unfinished">Occupato: 0 / 70</translation>
+        <translation>In uso: 0 / 70</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9450"/>
+        <location filename="DialogMouse.ui" line="9495"/>
         <source>删除</source>
-        <translation type="unfinished">Elimina</translation>
+        <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9482"/>
+        <location filename="DialogMouse.ui" line="9527"/>
         <source>清空</source>
-        <translation type="unfinished">Svuota</translation>
+        <translation>Svuota</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9662"/>
+        <location filename="DialogMouse.ui" line="9707"/>
         <source>开始录制</source>
-        <translation type="unfinished">Inizia registrazione</translation>
+        <translation>Inizia registrazione</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9700"/>
+        <location filename="DialogMouse.ui" line="9745"/>
         <source>插入按键</source>
-        <translation type="unfinished">Inserisci tasto</translation>
+        <translation>Inserisci tasto</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9720"/>
+        <location filename="DialogMouse.ui" line="9765"/>
         <source>延迟时长:</source>
-        <translation type="unfinished">Durata ritardo:</translation>
+        <translation>Durata ritardo:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9767"/>
+        <location filename="DialogMouse.ui" line="9812"/>
         <source>应用</source>
-        <translation type="unfinished">Applica</translation>
+        <translation>Applica</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9804"/>
+        <location filename="DialogMouse.ui" line="9849"/>
         <source>设备规格</source>
-        <translation type="unfinished">Specifiche dispositivo</translation>
+        <translation>Specifiche del dispositivo</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9824"/>
+        <location filename="DialogMouse.ui" line="9869"/>
         <source>设备名称:</source>
-        <translation type="unfinished">Nome dispositivo:</translation>
+        <translation>Nome dispositivo:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9850"/>
+        <location filename="DialogMouse.ui" line="9895"/>
         <source>鼠标固件版本:</source>
-        <translation type="unfinished">Versione firmware mouse:</translation>
+        <translation>Versione firmware del mouse:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9876"/>
+        <location filename="DialogMouse.ui" line="9921"/>
         <source>无线连接器固件版本:</source>
-        <translation type="unfinished">Versione firmware ricevitore wireless:</translation>
+        <translation>Versione firmware del ricevitore wireless:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9902"/>
+        <location filename="DialogMouse.ui" line="9947"/>
         <source>当前软件版本:</source>
-        <translation type="unfinished">Versione software attuale:</translation>
+        <translation>Versione software attuale:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9980"/>
+        <location filename="DialogMouse.ui" line="10025"/>
         <source>鼠标固件更新</source>
-        <translation type="unfinished">Aggiornamento firmware mouse</translation>
+        <translation>Aggiornamento firmware del mouse</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="9996"/>
+        <location filename="DialogMouse.ui" line="10041"/>
         <source>无线连接器固件更新</source>
-        <translation type="unfinished">Aggiornamento firmware ricevitore wireless</translation>
+        <translation>Aggiornamento firmware del ricevitore wireless</translation>
     </message>
     <message>
-        <location filename="DialogMouse.ui" line="10012"/>
+        <location filename="DialogMouse.ui" line="10057"/>
         <source>恢复出厂设置</source>
-        <translation type="unfinished">Ripristina impostazioni di fabbrica</translation>
+        <translation>Ripristina impostazioni di fabbrica</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="517"/>
-        <location filename="DialogMouse.cpp" line="1744"/>
-        <location filename="DialogMouse.cpp" line="1809"/>
-        <location filename="DialogMouse.cpp" line="1833"/>
-        <location filename="DialogMouse.cpp" line="1907"/>
-        <source>占用</source>
-        <translation type="unfinished">Occupato</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="530"/>
-        <source>新宏</source>
-        <translation type="unfinished">Nuova macro</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="869"/>
-        <location filename="DialogMouse.cpp" line="967"/>
-        <location filename="DialogMouse.cpp" line="988"/>
-        <location filename="DialogMouse.cpp" line="997"/>
-        <location filename="DialogMouse.cpp" line="1081"/>
-        <location filename="DialogMouse.cpp" line="1785"/>
-        <location filename="DialogMouse.cpp" line="1826"/>
-        <location filename="DialogMouse.cpp" line="1846"/>
-        <location filename="DialogMouse.cpp" line="1865"/>
-        <location filename="DialogMouse.cpp" line="1925"/>
-        <source>提示</source>
-        <translation type="unfinished">suggerimento</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="869"/>
-        <source>首先选择或者新建一个宏！</source>
-        <translation type="unfinished">Seleziona o crea prima una macro!</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="943"/>
-        <source>请选择升级文件:</source>
-        <translation type="unfinished">Seleziona file di aggiornamento:</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="951"/>
-        <source>请选择一个Bin文件...</source>
-        <translation type="unfinished">Seleziona un file Bin...</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="953"/>
-        <source>...</source>
-        <translation type="unfinished">...</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="959"/>
-        <source>固件文件 (*.bin *.hex *.fw);;所有文件 (*.*)</source>
-        <translation type="unfinished">File firmware (*.bin *.hex *.fw);;Tutti i file (*.*)</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="960"/>
-        <source>选择固件文件</source>
-        <translation type="unfinished">Seleziona file firmware</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="967"/>
-        <source>固件文件无法识别！</source>
-        <translation type="unfinished">File firmware non riconosciuto!</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="988"/>
-        <source>固件升级失败！</source>
-        <translation type="unfinished">Aggiornamento firmware fallito!</translation>
-    </message>
-    <message>
-        <location filename="DialogMouse.cpp" line="997"/>
-        <source>固件升级成功！</source>
-        <translation type="unfinished">Aggiornamento firmware completato!</translation>
-    </message>
-    <message>
+        <location filename="DialogMouse.cpp" line="376"/>
+        <location filename="DialogMouse.cpp" line="915"/>
+        <location filename="DialogMouse.cpp" line="993"/>
         <location filename="DialogMouse.cpp" line="1008"/>
+        <location filename="DialogMouse.cpp" line="1082"/>
+        <source>占用</source>
+        <translation>In uso</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="391"/>
+        <source>新宏</source>
+        <translation>Nuova macro</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="623"/>
+        <source>正在录制宏,请在此界面按下/松开鼠标按键或者键盘按键......</source>
+        <translation>Registrazione della macro in corso. In questa finestra, premi i pulsanti del mouse o i tasti della tastiera e rilasciali ...</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="627"/>
+        <source>停止录制</source>
+        <translation>Interrompi registrazione</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="645"/>
+        <source>按下</source>
+        <translation>Premi</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="645"/>
+        <source>松开</source>
+        <translation>Rilascia</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="781"/>
+        <location filename="DialogMouse.cpp" line="956"/>
+        <location filename="DialogMouse.cpp" line="1001"/>
+        <location filename="DialogMouse.cpp" line="1021"/>
+        <location filename="DialogMouse.cpp" line="1040"/>
+        <location filename="DialogMouse.cpp" line="1138"/>
+        <location filename="DialogMouse.cpp" line="1159"/>
+        <location filename="DialogMouse.cpp" line="1168"/>
+        <location filename="DialogMouse.cpp" line="1250"/>
+        <location filename="DialogMouse.cpp" line="1835"/>
+        <source>提示</source>
+        <translation>Avviso</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="781"/>
+        <source>首先选择或者新建一个宏！</source>
+        <translation>Seleziona o crea prima una macro!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1114"/>
+        <source>请选择升级文件:</source>
+        <translation>Seleziona il file di aggiornamento:</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1122"/>
+        <source>请选择一个Bin文件...</source>
+        <translation>Seleziona un file .bin...</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1124"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1130"/>
+        <source>固件文件 (*.bin *.hex *.fw);;所有文件 (*.*)</source>
+        <translation>File firmware (*.bin *.hex *.fw);;Tutti i file (*.*)</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1131"/>
+        <source>选择固件文件</source>
+        <translation>Seleziona file firmware</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1138"/>
+        <source>固件文件无法识别！</source>
+        <translation>File firmware non riconosciuto!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1159"/>
+        <source>固件升级失败！</source>
+        <translation>Aggiornamento firmware fallito!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1168"/>
+        <source>固件升级成功！</source>
+        <translation>Aggiornamento firmware completato!</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1179"/>
         <source>开始更新</source>
-        <translation type="unfinished">Inizia aggiornamento</translation>
+        <translation>Inizia aggiornamento</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1026"/>
+        <location filename="DialogMouse.cpp" line="1197"/>
         <source>完成</source>
-        <translation type="unfinished">Fine</translation>
+        <translation>Completato</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1081"/>
+        <location filename="DialogMouse.cpp" line="1250"/>
         <source>鼠标必须保留一个按键有左键功能！</source>
-        <translation type="unfinished">Deve rimanere almeno un tasto con funzione di pulsante sinistro!</translation>
+        <translation>È necessario mantenere almeno un tasto con la funzione di pulsante sinistro!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1164"/>
+        <location filename="DialogMouse.cpp" line="1333"/>
         <source>快捷键 设置成功！</source>
-        <translation type="unfinished">Tasto scorciatoia impostato correttamente!</translation>
+        <translation>Scorciatoia impostata correttamente!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1175"/>
+        <location filename="DialogMouse.cpp" line="1344"/>
         <source>火力键 设置成功！</source>
-        <translation type="unfinished">Tasto rapid fire impostato correttamente!</translation>
+        <translation>Tasto rapid fire impostato correttamente!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1217"/>
+        <location filename="DialogMouse.cpp" line="1386"/>
         <source>宏 设置成功！</source>
-        <translation type="unfinished">Macro impostata correttamente!</translation>
+        <translation>Macro impostata correttamente!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1229"/>
+        <location filename="DialogMouse.cpp" line="1398"/>
         <source>按键重置 成功！</source>
-        <translation type="unfinished">Ripristino tasti completato!</translation>
+        <translation>Ripristino tasti completato!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1241"/>
+        <location filename="DialogMouse.cpp" line="1410"/>
         <source>改键成功！</source>
-        <translation type="unfinished">Tasto rimappato correttamente!</translation>
+        <translation>Rimappatura completata!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1785"/>
+        <location filename="DialogMouse.cpp" line="956"/>
         <source>首先选择或者新建一个宏，请重试！</source>
-        <translation type="unfinished">Seleziona o crea prima una macro, riprova!</translation>
+        <translation>Seleziona o crea prima una macro, riprova!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1816"/>
         <source> 正在录制</source>
-        <translation type="unfinished"> Registrazione in corso</translation>
+        <translation type="vanished"> Registrazione in corso</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1816"/>
         <source> 开始录制</source>
-        <translation type="unfinished"> Inizia registrazione</translation>
+        <translation type="vanished"> Inizia registrazione</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1826"/>
-        <location filename="DialogMouse.cpp" line="1846"/>
+        <location filename="DialogMouse.cpp" line="1001"/>
+        <location filename="DialogMouse.cpp" line="1021"/>
         <source>没有选中 宏，请重试！</source>
-        <translation type="unfinished">Nessuna macro selezionata, riprova!</translation>
+        <translation>Nessuna macro selezionata, riprova!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1865"/>
+        <location filename="DialogMouse.cpp" line="1040"/>
         <source>没有选中的宏动作，请重试！</source>
-        <translation type="unfinished">Nessuna azione macro selezionata, riprova!</translation>
+        <translation>Nessuna azione macro selezionata, riprova!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1925"/>
+        <location filename="DialogMouse.cpp" line="1835"/>
         <source>确定要恢复出厂设置吗？</source>
-        <translation type="unfinished">Vuoi ripristinare le impostazioni di fabbrica?</translation>
+        <translation>Vuoi ripristinare le impostazioni di fabbrica?</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1978"/>
+        <location filename="DialogMouse.cpp" line="1890"/>
         <source>普通按键: </source>
-        <translation type="unfinished">Tasto normale: </translation>
+        <translation>Tasto normale: </translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1996"/>
+        <location filename="DialogMouse.cpp" line="1908"/>
         <source>组合键</source>
-        <translation type="unfinished">Tasto combinato</translation>
+        <translation>Combinazione tasti</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2007"/>
+        <location filename="DialogMouse.cpp" line="1920"/>
+        <location filename="DialogMouse.cpp" line="1921"/>
         <source>火力键</source>
-        <translation type="unfinished">Tasto rapid fire</translation>
+        <translation>Tasto rapid fire</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2008"/>
+        <location filename="DialogMouse.cpp" line="1922"/>
         <source>点击次数</source>
-        <translation type="unfinished">Numero di clic</translation>
+        <translation>Numero di clic</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2009"/>
+        <location filename="DialogMouse.cpp" line="1923"/>
         <source>点击间隔</source>
-        <translation type="unfinished">Intervallo clic</translation>
+        <translation>Intervallo tra clic</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2010"/>
+        <location filename="DialogMouse.cpp" line="1924"/>
         <source>是</source>
-        <translation type="unfinished">Sì</translation>
+        <translation>Sì</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2010"/>
+        <location filename="DialogMouse.cpp" line="1924"/>
         <source>否</source>
-        <translation type="unfinished">No</translation>
+        <translation>No</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2021"/>
+        <location filename="DialogMouse.cpp" line="1935"/>
+        <source>宏</source>
+        <translation>Macro</translation>
+    </message>
+    <message>
+        <location filename="DialogMouse.cpp" line="1936"/>
         <source>宏设置:</source>
-        <translation type="unfinished">Impostazioni macro:</translation>
+        <translation>Impostazioni macro:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2022"/>
+        <location filename="DialogMouse.cpp" line="1937"/>
         <source>类型:</source>
-        <translation type="unfinished">Tipo:</translation>
+        <translation>Tipo:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2023"/>
+        <location filename="DialogMouse.cpp" line="1938"/>
         <source>动作数量:</source>
-        <translation type="unfinished">Numero azioni:</translation>
+        <translation>Numero di azioni:</translation>
     </message>
 </context>
 <context>
@@ -970,27 +1051,27 @@
     <message>
         <location filename="Module/DialogVKPicker.ui" line="68"/>
         <source>基本字符</source>
-        <translation type="unfinished">Caratteri base</translation>
+        <translation>Caratteri base</translation>
     </message>
     <message>
         <location filename="Module/DialogVKPicker.ui" line="1819"/>
         <source>拓展字符</source>
-        <translation type="unfinished">Caratteri estesi</translation>
+        <translation>Caratteri estesi</translation>
     </message>
     <message>
         <location filename="Module/DialogVKPicker.ui" line="4159"/>
         <source>组合键：</source>
-        <translation type="unfinished">Tasto combinato:</translation>
+        <translation>Tasto combinato:</translation>
     </message>
     <message>
         <location filename="Module/DialogVKPicker.ui" line="4296"/>
         <source>确认</source>
-        <translation type="unfinished">Conferma</translation>
+        <translation>Conferma</translation>
     </message>
     <message>
         <location filename="Module/DialogVKPicker.ui" line="4321"/>
         <source>取消</source>
-        <translation type="unfinished">Annulla</translation>
+        <translation>Annulla</translation>
     </message>
 </context>
 <context>
@@ -998,27 +1079,27 @@
     <message>
         <location filename="FrameAbout.ui" line="113"/>
         <source>关于</source>
-        <translation type="unfinished">Di</translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <location filename="FrameAbout.ui" line="126"/>
         <source>检查键盘固件更新</source>
-        <translation type="unfinished">Verifica aggiornamenti firmware tastiera</translation>
+        <translation>Verifica aggiornamenti del firmware della tastiera</translation>
     </message>
     <message>
         <location filename="FrameAbout.ui" line="139"/>
         <source>检查无线连接器固件更新</source>
-        <translation type="unfinished">Verifica aggiornamenti firmware ricevitore wireless</translation>
+        <translation>Verifica aggiornamenti del firmware del ricevitore wireless</translation>
     </message>
     <message>
         <location filename="FrameAbout.ui" line="232"/>
         <source>操作教学</source>
-        <translation type="unfinished">Guida operativa</translation>
+        <translation>Guida operativa</translation>
     </message>
     <message>
         <location filename="FrameAbout.ui" line="298"/>
         <source>关于AKKO</source>
-        <translation type="unfinished">Informazioni su AKKO</translation>
+        <translation>Informazioni su AKKO</translation>
     </message>
 </context>
 <context>
@@ -1026,89 +1107,90 @@
     <message>
         <location filename="FrameDeviceHolder.ui" line="444"/>
         <source>板载 1</source>
-        <translation type="unfinished">Onboard 1</translation>
+        <translation>Profilo integrato 1</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="480"/>
         <source>板载 2</source>
-        <translation type="unfinished">Onboard 2</translation>
+        <translation>Profilo integrato 2</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="513"/>
         <source>板载 3</source>
-        <translation type="unfinished">Onboard 3</translation>
+        <translation>Profilo integrato 3</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="546"/>
         <source>板载 4</source>
-        <translation type="unfinished">Onboard 4</translation>
+        <translation>Profilo integrato 4</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="592"/>
         <source>对码</source>
-        <translation type="unfinished">Associazione</translation>
+        <translation>Associazione</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="626"/>
         <source>恢复默认</source>
-        <translation type="unfinished">Ripristina predefinito</translation>
+        <translation>Ripristina impostazioni predefinite</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="660"/>
         <source>行程校准</source>
-        <translation type="unfinished">calibrazione di viaggio</translation>
+        <translation>Calibrazione della corsa</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="105"/>
         <location filename="FrameDeviceHolder.cpp" line="191"/>
         <source>首页</source>
-        <translation type="unfinished">prima pagina</translation>
+        <translation>Home</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="136"/>
         <location filename="FrameDeviceHolder.cpp" line="192"/>
         <source>键盘设置</source>
-        <translation type="unfinished">Impostazioni dei pulsanti</translation>
+        <translation>Impostazioni tastiera</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="167"/>
         <location filename="FrameDeviceHolder.cpp" line="193"/>
         <source>磁轴设置</source>
-        <translation type="unfinished">Impostazioni dell&apos;asse magnetico</translation>
+        <translation>Impostazioni dell&apos;asse magnetico</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="198"/>
         <location filename="FrameDeviceHolder.cpp" line="194"/>
         <source>宏设置</source>
-        <translation type="unfinished">Impostazioni macro</translation>
+        <translation>Impostazioni macro</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="229"/>
         <source>灯效设置</source>
-        <translation type="unfinished">Impostazioni di illuminazione</translation>
+        <translation>Impostazioni illuminazione</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="260"/>
         <location filename="FrameDeviceHolder.cpp" line="196"/>
         <source>关于</source>
-        <translation type="unfinished">Di</translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.cpp" line="195"/>
         <source>灯光设置</source>
-        <translation type="unfinished">Impostazioni della luce</translation>
+        <translation>Impostazioni illuminazione</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.cpp" line="197"/>
         <source>用户</source>
-        <translation type="unfinished">Utente</translation>
+        <translation>Utente</translation>
     </message>
     <message>
         <location filename="FrameDeviceHolder.cpp" line="198"/>
         <source>返回</source>
-        <translation type="unfinished">Pagina principale</translation>
+        <translation>Indietro</translation>
     </message>
-</context><context>
+</context>
+<context>
     <name>FrameDeviceShow</name>
     <message>
         <location filename="FrameDeviceShow.cpp" line="146"/>
@@ -1164,15 +1246,15 @@
         <translation>Impostazioni macro</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="355"/>
+        <location filename="FrameKeySetting.ui" line="343"/>
         <source>动态键程(DKS)</source>
         <translation>Corsa dinamica (DKS)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="427"/>
-        <location filename="FrameKeySetting.ui" line="902"/>
-        <location filename="FrameKeySetting.ui" line="977"/>
-        <location filename="FrameKeySetting.ui" line="1140"/>
+        <location filename="FrameKeySetting.ui" line="381"/>
+        <location filename="FrameKeySetting.ui" line="890"/>
+        <location filename="FrameKeySetting.ui" line="965"/>
+        <location filename="FrameKeySetting.ui" line="1128"/>
         <source>确定</source>
         <translation>OK</translation>
     </message>
@@ -1202,108 +1284,108 @@
         <translation>*Seleziona prima un tasto in alto; nella finestra popup puoi scegliere tasti combinati, macro, funzioni di sistema o funzioni del mouse per rimappare</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="652"/>
+        <location filename="FrameKeySetting.ui" line="640"/>
         <source>按住/单击(MT)</source>
         <translation>Pressione / Singolo clic (MT)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="679"/>
+        <location filename="FrameKeySetting.ui" line="667"/>
         <source>单击</source>
         <translation>Singolo clic</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="716"/>
+        <location filename="FrameKeySetting.ui" line="704"/>
         <source>按住</source>
         <translation>Pressione prolungata</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="735"/>
+        <location filename="FrameKeySetting.ui" line="723"/>
         <source>选定上方键位，可通过选择单击及长按两种触发模式，设置两个功能（支持组合键）</source>
         <translation>Seleziona un tasto in alto; puoi impostare due funzioni con attivazione al clic e alla pressione prolungata (supporta tasti combinati)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="764"/>
+        <location filename="FrameKeySetting.ui" line="752"/>
         <source>调整触发“按住&quot;键所需的时间</source>
         <translation>Regola il tempo necessario per attivare la pressione prolungata</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="860"/>
+        <location filename="FrameKeySetting.ui" line="848"/>
         <source>20 ms</source>
         <translation>20 ms</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="942"/>
+        <location filename="FrameKeySetting.ui" line="930"/>
         <source>切换开关(TGL)</source>
         <translation>Interruttore a commutazione (TGL)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1008"/>
+        <location filename="FrameKeySetting.ui" line="996"/>
         <source>未设置功能</source>
         <translation>Nessuna funzione assegnata</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1027"/>
+        <location filename="FrameKeySetting.ui" line="1015"/>
         <source>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</source>
         <translation>Seleziona un tasto in alto; puoi impostare due funzioni con attivazione a ripetizione e a pressione prolungata</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1089"/>
+        <location filename="FrameKeySetting.ui" line="1077"/>
         <source>连点</source>
         <translation>Ripetizione</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1105"/>
+        <location filename="FrameKeySetting.ui" line="1093"/>
         <source>长按</source>
         <translation>Pressione prolungata</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1111"/>
+        <location filename="FrameKeySetting.ui" line="1099"/>
         <location filename="FrameKeySetting.cpp" line="537"/>
         <source>SnapKey</source>
         <translation>SnapKey</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1242"/>
+        <location filename="FrameKeySetting.ui" line="1230"/>
         <source>绑定2个选定按键(分别从上面选择)，当两个按键被同时按下时，以最后按下的按键为准</source>
-        <translation>Associa due tasti selezionati (scegli separatamente sopra). Se premuti insieme, viene attivato l'ultimo tasto premuto</translation>
+        <translation>Associa due tasti selezionati (scegli separatamente sopra). Se premuti insieme, viene attivato l&apos;ultimo tasto premuto</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1261"/>
+        <location filename="FrameKeySetting.ui" line="1249"/>
         <source>选择A键</source>
         <translation>Seleziona tasto A</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1277"/>
+        <location filename="FrameKeySetting.ui" line="1265"/>
         <source>选择B键</source>
         <translation>Seleziona tasto B</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1336"/>
+        <location filename="FrameKeySetting.ui" line="1328"/>
         <source>键盘回报率</source>
         <translation>Frequenza di polling tastiera</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1388"/>
+        <location filename="FrameKeySetting.ui" line="1380"/>
         <source>2.4G关闭背光</source>
         <translation>Spegnimento retroilluminazione 2.4G</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1440"/>
+        <location filename="FrameKeySetting.ui" line="1432"/>
         <source>蓝牙关闭背光</source>
         <translation>Spegnimento retroilluminazione Bluetooth</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1498"/>
+        <location filename="FrameKeySetting.ui" line="1490"/>
         <source>2.4G深度睡眠时间</source>
         <translation>Tempo di sospensione profonda 2.4G</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1578"/>
+        <location filename="FrameKeySetting.ui" line="1570"/>
         <source>蓝牙深度睡眠时间</source>
         <translation>Tempo di sospensione profonda Bluetooth</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1658"/>
+        <location filename="FrameKeySetting.ui" line="1650"/>
         <source>按键防抖等级设置</source>
         <translation>Livello anti-rimbalzo tasti</translation>
     </message>
@@ -1395,74 +1477,74 @@
 <context>
     <name>FrameMacro</name>
     <message>
-        <location filename="FrameMacro.ui" line="134"/>
+        <location filename="FrameMacro.ui" line="140"/>
         <source>宏列表</source>
         <translation>Elenco macro</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="634"/>
+        <location filename="FrameMacro.ui" line="640"/>
         <location filename="FrameMacro.cpp" line="124"/>
         <source>开始录制</source>
         <translation>Inizia registrazione</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="776"/>
+        <location filename="FrameMacro.ui" line="788"/>
         <source>删除</source>
         <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="808"/>
+        <location filename="FrameMacro.ui" line="820"/>
         <source>清空</source>
         <translation>Svuota</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="859"/>
+        <location filename="FrameMacro.ui" line="871"/>
         <source>保存</source>
         <translation>Salva</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="346"/>
+        <location filename="FrameMacro.ui" line="352"/>
         <source>宏名称</source>
         <translation>Nome macro</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="157"/>
+        <location filename="FrameMacro.ui" line="163"/>
         <source>新建宏</source>
         <translation>Nuova macro</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="376"/>
+        <location filename="FrameMacro.ui" line="382"/>
         <source>占用: 0 / 256</source>
         <translation>Utilizzato: 0 / 256</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="424"/>
+        <location filename="FrameMacro.ui" line="430"/>
         <source>按下</source>
         <translation>Pressione</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="475"/>
+        <location filename="FrameMacro.ui" line="481"/>
         <source>释放</source>
         <translation>Rilascio</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="526"/>
+        <location filename="FrameMacro.ui" line="532"/>
         <location filename="FrameMacro.cpp" line="209"/>
         <source>延迟</source>
         <translation>Ritardo</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="682"/>
+        <location filename="FrameMacro.ui" line="688"/>
         <source>插入按键</source>
         <translation>Inserisci tasto</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="721"/>
+        <location filename="FrameMacro.ui" line="727"/>
         <source>延迟时长:</source>
         <translation>Durata ritardo:</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="738"/>
+        <location filename="FrameMacro.ui" line="750"/>
         <source> ms</source>
         <translation> ms</translation>
     </message>
@@ -1517,32 +1599,32 @@
     </message>
     <message>
         <location filename="FrameMagic.ui" line="216"/>
-        <location filename="FrameMagic.ui" line="1119"/>
+        <location filename="FrameMagic.ui" line="1132"/>
         <source>轴体设置</source>
         <translation>Impostazioni switch</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="549"/>
+        <location filename="FrameMagic.ui" line="556"/>
         <source>单独设置按键再次按下触发和松开重置行程</source>
         <translation>Imposta separatamente la corsa di attivazione alla ripressione e di reset al rilascio</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="610"/>
+        <location filename="FrameMagic.ui" line="620"/>
         <source>再次按下按键触发所需的行程(mm)</source>
         <translation>Corsa necessaria per attivare alla ripressione (mm)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="797"/>
+        <location filename="FrameMagic.ui" line="810"/>
         <source>松开按键重置所需的行程(mm)</source>
         <translation>Corsa di reset al rilascio (mm)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1756"/>
+        <location filename="FrameMagic.ui" line="1793"/>
         <source>防误触模式</source>
         <translation>Modalità anti-attivazione accidentale</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="476"/>
+        <location filename="FrameMagic.ui" line="483"/>
         <source>全程连续快速触发（RT）</source>
         <translation>Attivazione continua rapida (RT)</translation>
     </message>
@@ -1641,125 +1723,125 @@
     </message>
     <message>
         <location filename="FrameMagic.ui" line="361"/>
-        <location filename="FrameMagic.ui" line="1086"/>
+        <location filename="FrameMagic.ui" line="1099"/>
         <source>设置</source>
         <translation>Imposta</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="400"/>
+        <location filename="FrameMagic.ui" line="387"/>
         <source>单独设置按下抬起触发行程：</source>
         <translation>Imposta separatamente corsa attivazione pressione/rilascio:</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="515"/>
+        <location filename="FrameMagic.ui" line="522"/>
         <source>启用时，快速触发在您完全松开按键时才会终止。
 禁用时，松开按键到轴体触发行程后终止快速触发</source>
-        <translation>Se attivo, l'attivazione rapida termina solo al rilascio completo del tasto.
+        <translation>Se attivo, l&apos;attivazione rapida termina solo al rilascio completo del tasto.
 Se disattivo, termina quando il tasto torna oltre la corsa di attivazione</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="987"/>
+        <location filename="FrameMagic.ui" line="1000"/>
         <source>按键死区设定</source>
         <translation>Zona morta tasto</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1054"/>
+        <location filename="FrameMagic.ui" line="1067"/>
         <source>触底到抬起前的距离俗称“死区”。死区可减少磁轴因环境干扰带来的断触问题，磁轴的底部可自定义，您可根据个人需求自定义死区，设定之后，此段行程不会触发。</source>
         <translation>La distanza tra fondo corsa e rialzo è chiamata zona morta. Riduce le interruzioni causate da disturbi sui switch magnetici. Puoi personalizzarla; questa porzione di corsa non attiverà il tasto.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1064"/>
+        <location filename="FrameMagic.ui" line="1077"/>
         <source>当前选择按键数量:0</source>
         <translation>Numero tasti selezionati: 0</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1132"/>
+        <location filename="FrameMagic.ui" line="1145"/>
         <source>更换键盘轴体后，选择对应轴体的按键，点击下方对应的轴体选项进行设置来区分不同轴体</source>
         <translation>Dopo la sostituzione degli switch, seleziona i tasti corrispondenti e scegli il tipo di switch qui sotto per differenziarli</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1198"/>
+        <location filename="FrameMagic.ui" line="1211"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>炫光</source>
         <translation>Shine</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1245"/>
+        <location filename="FrameMagic.ui" line="1261"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>闪电</source>
         <translation>Lightning</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1292"/>
+        <location filename="FrameMagic.ui" line="1311"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>星芒磁轴</source>
         <translation>StarBurst Magnetico</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1339"/>
+        <location filename="FrameMagic.ui" line="1361"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>磁玉</source>
         <translation>MagJade</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1386"/>
+        <location filename="FrameMagic.ui" line="1411"/>
         <source>磁玉Pro</source>
         <translation>MagJade Pro</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1433"/>
+        <location filename="FrameMagic.ui" line="1461"/>
         <source>磁玉Gaming</source>
         <translation>MagJade Gaming</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1480"/>
+        <location filename="FrameMagic.ui" line="1511"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>天王</source>
         <translation>King</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1527"/>
+        <location filename="FrameMagic.ui" line="1561"/>
         <location filename="FrameMagic.cpp" line="67"/>
         <source>万磁王</source>
         <translation>Magneto</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1584"/>
+        <location filename="FrameMagic.ui" line="1621"/>
         <source>RT Stab(RT 增稳算法)</source>
         <translation>RT Stab (Algoritmo stabilizzatore RT)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1629"/>
+        <location filename="FrameMagic.ui" line="1666"/>
         <source>0%(关闭)</source>
         <translation>0% (disattivato)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1728"/>
+        <location filename="FrameMagic.ui" line="1765"/>
         <source>RT Stab打开后，算法会介入增强轴体底部的稳定性。介入百分比越大，稳定性越强，延迟也会有所增加。</source>
-        <translation>Con RT Stab attivo, l'algoritmo migliora la stabilità a fondo corsa. Maggiore è la percentuale, maggiore la stabilità, con leggero aumento di latenza.</translation>
+        <translation>Con RT Stab attivo, l&apos;algoritmo migliora la stabilità a fondo corsa. Maggiore è la percentuale, maggiore la stabilità, con leggero aumento di latenza.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1807"/>
+        <location filename="FrameMagic.ui" line="1844"/>
         <source>(已关闭)</source>
         <translation>(disattivato)</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1819"/>
+        <location filename="FrameMagic.ui" line="1856"/>
         <source>防止极限性能下桌面抖动误触发或轴体公差可能造成还有0.1mm的行程公差。开启后优化底部按键算法补足行程差值提高键盘稳定性。</source>
-        <translation>Previene attivazioni accidentali da vibrazioni o tolleranze meccaniche fino a 0,1 mm. Ottimizza l'algoritmo a fondo corsa e aumenta la stabilità.</translation>
+        <translation>Previene attivazioni accidentali da vibrazioni o tolleranze meccaniche fino a 0,1 mm. Ottimizza l&apos;algoritmo a fondo corsa e aumenta la stabilità.</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1866"/>
+        <location filename="FrameMagic.ui" line="1903"/>
         <source>行程测试</source>
         <translation>Test corsa</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1955"/>
+        <location filename="FrameMagic.ui" line="1992"/>
         <source>按键测试</source>
         <translation>Test tasti</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="2013"/>
+        <location filename="FrameMagic.ui" line="2050"/>
         <source>输入值</source>
         <translation>Valore di lettura</translation>
     </message>
@@ -1926,7 +2008,7 @@ Se disattivo, termina quando il tasto torna oltre la corsa di attivazione</trans
     </message>
     <message>
         <location filename="MainWindow.ui" line="335"/>
-        <location filename="MainWindow.cpp" line="1499"/>
+        <location filename="MainWindow.cpp" line="1500"/>
         <source>我的设备</source>
         <translation>Il mio dispositivo</translation>
     </message>
@@ -1951,28 +2033,28 @@ Se disattivo, termina quando il tasto torna oltre la corsa di attivazione</trans
         <translation>Lettura completata!</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1502"/>
+        <location filename="MainWindow.cpp" line="1503"/>
         <source>显示窗口</source>
         <translation>Mostra finestra</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1503"/>
+        <location filename="MainWindow.cpp" line="1504"/>
         <source>隐藏窗口</source>
         <translation>Nascondi finestra</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1504"/>
+        <location filename="MainWindow.cpp" line="1505"/>
         <source>退出程序</source>
         <translation>Esci dal programma</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1696"/>
+        <location filename="MainWindow.cpp" line="1697"/>
         <source>正在搜索设备</source>
         <translation>In cerca di dispositivi</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="832"/>
-        <location filename="MainWindow.cpp" line="1721"/>
+        <location filename="MainWindow.cpp" line="1722"/>
         <source>提示</source>
         <translation>Suggerimento</translation>
     </message>
@@ -1982,7 +2064,7 @@ Se disattivo, termina quando il tasto torna oltre la corsa di attivazione</trans
         <translation>È stata trovata una nuova versione, vuoi aggiornare subito?</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1721"/>
+        <location filename="MainWindow.cpp" line="1722"/>
         <source>确定要退出 AKKO 驱动程序？</source>
         <translation>Vuoi davvero uscire dal driver AKKO?</translation>
     </message>
@@ -2363,12 +2445,12 @@ Se disattivo, termina quando il tasto torna oltre la corsa di attivazione</trans
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="152"/>
         <source>向内</source>
-        <translation>Verso l'interno</translation>
+        <translation>Verso l&apos;interno</translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="153"/>
         <source>向外</source>
-        <translation>Verso l'esterno</translation>
+        <translation>Verso l&apos;esterno</translation>
     </message>
     <message>
         <location filename="Module/ModuleEfMode.cpp" line="158"/>

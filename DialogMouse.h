@@ -170,6 +170,7 @@ signals:
     void genUpdate();
     void hideAction();
     void ConnectStateChange();
+    void addNewItem(int defId,bool down=true);
 
 private:
     Ui::DialogMouse *ui;
@@ -199,7 +200,7 @@ private:
     macroItem*m_lastItem = nullptr;
     QList<macroItem*> macroGroup;
     void addMacroItem(int defId,int delay,int type,bool down=true);
-    void addMacroHeed(int id,const QString&name);
+    void addMacroHeader(int id,const QString&name);
     void saveLoadMacroHeader(bool save=true);
     void saveLoadMacroContent(int macroId,QList<macroItem*>&macroContent,bool save=true);
 

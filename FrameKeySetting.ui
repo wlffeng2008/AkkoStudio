@@ -300,8 +300,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
               <rect>
                <x>40</x>
                <y>60</y>
-               <width>849</width>
-               <height>47</height>
+               <width>762</width>
+               <height>70</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -381,252 +381,258 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string>确定</string>
                     </property>
                    </widget>
-                   <widget class="QWidget" name="">
+                   <widget class="QWidget" name="layoutWidget">
                     <property name="geometry">
                      <rect>
-                      <x>60</x>
-                      <y>10</y>
-                      <width>477</width>
-                      <height>225</height>
+                      <x>66</x>
+                      <y>90</y>
+                      <width>432</width>
+                      <height>148</height>
                      </rect>
                     </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_13" stretch="0,1">
+                    <layout class="QVBoxLayout" name="verticalLayout_7">
+                     <property name="spacing">
+                      <number>2</number>
+                     </property>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,1">
-                       <item>
-                        <widget class="QPushButton" name="pushButton_DKS">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>80</width>
-                           <height>80</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>80</width>
-                           <height>80</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>24</pointsize>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string notr="true">--</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <layout class="QGridLayout" name="gridLayout">
-                         <item row="0" column="0">
-                          <widget class="QLabel" name="labelPress1">
-                           <property name="font">
-                            <font>
-                             <family>MiSans</family>
-                             <italic>false</italic>
-                             <underline>true</underline>
-                             <fontweight>Medium</fontweight>
-                            </font>
-                           </property>
-                           <property name="cursor">
-                            <cursorShape>PointingHandCursor</cursorShape>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color:#6329B6</string>
-                           </property>
-                           <property name="text">
-                            <string notr="true">0.7 mm</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="1">
-                          <widget class="QLabel" name="labelPress2">
-                           <property name="font">
-                            <font>
-                             <family>MiSans</family>
-                             <italic>false</italic>
-                             <fontweight>Medium</fontweight>
-                            </font>
-                           </property>
-                           <property name="cursor">
-                            <cursorShape>ArrowCursor</cursorShape>
-                           </property>
-                           <property name="text">
-                            <string notr="true">3.2 mm</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="2">
-                          <widget class="QLabel" name="labelRelease1">
-                           <property name="font">
-                            <font>
-                             <family>MiSans</family>
-                             <italic>false</italic>
-                             <fontweight>Medium</fontweight>
-                            </font>
-                           </property>
-                           <property name="cursor">
-                            <cursorShape>ArrowCursor</cursorShape>
-                           </property>
-                           <property name="text">
-                            <string notr="true">3.2 mm</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="3">
-                          <widget class="QLabel" name="labelRelease2">
-                           <property name="font">
-                            <font>
-                             <family>MiSans</family>
-                             <italic>false</italic>
-                             <underline>true</underline>
-                             <fontweight>Medium</fontweight>
-                            </font>
-                           </property>
-                           <property name="cursor">
-                            <cursorShape>PointingHandCursor</cursorShape>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color:#6329B6</string>
-                           </property>
-                           <property name="text">
-                            <string notr="true">0.7 mm</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="0">
-                          <widget class="QLabel" name="labelPress3">
-                           <property name="cursor">
-                            <cursorShape>PointingHandCursor</cursorShape>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="res.qrc">:/images/k/ic_press.png</pixmap>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="1">
-                          <widget class="QLabel" name="labelPress4">
-                           <property name="cursor">
-                            <cursorShape>ArrowCursor</cursorShape>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="res.qrc">:/images/k/ic_bottom.png</pixmap>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="2">
-                          <widget class="QLabel" name="labelRelease3">
-                           <property name="cursor">
-                            <cursorShape>ArrowCursor</cursorShape>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="res.qrc">:/images/k/ic_lift.png</pixmap>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="3">
-                          <widget class="QLabel" name="labelRelease4">
-                           <property name="cursor">
-                            <cursorShape>PointingHandCursor</cursorShape>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="res.qrc">:/images/k/ic_peak.png</pixmap>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                      </layout>
+                      <widget class="ModuleDKSItem" name="frameDKS1">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                      </widget>
                      </item>
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_7">
-                       <property name="spacing">
-                        <number>2</number>
+                      <widget class="ModuleDKSItem" name="frameDKS2">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
                        </property>
-                       <item>
-                        <widget class="ModuleDKSItem" name="frameDKS1">
-                         <property name="frameShape">
-                          <enum>QFrame::Shape::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Shadow::Raised</enum>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="ModuleDKSItem" name="frameDKS2">
-                         <property name="frameShape">
-                          <enum>QFrame::Shape::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Shadow::Raised</enum>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="ModuleDKSItem" name="frameDKS3">
-                         <property name="frameShape">
-                          <enum>QFrame::Shape::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Shadow::Raised</enum>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="ModuleDKSItem" name="frameDKS4">
-                         <property name="frameShape">
-                          <enum>QFrame::Shape::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Shadow::Raised</enum>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="ModuleDKSItem" name="frameDKS3">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="ModuleDKSItem" name="frameDKS4">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
+                   </widget>
+                   <widget class="QWidget" name="layoutWidget">
+                    <property name="geometry">
+                     <rect>
+                      <x>179</x>
+                      <y>18</y>
+                      <width>319</width>
+                      <height>58</height>
+                     </rect>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="labelPress1">
+                       <property name="font">
+                        <font>
+                         <family>MiSans</family>
+                         <italic>false</italic>
+                         <underline>true</underline>
+                         <fontweight>Medium</fontweight>
+                        </font>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color:#6329B6</string>
+                       </property>
+                       <property name="text">
+                        <string notr="true">0.7 mm</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLabel" name="labelPress2">
+                       <property name="font">
+                        <font>
+                         <family>MiSans</family>
+                         <italic>false</italic>
+                         <fontweight>Medium</fontweight>
+                        </font>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>ArrowCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string notr="true">3.2 mm</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QLabel" name="labelRelease1">
+                       <property name="font">
+                        <font>
+                         <family>MiSans</family>
+                         <italic>false</italic>
+                         <fontweight>Medium</fontweight>
+                        </font>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>ArrowCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string notr="true">3.2 mm</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="3">
+                      <widget class="QLabel" name="labelRelease2">
+                       <property name="font">
+                        <font>
+                         <family>MiSans</family>
+                         <italic>false</italic>
+                         <underline>true</underline>
+                         <fontweight>Medium</fontweight>
+                        </font>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color:#6329B6</string>
+                       </property>
+                       <property name="text">
+                        <string notr="true">0.7 mm</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="labelPress3">
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="res.qrc">:/images/k/ic_press.png</pixmap>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLabel" name="labelPress4">
+                       <property name="cursor">
+                        <cursorShape>ArrowCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="res.qrc">:/images/k/ic_bottom.png</pixmap>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="2">
+                      <widget class="QLabel" name="labelRelease3">
+                       <property name="cursor">
+                        <cursorShape>ArrowCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="res.qrc">:/images/k/ic_lift.png</pixmap>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="3">
+                      <widget class="QLabel" name="labelRelease4">
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="res.qrc">:/images/k/ic_peak.png</pixmap>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QPushButton" name="pushButton_DKS">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="geometry">
+                     <rect>
+                      <x>64</x>
+                      <y>8</y>
+                      <width>80</width>
+                      <height>80</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>44</width>
+                      <height>44</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>444</width>
+                      <height>80</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>24</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string notr="true">--</string>
+                    </property>
                    </widget>
                   </widget>
                   <widget class="QWidget" name="tab22">
@@ -636,8 +642,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                    <widget class="QPushButton" name="pushButton_MT1">
                     <property name="geometry">
                      <rect>
-                      <x>160</x>
-                      <y>106</y>
+                      <x>166</x>
+                      <y>92</y>
                       <width>122</width>
                       <height>44</height>
                      </rect>
@@ -670,8 +676,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                    <widget class="QPushButton" name="pushButton_MT2">
                     <property name="geometry">
                      <rect>
-                      <x>310</x>
-                      <y>106</y>
+                      <x>340</x>
+                      <y>92</y>
                       <width>122</width>
                       <height>44</height>
                      </rect>
@@ -708,9 +714,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>60</x>
-                      <y>30</y>
+                      <y>20</y>
                       <width>553</width>
-                      <height>56</height>
+                      <height>54</height>
                      </rect>
                     </property>
                     <property name="text">
@@ -730,8 +736,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>60</x>
-                      <y>176</y>
-                      <width>391</width>
+                      <y>162</y>
+                      <width>431</width>
                       <height>21</height>
                      </rect>
                     </property>
@@ -759,7 +765,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>60</x>
-                      <y>214</y>
+                      <y>200</y>
                       <width>53</width>
                       <height>24</height>
                      </rect>
@@ -785,7 +791,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>340</x>
-                      <y>214</y>
+                      <y>200</y>
                       <width>53</width>
                       <height>24</height>
                      </rect>
@@ -808,7 +814,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>120</x>
-                      <y>209</y>
+                      <y>195</y>
                       <width>211</width>
                       <height>30</height>
                      </rect>
@@ -830,7 +836,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>390</x>
-                      <y>214</y>
+                      <y>200</y>
                       <width>72</width>
                       <height>24</height>
                      </rect>
@@ -891,7 +897,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>60</x>
-                      <y>90</y>
+                      <y>76</y>
                       <width>80</width>
                       <height>80</height>
                      </rect>
@@ -963,7 +969,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>160</x>
-                      <y>106</y>
+                      <y>92</y>
                       <width>122</width>
                       <height>44</height>
                      </rect>
@@ -1000,9 +1006,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>60</x>
-                      <y>32</y>
-                      <width>522</width>
-                      <height>50</height>
+                      <y>20</y>
+                      <width>547</width>
+                      <height>54</height>
                      </rect>
                     </property>
                     <property name="text">
@@ -1022,7 +1028,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>60</x>
-                      <y>90</y>
+                      <y>76</y>
                       <width>80</width>
                       <height>80</height>
                      </rect>
@@ -1062,7 +1068,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>332</x>
-                      <y>114</y>
+                      <y>100</y>
                       <width>95</width>
                       <height>25</height>
                      </rect>
@@ -1078,7 +1084,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>444</x>
-                      <y>116</y>
+                      <y>102</y>
                       <width>95</width>
                       <height>23</height>
                      </rect>
@@ -1129,7 +1135,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>60</x>
-                      <y>90</y>
+                      <y>76</y>
                       <width>80</width>
                       <height>80</height>
                      </rect>
@@ -1172,7 +1178,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>220</x>
-                      <y>90</y>
+                      <y>76</y>
                       <width>80</width>
                       <height>80</height>
                      </rect>
@@ -1215,7 +1221,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>60</x>
-                      <y>30</y>
+                      <y>20</y>
                       <width>566</width>
                       <height>54</height>
                      </rect>
@@ -1234,7 +1240,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>66</x>
-                      <y>182</y>
+                      <y>180</y>
                       <width>100</width>
                       <height>25</height>
                      </rect>
@@ -1250,7 +1256,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                     <property name="geometry">
                      <rect>
                       <x>224</x>
-                      <y>182</y>
+                      <y>180</y>
                       <width>100</width>
                       <height>25</height>
                      </rect>
@@ -1268,7 +1274,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
             </layout>
            </widget>
            <widget class="QWidget" name="page3">
-            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,1,1,2">
+            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="2,2,2,3">
              <property name="spacing">
               <number>20</number>
              </property>
@@ -1701,15 +1707,15 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>NewTabWidget</class>
-   <extends>QTabWidget</extends>
-   <header location="global">newtabwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>ModuleKeyboard</class>
    <extends>QFrame</extends>
    <header>modulekeyboard.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>NewTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header location="global">newtabwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -1730,8 +1736,8 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupMT"/>
-  <buttongroup name="buttonGroupSnap"/>
   <buttongroup name="buttonGroupTGL"/>
+  <buttongroup name="buttonGroupSnap"/>
+  <buttongroup name="buttonGroupMT"/>
  </buttongroups>
 </ui>

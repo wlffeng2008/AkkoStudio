@@ -7,8 +7,8 @@
 #include <QDesktopServices>
 
 //#include <Windows.h>
-
-static QString g_strVer("1.8.3");
+// 1234567
+static QString g_strVer("1.8.5");
 
 QString currentVersion()
 {
