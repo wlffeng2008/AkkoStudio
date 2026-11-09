@@ -784,6 +784,21 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     QTimer::singleShot(5000,this,[=]{
+        QString strUpdatePath = QApplication::applicationDirPath() + "/updatepack";
+        if(strUpdatePath.contains("/Main/")) strUpdatePath = QApplication::applicationDirPath() + "/../updatepack";
+        QDir dir(strUpdatePath);
+        if(!dir.exists()) dir.mkpath(strUpdatePath);
+
+        dir.setFilter(QDir::Files | QDir::NoDotAndDotDot);
+        QFileInfoList fileList = dir.entryInfoList();
+
+        for (const QFileInfo& fi : fileList)
+        {
+            QFile file(fi.absoluteFilePath());
+            if (file.remove())
+            {
+            }
+        }
 
         static Downloader *pChecker = new Downloader(this);
         static Downloader *pRWorker = new Downloader(this);
@@ -796,7 +811,7 @@ MainWindow::MainWindow(QWidget *parent)
         pTMCheck->start(200);
         connect(pTMCheck,&QTimer::timeout,this,[=]{
             pTMCheck->stop();
-            pTMCheck->start(10000);
+            pTMCheck->start(60000);
             QString strFile = QApplication::applicationDirPath() + "/config/updateset.ini";
             QSettings Set(strFile,QSettings::IniFormat);
             QString strCheck = Set.value("updateurl","https://www.akkogear.com/akkoupdate.txt").toString();
@@ -814,13 +829,7 @@ MainWindow::MainWindow(QWidget *parent)
                 if(strVer > ::currentVersion())
                 {
                     pTMCheck->stop();
-
-                    strFile = QApplication::applicationDirPath() + "/updatepack";
-                    if(strFile.contains("/Main/")) strFile = QApplication::applicationDirPath() + "/../updatepack";
-                    QDir UP(strFile);
-                    if(!UP.exists()) UP.mkpath(strFile);
-                    strFile += QString("/Updater-V%1.exe").arg(strVer);
-
+                    strFile = strUpdatePath + QString("/Update-V%1.exe").arg(strVer);
                     pRWorker->startDownload(strUrl, strFile);
                 }
             }
@@ -831,7 +840,8 @@ MainWindow::MainWindow(QWidget *parent)
             {
                 if(QMessageBox::question(this, tr("提示"), tr("发现新版本，现在要立即更新吗？") + QString("  (V%1)").arg(strVer)) == QMessageBox::Yes)
                 {
-                    QProcess::startDetached(strFile,QStringList{"/VERYSILENT","/SP-", "/SUPPRESSMSGBOXES"});
+                    //AkkoHubInstaller-V5.44-Win20261107.exe /VERYSILENT /NORESTART /SUPPRESSMSGBOXES /CLOSEAPPLICATIONS /LOG="C:\Temp\AkkoSetup.log"
+                    QProcess::startDetached(strFile,QStringList{"/VERYSILENT","/SP-", "/SUPPRESSMSGBOXES","/NORESTART","/CLOSEAPPLICATIONS"});
                     trayIcon->hide();
                     exit(0);
                 }

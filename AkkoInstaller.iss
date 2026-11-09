@@ -21,7 +21,7 @@ DefaultGroupName={#AppName}
 AllowNoIcons=yes
 UsePreviousAppDir=yes
 OutputDir=Z:\发布软件
-OutputBaseFilename=AkkoHubInstaller-V5.44-Win20261106
+OutputBaseFilename=AkkoHubInstaller-V5.44-Win20261107
 SetupIconFile=Akko.ico
 Compression=lzma
 SolidCompression=yes
@@ -51,6 +51,7 @@ Name: "Swedish"; MessagesFile: "compiler:Languages\Swedish.isl"
 Name: "Turkish"; MessagesFile: "compiler:Languages\Turkish.isl"
 Name: "Thai"; MessagesFile: "compiler:Languages\Thai.isl"
 Name: "Italian"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "vietnamese"; MessagesFile: "compiler:Languages\Vietnamese.isl"
 
 [Files]
 Source: bin\ByExe\*; DestDir: {app}\ByExe; Flags: recursesubdirs ignoreversion overwritereadonly
@@ -70,7 +71,7 @@ Name: {group}\{cm:UninstallProgram,{#AppName}}; Filename: {uninstallexe}; IconFi
 Name: {userdesktop}\{#AppName}; Filename: {app}\{#AppExe}; Tasks: desktopicon
 
 [Run]
-Filename: {app}\{#AppExe}; Description: {cm:LaunchProgram,{#AppName}}; Flags: nowait postinstall skipifsilent
+Filename: {app}\{#AppExe}; Description: {cm:LaunchProgram,{#AppName}}; Flags: nowait postinstall
 
 [Registry]
 Root: HKCU; Subkey: Software\Microsoft\Windows\CurrentVersion\Run; ValueType: string; ValueName: AkkoHub; ValueData: {app}\{#AppExe}; Flags: uninsdeletevalue;
@@ -85,14 +86,20 @@ function RemoveOldVersion(): Boolean;
 var
   UninstallString: String;
 begin
-  Result := True; 
-  UninstallPath := ExpandConstant('Software\Microsoft\Windows\CurrentVersion\Uninstall\{#AppId}_is1');
 
-  if RegQueryStringValue(HKCU, UninstallPath, 'UninstallString', UninstallString) then
-  begin
-    Exec(UninstallString, '/SILENT', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-    Exec(UninstallString, '/SILENT', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-  end;
+    Exec(ExpandConstant('{sys}\taskkill.exe'),'/F /IM {#AppExe} /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec(ExpandConstant('{sys}\taskkill.exe'),'/F /IM Akko-BY.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec(ExpandConstant('{sys}\taskkill.exe'),'/F /IM Akko-WS.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec(ExpandConstant('{sys}\taskkill.exe'),'/F /IM Akko-Gaming-Bub.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec(ExpandConstant('{sys}\taskkill.exe'),'/F /IM AkkoCloudDriver.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec(ExpandConstant('{sys}\taskkill.exe'),'/F /IM MonsGeekDriver.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  // Result := True; 
+  // UninstallPath := ExpandConstant('Software\Microsoft\Windows\CurrentVersion\Uninstall\{#AppId}_is1');
+
+  // if RegQueryStringValue(HKCU, UninstallPath, 'UninstallString', UninstallString) then
+  // begin
+  //  Exec(UninstallString, '/SILENT', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  // end;
 end;
 
 // 入口函数：在初始化安装时调用

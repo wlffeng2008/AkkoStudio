@@ -34,8 +34,9 @@ void Downloader::startDownload(const QString &url, const QString &savePath)
             //return;
         }
     }
-    if(m_file.isOpen())
-        m_downloadedSize = m_file.size();
+
+    if(m_file.isOpen())  m_downloadedSize = m_file.size();
+
     resume();
 }
 
@@ -53,20 +54,17 @@ void Downloader::pause()
 void Downloader::resume()
 {
     if (m_isCanceled) return;
-    //if (!m_file.isOpen()) return;
 
     m_isPaused = false;
     QNetworkRequest req((QUrl(m_url)));
 
-    // 断点核心：Range 请求头
     if (m_downloadedSize > 0)
     {
         QString range = QString("bytes=%1-").arg(m_downloadedSize);
         req.setRawHeader("Range", range.toUtf8());
     }
 
-    if(!m_reply)
-        delete m_reply;
+    if(!m_reply) delete m_reply;
 
     m_reply = m_manager->get(req);
     connect(m_reply, &QNetworkReply::readyRead, this, &Downloader::onReadyRead);
@@ -78,14 +76,9 @@ void Downloader::cancel()
 {
     m_isCanceled = true;
     m_isPaused = false;
-    if (m_reply)
-    {
-        m_reply->abort();
-        //m_reply->deleteLater();
-        //m_reply = nullptr;
-    }
-    if (m_file.isOpen())
-        m_file.close();
+    if (m_reply) m_reply->abort();
+    if (m_file.isOpen()) m_file.close();
+
     m_downloadedSize = 0;
 }
 
@@ -93,7 +86,8 @@ void Downloader::onReadyRead()
 {
     if (!m_reply || m_isPaused || m_isCanceled)
         return;
-    QByteArray read=m_reply->readAll();
+
+    QByteArray read = m_reply->readAll();
     emit dataIn(read);
     if(m_file.isOpen())
         m_file.write(read);
