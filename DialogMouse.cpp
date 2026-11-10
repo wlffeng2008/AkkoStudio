@@ -392,9 +392,12 @@ void DialogMouse::addMacroHeader(int id,const QString&name)
     if(!name.isEmpty())addName=name;
 
     QFont font = this->font();
+    font.setPixelSize(16);
+    font.setBold(true);
     test[0]->setText(addName);
     test[0]->setData(addId);
     test[0]->setFont(font);
+    test[0]->setForeground(Qt::gray);
 
     ui->comboBoxMacro->addItem(addName);
     int count = ui->comboBoxMacro->count();
@@ -845,6 +848,13 @@ DialogMouse::DialogMouse(QWidget *parent)
         pHeader->setSectionResizeMode(QHeaderView::Stretch);
         pHeader->hide();
 
+        MarcoItemDelegate *pDele0= new MarcoItemDelegate(ui->tableViewMContent,0);
+        MarcoItemDelegate *pDele1= new MarcoItemDelegate(ui->tableViewMContent,1);
+        MarcoItemDelegate *pDele2= new MarcoItemDelegate(ui->tableViewMContent,2);
+        MarcoItemDelegate *pDele3= new MarcoItemDelegate(ui->tableViewMContent,3);
+        MarcoItemDelegate *pDele4= new MarcoItemDelegate(ui->tableViewMContent,4);
+        MarcoItemDelegate *pDele5= new MarcoItemDelegate(ui->tableViewMContent,5);
+
         QFont font1 = ui->tableViewMContent->font();
         //font1.setBold(true);
         font1.setPixelSize(16);
@@ -856,7 +866,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             {
                 QStandardItem *item = new QStandardItem(QString(""));
                 item->setTextAlignment(Qt::AlignCenter);
-                item->setEditable(false);
+                //item->setEditable(false);
                 item->setFont(font1);
                 test.push_back(item);
             }
@@ -902,14 +912,14 @@ DialogMouse::DialogMouse(QWidget *parent)
             saveLoadMacroContent(m_currentId,macroGroup,false);
             m_loading = true;
 
+            ui->tableViewMContent->clearSelection();
             int count = macroGroup.count();
             for(int i=0; i<255; i++)
             {
                 QStandardItem *item = m_pModel->item(i/6,i%6);
                 if(!item) break;
                 item->setData(0);
-                if(i < count)
-                    item->setData((quint64)macroGroup[i]);
+                if(i < count) item->setData((quint64)macroGroup[i]);
                 refreshMacroItem(item);
             }
             ui->labelTitle4->setText(QString(tr("占用") + QString(": %1 / 70").arg(count)));
@@ -980,6 +990,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             saveLoadMacroContent(m_currentId,macroGroup,true);
             m_loading = true;
 
+            ui->tableViewMContent->clearSelection();
             int count = macroGroup.count();
             for(int i=0; i<255; i++)
             {
@@ -2449,8 +2460,6 @@ void DialogMouse::changeEvent(QEvent *pEvt)
             {1513,"Delete"},
             {1506,"Caps Lock"},
         };
-
-
 
         getAllCfg();
     }

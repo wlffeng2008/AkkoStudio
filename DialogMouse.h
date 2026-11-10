@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QStandardItemModel>
 #include <QStyledItemDelegate>
+#include <QSpinBox>
 #include <QPainter>
 #include <QTableView>
 #include <QHeaderView>
@@ -140,6 +141,116 @@ typedef struct _macroItem
 
 }macroItem;
 
+void refreshMacroItem(QStandardItem *item);
+
+class MarcoItemDelegate : public QStyledItemDelegate {
+    Q_OBJECT
+public:
+    MarcoItemDelegate(QTableView *pView,int forColumn,QObject *parent = nullptr) : QStyledItemDelegate(parent) {
+        pView->setItemDelegateForColumn(forColumn,this);
+
+        this->pView = pView;
+        connect(this,&MarcoItemDelegate::editText,this,[=](bool edit,int row){
+            for (auto it = _editFlags.begin(); it != _editFlags.end(); ++it) {
+                it.value() = false;
+            }
+            _editFlags[row]  = edit;
+
+            qDebug() << "m_bEditing" << edit;
+        });
+    }
+
+signals:
+    void editText(bool edit,int row) const;
+
+
+protected:
+    QMap<int,bool> _editFlags ;
+    QTableView *pView ;
+
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override {
+        Q_UNUSED(option)
+        Q_UNUSED(index)
+
+        QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
+        QStandardItem *item = pModel->item(index.row(),index.column()) ;
+
+        if(item->data().toULongLong() == 0) return nullptr;
+
+        QSpinBox *pBox = new QSpinBox(parent) ;
+        pBox->setAlignment(Qt::AlignCenter);
+        pBox->setRange(1,5000);
+        return pBox;
+    }
+
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override
+    {
+        //QStyledItemDelegate::paint(painter,option,index) ;
+
+        painter->save() ;
+
+        painter->setRenderHint(QPainter::Antialiasing);
+
+        QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
+        QStandardItem *item = pModel->item(index.row(),index.column()) ;
+
+        if(item && item->data().toULongLong() != 0)
+        {
+            QPen pen(Qt::gray) ;
+            if(!pView->selectionModel()->selectedIndexes().isEmpty() && pView->selectionModel()->selectedIndexes().at(0) == index)
+                pen.setColor("#6329B6");
+
+            QString strText = item->text();
+
+            QRect rect = option.rect ;
+            rect.adjust(4,4,-4,-4) ;
+            //painter->setPen(QPen(Qt::green,2));
+            painter->setPen(pen) ;
+            painter->drawRoundedRect(rect,6,6);
+
+            painter->setFont(item->font());
+            if(!_editFlags[index.row()])
+                painter->drawText(rect,Qt::AlignCenter,strText);
+        }
+
+        painter->restore() ;
+    }
+
+    void setEditorData(QWidget *editor, const QModelIndex &index) const override {
+        QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+
+        QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
+        macroItem *mItem =((macroItem*)pModel->itemFromIndex(index)->data().toULongLong());
+        int value = mItem->delay;
+        spinBox->setValue(value);
+        emit editText(true,index.row());
+    }
+
+    void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const override {
+        QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+        spinBox->interpretText();
+        int value = spinBox->value();
+
+        QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
+        macroItem *mItem =((macroItem*)pModel->itemFromIndex(index)->data().toULongLong());
+        mItem->delay = value;
+
+        emit editText(false,index.row());
+        refreshMacroItem(pModel->itemFromIndex(index));
+    }
+
+    void updateEditorGeometry(QWidget *editor,
+                              const QStyleOptionViewItem &option,
+                              const QModelIndex &index) const override
+    {
+        QStyleOptionViewItem opt = option ;
+        //opt.rect.adjust(0,0,opt.rect.width()/2 * -1 + 20 ,0);
+        QStyledItemDelegate::updateEditorGeometry(editor,opt,index);
+    }
+};
+
+
+
 
 class DialogMouse : public QDialog
 {
@@ -206,28 +317,20 @@ private:
 
     void updateButtonInfo();
 
-    // 打印设备信息
     void printDeviceInf(InfortechDef::DevInf *deviceInf);
 
-    // 打印按键配置
     void printButtonInf(const InfortechDef::AllBtnCfg *btnInf);
 
-    // 打印鼠标配置
-    void printMouseCfg(const InfortechDef::MouseCfg* mouseCfg);
+     void printMouseCfg(const InfortechDef::MouseCfg* mouseCfg);
 
-    // 打印额外配置
     void printMouseExtraInfo(const InfortechDef::ExtCfgInfo* extCfg);
 
-    // 打印传感器配置
     void printDGAmbientCfg(const InfortechDef::DGAmbientCfg* dgAmbientCfg);
 
-    // 打印传感器配置
     void printSensorCfg(const InfortechDef::SensorCfg* sensorCfg);
 
-    // 打印电感轴配置
     void printAxisCfg(const InfortechDef::AxisCfg* axisCfg);
 
-    // 获取所有配置
     void getAllCfg();
 
 };

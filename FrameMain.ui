@@ -245,6 +245,9 @@
               <property name="text">
                <string>键程设置(全局)</string>
               </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item>

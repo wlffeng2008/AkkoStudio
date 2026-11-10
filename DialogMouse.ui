@@ -769,7 +769,7 @@ QPushButton:checked {  icon: url(:/images/arrow-down.png);  background:none; }</
 </string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="page0">
           <property name="styleSheet">
@@ -1316,7 +1316,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidgetPickKey">
                     <property name="currentIndex">
-                     <number>3</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page00">
                      <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -8646,7 +8646,7 @@ QPushButton:hover { border: 1px solid #6329B6; }</string>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>200</width>
+                      <width>100</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -9327,8 +9327,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>81</width>
-                     <height>71</height>
+                     <width>296</width>
+                     <height>699</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -9595,8 +9595,8 @@ QTableView::item::selected{ background-color: black; color:white; }</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>81</width>
-                        <height>73</height>
+                        <width>1029</width>
+                        <height>645</height>
                        </rect>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -10100,6 +10100,11 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </widget>
  <customwidgets>
   <customwidget>
+   <class>CustumSlider</class>
+   <extends>QSlider</extends>
+   <header>custumslider.h</header>
+  </customwidget>
+  <customwidget>
    <class>ToggleButton</class>
    <extends>QCheckBox</extends>
    <header>togglebutton.h</header>
@@ -10114,11 +10119,6 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
    <extends>QWidget</extends>
    <header location="global">colorpicker.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>CustumSlider</class>
-   <extends>QSlider</extends>
-   <header>custumslider.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -10348,18 +10348,18 @@ QPushButton:checked{color: #6329B6; icon: url(:/images/Correct.png);}</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupRgbEffect"/>
-  <buttongroup name="buttonGroupX"/>
-  <buttongroup name="buttonGroupShortcut"/>
-  <buttongroup name="buttonGroupKeySet"/>
   <buttongroup name="buttonGroupConfig"/>
-  <buttongroup name="buttonGroupMain"/>
-  <buttongroup name="buttonGroupBHOP"/>
-  <buttongroup name="buttonGroupKeyType"/>
-  <buttongroup name="buttonGroupDpiSelect"/>
+  <buttongroup name="buttonGroupRgbEffect"/>
   <buttongroup name="buttonGroupClr"/>
+  <buttongroup name="buttonGroupDpiSelect"/>
   <buttongroup name="buttonGroupY"/>
+  <buttongroup name="buttonGroupKeySet"/>
+  <buttongroup name="buttonGroupMain"/>
   <buttongroup name="buttonGroupRgbSpeed"/>
+  <buttongroup name="buttonGroupKeyType"/>
+  <buttongroup name="buttonGroupShortcut"/>
   <buttongroup name="buttonGroupSuper"/>
+  <buttongroup name="buttonGroupBHOP"/>
+  <buttongroup name="buttonGroupX"/>
  </buttongroups>
 </ui>
