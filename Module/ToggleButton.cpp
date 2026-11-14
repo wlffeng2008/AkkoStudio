@@ -26,7 +26,6 @@ ToggleButton::ToggleButton(QWidget *parent) : QCheckBox(parent)
     setCursor(Qt::PointingHandCursor);
 }
 
-
 void ToggleButton::setColor(const QColor&checkedColor,const QColor&UncheckedColor)
 {
     m_colorChecked   = checkedColor;

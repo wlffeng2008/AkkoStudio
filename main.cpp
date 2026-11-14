@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
             text-align: center;
             font-size: 14px;
             font-weight: 500;
-            }
+        }
 
         QLineEdit:hover { background-color: #F0F0F0;}
         QLineEdit:focus{ border: 1px solid #50b7c1; border-radius: 4px; background-color: rgb(230, 240, 255);}
@@ -107,14 +107,14 @@ int main(int argc, char *argv[])
         QLabel#labelInfo0,#labelInfo1,#labelInfo2,#labelInfo3{ font-size: 32px; font-weight: 600; color:#202020;}
 
         QTableView{
-                 border: 1px solid gray;
-                 gridline-color: transparent;
-                 background-color: rgb(230, 240, 255);
-                 gridline-color: gray;
-                 font-size: 12px ;
-                 font-weight: 500;
-                 border:none;
-            }
+             border: 1px solid gray;
+             gridline-color: transparent;
+             background-color: rgb(230, 240, 255);
+             gridline-color: gray;
+             font-size: 12px ;
+             font-weight: 500;
+             border:none;
+        }
         QTableView::item{padding-left:2px;  border-top: 0px solid gray; border-bottom: 1px solid transparent;border-right: 0px solid gray;}
         QTableView::item::selected{ background-color: #a0bb9e; color:white; }
         QTableView QTableCornerButton::section { background-color: skyblue ; min-width: 32px; border-top: 0px solid gray; border-bottom: 1px solid gray; border-left: 0px solid gray; border-right: 1px solid gray; }
@@ -164,15 +164,15 @@ int main(int argc, char *argv[])
         QMessageBox QLabel#qt_msgboxex_icon_label{ min-width: 32px; min-height: 32px; max-width: 32px; max-height: 32px;qproperty-alignment: AlignTop;}
 
         #pushButtonPlug,#pushButtonMinus{
-                border: none;
-                border-radius: 0px;
-                background-color: transparent;
-                min-width:20px;
-                min-height:20px;
-                max-width:20px;
-                max-height:20px;
-                icon-size: 16px;
-            }
+            border: none;
+            border-radius: 0px;
+            background-color: transparent;
+            min-width:20px;
+            min-height:20px;
+            max-width:20px;
+            max-height:20px;
+            icon-size: 16px;
+        }
 
         #pushButtonPlug,#pushButtonMinus:hover { background-color: #F0F0F0;}
 
@@ -302,9 +302,6 @@ int main(int argc, char *argv[])
         QRadioButton::indicator:checked {
             image: url(:/images/RadioChecked.png);
         }
-
-
-
 
         QComboBox {
             border: 1px solid gray;

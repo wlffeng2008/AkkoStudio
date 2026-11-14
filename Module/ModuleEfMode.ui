@@ -67,7 +67,7 @@
        </property>
       </spacer>
      </item>
-     <item>
+     <item alignment="Qt::AlignmentFlag::AlignVCenter">
       <widget class="ToggleButton" name="checkBoxEFMode">
        <property name="minimumSize">
         <size>

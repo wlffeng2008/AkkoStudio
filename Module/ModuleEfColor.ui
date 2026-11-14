@@ -60,7 +60,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab1">
       <attribute name="title">
@@ -960,9 +960,9 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupE"/>
   <buttongroup name="buttonGroupC"/>
   <buttongroup name="buttonGroupS"/>
+  <buttongroup name="buttonGroupE"/>
   <buttongroup name="buttonGroupL"/>
  </buttongroups>
 </ui>

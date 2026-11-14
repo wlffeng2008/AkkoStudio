@@ -38,15 +38,15 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     m_pFrames.push_back(pFM);
     m_pFrames.push_back(pKS);
     m_pFrames.push_back(pMagic);
-    m_pFrames.push_back(pMacro);
     m_pFrames.push_back(pLight);
+    m_pFrames.push_back(pMacro);
     m_pFrames.push_back(pAbout);
 
     ui->horizontalLayoutBR->addWidget(pFM);
     ui->horizontalLayoutBR->addWidget(pKS);
     ui->horizontalLayoutBR->addWidget(pMagic);
-    ui->horizontalLayoutBR->addWidget(pMacro);
     ui->horizontalLayoutBR->addWidget(pLight);
+    ui->horizontalLayoutBR->addWidget(pMacro);
     ui->horizontalLayoutBR->addWidget(pAbout);
     ui->horizontalLayoutBR->setAlignment(Qt::AlignRight);
 
@@ -63,7 +63,7 @@ FrameDeviceHolder::FrameDeviceHolder(QWidget *parent)
     m_pLBtns.push_back(ui->label8);
 
     int index = 0;
-    static QStringList images={"shouye","jianweishezhi","cizhoushezhi","hongshezhi","dengxiaoshezhi","guanyu","",""};
+    static QStringList images={"shouye","jianweishezhi","cizhoushezhi","dengxiaoshezhi","hongshezhi","guanyu","",""};
     foreach (SuperLabel *label, m_pLBtns) {
         label->setCursor(Qt::PointingHandCursor);
         label->installEventFilter(this);
@@ -191,8 +191,8 @@ void FrameDeviceHolder::changeEvent(QEvent *pEvt)
         ui->label1->updateToolTip(tr("首页"));
         ui->label2->updateToolTip(tr("键盘设置"));
         ui->label3->updateToolTip(tr("磁轴设置"));
-        ui->label4->updateToolTip(tr("宏设置"));
-        ui->label5->updateToolTip(tr("灯光设置"));
+        ui->label4->updateToolTip(tr("灯光设置"));
+        ui->label5->updateToolTip(tr("宏设置"));
         ui->label6->updateToolTip(tr("关于"));
         ui->label7->updateToolTip(tr("用户"));
         ui->label8->updateToolTip(tr("返回"));

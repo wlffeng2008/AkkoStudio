@@ -29,11 +29,6 @@ ModuleDKSItem::ModuleDKSItem(QWidget *parent)
             m_dragX1 = 0;
         }
     });
-
-    connect(ui->pushButton_FuncKey,&QPushButton::clicked,this,[=]{
-        //qDebug() << "onButtonClicked -- " ;
-        //emit onButtonClicked();
-    });
 }
 
 ModuleDKSItem::~ModuleDKSItem()
@@ -96,6 +91,7 @@ bool ModuleDKSItem::event(QEvent*event)
             m_dragX1 = pMEvent->pos().x();
         m_dragging = true;
     }
+
     if(event->type() == QEvent::MouseButtonRelease)
     {
         m_dragging = false;
@@ -151,7 +147,7 @@ void ModuleDKSItem::paintEvent(QPaintEvent*event)
         QPoint pos = labels[i]->pos();
         if(x1<pos.x())
         {
-            x1 = pos.x() - 15;
+            x1 = pos.x() - 10;
             break;
         }
     }
@@ -161,13 +157,13 @@ void ModuleDKSItem::paintEvent(QPaintEvent*event)
         QPoint pos = labels[3-i]->geometry().bottomRight();
         if(x2>pos.x())
         {
-            x2 = pos.x() + 50;
+            x2 = pos.x() + 53;
             break;
         }
     }
 
-    if(x1<130) x1 = 130;
-    if(x2>368) x2 = 368;
+    //if(x1<130) x1 = 130;
+    if(x2>390) x2 = 390;
 
     int nW = x2-x1;
     if(nW<10)

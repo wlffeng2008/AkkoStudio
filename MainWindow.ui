@@ -116,7 +116,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#horizontalFrame{background-color: rgba(255, 255, 255, 128); border-radius:6px;}</string>
+          <string notr="true">#horizontalFrame{background-color: rgba(255, 255, 255, 128); border-radius:6px;color:black;}</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <property name="spacing">

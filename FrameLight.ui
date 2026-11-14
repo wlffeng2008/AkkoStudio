@@ -20,8 +20,8 @@
    <string notr="true"/>
   </property>
   <property name="styleSheet">
-   <string notr="true">#frameT{background-color: #FBFBFB;border-radius:32px;}
-#FrameLight{background-color: #FBFBFB;}
+   <string notr="true">#frameT{border-radius:32px;}
+#FrameLight{}
 #frameLEDBright,#frameLEDSpeed,#frameLEDColor,#frameLEDMode,#page1,#stackedWidgetB{background-color: #F6F6F6;border-radius:32px;}</string>
   </property>
   <property name="lineWidth">
@@ -272,6 +272,9 @@
          </property>
          <item>
           <widget class="QTableView" name="tableView">
+           <property name="styleSheet">
+            <string notr="true">#tableView{border-radius:12px;}</string>
+           </property>
            <property name="selectionMode">
             <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
            </property>
@@ -290,7 +293,7 @@
           </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0">
+          <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,1,1,1">
            <property name="spacing">
             <number>15</number>
            </property>
@@ -303,13 +306,13 @@
               <widget class="QLabel" name="labelTitle2">
                <property name="minimumSize">
                 <size>
-                 <width>150</width>
+                 <width>180</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>150</width>
+                 <width>180</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -353,7 +356,7 @@
                </property>
               </widget>
              </item>
-             <item>
+             <item alignment="Qt::AlignmentFlag::AlignVCenter">
               <widget class="ToggleButton" name="checkBoxRam">
                <property name="minimumSize">
                 <size>
@@ -424,13 +427,13 @@
               <widget class="QLabel" name="labelTitle5">
                <property name="minimumSize">
                 <size>
-                 <width>150</width>
+                 <width>180</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>150</width>
+                 <width>180</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -518,13 +521,13 @@
               <widget class="QLabel" name="labelTitle6">
                <property name="minimumSize">
                 <size>
-                 <width>150</width>
+                 <width>180</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>150</width>
+                 <width>180</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -612,13 +615,13 @@
               <widget class="QLabel" name="labelName">
                <property name="minimumSize">
                 <size>
-                 <width>150</width>
+                 <width>180</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>150</width>
+                 <width>180</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -706,12 +709,6 @@
    <header>togglebutton.h</header>
   </customwidget>
   <customwidget>
-   <class>ModuleKeyboard</class>
-   <extends>QFrame</extends>
-   <header>modulekeyboard.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>ModuleEfMode</class>
    <extends>QFrame</extends>
    <header location="global">moduleefmode.h</header>
@@ -733,6 +730,12 @@
    <class>ModuleEfSpeed</class>
    <extends>QFrame</extends>
    <header>moduleefspeed.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ModuleKeyboard</class>
+   <extends>QFrame</extends>
+   <header>modulekeyboard.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

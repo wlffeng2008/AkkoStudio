@@ -583,6 +583,12 @@ DialogMouse::DialogMouse(QWidget *parent)
     ui->checkBoxMoveOffLed->hide();
     ui->doubleSpinBox->hide();
 
+    ui->pushButton_1706->hide();
+    ui->pushButton_1901->hide();
+    ui->pushButton_1731->hide();
+    ui->pushButton_1732->hide();
+    ui->pushButton_1733->hide();
+
     {
         startConnect();
     }
@@ -658,7 +664,7 @@ DialogMouse::DialogMouse(QWidget *parent)
         connect(app,&MyEasyApp::transEvent,this,[=](QObject *receiver,QEvent *event)
         {
             int nDelay = ignTm.elapsed();
-            int nLimit = 5;
+            int nLimit = 1;
 
             QKeyEvent   *kEvent = static_cast<QKeyEvent*>(event);
             QMouseEvent *mEvent = static_cast<QMouseEvent*>(event);
@@ -724,7 +730,7 @@ DialogMouse::DialogMouse(QWidget *parent)
                 if(deltaX >  10) {defId = 1709;              }
                 if(deltaX < -10) {defId = 1710;press = false;}
 
-                addMacroItem(defId,nDelay,0,press);
+                addMacroItem(defId,nDelay,2,press);
 
                 ignTm.restart();
             }
@@ -839,48 +845,54 @@ DialogMouse::DialogMouse(QWidget *parent)
             m_recording = false;
         });
 
+        QStringList headers = QString("M0,M1,M2,M3,M4,M5").split(',');
+        int columCount = headers.count();
 
         m_pModel = new QStandardItemModel(this);
-        m_pModel->setHorizontalHeaderLabels(QString("名称,类型,名称,类型,名称,类型").split(','));
+        m_pModel->setHorizontalHeaderLabels(headers);
         ui->tableViewMContent->setModel(m_pModel);
 
         QHeaderView *pHeader = ui->tableViewMContent->horizontalHeader();
         pHeader->setSectionResizeMode(QHeaderView::Stretch);
         pHeader->hide();
 
-        MarcoItemDelegate *pDele0= new MarcoItemDelegate(ui->tableViewMContent,0);
-        MarcoItemDelegate *pDele1= new MarcoItemDelegate(ui->tableViewMContent,1);
-        MarcoItemDelegate *pDele2= new MarcoItemDelegate(ui->tableViewMContent,2);
-        MarcoItemDelegate *pDele3= new MarcoItemDelegate(ui->tableViewMContent,3);
-        MarcoItemDelegate *pDele4= new MarcoItemDelegate(ui->tableViewMContent,4);
-        MarcoItemDelegate *pDele5= new MarcoItemDelegate(ui->tableViewMContent,5);
+        for(int i=0; i<columCount; i++) { new MarcoItemDelegate(ui->tableViewMContent,i); }
 
-        QFont font1 = ui->tableViewMContent->font();
-        //font1.setBold(true);
-        font1.setPixelSize(16);
+        QFont font = ui->tableViewMContent->font();
+        font.setPixelSize(16);
 
         for(int m=0;m<12;m++)
         {
             QList<QStandardItem*>test;
-            for(int i=0; i<6; i++)
+            for(int i=0; i<columCount; i++)
             {
                 QStandardItem *item = new QStandardItem(QString(""));
                 item->setTextAlignment(Qt::AlignCenter);
+                item->setData(0);
                 //item->setEditable(false);
-                item->setFont(font1);
+                item->setFont(font);
                 test.push_back(item);
             }
             m_pModel->appendRow(test);
-            ui->tableViewMContent->setRowHeight(m,64);
+            ui->tableViewMContent->setRowHeight(m,60);
         }
         connect(m_pModel,&QStandardItemModel::itemChanged,this,[=](QStandardItem *item){
         });
 
         connect(ui->tableViewMContent,&QTableView::clicked,this,[=](const QModelIndex &index){
-            //pClkItem = m_pModel->itemFromIndex(index);
-            int item = index.row() * 6 + index.column();
-            if(item%2 == 0) item++;
-            m_insertAt = item;
+            m_select   = -1;
+            m_insertAt = -1;
+            int count = macroGroup.count() ;
+
+            int pos = index.row() * columCount + index.column();
+            if(pos >= count) return;
+
+            m_select = pos;
+
+            macroItem *item = macroGroup.at(pos);
+            if(item->down) pos++;
+
+            m_insertAt = pos;
         });
 
         m_pMList = new QStandardItemModel(this);
@@ -916,7 +928,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             int count = macroGroup.count();
             for(int i=0; i<255; i++)
             {
-                QStandardItem *item = m_pModel->item(i/6,i%6);
+                QStandardItem *item = m_pModel->item(i/columCount,i%columCount);
                 if(!item) break;
                 item->setData(0);
                 if(i < count) item->setData((quint64)macroGroup[i]);
@@ -994,7 +1006,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             int count = macroGroup.count();
             for(int i=0; i<255; i++)
             {
-                QStandardItem *item = m_pModel->item(i/6,i%6);
+                QStandardItem *item = m_pModel->item(i/columCount,i%columCount);
                 if(!item) break;
                 item->setData(0);
                 if(i < count)
@@ -1016,14 +1028,17 @@ DialogMouse::DialogMouse(QWidget *parent)
 
             m_lastItem = nullptr;
             macroGroup.clear();
-            ui->labelTitle4->setText(tr("占用") + QString(": 0 / 70"));
-            for(int m=0;m<12;m++)
+            m_select=-1;
+            m_insertAt=-1;
+
+            for(int i=0; i<255; i++)
             {
-                for(int n=0; n<6; n++)
-                {
-                    m_pModel->item(m,n)->setText("");
-                }
+                QStandardItem *item = m_pModel->item(i/columCount,i%columCount);
+                if(!item) break;
+                item->setData(0);
+                refreshMacroItem(item);
             }
+            ui->labelTitle4->setText(tr("占用") + QString(": 0 / 70"));
         });
 
         connect(ui->pushButtonSave,&QPushButton::clicked,this,[=]{
@@ -1034,7 +1049,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             }
 
             saveLoadMacroContent(m_currentId,macroGroup,true);
-            EasyToast::information("宏数据已保存！",600);
+            //EasyToast::information("宏数据已保存！",600);
         });
 
         connect(ui->tableViewMContent->selectionModel(), &QItemSelectionModel::selectionChanged, this, [=](const QItemSelection &selected, const QItemSelection &deselected){
@@ -1046,54 +1061,69 @@ DialogMouse::DialogMouse(QWidget *parent)
 
         connect(ui->pushButtonDelete,&QPushButton::clicked,this,[=]{
             int count = macroGroup.count();
-            if(count == 0 || m_insertAt == -1 || m_insertAt >= count)
+            if(count == 0 || m_select == -1 || m_select >= count)
             {
                 QMessageBox::warning(this,tr("提示"),tr("没有选中的宏动作，请重试！"));
                 return;
             }
 
             m_lastItem = nullptr;
-            if(count>0 && m_insertAt != -1)
+            int index = m_select;
+
+            macroItem *item = macroGroup.at(index);
+            int defId = item->defId;
+            int type  = item->type ;
+            bool isPressed = item->down ;
+            qDebug() << "pushButtonDelete" << defId <<type << isPressed;
+
+            macroGroup.removeAt(index);
+
+            if(type != 2)
             {
-                int index = m_insertAt;
-
-                if(index >= count)
-                    return;
-
-                bool delDouble = (count%2  == 0);
-
-                if(index%2 == 0)
+                count = macroGroup.count();
+                if(isPressed)
                 {
-                    macroGroup.removeAt(index);
-                    if(delDouble && (index < macroGroup.count()))
-                        macroGroup.removeAt(index);
+                    for(int i=index; i<count; i++)
+                    {
+                        macroItem *tmp = macroGroup.at(i);
+                        if(!tmp->down && defId == tmp->defId)
+                        {
+                            macroGroup.removeAt(i);
+                            qDebug() << "delete paired";
+                            break;
+                        }
+                    }
                 }
                 else
                 {
-                    macroGroup.removeAt(index-1);
-                    if(delDouble && (index-1 < macroGroup.count()))
-                        macroGroup.removeAt(index-1);
-                }
-
-                for(int m=0;m<12;m++)
-                {
-                    for(int n=0; n<6; n++)
+                    for(int i=index; i >= 0; i--)
                     {
-                        m_pModel->item(m,n)->setText("");
+                        macroItem *tmp = macroGroup.at(i);
+                        if(tmp->down && defId == tmp->defId)
+                        {
+                            macroGroup.removeAt(i);
+                            qDebug() << "delete paired";
+                            break;
+                        }
                     }
                 }
-
-                count = macroGroup.count();
-                for(int i=0; i<count; i++)
-                {
-                    QStandardItem *item = m_pModel->item(i/6,i%6);
-                    if(item) item->setData((quint64)macroGroup[i]);
-                    refreshMacroItem(item);
-                }
-                ui->labelTitle4->setText(tr("占用") + QString(": %1 / 70").arg(count));
-                saveLoadMacroContent(m_currentId,macroGroup,true);
-                m_insertAt = -1 ;
             }
+
+            count = macroGroup.count();
+            for(int i=0; i<255; i++)
+            {
+                QStandardItem *item = m_pModel->item(i/columCount,i%columCount);
+                if(!item) break;
+                item->setData(0);
+                if(i < count)
+                    item->setData((quint64)macroGroup[i]);
+                refreshMacroItem(item);
+            }
+
+            ui->labelTitle4->setText(tr("占用") + QString(": %1 / 70").arg(count));
+            saveLoadMacroContent(m_currentId,macroGroup,true);
+            m_select = -1 ;
+            ui->tableViewMContent->clearSelection();
         });
 
         connect(ui->pushButtonSetDelay,&QPushButton::clicked,this,[=]{
@@ -1101,7 +1131,7 @@ DialogMouse::DialogMouse(QWidget *parent)
             for(int i=0; i<count; i++)
             {
                 macroGroup[i]->delay = ui->spinBoxDelay->value();
-                refreshMacroItem(m_pModel->item(i/6,i%6));
+                refreshMacroItem(m_pModel->item(i/columCount,i%columCount));
             }
             saveLoadMacroContent(m_currentId,macroGroup);
         });

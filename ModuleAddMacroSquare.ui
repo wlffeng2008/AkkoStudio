@@ -28,6 +28,11 @@
     <height>400</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string notr="true">Frame</string>
   </property>
@@ -463,7 +468,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupMKey"/>
   <buttongroup name="buttonGroupType"/>
+  <buttongroup name="buttonGroupMKey"/>
  </buttongroups>
 </ui>

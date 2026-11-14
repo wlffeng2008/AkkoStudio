@@ -395,7 +395,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
             {
                 emit onConnect();
 
-                addReadCmd("1B 01", true);
+                addReadCmd("1B 00", true);
                 m_isSupportAxis = false;
                 m_isSupportTopDeadZone=false;
                 m_deviceId = 0;
@@ -1412,6 +1412,7 @@ void DialogDeviceConnect::StartRtTest()
     emit onKeyTesting(true);
     m_Cali.clear();
     addReadCmd("1B 01", true);
+    qDebug() << " DialogDeviceConnect::StartRtTest  ------------------------- "  ;
 }
 
 void DialogDeviceConnect::StopRtTest()

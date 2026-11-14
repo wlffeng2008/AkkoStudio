@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>228</width>
+    <width>335</width>
     <height>24</height>
    </rect>
   </property>
@@ -27,7 +27,7 @@
     <number>5</number>
    </property>
    <property name="leftMargin">
-    <number>0</number>
+    <number>5</number>
    </property>
    <property name="topMargin">
     <number>0</number>

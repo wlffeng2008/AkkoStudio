@@ -44,7 +44,7 @@ void CustomTabBar::paintEvent(QPaintEvent *event)
     // 绘制选中标签指示器
     painter.setPen(Qt::NoPen);
     painter.setBrush(QColor(52, 152, 219));
-    painter.drawRoundedRect(m_currentX, height() - 3, m_currentWidth, 3, 1.5, 1.5);
+    painter.drawRoundedRect(m_currentX, height() - 3, m_currentWidth, 2, 1.0, 1.0);
 
     for (int i = 0; i < tabCount; ++i)
     {
@@ -69,7 +69,7 @@ void CustomTabBar::paintEvent(QPaintEvent *event)
 
         painter.setPen(setColor);
         QFont font = static_cast<QWidget*>(this->parent())->font();
-        font.setWeight(isSelected?QFont::ExtraBold : QFont::Normal) ;
+        //font.setWeight(isSelected?QFont::ExtraBold : QFont::Normal) ;
         painter.setFont(font);
 
         QString text = tabText(i);
@@ -82,7 +82,7 @@ void CustomTabBar::paintEvent(QPaintEvent *event)
             int textWidth = fm.boundingRect(text).width();
             QRect lineRect = tRect;
             lineRect.setTop(lineRect.bottom()-6) ;
-            lineRect.setHeight(3) ;
+            lineRect.setHeight(2) ;
             int nAdj = (tRect.width()-textWidth+30)/2 ;
             //if(tRect.width()<80)
                 nAdj = 20 ;
@@ -90,7 +90,7 @@ void CustomTabBar::paintEvent(QPaintEvent *event)
 
             painter.setPen(setColor);
             painter.setBrush(setColor);
-            painter.drawRoundedRect(lineRect,1.5,1.5);
+            painter.drawRoundedRect(lineRect,1.0,1.0);
         }
     }
 }
@@ -100,11 +100,6 @@ void CustomTabBar::resizeEvent(QResizeEvent *event)
     QTabBar::resizeEvent(event);
     onCurrentChanged(currentIndex());
 }
-
-// QSize CustomTabBar::tabSizeHint(int index) const
-// {
-//     return QSize(120, 40); // 固定标签大小
-// }
 
 void CustomTabBar::tabLayoutChange()
 {

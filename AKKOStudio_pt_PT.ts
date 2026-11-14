@@ -226,14 +226,14 @@
     <message>
         <location filename="DialogMouse.ui" line="894"/>
         <location filename="DialogMouse.ui" line="1363"/>
-        <location filename="DialogMouse.cpp" line="2312"/>
+        <location filename="DialogMouse.cpp" line="2353"/>
         <source>右键</source>
         <translation>Botão direito</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="928"/>
         <location filename="DialogMouse.ui" line="1507"/>
-        <location filename="DialogMouse.cpp" line="2313"/>
+        <location filename="DialogMouse.cpp" line="2354"/>
         <source>中键</source>
         <translation>Botão do meio</translation>
     </message>
@@ -245,7 +245,7 @@
     <message>
         <location filename="DialogMouse.ui" line="996"/>
         <location filename="DialogMouse.ui" line="1411"/>
-        <location filename="DialogMouse.cpp" line="2311"/>
+        <location filename="DialogMouse.cpp" line="2352"/>
         <source>左键</source>
         <translation>Botão esquerdo</translation>
     </message>
@@ -291,81 +291,81 @@
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1347"/>
-        <location filename="DialogMouse.cpp" line="2317"/>
+        <location filename="DialogMouse.cpp" line="2358"/>
         <source>上滚</source>
         <translation>Rolar para cima</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1379"/>
-        <location filename="DialogMouse.cpp" line="2320"/>
+        <location filename="DialogMouse.cpp" line="2361"/>
         <source>右滚</source>
         <translation>Rolar para a direita</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1395"/>
-        <location filename="DialogMouse.cpp" line="2315"/>
+        <location filename="DialogMouse.cpp" line="2356"/>
         <source>前进</source>
         <translation>Avançar</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1427"/>
-        <location filename="DialogMouse.cpp" line="2319"/>
+        <location filename="DialogMouse.cpp" line="2360"/>
         <source>左滚</source>
         <translation>Rolar para a esquerda</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1443"/>
-        <location filename="DialogMouse.cpp" line="2314"/>
+        <location filename="DialogMouse.cpp" line="2355"/>
         <source>后退</source>
         <translation>Recuar</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1459"/>
-        <location filename="DialogMouse.cpp" line="2322"/>
+        <location filename="DialogMouse.cpp" line="2363"/>
         <source>DPI循环</source>
         <translation>Ciclo de DPI</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2323"/>
+        <location filename="DialogMouse.cpp" line="2364"/>
         <source>DPI+</source>
         <translation>DPI+</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1491"/>
-        <location filename="DialogMouse.cpp" line="2318"/>
+        <location filename="DialogMouse.cpp" line="2359"/>
         <source>下滚</source>
         <translation>Rolar para baixo</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2324"/>
+        <location filename="DialogMouse.cpp" line="2365"/>
         <source>DPI-</source>
         <translation>DPI-</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1539"/>
-        <location filename="DialogMouse.cpp" line="2325"/>
+        <location filename="DialogMouse.cpp" line="2366"/>
         <source>BLE循环</source>
         <translation>Ciclo BLE</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2326"/>
+        <location filename="DialogMouse.cpp" line="2367"/>
         <source>BLE+</source>
         <translation>BLE+</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="2327"/>
+        <location filename="DialogMouse.cpp" line="2368"/>
         <source>BLE-</source>
         <translation>BLE-</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1587"/>
-        <location filename="DialogMouse.cpp" line="2316"/>
+        <location filename="DialogMouse.cpp" line="2357"/>
         <source>底部按钮</source>
         <translation>Botão inferior</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1603"/>
-        <location filename="DialogMouse.cpp" line="2321"/>
+        <location filename="DialogMouse.cpp" line="2362"/>
         <source>火力按钮</source>
         <translation>Botão de disparo</translation>
     </message>
@@ -376,121 +376,121 @@
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1649"/>
-        <location filename="DialogMouse.cpp" line="2337"/>
+        <location filename="DialogMouse.cpp" line="2378"/>
         <source>停止</source>
         <translation>Parar</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1665"/>
-        <location filename="DialogMouse.cpp" line="2345"/>
+        <location filename="DialogMouse.cpp" line="2386"/>
         <source>网页停止</source>
         <translation>Parar página web</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1681"/>
-        <location filename="DialogMouse.cpp" line="2347"/>
+        <location filename="DialogMouse.cpp" line="2388"/>
         <source>网页后退</source>
         <translation>Recuar página web</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1697"/>
-        <location filename="DialogMouse.cpp" line="2344"/>
+        <location filename="DialogMouse.cpp" line="2385"/>
         <source>收藏夹</source>
         <translation>Favoritos</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1713"/>
-        <location filename="DialogMouse.cpp" line="2334"/>
+        <location filename="DialogMouse.cpp" line="2375"/>
         <source>我的电脑</source>
         <translation>O meu computador</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1729"/>
-        <location filename="DialogMouse.cpp" line="2330"/>
+        <location filename="DialogMouse.cpp" line="2371"/>
         <source>音量+</source>
         <translation>Volume+</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1745"/>
-        <location filename="DialogMouse.cpp" line="2341"/>
+        <location filename="DialogMouse.cpp" line="2382"/>
         <source>主页</source>
         <translation>Página inicial</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1761"/>
-        <location filename="DialogMouse.cpp" line="2329"/>
+        <location filename="DialogMouse.cpp" line="2370"/>
         <source>亮度-</source>
         <translation>Brilho-</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1777"/>
-        <location filename="DialogMouse.cpp" line="2338"/>
+        <location filename="DialogMouse.cpp" line="2379"/>
         <source>暂停</source>
         <translation>Pausa</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1793"/>
-        <location filename="DialogMouse.cpp" line="2339"/>
+        <location filename="DialogMouse.cpp" line="2380"/>
         <source>上一首</source>
         <translation>Faixa anterior</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1809"/>
-        <location filename="DialogMouse.cpp" line="2340"/>
+        <location filename="DialogMouse.cpp" line="2381"/>
         <source>下一首</source>
         <translation>Próxima faixa</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1825"/>
-        <location filename="DialogMouse.cpp" line="2331"/>
+        <location filename="DialogMouse.cpp" line="2372"/>
         <source>音量-</source>
         <translation>Volume-</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1841"/>
-        <location filename="DialogMouse.cpp" line="2342"/>
+        <location filename="DialogMouse.cpp" line="2383"/>
         <source>搜索</source>
         <translation>Pesquisar</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1857"/>
-        <location filename="DialogMouse.cpp" line="2333"/>
+        <location filename="DialogMouse.cpp" line="2374"/>
         <source>计算器</source>
         <translation>Calculadora</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1873"/>
-        <location filename="DialogMouse.cpp" line="2346"/>
+        <location filename="DialogMouse.cpp" line="2387"/>
         <source>网页前进</source>
         <translation>Avançar página web</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1889"/>
-        <location filename="DialogMouse.cpp" line="2343"/>
+        <location filename="DialogMouse.cpp" line="2384"/>
         <source>刷新</source>
         <translation>Atualizar</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1905"/>
-        <location filename="DialogMouse.cpp" line="2332"/>
+        <location filename="DialogMouse.cpp" line="2373"/>
         <source>静音</source>
         <translation>Sem som</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1921"/>
-        <location filename="DialogMouse.cpp" line="2336"/>
+        <location filename="DialogMouse.cpp" line="2377"/>
         <source>播放器</source>
         <translation>Leitor multimédia</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1937"/>
-        <location filename="DialogMouse.cpp" line="2328"/>
+        <location filename="DialogMouse.cpp" line="2369"/>
         <source>亮度+</source>
         <translation>Brilho+</translation>
     </message>
     <message>
         <location filename="DialogMouse.ui" line="1953"/>
-        <location filename="DialogMouse.cpp" line="2335"/>
+        <location filename="DialogMouse.cpp" line="2376"/>
         <source>邮件</source>
         <translation>Correio eletrónico</translation>
     </message>
@@ -829,10 +829,10 @@
     </message>
     <message>
         <location filename="DialogMouse.cpp" line="376"/>
-        <location filename="DialogMouse.cpp" line="915"/>
-        <location filename="DialogMouse.cpp" line="993"/>
-        <location filename="DialogMouse.cpp" line="1008"/>
-        <location filename="DialogMouse.cpp" line="1082"/>
+        <location filename="DialogMouse.cpp" line="937"/>
+        <location filename="DialogMouse.cpp" line="1016"/>
+        <location filename="DialogMouse.cpp" line="1041"/>
+        <location filename="DialogMouse.cpp" line="1123"/>
         <source>占用</source>
         <translation>Utilizado</translation>
     </message>
@@ -842,126 +842,126 @@
         <translation>Nova macro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="623"/>
+        <location filename="DialogMouse.cpp" line="632"/>
         <source>正在录制宏,请在此界面按下/松开鼠标按键或者键盘按键......</source>
         <translation>A gravar a macro. Nesta janela, prima os botões do rato ou as teclas do teclado e solte-os…</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="627"/>
+        <location filename="DialogMouse.cpp" line="636"/>
         <source>停止录制</source>
         <translation>Parar gravação</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="645"/>
+        <location filename="DialogMouse.cpp" line="654"/>
         <source>按下</source>
         <translation>Premir</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="645"/>
+        <location filename="DialogMouse.cpp" line="654"/>
         <source>松开</source>
         <translation>Soltar</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="781"/>
-        <location filename="DialogMouse.cpp" line="956"/>
-        <location filename="DialogMouse.cpp" line="1001"/>
-        <location filename="DialogMouse.cpp" line="1021"/>
-        <location filename="DialogMouse.cpp" line="1040"/>
-        <location filename="DialogMouse.cpp" line="1138"/>
-        <location filename="DialogMouse.cpp" line="1159"/>
-        <location filename="DialogMouse.cpp" line="1168"/>
-        <location filename="DialogMouse.cpp" line="1250"/>
-        <location filename="DialogMouse.cpp" line="1835"/>
+        <location filename="DialogMouse.cpp" line="790"/>
+        <location filename="DialogMouse.cpp" line="978"/>
+        <location filename="DialogMouse.cpp" line="1024"/>
+        <location filename="DialogMouse.cpp" line="1047"/>
+        <location filename="DialogMouse.cpp" line="1066"/>
+        <location filename="DialogMouse.cpp" line="1179"/>
+        <location filename="DialogMouse.cpp" line="1200"/>
+        <location filename="DialogMouse.cpp" line="1209"/>
+        <location filename="DialogMouse.cpp" line="1291"/>
+        <location filename="DialogMouse.cpp" line="1876"/>
         <source>提示</source>
         <translation>Aviso</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="781"/>
+        <location filename="DialogMouse.cpp" line="790"/>
         <source>首先选择或者新建一个宏！</source>
         <translation>Selecione ou crie uma macro primeiro!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1114"/>
+        <location filename="DialogMouse.cpp" line="1155"/>
         <source>请选择升级文件:</source>
         <translation>Selecione o ficheiro de atualização:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1122"/>
+        <location filename="DialogMouse.cpp" line="1163"/>
         <source>请选择一个Bin文件...</source>
         <translation>Selecione um ficheiro Bin...</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1124"/>
+        <location filename="DialogMouse.cpp" line="1165"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1130"/>
+        <location filename="DialogMouse.cpp" line="1171"/>
         <source>固件文件 (*.bin *.hex *.fw);;所有文件 (*.*)</source>
         <translation>Ficheiro de firmware (*.bin *.hex *.fw);;Todos os ficheiros (*.*)</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1131"/>
+        <location filename="DialogMouse.cpp" line="1172"/>
         <source>选择固件文件</source>
         <translation>Selecionar ficheiro de firmware</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1138"/>
+        <location filename="DialogMouse.cpp" line="1179"/>
         <source>固件文件无法识别！</source>
         <translation>Ficheiro de firmware não reconhecido!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1159"/>
+        <location filename="DialogMouse.cpp" line="1200"/>
         <source>固件升级失败！</source>
         <translation>Falha na atualização do firmware!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1168"/>
+        <location filename="DialogMouse.cpp" line="1209"/>
         <source>固件升级成功！</source>
         <translation>Atualização do firmware concluída com sucesso!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1179"/>
+        <location filename="DialogMouse.cpp" line="1220"/>
         <source>开始更新</source>
         <translation>Iniciar atualização</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1197"/>
+        <location filename="DialogMouse.cpp" line="1238"/>
         <source>完成</source>
         <translation>Concluído</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1250"/>
+        <location filename="DialogMouse.cpp" line="1291"/>
         <source>鼠标必须保留一个按键有左键功能！</source>
         <translation>O rato tem de manter um botão com a função de botão esquerdo!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1333"/>
+        <location filename="DialogMouse.cpp" line="1374"/>
         <source>快捷键 设置成功！</source>
         <translation>Tecla de atalho configurada com sucesso!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1344"/>
+        <location filename="DialogMouse.cpp" line="1385"/>
         <source>火力键 设置成功！</source>
         <translation>Tecla de disparo configurada com sucesso!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1386"/>
+        <location filename="DialogMouse.cpp" line="1427"/>
         <source>宏 设置成功！</source>
         <translation>Macro configurada com sucesso!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1398"/>
+        <location filename="DialogMouse.cpp" line="1439"/>
         <source>按键重置 成功！</source>
         <translation>Teclas repostas com sucesso!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1410"/>
+        <location filename="DialogMouse.cpp" line="1451"/>
         <source>改键成功！</source>
         <translation>Alteração da tecla bem-sucedida!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="956"/>
+        <location filename="DialogMouse.cpp" line="978"/>
         <source>首先选择或者新建一个宏，请重试！</source>
         <translation>Selecione ou crie uma macro primeiro, tente novamente!</translation>
     </message>
@@ -974,74 +974,74 @@
         <translation type="vanished"> Iniciar gravação</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1001"/>
-        <location filename="DialogMouse.cpp" line="1021"/>
+        <location filename="DialogMouse.cpp" line="1024"/>
+        <location filename="DialogMouse.cpp" line="1047"/>
         <source>没有选中 宏，请重试！</source>
         <translation>Nenhuma macro selecionada, tente novamente!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1040"/>
+        <location filename="DialogMouse.cpp" line="1066"/>
         <source>没有选中的宏动作，请重试！</source>
         <translation>Nenhuma ação da macro selecionada, tente novamente!</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1835"/>
+        <location filename="DialogMouse.cpp" line="1876"/>
         <source>确定要恢复出厂设置吗？</source>
         <translation>Tem a certeza que pretende restaurar as configurações de fábrica?</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1890"/>
+        <location filename="DialogMouse.cpp" line="1931"/>
         <source>普通按键: </source>
         <translation>Tecla normal: </translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1908"/>
+        <location filename="DialogMouse.cpp" line="1949"/>
         <source>组合键</source>
         <translation>Teclas de combinação</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1920"/>
-        <location filename="DialogMouse.cpp" line="1921"/>
+        <location filename="DialogMouse.cpp" line="1961"/>
+        <location filename="DialogMouse.cpp" line="1962"/>
         <source>火力键</source>
         <translation>Tecla de disparo</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1922"/>
+        <location filename="DialogMouse.cpp" line="1963"/>
         <source>点击次数</source>
         <translation>Número de cliques</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1923"/>
+        <location filename="DialogMouse.cpp" line="1964"/>
         <source>点击间隔</source>
         <translation>Intervalo entre cliques</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1924"/>
+        <location filename="DialogMouse.cpp" line="1965"/>
         <source>是</source>
         <translation>Sim</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1924"/>
+        <location filename="DialogMouse.cpp" line="1965"/>
         <source>否</source>
         <translation>Não</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1935"/>
+        <location filename="DialogMouse.cpp" line="1976"/>
         <source>宏</source>
         <translation>Macro</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1936"/>
+        <location filename="DialogMouse.cpp" line="1977"/>
         <source>宏设置:</source>
         <translation>Configuração da macro:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1937"/>
+        <location filename="DialogMouse.cpp" line="1978"/>
         <source>类型:</source>
         <translation>Tipo:</translation>
     </message>
     <message>
-        <location filename="DialogMouse.cpp" line="1938"/>
+        <location filename="DialogMouse.cpp" line="1979"/>
         <source>动作数量:</source>
         <translation>Número de ações:</translation>
     </message>
@@ -1871,7 +1871,7 @@ Quando desativado, o disparo rápido termina assim que a tecla retorna ao curso 
         <translation type="obsolete">Sobre</translation>
     </message>
     <message>
-        <location filename="FrameMouse.ui" line="305"/>
+        <location filename="FrameMouse.ui" line="308"/>
         <source>5</source>
         <translation>5</translation>
     </message>
@@ -2012,7 +2012,7 @@ Quando desativado, o disparo rápido termina assim que a tecla retorna ao curso 
     </message>
     <message>
         <location filename="MainWindow.ui" line="335"/>
-        <location filename="MainWindow.cpp" line="1500"/>
+        <location filename="MainWindow.cpp" line="1510"/>
         <source>我的设备</source>
         <translation>Meus dispositivos</translation>
     </message>
@@ -2037,38 +2037,38 @@ Quando desativado, o disparo rápido termina assim que a tecla retorna ao curso 
         <translation>Leitura concluída!</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1503"/>
+        <location filename="MainWindow.cpp" line="1513"/>
         <source>显示窗口</source>
         <translation>Exibir janela</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1504"/>
+        <location filename="MainWindow.cpp" line="1514"/>
         <source>隐藏窗口</source>
         <translation>Ocultar janela</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1505"/>
+        <location filename="MainWindow.cpp" line="1515"/>
         <source>退出程序</source>
         <translation>Sair do programa</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1697"/>
+        <location filename="MainWindow.cpp" line="1707"/>
         <source>正在搜索设备</source>
         <translation>Procurando dispositivos</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="832"/>
-        <location filename="MainWindow.cpp" line="1722"/>
+        <location filename="MainWindow.cpp" line="841"/>
+        <location filename="MainWindow.cpp" line="1732"/>
         <source>提示</source>
         <translation>Aviso</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="832"/>
+        <location filename="MainWindow.cpp" line="841"/>
         <source>发现新版本，现在要立即更新吗？</source>
         <translation>Nova versão encontrada. Deseja atualizar agora?</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="1722"/>
+        <location filename="MainWindow.cpp" line="1732"/>
         <source>确定要退出 AKKO 驱动程序？</source>
         <translation>Tem certeza que deseja sair do driver AKKO?</translation>
     </message>

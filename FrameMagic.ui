@@ -289,7 +289,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
             <string notr="true">#page4,#page3,#page2,#page1,#page0{background-color: #F6F6F6;border-radius:32px;}</string>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="page0">
             <property name="styleSheet">
@@ -1085,7 +1085,7 @@ QPushButton:checked{background-color:#6329B6;color:white;}</string>
                   <widget class="QPushButton" name="pushButtonSetDeathzone">
                    <property name="minimumSize">
                     <size>
-                     <width>100</width>
+                     <width>150</width>
                      <height>36</height>
                     </size>
                    </property>
@@ -1810,7 +1810,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
-                 <item>
+                 <item alignment="Qt::AlignmentFlag::AlignVCenter">
                   <widget class="ToggleButton" name="checkBoxTouch">
                    <property name="minimumSize">
                     <size>
@@ -1890,7 +1890,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_16" stretch="0,1">
                <property name="spacing">
-                <number>5</number>
+                <number>12</number>
                </property>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="1,0">
@@ -1906,10 +1906,16 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </item>
                  <item>
                   <widget class="ToggleButton" name="checkBoxKeytest0">
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>24</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>50</width>
-                     <height>16777215</height>
+                     <height>24</height>
                     </size>
                    </property>
                    <property name="cursor">
@@ -1947,14 +1953,14 @@ QPushButton:checked { border-color: #6329B6; }</string>
                   <widget class="QLabel" name="labelPress">
                    <property name="minimumSize">
                     <size>
-                     <width>134</width>
-                     <height>254</height>
+                     <width>130</width>
+                     <height>0</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>134</width>
-                     <height>254</height>
+                     <width>130</width>
+                     <height>16777215</height>
                     </size>
                    </property>
                    <property name="text">
@@ -1984,6 +1990,9 @@ QPushButton:checked { border-color: #6329B6; }</string>
              </item>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_15" stretch="0,2,0,0">
+               <property name="spacing">
+                <number>10</number>
+               </property>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="1,0">
                  <item>
@@ -1995,10 +2004,16 @@ QPushButton:checked { border-color: #6329B6; }</string>
                  </item>
                  <item>
                   <widget class="ToggleButton" name="checkBoxKeytest1">
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>24</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>50</width>
-                     <height>16777215</height>
+                     <height>24</height>
                     </size>
                    </property>
                    <property name="cursor">
@@ -2036,8 +2051,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>18</width>
-                    <height>18</height>
+                    <width>495</width>
+                    <height>60</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_16"/>
@@ -2067,8 +2082,8 @@ QPushButton:checked { border-color: #6329B6; }</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>16</width>
-                    <height>16</height>
+                    <width>495</width>
+                    <height>147</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -2115,15 +2130,15 @@ QPushButton:checked { border-color: #6329B6; }</string>
    <header>togglebutton.h</header>
   </customwidget>
   <customwidget>
-   <class>ModuleKeyboard</class>
-   <extends>QFrame</extends>
-   <header>modulekeyboard.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>ModuleLinear</class>
    <extends>QFrame</extends>
    <header>modulelinear.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ModuleKeyboard</class>
+   <extends>QFrame</extends>
+   <header>modulekeyboard.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
@@ -2132,7 +2147,7 @@ QPushButton:checked { border-color: #6329B6; }</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupStab"/>
   <buttongroup name="buttonGroupMT"/>
+  <buttongroup name="buttonGroupStab"/>
  </buttongroups>
 </ui>

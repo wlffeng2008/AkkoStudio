@@ -107,10 +107,12 @@ FrameMacro::FrameMacro(QWidget *parent)
                 });
             }
 
-            ModuleGeneralMasker gMask(pEvt,ui->frameRight);
+            pEvt->setStyleSheet("QCheckBox{color:black; min-height:24px;}");
+
+            ModuleGeneralMasker gMask(pEvt,ui->scrollAreaWidgetContents2);
             pEvt->show();
             pEvt->update();
-            gMask.setStyleSheet("QDialog { background-color: rgba(200, 200, 200, 0.9); border: none; border-radius: 32px; }");
+            gMask.setStyleSheet("QDialog { background-color: rgba(220, 220, 220, 0.98); border: none; border-radius: 32px; }");
 
             auto res = gMask.exec();
             if(res == QDialog::Accepted)
@@ -222,7 +224,8 @@ void FrameMacro::addMacroBar(QObject *item)
     if(!prj) return;
     QLayout *pLayout = ui->scrollAreaWidgetContents1->layout();
     MacroItem *MItem = new MacroItem(this);
-    MItem->setFixedSize(220,44);
+    //MItem->setFixedSize(220,44);
+    MItem->setFixedHeight(40);
     MItem->setMacroName(prj->name);
     MItem->setRelData(item);
     pLayout->addWidget(MItem);

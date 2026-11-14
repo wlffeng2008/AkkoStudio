@@ -148,82 +148,71 @@ class MarcoItemDelegate : public QStyledItemDelegate {
 public:
     MarcoItemDelegate(QTableView *pView,int forColumn,QObject *parent = nullptr) : QStyledItemDelegate(parent) {
         pView->setItemDelegateForColumn(forColumn,this);
-
         this->pView = pView;
-        connect(this,&MarcoItemDelegate::editText,this,[=](bool edit,int row){
-            for (auto it = _editFlags.begin(); it != _editFlags.end(); ++it) {
-                it.value() = false;
-            }
-            _editFlags[row]  = edit;
-
-            qDebug() << "m_bEditing" << edit;
-        });
     }
 
-signals:
-    void editText(bool edit,int row) const;
-
-
 protected:
-    QMap<int,bool> _editFlags ;
     QTableView *pView ;
 
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override {
         Q_UNUSED(option)
         Q_UNUSED(index)
 
-        QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
-        QStandardItem *item = pModel->item(index.row(),index.column()) ;
+        QStandardItemModel *pModel = (QStandardItemModel *)index.model();
+        QStandardItem *item = pModel->item(index.row(),index.column());
 
         if(item->data().toULongLong() == 0) return nullptr;
 
-        QSpinBox *pBox = new QSpinBox(parent) ;
+        QSpinBox *pBox = new QSpinBox(parent);
         pBox->setAlignment(Qt::AlignCenter);
         pBox->setRange(1,5000);
+        pBox->setStyleSheet("background-color:#2c2c2c;");
         return pBox;
     }
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override
     {
-        //QStyledItemDelegate::paint(painter,option,index) ;
+        //QStyledItemDelegate::paint(painter,option,index);
 
-        painter->save() ;
+        painter->save();
 
         painter->setRenderHint(QPainter::Antialiasing);
 
-        QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
-        QStandardItem *item = pModel->item(index.row(),index.column()) ;
+        QStandardItemModel *pModel = (QStandardItemModel *)index.model();
+        QStandardItem *item = pModel->item(index.row(),index.column());
 
         if(item && item->data().toULongLong() != 0)
         {
-            QPen pen(Qt::gray) ;
-            if(!pView->selectionModel()->selectedIndexes().isEmpty() && pView->selectionModel()->selectedIndexes().at(0) == index)
+            QPen pen(Qt::gray);
+            //if(!pView->selectionModel()->selectedIndexes().isEmpty() && pView->selectionModel()->selectedIndexes().at(0) == index)
+            //    pen.setColor("#6329B6");
+
+            if(option.state & QStyle::State_Selected)
                 pen.setColor("#6329B6");
 
             QString strText = item->text();
 
-            QRect rect = option.rect ;
-            rect.adjust(4,4,-4,-4) ;
-            //painter->setPen(QPen(Qt::green,2));
-            painter->setPen(pen) ;
+            QRect rect = option.rect;
+            rect.adjust(4,4,-4,-4);
+
+            painter->setPen(pen);
             painter->drawRoundedRect(rect,6,6);
 
-            painter->setFont(item->font());
-            if(!_editFlags[index.row()])
-                painter->drawText(rect,Qt::AlignCenter,strText);
+            painter->setFont(option.font);
+            painter->drawText(rect,Qt::AlignCenter,strText);
         }
 
-        painter->restore() ;
+        painter->restore();
     }
 
     void setEditorData(QWidget *editor, const QModelIndex &index) const override {
-        QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
-
-        QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
+        QStandardItemModel *pModel = (QStandardItemModel *)index.model();
         macroItem *mItem =((macroItem*)pModel->itemFromIndex(index)->data().toULongLong());
+        if(mItem)return;
         int value = mItem->delay;
+
+        QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         spinBox->setValue(value);
-        emit editText(true,index.row());
     }
 
     void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const override {
@@ -231,25 +220,20 @@ protected:
         spinBox->interpretText();
         int value = spinBox->value();
 
-        QStandardItemModel *pModel = (QStandardItemModel *)index.model() ;
-        macroItem *mItem =((macroItem*)pModel->itemFromIndex(index)->data().toULongLong());
+        QStandardItemModel *pModel = (QStandardItemModel *)index.model();
+        macroItem *mItem = ((macroItem*)pModel->itemFromIndex(index)->data().toULongLong());
+        if(mItem)return;
         mItem->delay = value;
-
-        emit editText(false,index.row());
         refreshMacroItem(pModel->itemFromIndex(index));
     }
 
-    void updateEditorGeometry(QWidget *editor,
-                              const QStyleOptionViewItem &option,
-                              const QModelIndex &index) const override
+    void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const override
     {
-        QStyleOptionViewItem opt = option ;
+        QStyleOptionViewItem opt = option;
         //opt.rect.adjust(0,0,opt.rect.width()/2 * -1 + 20 ,0);
         QStyledItemDelegate::updateEditorGeometry(editor,opt,index);
     }
 };
-
-
 
 
 class DialogMouse : public QDialog
@@ -290,10 +274,8 @@ private:
     QPixmap m_devImage;
     QString m_devName;
 
-    int m_nowAngle=0;
-
+    int m_nowAngle= 0;
     int m_pressDf = 0;
-
     int m_battery = 0;
     bool m_charging=false;
 
@@ -306,8 +288,9 @@ private:
     QString m_strPath;
     bool m_loading=false;
     bool m_recording=false;
-    int m_currentId=-1;
+    int m_currentId= -1;
     int m_insertAt = -1;
+    int m_select = -1;
     macroItem*m_lastItem = nullptr;
     QList<macroItem*> macroGroup;
     void addMacroItem(int defId,int delay,int type,bool down=true);

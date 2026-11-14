@@ -452,7 +452,7 @@ bool FrameMagic::event(QEvent *pevt)
                     pLabKey->setFixedSize(42,42);
                 pLabKey->setAlignment(Qt::AlignCenter);
                 int count = ui->gridLayout_2->count();
-                ui->gridLayout_2->addWidget(pLabKey,count/10,count%10);
+                ui->gridLayout_2->addWidget(pLabKey,count/8,count%8);
                 ui->scrollArea1->verticalScrollBar()->setValue(0xFFFF);
             }
         }

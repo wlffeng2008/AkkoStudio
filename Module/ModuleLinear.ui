@@ -39,7 +39,7 @@
     <widget class="QFrame" name="leftPan">
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
       <property name="spacing">
-       <number>5</number>
+       <number>12</number>
       </property>
       <property name="leftMargin">
        <number>2</number>
@@ -162,7 +162,7 @@
     <widget class="QFrame" name="rightPan">
      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0">
       <property name="spacing">
-       <number>5</number>
+       <number>12</number>
       </property>
       <property name="leftMargin">
        <number>2</number>

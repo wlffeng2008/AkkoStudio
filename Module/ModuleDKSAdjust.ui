@@ -17,6 +17,9 @@
    <string notr="true">QPushButton{max-height:24px;border:none}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,0">
+   <property name="spacing">
+    <number>10</number>
+   </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <property name="rightMargin">

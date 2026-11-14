@@ -50,7 +50,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
 
             )") ;
 
-        QLayout *pLayout = ui->frameMode->layout();
+        QLayout *pLayout = ui->frameBL->layout();
         pLayout->setSpacing(12);
         pLayout->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
 
@@ -442,7 +442,7 @@ bool FrameKeySetting::eventFilter(QObject*watched,QEvent*event)
             QString strValue = labCilck->text().replace("mm","").trimmed();
             m_adjust->setOriginValue(strValue);
 
-            ModuleGeneralMasker M(m_adjust,ui->frameTab2);
+            ModuleGeneralMasker M(m_adjust,ui->page2);
             M.setStyleSheet("QDialog { background-color: rgba(240, 240, 240, 0.8);  border: none; border-radius: 32px;}");
             M.exec();
         }

@@ -42,6 +42,9 @@
        <property name="text">
         <string>灯光速度</string>
        </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
