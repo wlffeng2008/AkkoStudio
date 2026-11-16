@@ -50,115 +50,31 @@
     <string>未设置功能</string>
    </property>
   </widget>
-  <widget class="QLabel" name="labelSwitch3">
+  <widget class="FrameDragset" name="frameSet">
    <property name="geometry">
     <rect>
-     <x>317</x>
-     <y>10</y>
-     <width>20</width>
-     <height>20</height>
+     <x>156</x>
+     <y>4</y>
+     <width>261</width>
+     <height>30</height>
     </rect>
    </property>
-   <property name="maximumSize">
-    <size>
-     <width>20</width>
-     <height>16777215</height>
-    </size>
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
    </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="toolTip">
-    <string notr="true"/>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:transparent;</string>
-   </property>
-   <property name="text">
-    <string notr="true"/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="../res.qrc">:/images/k/ic_add.png</pixmap>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelSwitch2">
-   <property name="geometry">
-    <rect>
-     <x>242</x>
-     <y>10</y>
-     <width>20</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="toolTip">
-    <string notr="true"/>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:transparent;</string>
-   </property>
-   <property name="text">
-    <string notr="true"/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="../res.qrc">:/images/k/ic_add.png</pixmap>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelSwitch4">
-   <property name="geometry">
-    <rect>
-     <x>392</x>
-     <y>10</y>
-     <width>20</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="toolTip">
-    <string notr="true"/>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:transparent;</string>
-   </property>
-   <property name="text">
-    <string notr="true"/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="../res.qrc">:/images/k/ic_add.png</pixmap>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelSwitch1">
-   <property name="geometry">
-    <rect>
-     <x>167</x>
-     <y>10</y>
-     <width>20</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="toolTip">
-    <string notr="true"/>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:transparent;</string>
-   </property>
-   <property name="text">
-    <string notr="true"/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="../res.qrc">:/images/k/ic_add.png</pixmap>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Raised</enum>
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="../res.qrc"/>
- </resources>
+ <customwidgets>
+  <customwidget>
+   <class>FrameDragset</class>
+   <extends>QFrame</extends>
+   <header>framedragset.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
  <connections/>
 </ui>

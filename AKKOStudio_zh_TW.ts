@@ -1159,7 +1159,7 @@
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="198"/>
-        <location filename="FrameDeviceHolder.cpp" line="194"/>
+        <location filename="FrameDeviceHolder.cpp" line="195"/>
         <source>宏设置</source>
         <translation>巨集設定</translation>
     </message>
@@ -1175,7 +1175,7 @@
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.cpp" line="195"/>
+        <location filename="FrameDeviceHolder.cpp" line="194"/>
         <source>灯光设置</source>
         <translation>燈光設定</translation>
     </message>
@@ -1211,55 +1211,55 @@
         <translation>自訂按鍵</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="515"/>
+        <location filename="FrameKeySetting.cpp" line="534"/>
         <source>动态键程</source>
         <translation>動態鍵程</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="524"/>
+        <location filename="FrameKeySetting.cpp" line="543"/>
         <source>按住单击</source>
         <translation>按住單擊</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="531"/>
+        <location filename="FrameKeySetting.cpp" line="550"/>
         <source>切换开关</source>
         <translation>切換開關</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="598"/>
+        <location filename="FrameKeySetting.cpp" line="617"/>
         <source>系统按键</source>
         <translation>系統按鍵</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="209"/>
+        <location filename="FrameKeySetting.ui" line="221"/>
         <source>高级键</source>
         <translation>進階鍵</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="216"/>
+        <location filename="FrameKeySetting.ui" line="228"/>
         <source>其他设置</source>
         <translation>其他設定</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="546"/>
+        <location filename="FrameKeySetting.cpp" line="565"/>
         <source>宏设置</source>
         <translation>巨集設定</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="343"/>
+        <location filename="FrameKeySetting.ui" line="347"/>
         <source>动态键程(DKS)</source>
         <translation>動態鍵程（DKS）</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="381"/>
-        <location filename="FrameKeySetting.ui" line="890"/>
-        <location filename="FrameKeySetting.ui" line="965"/>
-        <location filename="FrameKeySetting.ui" line="1128"/>
+        <location filename="FrameKeySetting.ui" line="385"/>
+        <location filename="FrameKeySetting.ui" line="810"/>
+        <location filename="FrameKeySetting.ui" line="966"/>
+        <location filename="FrameKeySetting.ui" line="1118"/>
         <source>确定</source>
         <translation>確定</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="195"/>
+        <location filename="FrameKeySetting.ui" line="207"/>
         <source>自定义</source>
         <translation>自訂</translation>
     </message>
@@ -1269,123 +1269,123 @@
         <translation>Frame</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="202"/>
+        <location filename="FrameKeySetting.ui" line="214"/>
         <source>Fn层设置</source>
         <translation>Fn 層設定</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="295"/>
+        <location filename="FrameKeySetting.ui" line="304"/>
         <source>自定义/Fn层设置</source>
         <translation>自訂/Fn 層設定</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="311"/>
+        <location filename="FrameKeySetting.ui" line="320"/>
         <source>*首先点击选择上方按键，在弹出的对话框中可选择组合键、宏设置、系统功能、鼠标功能进行改建设置</source>
         <translation>*請先點選上方按鍵，在彈出的對話框中可選擇組合鍵、巨集設定、系統功能、滑鼠功能進行改鍵設定</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="640"/>
+        <location filename="FrameKeySetting.ui" line="644"/>
         <source>按住/单击(MT)</source>
         <translation>按住/單擊（MT）</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="667"/>
+        <location filename="FrameKeySetting.ui" line="674"/>
         <source>单击</source>
         <translation>單擊</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="704"/>
+        <location filename="FrameKeySetting.ui" line="708"/>
         <source>按住</source>
         <translation>按住</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="723"/>
+        <location filename="FrameKeySetting.ui" line="733"/>
         <source>选定上方键位，可通过选择单击及长按两种触发模式，设置两个功能（支持组合键）</source>
         <translation>選取上方鍵位，可透過單擊與長按兩種觸發模式設定兩個功能（支援組合鍵）</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="752"/>
+        <location filename="FrameKeySetting.ui" line="762"/>
         <source>调整触发“按住&quot;键所需的时间</source>
         <translation>調整觸發「按住」鍵所需的時間</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="848"/>
+        <location filename="FrameKeySetting.ui" line="922"/>
         <source>20 ms</source>
         <translation>20 毫秒</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="930"/>
+        <location filename="FrameKeySetting.ui" line="931"/>
         <source>切换开关(TGL)</source>
         <translation>切換開關（TGL）</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="996"/>
+        <location filename="FrameKeySetting.ui" line="1053"/>
         <source>未设置功能</source>
         <translation>未設定功能</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1015"/>
+        <location filename="FrameKeySetting.ui" line="985"/>
         <source>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</source>
         <translation>選取上方鍵位，可透過連點與長按兩種觸發模式設定兩個功能</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1077"/>
+        <location filename="FrameKeySetting.ui" line="1068"/>
         <source>连点</source>
         <translation>連點</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1093"/>
+        <location filename="FrameKeySetting.ui" line="1078"/>
         <source>长按</source>
         <translation>長按</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1099"/>
-        <location filename="FrameKeySetting.cpp" line="537"/>
+        <location filename="FrameKeySetting.ui" line="1089"/>
+        <location filename="FrameKeySetting.cpp" line="556"/>
         <source>SnapKey</source>
         <translation>SnapKey</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1230"/>
+        <location filename="FrameKeySetting.ui" line="1225"/>
         <source>绑定2个选定按键(分别从上面选择)，当两个按键被同时按下时，以最后按下的按键为准</source>
         <translation>綁定 2 個選取的按鍵（分別從上方選擇），當兩個按鍵同時按下時，以最後按下的按鍵為準</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1249"/>
+        <location filename="FrameKeySetting.ui" line="1244"/>
         <source>选择A键</source>
         <translation>選擇 A 鍵</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1265"/>
+        <location filename="FrameKeySetting.ui" line="1260"/>
         <source>选择B键</source>
         <translation>選擇 B 鍵</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1328"/>
+        <location filename="FrameKeySetting.ui" line="1320"/>
         <source>键盘回报率</source>
         <translation>鍵盤回報率</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1380"/>
+        <location filename="FrameKeySetting.ui" line="1372"/>
         <source>2.4G关闭背光</source>
         <translation>2.4G 關閉背光</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1432"/>
+        <location filename="FrameKeySetting.ui" line="1424"/>
         <source>蓝牙关闭背光</source>
         <translation>藍牙關閉背光</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1490"/>
+        <location filename="FrameKeySetting.ui" line="1482"/>
         <source>2.4G深度睡眠时间</source>
         <translation>2.4G 深度睡眠時間</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1570"/>
+        <location filename="FrameKeySetting.ui" line="1562"/>
         <source>蓝牙深度睡眠时间</source>
         <translation>藍牙深度睡眠時間</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1650"/>
+        <location filename="FrameKeySetting.ui" line="1642"/>
         <source>按键防抖等级设置</source>
         <translation>按鍵防抖動等級設定</translation>
     </message>
@@ -1394,77 +1394,77 @@
     <name>FrameLight</name>
     <message>
         <location filename="FrameLight.ui" line="264"/>
-        <location filename="FrameLight.ui" line="642"/>
+        <location filename="FrameLight.ui" line="645"/>
         <source>我的作品</source>
         <translation>我的作品</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="317"/>
+        <location filename="FrameLight.ui" line="320"/>
         <source>颜色:</source>
         <translation>顏色：</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="352"/>
+        <location filename="FrameLight.ui" line="355"/>
         <source>随机颜色：</source>
         <translation>隨機顏色：</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="412"/>
+        <location filename="FrameLight.ui" line="415"/>
         <source>清除设置</source>
         <translation>清除設定</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="438"/>
+        <location filename="FrameLight.ui" line="441"/>
         <source>写入层(图):</source>
         <translation>寫入層（圖）：</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="451"/>
-        <location filename="FrameLight.ui" line="545"/>
+        <location filename="FrameLight.ui" line="454"/>
+        <location filename="FrameLight.ui" line="548"/>
         <source>图1</source>
         <translation>圖1</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="464"/>
-        <location filename="FrameLight.ui" line="558"/>
+        <location filename="FrameLight.ui" line="467"/>
+        <location filename="FrameLight.ui" line="561"/>
         <source>图2</source>
         <translation>圖2</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="477"/>
-        <location filename="FrameLight.ui" line="571"/>
+        <location filename="FrameLight.ui" line="480"/>
+        <location filename="FrameLight.ui" line="574"/>
         <source>图3</source>
         <translation>圖3</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="490"/>
-        <location filename="FrameLight.ui" line="584"/>
+        <location filename="FrameLight.ui" line="493"/>
+        <location filename="FrameLight.ui" line="587"/>
         <source>图4</source>
         <translation>圖4</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="503"/>
-        <location filename="FrameLight.ui" line="597"/>
+        <location filename="FrameLight.ui" line="506"/>
+        <location filename="FrameLight.ui" line="600"/>
         <source>图5</source>
         <translation>圖5</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="532"/>
+        <location filename="FrameLight.ui" line="535"/>
         <source>读取层(图):</source>
         <translation>讀取層（圖）：</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="626"/>
+        <location filename="FrameLight.ui" line="629"/>
         <source>作品名称:</source>
         <translation>作品名稱：</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="664"/>
+        <location filename="FrameLight.ui" line="667"/>
         <source>更新</source>
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="686"/>
+        <location filename="FrameLight.ui" line="689"/>
         <source>保存</source>
         <translation>儲存</translation>
     </message>
@@ -1477,74 +1477,74 @@
 <context>
     <name>FrameMacro</name>
     <message>
-        <location filename="FrameMacro.ui" line="140"/>
+        <location filename="FrameMacro.ui" line="146"/>
         <source>宏列表</source>
         <translation>巨集清單</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="640"/>
-        <location filename="FrameMacro.cpp" line="124"/>
+        <location filename="FrameMacro.ui" line="630"/>
+        <location filename="FrameMacro.cpp" line="126"/>
         <source>开始录制</source>
         <translation>開始錄製</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="788"/>
+        <location filename="FrameMacro.ui" line="746"/>
         <source>删除</source>
         <translation>刪除</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="820"/>
+        <location filename="FrameMacro.ui" line="778"/>
         <source>清空</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="871"/>
+        <location filename="FrameMacro.ui" line="813"/>
         <source>保存</source>
         <translation>儲存</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="163"/>
+        <location filename="FrameMacro.ui" line="169"/>
         <source>新建宏</source>
         <translation>新增巨集</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="352"/>
+        <location filename="FrameMacro.ui" line="371"/>
         <source>宏名称</source>
         <translation>巨集名稱</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="382"/>
+        <location filename="FrameMacro.ui" line="401"/>
         <source>占用: 0 / 256</source>
         <translation>佔用：0 / 256</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="430"/>
+        <location filename="FrameMacro.ui" line="449"/>
         <source>按下</source>
         <translation>按下</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="481"/>
+        <location filename="FrameMacro.ui" line="484"/>
         <source>释放</source>
         <translation>放開</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="532"/>
-        <location filename="FrameMacro.cpp" line="209"/>
+        <location filename="FrameMacro.ui" line="519"/>
+        <location filename="FrameMacro.cpp" line="211"/>
         <source>延迟</source>
         <translation>延遲</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="688"/>
+        <location filename="FrameMacro.ui" line="662"/>
         <source>插入按键</source>
         <translation>插入按鍵</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="727"/>
+        <location filename="FrameMacro.ui" line="685"/>
         <source>延迟时长:</source>
         <translation>延遲時長：</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="750"/>
+        <location filename="FrameMacro.ui" line="708"/>
         <source> ms</source>
         <translation> 毫秒</translation>
     </message>
@@ -1560,32 +1560,32 @@
         <translation>位置</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="124"/>
+        <location filename="FrameMacro.cpp" line="126"/>
         <source>停止录制</source>
         <translation>停止錄製</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="169"/>
+        <location filename="FrameMacro.cpp" line="171"/>
         <source>左键</source>
         <translation>左鍵</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="170"/>
+        <location filename="FrameMacro.cpp" line="172"/>
         <source>右键</source>
         <translation>右鍵</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="171"/>
+        <location filename="FrameMacro.cpp" line="173"/>
         <source>中键</source>
         <translation>中鍵</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="328"/>
+        <location filename="FrameMacro.cpp" line="331"/>
         <source>占用</source>
         <translation>佔用</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="328"/>
+        <location filename="FrameMacro.cpp" line="331"/>
         <source>字节</source>
         <translation>位元組</translation>
     </message>
@@ -1836,12 +1836,12 @@
         <translation>行程測試</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1992"/>
+        <location filename="FrameMagic.ui" line="2001"/>
         <source>按键测试</source>
         <translation>按鍵測試</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="2050"/>
+        <location filename="FrameMagic.ui" line="2065"/>
         <source>输入值</source>
         <translation>輸入值</translation>
     </message>
@@ -2084,47 +2084,47 @@
 <context>
     <name>ModuleAddMacroSquare</name>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="65"/>
+        <location filename="ModuleAddMacroSquare.ui" line="70"/>
         <source>键盘按键</source>
         <translation>鍵盤按鍵</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="127"/>
+        <location filename="ModuleAddMacroSquare.ui" line="132"/>
         <source>鼠标按键</source>
         <translation>滑鼠按鍵</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="212"/>
+        <location filename="ModuleAddMacroSquare.ui" line="217"/>
         <source>下滚</source>
         <translation>向下滾動</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="228"/>
+        <location filename="ModuleAddMacroSquare.ui" line="233"/>
         <source>左滚</source>
         <translation>向左滾動</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="244"/>
+        <location filename="ModuleAddMacroSquare.ui" line="249"/>
         <source>右滚</source>
         <translation>向右滾動</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="288"/>
+        <location filename="ModuleAddMacroSquare.ui" line="293"/>
         <source>鼠标位置</source>
         <translation>滑鼠位置</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="412"/>
+        <location filename="ModuleAddMacroSquare.ui" line="417"/>
         <source>插入</source>
         <translation>插入</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="455"/>
+        <location filename="ModuleAddMacroSquare.ui" line="460"/>
         <source>完成</source>
         <translation>完成</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="50"/>
+        <location filename="ModuleAddMacroSquare.ui" line="55"/>
         <source>请选择添加宏事件类型</source>
         <translation>請選擇要新增的巨集事件類型</translation>
     </message>
@@ -2133,22 +2133,22 @@
         <translation type="obsolete">確定</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="145"/>
+        <location filename="ModuleAddMacroSquare.ui" line="150"/>
         <source>左键</source>
         <translation>左鍵</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="164"/>
+        <location filename="ModuleAddMacroSquare.ui" line="169"/>
         <source>中键</source>
         <translation>中鍵</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="180"/>
+        <location filename="ModuleAddMacroSquare.ui" line="185"/>
         <source>右键</source>
         <translation>右鍵</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="95"/>
+        <location filename="ModuleAddMacroSquare.ui" line="100"/>
         <source>请按下按键......</source>
         <translation>請按下按鍵......</translation>
     </message>
@@ -2156,12 +2156,12 @@
 <context>
     <name>ModuleDKSAdjust</name>
     <message>
-        <location filename="Module/ModuleDKSAdjust.ui" line="47"/>
+        <location filename="Module/ModuleDKSAdjust.ui" line="50"/>
         <source>按下(mm) </source>
         <translation>按下(mm) </translation>
     </message>
     <message>
-        <location filename="Module/ModuleDKSAdjust.ui" line="186"/>
+        <location filename="Module/ModuleDKSAdjust.ui" line="189"/>
         <source>保存</source>
         <translation>儲存</translation>
     </message>
@@ -2169,8 +2169,8 @@
 <context>
     <name>ModuleDKSItem</name>
     <message>
-        <location filename="Module/ModuleDKSItem.ui" line="38"/>
-        <location filename="Module/ModuleDKSItem.cpp" line="55"/>
+        <location filename="Module/ModuleDKSItem.ui" line="50"/>
+        <location filename="Module/ModuleDKSItem.cpp" line="26"/>
         <source>未设置功能</source>
         <translation>未設定功能</translation>
     </message>

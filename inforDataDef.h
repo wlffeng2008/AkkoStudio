@@ -249,7 +249,6 @@ namespace InfortechDef {
 	};
 	struct DpiStruct
 	{
-		bool dpiSyncMode;						// XY 轴是否同步模式
 		uint8_t curDpiId;						// 当前 DPI 挡位
 		std::vector<DpiItem> data;				// DPI 数据
 	};
@@ -294,6 +293,12 @@ namespace InfortechDef {
 		std::string ambientColor;			// 氛围灯颜色
 	};
 
+	// 接收器指示灯
+	struct DGIndicatorCfg {
+		bool isSupport;						// 是否支持接收器状态灯配置
+		bool isEnable;						// 状态灯的是否启用
+	};
+
 	// 传感器配置信息
 	struct SensorCfg {
 		int8_t angle;							// 传感器角度（-30~30）
@@ -301,8 +306,7 @@ namespace InfortechDef {
 	};
 
 	// 固件信息
-	enum class FwDeviceType : uint8_t
-	{
+	enum class FwDeviceType : uint8_t {
 		Undefined = 0,	// 未定义
 		Mouse = 1,		// 鼠标
 		Dongle = 2,		// 接收器

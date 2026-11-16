@@ -18,25 +18,19 @@ public:
 
     void setText(const QString&text);
     void setData(quint8 data);
-    quint8 getData();
+    quint32 getData();
 
 signals:
     void onButtonClicked();
 
 protected:
     bool eventFilter(QObject*watched, QEvent*event) override;
-    bool event(QEvent*event) override;
-    void paintEvent(QPaintEvent*event) override;
+
     void changeEvent(QEvent *pEvt) override;
+
 private:
     Ui::ModuleDKSItem *ui;
 
-    void setSwitch(int index,bool on=true);
-    bool m_dragging = false;
-    bool m_switchs[4]={false};
-    int m_dragX1 = 0 ;
-    int m_dragX2 = 0 ;
-    QTimer m_TMReset ;
 };
 
 #endif // MODULEDKSITEM_H

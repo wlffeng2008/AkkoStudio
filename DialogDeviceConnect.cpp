@@ -486,7 +486,7 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
 
             case CMD_GET_KBOPTION:
                 m_Optn = data;
-                qDebug().noquote() << "get_:" << data.toHex(' ').toUpper();
+                //qDebug().noquote() << "get_:" << data.toHex(' ').toUpper();
                 addReadCmd(CMD_GET_PROFILE,true);
                 break;
 
@@ -565,13 +565,16 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
                 if(pCmd[1] == 0x05) m_E505.append(data);
                 if(pCmd[1] == 0x06) m_E506.append(data);
                 if(pCmd[1] == 0x07) m_E507.append(data);
-                if(pCmd[1] == 0x08) m_E508.append(data);
+                //if(pCmd[1] == 0x08) m_E508.append(data);
                 if(pCmd[1] == 0x09) m_E509.append(data);
                 if(pCmd[1] == 0x0A) m_E50A.append(data);
                 if(pCmd[1] == 0xFF) m_E5FF.append(data);
                 if(pCmd[1] == 0xFE) m_E5FE.append(data);
                 if(pCmd[1] == 0xFC) m_E5FC.append(data);
                 if(pCmd[1] == 0xFB) m_E5FB.append(data);
+
+                if(pCmd[1] == 0x08) { m_E508Set[pCmd[8]] = *(quint32*)(data.data());};
+
                 break;
             }
 
@@ -633,6 +636,17 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     ui->lineEditPID->setStyleSheet("font-family: Fixedsys;");
     ui->lineEditVID->setStyleSheet("font-family: Fixedsys;");
     ui->plainTextEdit->setStyleSheet("font-family: Fixedsys;");
+}
+
+void DialogDeviceConnect::ReadE508Value(quint8 hid)
+{
+    quint8 index = ::getIndex(hid);
+    addReadCmd(QString::asprintf("E5 08 00 %02X 00 00 00 00 %02X",index,hid));
+}
+
+quint32 DialogDeviceConnect::FindE508Value(quint8 hid)
+{
+    return qToBigEndian(m_E508Set[hid]);
 }
 
 float DialogDeviceConnect::getPressDeep()
@@ -731,7 +745,7 @@ void DialogDeviceConnect::readAllData()
             0x05, 2,
             0x06, 4,
             0x07, 2,
-            0x08, 2,
+            //0x08, 8,
             0x09, 2,
             0x0A, 8,
             0xFF, 4,
@@ -850,7 +864,7 @@ void DialogDeviceConnect::set65Value(quint8 option, quint8 index, quint32 value)
     case 0x05: buf=m_E505.data(); type=1; break;
     case 0x06: buf=m_E506.data(); type=2; break;
     case 0x07: buf=m_E507.data(); type=1; break;
-    case 0x08: buf=m_E508.data(); type=1; break;
+    case 0x08: buf=m_E508.data(); type=4; break;
     case 0x09: buf=m_E509.data(); type=1; break;
     case 0x0A: buf=m_E50A.data(); type=4; break;
     case 0xFF: buf=m_E5FF.data(); type=2; break;
@@ -882,7 +896,7 @@ quint32 DialogDeviceConnect::get65Value(quint8 option, quint8 index)
     case 0x05: buf=m_E505.data(); type=1; break;
     case 0x06: buf=m_E506.data(); type=2; break;
     case 0x07: buf=m_E507.data(); type=1; break;
-    case 0x08: buf=m_E508.data(); type=1; break;
+    case 0x08: buf=m_E508.data(); type=4; break;
     case 0x09: buf=m_E509.data(); type=1; break;
     case 0x0A: buf=m_E50A.data(); type=4; break;
     case 0xFF: buf=m_E5FF.data(); type=2; break;
@@ -1157,7 +1171,7 @@ void DialogDeviceConnect::enableKeyFn(quint8 hid, bool enable, quint8 subLayer)
 
 QByteArray DialogDeviceConnect::getMatix(bool fnLayer)
 {
-    qDebug() << "getMatix: " << fnLayer;
+    // qDebug() << "getMatix: " << fnLayer;
     if(fnLayer)
         return m_FunMatrix[0];
 

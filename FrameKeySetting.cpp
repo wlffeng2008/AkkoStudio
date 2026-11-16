@@ -198,7 +198,9 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
 
         pCnn->send65Cmd(0x07,m_DKSHid,0x02,false);
         pCnn->send65Cmd(0x04,m_DKSHid,m_DKSLen*pCnn->getMultiple(),false);
-        pCnn->send65Cmd(0x08,m_DKSHid,0x55565B6F,true);
+        quint32 value = (ui->frameDKS1->getData() << 24) | (ui->frameDKS2->getData() << 16) | (ui->frameDKS3->getData() << 8)  | ui->frameDKS4->getData();
+        qDebug() << "set DKS: " << QString::asprintf("0x%08X",value);
+        pCnn->send65Cmd(0x08,m_DKSHid,value,true);
         refresh();
     });
 
@@ -303,13 +305,22 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
             quint8 type = (pCnn->getKeyType(hid) & ~0x80);
             QStringList res = pCnn->getKeyString(hid);
 
+            ui->frameDKS1->setText("");
+            ui->frameDKS2->setText("");
+            ui->frameDKS3->setText("");
+            ui->frameDKS4->setText("");
+
+            ui->frameDKS1->setData(0);
+            ui->frameDKS2->setData(0);
+            ui->frameDKS3->setData(0);
+            ui->frameDKS4->setData(0);
+
             if(type == 2)
             {
                 ui->frameDKS1->setText(res[0]);
                 ui->frameDKS2->setText(res[1]);
                 ui->frameDKS3->setText(res[2]);
                 ui->frameDKS4->setText(res[3]);
-                ui->pushButton_DKS->setText(text);
 
                 pCnn->getKeydata(&m_DKS1,index,0);
                 pCnn->getKeydata(&m_DKS2,index,1);
@@ -318,6 +329,12 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 m_DKSLen = pCnn->get65Value(0x04,index)/pCnn->getMultiple();
                 ui->labelPress1->setText(QString::asprintf("%.2f mm", m_DKSLen));
                 ui->labelRelease2->setText(QString::asprintf("%.2f mm", m_DKSLen));
+
+                quint32 nDKSSet = pCnn->FindE508Value(hid);
+                ui->frameDKS1->setData(nDKSSet>>24);
+                ui->frameDKS2->setData(nDKSSet>>16);
+                ui->frameDKS3->setData(nDKSSet>>8);
+                ui->frameDKS4->setData(nDKSSet & 0xFF);
             }
 
             if(type == 3)
@@ -359,7 +376,7 @@ FrameKeySetting::FrameKeySetting(QWidget *parent)
                 ui->pushButton_MT->setText(text);
                 break;
 
-            case 2: // MT
+            case 2: // TGL
                 m_TGLHid = hid;
                 ui->pushButton_TGL->setText(text);
                 break;
@@ -512,6 +529,8 @@ void FrameKeySetting::refresh()
 
             if(type == 2)
             {
+                pCnn->ReadE508Value(hid);
+                QThread::msleep(100);
                 strT2 = QString(tr("动态键程")) + QString("(DKS):\n");
                 strT2 += res[0] + QString("\n");
                 strT2 += res[1] + QString("\n");

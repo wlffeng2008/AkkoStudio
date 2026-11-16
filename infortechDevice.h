@@ -150,6 +150,12 @@ public:
 	std::unique_ptr<InfortechDef::DGAmbientCfg> setDGAmbientColor(std::string ambientColor);
 
 
+	// 获取接收器状态灯配置
+	std::unique_ptr<InfortechDef::DGIndicatorCfg> getDGIndicatorCfg();
+	// 设置接收器状态灯配置，isEnable：是否启用接收器状态灯
+	std::unique_ptr<InfortechDef::DGIndicatorCfg> setDGIndicatorCfg(bool isEnable);
+
+
 	// 设置全部灯珠灯效
 	std::unique_ptr<InfortechDef::LedColorGroup> setAllLed(const InfortechDef::LedColorGroup& ledData);
 	// 设置部分灯珠灯效
@@ -191,7 +197,7 @@ public:
 	// 读取固件信息
 	std::unique_ptr<InfortechDef::FwInfo> readFwInfo(const std::vector<uint8_t>& fwBuffer);
 	// 固件升级
-	void deviceFwUpgrade(const std::vector<uint8_t>& fwBuffer, bool isVerifyPid = true);
+	void deviceFwUpgrade(const std::vector<uint8_t>& fwBuffer, bool isVerifyPid = true, bool isVerifyVid = true);
 
 
 	// 恢复出厂设置

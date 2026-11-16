@@ -76,6 +76,7 @@ SOURCES += \
     Module/ModuleKeyboard.cpp \
     Module/ModuleVideoItem.cpp \
     Module/VirtualKeyboard.cpp \
+    Module/framedragset.cpp \
     Module/keyboardbutton.cpp \
     Module/modulemacromanager.cpp \
     Module/ModuleScrollValue.cpp \
@@ -130,6 +131,7 @@ HEADERS += \
     Module/ModuleKeyboard.h \
     Module/ModuleVideoItem.h \
     Module/VirtualKeyboard.h \
+    Module/framedragset.h \
     Module/keyboardbutton.h \
     Module/modulemacromanager.h \
     Module/ModuleScrollValue.h \
@@ -174,6 +176,7 @@ FORMS += \
     Module/VirtualKeyboard.ui \
     Module/ModuleScrollValue.ui \
     Module/MacroSquare.ui \
+    Module/framedragset.ui \
     ModuleAddMacroSquare.ui
 
 TRANSLATIONS += \

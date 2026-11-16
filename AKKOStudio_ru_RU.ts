@@ -1159,7 +1159,7 @@
     </message>
     <message>
         <location filename="FrameDeviceHolder.ui" line="198"/>
-        <location filename="FrameDeviceHolder.cpp" line="194"/>
+        <location filename="FrameDeviceHolder.cpp" line="195"/>
         <source>宏设置</source>
         <translation>Макросы</translation>
     </message>
@@ -1175,7 +1175,7 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="FrameDeviceHolder.cpp" line="195"/>
+        <location filename="FrameDeviceHolder.cpp" line="194"/>
         <source>灯光设置</source>
         <translation>Настройки подсветки</translation>
     </message>
@@ -1211,55 +1211,55 @@
         <translation>Пользовательские клавиши</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="515"/>
+        <location filename="FrameKeySetting.cpp" line="534"/>
         <source>动态键程</source>
         <translation>Динамический ход</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="524"/>
+        <location filename="FrameKeySetting.cpp" line="543"/>
         <source>按住单击</source>
         <translation>Удержание / Одиночный клик</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="531"/>
+        <location filename="FrameKeySetting.cpp" line="550"/>
         <source>切换开关</source>
         <translation>Переключатель</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="598"/>
+        <location filename="FrameKeySetting.cpp" line="617"/>
         <source>系统按键</source>
         <translation>Системные клавиши</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="209"/>
+        <location filename="FrameKeySetting.ui" line="221"/>
         <source>高级键</source>
         <translation>Расширенные функции</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="216"/>
+        <location filename="FrameKeySetting.ui" line="228"/>
         <source>其他设置</source>
         <translation>Другие настройки</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.cpp" line="546"/>
+        <location filename="FrameKeySetting.cpp" line="565"/>
         <source>宏设置</source>
         <translation>Макросы</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="343"/>
+        <location filename="FrameKeySetting.ui" line="347"/>
         <source>动态键程(DKS)</source>
         <translation>Динамический ход (DKS)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="381"/>
-        <location filename="FrameKeySetting.ui" line="890"/>
-        <location filename="FrameKeySetting.ui" line="965"/>
-        <location filename="FrameKeySetting.ui" line="1128"/>
+        <location filename="FrameKeySetting.ui" line="385"/>
+        <location filename="FrameKeySetting.ui" line="810"/>
+        <location filename="FrameKeySetting.ui" line="966"/>
+        <location filename="FrameKeySetting.ui" line="1118"/>
         <source>确定</source>
         <translation>ОК</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="195"/>
+        <location filename="FrameKeySetting.ui" line="207"/>
         <source>自定义</source>
         <translation>Пользовательский</translation>
     </message>
@@ -1269,123 +1269,123 @@
         <translation>Фрейм</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="202"/>
+        <location filename="FrameKeySetting.ui" line="214"/>
         <source>Fn层设置</source>
         <translation>Настройки слоя Fn</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="295"/>
+        <location filename="FrameKeySetting.ui" line="304"/>
         <source>自定义/Fn层设置</source>
         <translation>Пользовательские / Fn настройки</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="311"/>
+        <location filename="FrameKeySetting.ui" line="320"/>
         <source>*首先点击选择上方按键，在弹出的对话框中可选择组合键、宏设置、系统功能、鼠标功能进行改建设置</source>
         <translation>*Сначала выберите клавишу сверху, в открывшемся окне можно задать комбинацию, макрос, системную или мышиную функцию</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="640"/>
+        <location filename="FrameKeySetting.ui" line="644"/>
         <source>按住/单击(MT)</source>
         <translation>Удержание / Клик (MT)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="667"/>
+        <location filename="FrameKeySetting.ui" line="674"/>
         <source>单击</source>
         <translation>Клик</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="704"/>
+        <location filename="FrameKeySetting.ui" line="708"/>
         <source>按住</source>
         <translation>Удержание</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="723"/>
+        <location filename="FrameKeySetting.ui" line="733"/>
         <source>选定上方键位，可通过选择单击及长按两种触发模式，设置两个功能（支持组合键）</source>
         <translation>Выберите клавишу, можно задать две функции: на клик и удержание (поддерживаются комбинации)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="752"/>
+        <location filename="FrameKeySetting.ui" line="762"/>
         <source>调整触发“按住&quot;键所需的时间</source>
         <translation>Время срабатывания удержания</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="848"/>
+        <location filename="FrameKeySetting.ui" line="922"/>
         <source>20 ms</source>
         <translation>20 мс</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="930"/>
+        <location filename="FrameKeySetting.ui" line="931"/>
         <source>切换开关(TGL)</source>
         <translation>Переключатель (TGL)</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="996"/>
+        <location filename="FrameKeySetting.ui" line="1053"/>
         <source>未设置功能</source>
         <translation>Функция не задана</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1015"/>
+        <location filename="FrameKeySetting.ui" line="985"/>
         <source>选定上方键位，可通过选择连点及长按两种触发模式，设置两个功能</source>
         <translation>Выберите клавишу, задайте две функции: на быстрое нажатие и удержание</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1077"/>
+        <location filename="FrameKeySetting.ui" line="1068"/>
         <source>连点</source>
         <translation>Быстрое нажатие</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1093"/>
+        <location filename="FrameKeySetting.ui" line="1078"/>
         <source>长按</source>
         <translation>Удержание</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1099"/>
-        <location filename="FrameKeySetting.cpp" line="537"/>
+        <location filename="FrameKeySetting.ui" line="1089"/>
+        <location filename="FrameKeySetting.cpp" line="556"/>
         <source>SnapKey</source>
         <translation>SnapKey</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1230"/>
+        <location filename="FrameKeySetting.ui" line="1225"/>
         <source>绑定2个选定按键(分别从上面选择)，当两个按键被同时按下时，以最后按下的按键为准</source>
         <translation>Связать две клавиши. При одновременном нажатии срабатывает последняя нажатая клавиша</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1249"/>
+        <location filename="FrameKeySetting.ui" line="1244"/>
         <source>选择A键</source>
         <translation>Выбрать клавишу A</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1265"/>
+        <location filename="FrameKeySetting.ui" line="1260"/>
         <source>选择B键</source>
         <translation>Выбрать клавишу B</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1328"/>
+        <location filename="FrameKeySetting.ui" line="1320"/>
         <source>键盘回报率</source>
         <translation>Частота опроса</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1380"/>
+        <location filename="FrameKeySetting.ui" line="1372"/>
         <source>2.4G关闭背光</source>
         <translation>Отключить подсветку в 2.4G</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1432"/>
+        <location filename="FrameKeySetting.ui" line="1424"/>
         <source>蓝牙关闭背光</source>
         <translation>Отключить подсветку в Bluetooth</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1490"/>
+        <location filename="FrameKeySetting.ui" line="1482"/>
         <source>2.4G深度睡眠时间</source>
         <translation>Время глубокого сна 2.4G</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1570"/>
+        <location filename="FrameKeySetting.ui" line="1562"/>
         <source>蓝牙深度睡眠时间</source>
         <translation>Время глубокого сна Bluetooth</translation>
     </message>
     <message>
-        <location filename="FrameKeySetting.ui" line="1650"/>
+        <location filename="FrameKeySetting.ui" line="1642"/>
         <source>按键防抖等级设置</source>
         <translation>Настройка антидребезга</translation>
     </message>
@@ -1394,77 +1394,77 @@
     <name>FrameLight</name>
     <message>
         <location filename="FrameLight.ui" line="264"/>
-        <location filename="FrameLight.ui" line="642"/>
+        <location filename="FrameLight.ui" line="645"/>
         <source>我的作品</source>
         <translation>Мои пресеты</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="317"/>
+        <location filename="FrameLight.ui" line="320"/>
         <source>颜色:</source>
         <translation>Цвет:</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="352"/>
+        <location filename="FrameLight.ui" line="355"/>
         <source>随机颜色：</source>
         <translation>Случайный цвет:</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="412"/>
+        <location filename="FrameLight.ui" line="415"/>
         <source>清除设置</source>
         <translation>Сбросить настройки</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="438"/>
+        <location filename="FrameLight.ui" line="441"/>
         <source>写入层(图):</source>
         <translation>Записать слой (изображение):</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="451"/>
-        <location filename="FrameLight.ui" line="545"/>
+        <location filename="FrameLight.ui" line="454"/>
+        <location filename="FrameLight.ui" line="548"/>
         <source>图1</source>
         <translation>Изобр.1</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="464"/>
-        <location filename="FrameLight.ui" line="558"/>
+        <location filename="FrameLight.ui" line="467"/>
+        <location filename="FrameLight.ui" line="561"/>
         <source>图2</source>
         <translation>Изобр.2</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="477"/>
-        <location filename="FrameLight.ui" line="571"/>
+        <location filename="FrameLight.ui" line="480"/>
+        <location filename="FrameLight.ui" line="574"/>
         <source>图3</source>
         <translation>Изобр.3</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="490"/>
-        <location filename="FrameLight.ui" line="584"/>
+        <location filename="FrameLight.ui" line="493"/>
+        <location filename="FrameLight.ui" line="587"/>
         <source>图4</source>
         <translation>Изобр.4</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="503"/>
-        <location filename="FrameLight.ui" line="597"/>
+        <location filename="FrameLight.ui" line="506"/>
+        <location filename="FrameLight.ui" line="600"/>
         <source>图5</source>
         <translation>Изобр.5</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="532"/>
+        <location filename="FrameLight.ui" line="535"/>
         <source>读取层(图):</source>
         <translation>Прочитать слой (изображение):</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="626"/>
+        <location filename="FrameLight.ui" line="629"/>
         <source>作品名称:</source>
         <translation>Название пресета:</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="664"/>
+        <location filename="FrameLight.ui" line="667"/>
         <source>更新</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="FrameLight.ui" line="686"/>
+        <location filename="FrameLight.ui" line="689"/>
         <source>保存</source>
         <translation>Сохранить</translation>
     </message>
@@ -1477,74 +1477,74 @@
 <context>
     <name>FrameMacro</name>
     <message>
-        <location filename="FrameMacro.ui" line="140"/>
+        <location filename="FrameMacro.ui" line="146"/>
         <source>宏列表</source>
         <translation>Список макросов</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="640"/>
-        <location filename="FrameMacro.cpp" line="124"/>
+        <location filename="FrameMacro.ui" line="630"/>
+        <location filename="FrameMacro.cpp" line="126"/>
         <source>开始录制</source>
         <translation>Начать запись</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="788"/>
+        <location filename="FrameMacro.ui" line="746"/>
         <source>删除</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="820"/>
+        <location filename="FrameMacro.ui" line="778"/>
         <source>清空</source>
         <translation>Очистить</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="871"/>
+        <location filename="FrameMacro.ui" line="813"/>
         <source>保存</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="352"/>
+        <location filename="FrameMacro.ui" line="371"/>
         <source>宏名称</source>
         <translation>Название макроса</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="163"/>
+        <location filename="FrameMacro.ui" line="169"/>
         <source>新建宏</source>
         <translation>Новый макрос</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="382"/>
+        <location filename="FrameMacro.ui" line="401"/>
         <source>占用: 0 / 256</source>
         <translation>Использовано: 0 / 256</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="430"/>
+        <location filename="FrameMacro.ui" line="449"/>
         <source>按下</source>
         <translation>Нажатие</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="481"/>
+        <location filename="FrameMacro.ui" line="484"/>
         <source>释放</source>
         <translation>Отпускание</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="532"/>
-        <location filename="FrameMacro.cpp" line="209"/>
+        <location filename="FrameMacro.ui" line="519"/>
+        <location filename="FrameMacro.cpp" line="211"/>
         <source>延迟</source>
         <translation>Задержка</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="688"/>
+        <location filename="FrameMacro.ui" line="662"/>
         <source>插入按键</source>
         <translation>Вставить клавишу</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="727"/>
+        <location filename="FrameMacro.ui" line="685"/>
         <source>延迟时长:</source>
         <translation>Длительность задержки:</translation>
     </message>
     <message>
-        <location filename="FrameMacro.ui" line="750"/>
+        <location filename="FrameMacro.ui" line="708"/>
         <source> ms</source>
         <translation> мс</translation>
     </message>
@@ -1560,32 +1560,32 @@
         <translation>Позиция</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="124"/>
+        <location filename="FrameMacro.cpp" line="126"/>
         <source>停止录制</source>
         <translation>Остановить запись</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="169"/>
+        <location filename="FrameMacro.cpp" line="171"/>
         <source>左键</source>
         <translation>Левая кнопка</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="170"/>
+        <location filename="FrameMacro.cpp" line="172"/>
         <source>右键</source>
         <translation>Правая кнопка</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="171"/>
+        <location filename="FrameMacro.cpp" line="173"/>
         <source>中键</source>
         <translation>Средняя кнопка</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="328"/>
+        <location filename="FrameMacro.cpp" line="331"/>
         <source>占用</source>
         <translation>Использовано</translation>
     </message>
     <message>
-        <location filename="FrameMacro.cpp" line="328"/>
+        <location filename="FrameMacro.cpp" line="331"/>
         <source>字节</source>
         <translation>байт</translation>
     </message>
@@ -1836,12 +1836,12 @@
         <translation>Тест хода</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="1992"/>
+        <location filename="FrameMagic.ui" line="2001"/>
         <source>按键测试</source>
         <translation>Тест клавиш</translation>
     </message>
     <message>
-        <location filename="FrameMagic.ui" line="2050"/>
+        <location filename="FrameMagic.ui" line="2065"/>
         <source>输入值</source>
         <translation>Значение</translation>
     </message>
@@ -2084,47 +2084,47 @@
 <context>
     <name>ModuleAddMacroSquare</name>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="65"/>
+        <location filename="ModuleAddMacroSquare.ui" line="70"/>
         <source>键盘按键</source>
         <translation>Клавиша клавиатуры</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="127"/>
+        <location filename="ModuleAddMacroSquare.ui" line="132"/>
         <source>鼠标按键</source>
         <translation>Кнопка мыши</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="212"/>
+        <location filename="ModuleAddMacroSquare.ui" line="217"/>
         <source>下滚</source>
         <translation>Прокрутка вниз</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="228"/>
+        <location filename="ModuleAddMacroSquare.ui" line="233"/>
         <source>左滚</source>
         <translation>Прокрутка влево</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="244"/>
+        <location filename="ModuleAddMacroSquare.ui" line="249"/>
         <source>右滚</source>
         <translation>Прокрутка вправо</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="288"/>
+        <location filename="ModuleAddMacroSquare.ui" line="293"/>
         <source>鼠标位置</source>
         <translation>Позиция курсора</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="412"/>
+        <location filename="ModuleAddMacroSquare.ui" line="417"/>
         <source>插入</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="455"/>
+        <location filename="ModuleAddMacroSquare.ui" line="460"/>
         <source>完成</source>
         <translation>Готово</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="50"/>
+        <location filename="ModuleAddMacroSquare.ui" line="55"/>
         <source>请选择添加宏事件类型</source>
         <translation>Выберите тип события макроса</translation>
     </message>
@@ -2133,22 +2133,22 @@
         <translation type="obsolete">ОК</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="145"/>
+        <location filename="ModuleAddMacroSquare.ui" line="150"/>
         <source>左键</source>
         <translation>Левая кнопка</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="164"/>
+        <location filename="ModuleAddMacroSquare.ui" line="169"/>
         <source>中键</source>
         <translation>Средняя кнопка</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="180"/>
+        <location filename="ModuleAddMacroSquare.ui" line="185"/>
         <source>右键</source>
         <translation>Правая кнопка</translation>
     </message>
     <message>
-        <location filename="ModuleAddMacroSquare.ui" line="95"/>
+        <location filename="ModuleAddMacroSquare.ui" line="100"/>
         <source>请按下按键......</source>
         <translation>Нажмите клавишу......</translation>
     </message>
@@ -2156,12 +2156,12 @@
 <context>
     <name>ModuleDKSAdjust</name>
     <message>
-        <location filename="Module/ModuleDKSAdjust.ui" line="47"/>
+        <location filename="Module/ModuleDKSAdjust.ui" line="50"/>
         <source>按下(mm) </source>
         <translation>Нажатие (мм)</translation>
     </message>
     <message>
-        <location filename="Module/ModuleDKSAdjust.ui" line="186"/>
+        <location filename="Module/ModuleDKSAdjust.ui" line="189"/>
         <source>保存</source>
         <translation>Сохранить</translation>
     </message>
@@ -2169,8 +2169,8 @@
 <context>
     <name>ModuleDKSItem</name>
     <message>
-        <location filename="Module/ModuleDKSItem.ui" line="38"/>
-        <location filename="Module/ModuleDKSItem.cpp" line="55"/>
+        <location filename="Module/ModuleDKSItem.ui" line="50"/>
+        <location filename="Module/ModuleDKSItem.cpp" line="26"/>
         <source>未设置功能</source>
         <translation>Функция не задана</translation>
     </message>

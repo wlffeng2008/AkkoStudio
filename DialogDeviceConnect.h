@@ -105,6 +105,7 @@ protected:
     }
 };
 
+
 class DialogDeviceConnect : public QDialog
 {
     Q_OBJECT
@@ -179,6 +180,9 @@ public:
     bool isLoading();
 
     float getPressDeep();
+
+    void ReadE508Value(quint8 hid);
+    quint32 FindE508Value(quint8 hid);
 
     float getMultiple();
 
@@ -258,6 +262,8 @@ private:
     QByteArray m_Cali;
     QByteArray m_Optn;
     QByteArray m_Info;
+
+    QMap<quint8,quint32> m_E508Set;
 
     QByteArray m_tmp0[8];
     QByteArray m_tmp1[8];
