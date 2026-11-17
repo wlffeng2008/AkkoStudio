@@ -510,7 +510,9 @@ void FrameKeySetting::refresh()
     if(pCnn->isLoading())
         return;
     ModuleMacroManager  *pMM  = ModuleMacroManager::instance();
-    m_bUpdating = true;
+
+    m_bUpdating = true;    
+    QTimer::singleShot(500,this,[=]{ m_bUpdating = false; });
 
     for(int i=0; i<128; i++)
     {
@@ -579,7 +581,6 @@ void FrameKeySetting::refresh()
         }
     }
 
-    QTimer::singleShot(500,this,[=]{ m_bUpdating = false; });
     ui->frameSV1->setIndex(pCnn->getReport());
     ui->frameSV2->setIndex(pCnn->getSleepTime()->time24/60);
     ui->frameSV3->setIndex(pCnn->getSleepTime()->timeBt/60);
@@ -596,7 +597,7 @@ void FrameKeySetting::refreshFn()
         return;
 
     m_bUpdating = true;
-    QTimer::singleShot(800,this,[=]{ m_bUpdating = false; });
+    QTimer::singleShot(500,this,[=]{ m_bUpdating = false; });
 
     for(int i=0; i<128; i++)
     {
@@ -615,8 +616,6 @@ void FrameKeySetting::refreshFn()
         QString strT2 = getKeyString(&kd);
         if(strT2.isEmpty())
             strT2 = QString(tr("系统按键"));
-
-        // strT2 += QString::asprintf(" [%02X,%02X,%02X,%02X]",kd.b0,kd.b1,kd.b2,kd.b3);
 
         if(kd.b0 == 0 && kd.b1 == 0 && kd.b2 == 0 && kd.b3 == 1)
             strT1 = QString("DISABLED");

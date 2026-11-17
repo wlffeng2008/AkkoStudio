@@ -388,9 +388,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <widget class="QWidget" name="layoutWidget">
                  <property name="geometry">
                   <rect>
-                   <x>66</x>
+                   <x>64</x>
                    <y>90</y>
-                   <width>432</width>
+                   <width>440</width>
                    <height>148</height>
                   </rect>
                  </property>
@@ -443,7 +443,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <widget class="QWidget" name="layoutWidget">
                  <property name="geometry">
                   <rect>
-                   <x>205</x>
+                   <x>208</x>
                    <y>18</y>
                    <width>293</width>
                    <height>58</height>
@@ -547,7 +547,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap resource="res.qrc">:/images/k/ic_press.png</pixmap>
+                     <pixmap>:/images/k/ic_press.png</pixmap>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -563,7 +563,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap resource="res.qrc">:/images/k/ic_bottom.png</pixmap>
+                     <pixmap>:/images/k/ic_bottom.png</pixmap>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -579,7 +579,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap resource="res.qrc">:/images/k/ic_lift.png</pixmap>
+                     <pixmap>:/images/k/ic_lift.png</pixmap>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -595,7 +595,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap resource="res.qrc">:/images/k/ic_peak.png</pixmap>
+                     <pixmap>:/images/k/ic_peak.png</pixmap>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -612,7 +612,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <rect>
                    <x>64</x>
                    <y>8</y>
-                   <width>80</width>
+                   <width>140</width>
                    <height>80</height>
                   </rect>
                  </property>
@@ -646,7 +646,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <widget class="QPushButton" name="pushButton_MT1">
                  <property name="geometry">
                   <rect>
-                   <x>166</x>
+                   <x>222</x>
                    <y>92</y>
                    <width>160</width>
                    <height>44</height>
@@ -683,7 +683,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <widget class="QPushButton" name="pushButton_MT2">
                  <property name="geometry">
                   <rect>
-                   <x>340</x>
+                   <x>396</x>
                    <y>92</y>
                    <width>160</width>
                    <height>44</height>
@@ -747,7 +747,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <rect>
                    <x>60</x>
                    <y>160</y>
-                   <width>441</width>
+                   <width>501</width>
                    <height>32</height>
                   </rect>
                  </property>
@@ -818,19 +818,19 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <rect>
                    <x>60</x>
                    <y>76</y>
-                   <width>80</width>
+                   <width>140</width>
                    <height>80</height>
                   </rect>
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>44</width>
+                   <width>140</width>
                    <height>44</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>444</width>
+                   <width>140</width>
                    <height>80</height>
                   </size>
                  </property>
@@ -849,7 +849,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <rect>
                    <x>60</x>
                    <y>202</y>
-                   <width>439</width>
+                   <width>497</width>
                    <height>32</height>
                   </rect>
                  </property>
@@ -999,19 +999,19 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <rect>
                    <x>60</x>
                    <y>76</y>
-                   <width>80</width>
+                   <width>140</width>
                    <height>80</height>
                   </rect>
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>44</width>
+                   <width>140</width>
                    <height>44</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>444</width>
+                   <width>140</width>
                    <height>80</height>
                   </size>
                  </property>
@@ -1037,9 +1037,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <widget class="QWidget" name="layoutWidget">
                  <property name="geometry">
                   <rect>
-                   <x>194</x>
+                   <x>208</x>
                    <y>76</y>
-                   <width>233</width>
+                   <width>244</width>
                    <height>82</height>
                   </rect>
                  </property>
@@ -1126,19 +1126,19 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <rect>
                    <x>60</x>
                    <y>76</y>
-                   <width>80</width>
+                   <width>140</width>
                    <height>80</height>
                   </rect>
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>44</width>
+                   <width>140</width>
                    <height>44</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>444</width>
+                   <width>140</width>
                    <height>80</height>
                   </size>
                  </property>
@@ -1167,21 +1167,21 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                  </property>
                  <property name="geometry">
                   <rect>
-                   <x>220</x>
+                   <x>246</x>
                    <y>76</y>
-                   <width>80</width>
+                   <width>140</width>
                    <height>80</height>
                   </rect>
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>44</width>
+                   <width>140</width>
                    <height>44</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>444</width>
+                   <width>140</width>
                    <height>80</height>
                   </size>
                  </property>
@@ -1231,34 +1231,34 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <bool>true</bool>
                  </property>
                 </widget>
-                <widget class="QRadioButton" name="radioButton_Snap1">
+                <widget class="QWidget" name="">
                  <property name="geometry">
                   <rect>
                    <x>66</x>
                    <y>180</y>
-                   <width>100</width>
-                   <height>25</height>
+                   <width>327</width>
+                   <height>21</height>
                   </rect>
                  </property>
-                 <property name="text">
-                  <string>选择A键</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-                <widget class="QRadioButton" name="radioButton_Snap2">
-                 <property name="geometry">
-                  <rect>
-                   <x>224</x>
-                   <y>180</y>
-                   <width>100</width>
-                   <height>25</height>
-                  </rect>
-                 </property>
-                 <property name="text">
-                  <string>选择B键</string>
-                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_10">
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QRadioButton" name="radioButton_Snap1">
+                    <property name="text">
+                     <string>选择A键</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QRadioButton" name="radioButton_Snap2">
+                    <property name="text">
+                     <string>选择B键</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </widget>
               </widget>
@@ -1723,13 +1723,11 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroupMT"/>
   <buttongroup name="buttonGroupSnap"/>
+  <buttongroup name="buttonGroupMT"/>
   <buttongroup name="buttonGroupTGL"/>
  </buttongroups>
 </ui>

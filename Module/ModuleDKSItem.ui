@@ -24,19 +24,19 @@
     <rect>
      <x>5</x>
      <y>7</y>
-     <width>140</width>
+     <width>150</width>
      <height>26</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>112</width>
+     <width>150</width>
      <height>26</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>140</width>
+     <width>150</width>
      <height>26</height>
     </size>
    </property>
@@ -53,9 +53,9 @@
   <widget class="FrameDragset" name="frameSet">
    <property name="geometry">
     <rect>
-     <x>156</x>
+     <x>162</x>
      <y>4</y>
-     <width>261</width>
+     <width>258</width>
      <height>30</height>
     </rect>
    </property>
