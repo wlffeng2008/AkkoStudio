@@ -103,10 +103,10 @@ DialogDeviceConnect::DialogDeviceConnect(QWidget *parent)
     , ui(new Ui::DialogDeviceConnect)
 {
     ui->setupUi(this);
-    s_connect = this ;
     setWindowFlags(windowFlags() |  Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint );
 
+    s_connect = this ;
     m_KeyMatrix[0] = ::getDefaultKeyMatrix();
     m_FunMatrix[0] = ::getDefaultFunMatrix();
 
@@ -846,7 +846,7 @@ void DialogDeviceConnect::setProfile(int layer)
     cmd[1]=layer;
     addReadCmd(cmd,true);
 
-    QTimer::singleShot(500,this,[=]{readAllData();});
+    QTimer::singleShot(200,this,[=]{readAllData();});
 }
 
 void DialogDeviceConnect::set65Value(quint8 option, quint8 index, quint32 value)
@@ -918,7 +918,7 @@ quint32 DialogDeviceConnect::get65Value(quint8 option, quint8 index)
 quint8 DialogDeviceConnect::getKeyType(quint8 hid)
 {
     int index = getIndex(hid);
-    quint8 type = get65Value(0x07,index);
+    quint8 type = (get65Value(0x07,index) & ~0x80);
     return type;
 }
 
@@ -1071,6 +1071,7 @@ void DialogDeviceConnect::setAllLnValue(float valueUp,float valueDown)
 void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, quint8 save)
 {
     if(m_bReadAll) return;
+
     quint8 index=getIndex(hid);
     quint8 pack[12] = {CMD_SET_KEYMATRIX, m_layer, index, 0,   0, save, subLayer, 0,   pDk->b0, pDk->b1, pDk->b2, pDk->b3};
     QByteArray snd((char*)pack,12);
@@ -1082,6 +1083,7 @@ void DialogDeviceConnect::changeKey(quint8 hid,  keyData*pDk, quint8 subLayer, q
 void DialogDeviceConnect::changeKeyFn(quint8 hid,  keyData *pDk, quint8 subLayer, quint8 save)
 {
     if(m_bReadAll) return;
+
     quint8 index=getIndex(hid);
     quint8 pack[12] = {CMD_SET_FN, 0, 0,  index, 0, 0, 0,  0, pDk->b0, pDk->b1, pDk->b2, pDk->b3};
     QByteArray snd((char*)pack,12);
@@ -1093,19 +1095,22 @@ void DialogDeviceConnect::changeKeyFn(quint8 hid,  keyData *pDk, quint8 subLayer
 void DialogDeviceConnect::restKey(quint8 hid)
 {
     if(m_bReadAll) return;
+
     keyData kd={0,0,hid,0};
     changeKey(hid,&kd,0,false);
-    kd.b2=0;
-    changeKey(hid,&kd,1,false);
-    changeKey(hid,&kd,2,false);
-    changeKey(hid,&kd,3,true);
+    send65Cmd(0x07,hid,0x00,true);
 
-    send65Cmd(0x07,hid,0x0000,false);
-    send65Cmd(0x00,hid,0x0190,false);
-    send65Cmd(0x01,hid,0x0230,false);
-    send65Cmd(0x06,hid,0x003C,false);
-    send65Cmd(0xFB,hid,0x003C,false);
-    send65Cmd(0xFC,hid,0x0002,true);
+    // kd.b2=0;
+    // changeKey(hid,&kd,1,false);
+    // changeKey(hid,&kd,2,false);
+    // changeKey(hid,&kd,3,true);
+
+    // send65Cmd(0x07,hid,0x0000,false);
+    // send65Cmd(0x00,hid,0x0190,false);
+    // send65Cmd(0x01,hid,0x0230,false);
+    // send65Cmd(0x06,hid,0x003C,false);
+    // send65Cmd(0xFB,hid,0x003C,false);
+    // send65Cmd(0xFC,hid,0x0002,true);
 }
 
 void DialogDeviceConnect::setSleepTime(quint16 value, int type)
@@ -1171,7 +1176,6 @@ void DialogDeviceConnect::enableKeyFn(quint8 hid, bool enable, quint8 subLayer)
 
 QByteArray DialogDeviceConnect::getMatix(bool fnLayer)
 {
-    // qDebug() << "getMatix: " << fnLayer;
     if(fnLayer)
         return m_FunMatrix[0];
 
@@ -1426,7 +1430,6 @@ void DialogDeviceConnect::StartRtTest()
     emit onKeyTesting(true);
     m_Cali.clear();
     addReadCmd("1B 01", true);
-    qDebug() << " DialogDeviceConnect::StartRtTest  ------------------------- "  ;
 }
 
 void DialogDeviceConnect::StopRtTest()
@@ -1437,7 +1440,6 @@ void DialogDeviceConnect::StopRtTest()
     m_cmdList.clear();
     addReadCmd("1B 00", true);
 }
-
 
 void DialogDeviceConnect::setKBOption(quint8 option, quint8 value)
 {

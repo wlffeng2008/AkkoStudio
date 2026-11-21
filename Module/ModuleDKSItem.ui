@@ -30,7 +30,7 @@
    </property>
    <property name="minimumSize">
     <size>
-     <width>150</width>
+     <width>112</width>
      <height>26</height>
     </size>
    </property>
@@ -53,9 +53,9 @@
   <widget class="FrameDragset" name="frameSet">
    <property name="geometry">
     <rect>
-     <x>162</x>
+     <x>179</x>
      <y>4</y>
-     <width>258</width>
+     <width>241</width>
      <height>30</height>
     </rect>
    </property>

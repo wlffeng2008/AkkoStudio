@@ -390,7 +390,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                   <rect>
                    <x>64</x>
                    <y>90</y>
-                   <width>440</width>
+                   <width>457</width>
                    <height>148</height>
                   </rect>
                  </property>
@@ -443,9 +443,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                 <widget class="QWidget" name="layoutWidget">
                  <property name="geometry">
                   <rect>
-                   <x>208</x>
+                   <x>228</x>
                    <y>18</y>
-                   <width>293</width>
+                   <width>270</width>
                    <height>58</height>
                   </rect>
                  </property>
@@ -547,7 +547,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap>:/images/k/ic_press.png</pixmap>
+                     <pixmap resource="res.qrc">:/images/k/ic_press.png</pixmap>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -563,7 +563,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap>:/images/k/ic_bottom.png</pixmap>
+                     <pixmap resource="res.qrc">:/images/k/ic_bottom.png</pixmap>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -579,7 +579,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap>:/images/k/ic_lift.png</pixmap>
+                     <pixmap resource="res.qrc">:/images/k/ic_lift.png</pixmap>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -595,7 +595,7 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap>:/images/k/ic_peak.png</pixmap>
+                     <pixmap resource="res.qrc">:/images/k/ic_peak.png</pixmap>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -1723,7 +1723,9 @@ QPushButton:disabled { background-color: #EAEAEA; color: #8C8C8C; }</string>
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroupSnap"/>
